@@ -66,28 +66,55 @@ def main() -> int:
         type=Path,
         default=Path("/scratch/karcher/seq_metadata_curator/data/coverage_review.tsv"),
     )
+    ap.add_argument(
+        "--rebuild-from-parts",
+        action="store_true",
+        help="Ignore an existing coverage_review.tsv and rebuild from raw "
+             "coverage_report_part*.tsv files (may lose refresh-script fixes).",
+    )
     args = ap.parse_args()
 
     part_paths = sorted(glob.glob(args.parts_glob))
-    if not part_paths:
-        print(f"[review] no partial TSVs matched {args.parts_glob}", file=sys.stderr)
-        return 2
 
-    # Merge all part TSVs into memory (small — max ~1128 rows).
+    # ---- Source selection ---------------------------------------------------
+    # If coverage_review.tsv already exists, it is the AUTHORITATIVE source
+    # (it carries subsequent refresh_pdf_supp.py / refresh_pmc_oa.py fixes
+    # AND user notes). Only re-aggregate from parts on first run or when
+    # explicitly asked via --rebuild-from-parts.
     all_rows: list[dict[str, str]] = []
     header: list[str] = []
-    for p in part_paths:
-        with open(p) as fh:
+    used_source = "parts"
+    if args.out_tsv.exists() and not args.rebuild_from_parts:
+        with args.out_tsv.open() as fh:
             rdr = csv.DictReader(fh, delimiter="\t")
-            if not header:
-                header = list(rdr.fieldnames or [])
-            for row in rdr:
-                all_rows.append(row)
-
-    print(
-        f"[review] merged {len(all_rows)} rows from {len(part_paths)} part files",
-        file=sys.stderr,
-    )
+            header = list(rdr.fieldnames or [])
+            all_rows = list(rdr)
+        used_source = f"existing {args.out_tsv.name}"
+        print(
+            f"[review] refreshing from existing {args.out_tsv.name} "
+            f"({len(all_rows)} rows). Use --rebuild-from-parts to force a "
+            f"full rebuild from coverage_report_part*.tsv.",
+            file=sys.stderr,
+        )
+    elif part_paths:
+        for p in part_paths:
+            with open(p) as fh:
+                rdr = csv.DictReader(fh, delimiter="\t")
+                if not header:
+                    header = list(rdr.fieldnames or [])
+                for row in rdr:
+                    all_rows.append(row)
+        print(
+            f"[review] merged {len(all_rows)} rows from {len(part_paths)} part files",
+            file=sys.stderr,
+        )
+    else:
+        print(
+            f"[review] no partial TSVs matched {args.parts_glob} and "
+            f"{args.out_tsv} does not exist",
+            file=sys.stderr,
+        )
+        return 2
 
     # Preserve any hand-edited notes from a prior review.
     prior = load_existing_notes(args.out_tsv)
@@ -97,32 +124,43 @@ def main() -> int:
             file=sys.stderr,
         )
 
-    # Compute gap score + attach existing notes.
+    # Ensure review columns exist even when source is a raw part TSV.
+    # If reading from existing coverage_review.tsv, gap_score + review cols
+    # are already present — this is a no-op for them and just refills any
+    # user-note fields that were dropped by an earlier bug.
     for row in all_rows:
         row["gap_score"] = str(gap_score(row))
         pmid = row.get("pmid") or ""
         notes = prior.get(pmid, {})
         for c in REVIEW_COLS:
-            row[c] = notes.get(c, "")
+            # Existing values win; prior is a fallback only.
+            if not row.get(c):
+                row[c] = notes.get(c, "")
 
-    # Sort worst-first: high gap_score, then journal, then pmid.
-    all_rows.sort(
+    # ---- Dedup BEFORE sort ------------------------------------------------
+    # When a PMID appears in more than one part, keep the row with the
+    # LOWEST gap_score (best result). The old code deduped AFTER sorting
+    # worst-first, so the worst row won — silently regressing coverage on
+    # any part overlap.
+    best_by_pmid: dict[str, dict[str, str]] = {}
+    for row in all_rows:
+        p = row.get("pmid") or ""
+        if not p:
+            continue
+        existing = best_by_pmid.get(p)
+        if existing is None or int(row["gap_score"]) < int(existing["gap_score"]):
+            best_by_pmid[p] = row
+    deduped = list(best_by_pmid.values())
+
+    # Sort worst-first for review UX.
+    deduped.sort(
         key=lambda r: (
             -int(r["gap_score"]),
             (r.get("journal") or "").lower(),
             r.get("pmid") or "",
         )
     )
-
-    # Deduplicate by PMID (in case a PMID accidentally landed in two parts).
-    seen: set[str] = set()
-    deduped: list[dict[str, str]] = []
-    for row in all_rows:
-        p = row.get("pmid") or ""
-        if p in seen:
-            continue
-        seen.add(p)
-        deduped.append(row)
+    print(f"[review] source: {used_source}; deduped to {len(deduped)} PMIDs", file=sys.stderr)
 
     out_header = ["gap_score"] + list(REVIEW_COLS) + header  # review cols up front
     args.out_tsv.parent.mkdir(parents=True, exist_ok=True)

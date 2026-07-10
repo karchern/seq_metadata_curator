@@ -203,43 +203,31 @@ def probe_publisher(session: requests.Session, doi: str) -> Optional[str]:
 
 
 def probe_publisher_supp(session: requests.Session, doi: str) -> tuple[bool, int]:
-    """Fetch article HTML and count publisher-specific supp URLs.
+    """Delegate to the matching publisher's probe_supp() method.
 
-    Nature (and its dotted-slug legacy variant) plus Springer both host supp
-    on the same static-content.springer.com/esm/…/MediaObjects/ CDN, so
-    ESM-URL counting works uniformly. BMJ has no equivalent single-endpoint
-    pattern — we skip probe there and let the actual fetch decide.
+    Each publisher knows its own URL construction (e.g. Springer might
+    resolve at /article/ OR /chapter/, BMJ scans DOI landing HTML for
+    supp candidates). Keeping this thin means adding a new publisher
+    doesn't require touching this function.
     """
     pub = get_publisher(doi)
     if pub is None:
         return (False, 0)
-
-    art_url: Optional[str] = None
-    if pub.name in ("nature", "nature_legacy"):
-        slug = pub.article_slug(doi)
-        art_url = f"https://www.nature.com/articles/{slug}"
-    elif pub.name == "springer":
-        art_url = f"https://link.springer.com/article/{doi}"
-
-    if art_url is None:
+    try:
+        return pub.probe_supp(session, doi)
+    except Exception:
         return (False, 0)
-
-    r = http_get(session, art_url, timeout=45)
-    if r is None or r.status_code != 200:
-        return (False, 0)
-    esm_re = re.compile(
-        r'https?://static-content\.springer\.com/[^"\'\s<>]+/MediaObjects/[^"\'\s<>]+'
-    )
-    n = len(set(esm_re.findall(r.text)))
-    return (n > 0, n)
 
 
 def probe_unpaywall(session: requests.Session, doi: str) -> bool:
-    """True iff Unpaywall knows ANY OA location for this DOI.
+    """True iff Unpaywall claims to know a directly-fetchable PDF for this DOI.
 
-    Prior version only checked best_oa_location, which missed green-OA
-    hits (institutional repos, figshare) surfaced in oa_locations[]
-    instead. Iterate the full list.
+    Only counts `url_for_pdf` (or a `url` ending in .pdf) as evidence — a
+    bare `url` field usually points at a landing page that will yield HTML
+    rather than a real PDF, so accepting it here would inflate probe
+    numbers vs. what fetch_paper.py's downstream %PDF-magic gate actually
+    accepts. Prefer a small false-negative over a fetch-mismatched
+    false-positive.
     """
     url = f"https://api.unpaywall.org/v2/{doi}?email={DEFAULT_EMAIL}"
     r = http_get(session, url, timeout=20)
@@ -249,11 +237,17 @@ def probe_unpaywall(session: requests.Session, doi: str) -> bool:
         j = r.json()
     except Exception:
         return False
-    best = j.get("best_oa_location") or {}
-    if best.get("url_for_pdf") or best.get("url"):
+
+    def _has_pdf(loc: dict) -> bool:
+        if loc.get("url_for_pdf"):
+            return True
+        u = (loc.get("url") or "").lower().split("?", 1)[0]
+        return u.endswith(".pdf")
+
+    if _has_pdf(j.get("best_oa_location") or {}):
         return True
     for loc in (j.get("oa_locations") or []):
-        if loc.get("url_for_pdf") or loc.get("url"):
+        if _has_pdf(loc):
             return True
     return False
 

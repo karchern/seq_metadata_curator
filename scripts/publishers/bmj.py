@@ -129,6 +129,42 @@ class BMJPublisher(Publisher):
             return False
         return self._peek_pdf(session, pdf_url)
 
+    def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
+        """Fetch DOI landing HTML, look for supp candidates without downloading."""
+        try:
+            landing_url, html = self._resolve_landing(session, doi)
+        except Exception:
+            return (False, 0)
+        soup = BeautifulSoup(html, "html.parser")
+        n = 0
+        supp_ext = re.compile(
+            r"\.(pdf|docx?|xlsx?|zip|txt|csv|tsv)$", re.IGNORECASE
+        )
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            if href.startswith("//"):
+                absu = "https:" + href
+            elif href.startswith("/"):
+                absu = urljoin(landing_url, href)
+            elif href.startswith("http"):
+                absu = href
+            else:
+                continue
+            path = urlparse(absu).path.lower()
+            if not any(
+                m in path
+                for m in (
+                    "/supplementary/",
+                    "/supplemental/",
+                    "supplementary-material",
+                    "/highwire/filestream/",
+                )
+            ):
+                continue
+            if supp_ext.search(path):
+                n += 1
+        return (n > 0, n)
+
     def fetch_pdf(
         self, session: requests.Session, doi: str, out_dir: Path
     ) -> PublisherResult:

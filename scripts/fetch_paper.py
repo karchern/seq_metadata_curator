@@ -218,6 +218,18 @@ def try_pmc_oa_tarball(
 
     # ftp:// → https:// (compute nodes often can't do plain FTP)
     tgz_https = tgz_link.replace("ftp://", "https://", 1)
+    # NCBI moved OA tarballs to /pub/pmc/deprecated/oa_package/ but the
+    # oa.fcgi metadata still advertises the old /pub/pmc/oa_package/ path
+    # (which now 404s). Rewrite if we see the old shape.
+    if (
+        "/pub/pmc/oa_package/" in tgz_https
+        and "/pub/pmc/deprecated/" not in tgz_https
+    ):
+        tgz_https = tgz_https.replace(
+            "/pub/pmc/oa_package/",
+            "/pub/pmc/deprecated/oa_package/",
+            1,
+        )
     meta.tarball_url = tgz_https
     meta.is_pmc_oa = True
     meta.attempts.append(f"tarball_download:{tgz_https}")
@@ -230,6 +242,7 @@ def try_pmc_oa_tarball(
     supp_dir.mkdir(parents=True, exist_ok=True)
     pdf_found = False
     xml_found = False
+    supp_written = False
     with tarfile.open(fileobj=buf, mode="r:gz") as tf:
         for member in tf.getmembers():
             if not member.isfile():
@@ -244,6 +257,15 @@ def try_pmc_oa_tarball(
 
             lower = name.lower()
             if lower.endswith(".pdf") and not pdf_found:
+                # Sniff %PDF magic — some PMC-OA tarballs contain
+                # replacement HTML placeholders named .pdf when the real
+                # PDF was withdrawn (e.g. author-manuscript revocations).
+                if not payload.startswith(b"%PDF"):
+                    meta.attempts.append(
+                        f"tarball_pdf:reject_not_pdf:{name}:first8="
+                        f"{payload[:8]!r}"
+                    )
+                    continue
                 (out_dir / "paper.pdf").write_bytes(payload)
                 meta.pdf_url_used = f"tarball://{name}"
                 pdf_found = True
@@ -255,8 +277,12 @@ def try_pmc_oa_tarball(
                 xml_found = True
             else:
                 (supp_dir / name).write_bytes(payload)
+                supp_written = True
 
-    meta.supp_source = "pmc_oa_tarball"
+    # Only claim supp if we ACTUALLY wrote supp files — an empty tarball
+    # (nothing besides PDF+XML) shouldn't set supp_source.
+    if supp_written:
+        meta.supp_source = "pmc_oa_tarball"
     return pdf_found
 
 

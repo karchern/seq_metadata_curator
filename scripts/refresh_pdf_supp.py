@@ -103,17 +103,15 @@ def main() -> int:
     n_ok = {"pmc_oa_pdf": 0, "publisher_pdf": 0, "unpaywall_pdf": 0, "supp": 0}
 
     for i, r in enumerate(rows):
-        # Reset the fields we'll refill; keep existing supp_source only if it
-        # was pmc_oa AND we still confirm pmc_oa.
-        old_pdf_sources = r.get("pdf_sources") or "NONE"
-        r["pdf_sources"] = "NONE"
-        old_supp_available = (r.get("supp_available") or "").lower() == "true"
-        r["supp_available"] = "False"
-        r["supp_source"] = "NONE"
-
+        # DO NOT destroy pdf_sources / supp_source before probing — a
+        # single transient failure (429/timeout) would then permanently
+        # regress this row. Instead, gather fresh evidence into local
+        # buffers and only commit if every probe completed cleanly.
         pdf_srcs: list[str] = []
         pmc = r.get("pmc_id") or ""
         doi = r.get("doi") or ""
+
+        probe_had_exception = False
 
         # PMC-OA lookup: only if we have a pmc_id. Try the direct pmc_id
         # first; if none, run the esearch fallback (same as the probe does).
@@ -122,26 +120,21 @@ def main() -> int:
             try:
                 pmc_oa_ok = probe_pmc_oa(session, pmc)
             except Exception:
-                pmc_oa_ok = False
+                probe_had_exception = True
         else:
-            # Some articles have no PMC ID recorded on the PubMed side but
-            # ARE in PMC; use the esearch fallback.
             try:
                 alt = probe_pmc_id_fallback(session, r["pmid"])
             except Exception:
                 alt = None
+                probe_had_exception = True
             if alt:
                 r["pmc_id"] = alt
                 try:
                     pmc_oa_ok = probe_pmc_oa(session, alt)
                 except Exception:
-                    pmc_oa_ok = False
+                    probe_had_exception = True
         if pmc_oa_ok:
             pdf_srcs.append("pmc_oa")
-            r["supp_available"] = "True"
-            r["supp_source"] = "pmc_oa"
-            n_ok["pmc_oa_pdf"] += 1
-            n_ok["supp"] += 1
 
         # Publisher probe
         if doi:
@@ -149,35 +142,70 @@ def main() -> int:
                 pubname = probe_publisher(session, doi)
             except Exception:
                 pubname = None
+                probe_had_exception = True
             if pubname:
                 pdf_srcs.append(pubname)
-                n_ok["publisher_pdf"] += 1
 
         # Unpaywall
         if doi:
             try:
                 if probe_unpaywall(session, doi):
                     pdf_srcs.append("unpaywall")
-                    n_ok["unpaywall_pdf"] += 1
             except Exception:
-                pass
+                probe_had_exception = True
 
-        # Publisher supp — only if supp not already set via pmc_oa
-        if doi and (r.get("supp_available") or "").lower() != "true":
+        # Publisher supp — check separately from pmc_oa
+        pub_supp_ok = False
+        if doi:
             try:
-                ok, _n = probe_publisher_supp(session, doi)
+                pub_supp_ok, _n = probe_publisher_supp(session, doi)
             except Exception:
-                ok = False
-            if ok:
-                from probe_coverage import get_publisher
-                pub = get_publisher(doi)
-                r["supp_available"] = "True"
-                r["supp_source"] = f"publisher:{pub.name}" if pub else "publisher"
-                n_ok["supp"] += 1
+                probe_had_exception = True
 
-        r["pdf_sources"] = ",".join(pdf_srcs) if pdf_srcs else "NONE"
-        if old_pdf_sources != r["pdf_sources"]:
-            pdf_sources_reset += 1
+        # ---- COMMIT decision ----
+        new_pdf_sources = ",".join(pdf_srcs) if pdf_srcs else "NONE"
+        old_pdf_sources = r.get("pdf_sources") or "NONE"
+
+        # Regression guard: if ALL probes raised exceptions AND the buffer
+        # is empty AND we previously had a positive result, keep the old
+        # value. Otherwise commit fresh state.
+        if (
+            probe_had_exception
+            and new_pdf_sources == "NONE"
+            and old_pdf_sources != "NONE"
+        ):
+            skipped_no_meta_pdf = getattr(main, "_pdf_regression_saved", 0) + 1
+            main._pdf_regression_saved = skipped_no_meta_pdf
+        else:
+            r["pdf_sources"] = new_pdf_sources
+            if old_pdf_sources != new_pdf_sources:
+                pdf_sources_reset += 1
+
+        # Supp commit — same regression logic. PMC-OA wins over publisher
+        # (author-tar bundles are richer + include labels via JATS XML).
+        old_supp_available = (r.get("supp_available") or "").lower() == "true"
+        new_supp_available = pmc_oa_ok or pub_supp_ok
+        new_supp_source = "pmc_oa" if pmc_oa_ok else (
+            f"publisher:{__import__('probe_coverage').get_publisher(doi).name}"
+            if (pub_supp_ok and doi) else "NONE"
+        )
+        if (
+            probe_had_exception
+            and not new_supp_available
+            and old_supp_available
+        ):
+            pass  # keep old supp state
+        else:
+            r["supp_available"] = "True" if new_supp_available else "False"
+            r["supp_source"] = new_supp_source
+        if pmc_oa_ok:
+            n_ok["pmc_oa_pdf"] += 1
+        if any(s not in ("pmc_oa", "unpaywall") for s in pdf_srcs):
+            n_ok["publisher_pdf"] += 1
+        if "unpaywall" in pdf_srcs:
+            n_ok["unpaywall_pdf"] += 1
+        if new_supp_available:
+            n_ok["supp"] += 1
 
         if (i + 1) % 25 == 0 or i == len(rows) - 1:
             print(

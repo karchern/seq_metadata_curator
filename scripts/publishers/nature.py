@@ -74,6 +74,21 @@ class NaturePublisher(Publisher):
         """Cheap check: HEAD/peek nature.com/articles/{slug}.pdf, look for %PDF."""
         return self._peek_pdf(session, self._pdf_url(doi))
 
+    _ESM_URL_RE = re.compile(
+        r'https?://static-content\.springer\.com/[^"\'\s<>]+/MediaObjects/[^"\'\s<>]+'
+    )
+
+    def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
+        """Fetch article HTML, count ESM URLs. Cheap (one GET, no downloads)."""
+        try:
+            r = self._http_get(session, self._article_url(doi))
+        except Exception:
+            return (False, 0)
+        if r.status_code != 200:
+            return (False, 0)
+        n = len(set(self._ESM_URL_RE.findall(r.text)))
+        return (n > 0, n)
+
     def fetch_pdf(
         self, session: requests.Session, doi: str, out_dir: Path
     ) -> PublisherResult:

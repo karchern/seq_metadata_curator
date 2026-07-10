@@ -113,6 +113,27 @@ class SpringerPublisher(Publisher):
         """Cheap check: peek link.springer.com/content/pdf/{doi}.pdf for %PDF."""
         return self._peek_pdf(session, self._pdf_url(doi))
 
+    _ESM_URL_RE = re.compile(
+        r'https?://static-content\.springer\.com/[^"\'\s<>]+/MediaObjects/[^"\'\s<>]+'
+    )
+
+    def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
+        """Try /article/{doi} then /chapter/{doi}; count ESM URLs on whichever
+        returns 200. Handles both regular articles and book chapters."""
+        html: str | None = None
+        for candidate in (self._article_url(doi), self._chapter_url(doi)):
+            try:
+                r = self._http_get(session, candidate)
+            except Exception:
+                continue
+            if r.status_code == 200:
+                html = r.text
+                break
+        if not html:
+            return (False, 0)
+        n = len(set(self._ESM_URL_RE.findall(html)))
+        return (n > 0, n)
+
     def fetch_pdf(
         self, session: requests.Session, doi: str, out_dir: Path
     ) -> PublisherResult:
