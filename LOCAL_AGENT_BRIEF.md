@@ -66,12 +66,13 @@ Fetch the (~36) papers the cluster couldn't reach.
 
 ### Step 1 — pull the residual list from the cluster
 ```bash
+mkdir -p ~/seq_metadata_curator/data_local/{papers,logs}
+
 # get the current coverage_review.tsv
 git pull  # if the cluster has pushed newer coverage_review.tsv
-# OR scp:
+# OR scp (mkdir MUST precede scp so the target dir exists):
 scp karcher@login1.cluster.embl.de:/scratch/karcher/seq_metadata_curator/data/coverage_review.tsv \
     ~/seq_metadata_curator/data_local/coverage_review.tsv
-mkdir -p ~/seq_metadata_curator/data_local/papers ~/seq_metadata_curator/data_local/logs
 ```
 
 ### Step 2 — extract the target PMIDs

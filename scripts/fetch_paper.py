@@ -473,11 +473,17 @@ def process_one(
     out_dir.mkdir(parents=True, exist_ok=True)
     log_path = out_dir / "fetch.log"
 
-    # Early-exit REVISED (R4-5): only skip the PDF pipeline when paper.pdf
-    # exists. Still run the supp pipeline — a prior fetch may have landed
-    # a PDF but zero supp (e.g. PMC-OA tarball delivered PDF, but publisher
-    # supp lives on the publisher CDN). We used to skip everything here,
-    # meaning supp gaps were sticky until the user knew to pass --force.
+    # Early-exit REVISED (R4-5 + R5-2): only skip the PDF pipeline when
+    # paper.pdf exists. Still run the supp pipeline — a prior fetch may
+    # have landed a PDF but zero supp (e.g. PMC-OA tarball delivered PDF,
+    # but publisher supp lives on the publisher CDN).
+    #
+    # When metadata.json is missing / corrupt / schema-drifted, DO NOT fall
+    # back to `PaperMeta(pmid=pmid)` — that would give empty DOI + PMC ID,
+    # `get_publisher(None) → None`, and the supp pipeline no-ops (defeating
+    # R4-5's whole intent). Worse, the empty PaperMeta would overwrite the
+    # existing metadata.json at the end of process_one, causing data loss.
+    # Instead re-fetch metadata via NCBI for continuity.
     skip_pdf_fetch = (out_dir / "paper.pdf").exists() and not force
     if skip_pdf_fetch:
         print(
@@ -485,11 +491,16 @@ def process_one(
             f"still running supp pipeline (use --force to redo everything)",
             file=sys.stderr,
         )
-        try:
-            meta = PaperMeta(**json.loads((out_dir / "metadata.json").read_text()))
-        except Exception:
-            meta = PaperMeta(pmid=pmid)
         session = new_session(email)
+        try:
+            loaded = json.loads((out_dir / "metadata.json").read_text())
+            meta = PaperMeta(**loaded)
+            # Sanity: if the on-disk record has no DOI/PMC (empty file or
+            # schema-drifted), re-fetch so the supp pipeline can dispatch.
+            if not (meta.doi or meta.pmc_id):
+                meta = fetch_pubmed_metadata(pmid, email, api_key)
+        except Exception:
+            meta = fetch_pubmed_metadata(pmid, email, api_key)
         pdf_ok = True
     else:
         session = new_session(email)
@@ -564,7 +575,13 @@ def process_one(
                 supp_files_after = {
                     p.name for p in supp_dir.iterdir() if p.is_file()
                 }
-            newly_added = supp_files_after - supp_files_before
+            # Publisher fetch_supp writes a manifest.tsv even when it wrote
+            # nothing else (R5-5). Excluding it from the diff prevents
+            # spurious publisher-tag inflation on a re-run where all supp
+            # files already existed and only the manifest was rewritten.
+            newly_added = (supp_files_after - supp_files_before) - {
+                "manifest.tsv"
+            }
             if newly_added:
                 pub_tag = f"publisher:{publisher.name}"
                 if not meta.supp_source:

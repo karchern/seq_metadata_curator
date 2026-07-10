@@ -149,6 +149,12 @@ def main() -> int:
                 res_pmc_supp = probe_pmc_supp_verified(session, pmc)
             except Exception:
                 pass  # stays _MISSING; commit stage will keep old supp value
+        elif res_pmc_oa is False:
+            # PMC-OA is definitively False this cycle → so is PMC-OA supp.
+            # Without this branch (R5-4 = N-1), the supp guard would leave
+            # res_pmc_supp as _MISSING and preserve a stale
+            # supp_source=pmc_oa for a row whose PMC-OA is gone.
+            res_pmc_supp = False
 
         # ---- Publisher PDF probe ----
         if doi:

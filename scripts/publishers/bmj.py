@@ -123,11 +123,13 @@ class BMJPublisher(Publisher):
         BMJ's paywalled papers also return 200 on the pdf endpoint but with
         HTML body, so we sniff %PDF magic bytes. This costs 2 HTTP calls but
         is the only reliable BMJ probe (Cloudflare-style Content-Type lying).
+
+        Does NOT swallow _resolve_landing exceptions — RuntimeError from
+        _http_get exhaustion has to propagate so refresh_pdf_supp's
+        regression guard can distinguish "landing genuinely dropped" from
+        "network flap during refresh" (per R5-1 = M-1 + O-1).
         """
-        try:
-            landing_url, html = self._resolve_landing(session, doi)
-        except Exception:
-            return False
+        landing_url, html = self._resolve_landing(session, doi)
         pdf_url = self._find_pdf_url(landing_url, html)
         if not pdf_url:
             return False

@@ -94,10 +94,10 @@ class Publisher(ABC):
         Streams only 8 bytes then closes the connection — cheap enough to
         run across the whole corpus without hammering publisher endpoints.
 
-        Network exceptions (ConnectionError / Timeout) are RE-RAISED so
-        the caller's regression guard can distinguish transient failure
-        from a definitive negative. Non-200 HTTP responses return False
-        because those ARE definitive (publisher said "not here").
+        Transient failures RAISE (ConnectionError/Timeout AND 429/5xx)
+        so callers' regression guard can distinguish "temporary" from
+        "definitively not reachable". Definitive non-200s (404/403/401/…)
+        return False.
         """
         r = session.get(
             url,
@@ -107,6 +107,10 @@ class Publisher(ABC):
             headers={"User-Agent": cls._BROWSER_UA},
         )
         try:
+            if r.status_code in (429, 500, 502, 503, 504):
+                raise RuntimeError(
+                    f"_peek_pdf: transient HTTP {r.status_code} at {url}"
+                )
             if r.status_code != 200:
                 return False
             for chunk in r.iter_content(chunk_size=8):
