@@ -130,11 +130,12 @@ class BMJPublisher(Publisher):
         return self._peek_pdf(session, pdf_url)
 
     def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
-        """Fetch DOI landing HTML, look for supp candidates without downloading."""
-        try:
-            landing_url, html = self._resolve_landing(session, doi)
-        except Exception:
-            return (False, 0)
+        """Fetch DOI landing HTML, look for supp candidates without downloading.
+
+        Does NOT catch _resolve_landing exceptions; callers rely on
+        network failures propagating so their regression guard fires.
+        """
+        landing_url, html = self._resolve_landing(session, doi)
         soup = BeautifulSoup(html, "html.parser")
         n = 0
         supp_ext = re.compile(

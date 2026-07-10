@@ -269,9 +269,11 @@ def try_pmc_oa_tarball(
                 (out_dir / "paper.pdf").write_bytes(payload)
                 meta.pdf_url_used = f"tarball://{name}"
                 pdf_found = True
-            elif lower.endswith(".nxml") or (
-                lower.endswith(".xml") and not xml_found
-            ):
+            elif lower.endswith(".nxml") and not xml_found:
+                # JATS full-text ships as .nxml. Bare .xml files inside
+                # PMC-OA tarballs are almost always supplementary data
+                # (schema files, coordinate tables, etc.) — do NOT treat
+                # them as the article's fulltext.
                 (out_dir / "fulltext.xml").write_bytes(payload)
                 meta.xml_url_used = f"tarball://{name}"
                 xml_found = True
@@ -503,15 +505,27 @@ def process_one(
             meta.attempts.append(f"doi_landing:exception:{e}")
 
     # ---- Supp pipeline: independent of PDF. Publisher runs even if PMC gave
-    # a PDF, because a paper can be OA-in-PMC yet supp lives on publisher CDN.
+    # a PDF, because a paper can be OA-in-PMC yet the FULL supp set lives on
+    # the publisher CDN. The prior `supp_dir_empty` gate silently skipped
+    # publisher-supp whenever PMC-OA had written *anything* into supp/, which
+    # contradicted the docstring above.
+    #
+    # We now always call publisher.fetch_supp when a publisher exists (each
+    # publisher's fetch_supp is idempotent — it skips files already on disk
+    # via `if dest.exists() and dest.stat().st_size > 0`). If PMC-OA already
+    # supplied a supp_source, we still note the publisher-side contribution
+    # by appending its name in a stable way.
     supp_dir = out_dir / "supp"
-    supp_dir_empty = (not supp_dir.exists()) or not any(supp_dir.iterdir())
-    if publisher and supp_dir_empty:
+    if publisher:
         try:
             res = publisher.fetch_supp(session, meta.doi, out_dir)
             meta.attempts.extend(res.attempts)
             if res.supp_files:
-                meta.supp_source = f"publisher:{publisher.name}"
+                pub_tag = f"publisher:{publisher.name}"
+                if not meta.supp_source:
+                    meta.supp_source = pub_tag
+                elif pub_tag not in meta.supp_source:
+                    meta.supp_source = f"{meta.supp_source}+{pub_tag}"
         except Exception as e:
             meta.attempts.append(f"publisher_supp:exception:{e}")
 

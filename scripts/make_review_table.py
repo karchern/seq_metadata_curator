@@ -162,7 +162,16 @@ def main() -> int:
     )
     print(f"[review] source: {used_source}; deduped to {len(deduped)} PMIDs", file=sys.stderr)
 
-    out_header = ["gap_score"] + list(REVIEW_COLS) + header  # review cols up front
+    # Build final header: review columns up front, then remaining columns
+    # from the source header, deduplicating anything that already appeared.
+    # (When source is an existing coverage_review.tsv, header ALREADY has
+    #  gap_score/verdict/action/user_notes at position 0-3; prepending them
+    #  again would duplicate columns.)
+    front_cols = ["gap_score"] + list(REVIEW_COLS)
+    out_header = list(front_cols)
+    for c in header:
+        if c not in out_header:
+            out_header.append(c)
     args.out_tsv.parent.mkdir(parents=True, exist_ok=True)
     with args.out_tsv.open("w", newline="") as fh:
         wr = csv.DictWriter(fh, fieldnames=out_header, delimiter="\t")

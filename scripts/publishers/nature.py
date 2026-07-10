@@ -79,11 +79,14 @@ class NaturePublisher(Publisher):
     )
 
     def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
-        """Fetch article HTML, count ESM URLs. Cheap (one GET, no downloads)."""
-        try:
-            r = self._http_get(session, self._article_url(doi))
-        except Exception:
-            return (False, 0)
+        """Fetch article HTML, count ESM URLs. Cheap (one GET, no downloads).
+
+        Does NOT catch network exceptions — callers relying on the
+        distinction between "definitely no supp" (return (False, 0)) and
+        "transient network failure" (exception) need it to propagate.
+        `_http_get` already retries with backoff before raising.
+        """
+        r = self._http_get(session, self._article_url(doi))
         if r.status_code != 200:
             return (False, 0)
         n = len(set(self._ESM_URL_RE.findall(r.text)))

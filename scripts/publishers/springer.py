@@ -119,17 +119,27 @@ class SpringerPublisher(Publisher):
 
     def probe_supp(self, session: requests.Session, doi: str) -> tuple[bool, int]:
         """Try /article/{doi} then /chapter/{doi}; count ESM URLs on whichever
-        returns 200. Handles both regular articles and book chapters."""
+        returns 200. Handles both regular articles and book chapters.
+
+        We DO catch per-candidate exceptions here because 404 on /article/
+        (book chapter) is expected + benign and we want to try /chapter/
+        next. But if ALL candidates raise, we re-raise the final one so
+        the caller's regression guard fires on genuine network failure.
+        """
         html: str | None = None
+        last_exc: Exception | None = None
         for candidate in (self._article_url(doi), self._chapter_url(doi)):
             try:
                 r = self._http_get(session, candidate)
-            except Exception:
+            except Exception as e:
+                last_exc = e
                 continue
             if r.status_code == 200:
                 html = r.text
                 break
-        if not html:
+        if html is None:
+            if last_exc is not None:
+                raise last_exc
             return (False, 0)
         n = len(set(self._ESM_URL_RE.findall(html)))
         return (n > 0, n)
@@ -175,9 +185,17 @@ class SpringerPublisher(Publisher):
                 /MediaObjects/{opaque-slug}_ESM.{ext}
         and are linked with a human label (e.g. 'Supplementary Data 1') on
         the article landing page.
+
+        Uses article_html_url() so book-chapter DOIs (which live at
+        /chapter/{doi} rather than /article/{doi}) are also covered.
         """
         result = PublisherResult()
-        art_url = self._article_url(doi)
+        art_url = self.article_html_url(session, doi)
+        if art_url is None:
+            result.attempts.append(
+                f"springer_article_html:no_reachable_url_for_doi={doi}"
+            )
+            return result
         result.attempts.append(f"springer_article_html:{art_url}")
         try:
             r = self._http_get(session, art_url)

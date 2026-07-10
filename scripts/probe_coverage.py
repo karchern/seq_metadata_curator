@@ -209,14 +209,41 @@ def probe_publisher_supp(session: requests.Session, doi: str) -> tuple[bool, int
     resolve at /article/ OR /chapter/, BMJ scans DOI landing HTML for
     supp candidates). Keeping this thin means adding a new publisher
     doesn't require touching this function.
+
+    Deliberately does NOT swallow exceptions — callers (e.g.
+    refresh_pdf_supp.py) rely on network-failure exceptions cascading
+    through so their regression guard can distinguish "definitely no
+    supp" from "transient probe failure".
     """
     pub = get_publisher(doi)
     if pub is None:
         return (False, 0)
+    return pub.probe_supp(session, doi)
+
+
+def probe_pmc_supp_verified(session: requests.Session, pmc_id: str) -> bool:
+    """True iff Europe PMC's `hasSuppl` field confirms this PMC article has
+    supplementary material. Prevents the false-positive where refresh
+    scripts blanket-claim supp for any PMC-OA hit even when the tarball
+    contains only the PDF + JATS XML.
+
+    Cost: one Europe PMC REST search per PMC ID. Roughly 200 ms.
+    """
+    url = (
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+        f"?query=PMCID:{pmc_id}&format=json&resultType=lite"
+    )
+    r = http_get(session, url, timeout=20)
+    if r is None or r.status_code != 200:
+        raise RuntimeError(f"probe_pmc_supp_verified: HTTP fail for {pmc_id}")
     try:
-        return pub.probe_supp(session, doi)
-    except Exception:
-        return (False, 0)
+        j = r.json()
+    except Exception as e:
+        raise RuntimeError(f"probe_pmc_supp_verified: bad JSON for {pmc_id}: {e}")
+    hits = j.get("resultList", {}).get("result", [])
+    if not hits:
+        return False
+    return (hits[0].get("hasSuppl") or "").upper() == "Y"
 
 
 def probe_unpaywall(session: requests.Session, doi: str) -> bool:
@@ -368,12 +395,21 @@ def probe_pmid(pmid: str, meta: dict, session: requests.Session) -> Row:
         pdf_sources.append("unpaywall")
     row.pdf_sources = ",".join(pdf_sources) if pdf_sources else "NONE"
 
-    # supp
-    if "pmc_oa" in pdf_sources:
-        row.supp_source = "pmc_oa"
-        row.supp_available = True   # tgz includes supp when present
-    elif row.doi and get_publisher(row.doi):
-        ok, _n = probe_publisher_supp(session, row.doi)
+    # supp: verify PMC-OA supp claim via Europe PMC hasSuppl (previously
+    # a blanket True on any PMC-OA hit — inflated coverage stats vs. what
+    # fetch_paper.py could actually retrieve, per R3 finding I-C2 / H-4).
+    if "pmc_oa" in pdf_sources and row.pmc_id:
+        try:
+            if probe_pmc_supp_verified(session, row.pmc_id):
+                row.supp_source = "pmc_oa"
+                row.supp_available = True
+        except Exception:
+            pass
+    if not row.supp_available and row.doi and get_publisher(row.doi):
+        try:
+            ok, _n = probe_publisher_supp(session, row.doi)
+        except Exception:
+            ok = False
         if ok:
             row.supp_source = f"publisher:{get_publisher(row.doi).name}"
             row.supp_available = True

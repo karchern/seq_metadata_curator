@@ -32,6 +32,7 @@ from probe_coverage import (  # noqa: E402
     new_session,
     probe_pmc_id_fallback,
     probe_pmc_oa,
+    probe_pmc_supp_verified,
     probe_publisher,
     probe_publisher_supp,
     probe_unpaywall,
@@ -80,17 +81,23 @@ def main() -> int:
         m = meta[r["pmid"]]
         fresh_pmc = m.get("pmc_id") or ""
         fresh_doi = m.get("doi") or ""
-        if (r.get("pmc_id") or "") != fresh_pmc:
+        stored_pmc = r.get("pmc_id") or ""
+        stored_doi = r.get("doi") or ""
+        # Overwrite the stored value only when fresh actually contributes
+        # information (non-empty) or when stored is also empty. This
+        # protects against a partial efetch response silently blanking
+        # good on-disk IDs — but does NOT prevent correction of a stored
+        # (post-R1-2 bug) contaminated PMC ID whose fresh value is legit
+        # empty for an article that genuinely has no PMC deposit.
+        if fresh_pmc and fresh_pmc != stored_pmc:
             r["pmc_id"] = fresh_pmc
             pmc_corrections += 1
-        if (r.get("doi") or "") != fresh_doi:
+        if fresh_doi and fresh_doi != stored_doi:
             r["doi"] = fresh_doi
             doi_corrections += 1
-        # doi_prefix follows doi
+        # doi_prefix follows doi (only if we actually updated doi)
         if fresh_doi and "/" in fresh_doi:
             r["doi_prefix"] = fresh_doi.split("/", 1)[0]
-        elif not fresh_doi:
-            r["doi_prefix"] = ""
 
     print(
         f"[refresh] metadata corrections: pmc_id {pmc_corrections}, doi {doi_corrections} "
@@ -102,109 +109,133 @@ def main() -> int:
     pdf_sources_reset = 0
     n_ok = {"pmc_oa_pdf": 0, "publisher_pdf": 0, "unpaywall_pdf": 0, "supp": 0}
 
+    _MISSING = object()  # sentinel meaning "probe couldn't run this cycle"
     for i, r in enumerate(rows):
-        # DO NOT destroy pdf_sources / supp_source before probing — a
-        # single transient failure (429/timeout) would then permanently
-        # regress this row. Instead, gather fresh evidence into local
-        # buffers and only commit if every probe completed cleanly.
-        pdf_srcs: list[str] = []
         pmc = r.get("pmc_id") or ""
         doi = r.get("doi") or ""
 
-        probe_had_exception = False
+        # Per-source result buckets. Each starts as sentinel _MISSING so
+        # the commit stage can distinguish "probed → False" from
+        # "probe raised or wasn't attempted".
+        res_pmc_oa: object = _MISSING          # bool or _MISSING
+        res_publisher: object = _MISSING        # str name or "" or _MISSING
+        res_unpaywall: object = _MISSING        # bool or _MISSING
+        res_pmc_supp: object = _MISSING         # bool or _MISSING (verified via hasSuppl)
+        res_pub_supp: object = _MISSING         # bool or _MISSING
 
-        # PMC-OA lookup: only if we have a pmc_id. Try the direct pmc_id
-        # first; if none, run the esearch fallback (same as the probe does).
-        pmc_oa_ok = False
-        if pmc:
-            try:
-                pmc_oa_ok = probe_pmc_oa(session, pmc)
-            except Exception:
-                probe_had_exception = True
-        else:
+        # ---- PMC-OA probe (also backfill pmc_id via esearch when missing) ----
+        if not pmc:
             try:
                 alt = probe_pmc_id_fallback(session, r["pmid"])
+                if alt:
+                    r["pmc_id"] = alt
+                    pmc = alt
             except Exception:
-                alt = None
-                probe_had_exception = True
-            if alt:
-                r["pmc_id"] = alt
-                try:
-                    pmc_oa_ok = probe_pmc_oa(session, alt)
-                except Exception:
-                    probe_had_exception = True
-        if pmc_oa_ok:
-            pdf_srcs.append("pmc_oa")
+                pass
+        if pmc:
+            try:
+                res_pmc_oa = probe_pmc_oa(session, pmc)
+            except Exception:
+                pass  # stays _MISSING
+        else:
+            res_pmc_oa = False
 
-        # Publisher probe
+        # ---- PMC-supp verification via Europe PMC hasSuppl ----
+        # This replaces the previous blanket "pmc_oa implies supp" claim,
+        # which R2-9 fixed only inside fetch_paper.try_pmc_oa_tarball but
+        # not in the refresh scripts (I-C2 / H-4).
+        if res_pmc_oa is True and pmc:
+            try:
+                res_pmc_supp = probe_pmc_supp_verified(session, pmc)
+            except Exception:
+                pass  # stays _MISSING; commit stage will keep old supp value
+
+        # ---- Publisher PDF probe ----
         if doi:
             try:
-                pubname = probe_publisher(session, doi)
+                pn = probe_publisher(session, doi)
+                res_publisher = pn or ""
             except Exception:
-                pubname = None
-                probe_had_exception = True
-            if pubname:
-                pdf_srcs.append(pubname)
+                pass
 
-        # Unpaywall
+        # ---- Unpaywall probe ----
         if doi:
             try:
-                if probe_unpaywall(session, doi):
-                    pdf_srcs.append("unpaywall")
+                res_unpaywall = probe_unpaywall(session, doi)
             except Exception:
-                probe_had_exception = True
+                pass
 
-        # Publisher supp — check separately from pmc_oa
-        pub_supp_ok = False
+        # ---- Publisher supp probe ----
         if doi:
             try:
-                pub_supp_ok, _n = probe_publisher_supp(session, doi)
+                ok, _n = probe_publisher_supp(session, doi)
+                res_pub_supp = ok
             except Exception:
-                probe_had_exception = True
+                pass
 
-        # ---- COMMIT decision ----
-        new_pdf_sources = ",".join(pdf_srcs) if pdf_srcs else "NONE"
+        # ---- COMMIT decision (per-source) ----
+        # For PDF sources: rebuild the pdf_sources string from FRESH results
+        # where we have them, and CARRY FORWARD prior contributions from
+        # any source whose probe couldn't run this cycle. Prevents G-2 /
+        # H-1 partial-source regression.
         old_pdf_sources = r.get("pdf_sources") or "NONE"
+        old_srcs = set(old_pdf_sources.split(",")) if old_pdf_sources != "NONE" else set()
+        fresh_srcs: set[str] = set()
 
-        # Regression guard: if ALL probes raised exceptions AND the buffer
-        # is empty AND we previously had a positive result, keep the old
-        # value. Otherwise commit fresh state.
-        if (
-            probe_had_exception
-            and new_pdf_sources == "NONE"
-            and old_pdf_sources != "NONE"
-        ):
-            skipped_no_meta_pdf = getattr(main, "_pdf_regression_saved", 0) + 1
-            main._pdf_regression_saved = skipped_no_meta_pdf
-        else:
-            r["pdf_sources"] = new_pdf_sources
-            if old_pdf_sources != new_pdf_sources:
-                pdf_sources_reset += 1
+        if res_pmc_oa is True:
+            fresh_srcs.add("pmc_oa")
+        elif res_pmc_oa is _MISSING and "pmc_oa" in old_srcs:
+            fresh_srcs.add("pmc_oa")
 
-        # Supp commit — same regression logic. PMC-OA wins over publisher
-        # (author-tar bundles are richer + include labels via JATS XML).
+        if isinstance(res_publisher, str) and res_publisher:
+            fresh_srcs.add(res_publisher)
+        elif res_publisher is _MISSING:
+            # carry forward any known publisher-type source
+            for s in old_srcs:
+                if s in ("nature", "nature_legacy", "springer", "bmj"):
+                    fresh_srcs.add(s)
+
+        if res_unpaywall is True:
+            fresh_srcs.add("unpaywall")
+        elif res_unpaywall is _MISSING and "unpaywall" in old_srcs:
+            fresh_srcs.add("unpaywall")
+
+        new_pdf_sources = ",".join(sorted(fresh_srcs)) if fresh_srcs else "NONE"
+        if old_pdf_sources != new_pdf_sources:
+            pdf_sources_reset += 1
+        r["pdf_sources"] = new_pdf_sources
+
+        # For supp: PMC-OA verified via hasSuppl OR publisher supp probe.
         old_supp_available = (r.get("supp_available") or "").lower() == "true"
-        new_supp_available = pmc_oa_ok or pub_supp_ok
-        new_supp_source = "pmc_oa" if pmc_oa_ok else (
-            f"publisher:{__import__('probe_coverage').get_publisher(doi).name}"
-            if (pub_supp_ok and doi) else "NONE"
-        )
-        if (
-            probe_had_exception
-            and not new_supp_available
-            and old_supp_available
-        ):
-            pass  # keep old supp state
-        else:
-            r["supp_available"] = "True" if new_supp_available else "False"
-            r["supp_source"] = new_supp_source
-        if pmc_oa_ok:
+        old_supp_source = r.get("supp_source") or "NONE"
+
+        new_supp_flag: bool | object = False
+        new_supp_source = "NONE"
+        if res_pmc_supp is True:
+            new_supp_flag = True
+            new_supp_source = "pmc_oa"
+        elif res_pub_supp is True:
+            new_supp_flag = True
+            from probe_coverage import get_publisher
+            pub = get_publisher(doi) if doi else None
+            new_supp_source = f"publisher:{pub.name}" if pub else "publisher"
+        elif res_pmc_supp is _MISSING and res_pub_supp is _MISSING:
+            # Both supp probes couldn't run — carry forward the old supp
+            # decision to avoid regressing a good row on transient failure.
+            new_supp_flag = old_supp_available
+            new_supp_source = old_supp_source
+
+        r["supp_available"] = "True" if new_supp_flag else "False"
+        r["supp_source"] = new_supp_source
+
+        # Counters
+        if res_pmc_oa is True:
             n_ok["pmc_oa_pdf"] += 1
-        if any(s not in ("pmc_oa", "unpaywall") for s in pdf_srcs):
+        if isinstance(res_publisher, str) and res_publisher:
             n_ok["publisher_pdf"] += 1
-        if "unpaywall" in pdf_srcs:
+        if res_unpaywall is True:
             n_ok["unpaywall_pdf"] += 1
-        if new_supp_available:
+        if new_supp_flag:
             n_ok["supp"] += 1
 
         if (i + 1) % 25 == 0 or i == len(rows) - 1:

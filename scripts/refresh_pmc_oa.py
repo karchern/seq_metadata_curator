@@ -17,7 +17,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from probe_coverage import new_session, probe_pmc_oa  # noqa: E402
+from probe_coverage import new_session, probe_pmc_oa, probe_pmc_supp_verified  # noqa: E402
 
 
 REVIEW_TSV = Path("/scratch/karcher/seq_metadata_curator/data/coverage_review.tsv")
@@ -71,11 +71,18 @@ def main() -> int:
                 else:
                     r["pdf_sources"] = "pmc_oa," + srcs
                 changed_pdf += 1
-            # supp: PMC-OA tarball routinely bundles supp.
+            # supp: verify via Europe PMC hasSuppl — the older blanket
+            # assumption "PMC-OA tarball routinely bundles supp" caused
+            # ~inflated supp coverage (empty tarballs still claimed True).
             if (r.get("supp_available") or "").lower() != "true":
-                r["supp_available"] = "True"
-                r["supp_source"] = "pmc_oa"
-                changed_supp += 1
+                try:
+                    has_supp = probe_pmc_supp_verified(session, pmc)
+                except Exception:
+                    has_supp = False  # don't overclaim on transient
+                if has_supp:
+                    r["supp_available"] = "True"
+                    r["supp_source"] = "pmc_oa"
+                    changed_supp += 1
 
         if (i + 1) % 25 == 0 or i == len(rows) - 1:
             print(
