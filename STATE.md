@@ -76,6 +76,39 @@ Not yet implemented and hard-blocked without institutional access:
 3. **Reads land only as `.fastq.gz`** — `fetch_reads.py` rejects non-gz URLs and asserts gzip magic post-download.
 4. **User notes preserved on re-run** — `make_review_table.py` and the refresh scripts carry forward `verdict / action / user_notes` in `coverage_review.tsv` keyed by PMID.
 
+## 2026-07-10 local-agent rescue run
+
+Ran `local_agent_scripts/fetch_cloudflare_residuals.py` over the 36 residual
+PMIDs identified above, from a laptop on EMBL WiFi. Fetcher combines
+patchright (stealth Playwright fork) driving a real Chrome, a primed profile
+holding valid `cf_clearance` cookies, and Chromium's auto-download-PDFs
+preference to bypass the built-in viewer.
+
+**Rescued: 18/36.**
+
+| Publisher | Rescued | Failure mode |
+|---|---|---|
+| Wiley (10.1002 + 10.1111) | 6/6 | — |
+| Elsevier (10.1016) | 10/23 | `no_pdf_link_on_page` for subscription-only journals + `/abs/pii/` landings |
+| Elsevier (10.1053, Gastroenterology) | 2/4 | 2× `/abs/pii/` (recoverable if we strip `/abs/`) |
+| Taylor & Francis (10.1080) | 0/3 | paywall — direct PDF endpoint returns HTML login page |
+
+Elsevier's Cloudflare re-challenges every article-page navigation (per-DOI,
+not per-session) — the operator solved ~27 challenges over ~15 minutes to
+run the batch. There is no known way to reduce this from script-side.
+
+The 15 `no_pdf_link_on_page` misses split roughly:
+- ~3 are `/abs/pii/…` URLs from CrossRef; retry with `/pii/` should succeed.
+- ~12 are journals where EMBL evidently doesn't hold a subscription that
+  unlocks the download button (the article page still renders — but only
+  a "Purchase PDF" link is shown). These are genuine dead-ends for this
+  laptop unless EMBL adds the subscription.
+
+T&F PDFs need a T&F subscription that this session doesn't carry. All 3
+should be marked `pdf_source=paywalled_local_attempted` on the cluster.
+
+See `local_agent_scripts/README.md` for full runbook.
+
 ## Bug-hunt cycle (rounds 1–8) — CONVERGED
 
 Eight rounds of parallel read-only bug-hunting (3 hunters/round) on the PDF+supp code path yielded the following:
