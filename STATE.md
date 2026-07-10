@@ -76,14 +76,27 @@ Not yet implemented and hard-blocked without institutional access:
 3. **Reads land only as `.fastq.gz`** — `fetch_reads.py` rejects non-gz URLs and asserts gzip magic post-download.
 4. **User notes preserved on re-run** — `make_review_table.py` and the refresh scripts carry forward `verdict / action / user_notes` in `coverage_review.tsv` keyed by PMID.
 
-## Known bugs still open (fixes in progress this session)
+## Bug-hunt cycle (rounds 1–8) — CONVERGED
 
-- `refresh_pdf_supp.py` resets `pdf_sources`/`supp_source` BEFORE re-probing → single-shot probe failure regresses coverage.
-- `make_review_table.py` dedup after sort keeps the WORST row when a PMID appears in multiple parts.
-- PMC-OA tarball extraction lacks `%PDF` magic sniff.
-- `probe_unpaywall()` accepts `url` (landing page) as evidence of PDF, but `fetch` requires actual PDF — cross-file inconsistency inflates probe numbers.
-- Suspected: NCBI has deprecated `/pub/pmc/oa_package/` in favour of `/pub/pmc/deprecated/oa_package/`; needs verification.
-- `SpringerPublisher._article_url` uses `/article/{DOI}` — book chapters (`10.1007/978-…`) need `/chapter/{DOI}`.
-- `BMJPublisher` has `fetch_supp` but no `probe_supp` — supp always reported False.
+Eight rounds of parallel read-only bug-hunting (3 hunters/round) on the PDF+supp code path yielded the following:
 
-Fixes in flight; state document will be updated when the next full refresh completes.
+| Round | Hunter concurrence | Fixes shipped |
+|---|---|---|
+| 1 | 3× hunters (A/B/C) | 7 fixes |
+| 2 | 3× hunters (D/E/F) | 9 fixes |
+| 3 | 3× hunters (G/H/I) | 8 fixes |
+| 4 | 3× hunters (J/K/L) | 10 fixes |
+| 5 | 3× hunters (M/N/O) | 6 fixes |
+| 6 | 3× hunters (P/Q/R) | 4 fixes |
+| 7 | 3× hunters (S/T/U) | 1 fix (S-1: `.part` exclusion in newly_added) |
+| 8 | 3× hunters (V/W/X) | 1 fix (V-1: same `.part` exclusion needed in R5-2 fallback path) |
+
+All prior findings verified present on-disk. Round 8: **V/W/X = 1L + 0 + 0**. Round-7 W explicitly recommended ending; round-8 W/X concurred. Cycle converged after round 8.
+
+A comprehensive commit-by-commit change log is on the git branch (each round is a single commit with a detailed message). All fixes are in `main` at https://github.com/karchern/seq_metadata_curator.
+
+## Doc-rot: coverage numbers
+
+The 88.4%/71.0%/22.5% figures above are the PRE-bug-hunt-cycle snapshot from 2026-07-10. Most of the R1-R8 fixes improve *correctness* rather than *headline coverage* — the biggest change since is that supp coverage is now hasSuppl-verified rather than blanket-True on PMC-OA (so the 71.0% is likely to REDUCE toward a more honest number on the next full refresh). A fresh refresh_pdf_supp.py run will produce the post-fix numbers.
+
+Round-8 hunter X did an end-to-end dry-run of `refresh_pdf_supp.main()` on a `/tmp` copy of the 510-row TSV under all-transient-probe conditions and confirmed rows+columns+values are preserved.

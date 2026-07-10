@@ -515,7 +515,9 @@ def process_one(
             if supp_dir_probe.exists():
                 non_manifest_files = [
                     p for p in supp_dir_probe.iterdir()
-                    if p.is_file() and p.name != "manifest.tsv"
+                    if p.is_file()
+                    and p.name != "manifest.tsv"
+                    and not p.name.endswith(".part")
                 ]
                 if non_manifest_files:
                     fresh.supp_source = "existing_on_disk"
