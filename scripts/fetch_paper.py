@@ -606,8 +606,12 @@ def process_one(
         # nothing else (R5-5). Excluding it from the diff prevents
         # spurious publisher-tag inflation on a re-run where all supp
         # files already existed and only the manifest was rewritten.
-        newly_added = (supp_files_after - supp_files_before) - {
-            "manifest.tsv"
+        # Also exclude `.part` files (S-1): a mid-download exception can
+        # leave an incomplete `foo.pdf.part` on disk which otherwise gets
+        # counted as a new supp file and inflates the publisher tag.
+        newly_added = {
+            n for n in (supp_files_after - supp_files_before)
+            if n != "manifest.tsv" and not n.endswith(".part")
         }
         if newly_added:
             pub_tag = f"publisher:{publisher.name}"
