@@ -93,24 +93,24 @@ class Publisher(ABC):
 
         Streams only 8 bytes then closes the connection — cheap enough to
         run across the whole corpus without hammering publisher endpoints.
+
+        Network exceptions (ConnectionError / Timeout) are RE-RAISED so
+        the caller's regression guard can distinguish transient failure
+        from a definitive negative. Non-200 HTTP responses return False
+        because those ARE definitive (publisher said "not here").
         """
-        try:
-            r = session.get(
-                url,
-                stream=True,
-                timeout=timeout,
-                allow_redirects=True,
-                headers={"User-Agent": cls._BROWSER_UA},
-            )
-        except Exception:
-            return False
+        r = session.get(
+            url,
+            stream=True,
+            timeout=timeout,
+            allow_redirects=True,
+            headers={"User-Agent": cls._BROWSER_UA},
+        )
         try:
             if r.status_code != 200:
                 return False
             for chunk in r.iter_content(chunk_size=8):
                 return chunk.startswith(b"%PDF")
-            return False
-        except Exception:
             return False
         finally:
             try:

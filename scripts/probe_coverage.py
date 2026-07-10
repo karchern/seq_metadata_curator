@@ -74,6 +74,10 @@ def http_get(session: requests.Session, url: str, timeout: int = 30) -> Optional
         try:
             r = session.get(url, timeout=timeout, allow_redirects=True)
             if r.status_code in (429, 500, 502, 503, 504):
+                try:
+                    r.close()
+                except Exception:
+                    pass
                 time.sleep(1.5)
                 continue
             return r
@@ -169,7 +173,12 @@ def probe_pmc_oa(session: requests.Session, pmc_id: str) -> bool:
     # The working host is www.ncbi.nlm.nih.gov with /pmc/ in the path.
     url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id={pmc_id}"
     r = http_get(session, url, timeout=25)
-    if r is None or r.status_code != 200:
+    if r is None:
+        # http_get exhausted retries; treat as transient failure so callers
+        # (esp. refresh_pdf_supp.py's regression guard) can distinguish
+        # "definitely not OA" from "network flap during refresh".
+        raise RuntimeError(f"probe_pmc_oa: HTTP exhausted retries for {pmc_id}")
+    if r.status_code != 200:
         return False
     try:
         root = ET.fromstring(r.content)
@@ -192,14 +201,14 @@ def probe_publisher(session: requests.Session, doi: str) -> Optional[str]:
     Each publisher module knows its own PDF endpoint; base.Publisher.probe_reachable
     peeks it + magic-byte sniffs. Adding a new publisher (Elsevier proxy, ASM, …)
     doesn't require touching this function.
+
+    Does NOT swallow exceptions: network failures raise so refresh_pdf_supp's
+    regression guard can distinguish transient from definitive.
     """
     pub = get_publisher(doi)
     if pub is None:
         return None
-    try:
-        return pub.name if pub.probe_reachable(session, doi) else None
-    except Exception:
-        return None
+    return pub.name if pub.probe_reachable(session, doi) else None
 
 
 def probe_publisher_supp(session: requests.Session, doi: str) -> tuple[bool, int]:
@@ -255,10 +264,15 @@ def probe_unpaywall(session: requests.Session, doi: str) -> bool:
     numbers vs. what fetch_paper.py's downstream %PDF-magic gate actually
     accepts. Prefer a small false-negative over a fetch-mismatched
     false-positive.
+
+    Raises RuntimeError on network exhaustion so caller's regression guard
+    can distinguish transient from definitive.
     """
     url = f"https://api.unpaywall.org/v2/{doi}?email={DEFAULT_EMAIL}"
     r = http_get(session, url, timeout=20)
-    if r is None or r.status_code != 200:
+    if r is None:
+        raise RuntimeError(f"probe_unpaywall: HTTP exhausted retries for {doi}")
+    if r.status_code != 200:
         return False
     try:
         j = r.json()
@@ -385,14 +399,25 @@ def probe_pmid(pmid: str, meta: dict, session: requests.Session) -> Row:
             row.pmc_id = pmc
 
     pdf_sources: list[str] = []
-    if row.pmc_id and probe_pmc_oa(session, row.pmc_id):
-        pdf_sources.append("pmc_oa")
+    if row.pmc_id:
+        try:
+            if probe_pmc_oa(session, row.pmc_id):
+                pdf_sources.append("pmc_oa")
+        except Exception:
+            pass  # transient probe failure; row stays without pmc_oa this pass
     if row.doi:
-        pub_name = probe_publisher(session, row.doi)
-        if pub_name:
-            pdf_sources.append(pub_name)
-    if row.doi and probe_unpaywall(session, row.doi):
-        pdf_sources.append("unpaywall")
+        try:
+            pub_name = probe_publisher(session, row.doi)
+            if pub_name:
+                pdf_sources.append(pub_name)
+        except Exception:
+            pass
+    if row.doi:
+        try:
+            if probe_unpaywall(session, row.doi):
+                pdf_sources.append("unpaywall")
+        except Exception:
+            pass
     row.pdf_sources = ",".join(pdf_sources) if pdf_sources else "NONE"
 
     # supp: verify PMC-OA supp claim via Europe PMC hasSuppl (previously

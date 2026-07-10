@@ -8,6 +8,14 @@ Motivation: we discovered the PMC-OA endpoint host was wrong
 (pmc.ncbi.nlm.nih.gov → www.ncbi.nlm.nih.gov/pmc). Every prior PMC-OA
 result was a silent 404. This script re-checks just that source without
 re-running the whole probe.
+
+Order dependency (per R4-10): this script is MONOTONE-UP — it never
+removes a source, only adds. `refresh_pdf_supp.py` is comprehensive and
+can BOTH add and downgrade (via the _MISSING sentinel regression guard).
+Recommended order in an automated pipeline:
+    1. refresh_pmc_oa.py   (~5 min: cheap PMC-OA incremental gain)
+    2. refresh_pdf_supp.py (~15 min: comprehensive re-probe)
+If you must run just one, run refresh_pdf_supp.py — it's a superset.
 """
 from __future__ import annotations
 
@@ -121,9 +129,9 @@ def main() -> int:
     print(f"    rows gaining pmc_oa: {changed_pdf} (of which {unlocked_from_none_pdf} moved from PDF-NONE)", file=sys.stderr)
     print(f"    rows gaining supp  : {changed_supp}", file=sys.stderr)
     print(
-        f"    NEW coverage: pdf {pdf_any}/{total} ({100*pdf_any/total:.1f}%)  "
-        f"supp {supp_any}/{total} ({100*supp_any/total:.1f}%)  "
-        f"reads {reads_any}/{total} ({100*reads_any/total:.1f}%)",
+        f"    NEW coverage: pdf {pdf_any}/{total} ({100*pdf_any/max(1,total):.1f}%)  "
+        f"supp {supp_any}/{total} ({100*supp_any/max(1,total):.1f}%)  "
+        f"reads {reads_any}/{total} ({100*reads_any/max(1,total):.1f}%)",
         file=sys.stderr,
     )
     print(f"    gap_score dist: {dict(sorted(gs.items()))}", file=sys.stderr)

@@ -187,9 +187,9 @@ def main() -> int:
     total = len(deduped)
 
     print(f"[review] wrote {args.out_tsv} — {total} unique PMIDs", file=sys.stderr)
-    print(f"    PDF-accessible : {pdf_any}/{total} ({100*pdf_any/total:.1f}%)", file=sys.stderr)
-    print(f"    supp-accessible: {supp_any}/{total} ({100*supp_any/total:.1f}%)", file=sys.stderr)
-    print(f"    reads-accessible: {reads_any}/{total} ({100*reads_any/total:.1f}%)", file=sys.stderr)
+    print(f"    PDF-accessible : {pdf_any}/{total} ({100*pdf_any/max(1,total):.1f}%)", file=sys.stderr)
+    print(f"    supp-accessible: {supp_any}/{total} ({100*supp_any/max(1,total):.1f}%)", file=sys.stderr)
+    print(f"    reads-accessible: {reads_any}/{total} ({100*reads_any/max(1,total):.1f}%)", file=sys.stderr)
     print(f"    gap_score distribution: {dict(sorted(gs_counts.items()))}", file=sys.stderr)
 
     print(

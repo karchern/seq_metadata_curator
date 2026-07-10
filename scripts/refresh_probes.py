@@ -132,9 +132,9 @@ def main() -> int:
     total = len(rows)
 
     print("\n[refresh] DONE", file=sys.stderr)
-    print(f"    PDF now  : {pdf_any}/{total} ({100*pdf_any/total:.1f}%)  (rescued this round: {pdf_rescued})", file=sys.stderr)
-    print(f"    supp now : {supp_any}/{total} ({100*supp_any/total:.1f}%)  (rescued this round: {supp_rescued})", file=sys.stderr)
-    print(f"    reads    : {reads_any}/{total} ({100*reads_any/total:.1f}%)  (unchanged)", file=sys.stderr)
+    print(f"    PDF now  : {pdf_any}/{total} ({100*pdf_any/max(1,total):.1f}%)  (rescued this round: {pdf_rescued})", file=sys.stderr)
+    print(f"    supp now : {supp_any}/{total} ({100*supp_any/max(1,total):.1f}%)  (rescued this round: {supp_rescued})", file=sys.stderr)
+    print(f"    reads    : {reads_any}/{total} ({100*reads_any/max(1,total):.1f}%)  (unchanged)", file=sys.stderr)
     print(f"    gap_score dist: {dict(sorted(gs.items()))}", file=sys.stderr)
     return 0
 

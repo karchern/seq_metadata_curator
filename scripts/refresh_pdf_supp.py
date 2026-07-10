@@ -209,7 +209,8 @@ def main() -> int:
         old_supp_available = (r.get("supp_available") or "").lower() == "true"
         old_supp_source = r.get("supp_source") or "NONE"
 
-        new_supp_flag: bool | object = False
+        # Confident-True cases first.
+        new_supp_flag: bool = False
         new_supp_source = "NONE"
         if res_pmc_supp is True:
             new_supp_flag = True
@@ -219,11 +220,19 @@ def main() -> int:
             from probe_coverage import get_publisher
             pub = get_publisher(doi) if doi else None
             new_supp_source = f"publisher:{pub.name}" if pub else "publisher"
-        elif res_pmc_supp is _MISSING and res_pub_supp is _MISSING:
-            # Both supp probes couldn't run — carry forward the old supp
-            # decision to avoid regressing a good row on transient failure.
-            new_supp_flag = old_supp_available
-            new_supp_source = old_supp_source
+        else:
+            # Neither probe returned confident True. Distinguish "both
+            # probes ran and both said False" from "at least one probe
+            # couldn't run and we can't verify a downgrade".
+            any_missing = (
+                res_pmc_supp is _MISSING or res_pub_supp is _MISSING
+            )
+            if any_missing and old_supp_available:
+                # Can't confidently regress a previously-True row when
+                # one of the two supp signals didn't get to speak.
+                new_supp_flag = old_supp_available
+                new_supp_source = old_supp_source
+            # else: both probes ran, both said False → downgrade cleanly
 
         r["supp_available"] = "True" if new_supp_flag else "False"
         r["supp_source"] = new_supp_source
@@ -271,9 +280,9 @@ def main() -> int:
     total = len(rows)
 
     print("\n[refresh] DONE", file=sys.stderr)
-    print(f"    PDF now  : {pdf_any}/{total} ({100*pdf_any/total:.1f}%)", file=sys.stderr)
-    print(f"    supp now : {supp_any}/{total} ({100*supp_any/total:.1f}%)", file=sys.stderr)
-    print(f"    reads    : {reads_any}/{total} ({100*reads_any/total:.1f}%)  (untouched by this refresh)", file=sys.stderr)
+    print(f"    PDF now  : {pdf_any}/{total} ({100*pdf_any/max(1,total):.1f}%)", file=sys.stderr)
+    print(f"    supp now : {supp_any}/{total} ({100*supp_any/max(1,total):.1f}%)", file=sys.stderr)
+    print(f"    reads    : {reads_any}/{total} ({100*reads_any/max(1,total):.1f}%)  (untouched by this refresh)", file=sys.stderr)
     print(f"    gap_score dist: {dict(sorted(gs.items()))}", file=sys.stderr)
     return 0
 

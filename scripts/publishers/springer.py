@@ -83,6 +83,10 @@ class SpringerPublisher(Publisher):
                 )
                 if r.status_code in (429, 500, 502, 503, 504):
                     last_exc = RuntimeError(f"HTTP {r.status_code} at {url}")
+                    try:
+                        r.close()  # avoid socket/fd leak on retry
+                    except Exception:
+                        pass
                     time.sleep(delay)
                     delay *= 2
                     continue

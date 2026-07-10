@@ -72,6 +72,10 @@ def http_get(
             r = session.get(url, stream=stream, timeout=timeout, allow_redirects=True)
             if r.status_code in (429, 500, 502, 503, 504):
                 last_exc = RuntimeError(f"HTTP {r.status_code} at {url}")
+                try:
+                    r.close()  # avoid fd/socket leak under long-running runs
+                except Exception:
+                    pass
                 time.sleep(delay)
                 delay *= 2
                 continue
@@ -334,18 +338,35 @@ def try_europepmc(
         f"?includeInlineImage=false"
     )
     meta.attempts.append(f"europepmc_supp:{supp_url}")
+    r = None
     try:
         r = http_get(session, supp_url, stream=True)
-        if r.status_code == 200 and int(r.headers.get("Content-Length", "1")) > 0:
-            (out_dir / "supp").mkdir(parents=True, exist_ok=True)
-            (out_dir / "supp" / "epmc_supplementary.zip").write_bytes(r.content)
-            meta.supp_source = "europepmc_supp_zip"
+        if r.status_code == 200:
+            content = r.content  # closes stream after read
+            # Reject empty (Content-Length header defaulting to "1" fooled
+            # the old check into always passing) + non-zip bodies (an HTML
+            # "no supp available" page can arrive here).
+            if len(content) >= 4 and content.startswith(b"PK\x03\x04"):
+                (out_dir / "supp").mkdir(parents=True, exist_ok=True)
+                (out_dir / "supp" / "epmc_supplementary.zip").write_bytes(content)
+                meta.supp_source = "europepmc_supp_zip"
+            else:
+                meta.attempts.append(
+                    f"europepmc_supp:reject_non_zip:len={len(content)}:"
+                    f"first4={content[:4]!r}"
+                )
         else:
             meta.attempts.append(
                 f"europepmc_supp:HTTP {r.status_code} (no supp available)"
             )
     except Exception as e:
         meta.attempts.append(f"europepmc_supp:fail:{e}")
+    finally:
+        if r is not None:
+            try:
+                r.close()
+            except Exception:
+                pass
 
     return True
 
@@ -452,16 +473,27 @@ def process_one(
     out_dir.mkdir(parents=True, exist_ok=True)
     log_path = out_dir / "fetch.log"
 
-    if (out_dir / "paper.pdf").exists() and not force:
-        print(f"[{pmid}] paper.pdf already present — skip (use --force to redo)",
-              file=sys.stderr)
+    # Early-exit REVISED (R4-5): only skip the PDF pipeline when paper.pdf
+    # exists. Still run the supp pipeline — a prior fetch may have landed
+    # a PDF but zero supp (e.g. PMC-OA tarball delivered PDF, but publisher
+    # supp lives on the publisher CDN). We used to skip everything here,
+    # meaning supp gaps were sticky until the user knew to pass --force.
+    skip_pdf_fetch = (out_dir / "paper.pdf").exists() and not force
+    if skip_pdf_fetch:
+        print(
+            f"[{pmid}] paper.pdf already present — skipping PDF fetch, "
+            f"still running supp pipeline (use --force to redo everything)",
+            file=sys.stderr,
+        )
         try:
-            return PaperMeta(**json.loads((out_dir / "metadata.json").read_text()))
+            meta = PaperMeta(**json.loads((out_dir / "metadata.json").read_text()))
         except Exception:
-            return PaperMeta(pmid=pmid)
-
-    session = new_session(email)
-    meta = fetch_pubmed_metadata(pmid, email, api_key)
+            meta = PaperMeta(pmid=pmid)
+        session = new_session(email)
+        pdf_ok = True
+    else:
+        session = new_session(email)
+        meta = fetch_pubmed_metadata(pmid, email, api_key)
 
     print(
         f"[{pmid}] title={meta.title!r} doi={meta.doi} pmc={meta.pmc_id}",
@@ -469,40 +501,43 @@ def process_one(
     )
 
     # ---- PDF pipeline: PMC-OA → Europe PMC → Publisher → Unpaywall → DOI ----
-    pdf_ok = False
-    if meta.pmc_id:
-        try:
-            pdf_ok = try_pmc_oa_tarball(session, meta, out_dir)
-        except Exception as e:
-            meta.attempts.append(f"pmc_oa_tarball:exception:{e}")
+    # SKIPPED when paper.pdf already exists on disk (see R4-5 early-exit
+    # above). Supp pipeline still runs.
+    publisher = get_publisher(meta.doi)
+    if not skip_pdf_fetch:
+        pdf_ok = False
+        if meta.pmc_id:
+            try:
+                pdf_ok = try_pmc_oa_tarball(session, meta, out_dir)
+            except Exception as e:
+                meta.attempts.append(f"pmc_oa_tarball:exception:{e}")
+            if not pdf_ok:
+                try:
+                    pdf_ok = try_europepmc(session, meta, out_dir)
+                except Exception as e:
+                    meta.attempts.append(f"europepmc:exception:{e}")
+
+        if publisher and not pdf_ok:
+            try:
+                res = publisher.fetch_pdf(session, meta.doi, out_dir)
+                meta.attempts.extend(res.attempts)
+                if res.pdf_path is not None:
+                    pdf_ok = True
+                    meta.pdf_url_used = res.pdf_url
+            except Exception as e:
+                meta.attempts.append(f"publisher_pdf:exception:{e}")
+
         if not pdf_ok:
             try:
-                pdf_ok = try_europepmc(session, meta, out_dir)
+                pdf_ok = try_unpaywall(session, meta, out_dir, email)
             except Exception as e:
-                meta.attempts.append(f"europepmc:exception:{e}")
+                meta.attempts.append(f"unpaywall:exception:{e}")
 
-    publisher = get_publisher(meta.doi)
-    if publisher and not pdf_ok:
-        try:
-            res = publisher.fetch_pdf(session, meta.doi, out_dir)
-            meta.attempts.extend(res.attempts)
-            if res.pdf_path is not None:
-                pdf_ok = True
-                meta.pdf_url_used = res.pdf_url
-        except Exception as e:
-            meta.attempts.append(f"publisher_pdf:exception:{e}")
-
-    if not pdf_ok:
-        try:
-            pdf_ok = try_unpaywall(session, meta, out_dir, email)
-        except Exception as e:
-            meta.attempts.append(f"unpaywall:exception:{e}")
-
-    if not pdf_ok:
-        try:
-            try_doi_landing(session, meta, out_dir)
-        except Exception as e:
-            meta.attempts.append(f"doi_landing:exception:{e}")
+        if not pdf_ok:
+            try:
+                try_doi_landing(session, meta, out_dir)
+            except Exception as e:
+                meta.attempts.append(f"doi_landing:exception:{e}")
 
     # ---- Supp pipeline: independent of PDF. Publisher runs even if PMC gave
     # a PDF, because a paper can be OA-in-PMC yet the FULL supp set lives on
@@ -511,16 +546,26 @@ def process_one(
     # contradicted the docstring above.
     #
     # We now always call publisher.fetch_supp when a publisher exists (each
-    # publisher's fetch_supp is idempotent — it skips files already on disk
-    # via `if dest.exists() and dest.stat().st_size > 0`). If PMC-OA already
-    # supplied a supp_source, we still note the publisher-side contribution
-    # by appending its name in a stable way.
+    # publisher's fetch_supp is idempotent — it skips files already on disk).
+    # We only tag the publisher as a supp source when it actually WROTE new
+    # files (R4-8): the skip-existing branch appends to `result.supp_files`
+    # too, which would otherwise cause "supp_source=pmc_oa+publisher:X" to
+    # appear even when the publisher contributed nothing on this run.
     supp_dir = out_dir / "supp"
+    supp_files_before: set[str] = set()
+    if supp_dir.exists():
+        supp_files_before = {p.name for p in supp_dir.iterdir() if p.is_file()}
     if publisher:
         try:
             res = publisher.fetch_supp(session, meta.doi, out_dir)
             meta.attempts.extend(res.attempts)
-            if res.supp_files:
+            supp_files_after: set[str] = set()
+            if supp_dir.exists():
+                supp_files_after = {
+                    p.name for p in supp_dir.iterdir() if p.is_file()
+                }
+            newly_added = supp_files_after - supp_files_before
+            if newly_added:
                 pub_tag = f"publisher:{publisher.name}"
                 if not meta.supp_source:
                     meta.supp_source = pub_tag

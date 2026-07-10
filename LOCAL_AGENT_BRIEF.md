@@ -43,7 +43,22 @@ Compared to the cluster (`/scratch/karcher/seq_metadata_curator/…`), you use a
 | Runtime data | `.../data/` | `~/seq_metadata_curator_data/` |
 | Small state (TSVs, JSON, MD) | `.../data/coverage_review.tsv`, etc. | mirror the layout, but keep in the same repo checkout under `data_local/` so git can carry small changes back |
 
-The cluster scripts hardcode `/scratch/karcher/seq_metadata_curator/data/...` as default paths. Locally you MUST override with `--out-root` / `--out-tsv` / `--reads-root` flags on every invocation, or the scripts will try to write into a nonexistent `/scratch/`. Do NOT edit the scripts to change defaults.
+The cluster scripts hardcode `/scratch/karcher/seq_metadata_curator/data/...` as default paths.
+
+Scripts with a proper `argparse` override:
+  - `scripts/pubmed_search.py` — has `--out`
+  - `scripts/fetch_paper.py` — has `--out-root`
+  - `scripts/fetch_reads.py` — has `--out-root`
+  - `scripts/probe_coverage.py` — has `--out-tsv`, `--out-summary`
+  - `scripts/make_review_table.py` — has `--out-tsv`, `--parts-glob`, `--rebuild-from-parts`
+  - `scripts/map_metadata.py` — has `--reads-root`
+
+Scripts that hardcode paths at module scope (NO argparse for the paths):
+  - `scripts/refresh_pmc_oa.py`
+  - `scripts/refresh_pdf_supp.py`
+  - `scripts/refresh_probes.py`
+
+The refresh scripts are cluster-only helpers that operate on the shared `data/coverage_review.tsv`. You (the local agent) don't need to run them — they're the cluster's job. If the local agent has a genuine need to run them, edit the constants at the top of each script (e.g. `REVIEW_TSV = Path(...)`) rather than mutating the argparse layer.
 
 ## Primary task — rescue the Cloudflare-gated PDFs
 
