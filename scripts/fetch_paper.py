@@ -492,15 +492,34 @@ def process_one(
             file=sys.stderr,
         )
         session = new_session(email)
+        need_refetch = False
         try:
             loaded = json.loads((out_dir / "metadata.json").read_text())
             meta = PaperMeta(**loaded)
             # Sanity: if the on-disk record has no DOI/PMC (empty file or
             # schema-drifted), re-fetch so the supp pipeline can dispatch.
             if not (meta.doi or meta.pmc_id):
-                meta = fetch_pubmed_metadata(pmid, email, api_key)
+                need_refetch = True
         except Exception:
-            meta = fetch_pubmed_metadata(pmid, email, api_key)
+            need_refetch = True
+
+        if need_refetch:
+            fresh = fetch_pubmed_metadata(pmid, email, api_key)
+            # Preserve supp_source if supp/ actually contains files (R-2):
+            # the refetch would otherwise wipe a previously-established
+            # supp_source, and publisher.fetch_supp's newly_added=∅ on a
+            # complete re-run would fail to re-tag it. Coverage report /
+            # refresh scripts can then re-derive the exact source, but at
+            # least "some supp exists" is preserved.
+            supp_dir_probe = out_dir / "supp"
+            if supp_dir_probe.exists():
+                non_manifest_files = [
+                    p for p in supp_dir_probe.iterdir()
+                    if p.is_file() and p.name != "manifest.tsv"
+                ]
+                if non_manifest_files:
+                    fresh.supp_source = "existing_on_disk"
+            meta = fresh
         pdf_ok = True
     else:
         session = new_session(email)
@@ -570,26 +589,32 @@ def process_one(
         try:
             res = publisher.fetch_supp(session, meta.doi, out_dir)
             meta.attempts.extend(res.attempts)
-            supp_files_after: set[str] = set()
-            if supp_dir.exists():
-                supp_files_after = {
-                    p.name for p in supp_dir.iterdir() if p.is_file()
-                }
-            # Publisher fetch_supp writes a manifest.tsv even when it wrote
-            # nothing else (R5-5). Excluding it from the diff prevents
-            # spurious publisher-tag inflation on a re-run where all supp
-            # files already existed and only the manifest was rewritten.
-            newly_added = (supp_files_after - supp_files_before) - {
-                "manifest.tsv"
-            }
-            if newly_added:
-                pub_tag = f"publisher:{publisher.name}"
-                if not meta.supp_source:
-                    meta.supp_source = pub_tag
-                elif pub_tag not in meta.supp_source:
-                    meta.supp_source = f"{meta.supp_source}+{pub_tag}"
         except Exception as e:
             meta.attempts.append(f"publisher_supp:exception:{e}")
+
+        # Compute the newly-added diff OUTSIDE the try (per P-2). If
+        # publisher.fetch_supp raised mid-download after writing 2 of 5
+        # files, those 2 files are on disk and should count toward the
+        # publisher's contribution. Wrapping the diff inside the try would
+        # silently ignore them on the exception path.
+        supp_files_after: set[str] = set()
+        if supp_dir.exists():
+            supp_files_after = {
+                p.name for p in supp_dir.iterdir() if p.is_file()
+            }
+        # Publisher fetch_supp writes a manifest.tsv even when it wrote
+        # nothing else (R5-5). Excluding it from the diff prevents
+        # spurious publisher-tag inflation on a re-run where all supp
+        # files already existed and only the manifest was rewritten.
+        newly_added = (supp_files_after - supp_files_before) - {
+            "manifest.tsv"
+        }
+        if newly_added:
+            pub_tag = f"publisher:{publisher.name}"
+            if not meta.supp_source:
+                meta.supp_source = pub_tag
+            elif pub_tag not in meta.supp_source:
+                meta.supp_source = f"{meta.supp_source}+{pub_tag}"
 
     (out_dir / "metadata.json").write_text(json.dumps(asdict(meta), indent=2))
     log_path.write_text("\n".join(meta.attempts) + "\n")

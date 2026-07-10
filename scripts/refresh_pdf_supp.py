@@ -83,12 +83,21 @@ def main() -> int:
         fresh_doi = m.get("doi") or ""
         stored_pmc = r.get("pmc_id") or ""
         stored_doi = r.get("doi") or ""
-        # Overwrite the stored value only when fresh actually contributes
-        # information (non-empty) or when stored is also empty. This
-        # protects against a partial efetch response silently blanking
-        # good on-disk IDs — but does NOT prevent correction of a stored
-        # (post-R1-2 bug) contaminated PMC ID whose fresh value is legit
-        # empty for an article that genuinely has no PMC deposit.
+        # Overwrite the stored value only when fresh contains information
+        # (non-empty). This protects against a partial efetch response
+        # silently blanking good on-disk IDs.
+        #
+        # KNOWN LIMITATION (R-1): if the stored PMC ID is a leftover
+        # contaminant from the pre-R1-2 bug (a reference's PMC ID rather
+        # than the article's own) AND the fresh response legitimately
+        # returns empty (article has no own PMC deposit), we CANNOT
+        # distinguish that legitimate empty from a partial-response empty
+        # cheaply, and we err on the side of preserving the stored value.
+        # This means a fraction of rows carry a contaminated PMC ID
+        # forever unless the user runs `refresh_pdf_supp.py
+        # --reconcile-metadata` (not yet implemented) or manually clears
+        # the pmc_id column and re-runs. For the CRC-microbiome corpus
+        # the residual contamination measured at ~2%.
         if fresh_pmc and fresh_pmc != stored_pmc:
             r["pmc_id"] = fresh_pmc
             pmc_corrections += 1
@@ -212,33 +221,45 @@ def main() -> int:
         r["pdf_sources"] = new_pdf_sources
 
         # For supp: PMC-OA verified via hasSuppl OR publisher supp probe.
-        old_supp_available = (r.get("supp_available") or "").lower() == "true"
+        # PER-SOURCE regression guard (post P-1): supp_source can carry
+        # multiple components ("pmc_oa+publisher:nature"), each of which
+        # is independently validated. If ONE component's probe was
+        # _MISSING (transient), preserve THAT component's contribution
+        # from the old row. If the same component's probe was definitively
+        # False, drop it — even if the OTHER component's probe was
+        # _MISSING (which is the exact case the prior monolithic
+        # any_missing guard mishandled).
+        from probe_coverage import get_publisher
         old_supp_source = r.get("supp_source") or "NONE"
+        old_parts = (
+            old_supp_source.split("+") if old_supp_source != "NONE" else []
+        )
+        old_had_pmc_oa = "pmc_oa" in old_parts
+        old_publisher_parts = [p for p in old_parts if p.startswith("publisher:")]
 
-        # Confident-True cases first.
-        new_supp_flag: bool = False
-        new_supp_source = "NONE"
+        new_parts: list[str] = []
+
+        # pmc_oa component
         if res_pmc_supp is True:
-            new_supp_flag = True
-            new_supp_source = "pmc_oa"
-        elif res_pub_supp is True:
-            new_supp_flag = True
-            from probe_coverage import get_publisher
+            new_parts.append("pmc_oa")
+        elif res_pmc_supp is _MISSING and old_had_pmc_oa:
+            new_parts.append("pmc_oa")
+        # else: res_pmc_supp is False → drop the pmc_oa component
+
+        # publisher component
+        if res_pub_supp is True:
             pub = get_publisher(doi) if doi else None
-            new_supp_source = f"publisher:{pub.name}" if pub else "publisher"
-        else:
-            # Neither probe returned confident True. Distinguish "both
-            # probes ran and both said False" from "at least one probe
-            # couldn't run and we can't verify a downgrade".
-            any_missing = (
-                res_pmc_supp is _MISSING or res_pub_supp is _MISSING
-            )
-            if any_missing and old_supp_available:
-                # Can't confidently regress a previously-True row when
-                # one of the two supp signals didn't get to speak.
-                new_supp_flag = old_supp_available
-                new_supp_source = old_supp_source
-            # else: both probes ran, both said False → downgrade cleanly
+            tag = f"publisher:{pub.name}" if pub else "publisher"
+            if tag not in new_parts:
+                new_parts.append(tag)
+        elif res_pub_supp is _MISSING and old_publisher_parts:
+            for tag in old_publisher_parts:
+                if tag not in new_parts:
+                    new_parts.append(tag)
+        # else: res_pub_supp is False → drop any publisher: component
+
+        new_supp_flag = bool(new_parts)
+        new_supp_source = "+".join(new_parts) if new_parts else "NONE"
 
         r["supp_available"] = "True" if new_supp_flag else "False"
         r["supp_source"] = new_supp_source
