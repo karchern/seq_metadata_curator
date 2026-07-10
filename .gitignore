@@ -1,0 +1,45 @@
+# --- Large / regenerable data ---
+data/papers/
+data/reads/
+data/coverage_parts/
+data/coverage_report.tsv
+data/coverage_report_part*.tsv
+data/coverage_summary_part*.json
+data/coverage_summary.json
+data/coverage_insights.md
+data/bugs_found_*.md
+data/pdf_gap_*.md
+data/pdf_gap_*.tsv
+data/pmids_*.txt
+data/all_pmids.txt
+logs/
+
+# The reviewable table IS committed (small + carries user notes)
+!data/coverage_review.tsv
+
+# --- Secrets: NEVER commit ---
+config/publisher_cookies.txt
+config/*.cookies
+config/*_cookies*
+config/.env
+config/*.key
+config/*.pem
+
+# --- Python cruft ---
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Transient ---
+*.part
+*.tmp
+*.swp
