@@ -44,6 +44,18 @@ class ScienceAAASPublisher(Publisher):
     def _article_url(self, doi: str) -> str:
         return f"https://www.science.org/doi/{doi}"
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """Return the article URL after warming the session with cookies.
+
+        Cold requests to /doi/{DOI} tend to 403 under Cloudflare; two
+        innocuous warmup GETs seed the cookies so the follow-up bare GET
+        by the caller lands 200. See _warm_session docstring.
+        """
+        self._warm_session(session, doi)
+        return self._article_url(doi)
+
     def _pdf_url(self, doi: str) -> str:
         return f"https://www.science.org/doi/pdf/{doi}"
 

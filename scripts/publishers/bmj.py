@@ -69,6 +69,12 @@ class BMJPublisher(Publisher):
                 delay *= 2
         raise RuntimeError(f"bmj.http_get gave up: {last_exc}")
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """BMJ DOI resolver → article landing page. Simple DOI proxy."""
+        return f"https://doi.org/{doi}"
+
     def _resolve_landing(
         self, session: requests.Session, doi: str
     ) -> tuple[str, str]:

@@ -153,6 +153,15 @@ class FrontiersPublisher(Publisher):
     def _article_url(self, doi: str) -> str:
         return f"https://www.frontiersin.org/articles/{doi}/full"
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """Frontiers /articles/{DOI}/full redirects to the canonical
+        journal-scoped URL. Return the pre-redirect URL — the caller does
+        allow_redirects=True so it lands on the article regardless.
+        """
+        return self._article_url(doi)
+
     def _pdf_url(self, doi: str) -> str:
         return f"https://www.frontiersin.org/articles/{doi}/pdf"
 

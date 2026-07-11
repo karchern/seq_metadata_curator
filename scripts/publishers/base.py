@@ -43,6 +43,25 @@ class Publisher(ABC):
         """Article ID = DOI suffix after prefix/."""
         return doi.split("/", 1)[1] if "/" in doi else doi
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> Optional[str]:
+        """Return the URL where the article's full-text HTML lives.
+
+        Used by cross-publisher HTML mining (probe_reads_from_article_html
+        in probe_coverage.py, and refresh_reads_oa_wave2.py) so the miner
+        doesn't need per-publisher URL knowledge.
+
+        Default returns None so unimplemented publishers don't accidentally
+        get an HTML fetch attempt. Subclasses override with their canonical
+        article-URL construction. If the publisher requires side-effects to
+        make the URL fetchable (warm session, cookie seeding), do them
+        here — the caller will then do a bare GET on the returned URL.
+        Springer already implements this to handle both /article/{doi} and
+        /chapter/{doi} routing.
+        """
+        return None
+
     @abstractmethod
     def fetch_pdf(
         self, session: requests.Session, doi: str, out_dir: Path

@@ -115,6 +115,14 @@ class BMCPublisher(Publisher):
         except Exception:
             return None
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """CrossRef primary URL is the BMC article HTML URL. Delegate
+        directly — same lookup as fetch_supp / probe_supp use.
+        """
+        return self._article_url(session, doi)
+
     def _article_url(self, session: requests.Session, doi: str) -> str | None:
         """Return {subdomain}/articles/{DOI} — via CrossRef primary URL.
 

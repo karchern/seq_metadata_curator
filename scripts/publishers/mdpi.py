@@ -146,6 +146,22 @@ class MDPIPublisher(Publisher):
     def _article_url(self, pii: str) -> str:
         return f"https://www.mdpi.com/{pii}"
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """MDPI article HTML URL requires PII discovery via CrossRef.
+
+        Note the CLUSTER-IP GOTCHA at the top of this module: MDPI's Akamai
+        blocks the cluster IP so the URL is returned but the caller's GET
+        will typically 403. We return the URL anyway so callers can try
+        (block state may change; also the CrossRef primary URL is a useful
+        DOI fallback).
+        """
+        pii = self._pii(session, doi)
+        if not pii:
+            return None
+        return self._article_url(pii)
+
     def _pdf_url(self, pii: str) -> str:
         return f"https://www.mdpi.com/{pii}/pdf"
 

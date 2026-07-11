@@ -87,6 +87,18 @@ class CellPressPublisher(Publisher):
         # slug manually and works consistently.
         return f"https://doi.org/{doi}"
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        """Return the DOI resolver URL after warming cookies.
+
+        Cloudflare on cell.com is stochastic — even the warm session may
+        403. Callers should treat a 4xx here as best-effort-failed rather
+        than definitive missing content.
+        """
+        self._warm_session(session)
+        return self._article_url(doi)
+
     def _http_get(
         self, session: requests.Session, url: str, *, stream: bool = False
     ) -> requests.Response:

@@ -377,14 +377,23 @@ def _fetch_article_html(
 
     Tries, in order:
       1. PMC article page (works for all OA-in-PMC + author-manuscript records)
-      2. Publisher plugin's article URL if a plugin exists for the DOI:
-         - Nature/nature_legacy: nature.com/articles/{slug}
-         - Springer: /article/{doi} then /chapter/{doi}
-         - BMJ: DOI resolution
-      3. Give up (Elsevier/Wiley/T&F are Cloudflare-gated from cluster IP)
+      2. Publisher plugin's article HTML URL via `pub.article_html_url()`
+         (each plugin knows its own construction; Springer handles both
+         /article/{doi} and /chapter/{doi} internally, science_aaas +
+         cell_press warm their sessions with cookie GETs first, etc.)
+      3. Give up (Wiley/T&F/generic Elsevier are Cloudflare-gated from
+         cluster IP and don't have plugins).
 
     Returns HTML text or None. This is a READ-ONLY probe helper — no
-    downloads to disk, no side effects.
+    downloads to disk, no side effects other than any warm-session
+    cookies the publisher plugin's article_html_url() plants.
+
+    HISTORY (2026-07-11 wave-2 OA rescue): originally only dispatched to
+    nature / nature_legacy / springer / bmj. Frontiers, MDPI, BMC,
+    science_aaas and cell_press plugins existed but weren't wired in,
+    which meant that ~123 OA reads gaps went unmined. Fix: route through
+    `pub.article_html_url()` uniformly so every publisher that provides
+    an article URL is reachable.
     """
     # 1. PMC page — cheap, works for a lot of OA articles
     if pmc_id:
@@ -397,22 +406,16 @@ def _fetch_article_html(
         if r is not None and r.status_code == 200 and len(r.text) > 8192:
             return r.text
 
-    # 2. Publisher plugin
+    # 2. Publisher plugin — uniform dispatch via article_html_url().
     if doi:
         pub = get_publisher(doi)
         if pub is not None:
-            urls_to_try: list[str] = []
-            if pub.name in ("nature", "nature_legacy"):
-                slug = pub.article_slug(doi)
-                urls_to_try.append(f"https://www.nature.com/articles/{slug}")
-            elif pub.name == "springer":
-                urls_to_try.append(f"https://link.springer.com/article/{doi}")
-                urls_to_try.append(f"https://link.springer.com/chapter/{doi}")
-            elif pub.name == "bmj":
-                urls_to_try.append(f"https://doi.org/{doi}")
-
-            for u in urls_to_try:
-                r = http_get(session, u, timeout=30)
+            try:
+                url = pub.article_html_url(session, doi)
+            except Exception:
+                url = None
+            if url:
+                r = http_get(session, url, timeout=30)
                 if r is not None and r.status_code == 200 and len(r.text) > 8192:
                     return r.text
     return None

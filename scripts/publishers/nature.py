@@ -28,6 +28,11 @@ class NaturePublisher(Publisher):
     def _pdf_url(self, doi: str) -> str:
         return f"{self._article_url(doi)}.pdf"
 
+    def article_html_url(
+        self, session: requests.Session, doi: str
+    ) -> str | None:
+        return self._article_url(doi)
+
     def _http_get(
         self, session: requests.Session, url: str, *, stream: bool = False
     ) -> requests.Response:
