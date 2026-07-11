@@ -16,19 +16,26 @@ from typing import Optional
 
 from .base import Publisher
 from .bmj import BMJPublisher
+from .cell_press import CellPressPublisher
 from .nature import NaturePublisher
 from .nature_legacy import LegacyNaturePublisher
+from .science_aaas import ScienceAAASPublisher
 from .springer import SpringerPublisher
 
 # Ordered dispatch — first match wins. Add new publishers here.
 # Note: LegacyNaturePublisher must precede NaturePublisher — it narrows on
 # dotted-suffix legacy DOIs (e.g. 10.1038/onc.2017.314) and delegates URL
 # construction to a slug-transformed override.
+# Similarly CellPressPublisher must precede any future generic Elsevier
+# handler — it narrows on `10.1016/j.{cell-suffix}.*` (celrep/chom/xgen/…)
+# via a custom matches() override.
 _REGISTRY: list[Publisher] = [
     LegacyNaturePublisher(),
     NaturePublisher(),
     SpringerPublisher(),
     BMJPublisher(),
+    ScienceAAASPublisher(),
+    CellPressPublisher(),
 ]
 
 

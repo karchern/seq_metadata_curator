@@ -39,9 +39,26 @@ BROWSER_UA = (
 )
 
 INSDC_ACC_RE = re.compile(
-    r"\b(PRJ[END][AB]\d+|ERP\d+|SRP\d+|DRP\d+|SAMN\d+|SAMEA\d+|SAMD\d+|GSE\d+)\b"
+    # BioProject variants (INSDC): PRJ{DB}{AB}\d+ = PRJEB, PRJNA, PRJEA, PRJDA, PRJDB
+    # Study accessions: ERP, SRP, DRP
+    # Biosample IDs: SAMN (SRA), SAMEA (ENA), SAMD (DDBJ)
+    # GEO series: GSE
+    # DDBJ Sequence Read Archive: DRA (added R-Batch-B per Nature deep-dive; would have
+    #   caught PMID 31171880's 645 runs)
+    # ArrayExpress: E-MTAB, E-GEOD, E-MEXP, E-PROT, E-ERAD (also added R-Batch-B —
+    #   Nature papers frequently deposit gene-expression alongside INSDC reads)
+    r"\b("
+    r"PRJ[END][AB]\d+"
+    r"|ERP\d+|SRP\d+|DRP\d+"
+    r"|SAMN\d+|SAMEA\d+|SAMD\d+"
+    r"|GSE\d+"
+    r"|DRA\d+"
+    r"|E-(?:MTAB|GEOD|MEXP|PROT|ERAD)-\d+"
+    r")\b"
 )
-INSDC_PROJECT_RE = re.compile(r"^(PRJ[END][AB]|ERP|SRP|DRP)\d+$", re.IGNORECASE)
+INSDC_PROJECT_RE = re.compile(
+    r"^(PRJ[END][AB]|ERP|SRP|DRP|DRA)\d+$", re.IGNORECASE
+)
 
 
 @dataclass
@@ -351,6 +368,77 @@ def probe_abstract_regex(text: str) -> list[str]:
         if INSDC_PROJECT_RE.match(v) and v not in out:
             out.append(v)
     return out
+
+
+def _fetch_article_html(
+    session: requests.Session, doi: str, pmc_id: str
+) -> Optional[str]:
+    """Best-effort fetch of the article's full-text HTML.
+
+    Tries, in order:
+      1. PMC article page (works for all OA-in-PMC + author-manuscript records)
+      2. Publisher plugin's article URL if a plugin exists for the DOI:
+         - Nature/nature_legacy: nature.com/articles/{slug}
+         - Springer: /article/{doi} then /chapter/{doi}
+         - BMJ: DOI resolution
+      3. Give up (Elsevier/Wiley/T&F are Cloudflare-gated from cluster IP)
+
+    Returns HTML text or None. This is a READ-ONLY probe helper — no
+    downloads to disk, no side effects.
+    """
+    # 1. PMC page — cheap, works for a lot of OA articles
+    if pmc_id:
+        pmc_num = pmc_id.replace("PMC", "")
+        r = http_get(
+            session,
+            f"https://pmc.ncbi.nlm.nih.gov/articles/PMC{pmc_num}/",
+            timeout=30,
+        )
+        if r is not None and r.status_code == 200 and len(r.text) > 8192:
+            return r.text
+
+    # 2. Publisher plugin
+    if doi:
+        pub = get_publisher(doi)
+        if pub is not None:
+            urls_to_try: list[str] = []
+            if pub.name in ("nature", "nature_legacy"):
+                slug = pub.article_slug(doi)
+                urls_to_try.append(f"https://www.nature.com/articles/{slug}")
+            elif pub.name == "springer":
+                urls_to_try.append(f"https://link.springer.com/article/{doi}")
+                urls_to_try.append(f"https://link.springer.com/chapter/{doi}")
+            elif pub.name == "bmj":
+                urls_to_try.append(f"https://doi.org/{doi}")
+
+            for u in urls_to_try:
+                r = http_get(session, u, timeout=30)
+                if r is not None and r.status_code == 200 and len(r.text) > 8192:
+                    return r.text
+    return None
+
+
+def probe_reads_from_article_html(
+    session: requests.Session, doi: str, pmc_id: str
+) -> list[str]:
+    """Deep-mine an article's full-text HTML for INSDC accessions the shallow
+    europepmc + elink + abstract probes missed.
+
+    Per the Nature-family deep-dive (2026-07-10): 9 of 16 no-reads Nature
+    papers have their INSDC accession(s) clearly in the article HTML but
+    absent from Europe PMC's `accessionTypeList`. Recovery via this path
+    lifted Nature reads coverage from 41% → 74% in that sample. The
+    broadened INSDC regex above (DDBJ DRA + ArrayExpress E-MTAB etc.) is
+    what makes DDBJ-heavy papers like PMID 31171880 (645 runs) rescueable.
+
+    Returns a deduplicated list of project-level INSDC accessions found
+    in the article HTML. Caller should validate each against ENA
+    filereport before trusting them.
+    """
+    html = _fetch_article_html(session, doi, pmc_id)
+    if not html:
+        return []
+    return probe_abstract_regex(html)
 
 
 def probe_ena_filereport(session: requests.Session, acc: str) -> tuple[int, float]:
