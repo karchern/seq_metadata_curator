@@ -441,6 +441,279 @@ def probe_reads_from_article_html(
     return probe_abstract_regex(html)
 
 
+# --------------------- Supplementary-material HTML mining ------------------
+#
+# Batch D (2026-07-11): mirror the successful reads_from_article_html trick
+# for supp material. The idea: fetch the article's HTML with the shared
+# `_fetch_article_html()` helper (PMC page → publisher plugin), then
+# harvest every candidate supp URL that matches a known pattern. Each
+# candidate must be HTTP-verified AND magic-byte-verified before it
+# counts. This mirrors the pattern in publishers/nature.py (`_ESM_URL_RE`)
+# and publishers/cell_press.py (`_MMC_RE`), but as a cross-publisher probe.
+#
+# Rationale for hits & misses observed while designing this:
+#   * static-content.springer.com — publicly reachable from anywhere;
+#     used by Nature/Springer/BMC. Best case.
+#   * PMC `/articles/instance/N/bin/...` — the article page HTML exposes
+#     these, BUT the download endpoint returns a proof-of-work (POW)
+#     interstitial that headless HTTP clients cannot solve. We STILL
+#     detect them for future rescue via a browser session, but they
+#     don't count toward this pass's rescue count.
+#   * europepmc.org supp bundle (`/api/pmc/OA/PMC.../supplementaryFiles`)
+#     — works only for the OA-subset of PMC; all our supp=NO PMC IDs are
+#     NIHMS author-manuscript, so this endpoint 404s. Still probed on
+#     principle (cheap; belt-and-suspenders).
+#   * Cell Press mmc — Cloudflare-gated from cluster (existing plugin).
+#   * Zenodo / figshare / OSF / Dryad / Mendeley Data — third-party data
+#     repos with permissive CDNs; direct DOI-linked download works from
+#     cluster.
+
+# Regex patterns for candidate supp URLs. Keys are the source labels
+# we log; values are (compiled_regex, is_downloadable_from_cluster).
+# `is_downloadable_from_cluster=False` means we can DETECT it in the HTML
+# but the file is gated by proof-of-work / Cloudflare / access control
+# and cannot be validated by this pass.
+_SUPP_URL_PATTERNS: dict[str, tuple[re.Pattern[str], bool]] = {
+    "springer_esm": (
+        re.compile(
+            r'https?://static-content\.springer\.com/[^"\'\s<>]+/MediaObjects/[^"\'\s<>]+'
+        ),
+        True,
+    ),
+    "cell_mmc": (
+        re.compile(
+            r'https?://(?:www\.)?(?:cell|cmghjournal)\.com/cms/[^"\'\s<>]+'
+            r'/attachment/[^"\'\s<>]+/mmc\d+\.[A-Za-z0-9]+',
+            re.IGNORECASE,
+        ),
+        False,  # Cloudflare-gated from cluster
+    ),
+    "pmc_bin": (
+        # Present in PMC article HTML; download endpoint POW-gated.
+        # We DETECT for auditing but do NOT count as rescued.
+        re.compile(r'/articles/instance/\d+/bin/[^"\'\s<>]+'),
+        False,
+    ),
+    "europepmc_supp_zip": (
+        # Detected as text; we probe the actual URL separately regardless
+        # of whether it appears in the HTML.
+        re.compile(
+            r'europepmc\.org/api/pmc/OA/PMC\d+/supplementaryFiles',
+            re.IGNORECASE,
+        ),
+        True,
+    ),
+    "zenodo": (
+        # Zenodo record landing (each record has predictable file URLs).
+        re.compile(r'https?://zenodo\.org/(?:record|records)/(\d+)', re.IGNORECASE),
+        True,
+    ),
+    "figshare": (
+        # Figshare direct download endpoints.
+        re.compile(
+            r'https?://(?:ndownloader\.figshare\.com/files/\d+|'
+            r'figshare\.com/ndownloader/files/\d+|'
+            r'figshare\.com/articles/[^/"\'\s<>]+/[^"\'\s<>]+)',
+            re.IGNORECASE,
+        ),
+        True,
+    ),
+    "osf": (
+        re.compile(r'https?://osf\.io/[a-z0-9]{4,10}/?(?:download)?', re.IGNORECASE),
+        True,
+    ),
+    "wiley_download_supp": (
+        re.compile(
+            r'https?://onlinelibrary\.wiley\.com/action/downloadSupplement\?[^"\'\s<>]+',
+            re.IGNORECASE,
+        ),
+        False,  # Cloudflare-gated
+    ),
+    "lww_supp": (
+        # LWW (Wolters Kluwer) supp: links.lww.com/XXXX/A123
+        re.compile(r'https?://links\.lww\.com/[A-Z]+/[A-Z0-9]+', re.IGNORECASE),
+        True,
+    ),
+    "sage_supp": (
+        re.compile(
+            r'https?://journals\.sagepub\.com/doi/suppl/[^"\'\s<>]+',
+            re.IGNORECASE,
+        ),
+        False,  # Sage sometimes gates on IP
+    ),
+    "oup_supp_data": (
+        re.compile(
+            r'https?://(?:academic\.)?oup\.com/[^"\'\s<>]+_[Ss]upplementary_[^"\'\s<>]+',
+            re.IGNORECASE,
+        ),
+        True,
+    ),
+}
+
+# Magic-byte prefixes that identify a real supp file. Anything else is
+# rejected (HTML-in-disguise being the #1 integrity risk per brief).
+_SUPP_MAGIC_BYTES: tuple[bytes, ...] = (
+    b"%PDF",       # pdf
+    b"PK\x03\x04", # xlsx / docx / zip / xlsm / pptx (real ZIP)
+    b"PK\x05\x06", # empty zip
+    b"PK\x07\x08", # spanned zip
+    b"\x1f\x8b",   # gzip (.gz / .tar.gz)
+    b"BZh",        # bzip2
+    b"\x37\x7a\xbc\xaf\x27\x1c",  # 7z
+    b"Rar!",       # rar
+    b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1",  # legacy MS Office (.doc/.xls/.ppt)
+    b"{\\rt",      # RTF
+    b"\xef\xbb\xbf",  # UTF-8 BOM (often CSV/TSV/TXT with header)
+    # Additional plain-text supp markers -- accept ONLY if a subsequent
+    # positive check confirms; see _is_probable_text_supp() below.
+)
+
+# Explicit rejection markers — if the first bytes match any of these,
+# the file is HTML masquerading as supp. Belt-and-suspenders vs. plain
+# 200 responses that route through interstitials.
+_SUPP_REJECT_MAGIC: tuple[bytes, ...] = (
+    b"<htm",
+    b"<HTM",
+    b"<!DO",
+    b"<!do",
+    b"<?xm",  # XML — often an error bean from Europe PMC (e.g. "not open access")
+    b"{\"ti", b"{\"er", b"{\"st",  # JSON error blobs
+)
+
+
+def _is_probable_text_supp(
+    first_bytes: bytes, content_type: str, url: str
+) -> bool:
+    """Best-effort check that a plain-text response is a genuine CSV/TSV/TXT
+    supp file rather than an HTML page misidentified by magic bytes.
+
+    Heuristics:
+      * URL extension is .csv / .tsv / .txt (case-insensitive), AND
+      * response Content-Type is not text/html, AND
+      * first 8 bytes contain no `<` (would suggest HTML)
+    """
+    lower_url = url.lower().split("?", 1)[0]
+    ext_ok = any(
+        lower_url.endswith(ext) for ext in (".csv", ".tsv", ".txt")
+    )
+    ct_ok = "html" not in (content_type or "").lower()
+    no_angle = b"<" not in first_bytes[:16]
+    return ext_ok and ct_ok and no_angle
+
+
+def _verify_supp_url(
+    session: requests.Session, url: str, timeout: int = 20
+) -> Optional[tuple[bytes, str, int]]:
+    """HEAD/GET a supp URL, return (first_bytes, content_type, size) iff
+    the response looks like a real supp file. Returns None otherwise.
+
+    Streams only enough bytes to magic-check, then closes. Cheap.
+    Definitively rejects HTML-in-disguise. Transient failures propagate
+    so callers can distinguish network failures from definitive 404s.
+    """
+    try:
+        r = session.get(
+            url,
+            timeout=timeout,
+            allow_redirects=True,
+            stream=True,
+            headers={"User-Agent": BROWSER_UA},
+        )
+    except (requests.ConnectionError, requests.Timeout):
+        return None
+    try:
+        if r.status_code != 200:
+            return None
+        # Only grab the first ~64 bytes for magic-check.
+        head = b""
+        for chunk in r.iter_content(chunk_size=64):
+            head = chunk
+            break
+        if not head:
+            return None
+        # Reject HTML masquerading.
+        if head.startswith(_SUPP_REJECT_MAGIC):
+            return None
+        # Accept binary supp signatures.
+        content_type = r.headers.get("content-type", "")
+        # Length: prefer Content-Length header; fall back to 0 for streamed.
+        try:
+            size = int(r.headers.get("content-length") or 0)
+        except ValueError:
+            size = 0
+        if any(head.startswith(m) for m in _SUPP_MAGIC_BYTES[:-1]):
+            return (head, content_type, size)
+        # Plain-text supp (UTF-8 BOM or .csv/.tsv URL + non-HTML CT).
+        if head.startswith(b"\xef\xbb\xbf") or _is_probable_text_supp(
+            head, content_type, url
+        ):
+            return (head, content_type, size)
+        return None
+    finally:
+        try:
+            r.close()
+        except Exception:
+            pass
+
+
+def probe_supp_from_article_html(
+    session: requests.Session, doi: str, pmc_id: str
+) -> dict[str, list[str]]:
+    """Deep-mine an article's HTML for supplementary-file URLs.
+
+    Mirror of `probe_reads_from_article_html`: fetches the article HTML
+    via `_fetch_article_html()` (PMC → publisher plugin), then extracts
+    candidate supp URLs matching a curated pattern set (Springer ESM
+    CDN, Cell Press mmc, PMC bin, Europe PMC OA bundle, Zenodo/Figshare/
+    OSF, Wiley/LWW/Sage/OUP supp links).
+
+    Returns a dict keyed by pattern-name (`springer_esm`, `zenodo`, …)
+    with a list of unique URLs each. Callers should then verify each URL
+    with `_verify_supp_url()` before treating it as truth.
+
+    NOTE: some URL patterns (PMC bin, Cell mmc, Wiley downloadSupplement)
+    are DETECTED here but are known to be un-downloadable from cluster
+    (POW / Cloudflare gating). They're returned for auditing / future
+    browser-based rescue; the driver in refresh_supp_via_html.py skips
+    them for actual verification. See `_SUPP_URL_PATTERNS`.
+    """
+    html = _fetch_article_html(session, doi, pmc_id)
+    if not html:
+        return {}
+    out: dict[str, list[str]] = {}
+    for name, (pat, _downloadable) in _SUPP_URL_PATTERNS.items():
+        hits: list[str] = []
+        for m in pat.finditer(html):
+            u = m.group(0)
+            # Relative PMC bin URLs need expansion to absolute.
+            if u.startswith("/"):
+                u = "https://pmc.ncbi.nlm.nih.gov" + u
+            if u not in hits:
+                hits.append(u)
+        if hits:
+            out[name] = hits
+    # For the europepmc_supp_zip pattern: even if not in HTML, ALWAYS
+    # add the canonical URL when we have a pmc_id (belt & suspenders —
+    # the OA supp bundle is a fixed URL derivable from PMCID). The
+    # downstream verifier will 404 for author-manuscript PMCs.
+    if pmc_id:
+        pmc_num = pmc_id.replace("PMC", "")
+        eu_url = (
+            f"https://www.ebi.ac.uk/europepmc/webservices/rest/PMC{pmc_num}"
+            f"/supplementaryFiles"
+        )
+        out.setdefault("europepmc_supp_zip", []).append(eu_url)
+    return out
+
+
+# Downloadable-from-cluster URL types. Patterns whose value in
+# `_SUPP_URL_PATTERNS` is False are DETECTED but cannot be verified /
+# downloaded from cluster, so refresh_supp_via_html.py skips them.
+SUPP_DOWNLOADABLE_TYPES: frozenset[str] = frozenset(
+    name for name, (_pat, is_dl) in _SUPP_URL_PATTERNS.items() if is_dl
+) | {"europepmc_supp_zip"}
+
+
 def probe_ena_filereport(session: requests.Session, acc: str) -> tuple[int, float]:
     """Return (n_runs, total_gb) for one project accession via ENA."""
     url = (
