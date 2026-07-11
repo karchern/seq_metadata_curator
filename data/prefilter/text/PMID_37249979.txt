@@ -1,0 +1,980 @@
+                                                                                                                      TYPE Original Research
+                                                                                                                      PUBLISHED 12 May 2023
+                                                                                                                      DOI 10.3389/fcimb.2023.1098310
+
+
+
+
+                                                   Identiﬁcation of intestinal
+OPEN ACCESS                                        microbiome associated with
+EDITED BY
+Xin Xu,
+Sichuan University, China
+                                                   lymph-vascular invasion in
+REVIEWED BY
+Chang Li,
+                                                   colorectal cancer patients and
+Chinese Academy of Agricultural Sciences
+(CAAS), China
+Cuiqing Zhao,
+                                                   predictive label construction
+Jilin Agricultural Science and Technology
+College, China
+                                                   Chuanbin Chen †, Kang Chen †, Zigui Huang †, Xiaoliang Huang †,
+*CORRESPONDENCE
+Weizhong Tang                                      Zhen Wang, Fuhai He, Mingjian Qin, Chenyan Long,
+   tangweizhong@gxmu.edu.cn                        Binzhe Tang, Xianwei Mo*, Jungang Liu* and Weizhong Tang*
+Jungang Liu
+   liujungang@gxmu.edu.cn                          Division of Colorectal & Anal Surgery, Department of Gastrointestinal Surgery, Guangxi Medical
+Xianwei Mo                                         University Cancer Hospital, Nanning, China
+   moxianwei888@163.com
+†
+  These authors have contributed
+equally to this work
+                                                   Objective: To identify differences between the composition, abundance, and
+RECEIVED 14 November 2022
+ACCEPTED 04 April 2023                             biological function of the intestinal microbiome of patients with and without
+PUBLISHED 12 May 2023                              lymph-vascular invasion (LVI) colorectal cancer (CRC) and to construct
+CITATION                                           predictive labels to support accurate assessment of LVI in CRC.
+Chen C, Chen K, Huang Z, Huang X,
+Wang Z, He F, Qin M, Long C, Tang B,
+                                                   Method: 134 CRC patients were included, which were divided into two groups
+Mo X, Liu J and Tang W (2023)
+Identiﬁcation of intestinal microbiome             according to the presence or absence of LVI, and their intestinal microbiomes were
+associated with lymph-vascular invasion in         sequenced by 16SrRNA and analyzed for differences. The transcriptome sequencing
+colorectal cancer patients and predictive
+label construction.
+                                                   data of 9 CRC patients were transformed into immune cells abundance matrix by
+Front. Cell. Infect. Microbiol. 13:1098310.        CIBERSORT algorithm, and the correlation among LVI-associated differential
+doi: 10.3389/fcimb.2023.1098310                    intestinal microbiomes, immune cells, immune-related genes and LVI-associated
+COPYRIGHT                                          differential GO items and KEGG pathways were analyzed. A random forest (RF) and
+© 2023 Chen, Chen, Huang, Huang, Wang,
+He, Qin, Long, Tang, Mo, Liu and Tang. This
+                                                   eXtreme Gradient Boosting (XGB) model were constructed to predict the LVI of CRC
+is an open-access article distributed under        patients based on the differential microbiome.
+the terms of the Creative Commons
+Attribution License (CC BY). The use,
+distribution or reproduction in other
+                                                   Result: There was no signiﬁcant difference in a-diversity and b-diversity of
+forums is permitted, provided the original         intestinal microbiome between CRC patients with and without LVI (P > 0.05).
+author(s) and the copyright owner(s) are           Linear discriminant analysis Effect Size (LEfSe) analysis showed 34 intestinal
+credited and that the original publication in
+this journal is cited, in accordance with          microbiomes enriched in CRC patients of the LVI group and 5 intestinal
+accepted academic practice. No use,                microbiomes were signiﬁcantly enriched in CRC patients of the non-lymph-
+distribution or reproduction is permitted
+which does not comply with these terms.
+                                                   vascular invasion (NLVI) group. The RF and XGB prediction models constructed
+                                                   with the top 15% of the LVI-associated differential intestinal microbiomes ranked
+                                                   by feature signiﬁcance had good efﬁcacy.
+
+                                                   Conclusions: There are 39 intestinal ﬂora with signiﬁcantly different species
+                                                   abundance between the LVI and NLVI groups. g:Alistipes.s:Alistipes_indistinctus
+                                                   is closely associated with colorectal cancer vascular invasion. LVI-associated
+                                                   differential intestinal ﬂora may be involved in regulating the inﬁltration of
+                                                   immune cells in CRC and inﬂuencing the expression of immune-related genes.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                         01                                                              frontiersin.org
+Chen et al.                                                                                                                10.3389/fcimb.2023.1098310
+
+
+
+
+                                                   LVI-associated differential intestinal ﬂora may inﬂuence the process of vascular
+                                                   invasion in CRC through a number of potential biological functions. RF prediction
+                                                   models and XGB prediction models constructed based on microbial markers of
+                                                   gut ﬂora can be used to predict CRC-LVI conditions.
+
+                                                   KEYWORDS
+
+                                                   colorectal cancer, lymph-vascular invasion, 16S rRNA, intestinal microbiome,
+                                                   machine learning
+
+
+
+
+1 Introduction                                                                  and caused an imbalance in the intestinal microbiome (Yang and
+                                                                                Yu, 2018; Redondo-Useros et al., 2020). Intestinal microbiome
+    Colorectal cancer (CRC) is a great threat to human health, with             imbalance refers to a change in the predominant microbiome of
+the third and second highest incidence and mortality rates,                     the original intestine, a decrease in the abundance of the beneﬁcial
+respectively, according to the 2020 Global Cancer Data estimates,               microbiome, and an increase in the abundance of the pathogenic
+and its incidence continues to increase in many countries (Sung                 microbiome in the intestinal microecological environment, which
+et al., 2021). In recent years, the incidence of CRC has increased              will cause chronic inﬂammation and genetic alterations in
+signiﬁcantly in China, with 592,232 incidences and 309,114 deaths               colorectal epithelial cells through the release of virulence factors,
+expected in 2022 (Xia et al., 2022). Despite breakthroughs in both              leading to CRC (Wang and Li, 2022).
+surgical and medical treatments for CRC, there has been no                           Currently, due to the lack of early symptoms of CRC (Tepus and
+signiﬁcant improvement in patient cure rates or long-term                       Yau, 2020), most patients are diagnosed when CRC has progressed to
+survival (Kuipers et al., 2015).                                                the progressive stage (Yu YQ. et al., 2022), suggesting that the tumor
+    The etiology of CRC is unknown, but genetic and                             has metastasized, which is a major cause of cancer-related death
+environmental factors have emerged as well-recognized risk                      (Vatandoust et al., 2015). Although the relationship between intestinal
+factors for the development of CRC (Kuipers et al., 2015). In                   microbiome imbalance and CRC occurrence has been extensively
+recent years, the intestinal microbiome and their metabolites have              studied, the speciﬁc relationship between various bacteria and CRC
+been shown to inﬂuence the development and progression of CRC                   metastasis has still not been elucidated. Metastasis is a complex
+by mediating or modifying environmental factors or by being                     multigene, multistep process consisting of close communication
+modiﬁed by environmental factors (Song et al., 2020). The                       between tumor cells and the tumor microenvironment, including
+normal human gut contains approximately 100 trillion                            immune cells, inﬂammatory cells, and stromal cells. A study showed
+commensal intestinal bacteria (Hill and Artis, 2010), expressing                that lipopolysaccharide increases VEGF-C secretion through the
+over 3.3 million genes (Belizá rio and Napolitano, 2015). The                  TLR4- NF-k b/JNK signaling pathway and promotes cell motility
+intestinal microbiome plays an important role in digestion and                  and lymphangiogenesis (Zhu et al., 2016). The presence of
+absorption, substance metabolism, immune regulation, and                        lipopolysaccharide in the outer membrane of Gram-negative
+protection of the intestinal mucosa, and together they maintain                 bacteria suggests that the intestinal microbiome plays an important
+intestinal homeostasis (Hill and Artis, 2010; Belizá r io and                  role in the lymphatic metastasis of CRC. The most common site of
+Napolitano, 2015; Okumura and Takeda, 2018). The intestinal                     hematogenous metastasis in CRC is the liver (Pretzsch et al., 2019).
+microbiome in healthy populations is mainly composed of                         About 25% of CRC patients accompany with liver metastases, which
+Bacteroidetes and Firmicutes (Mahowald et al., 2009), among                     causes more than 90% of deaths in CRC patients (Li et al., 2019).
+which Biﬁdobacterium and Lactobacillus as probiotics can                        Bullman, S found that Clostridium nucleolytic and its commensal
+participate in the host’s gastrointestinal defense system (Servin,              microorganisms (Mycobacterium, Puccinia) colonize distal liver
+2004), and Clostridium nucleatum or Bacteroides fragilis as harmful             metastases and that the microorganisms present in liver metastases
+bacteria have been shown to be associated with the occurrence and               colonized by Clostridium nucleolytic are similar to those associated
+development of CRC (Montalban-Arques and Scharl, 2019).                         with Clostridium nucleolytic in primary CRC (Bullman et al., 2017).
+Therefore, the composition ratio and relative abundance of the                  Another animal study showed that Desulfovibrio can create a
+intestinal microbiome are crucial for maintaining the stability of the          microenvironment conducive to CRC liver metastasis by inducing
+intestinal micro-ecosystem and human health. In recent years, due               colonic barrier dysfunction, colonic and hepatic inﬂammation (Yu Y.
+to the improvement in living standards, people have increased the               et al., 2022).
+intake of red meat and animal fat and reduced the intake of ﬁber in                  Invasion of lymphatic and blood vessels by tumor cells plays a
+their diets and decreased the amount of exercise in their lifestyles.           crucial role in the process of metastasis (van Zijl et al., 2011).
+Since the composition of the microbiome is closely related to the               Lymph-vascular invasion (LVI) is deﬁned as a pathological
+host’s lifestyle, diet and genotype, these lifestyle changes, especially        manifestation of the presence of cancer thrombi in lymphatic or
+the diet, have altered the composition of the intestinal microbiome             vascular channels (Li et al., 2015), and LVI is an early pathological
+
+
+Frontiers in Cellular and Infection Microbiology                           02                                                            frontiersin.org
+Chen et al.                                                                                                                  10.3389/fcimb.2023.1098310
+
+
+
+
+marker of tumor progression to metastasis (Schneider and Langner,               instructed to use a sterile stool collection tube to retain the middle part
+2014). It has been well documented that LVI of tumor tissue                     of the stool specimen and avoid contamination of urine, then the stool
+(including both lymphatic vessel invasion and vascular invasion)                specimen was placed in a sterile ice box, dispensed in 2 mL EP tubes,
+is an independent predictor of poor prognosis in CRC and that CRC               200 mg/tube, and placed in -80 °C refrigerator for freezing and storage.
+patients with LVI have a poorer prognosis compared to non-lymph-                     Tissue sample collection: Fresh tissue specimens were collected
+vascular invasion (NLVI) CRC patients. Therefore, elucidating the               from surgically excised tumors and paracancerous tissues of
+oncologic impact and prognostic signiﬁcance of LVI is of great                  soybean size, and the time from isolation to placement in liquid
+signiﬁcance for CRC patients.                                                   nitrogen for preservation was controlled to be less than 30 minutes.
+     There are no studies showing the relationship between the gut
+microbiome and LVI. The aim of this study was to investigate the
+composition, abundance, and biological functions of each intestinal             2.2 16S rRNA sequencing
+microbiome in LVI-CRC patients and NLVI-CRC patients, and to
+incorporate the characteristic microbiome to construct a machine                     Using the MOBIO PowerSoil® DNA Isola-tion Kit, DNA was
+learning classiﬁcation model to analyze the role of gut microbiota in           extracted from 200 mg of feces in Tris-EDTA buffer according to the
+the development of LVI in CRC, to identify novel noninvasive                    product instructions. After DNA extraction, the samples are tested
+biomarkers of CRC-LVI, and to construct a diagnostic model to                   for DNA quality, and samples of acceptable quality are allowed to
+assess CRC-LVI conditions to provide new strategies for early                   proceed to the next experiment. The V3 and V4 regions of the 16S
+screening of CRC metastasis.                                                    rRNA gene were targeted and captured with primers 341F: (5′-
+                                                                                CCTACGGGNGGCWGCAG-3′) and 805R (5′-GACTACHVGGGT
+                                                                                ATCTAATCC-3), and the targeted capture products were ampliﬁed
+2 Research methods                                                              by PCR. After PCR ampliﬁcation, the PCR products of each sample
+                                                                                were ﬁrst examined using 2% agarose gel electrophoresis with a target
+2.1 Subject information and                                                     band size of approximately 300 ~ 350 bp for the target capture
+sample collection                                                               products. The PCR products were then quantiﬁed using the Quant-iT
+                                                                                PicoGreen dsDNA Assay Kit kit, and all samples were combined at
+     The study protocol was approved by the Medical Ethics Committee            equimolar concentrations according to the sequencing requirements
+of the Afﬁliated Cancer Hospital of Guangxi Medical University, and all         based on the quantitative results of each sample. Next, the mixed
+participants were notiﬁed prior to sample collection. All study subjects        libraries were quantiﬁed using the KAPA Library Quantiﬁcation
+signed an informed consent form before any procedures were                      Kit KK4824. Finally, the libraries were sequenced on an Illumina
+performed. The investigators had completed the collection of pre-               PE250 instrument using 2×250 bp chemistry after passing the
+treatment stool samples from 236 colorectal cancer patients between             library assay.
+2021.01.01 and 2021.12.31 after inclusion and exclusion screening, and
+ﬁnally received 198 stool samples of acceptable quality for 16S rRNA
+sequencing. Among the above subjects who underwent surgical                     2.3 Transcriptome sequencing
+treatment at the Cancer Hospital of Guangxi Medical University,
+fresh tissue specimens removed by surgery were collected and placed                  Total RNA was extracted from 17 colorectal cancer tumor samples
+in liquid nitrogen for preservation. Among them, there were 134                 using Trizol® Total RNA Extraction Kit, and electrophoresis was used
+colorectal cancer patients with LVI information. In addition, we                to detect the integrity of RNA, and the purity of RNA was measured by
+performed transcriptome sequencing on 17 colorectal cancer tumor                micro UV spectrophotometer. Remove rRNA and construct cDNA
+tissue samples, among which 15 samples had LVI information, and 9               libraries by referring to the instructions of the RNA-seq Sample
+samples had 16S rRNA sequencing data from stool samples.                        Preparation Kit (VAHTS™ Stranded mRNA-seq Library Prep Kit
+     Subjects were included according to the following criteria: 1.             for Illumina®). Transcriptome library sequencing was done by
+Patients who had undergone surgical treatment with clear                        Illumina NovaSeq 6000. The sequenced raw data were quality
+pathological staging (according to ACJJCRC staging guidelines), or              assessed by FastQC, and the sample valid data were ﬁrst compared
+patients with colorectal adenocarcinoma conﬁrmed by colonoscopic                to the reference genome using HISAT2 (version: hg38). Gene
+pathological biopsy; 2. No combination or no previous other                     expression was assessed using StringTie and known gene models,
+malignancies; 3. Exclusion of other intestinal diseases and no acute            and the TPM (Transcripts Per Million) calculated for each gene was
+comorbidities such as complete intestinal obstruction, intestinal               used as the expression abundance of that gene.
+perforation, or pelvic abscess; 4. Before fecal sample collection, all
+patients had not received any anti-tumor treatment, such as surgery,
+chemotherapy, radiotherapy, immunotherapy and traditional Chinese               2.4 Analysis of tumor immune inﬁltration
+medicine; 5. No antibiotics and intestinal microecological agents were
+used in the past 1 month; 6. No impairment of consciousness or other                 The tumor immune inﬁltration analysis was performed by
+cognitive dysfunction.                                                          calling CIBERSORT R script v1.03. The CIBERSORT algorithm
+     Stool specimen collection: Stool specimens were collected on the           uses the microarray data to construct a feature matrix that translates
+ﬁrst day after the patients were admitted to the hospital. Patients were        the TPM matrix into a relative content matrix of 22 immune cells
+
+
+Frontiers in Cellular and Infection Microbiology                           03                                                               frontiersin.org
+Chen et al.                                                                                                                  10.3389/fcimb.2023.1098310
+
+
+
+
+(including immune cells of different cell types and functional states)             We applied Python and SciKit Learn 0.18 (https://scikit-
+(Newman et al., 2015).                                                         learn.org/stable/) platforms to install and load the installation
+                                                                               packages used to build and evaluate machine learning models
+                                                                               with default parameters for model construction. The gut ﬂora
+2.5 Functional enrichment analysis of LVI-                                     data of 134 CRC patients with LVI information were used as
+related transcriptome sequencing                                               samples, randomly divided into training and test sets by 7:3, and
+                                                                               the species of gut ﬂora were used as features of the data, and the RF
+    The single-sample gene set enrichment analysis (ssGSEA)                    and XBG models were constructed and predicted based on the top
+algorithm is a rank-based approach that calculates a score for the             15% species of feature importance among LVI-related differential
+absolute enrichment of a speciﬁc gene set for each sample (Hänzelmann          gut bacteria, respectively, using the subject operating curve (ROC)
+et al., 2013). We downloaded the required gmt format gene set ﬁles             and under curve area under the curve (AUC) to assess the accuracy
+(c2.cp.kegg.v2022.1.Hs.symbols.gmt, c5.go.v2022.1.Hs.symbols. gmt),            of the machine learning models on the training and validation sets.
+using the ssgsea algorithm to calculate the gene set scoring matrix for
+each sample by the GSVA package v1.46.0. Next, the NLVI group was
+                                                                               2.7 Analytical methods for 16S
+used as a control group, and the limma algorithm in TCGAbiolinks
+                                                                               rRNA sequencing
+package v2.25.3 was used to analyze the differential GO items and
+KEGG pathways between groups. GO analysis includes three levels:
+                                                                                   The following operations were performed in R software v3.5.1. All
+Biological Process (BP), Molecular Function (MF) and Cellular
+                                                                               P values are two-tailed and are treated as statistically signiﬁcant at P <
+Component (CC). The signiﬁcance thresholds for differentially
+                                                                               0.05. After obtaining the FASTQ raw sequencing data for each sample,
+expressed genes were: p value< 0.05 and |log2FC| >0. log2FC>0
+                                                                               the raw sequencing data were quality ﬁltered using Quantitative In-
+indicates genes upregulated in the LVI group and log2FC<0 indicates
+                                                                               sights Into Microbial Ecology version 2 (QIIME2), species annotation
+genes upregulated in the NLVI group, and the screening process was
+                                                                               was performed based on the Greengene database v13.8, and the
+presented by volcano plot, depicted based on ggplot2 package v3.4.0.
+                                                                               phyloseq package was used to v1.26.1 for gut ﬂora ASV/OTU
+                                                                               extraction. First, the species diversity of the intestinal ﬂora of each
+                                                                               sample was measured as alpha diversity, with the Chao1 and ACE
+2.6 Machine learning model construction
+                                                                               indices describing the ﬂora richness (Community richness), and the
+and identiﬁcation of gut microbial markers
+                                                                               Shannon and Simpson indices describing the species diversity and
+                                                                               homogeneity of the ﬂora. The variability in species composition of the
+     We used Random Forest (RF) and XGBoosting (eXtreme
+                                                                               gut ﬂora of each sample in the same ecology was measured by beta
+Gradient Boosting, XGB) models for gut microbial marker
+                                                                               diversity, and ADONIS analysis and ANOSIM analysis in beta
+identiﬁcation to predict LVI in CRC patients, respectively.
+                                                                               diversity analysis were performed by vegan package v2.5.6. The
+     The RF model and XGB model are widely used machine learning
+                                                                               Partial Least squares-discriminant Analysis (PLS-DA) of fecal
+methods with promising prediction results (AlThuwaynee et al., 2021;
+                                                                               intestinal ﬂora was performed by the package mixOmics v6.6.2.
+Hong et al., 2022; Yu JR. et al., 2022). RF model is an integrated
+                                                                               LEfSe analysis supports high-dimensional taxonomic comparisons
+machine learning approach by building a large number of decision
+                                                                               (Zhang et al., 2013) and can be used to screen for species that are
+trees (Breiman, 2001). The method is evaluated by combining multiple
+                                                                               most likely to explain differences between groups. Next, LEfSe analysis
+decision trees in an integrated manner, and the generalization error
+                                                                               was performed using Lefse software v1.0.0, and the results of the LEfSe
+converges as the number of trees increases, so the algorithm does not
+                                                                               analysis were evaluated using linear discriminant analysis (LDA) to
+suffer from overﬁtting problems (Breiman, 2001). Compared with
+                                                                               assess the effect values for each species that differed signiﬁcantly (i.e.,
+other models, the RF model can handle a large number of interactions
+                                                                               LDA score, which by default undergoes log transformation with a base
+between different independent variables, so the algorithm does not
+                                                                               of 10, the larger the absolute value the easier it is to distinguish between
+have the problem of multicollinearity (Breiman, 2001; Hajipour et al.,
+                                                                               groups). Species with signiﬁcant differences in abundance between
+2020). To sum up, RF model usually has higher accuracy than other
+                                                                               groups were obtained using |LDA|>2 and P<0.05 as the difference
+machine learning methods (Breiman, 2001; Hajipour et al., 2020;
+                                                                               screening threshold, and the results were presented in a bar graph.
+Pluth and Brose, 2022). XGB is a gradient-enhanced integrated
+                                                                               Finally, PICRUSt2 software 2.3.0 was used to predict the KEGG
+learning model that focuses on training multiple weak classiﬁers and
+                                                                               pathway enriched between groups for the sequenced samples. The
+assembling them into a stronger classiﬁer with the goal of minimizing
+                                                                               analysis of variability of a and b diversity indices and KEGG pathways
+the loss function and increasing the weight of misclassiﬁcations by
+                                                                               between groups were performed using the nonparametric Mann-
+computing negative gradients to improve training for the next
+                                                                               Whitney U rank sum test, both using the vegan package v2.5.6, and
+iteration (Krishnapuram et al., 2016). Compared with the traditional
+                                                                               the visualization of histograms was done by the ggplot2 package v3.4.0.
+gradient boosting decision tree (GBDT), XGB adds a regularization
+method, which makes the loss function smoother, reduces the
+complexity of the model, and avoids model overﬁtting (Chang et al.,            2.8 Statistical methods
+2022). In addition, XGB uses an approximation algorithm to ﬁnd the
+optimal solution for segmentation, and optimizes gradient                         All the following operations were analyzed by R software v4.2.2. All
+enhancement to improve efﬁciency and scalability (Yu JR. et al., 2022).        P values are two-tailed and are treated as statistically signiﬁcant at
+
+
+Frontiers in Cellular and Infection Microbiology                          04                                                                frontiersin.org
+Chen et al.                                                                                                                                                 10.3389/fcimb.2023.1098310
+
+
+
+
+P < 0.05. Continuous data analysis of clinical data was performed by t-                             which was mainly measured by the alpha diversity and versus beta
+test and quantitative data analysis was performed by Pearson chi-square                             density indices. Figure 1A compares the 6 alpha diversity indices of
+test (Table 1), which was calculated by SPSS software v23.0. Correlations                           the intestinal ﬂora samples of CRC patients in the LVI and NLVI
+between intestinal ﬂora and immune cell abundance and immune-                                       groups, but none of the differences were statistically signiﬁcant (P >
+related genes were calculated using Pearson correlation, correlations                               0.05). The beta diversity of the CRC patient groups in the LVI and
+between different subgroups of dominant ﬂora, and correlations                                      NLVI groups is shown in Figure 1B, and there were no statistical
+between intestinal ﬂora and KEGG pathway were calculated using                                      differences in the Bray (P=0.322) and Jaccard’s test indices (P=0.197)
+Spearman correlation, all by Hmisc package v4.7-1. Correlations                                     between the gut microbial composition of the two groups (see
+between gut ﬂora and BP items and MF items were calculated using                                    Supplementary Tables 1, 2). PLS-DA analysis suggested that the
+Spearman correlations through the ggcorrplot package v0.1.4. and the                                LVI and NLVI groups could be distinguished into two distinct groups
+correlation matrix was visualized using ggcorrplot package v0.1.4,                                  (Figure 1C). The above results showed that there were no signiﬁcant
+Igraph package v1.3.5 and Cystoscope software Version 3.7.2.                                        differences in species diversity and community composition of fecal
+                                                                                                    microbial communities between the LVI and NLVI groups, but there
+                                                                                                    were still clear group differences in the composition of the intestinal
+3 Result                                                                                            ﬂora between the LVI and NLVI groups.
+
+3.1 Demographic and clinical
+characteristics of CRC patients stratiﬁed by                                                        3.3 Identiﬁcation of intestinal microbiome
+LVI condition                                                                                       associated with LVI condition
+
+     A total of 134 CRC patients with information on vascular                                           To search for potential LVI-associated intestinal ﬂora biomarkers
+invasion were included in this study. Among them, 47 patients                                       (species with signiﬁcant differences in abundance between the LVI and
+with CRC with vascular invasion and 87 patients with CRC without                                    NLVI groups), we performed LEfSe analysis of fecal microorganisms
+vascular invasion were included. As shown in Table 1, there were no                                 from CRC patients in the LVI and NLVI groups. Among them, we
+statistically signiﬁcant differences in age and sex between CRC                                     found statistically signiﬁcant differences in the abundance of a total of
+patients with and without vascular invasion, indicating that the                                    39 species. There were a total of 34 species in the LVI group with
+baseline data were balanced and comparable. The proportion of                                       signiﬁcantly higher abundance than the NLVI group, and a total of 5
+CRC patients with vascular invasion with TNM stage III-IV                                           species in the NLVI group with signiﬁcantly higher abundance than the
+(P=0.033) and with nerve invasion (P<0.001) was signiﬁcantly                                        LVI group (P < 0.05, as in Supplementary Table 3; Figures 2A, B). The
+higher than that of CRC patients without vascular invasion,                                         LDA bar chart in Figure 2B shows the LDA scores of the LEfSe analysis
+suggesting that LVI is associated with the progression of CRC.                                      for each important colony (after taking log10 processing), with higher
+                                                                                                    scores indicating the greater inﬂuence of the species. In addition, to
+                                                                                                    explore the interaction between LVI-related differential ﬂora, we
+3.2 Comparison of microbiome diversity                                                              depicted the correlation graph between the dominant ﬂora of the
+between CRC patients with LVI and NLVI                                                              LVI group and the dominant ﬂora of the NLVI group (Figure 2C).
+                                                                                                    Among them, g_Anaerovorax.s_uncultured_bacterium,
+    First, we investigated whether there was a difference in the                                    _o_Clostridiales.f_Ruminococcaceae, g_Phascolarctobacterium.
+diversity of the ﬂora between the LVI and NLVI groups of patients,                                  s_uncultured_Phascolarctobacterium_sp., f_Coriobacteriaceae.
+
+
+TABLE 1 Demographic and clinical characteristics of CRC patients stratiﬁed by LVI condition.
+
+
+                                                        CRC patients with LVI (n=47)                   CRC patients with NLVI (n=87)                     P value                 Test
+ Age (years, mean (SD))                                              57.96 ± 11.46                                    57.85 ± 10.75                         0.957               T-Test
+
+          Age (%)                      ≥60                             21 (44.70)                                       37 (42.50)                          0.810        Pearson Chi-square
+
+                                       <60                             26 (55.30)                                       50 (57.50)
+
+        Gender (%)                     male                            28 (59.60)                                       55 (63.20)                          0.678        Pearson Chi-square
+
+                                      female                           19 (40.40)                                       32 (36.80)
+
+      TNM stage (%)                early (0~2)                         15 (31.90)                                       44 (51.20)                         0.033*        Pearson Chi-square
+
+                                 advanced (3~4)                        32 (68.10)                                       42 (48.80)
+
+ perineural invasion (%)               YES                             41 (89.10)                                       32 (37.20)                       <0.001***       Pearson Chi-square
+
+                                       NO                               5 (10.90)                                       54 (62.80)
+
+The “*” in the upper right corner of the P value value indicates the P value: none* for P value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for 0.0001 ≤ P < 0.001.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                               05                                                                              frontiersin.org
+Chen et al.                                                                                                                   10.3389/fcimb.2023.1098310
+
+
+
+
+                                     A
+
+
+
+
+                                     B
+
+
+
+
+                                     C
+
+
+
+
+   FIGURE 1
+   Diversity index of intestinal ﬂora in the LVI group compared with the NLVI group of CRC patients (A) Comparison of alpha diversity index of intestinal
+   ﬂora between LVI group and NLVI group of CRC patient group. (B) Comparison of b diversity index of intestinal ﬂora in LVI group and NLVI group of
+   CRC patient group. The horizontal coordinates indicate the group, the vertical coordinates indicate the value of community diversity index of the
+   samples in this group, and the color indicates the group. (C) PLS-DA analysis of intestinal ﬂora in the LVI group versus the NLVI group of CRC
+   patients. The dots represent each gut ﬂora sample, the color indicates the group, the scale of horizontal and vertical axes indicates the relative
+   distance of each sample, and X-variate 1 and X-variate 2 represent the factors affecting the shift of gut ﬂora composition in CRC patients in LVI and
+   NLVI groups, respectively.
+
+
+
+
+g_Collinsella and f_Lachnospiraceae.g_Coprococcus were the ﬁve most              3.4 Function prediction of intestinal
+connected bacterias with other nodes. It indicates that these ﬁve groups         microbiome between CRC patients with
+have the closest correlation with other dominant bacteria. Moreover,             LVI and NLVI
+there was a signiﬁcant negative correlation between the dominant ﬂora
+f_Comamonadaceae.g_Acidovorax and f_Rhizobiaceae.g_Rhizobium in                      To investigate the biological pathways enriched by LVI-related
+the NLVI group and some of the dominant ﬂora of the LVI group. The               intestinal ﬂora genes, we used PICRUSt2 (Phylogenetic Investigation of
+above results suggest that there may be a competitive relationship               Communities by Reconstruction of Unobserved States 2) software to
+between these dominant bacterial groups and each other.                          predict the KEGG pathways between the LVI and NLVI groups of
+
+
+
+Frontiers in Cellular and Infection Microbiology                            06                                                                frontiersin.org
+Chen et al.                                                                                                                  10.3389/fcimb.2023.1098310
+
+
+
+
+                            A                                                       B
+
+
+
+
+                            C
+
+
+
+
+   FIGURE 2
+   Differential intestinal ﬂora analysis of CRC patients in the LVI and NLVI groups (A) Evolutionary relationship diagram for LEfSe analysis. Node size
+   represents species abundance size, which is proportional to species abundance size. Node color represents grouping, yellow nodes in the branches
+   indicate species that do not differ signiﬁcantly in abundance between groups; red nodes indicate species with signiﬁcantly higher abundance in the
+   LVI group, and green nodes indicate species with signiﬁcantly higher abundance in the NLVI group. The nodes in each layer indicate the phylum/
+   class/order/family/genus/species from inside-out, and the annotations of species markers in each layer indicate the phylum/class/order/family/
+   genus/species from outside-in. (B) LDA bar graph based on 16S rRNA gene sequencing. The color of the bar graph represents the group, the
+   horizontal coordinate is the LDA score (after log10 processing), the vertical coordinate indicates the differential species with signiﬁcantly higher
+   abundance in the group, and the length of the bar graph represents the size of the LDA score value. (C) Network diagram of LVI-related differential
+   gut ﬂora correlation. Each node represents each species, node color represents grouping, node size represents the number of edges connected to
+   the node, the larger the node, the more the number of edges connected to the node, the connecting line represents the existence of signiﬁcant
+   correlation between two nodes, Spearman correlation coefﬁcient values below 0 (negative correlation) represent the blue line, Spearman correlation
+   coefﬁcient values greater than 0 (positive correlation) represent the red line The thicker the line, the larger the Spearman correlation coefﬁcient
+   between the two nodes.
+
+
+
+
+ﬂora. A total of 173 KEGG pathways were identiﬁed, 47 of which were             3.5 Relationship between LVI-associated
+statistically signiﬁcantly different (P<0.05). The LVI group had 33             differential intestinal ﬂora and tumor-
+KEGG pathways in signiﬁcantly higher abundance than the NLVI                    inﬁltrating immune cells
+group, and the three most signiﬁcant pathways were Dioxin
+degradation (P=0.004), Phosphotransferase system (PTS) (P= 0.008)                   Tumor-inﬁltrating immune cells are an important component of
+and Caprolactam degradation (P= 0.013). The NLVI group had 14                   the tumor microenvironment, involved in regulating the local tumor
+KEGG pathways in signiﬁcantly higher abundance than the LVI group.              immune response, and are potential targets for tumor immunotherapy.
+Non-homologous end-joining (P=0.004), Glycerophospholipid                       To explore the relationship between LVI-related differential intestinal
+metabolism (P=0.040) and Methane metabolism (P=0.044) were                      ﬂora and tumor-inﬁltrating immune cells, we ﬁrst produced strip plots
+three of the most signiﬁcant pathways (see Supplementary Figure 1,              demonstrating the composition of 22 inﬁltrating immune cells in 15
+Supplementary Table 4 for details, P < 0.05). The above results                 colorectal cancer patients with both information on vascular invasion
+suggest that LVI-associated intestinal ﬂora have differential                   and RNA sequencing (Figure 3A). The immune inﬁltration
+metabolic functions.                                                            microenvironment of each patient was characterized by its own
+
+
+
+Frontiers in Cellular and Infection Microbiology                           07                                                               frontiersin.org
+Chen et al.                                                                                                                   10.3389/fcimb.2023.1098310
+
+
+
+
+characteristics as seen in the ﬁgure. Overall, patients in the NLVI group        patients in the LVI and NLVI groups differed, and LVI-associated
+had more plasma cells than in the LVI group, and patients in the LVI             differential intestinal ﬂora was signiﬁcantly correlated with multiple
+group had more B cells memory and B cells naive than in the NLVI                 immune cells, suggesting that LVI-associated differential intestinal ﬂora
+group. Next, to investigate the association between LVI-related                  may be involved in regulating immune cell inﬁltration in CRC.
+differential ﬂora and immune cells, we correlated the dominant ﬂora
+with 22 immune cells in the LVI and NLVI groups, respectively. In the
+LVI group, f:Lachnospiraceae.g:Coprococcus, o:Lactobacillales.f:                 3.6 Correlation of LVI-related differential
+Lactobacillaceae and f:Lactobacillaceae.g:Lactobacillus had a                    intestinal ﬂora with immune-related genes
+signiﬁcant positive correlation with Macrophages, g:Anaerovorax.s:
+uncultured_bacterium has a signiﬁcant positive correlation with                      The immunity of the organism is closely related to the
+Macrophages M2, g:Bacteroides.s:Bacteroides_stercoris and o:                     development of tumors. To investigate the relationship between LVI-
+Clostridiales.f:Ruminococcaceae had a signiﬁcant negative correlation            associated differential gut ﬂora and organismal immunity, we
+with NK cells activated (Figures 3B–D). In the NLVI group, f:                    performed a correlation analysis between LVI-associated differential
+Enterobacteriaceae.g:Enterobacter showed a signiﬁcant positive                   gut ﬂora and common immune-related genes. Among the dominant
+correlation with Dendritic cells resting and Macrophages M1                      bacteria in the LVI group, g:Slackia.s:uncultured_bacterium, g:
+(Figures 3C, D). In summary, immune cell inﬁltration in CRC                      Megasphaera.s:uncultured_bacterium and f:Erysipelotrichaceae.g:
+
+
+
+                          A                                                      B
+
+
+
+
+                                                                                 D
+                          C
+
+
+
+
+   FIGURE 3
+   Correlation of LVI-related differential intestinal ﬂora with tumor immune inﬁltrating cells (A) Bar graph of relative abundance of immune cells in CRC
+   patients grouped by LVI status. Each bar is one sample, the vertical coordinate is the predicted relative abundance value of immune cells, the sum of
+   the relative abundance of all immune cells in a single sample is 1, and each color in the graph corresponds to one immune cell. (B) Heat map of the
+   correlation between the dominant ﬂora and the abundance of immune cells in the LVI group. (C) Heat map of the correlation between the dominant
+   ﬂora and the abundance of immune cells in the NLVI group. The horizontal coordinates are immune cells, the vertical coordinates are bacteria, the
+   red color in the graph represents positive correlation, the blue color represents negative correlation, the color depth represents the Pearson
+   correlation coefﬁcient size, the color from light to dark indicates the Pearson correlation coefﬁcient value from small to large. The “*” in the graph
+   indicates the size of P-value: no * for P-value ≥ 0.05, * for 0.01 ≤ P<0.05, ** for 0.001 ≤ P<0.01, *** for P<0.001. (D) Network diagram of the
+   correlation between LVI-related differences in intestinal ﬂora and immune cells. Each node represents each intestinal bacteria or immune cell, the
+   node color represents the grouping, and the connecting line represents the existence of a signiﬁcant correlation between two nodes; Pearson
+   correlation coefﬁcient values less than 0 (negative correlation) indicate the blue line, and Pearson correlation coefﬁcient values greater than 0
+   (positive correlation) indicate the red line.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                            08                                                                frontiersin.org
+Chen et al.                                                                                                                     10.3389/fcimb.2023.1098310
+
+
+
+
+Faecalitalea were associated with multiple immune checkpoints                     on these pathways, we transformed RNA sequencing data from
+(LAG3, CTLA4 and TNFRSF9 etc.) (as in Figure 4A), immune                          tumor samples of nine patients with gut ﬂora 16sRNA sequencing
+activating genes (CXCL12, CD86 and CD80 etc.) (as in                              data into corresponding scoring matrices by GO (Gene Ontology)
+Supplementary Figure 2), immune suppressor genes (CTLA4, CD96                     and KEGG (Kyoto encyclopedia of Genes and Genomes) analysis
+and CD274 etc.) (as in Supplementary Figure 3), chemokines (CXCL9,                through the ssGSEA method. GO enrichment analysis includes
+CXCL13 and CCL5 etc.) (as in Figure 4B) and chemokine receptors                   three aspects: biological process (BP), cellular component (CC), and
+(XCR1, CXCR3 and CCR5 etc.) (as in Supplementary Figure 4) all                    molecular function (MF). Next, by differentially analyzing the
+showed signiﬁcant positive correlations. Among the dominant bacteria              GO and KEGG pathway score matrices of the LVI and NLVI
+in the NLVI group, g:Oscillibacter.s:uncultured_organism and f:                   groups, we found that a total of 327 GO pathways were
+Enterobacteriaceae.g:Enterobacter were associated with multiple                   signiﬁcantly upregulated in the LVI group [GOMF _
+immune checkpoints (LAG3 and VTCN1 etc.) (as in Figure 4C),                       FATTY_ACID_TRANSMEMBRANE_TRANSPORTER_
+immune activation genes (TNFRSF17 and CD27 etc.) (as in                           ACTIVITY (logFC=0.072,P<0.001) and GOBP_POLYOL
+Supplementary Figure 5), immunosuppressive genes (VTCN1 and                       _TRANSMEMBRANE_TRANSPORT (logFC=0.060,P<0.001)
+TGFB1 etc.) (as in Supplementary Figure 6), chemokines (CXCL6                     etc.]. And three KEGG pathways were signiﬁcantly upregulated
+and CXCL9 etc.) (as in Figure 4D) and chemokine receptors (CCR1                   [KEGG_GALACTOSE_METABOLISM(logFC=0.021,P=0.025),
+and CCR2) (as in Supplementary Figure 7) showed signiﬁcant                        KEGG_ALDOSTERONE_REGULATED_SODIUM_
+correlations. The above results suggest that LVI-related differential             REABSORPTION(logFC=0.031,P=0.027) and KEGG_
+intestinal ﬂora may inﬂuence the expression of immune-related genes.              CYTOSOLIC_DNA_SENSING_PATHWAY(logFC=-0.042,
+                                                                                  P=0.036)]. There were 65 signiﬁcantly upregulated GO pathways in
+                                                                                  the NLVI group [GOBP_INTRACILIARY_TRANSPORT(logFC=-
+3.7 Identiﬁcation of differential pathways                                        0.037,P=0.003) and GOMF_NEUROTRANSMITTER_RECEPTOR
+and correlation between differential                                              _REGULATOR_ACTIVITY(logFC=- 0.074,P=0.015) etc.]. And
+pathways and differential ﬂora in colorectal                                      one KEGG pathway was signiﬁcantly upregulated [KEGG_
+cancer patients in the LVI and NLVI groups                                        OTHER_GLYCAN_DEGRADATION(logFC=-0.027,P=0.026)]
+                                                                                  (as shown in Figures 5A, B). The detailed GO enrichment
+    To explore LVI-related differential regulatory pathways and to                list and KEGG pathway enrichment list are shown in
+investigate the potential impact of LVI-related differential gut ﬂora             Supplementary Tables 5, 6, respectively. The above results suggest
+
+
+
+                        A                                                         B
+
+
+
+
+                        C                                                         D
+
+
+
+
+   FIGURE 4
+   Correlation of LVI-related differential intestinal ﬂora with immune-related genes (A) Heat map of correlation between the dominant ﬂora and
+   checkpoints in the LVI group. (B) Heat map of the correlation between the dominant ﬂora and chemokines in the LVI group. (C) Heat map of
+   correlation between dominant ﬂora and checkpoints in NLVI group. (D) Heat map of the correlation between the dominant ﬂora and chemokines in
+   the NLVI group. The horizontal coordinates are genes, the vertical coordinates are bacteria, the red color in the graph represents positive
+   correlation, the blue color represents negative correlation, the color depth represents the size of Pearson correlation coefﬁcient, the color from light
+   to dark indicates the value of Pearson correlation coefﬁcient from small to large. The “*” in the graph indicates the P-value size: no * for P-value ≥
+   0.05, * for 0.01 ≤ P<0.05, ** for 0.001 ≤ P<0.01, *** for P<0.001.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                             09                                                                 frontiersin.org
+Chen et al.                                                                                                                 10.3389/fcimb.2023.1098310
+
+
+
+
+that colorectal cancer tissues with LVI are enriched for different               which can help guide the practice of predicting LVI in CRC patients
+biological functions.                                                            by gut ﬂora testing.
+    Next, to investigate the relationship between LVI-associated
+genomic functions and LVI-associated differential intestinal ﬂora,
+we used the colony counts of 39 LVI-associated differential ﬂora from            4 Discussion
+9 patients to correlate with the LVI-associated BP, MF and KEGG
+pathway score matrices, respectively, and found signiﬁcant                            In this study, we focused on exploring the differences between
+correlations between some differential ﬂora and some BP, MF and                  the structure and abundance of intestinal ﬂora of CRC patients in
+KEGG pathways. For example, GOMF_PROTEIN_PHOSPHA T                               the LVI and NLVI groups, and attempted to ﬁnd microbial labels
+ASE_2A_BINDING showed a signiﬁcant strong positive correlation                   with predictive or discriminatory signiﬁcance by analyzing their
+with g:Lachnospiracea_incertae_sedis.s:Eubacterium_ramulus                       differential intestinal ﬂora. We identiﬁed the relative abundance of
+(r=0.83,P<0.05) (Figure 5C; Supplementary Table 7).                              each ﬂora in the feces of CRC patients in LVI and NLVI groups by
+KEGG_CYTOSOLIC_DNA_SENSING_PATHWAY showed a                                      16SrRNA sequencing technology and examined their biofunctional
+signiﬁcant strong positive correlation with f:Erysipelotrichaceae.g:             pathways, respectively.
+Faecalitalea (r=0.84, P<0.01) (Figure 5D). These suggest that LVI-                    We ﬁrst compared the a-diversity and b-diversity of gut
+associated differential intestinal ﬂora may inﬂuence vascular invasion           microorganisms in rectal cancer patients with LVI and NLVI
+in CRC through a number of potential biological functions.                       nodes, and the results were not signiﬁcantly different in either
+                                                                                 case, indicating that the number and composition of microbial
+                                                                                 community species did not differ signiﬁcantly between the two
+3.8 Construction of gut microbiome                                               sample groups. It has been shown that patients in the CRC group
+signature for predicting LVI condition of                                        have more biodiversity in their gut ﬂora than healthy subjects
+CRC patients                                                                     (Sheng et al., 2019; Zhang et al., 2021). This suggests that the
+                                                                                 occurrence of CRC may be closely related to the intestinal ﬂora. It is
+    To screen LVI-associated gut ﬂora biomarkers and more                        worthwhile for us to investigate deeply whether there are certain
+accurately predict LVI in CRC patients, we constructed RF and                    ﬂora in the intestinal ﬂora of CRC patients that are associated with
+XGB prediction models based on 39 LVI-associated differential gut                CRC-LVI. Therefore, we further identiﬁed the abundance of each
+ﬂora obtained from LEfSe analysis. The confusion matrix of the                   intestinal community in both groups, looked for intestinal ﬂora
+training set of the RF-based LVI prediction model showed that the                with signiﬁcant differences in abundance between the two groups,
+number of samples with a true negative (TN) prediction result was                and analyzed whether there was a correlation between them and
+signiﬁcantly higher than that of a false negative (FN), but the                  CRC-LVI.
+number of samples with a false positive (FP) result was higher than                   In the differential intestinal ﬂora of the LVI and NLVI groups, g:
+that of a true positive (TP) (Figure 6A), and the confusion matrix of            Alistipes.s:Alistipes_indistinctus was closely correlated with other
+the validation set showed that the number of samples with a true                 dominant bacteria. Alistipes is a Gram-negative bacterium of the
+negative (TN) and true positive (TP) prediction result was higher                phylum Mycobacterium, and a relatively new genus of bacteria,
+than that of both false negative (FN) and false positive (FP) samples            isolated mainly from medical clinical samples (Sakamoto et al.,
+(Figure 6B), and the AUC value of the ROC curve for the training                 2020). It has been suggested that Alistipes can act as a potential
+set was 0.891 and the AUC value of the ROC curve for the                         pathogen that may induce CRC (Parker et al., 2020). In addition,
+validation set was 0.807 (Figure 6C). The confusion matrix of the                Alistipes has the most pathways of spoilage among commensal
+XGB-based LVI prediction model for the training set predicted                    bacteria. Spoilage is the fermentation of undigested proteins in the
+signiﬁcantly more samples as true negative (TN) and true positive                gastrointestinal tract by the intestinal microbiota and usually results
+(TP) than false negative (FN) and false positive (FP) (Figure 6D),               in the production of harmful metabolites by the bacteria. These
+and the confusion matrix of the validation set showed that the                   products have been reported to be harmful and associated with
+number of samples predicted as true negative (TN) was signiﬁcantly               CRC. Such products include ammonia, H2S, cresol, indole and
+higher than false negative (FN), but the number of false positive                phenol (Hughes et al., 2000). It has also been shown that
+(FP) samples was more than the number of true number of positive                 Alistipes_indistinctus promotes inﬂammation and causes epithelial
+(TP) samples (Figure 6E), the AUC value of the ROC curve for the                 cell alterations, suggesting that this species is a potential driver of
+training set was 0.975, and the AUC value of the ROC curve for                   intestinal barrier dysfunction and inﬂammation (Kim et al., 2018).
+the validation set was 0.665 (Figure 6F). In summary, although the               Impaired intestinal barrier function contributes to the pathogenesis
+confusion matrices of both models suggest a high false positive rate             of CRC. Intestinal barrier dysfunction can induce epithelial
+of model prediction. However, the AUC values of the ROC curves of                mesenchymal transformation and also allow harmful substances
+the RF-based LVI prediction model were greater than 0.8 for both                 to enter the organism to induce chromosomal damage directly
+the training and validation sets. the AUC values of the ROC curves               involved in tumorigenesis (Keating and Spencer, 2019). In addition,
+of the XGB-based LVI prediction model were greater than 0.95 for                 the impairment of tight junctions between cells and the defective
+the training set, but less than 0.7 for the validation set. These results        immune barrier also promote the invasion and metastasis of CRC
+indicate that both models have some predictive accuracy and that                 tumors (Li et al., 2020). Therefore, it is reasonable to assume that
+the RF-based LVI prediction model has higher predictive efﬁcacy,                 Alistipes can not only act as a potential pathogen to induce the
+
+
+Frontiers in Cellular and Infection Microbiology                            10                                                            frontiersin.org
+Chen et al.                                                                                                                      10.3389/fcimb.2023.1098310
+
+
+
+
+                                  A                               C
+
+
+
+
+                                  B
+
+
+
+
+                                  D
+
+
+
+
+   FIGURE 5
+   Identiﬁcation of LVI-associated differential pathways and correlation of differential pathways with LVI-associated differential intestinal ﬂora (A) GO
+   volcano map of LVI-associated differential expression. (B) KEGG volcano plot of LVI-related differential expression. The horizontal coordinate
+   indicates log2 (fold change), the farther the point is from the center, the greater the differential fold; the vertical coordinate indicates -log10 (p
+   value), the closer the point to the top indicates the more signiﬁcant expression difference. Each point represents a detected differentially expressed
+   gene, red indicates an up-regulated gene, blue indicates a down-regulated gene, and gray indicates no differential gene. (C) Correlation graph of
+   LVI-associated differential BP and MF with LVI-associated differential intestinal ﬂora. Horizontal coordinates are bacteria, vertical coordinates are GO
+   labels, red in the graph represents positive correlation, blue represents negative correlation, color depth represents Spearman’s correlation
+   coefﬁcient size, color from light to dark indicates Spearman’s correlation coefﬁcient value from small to large. The “×” symbol in the graph indicates
+   the P-value: with “×” symbol means P-value ≥ 0.05, without “×” symbol means P<0.05. (D) Correlation graph of LVI-associated differential KEGG
+   with LVI-associated differential intestinal ﬂora. The triangle graph represents the correlation graph of LVI-related differential in intestinal ﬂora, the
+   upper right corner is the KEGG label, the depth of the connecting color represents the magnitude of Spearman’s correlation coefﬁcient r, the
+   connecting line presented in dark orange indicates the correlation coefﬁcient r≥0.05, representing a strong positive correlation. A light orange line
+   indicates a correlation coefﬁcient of 0<r<0.05, representing a weak positive correlation. A dark green line indicates a correlation coefﬁcient r≥0.05,
+   representing a strong negative correlation; a light green line indicates a correlation coefﬁcient 0<r<0.05, representing a weak negative correlation;
+   the thickness of the line represents the p-value, a thick line represents 0.01<P<0.05, and a thin line represents P≥0.05.
+
+
+
+
+development of CRC, but also it can promote the invasive and                       LVI group had less plasma cells than those in the NLVI group. It has
+metastatic process of CRC tumors, and has a close relationship with                been shown that tumor-inﬁltrating B cells can exert anti-tumor and
+CRC-LVI.                                                                           pro-tumor effects, depending on their immunostimulatory or
+   Analysis of the tumor microenvironment of immune cells                          immunosuppressive activity, which varies by cancer type. B cells
+showed that patients in the LVI group had more B cells memory                      can protect against tumors under certain conditions, mainly by
+and B cells naive than those in the NLVI group, and patients in the                producing tumor-speciﬁc antibodies and presenting tumor
+
+
+
+Frontiers in Cellular and Infection Microbiology                              11                                                                 frontiersin.org
+Chen et al.                                                                                                                      10.3389/fcimb.2023.1098310
+
+
+
+
+                                 A                                                 B
+
+
+
+
+                                                   C
+
+
+
+
+                                 D                                                 E
+
+
+
+
+                                                       F
+
+
+
+
+   FIGURE 6
+   Effectiveness evaluation of RF and XGB prediction models (A) Confusion matrix of RF in the training set. (B) Confusion matrix of the RF model in the
+   validation set. (D) Confusion matrix of XGB model in the training set. (E) Confusion matrix of XGB model in the validation set. X-axis represents the
+   model prediction, y-axis represents the real situation, 1 represents correct prediction, 0 represents incorrect prediction, and the values in the box are
+   the number of samples. (C) ROC curves of the random forest in both training set and validation set. (F) ROC curves of the XGB prediction model
+   both training set and validation set. The horizontal coordinate is the false positive rate predicted by the model, the vertical coordinate indicates the
+   true positive rate predicted by the model, and the area under the curve represents the AUC value, the higher the AUC value, the higher the
+   diagnostic efﬁcacy of the model.
+
+
+
+
+antigens, but certain B cell subsets and antibody speciﬁcity can also              to the study, Macrophages M0 and Macrophages M2 may play a
+suppress anti-cancer immunity and promote tumor growth                             major role in mediating immunosuppression and enhancing tumor
+(Sharonov et al., 2020; Kim et al., 2021). The higher B-cell                       aggressiveness (Najaﬁ et al., 2019; Osman et al., 2020; Zheng et al.,
+content in the LVI group than in the NLVI group may be related                     2022). It has also been shown that M0 macrophages, M1
+to this. This is consistent with the results of our study. In the LVI              macrophages inﬁltrate signiﬁcantly more in CRC compared to
+group, there were some dominant colonies positively correlated                     normal tissue. While M0 macrophages were highest in tumors
+with Macrophages M0 and Macrophages M2. In contrast, in the                        with lymphatic invasion (Ge et al., 2019). In summary, we suggest
+NLVI group, there were some dominant colonies that showed                          that these dominant ﬂora of the LVI group, which are positively
+signiﬁcant positive correlations with Macrophages M1. According                    correlated with Macrophages M0 and Macrophages M2, are closely
+
+
+
+Frontiers in Cellular and Infection Microbiology                              12                                                                frontiersin.org
+Chen et al.                                                                                                                10.3389/fcimb.2023.1098310
+
+
+
+
+related to CRC-LVI. These dominant ﬂora can combine                             5 Conclusion
+Macrophages M0 and Macrophages M2 to promote the CRC-LVI
+process to some extent.                                                              There were 39 intestinal ﬂora with signiﬁcantly different species
+     We analyzed the correlation between differential intestinal ﬂora           abundance between LVI and NLVI groups, among which g:
+and immune-related genes. Among the dominant bacteria in the LVI                Alistipes.s:Alistipes_indistinctus with signiﬁcantly higher species
+group, g:Megasphaera.s:uncultured_bacterium showed signiﬁcant                   abundance in the LVI group was closely related to CRC-LVI, and
+positive correlations with multiple immune checkpoints, immune                  Alistipes could promote the CRC-LVI process to some extent. LVI-
+activation genes, immune suppression genes, chemokines and                      associated differential gut ﬂora is closely related to tumor-inﬁltrating
+chemokine receptors. Several studies have reported that the                     immune cells and immune-related genes, and LVI-associated
+microbiome or its metabolites can enhance the antitumor effects of              differential gut ﬂora may be involved in regulating the inﬁltration
+PD1 to some extent (Routy et al., 2018; Rossi et al., 2020). It has also        of immune cells in CRC and, to some extent, inﬂuencing the
+been shown in studies that Megasphaera can signiﬁcantly improve                 expression of immune-related genes, which in turn affects the
+the antitumor efﬁcacy of anti-PD1 therapy (Huang et al., 2022). In              progression of CRC. colorectal cancer tissues with LVI are enriched
+our study, a positive correlation between Megasphaera and multiple              for different biological functions, and LVI-associated differential gut
+other immune checkpoints was also found, providing some research                ﬂora may inﬂuence the process of vascular invasion in CRC through a
+basis for the application of Megasphaera in antitumor                           number of potential biological functions. The RF prediction model
+immunotherapy. The predicted biofunctional analysis of gut                      and XGB prediction model constructed using intestinal ﬂora as a fecal
+microbes from CRC patients in the LVI and NLVI groups                           microbial marker have good diagnostic efﬁcacy and can be used to
+suggested signiﬁcant differences in the abundance of KEGG                       predict CRC-LVI conditions.
+pathways of microbial genes in the two groups of gut ﬂora. Among
+the most signiﬁcant pathways, Flagellar assembly and Bacterial
+chemotaxis may be associated with cancer development (Allali
+et al., 2018; Zhou et al., 2022). However, there is no direct evidence
+                                                                                Data availability statement
+that they are directly related to LVI. How these differential KEGG
+                                                                                    The original contributions presented in the study are included in
+pathways are linked to LVI remains to be proven.
+                                                                                the article material. Further inquiries can be directed to the
+     RF model and XGB model are widely used machine learning
+                                                                                corresponding authors. The data presented in the study are
+methods with promising prediction results (AlThuwaynee et al.,
+                                                                                deposited in the Nutstore repository, https://www.jianguoyun.com/
+2021; Hong et al., 2022; Yu JR. et al., 2022). We constructed a RF
+                                                                                p/DdAZBHQQsPGsChiC0YAFIAA, accession number is "hsnlmo".
+prediction model and an XGB prediction model using gut ﬂora as
+a fecal microbial marker to distinguish CRC patients in the LVI
+and NLVI groups. The AUC values of both the training set ROC
+curve and the validation set ROC curve of the RF prediction model               Ethics statement
+are greater than 0.8; the AUC value of the training set ROC curve
+of the XGB prediction model is 0.975, and the AUC value of the                    This study was approved by the Ethics and Human Subject
+validation set ROC curve is 0.665. Both models have good                        Committee of Guangxi Medical University Cancer Hospital.
+diagnostic performance. Based on the machine learning model
+analysis, we further constructed the association between gut
+microbes and CRC-LVI, and demonstrated that the fecal                           Author contributions
+biomarkers based on the dominant ﬂora could be used to
+differentiate the LVI group from the NLVI group of CRC                              CC, KC, ZH, XH, XM, WT, JL: conceived and designed the
+patients, which could help to identify potential microbial                      experiments; JL, KC, XH, CC, BT, ZW, ZH, MQ, FH, XM, CL, WT:
+markers of gut ﬂora for clinical application and to assess the                  analyzed the data; JL, KC, XH, CC, ZW, ZH, MQ, FH, XM, CL, BT,
+LVI status of CRC patients easily and accurately.                               WT: helped with reagents/materials/analysis tools; JL, XH, CC, ZW,
+     There are also some shortcomings in this study: due to                     ZH, MQ, FH, CL, KC, XM, BT, WT: contributed to the writing of
+insufﬁcient conditions, relevant basic experiments were not                     the manuscript. All authors contributed to the article and approved
+performed to verify the relationship between gut microorganisms                 the submitted version.
+and CRC-LCI. This study did not add the intestinal ﬂora of healthy
+population as a control, and it was not possible to compare the
+differences between the ﬂora of patients with various stages of CRC             Funding
+and healthy population, which was not conducive to the judgment
+of the benign and malignant degree of various enriched ﬂora. In                    Guangxi Medical and Health Appropriate Technology
+addition, the number of cases with both colorectal cancer tumor                 Development and Promotion Application Project(S2021016);
+tissue samples and stool samples was too small, and the reliability of          Guangxi Natural Science Foundation (2021JJA140081); Basic
+this study could also be improved if the number of such cases could             Research Skills Enhancement Project for Young and Middle-aged
+be increased. In the follow-up study, we will try to overcome these             Teachers in Universities in Guangxi (2021KY0087); Guangxi Medical
+shortcomings and strive to make better research results.                        University Youth Science Foundation Project(GXMUYSF202357).
+
+
+Frontiers in Cellular and Infection Microbiology                           13                                                             frontiersin.org
+Chen et al.                                                                                                                                              10.3389/fcimb.2023.1098310
+
+
+
+
+                                                                                                   SUPPLEMENTARY FIGURE 4
+Conﬂict of interest                                                                                Heat map of the correlation between the dominant ﬂora of LVI group and
+                                                                                                   chemokine receptors.
+    The authors declare that the research was conducted in the
+                                                                                                   SUPPLEMENTARY FIGURE 5
+absence of any commercial or ﬁnancial relationships that could be                                  Heat map of the correlation between the dominant ﬂora of NLVI group and
+construed as a potential conﬂict of interest.                                                      immune activation genes.
+
+                                                                                                   SUPPLEMENTARY FIGURE 6
+                                                                                                   Heat map of the correlation between the dominant ﬂora of NLVI group and
+Publisher’s note                                                                                   immunosuppressive genes.
+
+                                                                                                   SUPPLEMENTARY FIGURE 7
+    All claims expressed in this article are solely those of the authors                           Heat map of the correlation between the dominant group of NLVI and
+and do not necessarily represent those of their afﬁliated organizations,                           chemokine receptors.
+or those of the publisher, the editors and the reviewers. Any product
+                                                                                                   SUPPLEMENTARY TABLE 1
+that may be evaluated in this article, or claim that may be made by its
+                                                                                                   ADONIS test for Bray Distance of intestinal ﬂora in CRC patients in the LVI and
+manufacturer, is not guaranteed or endorsed by the publisher.                                      NLVI groups.
+
+                                                                                                   SUPPLEMENTARY TABLE 2
+                                                                                                   ADONIS test for Jaccard Distance of intestinal ﬂora in CRC patients in the LVI
+Supplementary material                                                                             and NLVI groups.
+
+                                                                                                   SUPPLEMENTARY TABLE 3
+     The Supplementary Material for this article can be found online
+                                                                                                   Results of LEfSe analysis.
+at: https://www.frontiersin.org/articles/10.3389/fcimb.2023.1098310/
+full#supplementary-material                                                                        SUPPLEMENTARY TABLE 4
+                                                                                                   KEGG functional pathways in the intestinal microbiome of CRC patients in the
+SUPPLEMENTARY FIGURE 1                                                                             LVI and NLVI groups.
+Box plot of KEGG functional abundance in the LVI group versus the NLVI
+group of CRC patients.                                                                             SUPPLEMENTARY TABLE 5
+                                                                                                   List of differential GO items of CRC patients stratiﬁed by LVI condition.
+SUPPLEMENTARY FIGURE 2
+Heat map of the correlation between the dominant ﬂora of LVI group and                             SUPPLEMENTARY TABLE 6
+immune activation genes.                                                                           List of differential KEGG pathways of CRC patients stratiﬁed by LVI condition.
+
+SUPPLEMENTARY FIGURE 3                                                                             SUPPLEMENTARY TABLE 7
+Heat map of the correlation between the dominant ﬂora of LVI group and                             Correlation between enriched GO items of CRC patients in LVI group and
+immunosuppressive genes.                                                                           LVI-associated differential intestinal microbiome.
+
+
+
+
+References
+  Allali, I., Boukhatem, N., Bouguenouch, L., Hardi, H., Boudouaya, H. A., Cadenas,                  Hill, D. A., and Artis, D. (2010). Intestinal bacteria and the regulation of immune cell
+M. B., et al. (2018). Gut microbiome of Moroccan colorectal cancer patients. Med.                  homeostasis. Annu. Rev. Immunol. 28, 623–667. doi: 10.1146/annurev-immunol-
+Microbiol. Immunol. 207, 211–225. doi: 10.1007/s00430-018-0542-5                                   030409-101330
+   AlThuwaynee, O. F., Kim, S. W., Najemaden, M. A., Aydda, A., Balogun, A.-L.,                       Hong, W., Zhou, X., Jin, S., Lu, Y., Pan, J., Lin, Q., et al. (2022). A comparison of
+Fayyadh, M. M., et al. (2021). Demystifying uncertainty in PM10 susceptibility                     XGBoost, random forest, and nomograph for the prediction of disease severity in patients
+mapping using variable drop-off in extreme-gradient boosting (XGB) and random                      with COVID-19 pneumonia: Implications of cytokine and immune cell proﬁle. Front. Cell
+forest (RF) algorithms. Environ. Sci. pollut. Res. Int. 28, 43544–43566. doi: 10.1007/             Infect. Microbiol. 12, 819267. doi: 10.3389/fcimb.2022.819267
+s11356-021-13255-4
+                                                                                                      Huang, Y., Zhu, N., Zheng, X., Liu, Y., Lu, H., Yin, X., et al. (2022). Intratumor
+  Belizá rio, J. E., and Napolitano, M. (2015). Human microbiomes and their roles in              microbiome analysis identiﬁes positive association between megasphaera and survival
+dysbiosis, common diseases, and novel therapeutic approaches. Front. Microbiol. 6,                 of Chinese patients with pancreatic ductal adenocarcinomas. Front. Immunol. 13,
+1050. doi: 10.3389/fmicb.2015.01050                                                                785422. doi: 10.3389/ﬁmmu.2022.785422
+  Breiman, L. (2001). Random forests. Mach. Learning 45, 5–32. doi: 10.1023/
+                                                                                                      Hughes, R., Magee, E. A., and Bingham, S. (2000). Protein degradation in the large
+A:1010933404324
+                                                                                                   intestine: relevance to colorectal cancer. Curr. Issues Intest Microbiol. 1, 51–58.
+   Bullman, S., Pedamallu, C. S., Sicinska, E., Clancy, T. E., Zhang, X., Cai, D., et al.
+(2017). Analysis of fusobacterium persistence and antibiotic response in colorectal                   Keating, D. J., and Spencer, N. J. (2019). What is the role of endogenous gut
+cancer. Science. 358, 1443–1448. doi: 10.1126/science.aal5240                                      serotonin in the control of gastrointestinal motility? Pharmacol. Res. 140, 50–55.
+                                                                                                   doi: 10.1016/j.phrs.2018.06.017
+   Chang, C. C., Li, Y. Z., Wu, H. C., and Tseng, M. H. (2022). Melanoma detection
+using XGB classiﬁer combined with feature extraction and K-means SMOTE                                Kim, S., Goel, R., Kumar, A., Qi, Y., Lobaton, G., Hosaka, K., et al. (2018). Imbalance
+techniques. Diagnostics (Basel) 12. doi: 10.3390/diagnostics12071747                               of gut microbiome and intestinal epithelial barrier dysfunction in patients with high
+                                                                                                   blood pressure. Clin. Sci. (Lond) 132, 701–718. doi: 10.1042/CS20180087
+   Ge, P., Wang, W., Li, L., Zhang, G., Gao, Z., Tang, Z., et al. (2019). Proﬁles of immune
+cell inﬁltration and immune-related genes in the tumor microenvironment of colorectal                 Kim, S. S., Sumner, W. A., Miyauchi, S., Cohen, E. E. W., Califano, J. A., and Sharabi,
+cancer. BioMed. Pharmacother 118, 109228. doi: 10.1016/j.biopha.2019.109228                        A. B. (2021). Role of b cells in responses to checkpoint blockade immunotherapy and
+   Hajipour, F., Jozani, M. J., and Moussavi, Z. (2020). A comparison of regularized               overall survival of cancer patients. Clin. Cancer Res. 27, 6075–6082. doi: 10.1158/1078-
+logistic regression and random forest machine learning models for daytime diagnosis of             0432.CCR-21-0697
+obstructive sleep apnea. Med. Biol. Eng. Comput. 58, 2517–2529. doi: 10.1007/s11517-                  Krishnapuram, B., Shah, M., Smola, A., Aggarwal, C., Shen, D., and Rastogi, R.
+020-02206-9                                                                                        (2016). Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge
+   Hänzelmann, S., Castelo, R., and Guinney, J. (2013). GSVA: gene set variation analysis          Discovery and Data Mining (San Francisco, California, USA: Association for
+for microarray and RNA-seq data. BMC Bioinf. 14, 7. doi: 10.1186/1471-2105-14-7                    Computing Machinery).
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                              14                                                                           frontiersin.org
+Chen et al.                                                                                                                                                     10.3389/fcimb.2023.1098310
+
+
+
+
+   Kuipers, E. J., Grady, W. M., Lieberman, D., Seufferlein, T., Sung, J. J., Boelens, P. G.,             Sharonov, G. V., Serebrovskaya, E. O., Yuzhakova, D. V., Britanova, O. V., and
+et al. (2015). Colorectal cancer. Nat. Rev. Dis. Primers 1, 15065. doi: 10.1038/nrdp.2015.65            Chudakov, D. M. (2020). B cells, plasma cells and antibody repertoires in the tumour
+   Li, L., Huang, X. Y., Li, N., Cui, M. M., and Wang, R. T. (2019). Platelet indices in                microenvironment. Nat. Rev. Immunol. 20, 294–307. doi: 10.1038/s41577-019-0257-x
+colorectal cancer patients with synchronous liver metastases. Gastroenterol. Res. Pract.                   Sheng, Q., Du, H., Cheng, X., Cheng, X., Tang, Y., Pan, L., et al. (2019).
+2019, 6397513. doi: 10.1155/2019/6397513                                                                Characteristics of fecal gut microbiota in patients with colorectal cancer at different
+  Li, P., Ling, Y. H., Zhu, C. M., Hu, W.-M., Zhang, X. K., Luo, R. Z., et al. (2015).                  stages and different sites. Oncol. Lett. 18, 4834–4844. doi: 10.3892/ol.2019.10841
+Vascular invasion as an independent predictor of poor prognosis in nonmetastatic                           Song, M., Chan, A. T., and Sun, J. (2020). Inﬂuence of the gut microbiome, diet, and
+gastric cancer after curative resection. Int. J. Clin. Exp. Pathol. 8, 3910–3918.                       environment on risk of colorectal cancer. Gastroenterology. 158, 322–340. doi: 10.1053/
+  Li, P., Zheng, J., Bai, Y., Wang, D., Cui, Z., Li, Y., et al. (2020). Characterization of             j.gastro.2019.06.048
+kynurenine pathway in patients with diarrhea-predominant irritable bowel syndrome.                         Sung, H., Ferlay, J., Siegel, R. L., Laversanne, M., Soerjomataram, I., Jemal, A., et al.
+Eur. J. Histochem 64. doi: 10.4081/ejh.2020.3132                                                        (2021). Global cancer statistics 2020: GLOBOCAN estimates of incidence and mortality
+   Mahowald, M. A., Rey, F. E., Seedorf, H., Turnbaugh, P. J., Fulton, R. S., Wollam, A.,               worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 71, 209–249. doi: 10.3322/
+et al. (2009). Characterizing a model human gut microbiota composed of members of                       caac.21660
+its two dominant bacterial phyla. Proc. Natl. Acad. Sci. U S A 106, 5859–5864. doi:                       Tepus, M., and Yau, T. O. (2020). Non-invasive colorectal cancer screening: An
+10.1073/pnas.0901529106                                                                                 overview. Gastrointest Tumors 7, 62–73. doi: 10.1159/000507701
+   Montalban-Arques, A., and Scharl, M. (2019). Intestinal microbiota and colorectal                       van Zijl, F., Krupitza, G., and Mikulits, W. (2011). Initial steps of metastasis: cell
+carcinoma: Implications for pathogenesis, diagnosis, and therapy. EBioMedicine. 48,                     invasion and endothelial transmigration. Mutat. Res. 728, 23–34. doi: 10.1016/
+648–655. doi: 10.1016/j.ebiom.2019.09.050                                                               j.mrrev.2011.05.002
+  Najaﬁ, M., Hashemi Goradel, N., Farhood, B., Salehi, E., Nashtaei, M. S.,                               Vatandoust, S., Price, T. J., and Karapetis, C. S. (2015). Colorectal cancer: Metastases
+Khanlarkhani, N., et al. (2019). Macrophage polarity in cancer: A review. J. Cell                       to a single organ. World J. Gastroenterol. 21, 11767–11776. doi: 10.3748/
+Biochem. 120, 2756–2765. doi: 10.1002/jcb.27646                                                         wjg.v21.i41.11767
+  Newman, A. M., Liu, C. L., Green, M. R., Gentles, A. J., Feng, W., Xu, Y., et al. (2015).                Wang, Y., and Li, H. (2022). Gut microbiota modulation: a tool for the management
+Robust enumeration of cell subsets from tissue expression proﬁles. Nat. Methods 12,                     of colorectal cancer. J. Transl. Med. 20, 178. doi: 10.1186/s12967-022-03378-8
+453–457. doi: 10.1038/nmeth.3337
+                                                                                                          Xia, C., Dong, X., Li, H., Cao, M., Sun, D., He, S., et al. (2022). Cancer statistics in
+ Okumura, R., and Takeda, K. (2018). Maintenance of intestinal homeostasis by                           China and united states, 2022: proﬁles, trends, and determinants. Chin. Med. J. (Engl)
+mucosal barriers. Inﬂammation Regen 38, 5. doi: 10.1186/s41232-018-0063-z                               135, 584–590. doi: 10.1097/CM9.0000000000002108
+  Osman, A., Oze, M., Aﬁfy, S. M., Hassan, G., El-Ghlban, S., Nawara, H. M., et al.                       Yang, J., and Yu, J. (2018). The association of diet, gut microbiota and colorectal
+(2020). Tumor-associated macrophages derived from cancer stem cells. Acta                               cancer: what we eat may imply what we get. Protein Cell. 9, 474–487. doi: 10.1007/
+Histochem. 122, 151628. doi: 10.1016/j.acthis.2020.151628                                               s13238-018-0543-6
+  Parker, B. J., Wearsch, P. A., Veloo, A. C. M., and Rodriguez-Palacios, A. (2020). The
+                                                                                                          Yu, Y., Cai, Y., Yang, B., Xie, S., Shen, W., Wu, Y., et al. (2022). High-fat diet
+genus alistipes: Gut bacteria with emerging implications to inﬂammation, cancer, and
+                                                                                                        enhances the liver metastasis potential of colorectal cancer through microbiota
+mental health. Front. Immunol. 11, 906. doi: 10.3389/ﬁmmu.2020.00906
+                                                                                                        dysbiosis. Cancers (Basel) 14. doi: 10.3390/cancers14112573
+   Pluth, T. B., and Brose, D. A. (2022). Comparison of random forest and multiple
+linear regression to model the mass balance of biosolids from a complex biosolids                          Yu, J. R., Chen, C. H., Huang, T. W., Lu, J.-J., Chung, C.-R., Lin, T.-W., et al. (2022).
+management area. Water Environ. Res. 94, e1668. doi: 10.1002/wer.1668                                   Energy efﬁciency of inference algorithms for clinical laboratory data sets: Green
+                                                                                                        artiﬁcial intelligence study. J. Med. Internet Res. 24, e28036. doi: 10.2196/28036
+   Pretzsch, E., Bösch, F., Neumann, J., Ganschow, P., Bazhin, A., Guba, M., et al. (2019).
+Mechanisms of metastasis in colorectal cancer and metastatic organotropism: Hematogenous                   Yu, Y. Q., Ma, L., Wang, W. J., Zhao, Y. Q., Xu, H. F., Cao, J., et al. (2022). Health-
+versus peritoneal spread. J. Oncol. 2019, 7407190. doi: 10.1155/2019/7407190                            related quality of life in advanced colorectal cancer patients in China: a nationwide
+                                                                                                        hospital-based survey. Ann. Transl. Med. 10, 328. doi: 10.21037/atm-22-991
+    Redondo-Useros, N., Nova, E., Gonzá lez-Zancada, N., Dı́az, L. E., Gó mez-Martı́nez,
+S., and Marcos, A. (2020). Microbiota and lifestyle: A special focus on diet. Nutrients.                  Zhang, C., Li, S., Yang, L., Huang, P., Li, W., Wang, S., et al. (2013). Structural
+12. doi: 10.3390/nu12061776                                                                             modulation of gut microbiota in life-long calorie-restricted mice. Nat. Commun. 4,
+                                                                                                        2163. doi: 10.1038/ncomms3163
+   Rossi, T., Vergara, D., Fanini, F., Mafﬁa, M., Bravaccini, S., and Pirini, F. (2020).
+Microbiota-derived metabolites in tumor progression and metastasis. Int. J. Mol. Sci.                      Zhang, Y. K., Zhang, Q., Wang, Y. L., Zhang, W. Y., Hu, H. Q., Wu, H. Y., et al.
+21. doi: 10.3390/ijms21165786                                                                           (2021). A comparison study of age and colorectal cancer-related gut bacteria. Front.
+   Routy, B., Le Chatelier, E., Derosa, L., Duong, C. P. M., Alou, M. T., Daillère, R., et al.          Cell Infect. Microbiol. 11, 606490. doi: 10.3389/fcimb.2021.606490
+(2018). Gut microbiome inﬂuences efﬁcacy of PD-1-based immunotherapy against                               Zheng, H., Liu, H., Li, H., Dou, W., Wang, J., Zhang, J., et al. (2022). Characterization
+epithelial tumors. Science. 359, 91–97. doi: 10.1126/science.aan3706                                    of stem cell landscape and identiﬁcation of stemness-relevant prognostic gene signature
+   Sakamoto, M., Ikeyama, N., Ogata, Y., Suda, W., Iino, T., Hattori, M., et al. (2020).                to aid immunotherapy in colorectal cancer. Stem Cell Res. Ther. 13, 244. doi: 10.1186/
+Alistipes communis sp. nov., alistipes dispar sp. nov. and alistipes onderdonkii subsp. vulgaris        s13287-022-02913-0
+subsp. nov., isolated from human faeces, and creation of alistipes onderdonkii subsp.                      Zhou, B., Szymanski, C. M., and Baylink, A. (2022). Bacterial chemotaxis in human
+onderdonkii subsp. nov. Int. J. Syst. Evol. Microbiol. 70, 473–480. doi: 10.1099/ijsem.0.003778         diseases. Trends Microbiol. doi: 10.1016/j.tim.2022.10.007
+  Schneider, N. I., and Langner, C. (2014). Prognostic stratiﬁcation of colorectal cancer                  Zhu, G., Huang, Q., Huang, Y., Zheng, W., Hua, J., Yang, S., et al. (2016).
+patients: current perspectives. Cancer Manag Res. 6, 291–300. doi: 10.2147%                             Lipopolysaccharide increases the release of VEGF-c that enhances cell motility and
+2FCMAR.S38827                                                                                           promotes lymphangiogenesis and lymphatic metastasis through the TLR4- NF-kB/JNK
+  Servin, A. L. (2004). Antagonistic activities of lactobacilli and biﬁdobacteria against               pathways in colorectal cancer. Oncotarget. 7, 73711–73724. doi: 10.18632/
+microbial pathogens. FEMS Microbiol. Rev. 28, 405–440. doi: 10.1016/j.femsre.2004.01.003                oncotarget.12449
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                                   15                                                                             frontiersin.org
+

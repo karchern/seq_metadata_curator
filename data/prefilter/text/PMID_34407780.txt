@@ -1,0 +1,853 @@
+Kværner et al. BMC Cancer      (2021) 21:930
+https://doi.org/10.1186/s12885-021-08640-8
+
+
+
+
+ STUDY PROTOCOL                                                                                                                                     Open Access
+
+The CRCbiome study: a large prospective
+cohort study examining the role of lifestyle
+and the gut microbiome in colorectal
+cancer screening participants
+Ane Sørlie Kværner1 , Einar Birkeland2, Cecilie Bucher-Johannessen2,3, Elina Vinberg2 , Jan Inge Nordby4,
+Harri Kangas5, Vahid Bemanian6, Pekka Ellonen5 , Edoardo Botteri1,2 , Erik Natvig1, Torbjørn Rognes7,8 ,
+Eivind Hovig3,7 , Robert Lyle9,10, Ole Herman Ambur11,12 , Willem M. de Vos13,14 , Scott Bultman15,
+Anette Hjartåker16, Rikard Landberg17 , Mingyang Song18,19,20 , Hege Salvesen Blix21,22 , Giske Ursin23 ,
+Kristin Ranheim Randel1, Thomas de Lange24,25,26 , Geir Hoff1,27 , Øyvind Holme1,28,29, Paula Berstad1*† and
+Trine B. Rounge2,7*†
+
+
+  Abstract
+  Background: Colorectal cancer (CRC) screening reduces CRC incidence and mortality. However, current screening
+  methods are either hampered by invasiveness or suboptimal performance, limiting their effectiveness as primary
+  screening methods. To aid in the development of a non-invasive screening test with improved sensitivity and
+  specificity, we have initiated a prospective biomarker study (CRCbiome), nested within a large randomized CRC
+  screening trial in Norway. We aim to develop a microbiome-based classification algorithm to identify advanced
+  colorectal lesions in screening participants testing positive for an immunochemical fecal occult blood test (FIT). We
+  will also examine interactions with host factors, diet, lifestyle and prescription drugs. The prospective nature of the
+  study also enables the analysis of changes in the gut microbiome following the removal of precancerous lesions.
+  Methods: The CRCbiome study recruits participants enrolled in the Bowel Cancer Screening in Norway (BCSN)
+  study, a randomized trial initiated in 2012 comparing once-only sigmoidoscopy to repeated biennial FIT, where
+  women and men aged 50–74 years at study entry are invited to participate. Since 2017, participants randomized to
+  FIT screening with a positive test result have been invited to join the CRCbiome study. Self-reported diet, lifestyle
+  and demographic data are collected prior to colonoscopy after the positive FIT-test (baseline). Screening data,
+  including colonoscopy findings are obtained from the BCSN database. Fecal samples for gut microbiome analyses
+  are collected both before and 2 and 12 months after colonoscopy. Samples are analyzed using metagenome
+  sequencing, with taxonomy profiles, and gene and pathway content as primary measures. CRCbiome data will also
+
+
+
+* Correspondence: paula.berstad@kreftregisteret.no;
+trine.rounge@kreftregisteret.no
+†
+ Paula Berstad and Trine B. Rounge contributed equally to this work.
+1
+ Section for Colorectal Cancer Screening, Cancer Registry of Norway, Oslo,
+Norway
+2
+ Department of Research, Cancer Registry of Norway, Oslo, Norway
+Full list of author information is available at the end of the article
+
+                                        © The Author(s). 2021 Open Access This article is licensed under a Creative Commons Attribution 4.0 International License,
+                                        which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give
+                                        appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if
+                                        changes were made. The images or other third party material in this article are included in the article's Creative Commons
+                                        licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons
+                                        licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain
+                                        permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+                                        The Creative Commons Public Domain Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the
+                                        data made available in this article, unless otherwise stated in a credit line to the data.
+Kværner et al. BMC Cancer   (2021) 21:930                                                                       Page 2 of 14
+
+
+
+
+ be linked to national registries to obtain information on prescription histories and cancer relevant outcomes
+ occurring during the 10 year follow-up period.
+ Discussion: The CRCbiome study will increase our understanding of how the gut microbiome, in combination with
+ lifestyle and environmental factors, influences the early stages of colorectal carcinogenesis. This knowledge will be
+ crucial to develop microbiome-based screening tools for CRC. By evaluating biomarker performance in a screening
+ setting, using samples from the target population, the generalizability of the findings to future screening cohorts is
+ likely to be high.
+ Trial registration: ClinicalTrials.gov Identifier: NCT01538550.
+ Keywords: Diet, Lifestyle, Prescription drugs, Gut microbiome, Metagenomics sequencing, Biomarkers, Screening,
+ FIT, iFOBT, Colonoscopy, Adenoma, Colorectal cancer, Advanced neoplasia
+
+
+Background                                                      given the great potential for cancer prevention following
+Colorectal cancer (CRC) is a major global health burden,        removal of these lesions. There is also evidence that
+accounting for nearly 10% of all cancers diagnosed and          current screening methods perform worse for right-sided
+cancer-related deaths each year [1]. Although a decline         tumors, compared to left-sided ones [24], as well as in
+in the age-standardized mortality rate has been observed        women compared to men [25, 26]. Thus, there is a re-
+over the past two to three decades in many countries            quirement for screening methods and tools with improved
+[2–4], death rates remain high, particularly when diag-         performance for the entire screening population.
+nosed at later stages (5-year survival rate of 13% for             Both observational and experimental evidence point to
+metastatic disease compared to 90% when diagnosed at            an important role of the gut microbiome in development
+a localized stage) [1, 5]. The significant contribution to      and progression of CRC [27]. Numerous studies have
+global cancer deaths, together with the worrying rise in        demonstrated differences in the gut microbiome of
+incidence rates seen globally [3], especially the recent in-    tumor and adjacent non-tumor tissue [28, 29], as well as
+crease among younger age groups [6, 7], highlights the          in stool samples from CRC patients and healthy controls
+need for widespread prevention strategies that are both         [30–38]. Typically, the presence of a colorectal tumor
+effective and feasible on a large-scale basis.                  has been associated with enrichment of pathogenic bac-
+   There are two major precursor lesions of CRC: aden-          terial species, such as F. nucleatum, E. coli and B. fragi-
+omatous polyps, accounting for the majority of cases,           lis, and depletion of potentially protective bacteria (e.g.
+and serrated lesions, estimated to underlie up to 30% of        producers of short chain fatty acids (SCFAs)) [27]. Al-
+CRC [8]. The progression of precursor lesions to CRC is         though less studied, there are reports indicating that
+a long-term process, spanning a period of 10–15 years           subjects with precancerous lesions display shifts in their
+for most lesions [9]. During this long latency period,          microbial profiles [30, 33, 39], suggesting the presence of
+most cancers develop asymptomatically, making them              microbial changes at early stages of colorectal
+difficult to detect at a preclinical stage. Therefore, inter-   carcinogenesis.
+national guidelines recommend screening, with the aim              The gut microbiome is heavily influenced by the envir-
+of detection and removal of precancerous lesions to pre-        onment [40]. Established risk factors for CRC, such as
+vent cancer from occurring, or to detect cancer at the          excess body weight, physical inactivity and a Western
+earliest stage possible [10–13].                                dietary pattern (typically high in red and processed meat
+   Screening has been shown to reduce both CRC inci-            and low in whole grains and dietary fiber) and protective
+dence [14–17] and mortality [14–21] in randomized con-          factors, such as dairy products and use of certain medi-
+trolled trials, even though current screening methods have      cations (e.g. aspirin/NSAIDs and metformin) are sug-
+known limitations [22]. At present, the most commonly           gested to modify the gut microbiome [41]. At the same
+used screening method is the fecal immunochemical test          time, accumulating evidence indicates that modifications
+(FIT) for occult blood, having mostly replaced the less         of the gut microbiome may allow environmental risk
+sensitive guaiac-based fecal occult blood test (gFOBT)          factors to induce malignant transformation [42, 43]. This
+[23]. Despite being more sensitive, performance character-      highlights the complex relationship between the envir-
+istics are still suboptimal with regards to sensitivity and     onment and the microbiome in the etiology of CRC.
+specificity, resulting in both missed neoplasms and un-            The connection between a potentially pathogenic gut
+necessary colonoscopy referrals [22]. Of particular con-        microbiome and CRC has resulted in a growing interest
+cern has been the limited performance in detecting              in the use of gut microbial biomarkers as screening tests
+precancerous lesions, representing a missed opportunity         for early detection of precancerous and cancerous
+Kværner et al. BMC Cancer   (2021) 21:930                                                                      Page 3 of 14
+
+
+
+
+lesions. Several studies have shown that combining             (i.e. hemoglobin > 15 mcg/g feces), are referred for
+microbiome data with the results of established screen-        follow-up colonoscopy at their local screening center.
+ing methods, such as gFOBT or FIT, substantially in-           Neoplastic lesions detected as part of the screening
+crease the ability to classify groups of individuals           examination are removed during colonoscopy or elective
+with healthy colons, adenoma and CRC [30, 33, 34].             surgery, if necessary. Biennial FIT testing is discontinued
+Two recent meta-analyses of metagenome data                    for those having undergone colonoscopy following a
+showed that both taxonomic and functional gut mi-              positive FIT test.
+crobial profiles predicted CRC at time of diagnosis               The CRCbiome study recruits participants from the
+with high accuracy [44, 45].                                   BCSN trial who receive a positive FIT test. FIT positive
+  Although results from previous biomarker studies are         participants are selected since they are referred to
+promising, no microbial biomarkers are currently used          follow-up colonoscopies in line with the BCSN study
+in national screening programs. In order to advance the        protocol and will have detailed clinicopathological infor-
+utility of the gut microbiome in screening, additional         mation. Conversely, as no diagnostic information is
+data from prospective studies are needed.                      available for those with a negative FIT test, these are not
+                                                               included in the CRCbiome study. Of note, as recruit-
+Objectives                                                     ment for the CRCbiome study started five years after
+The primary aim of the CRCbiome study is to develop a          commencement of the BCSN trial, those with positive
+classification algorithm for identification of advanced        FIT findings in the first and initial part of the second
+colorectal lesions based on the screened individuals’ gut      round of screening in the BCSN were not invited. Even
+metagenome, demographics and lifestyle. Secondary              so, due to incomplete participation in the first round of
+aims are to provide a deeper understanding of how the          FIT testing, 10% of the CRCbiome participants had their
+gut microbiome evolves prior to a cancer diagnosis, as         inclusion sample as their first screening test.
+well as its interactions with host, lifestyle and environ-        Participants are invited to the CRCbiome study prior
+mental factors:                                                to their colonoscopy examination. The invitation in-
+                                                               cludes an information letter and two questionnaires (fur-
+  I. Identification of associations of the gut microbiome      ther details given below). FIT-positive fecal samples
+       with advanced colorectal lesions, defined as            from the BCSN are retrieved following enrolment and
+       presence of advanced adenomas, advanced serrated        represent the baseline sample of the CRCbiome study.
+       lesions or CRC, at baseline                             Participants are thereafter contacted 2 and 12 months
+  II. Examination of interactions of the gut microbiome        after colonoscopy for collection of follow-up fecal sam-
+       with host factors, diet, lifestyle and medication use   ples using the same sampling method. Fecal samples are
+       on risk of advanced colorectal lesions at baseline      processed for microbiome analysis as they become avail-
+  III. Description of changes in the gut microbiome            able to the project.
+       following removal of precursor lesions of CRC              Based on the colonoscopy examination, participants
+                                                               are categorized into diagnostic groups ranging from no
+  Long-term outcomes (i.e. incidence and mortality of          pathological findings to presence of advanced lesions
+advanced colorectal lesions) will be examined by means         and CRC. The groups selected for analyses will vary de-
+of passive follow-up using data from the national regis-       pending on aim (see Outcome variables for a complete
+tries. The outcome assessment will be aligned with the         description of outcomes).
+10 year follow-up of the Bowel Cancer Screening in                Data collected in the CRCbiome study will be linked
+Norway (BCSN) trial [46], from which the CRCbiome              to national registries, including the Norwegian Prescrip-
+study recruits participants.                                   tion Database [47] and the Cancer Registry of Norway
+                                                               [48]. An overview of the study design is shown in Fig. 1.
+Methods                                                        The design and handling of data in the CRCbiome study
+Study design                                                   is in accordance with the STROBE guidelines for obser-
+The CRCbiome study is a prospective cohort study               vational and metagenomics studies [49–51].
+nested within the BCSN trial, which is a pilot for a na-
+tional screening program, organized by the Cancer              Participants and eligibility
+Registry of Norway. The BCSN study is designed as a            The BCSN trial includes 139,291 women and men aged
+randomized trial comparing once-only sigmoidoscopy             50–74 years in 2012, living in South-East Norway. Of
+with FIT tests every two years for a maximum of four           these, 70,096 have been randomized to FIT screening.
+rounds [46]. The trial was started in 2012, with follow-       So far, the cumulative participation rate for the first
+up FIT rounds scheduled to be completed in 2024. Par-          three FIT rounds has been 68% [46]. All screening par-
+ticipants randomized to the FIT group who test positive        ticipants with a positive FIT test are eligible for the
+Kværner et al. BMC Cancer     (2021) 21:930                                                                                       Page 4 of 14
+
+
+
+
+ Fig. 1 Flowchart of the CRCbiome study, nested within the BCSN. Abbreviations: BCSN, Bowel Cancer Screening in Norway; CRN, Cancer Registry
+ of Norway; FIT, fecal immunochemical test; FU, follow-up; NorPD, Norwegian Prescription Database
+
+
+
+CRCbiome study. Recruitment for the CRCbiome study                       has been scheduled. Invitations to the CRCbiome study,
+started in 2017, and will continue until a minimum of                    including the two questionnaires, are sent out by mail a
+2700 participants have been invited. So far, 2426 have                   minimum of four days prior to the colonoscopy. Return-
+been invited and 1413 (58%) have agreed to participate.                  ing at least one of the two questionnaires is regarded as
+With the current participation rate, we expect recruit-                  a consent to the study, and includes permission to col-
+ment to be completed by March 2021 with a final num-                     lect, analyze and store fecal samples, and to retrieve in-
+ber of participants of about 1600 (see below for the                     formation from questionnaires and health registries.
+sample size considerations). Recruitment bias will be                      Both the BCSN trial and the CRCbiome study have
+evaluated by comparing key characteristics of the in-                    been approved by the Regional Committee for Medical
+cluded participants, such as age, sex and BMI, with those                Research Ethics in South East Norway (Approval no.:
+of the BCSN.                                                             2011/1272 and 63,148, respectively). The BCSN is also
+  The main inclusion and exclusion criteria for the                      registered at clinicaltrials.gov (Clinical Trial (NCT) no.:
+BCSN trial and the CRCbiome study are listed in                          01538550).
+Table 1.
+                                                                         Outcome variables
+Recruitment of participants                                              For the first two aims, the outcome variable will be de-
+Eligible subjects are invited after being informed about                 fined based on the colonoscopy result. Participants will
+their positive FIT test and a colonoscopy appointment                    be grouped into four main categories: no confirmed
+Kværner et al. BMC Cancer            (2021) 21:930                                                                                                       Page 5 of 14
+
+
+
+
+Table 1 Inclusion and exclusion criteria in the BCSN trial and                       Table 2 Main outcomes of the screening colonoscopy among
+CRCbiome study                                                                       CRCbiome participants with preliminary distribution in
+Inclusion criteria                                                                   percentages as of November 2020
+    BCSN        Aged 50–74 years old in 2012                                         Colonoscopy result                                                 Percentagesa
+
+                Resident in selected municipalities in South-East Norway             FIT+, no colonoscopy                                                     3.6
+                (Østfold, parts of Akershus and parts of Buskerud)                   Group 1
+             FIT positive test (i.e. hemoglobin > 15 mcg/g feces) and                    Negative                                                            11.2
+    CRCbiome invited to a follow-up colonoscopy                                                                    b
+                                                                                         Polyp without histology                                              2.4
+Exclusion criteria
+                                                                                         Non neoplastic findings                                             18.2
+    BCSNa       Death
+                                                                                     Group 2
+                Moving out of the area
+                                                                                         Non-advanced serrated lesionsc                                       6.4
+                Reaching the upper age limit
+                                                                                         Non-advanced adenomas (< 3)                                         23.6
+                Diagnosed with CRC
+                                                                                         Non-advanced adenomas (≥3)                                           8.4
+                Not attending screening colonoscopy
+    CRCbiome                                                                         Group 3
+                Low DNA concentration                                                    Advanced serrated lesionsd                                           4.4
+                                                                                                              e
+                Low sequencing yield (< 2 gigabases)                                     Advanced adenoma                                                    18.1
+a
+ Exclusion criteria apply for individuals who died, moved out of the area, reached   Group 4
+the upper age limit, or were diagnosed with CRC before they were due
+                                                                                         CRCf                                                                 3.6
+for invitation
+                                                                                     a
+                                                                                       An extended version of this table, with colonoscopy result by FIT round, is shown
+                                                                                     in Additional file 1 (Supplementary Table 2). In cases of multiple findings,
+                                                                                     participants are allocated to the most severe group. Numbers will therefore add
+neoplastic findings (Group 1); non-advanced lesions                                  up to 100%
+(Group 2); advanced lesions (Group 3); and CRC (Group                                b
+                                                                                       Polyps lost during colonoscopy or where the endoscopist considers biopsy
+4) (Table 2). The advanced lesions group consists of                                 unnescessary, for example hyperplastic polyps in the rectum
+                                                                                     c
+                                                                                       Includes hyperplastic polyps with size < 10 mm and sessile serrated lesions
+both advanced adenomas (any adenoma with villous                                     without dysplasia and size < 10 mm
+histology, high-grade dysplasia or polyp size greater than                           d
+                                                                                       Defined as any serrated lesions with size ≥ 10 mm or dysplasia
+                                                                                     e
+                                                                                       Defined as any adenoma with either villous histology (≥25% villous
+or equal to 10 mm) and advanced serrated lesions (any                                components), high-grade dysplasia or polyp size greater than or equal to
+serrated lesion with size ≥10 mm or dysplasia). In                                   10 mm [52]
+                                                                                     f
+addition to separating by stage of the carcinogenic                                   Defined as presence of adenocarcinoma arising from the colon or rectum.
+                                                                                     Collectively, advanced adenoma or CRC are referred to as advanced
+process, we may further subdivide lesions by clinicopath-                            neoplasia [52]
+ological features, including histopathological subtype
+(e.g. adenomas versus serrated lesions) and site of occur-                           colonoscopies and CT colonographies, comorbidities,
+rence (proximal versus distal colon). Also of interest is                            drug use, gastrointestinal symptoms, smoking habits,
+the potential for distinct roles of environmental factors                            and body weight and height (Table 3). A variety of data
+and the gut microbiome in the two main pathways of                                   are collected in relation to the follow-up colonoscopy,
+colorectal carcinogenesis: the adenoma-carcinoma path-                               including screening outcomes (i.e. presence and clinico-
+way, and the serrated carcinoma pathway.                                             pathological characterization of detected lesions) and
+  For the third aim, the outcome variable will be defined                            characteristics relevant to the endoscopic procedure
+based on the metagenome data. We will monitor several                                (Table 3). For all lesions detected; size, location, appear-
+aspects of the gut microbiome to describe the presence                               ance, technique used for removal and tissue sampling,
+of bacterial strains and the functional potential in paired                          and completeness of removal, are recorded. Both the
+samples during re-establishment of the gut microbiome                                medical history data and data collected as part of the
+following bowel cleansing and colonoscopy.                                           follow-up colonoscopy, are entered into a dedicated
+  Long-term effects in the study will be assessed 10 years                           database by the responsible health care provider. A
+after recruitment is completed. This will include an in-                             complete overview of the data collected in the BCSN
+vestigation of incidence and mortality of advanced colo-                             trial can be found elsewhere [46].
+rectal lesions.
+                                                                                     Biological sampling and gut microbiome analysis
+Clinical data, biological sampling and questionnaires
+Assessment of clinical data                                                          FIT sampling and storage Sampling kits for stool sam-
+As part of the BCSN [46], participants are contacted by                              ple collection are mailed to the participants three times
+a study nurse prior to follow-up colonoscopy, to obtain                              during the study period, with the first sample being the
+information on medical history. This includes prior                                  positive BCSN FIT sample. No restrictions on diet or
+                                                                                                                                                                                                          Kværner et al. BMC Cancer
+
+
+Table 3 Data sources and output generated in the CRCbiome study
+                                                                                                                                                                               Time pointsa
+                                                                                                                                                                   Baseline 2 months 12 months 10 years
+Clinical data                                                                                                                                                                                             (2021) 21:930
+    Medical history                  Prior colonoscopies and CT colonographies, comorbidities (3 items), drug use (6 items), gastrointestinal symptoms                x
+                                     (9 items), smoking habits (1 item) and body weight and height
+    Screening specific data          FIT value, endoscopic findings, histopathology and clinical diagnoses, type of procedure and bowel preparation used,             x
+                                     degree of bowel cleansing, intubation level, duration of colonoscopy, use of sedation or analgesia, reason for ending
+                                     the examination, if necessary, and recommended surveillance
+Biological samples
+    Fecal samples                    Gut microbiome profile, including taxonomic and functional profiles                                                              x        x         x
+Questionnaires
+    Lifestyle and demographics Demographic factors (i.e. national background, marital status, education and occupation), smoking and snus habits                      x
+    (LDQ)                      (up to 5 questions each), physical activity (hours spent on physical activity of light, moderate and high intensity per
+                               week and presence of chronic diseases restricting ability of being physically active), use of regular and cultured milk
+                               (two frequency questions), mode of delivery at birth, removal of the appendix, recent use of medications (i.e. antibiotic
+                               and antacid usage the last three months), presence of chronic bowel disorders and food intolerances (closed and
+                               open format questions) and presence of CRC among
+                               first-degree relatives
+    Diet (FFQ)                       Energy intake, intake of macro and micronutrients, frequency and/or amounts of 256 foods and drinks consumedb,                   x
+                                     dietary patterns, including meal pattern, body weight and height
+Registry data
+    Cancer registry                  Cancer incidence and mortality, clinicopathological characteristics, information on treatment regimens                           x                  x         x
+    Prescriptions database           Complete prescription history since 2004                                                                                         x                  x
+a
+ In cases of multiple screening colonoscopies, the time of the 2 and 12 months follow-up visits is defined based on the first and last colonoscopy, respectively
+b
+ A complete overview of the food items included in the FFQ is given in Additional file 1 (Supplementary Table 1)
+
+
+
+
+                                                                                                                                                                                                          Page 6 of 14
+Kværner et al. BMC Cancer   (2021) 21:930                                                                      Page 7 of 14
+
+
+
+
+medication use are required prior to sampling. Stool is       10 mM Tris-HCl, pH 8.5, and DNA concentrations are
+collected using plastic sticks, which collect about 10 mg     determined by Quant-iT PicoGreen dsDNA Assay Kit
+stool. The stool is then stored in 2 ml of buffer contain-    (Thermo Fisher Scientific, Waltham, MA, USA). The
+ing HEPES (4-(2-hydroxyethyl)-1-piperazineethanesulfo-        samples are normalized to a maximum concentration of
+nic acid), BSA (Bovine serum albumin) and sodium              3.3 ng/μl, resulting in DNA inputs of 25 ng or less.
+azide. Samples are then packed in padded envelopes and           Sequencing libraries are prepared according to the
+returned by mail to a laboratory at Oslo University Hos-      Nextera DNA Flex Library Prep Reference Guide (v07)
+pital for analysis and further storage at − 80 °C. Shipping   (Illumina, San Diego, CA, USA), with the exception that
+time is estimated to 3–10 days. Immunochemical testing        the reaction volumes are scaled down to ¼ of the proto-
+for blood in feces is performed continuously using the        col volumes. The libraries are amplified according to the
+OC-Sensor Diana (Eiken Chemical, Tokyo, Japan) as             protocol with 7 PCR cycles. All the library preparation
+samples are received at the laboratory.                       steps are performed on a Microlab STARlet (Hamilton
+                                                              Company, Reno, NV, USA) and Biomek NXP (Beckman
+DNA extraction We have shown that fecal matter col-           Coulter Life Sciences, Indianapolis, IN, USA) liquid han-
+lected in the FIT sampling procedure yields comparable        dlers running custom scripts.
+microbial diversity and composition to fresh frozen stool        DNA concentrations of the finished libraries are deter-
+samples [53].                                                 mined with Quant-iT PicoGreen dsDNA Assay. Libraries
+  Thawed samples are transferred to three 500 ml ali-         are combined into pools containing 240 libraries with
+quots from the sampling bottle using a blood sampling         4.5 ng of each library using Echo 525 Acoustic Liquid
+needle (Vacuette) perforating the plastic lid. Samples are    Handler (Beckman Coulter Life Sciences, Indianapolis,
+stored at − 80 °C until further processing.                   IN, USA). Library pools are size-selected to a fragment
+  Extraction of DNA is carried out using the QIAsymph-        size range between 650 and 900 bp using BluePippin
+ony automated extraction system, using the QIAsymph-          (Sage Science Beverly, MA, USA).
+ony DSP Virus/Pathogen Midikit (Qiagen), after an off-           Sequencing is performed with the Illumina NovaSeq
+board lysis protocol with some modifications. Each sam-       system using S4 flow cells with lane divider (Illumina, San
+ple is lysed with bead-beating: a 500 μl sample aliquot is    Diego, CA, USA). Each pool is sequenced on a single lane.
+transferred to a Lysing Matrix E tube (MP Biomedicals)        Read length for the paired-end run is 2 × 151 bp.
+and mixed with 700 μl phosphate-buffered saline (PBS)
+buffer. The mixture is then shaken at 6.5 m/s for 45 s.       Processing and analysis of sequencing data Sequen-
+After the bead-beating, 800 μl of the sample is mixed         cing data are transferred to a platform for secure storage
+with 1055 μl of off-board lysis buffer (proteinase K, ATL     and analysis of sensitive research-related data at the Uni-
+buffer, ACL buffer and nuclease-free water) as recom-         versity of Oslo [54]. The analysis of metagenomic se-
+mended by Qiagen. The sample is incubated at 68 °C for        quencing data is handled in a uniform manner using a
+15 min for lysis. Nucleic acid purification is performed      customizable workflow manager [55]. To establish a
+on the QIAsymphony extraction robot using the Com-            quality-filtered dataset, standard filters are applied: se-
+plex800_OBL_CR22796_ID 3489 protocol, a modified              quences corresponding to adapters used in library prep-
+version of the Complex800_OBL_V4_DSP protocol.                aration, being of low quality [56] and those mapping to
+Purified DNA is eluted in 60 μl AVE-buffer (Qiagen).          the human genome [57], with subsequent quality control
+DNA purity is assessed using a Nanodrop2000 (Thermo           of filtered sequencing reads [58].
+Fisher Scientific, USA), and the concentration is mea-          Taxonomic classification and determination of micro-
+sured by Qubit (Thermo Fisher Scientific, USA).               bial gene content, including functional annotation (e.g.
+                                                              using gene ontology and KEGG databases) will be per-
+Metagenome sequencing Libraries for metagenome se-            formed using publicly available tools. Abundance mea-
+quencing are prepared from extracted DNA at the se-           sures will be used to calculate taxonomic and functional
+quencing laboratory of the Institute for Molecular            alpha and beta diversity, as well as serving as input for ma-
+Medicine Finland FIMM Technology Centre, University           chine learning approaches aimed at producing classifiers
+of Helsinki (P.O. Box 20, University of Helsinki, Finland)    for high-risk individuals in a data-driven manner. Further
+using Illumina sequencing, with the aim of producing 3        metagenome-derived measures may include identification
+gigabases of DNA sequence per sample.                         of metagenome-assembled genomes, strain-level analysis
+  In details, 29 μl of extracted DNA is purified and con-     and description of the gut virome.
+centrated by adding an equal volume of AMPure XP
+(Beckman Coulter Life Sciences, Indianapolis, IN, USA).       Questionnaires
+Purification is then performed as per the manufacturer’s      Two questionnaires are used to collect data on diet, life-
+instructions. The purified samples are eluted to 17 μl of     style and demographic information; a food frequency
+Kværner et al. BMC Cancer   (2021) 21:930                                                                       Page 8 of 14
+
+
+
+
+questionnaire (FFQ) and a general lifestyle and demo-            dietary indices such as the 2018 World Cancer Research
+graphics questionnaire (LDQ). Self-reported dates of ques-       Fund/American Institute for Cancer Research (WCRF/
+tionnaire completion are registered in the project               AICR) index for adherence to cancer prevention recom-
+database. Returned questionnaires are reviewed manually          mendations [70].
+before scanning and further processing. In cases of low-
+quality data, participants are contacted for clarification.      Assessment of lifestyle and demographic data Life-
+                                                                 style and demographic data are assessed using a four
+Assessment of dietary intake Dietary intake is assessed          page questionnaire based on questions used in previous
+using a semiquantitative, 14-page FFQ, designed to as-           national surveys [71, 72]. Prior to the study start, the
+sess the habitual diet during the preceding year. The            questionnaire was piloted in a targeted population and
+questionnaire is a modified version of an FFQ developed          adjusted based on feedback from pilot study participants.
+and validated by the Department of Nutrition, University         The questionnaire has ten main questions covering
+of Oslo [59–64]. The questionnaire has been validated            demographic factors (national background, education,
+for both energy intake [59–61], intake of macro and              occupation and marital status), diagnosis of CRC among
+micronutrients [59, 61, 64], as well as selected food            first-degree relatives, presence of chronic bowel disor-
+items and groups [61–64]. The questionnaire includes             ders and food intolerances, removal of the appendix,
+23 main questions, covering a total of 256 food items, as        mode of delivery at birth, smoking and snus (i.e. smoke-
+well as a free-text field for entries of food items not cov-     less tobacco) habits, recent use of medications, the past
+ered by the questionnaire. For each food item (except            years’ physical activity level and use of regular and cul-
+one on preferred types of fat for cooking), participants         tured milk, which is not completely covered in the FFQ
+are asked to record frequency of consumption, ranging            (see Table 3 for a detailed overview). In the questions
+from never/seldom to several times a day, and/or                 concerning smoking and snus habits, participants are
+amount, typically as portion size given in various house-        asked to recall their current habits, including the daily
+hold units (e.g. deciliters, glasses, cups, spoons). In total,   number of cigarettes/snus portions, as well as years since
+there are 249 questions on frequency, 204 on portion             possible cessation and total years of use. Questionnaires
+size, one on preferences and nine other, mostly related          are scanned and processed using the Cardiff TeleForm
+to meal patterns (Additional file 1, supplementary               program (InfoShare, Oslo, Norway).
+Table 1).
+   As with any dietary assessment method, the FFQ is
+prone to errors due to inaccurate reporting and missing          Registry data
+answers. Therefore, to mitigate such errors, a standard-         Data collected in the CRCbiome study will be linked to
+ized framework for how to review and evaluate FFQ                national registries, including the Norwegian Prescription
+quality has been developed. A detailed overview of the           Database and the Cancer Registry of Norway, using per-
+framework is given in Additinoal file 2, supplementary           sonal identification numbers. Complete data linkages
+Fig. 1. In brief, incoming FFQs are reviewed by trained          will be undertaken twice during active follow-up: after
+personnel according to a set of predefined criteria. Scan-       all participants have completed baseline and diagnostic
+ning of questionnaires is performed using the Cardiff            information from follow-up colonoscopies is available,
+TeleForm program (Datascan, Oslo, Norway). The diet-             and then after the one-year follow-up is completed. In
+ary calculation system KBS (short for “Kostberegnings-           addition, linkage to the Cancer Registry of Norway will
+system”), developed at the Department of Nutrition,              be performed at least once during the 10 year follow-up
+University of Oslo, is used to calculate food and nutrient       period.
+intake. The latest version of the food database (i.e. AE-
+18 or newer) will be used, which is largely based on the         Norwegian prescription database
+Norwegian Food Composition Table [65]. In line with              The Norwegian Prescription Database [73] will be used
+common practice in nutrition studies, missing answers            to obtain information on medication history prior to
+are imputed as zero intake [61, 63, 66, 67] and observa-         CRC screening, and during the first year of follow-up.
+tions with extreme energy intake levels in both the              The registry contains data on all medications prescribed
+upper and lower range will be excluded [68].                     to Norwegian citizens since 2004. Prescription drugs are
+   The main focus of the dietary analyses will be on foods       categorized according to the Anatomical Therapeutic
+and drinks linked to the risk of CRC and its precursor           Chemical (ATC) system, a hierarchical classification sys-
+lesions, including intakes of alcohol, red and processed         tem developed by the WHO [74, 75]. For each drug, the
+meat, wholegrains, foods containing dietary fiber, dairy         number of packages dispensed, the number of defined
+products and calcium supplements [69]. Dietary intake            daily doses (DDD), the prescription category, and the
+will also be studied holistically by employing various           date of dispensing are registered.
+Kværner et al. BMC Cancer      (2021) 21:930                                                                                          Page 9 of 14
+
+
+
+
+   Linkage to the Norwegian Prescription Database en-                      registration period 2001–2005) [77]. According to recent
+ables an in-depth analysis of associations between drug                    estimates, about 93% of all cancer cases and ≥ 95% of
+use, the gut microbiome and advanced colorectal lesions.                   cancers in the colon and rectum are morphologically
+Initially, we will perform drug-wide association analyses                  verified [48]. Cancer diagnoses are recorded using the
+to screen for potential associations, adjusting for key co-                International Classification of Diseases, version 10 (ICD-
+variates. Detected associations will then be examined in                   10). Mortality data in the registry are obtained from the
+detail, including a more refined categorization of drug                    Cause of Death Registry and coded using the same ICD-
+variables, robust covariate adjustments as well as the                     10 categories as for the incidence data.
+analysis of timing and dose-response relations. Prescrip-
+tion histories will also be used as a proxy for life-long                  Data processing and management
+burden of chronic diseases. To examine the representa-                     To facilitate project administration, including recruit-
+tiveness of the drug profiles discoverd in the CRCbiome                    ment and follow-up of participants, custom software has
+study, a randomly selected control group drawn from                        been developed. This application communicates with
+the National Population Registry, might be included.                       two project specific databases (i.e. the BCSN and
+                                                                           CRCbiome databases). Only authorized data manager
+Cancer registry of Norway                                                  personnel have complete access to the datasets. A sim-
+Information on clinicopathological characteristics, can-                   plified version of the data generation process is depicted
+cer therapy, as well as outcomes assessed as part of pas-                  in Fig. 2.
+sive follow-up, will be obtained from the Cancer                             In line with common practice for linkage with national
+Registry of Norway [76]. The Cancer Registry of Norway                     registries [78], linked data will receive unique ID num-
+has recorded incident cancer cases on a nationwide basis                   bers specific to the particular project. Linkage of re-
+since 1953 and has been shown to have accurate and al-                     search data will be performed by the data controller. For
+most complete ascertainment of cases (98.8% for the                        the metagenome data, which due to its size cannot be
+
+
+
+
+ Fig. 2 Simplified version of the data generation process in CRCbiome. The figure is created based on free images from Servier Medical Art
+ (Creative Commons Attribution Liscence, creativecommons.org/liscences/by/3.0/) and Stockio (https://www.stockio.com/)
+Kværner et al. BMC Cancer   (2021) 21:930                                                                     Page 10 of 14
+
+
+
+
+transferred using ordinary methods, linkage will be per-        with normal findings in the test set. Based on initial re-
+formed in-house by an independent data manager with-            cruitment, we expect a participation rate of 58%, with
+out access to other parts of the data than those strictly       26% of participants having findings of advanced lesions
+necessary for linkage.                                          or CRC (Table 2). By inviting 2700 FIT-positive BCSN
+   All data collected in the CRCbiome study will be             participants, and splitting the training and test sets 80/
+stored and analyzed at a platform for secure handling of        20, a projected number of 1253 and 313 participants will
+sensitive research-related data, operated by the Univer-        constitute the training and test sets, respectively, which
+sity of Oslo [54]. Access to research data for external in-     will include adequate numbers of participants with both
+vestigators, or use outside of the current protocol, will       advanced colorectal lesions and normal findings in the
+require approval from the Norwegian Regional Commit-            test set. With this sample size, we will also be able to
+tee for Medical and Health Research Ethics and a data           perform stratified analyses. The machine learning ana-
+access committee (information available on the project          lyses will be complemented by various multivariate re-
+web site [79]). Research data are not openly available be-      gression analyses, stratified by the covariates outlined
+cause of the principles and conditions set out in articles      above.
+6 [1] (e) and 9 [2] (j) of the General Data Protection
+Regulation (GDPR).                                              Discussion
+                                                                CRC remains a major public health challenge with sub-
+Statistical analyses and sample size considerations             stantial personal and societal costs [22]. Screening is an
+The number of participants to include was chosen with           effective measure to reduce disease burden [22]. How-
+the aim of providing adequate power for the develop-            ever, current screening methods suffer from limitations,
+ment of a highly sensitive classification algorithm via         limiting the number of preventable cases. Innovative use
+data-driven analyses of gut metagenomes that will accur-        of currently available methods represents a promising
+ately identify FIT-positive individuals in need of clinical     avenue for improvements in CRC prevention [22]. The
+intervention.                                                   current study is designed to contribute to the develop-
+   The classifier will be trained using counts of taxo-         ment of microbial biomarkers, using metagenome se-
+nomic units, signature and genes categorized according          quencing and comprehensive questionnaire and registry
+to gene ontology or pathway membership from meta-               data for improved detection of advanced lesions and
+genomes, FFQ, demographic and lifestyle data as input           CRC in a FIT-positive population. The CRCbiome study
+variables, and advanced colorectal lesions as outcome           is unique in that it uses data from the screening popula-
+(i.e. group group 3 and group 4, Table 2). The CRC risk         tion to develop relevant biomarkers.
+classification will be done using machine learning algo-           The idea of using microbial biomarkers to increase the
+rithms suited to metagenome data, such as lasso regres-         performance of CRC screening has received increased
+sion [80], support-vector machines [81], random forests         attention with the adoption of high-throughput
+[82], multi-layer perception neural networks [83] and           characterization of the gut microbiome. Ideally, combin-
+scalable tree boosting [84] algorithms. Evaluation of the       ing microbial biomarkers with FIT testing could achieve
+classifier will be conducted in a leave-out test set. As        the sensitivity of direct visualization methods and the
+outlined below, we believe that with sufficient sample          uptake of non-invasive fecal tests. Several studies have
+size, development of a classifier with a sensitivity of 0.95    demonstrated improved ability to discriminate individ-
+is achievable in the training set, being within the range       uals with healthy colons from those with advanced neo-
+of published reports [30, 33].                                  plasia when adding microbial biomarkers in the
+   Interpretation of the classifier will be sought by post      prediction model, more so for carcinoma (area under
+hoc analysis, quantifing the importance of individual fea-      the curve (AUC) of 0.87–0.97 [30, 33, 34]) than aden-
+tures (taxa, genes and pathways) in making predictions.         oma (AUC of 0.76 [33]). Despite great promise, these
+Stratified analyses will be done to evaluate the classifier     studies have typically been limited by small sample sizes
+within different subgroups of the population (e.g. by age       [30, 32–34], cross-sectional designs [30–34], use of sub-
+group, sex and screening center).                               optimal or low-resolution methods to study the gut-
+   With a projected classifier sensitivity of 0.95 and a        microbiome [30–33] and lack of data on important con-
+minimally acceptable sensitivity of 0.8, at 80% power and       founders [30–34]. The CRCbiome study seeks to address
+95% confidence level, 50 participants with advanced             several of these shortcomings.
+colorectal lesions are required in the test set [85]. Classi-      Major strengths of the CRCbiome study include its
+fier specificity in the setting of FIT-positive individuals     large sample size and prospective nature, use of state of
+will have a lower requirement, and we therefore set the         the art methodology for studying the gut microbiome
+expected classifier specificity to 0.75 and a minimally ac-     and access to detailed information on likely confounders
+ceptable specificity of 0.6, thus requiring 100 participants    of the relationship between the gut-microbiome and
+Kværner et al. BMC Cancer   (2021) 21:930                                                                                     Page 11 of 14
+
+
+
+
+advanced colorectal lesions. A further strength of the            The CRCbiome study represents a valuable source of
+study is in its organization and logistics structure, being     data for further research. An example is access to
+nested within the BCSN. The immediate availability of           complete prescription histories from the Norwegian Pre-
+clinically verified outcome data, via follow-up colonos-        scription Database that enables in-depth analyses of as-
+copies and cancer registry data, allow for prospective in-      sociations between a broad range of medications,
+vestigations on multiple outcomes relevant to the               microbial features and neoplasia risk, both during short
+screening population (e.g. polyp recurrence). Access to         and long-term follow-up. The fecal samples collected are
+comprehensive high-quality data on diet and lifestyle, in-      also biobanked and can be used for other purposes be-
+cluding complete prescription histories, also enables the       side the study aims of the current protocol. For instance,
+investigation of the predictive performance of more             in addition to metagenome sequencing, the fecal samples
+broad classifiers, laying the ground for personalized           can potentially be used for other omics analyses, such as
+screening strategies, including risk-stratified approaches.     transcriptome and metabolome analysis. All tissue speci-
+   With a study population solely consisting of FIT positive    mens removed during colonoscopy are also available to
+participants, the projected number of individuals with          the project, enabling in-depth molecular profiling.
+high-risk lesions or CRC is relatively high (about 409            The integration of a microbiome-based biomarker into
+(26%), group 3 and 4, Table 2), thereby increasing the          national CRC screening programs is a long-term process,
+power to achieve accurate classification of advanced colo-      requiring many steps before enabling full implemtation.
+rectal neoplasms. Still, whether findings in this population    Ideally, the discovery phase will lead to the identification
+extends to cases missed by FIT testing is unknown.              of a few selected features that will predict the occcurence
+   Collection of follow-up samples at 2 and 12-months           of advanced colorectal lesions with high accuracy. These
+post colonoscopy represents an extension of the cross-          could then be combined by means of a biomarker panel
+sectional design of most prior studies, shedding light on       for the development of a rapid test, which, following rigor-
+the development of the gut microbiome following colon-          ous validation and testing, has the potential of being inte-
+oscopy with or without removal of CRC precursor le-             grated into screening programs. The cost-effectivness of
+sions. While there are examples of shifts in microbial          adding a microbial biomarker to the FIT test should be
+profiles following colonoscopy, the gut microbiome typ-         carefully evaluated before implementation.
+ically reverts to the initial state within weeks [86]. Devia-
+tions from re-establishment of the gut microbiome both          Conclusion
+in the medium and long term have the potential for              The CRCbiome study investigates the role of the gut
+causal interpretations.                                         microbiome, and its interactions with host factors, diet
+   The study also has some limitations. Exclusive selection     and lifestyle, in early stage colorectal carcinogenesis. In-
+of FIT positive participants may limit the generalizability     formation obtained from this project will guide the de-
+of the findings to those with bleeding neoplastic lesions.      velopment of a microbial biomarker for accurate
+Consequently, improvements in diagnostic performance            detection of advanced colorectal lesions. By performing
+may be limited to specificity, and thus the ability to cor-     biomarker discovery within a screening population, the
+rectly classify healthy individuals. However, since lesions     generalizability of the findings to future screening co-
+tend to bleed intermittently [87] and the study aims to         horts is likely to be high.
+identify potential causal pathways, we consider it likely
+                                                                Abbreviations
+that the identified biomarker also may have improved sen-       AICR: American Institute for Cancer Research; ATC: Anatomical Therapeutic
+sitivity in the screening population as a whole.                Chemical; AUC: area under the curve; BCA: bovine serum albumin;
+   A further limitation is the lack of information on fecal     BCSN: Bowel Cancer Screening in Norway; Bp: base pair; CRC: colorectal
+                                                                cancer; CRN: Cancer Registry of Norway; CT: computed tomography;
+metrics such as the Bristol stool scale, which has been         DDD: defined daily doses; DNA: deoxyribonucleic acid; DPIA: Data Processing
+shown to be an important determinant of microbiota rich-        Impact Assessment; FFQ: food frequency questionnaire; FIMM: Institute for
+ness and variance [88]. However, variation in microbiome        Molecular Medicine Finland; FIT: fecal immunochemical test; FU: follow-up;
+                                                                gFOBT: guaiac-based fecal occult blood test; ICD: International Classification
+profile due to stool consistency could likely be explored by    of Diseases; KBS: Kostberegningssystem (“Dietary calculation system”);
+use of gastrointestinal symptoms as a surrogate, data on        KEGG: Kyoto Encyclopedia of Genes and Genomes; LDQ: lifestyle and
+which is available in the BCSN database.                        demographic questionnaire; NCT: National Clinical Trial; NorPD: Norwegian
+                                                                Prescription Database; NSAIDs: non-steroid anti-inflammatory drugs;
+   Lastly, lack of follow-up data on diet and lifestyle may     PCR: polymerase chain reaction; PBS: phosphate-buffered saline; SCFA: short
+complicate the interpretation of microbial changes follow-      chain fatty acid; STROBE: Strengthening the Reporting of Observational
+ing colonoscopy. Even though prior studies in comparable        Studies in Epidemiology; WCRF: World Cancer Research Fund; WHO: World
+                                                                Health Organization
+study populations show that potential changes in diet and
+lifestyle following screening are modest [89, 90], caution
+                                                                Supplementary Information
+in interpretation of follow-up samples is warranted.            The online version contains supplementary material available at https://doi.
+                                                                org/10.1186/s12885-021-08640-8.
+Kværner et al. BMC Cancer            (2021) 21:930                                                                                                  Page 12 of 14
+
+
+
+
+                                                                                   Infection Control, Akershus University Hospital, Lørenskog, Norway.
+                                                                                   12
+ Additional file 1. Contains two supplementary tables.                               Department of Natural Sciences and Health, Oslo Metropolitan University,
+                                                                                   Oslo, Norway. 13Laboratory of Microbiology, Wageningen University,
+ Additional file 2. Contains a supplementary figure with figure title and
+                                                                                   Wageningen, The Netherlands. 14Human Microbiome Research Program,
+ legend.
+                                                                                   Faculty of Medicine, University of Helsinki, Helsinki, Finland. 15Department of
+ Additional file 3. Contains the STROBE checklist for observational                Genetics and Lineberger Comprehensive Cancer Center, University of North
+ studies.                                                                          Carolina, Chapel Hill, NC, USA. 16Department of Nutrition, University of Oslo,
+                                                                                   Oslo, Norway. 17Department of Biology and Biological Engineering, Division
+                                                                                   of Food and Nutrition Science, Chalmers University of Technology,
+Acknowledgements
+                                                                                   Gothenburg, Sweden. 18Department of Epidemiology, Harvard T.H. Chan
+We would like to aknowledge the devoted secretaries, nurses and doctors at
+                                                                                   School of Public Health, Boston, MA, USA. 19Department of Nutrition, Harvard
+Bærum and Moss hospital, and the biomedical laboratory scientists at Oslo
+                                                                                   T.H. Chan School of Public Health, Boston, MA, USA. 20Clinical and
+University Hospital for their contributions to this study. We would also like to
+                                                                                   Translational Epidemiology Unit and Division of Gastroenterology,
+thank the personnel involved in sequencing all CRCbiome samples at the
+                                                                                   Massachusetts General Hospital and Harvard Medical School, Boston, MA,
+Sequencing laboratory of Institute for Molecular Medicine Finland FIMM
+                                                                                   USA. 21Department of Drug Statistics, Norwegian Institute of Public Health,
+Technology Centre, University of Helsinki. Lastly, we would like to thank each
+                                                                                   Oslo, Norway. 22School of Pharmacy, University of Oslo, Oslo, Norway.
+study participoant, as well as all collaborative partners, technicians and         23
+                                                                                     Cancer Registry of Norway, Oslo, Norway. 24Medical Department,
+students that have, and will, contribute to this study.
+                                                                                   Sahlgrenska University Hospital-Mölndal, Mölndal, Sweden. 25Department of
+                                                                                   Molecular and Clinical Medicine, Sahlgrenska Academy, University of
+Authors’ contributions
+                                                                                   Gothenburg, Gothenburg, Sweden. 26Department of Medical Research,
+ASK and EB1 had the main responsibility for writing the manuscript. ASK,
+                                                                                   Bærum Hospital, Bærum, Norway. 27Department of Research, Telemark
+EB1, CBJ, EV, JIN, HK, VB, PE, EB2, EN, TR, EH, RL1, OHA, WMdV, SB, AH, RL2,
+                                                                                   Hospital, Skien, Norway. 28Department of Medicine, Sorlandet Hospital
+MS, HSB, GU, KRR, TdL, GH, ØH, PB and TBR contributed to the study design
+                                                                                   Kristiansand, Kristiansand, Norway. 29Institute for Health and Society,
+and protocol. ASK, EB1, CBJ, EV, JIN, HK, VB, PE, EB2, EN, TR, EH, RL1, OHA,
+                                                                                   University of Oslo, Oslo, Norway.
+WMdV, SB, AH, RL2, MS, HSB, GU, KRR, TdL, GH, ØH, PB and TBR contributed
+to the writing and approval of the final manuscript. PB and TBR are the
+                                                                                   Received: 16 December 2020 Accepted: 27 July 2021
+principal investigators.
+
+Funding
+This project would not have been possible without funding from the
+Norwegian Cancer Society, the Research Council of Norway and the South             References
+Eastern Norway Regional Health Authority. The funding bodies played no             1. Bray F, Ferlay J, Soerjomataram I, Siegel RL, Torre LA, Jemal A. Global cancer
+role in the design of the study and collection, analysis, and interpretation of        statistics 2018: GLOBOCAN estimates of incidence and mortality worldwide
+data and in writing the manuscript.                                                    for 36 cancers in 185 countries. CA Cancer J Clin. 2018;68(6):394–424.
+                                                                                   2. Ouakrim DA, Pizot C, Boniol M, Malvezzi M, Boniol M, Negri E, et al. Trends
+Availability of data and materials                                                     in colorectal cancer mortality in Europe: retrospective analysis of the WHO
+Due to the principles and conditions set out in articles 6 [1] (e) and 9 [2] (j)       mortality database. BMJ. 2015;351:1–10.
+of the General Data Protection Regulation (GDPR), research data generated          3. Safiri S, Sepanlou SG, Ikuta KS, Bisignano C, Salimzadeh H, Delavari A, et al.
+in the CRCbiome study are not openly available. Further information on                 The global, regional, and national burden of colorectal cancer and its
+access to CRCbiome data can be found on the project web site [79]).                    attributable risk factors in 195 countries and territories, 1990–2017: a
+                                                                                       systematic analysis for the global burden of disease study 2017. Lancet
+Declarations                                                                           Gastroenterol Hepatol. 2019;4(12):913–33. https://doi.org/10.1016/S2468-12
+                                                                                       53(19)30345-0.
+Ethics approval and consent to participate                                         4. Danckert B, Ferlay J, Engholm G , Hansen HL, Johannesen TB, Khan S, et al.
+The CRCbiome study is approved by the Norwegian Regional Committees                    NORDCAN: Cancer Incidence, Mortality, Prevalence and Survival in the
+for Medical and Health Research Ethics (Approval no.: 63148). Returning at             Nordic Countries. Version 8.2. 2019.
+least one of the two questionnaires sent out to potential study participants       5. Howlader N, Noone AM, Krapcho M, Miller D, Brest A, Yu M, et al (eds). SEER
+at baseline is regarded as a consent to the study, and includes permission to          Cancer Statistics Review, 1975–2017, National Cancer Institute., Bethesda,
+collect, analyze and store fecal samples, and to retrieve information from             MD, https://seer.cancer.gov/csr/1975_2017/, based on November 2019 SEER
+questionnaires and health registries. All biological materials are stored in a         data submission, posted to the SEER web site, April 2020. 2020.
+biobank at Oslo University Hospital.                                               6. Sung H, Siegel RL, Rosenberg PS, Jemal A. Emerging cancer trends among
+                                                                                       young adults in the USA: analysis of a population-based cancer registry.
+Consent for publication                                                                Lancet Public Heal. 2019;4:e137–47.
+Not applicable.                                                                    7. Araghi M, Soerjomataram I, Bardot A, Ferlay J, Cabasag CJ, Morrison DS,
+                                                                                       et al. Changes in colorectal cancer incidence in seven high-income
+Competing interests                                                                    countries: a population-based study. Lancet Gastroenterol Hepatol. 2019;
+There are no competing interests.                                                      4(7):511–8. https://doi.org/10.1016/S2468-1253(19)30147-5.
+                                                                                   8. Leggett B, Whitehall V. Role of the serrated pathway in colorectal Cancer
+Author details                                                                         pathogenesis. Gastroenterology. 2010;138(6):2088–100. https://doi.org/10.1
+1
+ Section for Colorectal Cancer Screening, Cancer Registry of Norway, Oslo,             053/j.gastro.2009.12.066. .
+Norway. 2Department of Research, Cancer Registry of Norway, Oslo, Norway.          9. Dekker E, Tanis PJ, Vleugels JLA, Kasi PM, Wallace MB. Colorectal cancer.
+3                                                                                      Lancet (London, England). 2019;394:1467–80 http://www.ncbi.nlm.nih.gov/
+ Department of Tumor Biology, Institute for Cancer Research, The Norwegian
+Radium Hospital, Oslo University Hospital, Oslo, Norway. 4Department of                pubmed/31631858. .
+Medical Biochemistry, Oslo University Hospital, Oslo, Norway. 5Institute for       10. Bibbins-Domingo K, Grossman DC, Curry SJ, Davidson KW, Epling JW, García
+Molecular Medicine Finland, HiLIFE, University of Helsinki, Helsinki, Finland.         FAR, et al. Screening for colorectal cancer: US preventive services task force
+6                                                                                      recommendation statement. JAMA - J Am Med Assoc. 2016;315:2564–75.
+ Department of Multidisciplinary Laboratory Science and Medical
+Biochemistry, Genetic Unit, Akershus University Hospital, Lørenskog, Norway.       11. Segnan N, Patnick J. von Karsa L EC. European guidelines for quality Assurance
+7
+ Department of Informatics, Centre for Bioinformatics, University of Oslo,             in Colorectal Cancer Screening and Diagnosis - first edition. Luxembourg:
+Oslo, Norway. 8Department of Microbiology, Oslo University Hospital, Oslo,             Office for Official Publications of the European Communities; 2010.
+Norway. 9Department of Medical Genetics, Oslo University Hospital and              12. Ebell MH, Thai TN, Royalty KJ. Cancer screening recommendations: an
+University of Oslo, Oslo, Norway. 10Centre for Fertility and Health, Norwegian         international comparison of high income countries. Public Health Rev. 2018;
+Institute of Public Health, Oslo, Norway. 11Department of Microbiology and             39:1–19.
+Kværner et al. BMC Cancer            (2021) 21:930                                                                                                        Page 13 of 14
+
+
+
+
+13. Sung JJY, Ng SC, Chan FKL, Chiu HM, Kim HS, Matsuda T, et al. An updated          32. Liang Q, Chiu J, Chen Y, Huang Y, Higashimori A, Fang J, et al. Fecal
+    Asia Pacific consensus recommendations on colorectal cancer screening.                bacteria act as novel biomarkers for noninvasive diagnosis of colorectal
+    Gut. 2015;64(1):121–32. https://doi.org/10.1136/gutjnl-2013-306503.                   cancer. Clin Cancer Res. 2017;23(8):2061–70. https://doi.org/10.1158/1078-
+14. Atkin W, Wooldrage K, Parkin DM, Kralj-Hans I, MacRae E, Shah U, et al. Long          0432.CCR-16-1599.
+    term effects of once-only flexible sigmoidoscopy screening after 17 years of      33. Baxter NT, Ruffin MT, Rogers MAM, Schloss PD. Microbiota-based model
+    follow-up: the UK Flexible Sigmoidoscopy Screening randomised controlled              improves the sensitivity of fecal immunochemical test for detecting
+    trial. Lancet. 2017;389:1299–1311. https://doi.org/10.1016/S0140-673                  colonic lesions. Genome Med. 2016;8(1):1–10. https://doi.org/10.1186/s13
+    6(17)30396-3 Accessed 8 June 2021.                                                    073-016-0290-3. .
+15. Schoen R, Pinsky P, Weissfeld J, Yokochi L, Church T, Laiyemo A, et al.           34. Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI, et al. Potential
+    Colorectal-Cancer incidence and mortality with screening flexible                     of fecal microbiota for early-stage detection of colorectal cancer. Mol Syst
+    sigmoidoscopy. N Engl J Med. 2012;366(25):2345–57. https://doi.org/10.1               Biol. 2014;10(11):766. https://doi.org/10.15252/msb.20145645.
+    056/NEJMoa1114635.                                                                35. Ahn J, Sinha R, Pei Z, Dominianni C, Wu J, Shi J, et al. Human gut
+16. Segnan N, Armaroli P, Bonelli L, Risio M, Sciallero S, Zappa M, et al. Once-          microbiome and risk for colorectal cancer. J Natl Cancer Inst. 2013;105(24):
+    only sigmoidoscopy in colorectal cancer screening: follow-up findings of              1907–11. https://doi.org/10.1093/jnci/djt300.
+    the italian randomized controlled trial - SCORE. J Natl Cancer Inst. 2011;        36. Vogtmann E, Hua X, Zeller G, Sunagawa S, Voigt AY, Hercog R, et al.
+    103(17):1310–22. https://doi.org/10.1093/jnci/djr284.                                 Colorectal cancer and the human gut microbiome: reproducibility with
+17. Holme Ø, Løberg M, Kalager M, Bretthauer M, Hernán MA, Aas E, et al. Effect           whole-genome shotgun sequencing. PLoS One. 2016;11:1–13.
+    of flexible sigmoidoscopy screening on colorectal cancer incidence and            37. Feng Q, Liang S, Jia H, Stadlmayr A, Tang L, Lan Z, et al. Gut microbiome
+    mortality: a randomized clinical trial. JAMA - J Am Med Assoc. 2014;312(6):           development along the colorectal adenoma-carcinoma sequence. Nat
+    606–15. https://doi.org/10.1001/jama.2014.8266.                                       Commun. 2015;6(1). https://doi.org/10.1038/ncomms7528.
+18. Mandel J, Bond J, Church T, Snover D, Bradley M, Schuman L, et al.                38. Yu J, Feng Q, Wong SH, Zhang D, Yi Liang Q, Qin Y, et al. Metagenomic
+    Reducing mortality from colorectal cancer by screening for fecal occult               analysis of faecal microbiome as a tool towards targeted non-invasive
+    blood. Minnesota Colon Cancer Control Study. N Engl J Med. 1993;                      biomarkers for colorectal cancer. Gut. 2017;66(1):70–8. https://doi.org/10.113
+19. Kronborg O, Fenger C, Olsen J, Jørgensen OD, Søndergaard O. Randomised                6/gutjnl-2015-309800.
+    study of screening for colorectal cancer with faecal-occult-blood test. Lancet.   39. Hale VL, Chen J, Johnson S, Harrington SC, Yab TC, Smyrk TC, et al. Shifts in the
+    1996;348(9040):1467–71. https://doi.org/10.1016/S0140-6736(96)03430-7. .              fecal microbiota associated with adenomatous polyps. Cancer Epidemiol
+20. Lindholm E, Brevinge H, Haglind E. Survival benefit in a randomized clinical          Biomark Prev. 2017;26(1):85–94. https://doi.org/10.1158/1055-9965.EPI-16-0337.
+    trial of faecal occult blood screening for colorectal cancer. Br J Surg           40. Rothschild D, Weissbrod O, Barkan E, Kurilshikov A, Korem T, Zeevi D, et al.
+    England. 2008;95(8):1029–36. https://doi.org/10.1002/bjs.6136.                        Environment dominates over host genetics in shaping human gut
+21. Hardcastle JD, Chamberlain JO, Robinson MHE, Moss SM, Amar SS, Balfour                microbiota. Nature Publishing Group; 2018;
+    TW, et al. Randomised controlled trial of faecal-occult-blood screening for       41. Song M, Chan AT, Sun J. Influence of the gut microbiome, diet, and
+    colorectal cancer. Lancet. 1996;348(9040):1472–7. https://doi.org/10.1016/            environment on risk of colorectal Cancer. Gastroenterology. 2020;158(2):
+    S0140-6736(96)03386-7. .                                                              322–40. https://doi.org/10.1053/j.gastro.2019.06.048. .
+22. Ladabaum U, Dominitz JA, Kahi C, Schoen RE. Strategies for Colorectal             42. Song M, Chan AT. Environmental Factors, Gut Microbiota, and Colorectal
+    Cancer Screening. Gastroenterology [Internet]. Elsevier, Inc; 2020;158:418.           Cancer Prevention. Clinical Gastroenterology and Hepatology. Am
+    https://doi.org/10.1053/j.gastro.2019.06.043. .                                       Gastroenterological Association; 2019. 275–289 p. https://doi.org/10.1016/j.
+23. Schreuders EH, Ruco A, Rabeneck L, Schoen RE, Sung JJY, Young GP, et al.              cgh.2018.07.012. .
+    Colorectal cancer screening: a global overview of existing programmes. Gut.       43. Scott AJ, Alexander JL, Merrifield CA, Cunningham D, Jobin C, Brown R,
+    2015;64(10):1637–49. https://doi.org/10.1136/gutjnl-2014-309086.                      et al. International Cancer microbiome consortium consensus statement on
+24. Haug U, Kuntz KM, Knudsen AB, Hundt S, Brenner H. Sensitivity of                      the role of the human microbiome in carcinogenesis. Gut. 2019;68(9):1624–
+    immunochemical faecal occult blood testing for detecting left-vs right-               32. https://doi.org/10.1136/gutjnl-2019-318556.
+    sided colorectal neoplasia. Br J Cancer. 2011;104(11):1779–85. https://doi.       44. Thomas AM, Manghi P, Asnicar F, Pasolli E, Armanini F, Zolfo M, et al.
+    org/10.1038/bjc.2011.160. .                                                           Metagenomic analysis of colorectal cancer datasets identifies cross-cohort
+25. Holme Ø, Løberg M, Kalager M, Bretthauer M, Hernán MA, Aas E, et al.                  microbial diagnostic signatures and a link with choline degradation. Nat
+    Long-term effectiveness of sigmoidoscopy screening on colorectal cancer               Med. 2019;25(4):667–78. https://doi.org/10.1038/s41591-019-0405-7. .
+    incidence and mortality in women and men: a randomized trial. Ann Intern          45. Wirbel J, Pyl PT, Kartal E, Zych K, Kashani A, Milanese A, et al. Meta-analysis
+    Med. 2018;168(11):775–82. https://doi.org/10.7326/M17-1441.                           of fecal metagenomes reveals global microbial signatures that are specific
+26. Brenner H, Qian J, Werner S. Variation of diagnostic performance of fecal             for colorectal cancer. Nat Med. 2019;25(4):679–89. https://doi.org/10.1038/
+    immunochemical testing for hemoglobin by sex and age: results from a                  s41591-019-0406-6. .
+    large screening cohort. Clin Epidemiol. 2018;10:381–9. https://doi.org/10.214     46. Randel KR, Schult AL, Botteri E, Hoff G, Bretthauer M, Ursin G, et al.
+    7/CLEP.S155548.                                                                       Colorectal cancer screening with repeated fecal immunochemical test
+27. Tilg H, Adolph TE, Gerner RR, Moschen AR. The Intestinal Microbiota in                versus sigmoidoscopy: baseline results from a randomized trial. United
+    Colorectal Cancer. Cancer Cell. Elsevier Inc.; 2018;33:954–964.                       States: Gastroenterology; 2020.
+28. Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM, et al.             47. Norwegian Institute of Public Health (NIPH). Norwegian Prescription
+    Genomic analysis identifies association of Fusobacterium with colorectal              Database (NorPD). https://www.fhi.no/en/hn/health-registries/norpd/.
+    carcinoma. Genome Res. 2012;22(2):292–8. https://doi.org/10.1101/gr.12                Accessed 5 November 2020.
+    6573.111.                                                                         48. Cancer Registry of Norway. Cancer in Norway 2019 - Cancer incidence,
+29. Castellarin M, Warren R, Freeman J, Dreolini L, Krzywinski M, Strauss J, et al.       mortality, survival and prevalence in Norway. Oslo; 2020.
+    Fusobacterium nucleatum infection is prevalent in human colorectal                49. Vandenbroucke JP, Von Elm E, Altman DG, Gøtzsche PC, Mulrow CD, Pocock
+    carcinoma. Genome Res. 2012;22(2):299–306. http://www.embase.com/                     SJ, et al. Strengthening the reporting of observational studies in epidemiology
+    search/results?subaction=viewrecord&from=export&id=L364186952%5C                      (STROBE): explanation and elaboration. PLoS Med. 2007;4:1628–54.
+    nhttp://genome.cshlp.org/content/22/2/299.full.pdf+html%5Cnhttp://dx.doi.         50. Vandenbroucke JP, von Elm E, Altman DG, Gøtzsche PC, Mulrow CD, Pocock
+    org/10.1101/gr.126516.111%5Cnhttp://sfx.library.uu.nl/utrecht?sid=                    SJ, et al. Strengthening the reporting of observational studies in
+    EMBASE&issn=10889051&id=doi:10.                                                       epidemiology (STROBE): explanation and elaboration. Int J Surg. 2014;12(12):
+30. Zackular JP, Rogers MAM, Ruffin MT, Schloss PD. The human gut                         1500–24. https://doi.org/10.1016/j.ijsu.2014.07.014.
+    microbiome as a screening tool for colorectal cancer. Cancer Prev Res. 2014;      51. Bharucha T, Oeser C, Balloux F, Brown JR, Carbo EC, Charlett A, et al.
+    7(11):1112–21. https://doi.org/10.1158/1940-6207.CAPR-14-0129.                        STROBE-metagenomics: a STROBE extension statement to guide the
+31. Guo S, Li L, Xu B, Li M, Zeng Q, Xiao H, et al. A simple and novel fecal              reporting of metagenomics studies. Lancet Infect Dis. 2020;3099(10):1–10.
+    biomarker for colorectal cancer: ratio of Fusobacterium nucleatum to                  https://doi.org/10.1016/S1473-3099(20)30199-7.
+    probiotics populations, based on their antagonistic effect. Clin Chem. 2018;      52. Hassan C, Quintero E, Dumonceau JM, Regula J, Brandão C, Chaussade S,
+    64(9):1327–37. https://doi.org/10.1373/clinchem.2018.289728.                          et al. Post-polypectomy colonoscopy surveillance: European Society of
+Kværner et al. BMC Cancer             (2021) 21:930                                                                                                         Page 14 of 14
+
+
+
+
+      Gastrointestinal Endoscopy (ESGE) guideline. Endoscopy. 2013;45(10):842–51.            of faecal immunochemical test in colorectal cancer screening. Br J Cancer.
+      https://doi.org/10.1055/s-0033-1344548.                                                2017;117(4):461–9. https://doi.org/10.1038/bjc.2017.189.
+53.   Rounge TB, Meisal R, Nordby JI, Ambur OH, De Lange T, Hoff G. Evaluating         73.   Folkehelseinstituttet. Reseptregisteret 2012-2016. 2017.
+      gut microbiota profiles from archived fecal samples. BMC Gastroenterol.          74.   WHO Collaborating Centre for Drug Statistics Methodology. Structure and
+      2018;18:1–11.                                                                          principles https://www.whocc.no/atc/structure_and_principles/. Accessed 28
+54.   University of Oslo (UiO). About TSD. https://www.uio.no/english/services/it/           September 2020.
+      research/sensitive-data/about/index.html. Accessed 14 December 2020.             75.   WHO Collaborating Centre for Drug Statistics Methodology. ATC/DDD Index
+55.   Köster J, Rahmann S. Snakemake - a scalable bioinformatics workflow                    2020 https://www.whocc.no/atc_ddd_index/. Accessed 28 September 2020.
+      engine. Bioinformatics. 2018;34(20):3600. https://doi.org/10.1093/bioinforma     76.   Cancer Registry of Norway. Cancer in Norway 2018 - Cancer incidence,
+      tics/bty350.                                                                           mortality, survival and prevalence in Norway. Oslo; 2019.
+56.   Bolger AM, Lohse M, Usadel B. Trimmomatic: a flexible trimmer for Illumina       77.   Larsen IK, Smastuen M, Johannesen TB, Langmark F, Parkin DM, Bray F, et al.
+      sequence data. Bioinformatics. 2014;30(15):2114–20. https://doi.org/10.1093/           Data quality at the Cancer registry of Norway: an overview of comparability,
+      bioinformatics/btu170.                                                                 completeness, validity and timeliness. Eur J Cancer England. 2009;45(7):
+57.   Langmead B, Salzberg SL. Fast gapped-read alignment with bowtie 2. Nat                 1218–31. https://doi.org/10.1016/j.ejca.2008.10.037.
+      Methods. 2012;9(4):357–9. https://doi.org/10.1038/nmeth.1923.                    78.   Norwegian Institute of Public Health (NIPH). Access to data from the
+58.   Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis                  Norwegian Prescription Database. https://www.fhi.no/en/hn/health-
+      results for multiple tools and samples in a single report. Bioinformatics.             registries/norpd/Access-data-norpd/#legal-requirements-for-the-disclosure-
+      2016;32(19):3047–8. https://doi.org/10.1093/bioinformatics/btw354.                     of-data-from-the-norpd. Accessed 19 June 2020.
+59.   Andersen LF, Solvoll K, Johansson LRK, Salminen I, Aro A, Drevon CA.             79.   Cancer Registry of Norway. The microbiome as a colorectal cancer
+      Evaluation of a food frequency questionnaire with weighed records, fatty               screening biomarker. https://www.kreftregisteret.no/en/Research/Projects/
+      acids, and alpha-tocopherol in adipose tissue and serum. Am J Epidemiol.               microbiota-and-lifestyle-in-colorectal-cancer-screeing/. Accessed 29
+      1999;150(1):75–87. https://doi.org/10.1093/oxfordjournals.aje.a009921.                 September 2020.
+60.   Andersen LF, Tomten H, Haggarty P, Løvø A, Hustvedt BE. Validation of            80.   Tibshirani R. Regression shrinkage and selection via the lasso. J R Stat Soc
+      energy intake estimated from a food frequency questionnaire: a doubly                  Ser B. 1996;58:267–88.
+      labelled water study. Eur J Clin Nutr. 2003;57(2):279–84. https://doi.org/10.1   81.   Cortes C, Vapnik V. Support-vector networks. Mach Learn. 1995;
+      038/sj.ejcn.1601519.                                                             82.   Breiman L. Random forests. Mach Learn. 2001:1–122.
+61.   Carlsen MH, Lillegaard IT, Karlsen A, Blomhoff R, Drevon CA, Andersen LF.        83.   Haykin S. Neural networks and learning machines. Third Edit. Pearson
+      Evaluation of energy and dietary intake estimates from a food frequency                Prentice Hall; 2009.
+      questionnaire using independent energy expenditure measurement and               84.   Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. Proc 22nd
+      weighed food records. Nutr J. 2010;9:1–9.                                              ACM SIGKDD Int Conf Knowl Discov Data Min. 2016;
+62.   Andersen LF, Veierød MB, Johansson L, Sakhi A, Solvoll K, Drevon CA.             85.   Stark M, Zapf A. Sample size calculation and re-estimation based on the
+      Evaluation of three dietary assessment methods and serum biomarkers as                 prevalence in a single-arm confirmatory diagnostic accuracy study. Stat
+      measures of fruit and vegetable intake, using the method of triads. Br J               Methods Med Res. 2020;
+      Nutr. 2005;93(4):519–27. https://doi.org/10.1079/BJN20041381.                    86.   Nagata N, Tohya M, Fukuda S, Suda W, Nishijima S, Takeuchi F, et al. Effects
+63.   Carlsen MH, Karlsen A, Lillegaard ITL, Gran JM, Drevon CA, Blomhoff R, et al.          of bowel preparation on the human gut microbiome and metabolome. Sci
+      Relative validity of fruit and vegetable intake estimated from an FFQ, using           Rep. 2019;9:1–8.
+      carotenoid and flavonoid biomarkers and the method of triads. Br J Nutr.         87.   Ahlquist DA, McGill DB, Fleming JL, Schwartz S, Wieand HS, Rubin J, et al.
+      2011;105(10):1530–8. https://doi.org/10.1017/S0007114510005246.                        Patterns of occult bleeding in asymptomatic colorectal cancer. Cancer.
+64.   Brunvoll SH, Thune I, Frydenberg H, Flote VG, Bertheussen GF, Schlichting E,           1989;63(9):1826–30. https://doi.org/10.1002/1097-0142(19900501)63:9<182
+      et al. Validation of repeated self-reported n-3 PUFA intake using serum                6::aid-cncr2820630928>3.0.co;2-p.
+      phospholipid fatty acids as a biomarker in breast cancer patients during         88.   Hannelore D. Diet and the gut microbiome: from hype to hypothesis. Br J
+      treatment. Nutr J. 2018;17:1–12.                                                       Nutr. 2020:1–24.
+                                                                                       89.   Berstad P, Løberg M, Larsen IK, Kalager M, Holme Ø, Botteri E, et al. Long-term
+65.   Norwegian Food Safety Authority. Norwegian Food Composition Database
+                                                                                             lifestyle changes after colorectal cancer screening: randomised controlled trial.
+      2019 [Internet]. Available from: www.matvaretabellen.no. .
+                                                                                             Gut. 2015;64(8):1268–76. https://doi.org/10.1136/gutjnl-2014-307376.
+66.   Johansson I, Hallmans G, Wikman Å, Biessy C, Riboli E, Kaaks R. Validation
+                                                                                       90.   Knudsen MD, Hjartåker A, Olsen MKE, Hoff G, De Lange T, Bernklev T, et al.
+      and calibration of food-frequency questionnaire measurements in the
+                                                                                             Changes in health behavior 1 year after testing negative at a colorectal
+      northern Sweden health and disease cohort. Public Health Nutr. 2002;5(3):
+                                                                                             cancer screening: a randomized-controlled study. Eur J Cancer Prev. 2018;
+      487–96. https://doi.org/10.1079/PHN2001315.
+                                                                                             27(4):316–22. https://doi.org/10.1097/CEJ.0000000000000328.
+67.   Holmberg L, Ohlander EM, Byers T, Zack M, Wolk A, Bruce Å, et al. A search
+      for recall Bias in a case-control study of diet and breast Cancer. Int J
+      Epidemiol. 1996;25(2):235–44. https://doi.org/10.1093/ije/25.2.235.              Publisher’s Note
+68.   Willett W. Nutritional epidemiology. Oxford. New York: Oxford University         Springer Nature remains neutral with regard to jurisdictional claims in
+      Press; 2013.                                                                     published maps and institutional affiliations.
+69.   World Cancer Research Fund/American Institute for Cancer Research. Diet,
+      nutrition, physical activity and colorectal cancer. Continuous Update Project.
+      2018. https://www.wcrf.org/sites/default/files/Colorectal-cancer-report.
+      pdf%0Ahttps://www.wcrf.org/sites/default/files/Oesophageal-cancer-report.
+      pdf. Accessed 8 June 2021.
+70.   Shams-White MM, Brockton NT, Mitrou P, Romaguera D, Brown S, Bender A,
+      et al. Operationalizing the 2018 World Cancer Research Fund/American
+      Institute for Cancer Research (WCRF/AICR) Cancer prevention
+      recommendations: a standardized scoring system. Nutrients. 2019;11(7):
+      1572. https://doi.org/10.3390/nu11071572.
+71.   Markussen MS, Veierod MB, Kristiansen AL, Ursin G, Andersen LF. Dietary
+      patterns of women aged 50-69 years and associations with nutrient intake,
+      sociodemographic factors and key risk factors for non-communicable
+      diseases. Public Health Nutr. 2016;19(11):2024–32. https://doi.org/10.1017/
+      S1368980015003547.
+72.   Knudsen MD, Berstad P, Hjartåker A, Gulichsen EH, Hoff G, De Lange T, et al.
+      Lifestyle predictors for non-participation and outcome in the second round
+

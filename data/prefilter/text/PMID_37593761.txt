@@ -1,0 +1,680 @@
+                                                                                                                     TYPE Original Research
+                                                                                                                     PUBLISHED 01 August 2023
+                                                                                                                     DOI 10.3389/fcimb.2023.1216024
+
+
+
+
+                                                   Elucidating colorectal cancer-
+OPEN ACCESS                                        associated bacteria through
+EDITED BY
+Jean-Paul Motta,
+INSERM U1220 Institut de Recherche en
+                                                   proﬁling of minimally perturbed
+Santé Digestive, France
+
+REVIEWED BY
+                                                   tissue-associated microbiota
+Eng Guan Chua,
+University of Western Australia, Australia
+Shenghui Li,                                       Hironori Fukuoka 1†, Dieter M. Tourlousse 2†, Akiko Ohashi 2,
+Puensum Genetech Institute, China
+Paolo Nuciforo,
+                                                   Shinsuke Suzuki 3, Kazuya Nakagawa 1, Mayumi Ozawa 1,
+Vall d’Hebron Institute of Oncology (VHIO),        Atsushi Ishibe 1, Itaru Endo 1 and Yuji Sekiguchi 2*
+Spain
+                                                   1
+                                                    Department of Gastroenterological Surgery, Yokohama City University Hospital, Yokohama, Japan,
+*CORRESPONDENCE
+                                                   2
+                                                    Biomedical Research Institute, National Institute of Advanced Industrial Science and Technology
+Yuji Sekiguchi
+                                                   (AIST), Tsukuba, Japan, 3 Department of Surgery, Fujisawa Shonandai Hospital, Fujisawa, Japan
+    y.sekiguchi@aist.go.jp
+†
+  These authors have contributed equally to
+this work
+
+RECEIVED 03 May 2023                               Sequencing-based interrogation of gut microbiota is a valuable approach for
+ACCEPTED 07 July 2023
+                                                   detecting microbes associated with colorectal cancer (CRC); however, such
+PUBLISHED 01 August 2023
+                                                   studies are often confounded by the effect of bowel preparation. In this study, we
+CITATION
+Fukuoka H, Tourlousse DM, Ohashi A,
+                                                   evaluated the viability of identifying CRC-associated mucosal bacteria through
+Suzuki S, Nakagawa K, Ozawa M, Ishibe A,           centimeter-scale proﬁling of the microbiota in tumors and adjacent
+Endo I and Sekiguchi Y (2023) Elucidating          noncancerous tissue from eleven patients who underwent colonic resection
+colorectal cancer-associated bacteria
+through proﬁling of minimally perturbed            without preoperative bowel preparation. High-throughput 16S rRNA gene
+tissue-associated microbiota.                      sequencing revealed that differences between on- and off-tumor microbiota
+Front. Cell. Infect. Microbiol. 13:1216024.
+doi: 10.3389/fcimb.2023.1216024
+                                                   varied considerably among patients. For some patients, phylotypes afﬁliated with
+                                                   genera previously implicated in colorectal carcinogenesis, as well as genera with
+COPYRIGHT
+© 2023 Fukuoka, Tourlousse, Ohashi, Suzuki,        less well-understood roles in CRC, were enriched in tumor tissue, whereas for
+Nakagawa, Ozawa, Ishibe, Endo and                  other patients, on- and off-tumor microbiota were very similar. Notably, the
+Sekiguchi. This is an open-access article
+distributed under the terms of the Creative
+                                                   enrichment of phylotypes in tumor-associated mucosa was highly localized and
+Commons Attribution License (CC BY). The           no longer apparent even a few centimeters away from the tumor. Through short-
+use, distribution or reproduction in other         term liquid culturing and metagenomics, we further generated more than one-
+forums is permitted, provided the original
+author(s) and the copyright owner(s) are           hundred metagenome-assembled genomes, several representing bacteria that
+credited and that the original publication in      were enriched in on-tumor samples. This is one of the ﬁrst studies to analyze
+this journal is cited, in accordance with
+                                                   largely unperturbed mucosal microbiota in tissue samples from the resected
+accepted academic practice. No use,
+distribution or reproduction is permitted          colons of unprepped CRC patients. Future studies with larger cohorts are
+which does not comply with these terms.            expected to clarify the causes and consequences of the observed variability in
+                                                   the emergence of tumor-localized microbiota among patients.
+
+                                                   KEYWORDS
+
+                                                   colorectal cancer, mucosal microbiota, 16S rRNA gene amplicon sequencing,
+                                                   metagenome-assembled genomes, bowel preparation, unprepped colon resection
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                        01                                                             frontiersin.org
+Fukuoka et al.                                                                                                            10.3389/fcimb.2023.1216024
+
+
+
+
+1 Introduction                                                                  Kanagawa, Japan) were recruited. Between October 2019 and
+                                                                                March 2021, colorectal surgery was performed on 155 patients,
+     Colorectal cancer (CRC) is one of the most common cancers                  with 11 patients undergoing surgery without preoperative bowel
+worldwide. In Japan, the number of annual deaths due to CRC has                 cleansing, in accordance with the Enhanced Recovery After Surgery
+increased steadily and exceeded 50,000 in 2016 (Hashiguchi et al.,              (ERAS®) protocols (Gustafsson et al., 2019); samples from these
+2020). Colon cancer has a multifactorial etiology, and common risk              patients were analyzed in this study. The patients were only
+factors include genetic mutations, unhealthy diet and lifestyle, and            administered intravenous antibiotics (cefmetazole sodium)
+disruption of inﬂammatory processes (O’Keefe, 2016).                            approximately 30 min before surgery, except for patient D
+Furthermore, a range of bacteria, including Fusobacterium                       (Supplementary Table S1). Tissue samples were collected from
+nucleatum (Rubinstein et al., 2013), Streptococcus gallolyticus                 the resected colons within 30 to 50 min of surgery. The
+(Pasquereau-Kotula et al., 2018), enterotoxigenic Bacteroides                   specimens were handled on a clean surface using sterile tools,
+fragilis (Boleij et al., 2015), and Peptostreptococcus anaerobius               including scissors, biopsy forceps, gauze, and surgical knives. The
+(Long et al., 2019), have been implicated in colonic                            resected intestinal tracts were opened longitudinally using scissors,
+tumorigenesis, and the mechanisms underlying their oncogenic                    taking care not to disrupt the cancerous tissue and to prevent the
+effects are starting to be understood.                                          mixing of intraluminal fecal material. Rinsing of the tissues was
+     High-throughput sequencing studies have substantially improved             omitted in order not to disturb the microbiota, and mucosal tissue
+our understanding of the association between CRC and gut                        of the tumor and surrounding areas with normal appearance were
+microbiota but a uniﬁed picture has not yet emerged (Helmink                    resected using scissors after careful removal of solid fecal material
+et al., 2019). This may partly be due to the different types of samples         from the sampling areas. The collected tissue samples had an area of
+and protocols adopted across studies (Rezasoltani et al., 2019). Fecal          approximately 10 to 20 mm2 and a depth of several millimeters
+samples are commonly used because of their ease of collection but               (including the mucosal and submucosal layers). The samples were
+may be less informative for identifying disease-speciﬁc microbiota              placed in cryogenic tubes, snap-frozen in liquid nitrogen, and
+perturbations than colonic tissue samples (Gorkiewicz et al., 2013;             frozen until further analysis.
+Ringel et al., 2015). Current studies on tissue-associated microbiota in
+patients with CRC typically involve bowel preparation (cleansing)
+before sampling (Loke et al., 2018; Murphy et al., 2021). However,              2.2 Ethics approval and informed consent
+bowel preparation can alter intestinal microbiota (Mai et al., 2006;
+Harrell et al., 2012; Jalanka et al., 2015), and short-term changes in              The study protocol was approved by the Ethics Committee of
+microbiome diversity and composition due to bowel preparation                   Yokohama City University (B190600051, F220600030) and was
+have been shown to introduce confounding effects in gastrointestinal            registered in the University Hospital Medical Information
+microbiota studies (Shobar et al., 2016). The type of bowel cleansing           Network (UMIN) under UMIN000038703, and in the Japan
+procedures may also vary depending on the location of the tumor and             Registry of Clinical Trials (jRCT) under jRCT1030220239. All
+healthcare facility, further complicating the interpretation of                 participants provided written informed consent to participate in
+observations from different cohorts. More studies are thus needed               this study and publish their clinical data.
+that analyze microbiota in colonic tissue of CRC patients who did not
+undergo bowel preparation prior to tissue sample collection (that is,
+unprepped patients).                                                            2.3 Enrichment cultures
+     In this pilot study, we evaluated the feasibility of identifying
+CRC-associated bacteria by proﬁling mucosal microbiota in tumors                     Enrichment cultures were set up in 50-mL serum bottles under
+and adjacent noncancerous colonic tissues from eleven patients                  an atmosphere of N2/CO2 (80:20, v/v). The culture medium
+who underwent colonic resection without preoperative bowel                      consisted of the basal medium described by Sekiguchi et al.
+preparation. Speciﬁcally, we (i) compared on- and off-tumor                     (2000), supplemented with autoclaved yeast extract (0.5%, w/v,
+mucosal microbiota, including evaluation of the centimeter-scale                ﬁnal concentration), peptone (0.5%), brain-heart infusion (1%), and
+spatial distribution of taxa around the tumor for some patients and             ascorbic acid (0.1%). For inoculation, tissue samples were broken
+(ii) generated genome assemblies (that is, metagenome-assembled                 up with a 25-gauge syringe needle in 1 mL of basal medium,
+genomes, MAGs) of major tumor-associated bacteria through                       vortexed, and 400 mL was added as an inoculant to 20 mL of
+short-term liquid culturing and metagenome sequencing.                          medium. Cultures were incubated anaerobically for approximately
+                                                                                24 h at 37°C, under static conditions in the dark.
+                                                                                     The above-described medium was selected based on a
+2 Materials and methods                                                         comparison with YCFA medium (medium 1130; https://
+                                                                                www.jcm.riken.jp/cgi-bin/jcm/jcm_grmd?GRMD=1130). The
+2.1 Patient cohort and tissue                                                   latter yielded considerably less microbial biomass, and was thus
+sample collection                                                               less effective in reducing human DNA content, with an average of
+                                                                                roughly 75% of human reads remaining in the resultant
+    Patients diagnosed with CRC and scheduled for colonic                       metagenomic sequencing data across cultures. Furthermore, we
+resection at Yokohama City University Hospital (Yokohama,                       initially evaluated the depletion of methylated human DNA using
+
+
+Frontiers in Cellular and Infection Microbiology                           02                                                          frontiersin.org
+Fukuoka et al.                                                                                                             10.3389/fcimb.2023.1216024
+
+
+
+
+a commercial kit (NEBNext Microbiome DNA Enrichment Kit) but                     45 s, 50°C for 45 s, and 72°C for 1 min; and 72°C for 5 min. The
+this was not effective for our samples, as human DNA still                       amplicons were cleaned up using the Agencourt AMPure XP PCR
+accounted for more than 95% of sequencing reads (data not shown).                Puriﬁcation system, following the manufacturer’s instructions with
+                                                                                 a 1-to-1 bead-to-sample ratio, and eluted with 10 mM Tris-HCl (pH
+                                                                                 8.5). The Nextera XT Index Kit was used to attach dual indexes and
+2.4 Extraction of DNA from colonic tissue                                        sequencing adapters in PCRs (50 mL) containing 1× KAPA HiFi
+and enrichment cultures                                                          HotStart ReadyMix, 5 mL each of Index 1 and 2 primers, and 5 mL of
+                                                                                 puriﬁed ﬁrst-round PCR products. Thermal cycling conditions were
+     Tissue samples were crushed using a CP02 cryoPREP Automated                 as follows: 95°C for 3 min; 8 cycles at 95°C for 30 s, 55°C for 30 s,
+Dry Pulverizer (Covaris). To this end, the samples were placed in the            and 72°C for 30 s; and 72°C for 5 min. The amplicons were puriﬁed
+center of a tissueTUBE (TT 1; Covaris), ﬂash-frozen with liquid                  as described above and quantiﬁed using the D1000 ScreenTape
+nitrogen, and pulverized by a single action of the cryoPREP hammer               Assay system and a 2200 TapeStation instrument (Agilent).
+at an impact level of 6. Samples were then transferred to Eppendorf              Libraries were pooled at equimolar concentrations, supplemented
+tubes and resuspended in 300 mL of phosphate-buffered saline (PBS).              with phiX control DNA (~30%), and sequenced on a MiSeq
+DNA was extracted using a phenol-chloroform protocol described                   instrument using V2 chemistry (2×251 bp paired-end reads).
+previously (Tourlousse et al., 2021). In short, biomass pellets were                 Libraries for shotgun metagenomics were prepared using the
+resuspended in 300 mL of 100 mM NaH2PO4 (pH 8.0), 300 mL of lysis                ThruPLEX DNA-Seq Kit (Takara Bio) as previously described
+buffer (100 mM of NaCl, 500 mM of Tris-HCl, 10% of sodium dodecyl                (Tourlousse et al., 2021). Sequencing was performed on a
+sulfate, pH 8.0) and 300 mL of phenol-chloroform-isoamyl alcohol                 NextSeq 500 instrument using a NextSeq 500/550 Mid Output
+(PCI, 25:24:1, v:v:v), followed by addition of 1.2 g of 0.1-mm autoclaved        Kit v2.5 (2×151 bp paired-end reads). Binary base call (BCL) ﬁles
+Zirconia beads. Cell lysis was performed by bead-beating using a                 were converted to FASTQ format, with concurrent library
+FastPrep-24 instrument (MP Biomedicals) for 60 s at a speed of                   demultiplexing, using Illumina’s bcl2fastq Conversion Software
+6 m/s. Following incubation for 10 min at 60°C, samples were                     v2.20.0.422, with default settings.
+centrifuged for 5 min at 14,000 × g and 600 mL of supernatant was
+recovered. RNA was digested with 0.01 volumes of RNase A (10 mg/
+ml) for 10 min at 37°C. An equal volume of PCI was then added, the               2.6 Amplicon sequence data processing
+samples were mixed by vortexing, and the aqueous phase with DNA                  and analysis
+recovered after centrifugation (20,000 × g; 23°C; 5 min); this step was
+repeated twice. Subsequently, an equal volume of chloroform-isoamyl                  Primer sequences were trimmed using Cutadapt v3.5 (Martin,
+alcohol (24:1, v/v) was added, the samples were vortexed, and the                2011), with ﬂags -u 3 -U 4 -g ^YCAGCMGCCGCGGTRA -G
+aqueous phase was recovered after centrifugation (20,000 × g; 23°C;              ^TACNVGGGTWTCTAAK -error-rate 0.2 -no-indels -discard-
+5 min). DNA was precipitated by the addition of 0.1 volumes of 3 M               untrimmed -max-n 0 -minimum -length 225. Reads were then
+sodium acetate (pH 5.2) and an equal volume of isopropanol, followed             truncated and ﬁltered based on expected errors using the DADA2’s
+by centrifugation at 20,000 × g for 30 min at 4°C. Recovered DNA                 v1.22 (Callahan et al., 2016) ﬁlterAndTrim function, with
+pellets were washed with 70% ethanol, air-dried, and dissolved in                parameters truncLen = c(160,180), maxN = c(0,0), maxEE = c
+elution buffer (Qiagen EB solution; 10 mM Tris-HCl, pH 8.5). For the             (4,4), truncQ = c(2,2), rm.phix = TRUE. Subsequent steps, namely
+enrichment cultures, DNA was extracted using the ISOSPIN Fecal                   the learning of error models (function learnErrors), denoising
+DNA kit (NipponGene) following the manufacturer’s instructions, as               (function dada), and merging (function mergePairs) of
+detailed previously (Tourlousse et al., 2021).                                   forward and reverse reads, were performed for data from
+                                                                                 individual sequencing runs separately, with default settings.
+                                                                                 Resulting sequence tables were then combined (function
+2.5 16S rRNA gene amplicon and                                                   mergeSequenceTables), and bimeras were removed using function
+metagenome sequencing                                                            removeBimeraDenovo, with method = “consensus.” Taxonomy was
+                                                                                 assigned against the SILVA database (Yilmaz et al., 2014) (ﬁle
+    Amplicon libraries of the V4 hypervariable region of the 16S                 “silva_nr99_v138.1_train_set.fa.gz” obtained from 10.5281/
+rRNA gene were generated using Illumina’s two-step tailed PCR                    zenodo.4587955) using function assignTaxonomy, with a default
+protocol. First-round PCRs (20 mL) contained 5 units of AmpliTaq                 minimum bootstrap conﬁdence of 50. The ﬁnal ASV table was
+Gold DNA Polymerase LD, 1× Gold Buffer, 1.5 mM of MgCl2, 200                     generated by culling ASVs that had an aberrant length (< 245 bp or
+mM of each deoxynucleotide (dNTP), 500 nM each of forward                        > 260 bp), lacked taxonomic assignment at the kingdom or phylum
+primer (5′-TCGTCGGCAGCGTCAGATGTGTATAAGA                                          level, or were classiﬁed as mitochondria. Comparison of ASVs
+GACAGGTGYCAGCMGCCGCGGTAA-3′, the locus-speciﬁc                                   against the LTP database (ﬁle “LTP_01_2022_compressed.fasta”
+515F primer region is underlined) and reverse primer                             obtained from https://imedea.uib-csic.es/mmg/ltp/#Downloads)
+(GTCTCGTGGGCTCGGAGATGTGTATAAGAGACA                                               was performed using Blastn (v2.13.0+), with ﬂags
+GGGACTACNVGGGTWTCTAAT; the 806R primer region is                                 -max_target_seqs 100 -perc_identity 80 -qcov_hsp_perc 95;
+underlined), and 2 mL of DNA template. Thermal cycling                           alignment(s) with the highest percent sequence identity were
+conditions were as follows: 95°C for 10 min; 25 cycles at 95°C for               retained for each ASV.
+
+
+Frontiers in Cellular and Infection Microbiology                            03                                                          frontiersin.org
+Fukuoka et al.                                                                                                         10.3389/fcimb.2023.1216024
+
+
+
+
+2.7 Metagenome sequence data processing                                     command line ﬂags -skip_cn -no_cluster, using the assembled 16S
+and analysis                                                                rRNA gene sequences (clustered at 99.9% sequence identity) as
+                                                                            markers. Reconstructed 16S rRNA gene sequences, trimmed to the
+    Metagenome sequencing reads were preprocessed using fastp               V4 region by in silico PCR using Cutadapt, were compared against the
+v0.20.0 (Chen et al., 2018), with ﬂags -trim_front1 5 -trim_front2 5        ASV sequences using VSEARCH’s v2.18.0 (Rognes et al., 2016)
+-trim_tail1 1 -trim_tail2 1 -cut_right -cut_right_window_size 4             usearch_global command (-maxaccepts 0 -maxrejects 0 -left
+-cut_right_mean_quality 15 -trim_poly_x -poly_x_min_len 10                  just -rightjust).
+-n_base_limit 0 -low_complexity_ﬁlter -length_required 75.
+Reads derived from human DNA were identiﬁed and removed
+using BMTagger v3.101 (ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/             2.9 Data analysis
+bmtagger/), using human genome assembly GRCh38 as reference.
+The retained reads were merged using the BBMap’s v38.82 (https://                All data were analyzed in R (R Core Team, 2022) using the
+sourceforge.net/projects/bbmap/) bbmerge.sh script with                     packages available as part of ‘tidyverse’ (Wickham et al., 2019),
+default parameters.                                                         including dplyr and ggplot2, for data manipulation and
+    Assembly was performed with MEGAHIT v1.2.9 (Li et al.,                  visualization, respectively. ASV tables were randomly subsampled
+2015) with default parameters, using the merged and unmerged                (rareﬁed) to even depth (25,000 sequences per sample, without
+paired reads as inputs. For metagenome binning, paired reads were           replacement) using vegan’s (Oksanen et al., 2020) rrarefy function.
+mapped against the assembled contigs using bowtie2 v2.4.3                   Beta diversity (Bray–Curtis dissimilarity) was calculated using
+(Langmead and Salzberg, 2012), with default settings, and                   vegan’s vegdist function. Principal coordinate analysis was
+resultant alignment ﬁles were processed using samtools v1.14 (Li            performed with ape’s (Paradis and Schliep, 2019) pcoa function,
+et al., 2009). Binning was performed using MetaBAT 2’s v2.15                based on the Bray-Curtis dissimilarity matrix. Hierarchical
+(Kang et al., 2019) runMetaBat.sh script, with -m 1500.                     clustering based on square root transformed Bray-Curtis
+    The quality of recovered MAGs was evaluated using lineage-              dissimilarity matrix was performed using R stats’ hclust function,
+speciﬁc single-copy marker gene sets with CheckM’s v1.1.3 (Parks            with method = ‘ward.D2’. Permutational multivariate analysis of
+et al., 2015) lineage_wf command. Taxonomic classiﬁcation was               variance (PERMANOVA) was performed based on Bray-Curtis
+performed against the Genome Taxonomy Database release 207                  dissimilarities using vegan’s adonis2 function. Alpha diversity was
+using the GTDB-Tk v2.0.0 (Chaumeil et al., 2019) with option                calculated as ASV level richness and Shannon diversity using the
+-full_tree. Genome-based phylogenetic analysis was performed                rareﬁed ASV count table as input, with vegan’s diversity and
+using the GTDB-Tk’s de_novo_wf command.                                     specnumber functions. To identify ASVs with signiﬁcantly
+    Genomes were annotated using DFAST v1.2.15 (Tanizawa et al.,            different abundances in on-tumor samples compared to off-tumor
+2018) with default parameters. For MAGs classiﬁed to the genus              samples, we used general linear modeling, as implemented in the R
+Fusobacterium within the GTDB (see above), putative fadA proteins           package MaAsLin2 v1.8.0 (Mallick et al., 2021), using the rareﬁed
+encoded in the genomes were identiﬁed by searching DFAST                    ASV count table and considering tumor location (encoding as a
+predicted protein sequences against the Pfam database (Mistry               binary categorical variable, on- and off-tumor) as ﬁxed effects and, if
+et al., 2021) release 35 using HMMER’s v3.3.2 (Eddy, 2011)                  applicable, patient as a random effect. Default parameter settings
+hmmsearch command. Protein sequences assigned to the protein                were used, including abundance/prevalence ﬁltering of ASVs
+family PF09403 were compared against NCBI’s non-redundant                   (min_abundance = 0.0, min_prevalence = 0.1), normalization
+protein sequences with protein Blast (blastp; performed on                  by total-sum-scaling (normalization = “TSS”), and logarithmic
+August 21, 2022).                                                           transformation (transform = “LOG”). Differences were
+                                                                            considered signiﬁcant at a q-value of 0.1, i.e., the P-value after
+                                                                            multiple testing corrections using MaAsLin2’s default Benjamini-
+2.8 Linking of amplicon sequence variants                                   Hochberg method.
+and metagenome-assembled genomes
+
+     ASVs and MAGs were linked using MarkerMAG v1.1.18 (Song                3 Results
+et al., 2022). More speciﬁcally, 16S rRNA gene sequences were
+reconstructed from quality-controlled Illumina short reads using                Eleven patients who underwent colonic resection without
+MarkerMAG’s matam_16s command, specifying options -pct                      preoperative bowel preparation were analyzed in this study,
+1,5,10,25,50,75,100 -i 0.999. Two related reference databases were          namely eight male and three female patients with an average age
+used: the SILVA database (release 138, ﬁle SILVA_138.1_SSURef               of 71.1 years (Table 1). Tumors were located in the distal (from the
+_NR99_tax_silva.fasta) and SortMeRNA’s v4.3 (Kopylova et al.,               descending colon to rectum, left-sided) and proximal colon (from
+2012) smr_v4.3_sensitive_db_SSURef_NR99.fasta. Databases were               the cecum to the transverse colon, right-sided) in 5 and 6 patients,
+processed using MarkerMAG’s matam_db_preprocessing.py script,               respectively. Most patients (n = 7) were diagnosed with stage III
+with clustering_id_threshold 0.99. Reconstructed 16S rRNA genes             CRC, and the remaining patients had stage II (n = 3) or stage I (n =
+were then linked to MAGs using MarkerMAG’s link function, with              1) cancer. Additional patient characteristics, such as medical
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                       04                                                            frontiersin.org
+Fukuoka et al.                                                                                                                                 10.3389/fcimb.2023.1216024
+
+
+
+
+comorbidities and operative procedures, are provided in                                         Based on the above observations, we focused on patients with
+Supplementary Table S1.                                                                     the largest dissimilarity between on- and off-tumor samples (that is,
+    We obtained multiple tumor and adjacent non-tumor tissue                                patients B, F, and G) and statistically assessed ASV level differential
+samples from each patient, both toward the oral and anal side of the                        abundances between on- and off-tumor samples. For this analysis,
+colon and at varying distances, between 1 and 10 cm, from the                               we considered each of the three patients separately and used a linear
+tumor (Supplementary Figure S1). Across patients, a total of 98                             model with location as a ﬁxed effect, encoded as a binary categorical
+tissue samples were obtained, and associated microbiota                                     variable (on-/off-tumor). As shown in Figure 2A, ASVs that were
+compositions were measured by sequencing the V4 hypervariable                               strongly enriched or depleted (q-value threshold of 0.1 and absolute
+region of the 16S rRNA gene. Amplicon sequence variants (ASVs)                              effect size of ≥2, corresponding to a four-fold difference in relative
+were reconstructed using DADA2 (see Supplementary Table S2 for                              abundance) in tumor samples were afﬁliated with a broad range of
+summary statistics) and taxonomically assigned against the                                  genera. For patient B, ASVs that were signiﬁcantly enriched and
+SILVA database.                                                                             highly abundant in tumor samples (relative abundance of ≥0.5%,
+    Colonic mucosal microbiota across patients were dominated by                            arithmetic mean across on-tumor samples) were taxonomically
+the phyla Firmicutes, Bacteroidota, Proteobacteria, and                                     assigned to the genera Leptotrichia (asv183), Streptococcus
+Actinobacteriota (Supplementary Figure S2), common members                                  (asv69), and Fusobacterium (asv105 and asv133) within SILVA’s
+of the human gut microbiome. The abundance of the phylum                                    taxonomic framework. For patient F, abundant tumor-enriched
+Fusobacteriota varied considerably across patients, ranging from,                           ASVs were assigned to more diverse genera, including Filifactor
+on average, less than 1% in noncancerous tissue samples for patients                        (asv154), Fusobacterium (asv65 and asv175), Hungatella (asv221),
+I, D, A, and F to more than 10% for patients B, C, and E.                                   Lentimicrobium (asv206), Leptotrichia (asv271), Porphyromonas
+    Ordination and hierarchical clustering based on ASV level                               (asv239), Treponema (asv366 and asv521), and Gemella (asv78),
+Bray-Curtis dissimilarities showed that microbiota proﬁles                                  within the top-10 most enriched ASVs (by the beta coefﬁcient of the
+clustered predominantly by the patient (Figure 1A and                                       linear regression model). For patient G, only two ASVs assigned to
+Supplementary Figure S3), with PERMANOVA indicating that                                    the genera Roseburia (asv59) and Treponema (asv392) were
+patient-wise grouping accounted for most of the variation across                            enriched and highly abundant at the tumor site.
+microbiota proﬁles (R2 = 0.89; P < 0.001). Alpha diversity (ASV level                           To strengthen the above ﬁndings, we further employed a linear
+richness and Shannon diversity) varied between patients but was                             mixed effects model to identify ASVs signiﬁcantly enriched or
+not signiﬁcantly associated with sampling location (that is, on-/off-                       depleted in on-tumor samples, considering data from all patients.
+tumor) (Supplementary Figure S4).                                                           Focusing on ASVs with an abundance of ≥0.01% in at least 10
+    We next analyzed subject-matched (that is, paired) on- and off-                         samples (n = 477, 93.3 ± 8.0% of reads across samples), this revealed
+tumor microbiota proﬁles to assess whether tumors harbored                                  12 ASVs that were signiﬁcantly enriched in on-tumor samples
+distinct microbiota compared to adjacent non-tumor tissues. At                              (Supplementary Figure S6). These ASVs were afﬁliated with a
+the community level, the dissimilarity between on- and off-tumor                            range of genera, namely Bacteroides (asv19), Campylobacter
+microbiota was highly variable across patients. As shown in                                 (asv343), Catonella (asv311), Centipeda (asv518), Fusobacterium
+Figure 1B, patients B, F, and G harbored on-tumor microbiota                                (asv175 and asv65), Hungatella (asv221), Lachnospiraceae
+that was more distinct from off-tumor microbiota than the other                             NK4A136 group (asv261), Parvimonas (asv21), Peptostreptococcus
+patients. Visualization of the ASV-wise differential abundances                             (asv44), Selenomonas (asv201), Treponema (asv379). Only a single
+between on- and off-tumor samples revealed a similar trend                                  ASV was identiﬁed as depleted in on-tumor samples, namely asv224
+(Supplementary Figure S5).                                                                  afﬁliated with the genus Actinomyces.
+
+
+TABLE 1 Characteristics of patients included in this study.
+
+
+    Patient                                  A           B          C           D            E           F           G                H          I         J              K
+    Gender                                 female       male       male        male         male      female       female            male      male       male          male
+
+    Age                                      73          77         68          75           69         52           70               77        79         71            71
+
+    BMI a                                   23.2        20.7       19.2        23.8         28.0       22.5         19.6             24.4      25.3       22.0          22.4
+                   b
+    Cancer stage                            IIA           I         IIB        IIIB         IIA        IIIB         IIIC             IIIB      IIIC       IIIB           IIIB
+
+    Tumor location                         right,       right,     left,       left,       left,       left,       right,         right,       right,      left,        right,
+                                         ascending     cecum     sigmoid     sigmoid     sigmoid     sigmoid     ascending     transverse    ascending   rectum       ascending
+                                           colon                  colon       colon       colon       colon        colon          colon        colon                    colon
+
+    Time between resection and             21–25       24–30      35–50        NA c       16–25       17–25        18–27             NA b     16–25      29–34          25–34
+    sampling collection (min)
+
+    No. of samples, total (on-tumor)       28 (4)      22 (2)      9 (2)       6 (2)        6 (2)      6 (2)        6 (2)            4 (2)     4 (2)      4 (2)         3 (1)
+a                                -2
+  BMI, body mass index (in kg m ).
+b
+  Cancer stage as determined according to the Union for International Cancer Control (UICC) TNM Classiﬁcation of Malignant Tumors.
+c
+  NA, not available.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                       05                                                                         frontiersin.org
+Fukuoka et al.                                                                                                                  10.3389/fcimb.2023.1216024
+
+
+
+
+                     A                                               B
+
+
+
+
+   FIGURE 1
+   (A) Principal coordinate analysis (PCoA) of microbiota compositions based on the Bray–Curtis dissimilarity matrix calculated from ASV-level
+   abundances. Symbol shapes and ﬁll colors indicate sample locations (i.e., on- and off-tumor) and patients, respectively, as in panel (B) Differences in
+   compositions of on- and off-tumor mucosal microbiota. For each patient, symbols show ASV level Bray–Curtis dissimilarities of all possible pairwise
+   comparisons between on- and off-tumor samples, resulting in multiple data points for a given distance to the tumor depending on the number of
+   available samples (see Supplementary Figure S1). Negative and positive distances to the tumor indicate tissue samples toward the oral and anal side
+   of the colon concerning the tumor, respectively. Colored ribbons show the range of the data.
+
+
+
+
+    A comparison of the ASVs against the Living Tree Project                      genes and MAGs, using paired-end sequencing reads (see
+(LTP) database showed that several differentially abundant                        Material and methods for details). Sequencing and metagenome
+phylotypes represented hitherto uncultured species lacking validly                assembly statistics are provided in Supplementary Table S4.
+described type strains (Supplementary Table S3). These included,                      In total, we obtained 115 medium-to-high-quality MAGs
+for example, phylotypes asv206 (83.1% similarity to the 16S rRNA                  (completeness of ≥50% and contamination <5%, as estimated
+gene sequence of the type strain of Perlabentimonas gracilis in the               based on the presence of single-copy marker genes using
+LTP database, accession MT501785) and asv588 (93.7% similarity                    CheckM), ranging from six MAGs for patient B to 13 MAGs for
+to Leptotrichia trevisanii, AF206305), both of which were enriched                patients I and G (Figure 3 and Supplementary Table S5).
+in the tumor of patient F.                                                        Taxonomic classiﬁcation against the Genome Taxonomy
+    The enrichment of speciﬁc ASVs in on-tumor samples tended                     Database (GTDB, release 207) showed that the reconstructed
+to be highly localized and was no longer apparent even a few                      MAGs captured substantial phylogenetic diversity, including
+centimeters away from the tumors (Figure 2B and Supplementary                     several MAGs representing genera/species previously linked to
+Figure S7). For example, for patient B, a Streptococcus-related ASV               CRC. Using MarkerMAG, we were able to link 16S rRNA gene
+(asv69; 100% similarity to S. sanguinis, accession AFAZ01000011;                  sequences for 65 MAGs (out of 115), 59 of which perfectly matched
+Supplementary Table S3) reached relative abundances exceeding                     (100% sequence identity) the ASV generated using amplicon
+5% at the tumor site but had an abundance of only ~0.5% in                        sequencing. For most MAG-ASV linkages, the taxonomic
+surrounding noncancerous tissue, even within 1 cm from the                        assignments of the MAGs and ASVs were consistent
+tumor. Strong localization of speciﬁc ASVs at the tumor site was                  (Supplementary Table S6). Of note is that several species were
+also observed in two other patients (F and G; Supplementary Figure                represented by MAGs that were recovered in the enrichment
+S7). Similarly, depletion of speciﬁc ASVs tended to be localized at               cultures of multiple patients (Supplementary Table S5), including
+the tumor sites; however, for patient G, depletion of ASVs around                 Escherichia coli (MAGs recovered in n = 7 enrichment cultures, out
+the tumor was less pronounced, mirroring the trend in                             of 11), Clostridium_Q symbiosum (n = 5), unclassiﬁed MAGs within
+dissimilarities between the on- and off-tumor samples at the level                the genus Collinsella (n = 5), and Erysipelatoclostridium ramosum
+of the entire community (Figure 1B).                                              (n = 4).
+    In addition to the above-mentioned phylotypes, an inspection                      Several ASV-linked MAGs represented genomes that were
+of all samples revealed additional abundant phylotypes distinct                   enriched at the tumor site compared with the surrounding non-
+from type strains in the LTP database (Supplementary Figure S8).                  tumor tissue (Figure 3). This included bin3 (linked to asv78), bin2
+To enable better identiﬁcation and understanding of these                         (asv44), and bin14 (asv175) in patient F. Within the GTDB
+phylotypes, particularly phylotypes that may be involved in CRC                   taxonomic framework, these MAGs were classiﬁed as Gemella
+carcinogenesis based on their high abundance in tumor tissue, we                  morbillorum (bin3, with 98.3% average nucleotide identity, ANI,
+sought to acquire their draft genome sequences as MAGs. To this                   to its closest representative genome in the GTDB, accession
+end, the microbiota in the tumor samples was enriched by short-                   GCF_900476045.1, Supplementary Table S5), Peptostreptococcus
+term culturing under anaerobic conditions to reduce human DNA                     stomatis (bin2, 97.9% ANI to GCF_000147675.1), and
+content before sequencing and subjected to shotgun metagenomics.                  “Fusobacterium_A ulcerans_A” (bin14, 99.98% ANI to
+MAGs were reconstructed by binning the assembled contigs and                      GCF_900683735.1). The reconstructed MAGs captured numerous
+linked to ASVs generated by amplicon sequencing using                             taxa represented solely by uncultured microorganisms in the
+MarkerMAG, a bioinformatics pipeline for linking 16S rRNA                         GTDB. Several of these, for example, “Fusobacterium_B
+
+
+
+Frontiers in Cellular and Infection Microbiology                             06                                                                 frontiersin.org
+Fukuoka et al.                                                                                                                  10.3389/fcimb.2023.1216024
+
+
+
+
+                    A
+
+
+
+
+                    B
+
+
+
+
+   FIGURE 2
+   (A) Bubble plot of effect sizes for ASVs with signiﬁcantly differential abundance in the on- and off-tumor samples for patients (B, F, G) Effect sizes
+   were estimated using MaAsLin2 and represent log2-transformed fold-differences in abundances; positive and negative effect sizes indicate
+   enrichment or depletion in the on-tumor samples, respectively. Only signiﬁcant ASVs (q-value of <0.1) and an effect size (absolute value) of >2,
+   corresponding to a four-fold difference in abundance, are shown. Symbol ﬁll colors and sizes indicate patients and statistical signiﬁcance levels (q-
+   values), respectively. Genus-level taxonomic assignments of the ASVs against the SILVA database are indicated in the x-axis labels. (B) Heatmap of
+   the relative abundance of the ASVs shown in panel (A); ﬁll colors reﬂect relative abundances in percentages.
+
+
+
+
+sp900541465” for patient E and “Parvimonas sp000223315” for                       our study may thus provide a more representative depiction of the
+patient C, were relatively abundant as estimated based on their                   diversity and abundance of tissue-associated microbiota in patients
+linked ASV abundances (Supplementary Figure S9).                                  with CRC. Furthermore, compared to previous studies, we further
+                                                                                  investigated the spatial heterogeneity of mucosal microbiota around
+4 Discussion                                                                      the tumor site in greater detail by collecting samples at varying
+                                                                                  distances from the tumor with centimeter-scale resolution.
+   We proﬁled the mucosal microbiota in tumor and adjacent                            Within our cohort, community-wide microbiota dissimilarity
+non-tumor tissues collected from patients with CRC who had                        between paired on- and off-tumor samples varied substantially
+undergone colonic resection without preoperative bowel                            among patients. This is broadly consistent with previous
+preparation. Since bowel preparation has been shown to cause                      observations, with some studies reporting differences (Marchesi
+short-term perturbation of the gastrointestinal microbiota and                    et al., 2011; Kostic et al., 2013; Boleij et al., 2015; Gao et al., 2015;
+changes in the observed microbiota proﬁles (Shobar et al., 2016),                 Loke et al., 2018; Sheng et al., 2020; Zhu et al., 2022), whereas in
+
+
+Frontiers in Cellular and Infection Microbiology                             07                                                                 frontiersin.org
+Fukuoka et al.                                                                                                            10.3389/fcimb.2023.1216024
+
+
+
+
+   FIGURE 3
+   Phylogenetic bacterial genome tree of MAGs reconstructed from short-term enrichment cultures of colonic tumor tissue samples across all patients.
+   The tree is based on the concatenated alignment of 120 single-copy marker gene proteins and was generated using GTDB-Tk. Representative GTDB
+   genomes are shown for species with the same taxonomic assignment as the MAGs. Links to the ASVs, as inferred based on reconstructed 16S rRNA
+   genes using MarkerMAG, are indicated. Filled squares adjacent to the tree show MAG completeness as estimated using CheckM, and ﬁlled circles
+   indicate the patient from whom the MAG was derived. The scale bar indicates the number of amino acid substitutions per site.
+
+
+
+
+other studies (Chen et al., 2012; Kostic et al., 2012; Flemer et al.,              As a whole, we identiﬁed a range of bacteria with elevated
+2017; Murphy et al., 2021) on- and off-tumor microbiota were                   abundance in on-tumor samples compared to patient-matched off-
+highly similar. These observations suggest that patients may be                tumor samples, largely consistent with past studies (see e.g. Ternes
+grouped according to whether they harbor distinct tumor-                       et al., 2020 for review). This included ASVs afﬁliated with
+associated microbiota compared with adjacent normal tissues.                   Fusobacterium (asv65 and asv175, linked to MAG bin14 for
+Within our dataset, such stratiﬁcation did not appear to be                    patient F), Gemella morbillorum (asv78, linked to bin3 for patient
+correlated with patient characteristics, such as tumor-sidedness               F), Peptostreptococcus stomatis (asv44, linked to bin9 and bin2 for
+and cancer stage; future studies with a larger patient cohort are              patients C and F, respectively), Parvimonas micra (asv21, linked to
+however required to substantiate this.                                         bin9 for patient E), Leptotrichia (asv271), Streptococcus (asv69),
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                          08                                                             frontiersin.org
+Fukuoka et al.                                                                                                            10.3389/fcimb.2023.1216024
+
+
+
+
+Selenomonas (asv201), and Treponema (asv379). Several of these               only a limited number of on-tumor samples were collected for each
+taxa, especially Fusobacterium, Peptostreptococcus stomatis, and             patient; more extensive sampling of tumor-associated microbiota
+Parvimonas micra, are frequently detected as enriched in                     will be needed to better account for potential within-tumor
+colorectal adenoma and CRC patients, and the molecular                       heterogeneity of microbiota proﬁles.
+mechanisms underlying their involvement in promoting colonic                     This study also underscored the need to continue to acquire
+carcinogenesis are increasingly well understood (e.g., Long et al.,          more detailed information on bacterial populations linked to CRC
+2019; Chang et al., 2023). For others, such as Leptotrichia (Xu and          through cultivation and/or genome sequencing. Herein, we
+Jiang, 2017), Gemella morbillorum (Avuthu and Guda, 2022) and                acquired MAGs of several tumor-associated bacteria and a range
+Treponema (Yang et al., 2019), past studies have observed an                 of uncultured species. The availability of representative genome
+association with the risk of CRC or increased abundance in                   sequences is needed to clarify microbial features, such as the
+patients, but the molecular processes through which they affect              production of toxins, which may be responsible for their
+CRC are less well understood. In particular, it remains to be                association with CRC and will also facilitate efforts to
+resolved whether the bacterial taxa identiﬁed as enriched in                 cultivate them.
+tumor tissue initiate and drive carcinogenesis or act as
+“passengers” that take advantage of the tumor microenvironment
+to outcompete other bacteria (Avril and DePaolo, 2021). Of note is           Data availability statement
+here that the dense sampling of some patients revealed that the
+enrichment of these bacteria was highly localized to the tumor and              The datasets presented in this study can be found in online
+disappeared within a few centimeters of the tumor.                           repositories. The names of the repository/repositories and accession
+    Within the genus Fusobacterium, multiple phylotypes distinct             number(s) can be found in the article/Supplementary Material.
+from F. nucleatum, the main Fusobacterium species previously
+linked to CRC, were strongly enriched at the tumor site. The
+MAG of “Fusobacterium_A ulcerans_A” recovered from patient F                 Ethics statement
+was predicted to encode for FadA adhesin (Supplementary Table
+S7), a well-established virulence factor associated with CRC                     The studies involving human participants were reviewed and
+(Rubinstein et al., 2013). In line with this, Yeoh et al. (2020)             approved by Ethics Committee of Yokohama City University
+recently reported that several fusobacterial lineages distinct from          (B190600051, F220600030). The patients/participants provided
+F. nucleatum, including F. ulcerans within the “Fusobacterium_A”             their written informed consent to participate in this study.
+clade within the GTDB, possessed FadA homologues in Southern
+Chinese populations.
+    We further found that several species in the enrichment cultures         Author contributions
+constructed from on-tumor tissue samples were represented by
+MAGs recovered from multiple patients. In addition to E. coli, this             HF performed sampling, data analysis, and prepared the
+included MAGs afﬁliated with the species E. ramosum, C.                      manuscript. DT performed data analysis and prepared the
+symbiosum, and unclassiﬁed MAGs within the genus Collinsella.                manuscript. AO performed laboratory experiments, including
+Although not as commonly associated with CRC, a recent study by              DNA extraction, culturing, and DNA sequencing. SS, KN, MO,
+Iadsee et al. (2023) found that E. ramosum was enriched in mucosal           and AI performed surgery and sampling. IE performed sampling
+and luminal microbiota of Thai CRC patients, and suggested that              and prepared the manuscript. YS performed data analysis and
+this species may represent a tumor-promoting bacterium that                  prepared the manuscript. All authors have reviewed and
+preferentially colonizes the tumor microenvironment and present              approved the submitted manuscript.
+a biomarker for CRC screening. For C. symbiosum, several past
+studies observed a stepwise increase in the abundance of this species
+in the feces of healthy controls, colorectal adenoma, and CRC                Funding
+patients (Xie et al., 2017; Zhang et al., 2021) and C. symbiosum was
+also identiﬁed as a CRC-associated bacterium in a meta-analysis of               This study was supported in part by the program “The next-
+cohorts from diverse geographical regions (Avuthu and                        generation drug discovery and development technology on
+Guda, 2022).                                                                 regulating intestinal microbiome” (NeDDTrim) of the Japan
+    Our study has a number of limitations to be recognized. Firstly,         Agency for Medical Research and Development (AMED), under
+due to the fact that preoperative bowel cleansing before colorectal          grants JP22ae0121035h0002 and JP21ae0121037s0301. This study
+surgery has become routine clinical practice worldwide, only a               further received funding from Chugai Pharmaceutical Co., Ltd.
+relatively small number of patients could be recruited. This also            (grant AC-1-20200415123903-602601), Otsuka Pharmaceutical
+means that colonic tissue collection during surgery from unprepped           Co., Ltd. (grant AS2020A000543848), and Taiho Pharmaceutical
+patients may be challenging to adopt at larger scales. Secondly,             Co., Ltd. (grant AS2020A000532969). The funder was not involved
+mucosal microbiota and their differences between on- and off-                in the study design, collection, analysis, interpretation of data, the
+tumor microbiota were highly variable between patients, and larger           writing of this article, or the decision to submit it for publication. All
+sample sizes will be needed to improve statistical power. Thirdly,           authors declare no other competing interests.
+
+
+Frontiers in Cellular and Infection Microbiology                        09                                                              frontiersin.org
+Fukuoka et al.                                                                                                                                                10.3389/fcimb.2023.1216024
+
+
+
+
+Acknowledgments                                                                                       Publisher’s note
+    We express our gratitude to all patients who consented to                                             All claims expressed in this article are solely those of the authors
+participate in this study. We further thank Dr. Yuka Abe, Dr.                                         and do not necessarily represent those of their afﬁliated
+Hiroki Fujiwara, Dr. Yuko Tamura, Dr. Kenichiro Toritani, Dr.                                         organizations, or those of the publisher, the editors and the
+Mahato Sasamoto, Dr. Hiroki Ohya, and Dr. Rufuto Kubota for                                           reviewers. Any product that may be evaluated in this article, or
+their assistance during sampling, and Dr. Akimitsu Yamada, Dr. Ken                                    claim that may be made by its manufacturer, is not guaranteed or
+Kasahara, and Dr. Kentaro Miyake for their advice on this work.                                       endorsed by the publisher.
+
+
+
+Conﬂict of interest                                                                                   Supplementary material
+    The authors declare that the research was conducted in the                                             The Supplementary Material for this article can be found online
+absence of any commercial or ﬁnancial relationships that could be                                     at: https://www.frontiersin.org/articles/10.3389/fcimb.2023.1216024/
+construed as a potential conﬂict of interest.                                                         full#supplementary-material
+
+
+
+
+References
+  Avril, M., and DePaolo, R. W. (2021). ‘Driver-passenger’ bacteria and their                           Iadsee, N., Chuaypen, N., Techawiwattanaboon, T., Jinato, T., Patcharatrakul, T.,
+metabolites in the pathogenesis of colorectal cancer. Gut Microbes 13, 1941710.                       Malakorn, S., et al. (2023). Identiﬁcation of a novel gut microbiota signature associated
+doi: 10.1080/19490976.2021.1941710                                                                    with colorectal cancer in Thai population. Sci. Rep. 13, 6702. doi: 10.1038/s41598-023-
+  Avuthu, N., and Guda, C. (2022). Meta-analysis of altered gut microbiota reveals                    33794-9
+microbial and metabolic biomarkers for colorectal cancer. Microbiol. Spectr. 10,                         Jalanka, J., Salonen, A., Salojärvi, J., Ritari, J., Immonen, O., Marciani, L., et al.
+e0001322. doi: 10.1128/spectrum.00013-22                                                              (2015). Effects of bowel cleansing on the intestinal microbiota. Gut 64, 1562–1568.
+  Boleij, A., Hechenbleikner, E. M., Goodwin, A. C., Badani, R., Stein, E. M.,                        doi: 10.1136/gutjnl-2014-307240
+Lazarev, M. G., et al. (2015). The Bacteroides fragilis toxin gene is prevalent in the                  Kang, D. D., Li, F., Kirton, E., Thomas, A., Egan, R., An, H., et al. (2019). MetaBAT 2:
+colon mucosa of colorectal cancer patients. Clin. Infect. Dis. 60, 208–215.                           an adaptive binning algorithm for robust and efﬁcient genome reconstruction from
+doi: 10.1093/cid/ciu787                                                                               metagenome assemblies. PeerJ. 7, e7359. doi: 10.7717/peerj.7359
+   Callahan, B. J., McMurdie, P. J., Rosen, M. J., Han, A. W., Johnson, A. J., and Holmes,               Kopylova, E., Noé , L., and Touzet, H. (2012). SortMeRNA: fast and accurate ﬁltering
+S. P. (2016). DADA2: high-resolution sample inference from Illumina amplicon data.                    of ribosomal RNAs in metatranscriptomic data. Bioinformatics. 28, 3211–3217.
+Nat. Methods 13, 581–583. doi: 10.1038/nmeth.3869                                                     doi: 10.1093/bioinformatics/bts611
+   Chang, Y., Huang, Z., Hou, F., Liu, Y., Wang, L., Wang, Z., et al. (2023). Parvimonas                 Kostic, A. D., Chun, E., Robertson, L., Glickman, J. N., Gallini, C. A., Michaud, M.,
+micra activates the Ras/ERK/c-Fos pathway by upregulating miR-218-5p to promote                       et al. (2013). Fusobacterium nucleatum potentiates intestinal tumorigenesis and
+colorectal cancer progression. J. Exp. Clin. Cancer Res. 42, 13. doi: 10.1186/s13046-022-             modulates the tumor-immune microenvironment. Cell Host Microbe 14, 207–215.
+02572-2                                                                                               doi: 10.1016/j.chom.2013.07.007
+   Chaumeil, P. A., Mussig, A. J., Hugenholtz, P., and Parks, D. H. (2019). GTDB-Tk: a                   Kostic, A. D., Gevers, D., Pedamallu, C. S., Michaud, M., Duke, F., Earl, A. M., et al.
+toolkit to classify genomes with the Genome Taxonomy Database. Bioinformatics. 36,                    (2012). Genomic analysis identiﬁes association of Fusobacterium with colorectal
+1925–1927. doi: 10.1093/bioinformatics/btz848                                                         carcinoma. Genome Res. 22, 292–298. doi: 10.1101/gr.126573.111
+  Chen, W., Liu, F., Ling, Z., Tong, X., and Xiang, C. (2012). Human intestinal lumen                   Langmead, B., and Salzberg, S. L. (2012). Fast gapped-read alignment with Bowtie 2.
+and mucosa-associated microbiota in patients with colorectal cancer. PloS One 7,                      Nat. Methods 9, 357–359. doi: 10.1038/nmeth.1923
+e39743. doi: 10.1371/journal.pone.0039743                                                               Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., et al. (2009). The
+  Chen, S., Zhou, Y., Chen, Y., and Gu, J. (2018). fastp: an ultra-fast all-in-one FASTQ              sequence alignment/map format and SAMtools. Bioinformatics. 25, 2078–2079.
+preprocessor. Bioinformatics 34, i884–i890. doi: 10.1093/bioinformatics/bty560                        doi: 10.1093/bioinformatics/btp352
+  Eddy, S. R. (2011). Accelerated proﬁle HMM searches. PloS Comput. Biol. 7,                             Li, D., Liu, C. M., Luo, R., Sadakane, K., and Lam, T. W. (2015). MEGAHIT: an ultra-
+e1002195. doi: 10.1371/journal.pcbi.1002195                                                           fast single-node solution for large and complex metagenomics assembly via succinct de
+  Flemer, B., Lynch, D. B., Brown, J. M., Jeffery, I. B., Ryan, F. J., Claesson, M. J., et al.        Bruijn graph. Bioinformatics. 31, 1674–1676. doi: 10.1093/bioinformatics/btv033
+(2017). Tumour-associated and non-tumour-associated microbiota in colorectal                             Loke, M. F., Chua, E. G., Gan, H. M., Thulasi, K., Wanyiri, J. W., Thevambiga, I.,
+cancer. Gut. 66, 633–643. doi: 10.1136/gutjnl-2015-309595                                             et al. (2018). Metabolomics and 16S rRNA sequencing of human colorectal cancers and
+   Gao, Z., Guo, B., Gao, R., Zhu, Q., and Qin, H. (2015). Microbiota dysbiosis is                    adjacent mucosa. PloS One 13, e0208584. doi: 10.1371/journal.pone.0208584
+associated with colorectal cancer. Front. Microbiol. 6. doi: 10.3389/fmicb.2015.00020                   Long, X., Wong, C. C., Tong, L., Chu, E. S. H., Ho Szeto, C., Go, M. Y. Y., et al.
+  Gorkiewicz, G., Thallinger, G. G., Trajanoski, S., Lackner, S., Stocker, G.,                        (2019). Peptostreptococcus anaerobius promotes colorectal carcinogenesis and
+Hinterleitner, T., et al. (2013). Alterations in the colonic microbiota in response to                modulates tumour immunity. Nat. Microbiol. 4, 2319–2330-22330. doi: 10.1038/
+osmotic diarrhea. PloS One 8, e55817. doi: 10.1371/journal.pone.0055817                               s41564-019-0541-3
+
+   Gustafsson, U. O., Scott, M. J., Hubner, M., Nygren, J., Demartines, N., Francis, N.,                 Mai, V., Greenwald, B., Morris, J. G. C. J.R., Raufman, J. P., and Stine, O. C. (2006).
+et al. (2019). Guidelines for perioperative care in elective colorectal surgery: enhanced             Effect of bowel preparation and colonoscopy on post-procedure intestinal microbiota
+recovery after surgery (ERAS®) society recommendations: 2018. World J. Surg. 43, 659–                 composition. Gut. 55, 1822–1823. doi: 10.1136/gut.2006.108266
+695. doi: 10.1007/s00268-018-4844-y                                                                      Mallick, H., Rahnavard, A., McIver, L. J., Ma, S., Zhang, Y., Nguyen, L. H., et al.
+  Harrell, L., Wang, Y., Antonopoulos, D., Young, V., Lichtenstein, L., Huang, Y., et al.             (2021). Multivariable association discovery in population-scale meta-omics studies.
+(2012). Standard colonic lavage alters the natural state of mucosal-associated                        PloS Comput. Biol. 17, e1009442. doi: 10.1371/journal.pcbi.1009442
+microbiota in the human colon. PloS One 7, e32545. doi: 10.1371/journal.pone.0032545                    Marchesi, J. R., Dutilh, B. E., Hall, N., Peters, W. H., Roelofs, R., Boleij, A., et al.
+   Hashiguchi, Y., Muro, K., Saito, Y., Ito, Y., Ajioka, Y., Hamaguchi, T., et al. (2020).            (2011). Towards the human colorectal cancer microbiome. PloS One 6, e20447.
+Japanese Society for Cancer of the Colon and Rectum (JSCCR) guidelines 2019 for the                   doi: 10.1371/journal.pone.0020447
+treatment of colorectal cancer. Int. J. Clin. Oncol. 25, 1–42. doi: 10.1007/s10147-019-                  Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput
+01485-z                                                                                               sequencing reads. EMBnet J. 17, 10–12. doi: 10.14806/ej.17.1.200
+  Helmink, B. A., Khan, M. A. W., Hermann, A., Gopalakrishnan, V., and Wargo, J. A.                      Mistry, J., Chuguransky, S., Williams, L., Qureshi, M., Salazar, G. A., Sonnhammer,
+(2019). The microbiome, cancer, and cancer therapy. Nat. Med. 25, 377–388.                            E. L. L., et al. (2021). Pfam: the protein families database in 2021. Nucleic Acids Res. 49,
+doi: 10.1038/s41591-019-0377-7                                                                        D412–D419. doi: 10.1093/nar/gkaa913
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                                 10                                                                             frontiersin.org
+Fukuoka et al.                                                                                                                                            10.3389/fcimb.2023.1216024
+
+
+
+
+   Murphy, C. L., Barrett, M., Pellanda, P., Killeen, S., McCourt, M., Andrews, E., et al.            Shobar, R. M., Velineni, S., Keshavarzian, A., Swanson, G., DeMeo, M. T., Melson, J.
+(2021). Mapping the colorectal tumor microbiota. Gut Microbes 13, 1–10. doi: 10.1080/              E., et al. (2016). The effects of bowel preparation on microbiota-related metrics differ in
+19490976.2021.1920657                                                                              health and in inﬂammatory bowel disease and for the mucosal and luminal microbiota
+  O’Keefe, S. J. (2016). Diet, microorganisms and their metabolites, and colon cancer.             compartments. Clin. Transl. Gastroenterol. 7, e143. doi: 10.1038/ctg.2015.54
+Nat. Rev. Gastroenterol. Hepatol. 13, 691–706. doi: 10.1038/nrgastro.2016.165                         Song, W., Zhang, S., and Thomas, T. (2022). MarkerMAG: linking metagenome-
+   Oksanen, J., Blanchet, F. G., Friendly, M., Kindt, R., Legendre, P., McGlinn, D., et al.        assembled genomes (MAGs) with 16S rRNA marker genes using paired-end short
+(2020). vegan: community Ecology Package. Available at: https://CRAN.R-project.org/                reads. Bioinformatics. 38, 3684–3688. doi: 10.1093/bioinformatics/btac398
+package=vegan (Accessed 4/27/2023).                                                                  Tanizawa, Y., Fujisawa, T., and Nakamura, Y. (2018). DFAST: a ﬂexible prokaryotic
+  Paradis, E., and Schliep, K. (2019). Ape 5.0: an environment for modern                          genome annotation pipeline for faster genome publication. Bioinformatics. 34, 1037–
+phylogenetics and evolutionary analyses in R. Bioinformatics. 35, 526–528.                         1039. doi: 10.1093/bioinformatics/btx713
+doi: 10.1093/bioinformatics/bty633                                                                   Ternes, D., Karta, J., Tsenkova, M., Wilmes, P., Haan, S., and Letellier, E. (2020).
+   Parks, D. H., Imelfort, M., Skennerton, C. T., Hugenholtz, P., and Tyson, G. W.                 Microbiome in colorectal cancer: How to get from meta-omics to mechanism? Trends
+(2015). CheckM: assessing the quality of microbial genomes recovered from isolates,                Microbiol. 28, 401–423. doi: 10.1016/j.tim.2020.01.001
+single cells, and metagenomes. Genome Res. 25, 1043–1055. doi: 10.1101/gr.186072.114                  Tourlousse, D. M., Narita, K., Miura, T., Sakamoto, M., Ohashi, A., Shiina, K., et al.
+   Pasquereau-Kotula, E., Martins, M., Aymeric, L., and Dramsi, S. (2018). Signiﬁcance             (2021). Validation and standardization of DNA extraction and library construction
+of Streptococcus gallolyticus subsp gallolyticus association with colorectal cancer. Front.        methods for metagenomics-based human fecal microbiome measurements.
+Microbiol. 9. doi: 10.3389/fmicb.2018.00614                                                        Microbiome. 9, 95. doi: 10.1186/s40168-021-01048-3
+
+  R Core Team (2022). R: A language and environment for statistical computing                         Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L., François, R., et al.
+(Vienna, Austria: R Foundation for Statistical Computing). Available at: https://www.              (2019). Welcome to the tidyverse. J. Open Source Softw. 4, 1686. doi: 10.21105/
+R-project.org/ (Accessed 4/27/2023).                                                               joss.01686
+   Rezasoltani, S., Dabiri, H., Asadzadeh-Aghdaei, H., Sepahi, A. A., Modarressi, M. H.,              Xie, Y. H., Gao, Q. Y., Cai, G. X., Sun, X. M., Sun, X. M., Zou, T. H., et al. (2017).
+and Nazemalhosseini-Mojarad, E. (2019). The gut microﬂora assay in patients with                   Fecal Clostridium symbiosum for noninvasive detection of early and advanced
+colorectal cancer: in feces or tissue samples? Iran J. Microbiol. 11, 1–6. doi: 10.18502/          colorectal cancer: Test and validation studies. EBioMedicine 25, 32–40. doi: 10.1016/
+ijm.v11i1.696                                                                                      j.ebiom.2017.10.005
+
+   Ringel, Y., Maharshak, N., Ringel-Kulka, T., Wolber, E. A., Sartor, R. B., and Carroll,           Xu, K., and Jiang, B. (2017). Analysis of mucosa-associated microbiota in colorectal
+I. M. (2015). High throughput sequencing reveals distinct microbial populations within             cancer. Med. Sci. Monit. 23, 4422–4430. doi: 10.12659/msm.904220
+the mucosal and luminal niches in healthy individuals. Gut Microbes 6, 173–181.                      Yang, Y., Cai, Q., Shu, X. O., Steinwandel, M. D., Blot, W. J., Zheng, W., et al. (2019).
+doi: 10.1080/19490976.2015.1044711                                                                 Prospective study of oral microbiome and colorectal cancer risk in low-income and
+   Rognes, T., Flouri, T., Nichols, B., Quince, C., and Mahé , F. (2016). VSEARCH: a              African American populations. Int. J. Cancer 144, 2381–2389. doi: 10.1002/ijc.31941
+versatile open source tool for metagenomics. PeerJ. 4, e2584. doi: 10.7717/peerj.2584                Yeoh, Y. K., Chen, Z., Wong, M. C. S., Hui, M., Yu, J., Ng, S. C., et al. (2020).
+  Rubinstein, M. R., Wang, X., Liu, W., Hao, Y., Cai, G., and Han, Y. W. (2013).                   Southern Chinese populations harbour non-nucleatum Fusobacteria possessing
+Fusobacterium nucleatum promotes colorectal carcinogenesis by modulating E-                        homologues of the colorectal cancer-associated FadA virulence factor. Gut. 69, 1998–
+cadherin/b-catenin signaling via its FadA adhesin. Cell Host Microbe 14, 195–206.                  2007. doi: 10.1136/gutjnl-2019-319635
+doi: 10.1016/j.chom.2013.07.012                                                                      Yilmaz, P., Parfrey, L. W., Yarza, P., Gerken, J., Pruesse, E., Quast, C., et al. (2014).
+   Sekiguchi, Y., Kamagata, Y., Nakamura, K., Ohashi, A., and Harada, H. (2000).                   The SILVA and “All-species Living Tree Project (LTP)” taxonomic frameworks.
+Syntrophothermus lipocalidus gen nov, sp nov, a novel thermophilic, syntrophic, fatty-             Nucleic Acids Res. 42, D643–D648. doi: 10.1093/nar/gkt1209
+acid-oxidizing anaerobe which utilizes isobutyrate. Int. J. Syst. Evol. Microbiol. 50, 771–           Zhang, Y. K., Zhang, Q., Wang, Y. L., Zhang, W. Y., Hu, H. Q., Wu, H. Y., et al.
+779. doi: 10.1099/00207713-50-2-771                                                                (2021). A comparison study of age and colorectal cancer-related gut bacteria. Front.
+  Sheng, Q. S., He, K. X., Li, J. J., Zhong, Z. F., Wang, F. X., Pan, L. L., et al. (2020).        Cell Infect. Microbiol. 11, 606490. doi: 10.3389/fcimb.2021.606490
+Comparison of gut microbiome in human colorectal cancer in paired tumor and                          Zhu, Y., Ma, L., Wei, W., Li, X., Chang, Y., Pan, Z., et al. (2022). Metagenomics
+adjacent normal tissues. Onco Targets Ther. 13, 635–646. doi: 10.2147/                             analysis of cultured mucosal bacteria from colorectal cancer and adjacent normal
+OTT.S218004                                                                                        mucosal tissues. J. Med. Microbiol. 71, 1-10. doi: 10.1099/jmm.0.001523
+
+
+
+
+Frontiers in Cellular and Infection Microbiology                                              11                                                                            frontiersin.org
+

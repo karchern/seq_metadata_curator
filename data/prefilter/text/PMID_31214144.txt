@@ -1,0 +1,480 @@
+                                                                                                                                              ORIGINAL RESEARCH
+                                                                                                                                              published: 04 June 2019
+                                                                                                                                       doi: 10.3389/fmicb.2019.01205
+
+
+
+
+                                             Metabolic Dependencies Underlie
+                                             Interaction Patterns of Gut
+                                             Microbiota During
+                                             Enteropathogenesis
+                                             Die Dai 1 , Teng Wang 1 , Sicheng Wu 1 , Na L. Gao 1 and Wei-Hua Chen 1,2,3*
+                                             1
+                                              Key Laboratory of Molecular Biophysics of the Ministry of Education, Hubei Key Laboratory of Bioinformatics
+                                             and Molecular-Imaging, Department of Bioinformatics and Systems Biology, College of Life Science and Technology,
+                                             Huazhong University of Science and Technology, Wuhan, China, 2 College of Life Science, Henan Normal University, Xinxiang,
+                                             China, 3 Huazhong University of Science and Technology Ezhou Industrial Technology Research Institute, Ezhou, China
+
+
+                                             In recent decades, increasing evidence has strongly suggested that gut microbiota play
+                                             an important role in many intestinal diseases including inflammatory bowel disease (IBD)
+                                             and colorectal cancer (CRC). The composition of gut microbiota is thought to be largely
+                                             shaped by interspecies competition for available resources and also by cooperative
+                                             interactions. However, to what extent the changes could be attributed to external
+                                             factors such as diet of choice and internal factors including mutual relationships among
+                        Edited by:           gut microbiota, respectively, are yet to be elucidated. Due to the advances of high-
+                          Qi Zhao,
+                                             throughput sequencing technologies, flood of (meta)-genome sequence information and
+      Shenyang Aerospace University,
+                             China           high-throughput biological data are available for gut microbiota and their association
+                        Reviewed by:         with intestinal diseases, making it easier to gain understanding of microbial physiology
+                            Josef Neu,       at the systems level. In addition, the newly developed genome-scale metabolic models
+   University of Florida, United States
+                      Ravinder Nagpal,
+                                             that cover significant proportion of known gut microbes enable researchers to analyze
+    Wake Forest School of Medicine,          and simulate the system-level metabolic response in response to different stimuli
+                          United States
+                                             in the gut, providing deeper biological insights. Using metabolic interaction network
+                 *Correspondence:
+                                             based on pair-wise metabolic dependencies, we found the same interaction pattern
+                      Wei-Hua Chen
+            weihuachen@hust.edu.cn           in two IBD datasets and one CRC datasets. We report here for the first time that
+                                             the growth of significantly enriched bacteria in IBD and CRC patients could be
+                   Specialty section:
+                                             boosted by other bacteria including other significantly increased ones. Conversely, the
+         This article was submitted to
+               Systems Microbiology,         growth of probiotics could be strongly inhibited from other species, including other
+               a section of the journal      probiotics. Therefore, it is very important to take the mutual interaction of probiotics
+             Frontiers in Microbiology
+                                             into consideration when developing probiotics or “microbial based therapies.” Together,
+       Received: 07 December 2018
+           Accepted: 13 May 2019             our metabolic interaction network analysis can predict majority of the changes in
+          Published: 04 June 2019            terms of the changed directions in the gut microbiota during enteropathogenesis. Our
+                            Citation:        results thus revealed unappreciated interaction patterns between species could underlie
+      Dai D, Wang T, Wu S, Gao NL
+                                             alterations in gut microbiota during enteropathogenesis, and between probiotics and
+    and Chen W-H (2019) Metabolic
+   Dependencies Underlie Interaction         other microbes. Our methods provided a new framework for studying interactions in gut
+   Patterns of Gut Microbiota During         microbiome and their roles in health and disease.
+                Enteropathogenesis.
+           Front. Microbiol. 10:1205.        Keywords: bacterial interaction patterns, metabolic interaction network, gut microbiota community, intestinal
+     doi: 10.3389/fmicb.2019.01205           microbial ecology, enteropathogenesis, probiotics
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    1                                              June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                      Interaction Patterns of Gut Microbiota
+
+
+
+
+INTRODUCTION                                                                 microbial physiology at the systems level (Covert et al., 2004).
+                                                                             In addition, the newly developed genome-scale metabolic models
+In recent decades, increasing evidence has strongly suggested that           that cover significant proportion of known gut microbes enable
+gut bacteria play an important role in human health and disease              researchers to analyze and simulate the system-level metabolic
+(Selber-Hnatiw et al., 2017; Jackson et al., 2018). Gut bacteria             response in response to different stimuli in the gut, providing
+has been considered as a real tissue with its specific functions             deeper biological insights (Zhang and Hua, 2016; Magnusdottir
+such as modulating the metabolic phenotype, influencing innate               et al., 2017; van der Ark et al., 2017). Based on these data,
+immunity, protecting against pathogens, and so on (Eckburg                   we revealed unappreciated patterns in gut microbes of IBD
+et al., 2005; Tomasello et al., 2017). Changes in the composition            and CRC patients and healthy controls, and were able to
+of the gut microbiota have been proven to be associated with                 accurately predict the majority of the changes (i.e., decreased
+many diseases (Jackson et al., 2018) including inflammatory                  or increased) in the gut microbiota during enteropathogenesis.
+bowel disease (IBD; Joossens et al., 2011; Matsuoka and Kanai,               As compared with co-occurrence network (Cardinale et al.,
+2015; Chu et al., 2016; Sartor and Wu, 2017; Zuo and Ng, 2018),              2015), which has been widely applied in the identification
+type 2 diabetes (Delzenne et al., 2015), obesity (Moreno-Indias              and characterization of interspecies interactions among gut
+et al., 2014; Tai et al., 2015), atherosclerosis (Drosos et al., 2015;       microbes, our metabolic dependency network is a directional
+Yamashita et al., 2015) and colorectal cancer (CRC; Aarnoutse                network and can provide more information with considering
+et al., 2017; Liang et al., 2017; Russo et al., 2018). Among which,          the interaction between the bacteria. We thus concluded
+IBD (Miyoshi and Chang, 2017; Sartor and Wu, 2017), including                that metabolic dependencies underlie interaction patterns of
+both Crohn’s Disease (CD) and ulcerative colitis (UC), is one of             gut microbiota community during enteropathogenesis, and
+the most-studied imbalances between intestinal microflora and                believed that our methods could provide a new framework
+the immune system. Over the past 50 years, there was a dramatic              for studying interactions in gut microbiome and their roles in
+increase in IBD (Sartor and Wu, 2017). In addition, patients with            health and disease.
+IBD are at increased risk of CRC, accounting for less than 2%
+of colon cancer cases yearly (Tilg et al., 2018). CRC, one of the
+most common cancers with the highest mortality worldwide, has                MATERIALS AND METHODS
+also been reported to be associated with intestinal microflora
+(Zeller et al., 2014).                                                       Data Collection
+    Gut microbes live as a community, sharing the common                     Pair-Wise Interactions (Metabolic Dependencies) of
+intestinal environment (Shetty et al., 2017). They interact with             Human Gut Microbes
+each other, maintaining the intestinal microbial flora in a state            Genome-wide metabolic models for 773 human gut microbes
+of equilibrium (Sommer et al., 2017). The composition of gut                 were obtained from Stefanía et al. (Magnusdottir et al., 2017).
+microbiota is thought to be largely shaped by interspecies                   Pairwise interactions, i.e., changes in silico growth rates of two
+competition for available resources along with cooperative                   co-culturing microbes as compared with that of cultured alone
+interactions (Zelezniak et al., 2015). Diet is considered as                 were calculated using the methods described in the literature
+one of the main drivers (De Filippo et al., 2010), with                      (Magnusdottir et al., 2017).
+certain contributions from intrinsic metabolic dependencies.                    Briefly, genome-scale metabolic models of 773 human
+However, to what extent the changes could be attributed to                   gut microbes described in literature (Magnusdottir
+external factors like diet of choice and internal factors such               et al., 2017) were reconstructed based on comparative
+as mutual relationships among gut microbiota, respectively, are              genomics and enrichment literature-derived experimental
+yet to be elucidated. Furthermore, it is still unclear how such              data. Through a combination of detailed biochemical
+intrinsic dependencies could contribute to the parthenogenesis               information from genome annotations and literature resources,
+of intestinal diseases such as IBD and CRC.                                  genome-scale metabolic models can be constructed. The
+    In this study, we performed systematic network analysis                  gene-protein-reaction (GPR) relationships are annotated
+based on pairwise interspecies metabolic dependencies among                  in the metabolic modes with mass- and energy-balanced
+gut microbes in IBD and CRC patients and compared that                       reactions. Furthermore, other omics data such as transcriptomic
+of the healthy controls. Network analysis has proven to be a                 and proteomic data could be integrated into the model,
+valuable tool in exploring interactions between a set of items               making the model more informative. Additionally, pairwise
+(nodes, such as individuals in a school, species in a complex                simulations were performed on every pair of 773 microbes
+food web, proteins in metabolic pathways) by biologists and                  (298,378 pairs). Single and pairwise in silico growth
+scientists in other fields (Kim and Hastak, 2018), and has recently          rates were calculated on two different diets (Western and
+been applied to explore and identify microbial patterns that are             High fiber diet).
+generally difficult to detect in complex systems (Chow et al., 2014;            Based on these growth rates, we calculated the “weight” of
+Cardinale et al., 2015; Kong et al., 2018). Due to the advances              the interaction between bacteria using the following equation,
+of high-throughput sequencing technologies, flood of (meta)-                 w = Log2 PS , where P stands for growth rate of the species
+genome sequence information and high-throughput biological                   of interest when co-cultivated with another bacterium (paired
+data are available for gut microbiota and their association with             growth rate) and S stands for growth rate when cultivated alone.
+intestinal diseases, making it easier to gain understanding of               A “w” value of 0 indicates the growth rate of a bacterium is
+
+
+Frontiers in Microbiology | www.frontiersin.org                          2                                       June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                      Interaction Patterns of Gut Microbiota
+
+
+
+not changed by the other co-cultivated bacterium; a positive               Differential Abundance Analysis Between
+(negative) value of “w” indicates the growth rate can be promoted          Disease and Healthy Samples
+(inhibited) by the co-cultivated bacterium. The interactions
+                                                                           Wilcoxon Rank Sum test was used to identify differentially
+between two bacteria are thus bi-directional.
+                                                                           abundant species between patients and healthy controls. The
+                                                                           detailed results are available in Supplementary Table S1.
+Gut Metagenomic Data of IBD and CRC Patients and
+                                                                           Supplementary Figure S1 shown in is the boxplot of the
+Healthy Controls                                                           relative abundances of identified species in IBD1 patients
+In total three metagenomic datasets, including two for IBD and             (red) and healthy controls (blue); the red (blue) dots under
+one for CRC, were obtained from the European Nucleotide                    the box plots represent a significant decrease (increase) in
+Archive (ENA; Leinonen et al., 2011)1 database.                            the abundance in disease group. The classification of the
+    The first IBD datasets (referred to as IBD1 in our                     bacteria (Commensal, Pathogen, and Probiotic) is provided by
+study) are available from ENA under the accession of                       the literature (Magnusdottir et al., 2017), which is shown in
+ERP005534. It contained ten IBD and ten healthy individuals                Supplementary Table S2.
+whose fecal microbiome compositions were determined using
+Illumina HiSeq 2500.
+    The second IBD datasets [ENA accession ID: SRP002423;
+                                                                           Construction and Characterization of
+referred to as IBD2 (NIH HMP Working Group et al., 2009;                   Metabolic Dependency Network for
+Noecker et al., 2016) in our study] contained 14 healthy samples           Disease and Healthy Controls
+and 20 disease samples; their fecal samples were sequenced using           The metabolic dependency networks were constructed using
+a 454 GS FLX Titanium pyrosequencer. This study is a part of the           pairwise interactions and consisted of nodes and edges. Networks
+NIH Human Microbiome Project (HMP).                                        were constructed for each of the three datasets we collected, and
+    The third CRC datasets [ENA accession ID: ERP005534;                   separately for patients and healthy controls. For each network,
+referred to as CRC (Zeller et al., 2014) in our study] contained           the nodes were microbial species selected from the union of the
+fecal samples of 53 patients and 61 healthy controls. In this study,       top 50 most abundance species in patients and the respective
+metagenomic sequencing of fecal samples was used to identify               healthy controls, whose combined account for more than 90%
+potential markers for distinguishing CRC patients from tumor-              of the total abundances of all species, while the edges were
+free controls. The detailed description about the experiments              pairwise interactions (“weights”) between two connected species.
+actually entailed can be found in the literature (Zeller et al.,           To account for the impact of diets [Western and High fiber diet,
+2014). In brief, fresh stool samples were collected and genomic            as described in the literature (Magnusdottir et al., 2017)], two
+DNA was extracted using the GNOME DNA Isolation Kit                        networks were constructed for each of the patient and control
+(MP Biomedicals). Then library preparation for metagenomic                 groups. At the end, four networks were obtained for each dataset.
+sequencing was automated and adapted on a Biomek FXp Dual                  An open-source tool, Gephi (Bastian et al., 2009), was used for
+Hybrid. And metagenomic sequencing was performed on the                    network visualization and analysis.
+Illumina HiSeq 2000/2500 platform.
+                                                                           Statistics
+Read Processing and Quality Control                                        All statistical analysis and plots were performed in R version
+Trimmomatic (Bolger et al., 2014) was used to remove adaptors              3.4.33 . Mann–Whitney and Chi square test were used to
+and low quality bases (trimming) from the Illumina paired-                 analyze differences between groups. The p-value < 0.05 was
+end and single-end reads. For Roche/454 sequence data, QTrim               considered significant.
+(Shrestha et al., 2014) was used for trimming. FastQC (Andrews,
+2014)2 was then used for quality control prior to downstream
+analysis; the generated HTML report files were manually                    RESULTS
+examined for possible problems in the raw and processed data.
+The usable trimmed data were referred to as “Clean Data,” and              Construction of Metabolic Dependency
+were used for downstream analysis.                                         Network for Gut Microbiota During
+                                                                           Enteropathogenesis
+Species Identification and Composition                                     The flow chart of the methods used is shown in Supplementary
+Analysis of Metagenomic Data                                               Figure S2. We collected gut metagenomics data from in total
+MetaPhlAn2 (Metagenomic phylogenetic analysis version 2;                   three published datasets, including two for IBD (NIH HMP
+Truong et al., 2015) was used for the taxonomic composition                Working Group et al., 2009; Noecker et al., 2016) and one for
+analysis on the Clean Data with default parameters. MetaPhlAn2             CRC (Zeller et al., 2014), each with different numbers of patients
+can efficiently profile the composition of microbial communities           and healthy controls (see section “Materials and Methods” for
+with species level resolution.                                             details). We first constructed a metabolic dependency network
+                                                                           for each of the sample groups (i.e., patients and controls). Briefly,
+1
+    http://www.ebi.ac.uk/ena
+2                                                                          3
+    http://www.bioinformatics.babraham.ac.uk/projects/fastqc/                  www.r-project.org
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                        3                                        June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                           Interaction Patterns of Gut Microbiota
+
+
+
+MetaPhlAn2 was used for the taxonomic composition analysis on            Growth of Probiotics Was Strongly
+the clean data with default parameters. The nodes in the network         Inhibited by Other Bacteria in Both
+are microbial species selected from the union of the top 50 most
+abundance species that together account for more than 90% of             Patients and Healthy Controls
+the total abundances of all species in healthy and disease groups,       Strikingly, we found that the growth of probiotics topped the
+while the edges represent pairwise interactions between two              centrality analysis was strongly inhibited by themselves and
+connecting species. The weight of the edge is the absolute value         others; we found similar results in patients and healthy controls.
+of the influence, which equals to log2-transformed growth rates          As shown in Figure 3, we divided the interactions into four
+change between co-culturing and single-growth (i.e., the growth          groups. First, the background group includes interactions among
+rate when cultivated alone). The edges are thus directional;             bacteria excluding the probiotics. Second, the within group
+depending on the thresholds of the weights of the edges, there           includes interactions among probiotics. Third, the affecting
+could be two edges connecting two neighboring nodes in the               group includes the impacts of probiotics to other bacteria.
+network, with each representing the impact of co-culturing as            Fourth, the affected group includes the impacts of other
+compared with the respective single-growth. Because the growth           bacteria on probiotics. We found that the weight scores were
+rate under co-cultured conditions could be slower than that of the       significantly lower in the “within” and “affected” groups as
+single-culturing, we used red (green) to represent the increased         compared with the other two; we found similar trends in both
+(decreased) growth rate under co-cultured conditions.                    patients and the controls (Figures 3B,D, respectively; Wilcoxon
+   For each of the three studies from where our data were                Rank Sum test). Similarly, we found that the proportion of
+obtained, we constructed networks for the patients and the               inhibitory effects in the “affected” were significantly higher
+respective healthy controls separately. To account for the impact        than other three groups (Figures 3A,C; Chi-square test).
+of diet [western diet and a high fiber diet, as described in             The “with” group contained significantly higher proportion of
+Magnusdottir et al. (2017)], we constructed two networks each            inhibitory effects than the “affecting” group; its proportion
+of the patient and control groups. At the end, we obtained four          was also higher than that of the background, although the
+networks for each dataset. In this study, we described the results       difference was not significant. These results indicate that
+of IBD1 in western diet as an example, other datasets produced           although probiotics are mostly beneficial to the host, they often
+approximately the same results which were not shown here.                face competition from other probiotics and are clearly not
+                                                                         welcomed by other.
+
+Network Centrality Analysis Revealed                                     Disease-Enriched Bacteria Are Boosted
+Probiotics Are Among the Top Important                                   by Themselves as Well as Other Bacteria
+Nodes                                                                    We found that the growth of bacteria whose abundances were
+As shown in Figure 1, we included dependencies of weight                 significantly increased in patients (then were hence referred as
+greater than four to build the network for healthy and                   to “disease-enriched bacteria”) could be promoted by themselves
+disease groups respectively. We used gray, green, red, and               as well as by others. We divided pairwise interactions into
+pink to indicate nodes for commensal, probiotic, pathogenic,             four groups. First, the background group contains interactions
+and opportunistic pathogenic bacteria, respectively, using               excluding the disease-enriched bacteria and the probiotics.
+classifications from a public dataset (Magnusdottir et al., 2017).       Second, the within-group includes interactions among the
+To identify subclusters in which nodes are more densely                  disease-enriched bacteria. Third, the affecting group includes
+connected than to the rest of the network, we used a modularity          the impacts of disease-enriched bacterial on others. Fourth,
+algorithm (a “community” detection technique) implemented in             the affected group includes the impact of other bacteria on
+Gephi (Bastian et al., 2009) and identified two main subclusters         the disease-enriched ones. As shown in Figure 4, there were
+(Figure 1); among which, one was mainly composed of probiotics           significantly more promoting affects in the second and third as
+bacteria, while the other was mostly composed of species of the          compared with other two groups (Figures 4B,C), indicating a
+genus of bacteroides. Surprisingly, we found that some pathogen          marked difference of the disease-enriched bacteria as a group as
+bacteria, such as some strains of Escherichia coli, was also             compared to others.
+included in the probiotics subcluster and had a notable inhibitory
+effect on the probiotics included (Figure 1).
+    We then checked the top important nodes in the metabolic             TABLE 1 | The recognition accuracy for the three datasets (analyzed in different
+dependency network. We used the Gephi’s PageRank algorithm               diet).
+(Chen et al., 2007) to rank the nodes. In addition to network
+                                                                                                                                            Accuracy (%)
+centrality, PageRank also considers both the inbound and
+outbound links, which is suitable for analyzing our metabolic            IBD10_mphlan_HF                                                         53.10
+dependency network. Strikingly, we found that most of the top            IBD10_mphlan_W                                                          65.60
+20 bacteria were probiotics (10/11 in health and 11/11 in disease        twin_mphlan_HF                                                          72.70
+states), as shown in Supplementary Tables S3, S4 and Figure 2.           twin_mphlan_W                                                           63.60
+These results thus indicate that probiotics may play important           CRC_mphlan_HF                                                           57.14
+roles in the metabolic dependency network.                               CRC_ mphlan_W                                                           47.62
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                      4                                                June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                                          Interaction Patterns of Gut Microbiota
+
+
+
+
+  FIGURE 1 | The bacteria interaction networks (weight > 4) obtained from healthy controls (A) and patients (B). ForceAtlas2 layout in Gephi (Bastian et al., 2009) was
+  used for this representation. Nodes filled with gray, green, red, and pink represent commensal, probiotic, pathogenic, and opportunistic pathogenic bacteria,
+  respectively. Two main subclusters were identified, one includes mostly probiotic bacteria (Probiotics Module), while the other consists mostly of species in the genus
+  bacteroides (Bacteroides Module).
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                     5                                                June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                                           Interaction Patterns of Gut Microbiota
+
+
+
+
+  FIGURE 2 | Most of the top 20 bacteria based on PageRanks are probiotics in health (A) and disease (B) states.
+
+
+
+
+  FIGURE 3 | The growth of probiotics was strongly inhibited by other bacteria in both patients and healthy controls. (A,C) Proportions of inhibitory interactions in the
+  four groups, calculated separately for patients (A) and healthy controls (C); Chi-square test was used to test pairwise differences between two groups. (B,D)
+  Distribution of weight values in the four groups, calculated separately for patients (B) and healthy controls (D); Wilcoxon Rank Sum test was used for pairwise
+  comparisons between two groups. Interaction data of the four groups are: background – interactions among bacteria excluding probiotics; within – interactions
+  among probiotics; affecting – impacts of probiotics on others; affected – impacts of others on probiotics. Level of significance: NS – not significant; ∗∗∗ p < 0.01.
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                      6                                                June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                                       Interaction Patterns of Gut Microbiota
+
+
+
+
+  FIGURE 4 | The growth of disease-enriched bacteria could be promoted by themselves and others. (A) An exemplary network of disease-enriched bacteria.
+  (B) Proportion of promoting interactions in each group; chi-square test was used to perform pairwise (two-groups at a time) comparisons. (C) Distribution of weight
+  values in the four groups; Wilcoxon Rank Sum test was used for pairwise comparisons. Interaction data of the four groups are: background – interactions among
+  bacteria excluding probiotics and disease-enriched ones; within – interactions among disease-enriched bacteria; affecting – impacts of disease-enriched bacteria on
+  others; affected – impacts of others on disease-enriched bacteria. Level of significance: NS – not significant; ∗ p < 0.05; ∗∗ 0.01 < p < 0.05; ∗∗∗ p < 0.01.
+
+
+
+Alterations of the Gut Microbiota During                                              different in the two IBD datasets (both contained patients and
+Enteropathogenesis Can Be Explained                                                   healthy controls, see Supplementary Table S1), we found similar
+                                                                                      interaction patterns (“mutual inhibition” between probiotics
+by Their Immediate Neighbors in the                                                   and “mutual promotion” between those significantly enriched
+Metabolic Dependency Network                                                          bacteria) in the two IBD datasets and the CRC dataset.
+We next checked if alterations of the gut bacteria could                                  Here, the classification of the bacteria (Commensal, Pathogen,
+be explained by their immediate neighbors in the network.                             and Probiotic) is provided by the literature (Magnusdottir et al.,
+For a given node (species) in the network, we considered                              2017), which is shown in Supplementary Table S2. Some strains
+two parameters in this calculation, namely the weight of                              in Bifidobacterium bifidum, which belong to the probiotics, were
+the interactions (w) and the relative abundances (a) of its                           identified as the most variable strains between the healthy and
+connecting nodes, and calculated      an Inbound Influence Index                      disease. It is generally known that probiotics can improve human
+using following equation: (w̄ × a). As shown in Table 1 and
+                              P
+                                                                                      health. A precise definition of probiotics has been proposed by
+Supplementary Table S5, we were able to predict up to 75% of the                      Laurent Verschuere (Verschuere et al., 2000). It was defined as a
+directions (i.e., increase or decrease) of the nodes in the metabolic                 live microbial adjunct which has a beneficial effect on the host by
+dependency network.                                                                   modifying the host-associated or ambient microbial community,
+                                                                                      by enhancing the host response toward disease, by improving
+                                                                                      the quality of its ambient environment, or by ensuring improved
+DISCUSSION                                                                            use of the feed or enhancing its nutritional value. Above all,
+                                                                                      the most commonly purported benefits of the consumption of
+In this study, we constructed metabolic dependency networks                           probiotics is modulation of host immunity (Corthésy et al.,
+using gut microbiota datasets of common entero-diseases                               2007). Because of these merits, the market for probiotics and
+including IBD and CRC, and revealed unappreciated interaction                         probiotic-containing commercial products is constantly growing
+patterns of disease-enriched bacteria and probiotics. In addition,                    (Marco et al., 2006; Varankovich et al., 2015). However, a stable
+we showed that the alterations of the gut microbiota during                           microbial community cannot be achieved by a sudden increase in
+enteropathogenesis can be explained by their immediate                                nutrients due to exogenous feeding with probiotics (Verschuere
+neighbors in the metabolic dependency network with                                    et al., 2000). And we report here for the first time that there
+reasonable accuracy.                                                                  is a tendency of mutual restrain between the probiotic bacteria.
+   We used Wilcoxon Rank Sum test to identify differentially                          Therefore, it is very important to take the mutual interaction
+abundant species between patients and healthy controls.                               of probiotics into consideration when develop probiotics or
+Although the identified significantly changed bacteria are quite                      “microbial based therapies.”
+
+
+Frontiers in Microbiology | www.frontiersin.org                                   7                                               June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                                                  Interaction Patterns of Gut Microbiota
+
+
+
+   With the growing recognition of the profound impacts of                                  and their roles in health and disease. Though carefully evaluated,
+gut microbiota on human health, it is urgent to understand                                  our results are still highly predictive and to be experimentally
+the molecular basis underlying the alterations of individual                                validated in the future.
+species in this complex microbial ecosystem. Compared to the
+undirected co-occurrence network, the metabolic dependency
+network is directional and thus could provide mechanistic                                   AUTHOR CONTRIBUTIONS
+insights into interspecies interactions. Numerous previous
+studies have suggested that host genetic and environmental                                  W-HC and DD designed the study. TW and SW collected
+factors can influence the diversity and composition of the gut                              the data. DD analyzed the data and wrote the first draft of
+microbiota (Benson et al., 2010). Among the environmental                                   the manuscript. W-HC and NG contributed to the manuscript
+factors, dietary habits has proven to play a dominant role over                             revisions. All authors approved the submission.
+other possible variables such as geography, climate, sanitation,
+hygiene, and ethnicity in shaping the gut microbiota (De Filippo
+et al., 2010; Walker et al., 2011). Our results indicate that                               FUNDING
+at least in part, the alterations of the gut microbiota under
+different healthy statuses of the hosts, could be attributed                                This study was financially supported by the National Natural
+to internal factors including species-species interactions of                               Science Foundation of China (NSFC) (Grant No. 81803850).
+the gut microbes.
+   Using metabolic interaction network based on pair-wise
+metabolic dependencies, we found that unappreciated interaction                             SUPPLEMENTARY MATERIAL
+patterns of between-species metabolic interactions could underlie
+alterations in gut microbiota during enteropathogenesis, and                                The Supplementary Material for this article can be found
+between probiotics and other microbes. Our methods provided                                 online at: https://www.frontiersin.org/articles/10.3389/fmicb.
+a new framework for studying interactions in gut microbiome                                 2019.01205/full#supplementary-material
+
+
+REFERENCES                                                                                  Covert, M. W., Knight, E. M., Reed, J. L., Herrgard, M. J., and Palsson,
+                                                                                               B. O. (2004). Integrating high-throughput and computational data elucidates
+Aarnoutse, R., de Vos-Geelen, J. M. P. G. M., Penders, J., Boerma, E. G.,                      bacterial networks. Nature 429, 86–92. doi: 10.1038/nature02456
+   Warmerdam, F. A. R. M., Goorts, B., et al. (2017). Study protocol on the role of         De Filippo, C., Cavalieri, D., Di Paola, M., Ramazzotti, M., Poullet, J. B., Massart, S.,
+   intestinal microbiota in colorectal cancer treatment: a pathway to personalized             et al. (2010). Impact of diet in shaping gut microbiota revealed by a comparative
+   medicine 2.0. Int. J. Colorectal. Dis. 32, 1077–1084. doi: 10.1007/s00384-017-              study in children from Europe and rural Africa. Proc. Natl. Acad. Sci. U.S.A. 107,
+   2819-3                                                                                      14691–14696. doi: 10.1073/pnas.1005963107
+Andrews, S. (2014). FastQC: a Quality Control Tool for High Throughput Sequence             Delzenne, N. M., Cani, P. D., Everard, A., Neyrinck, A. M., and Bindels,
+   Data. http://www.bioinformatics.babraham.ac.uk/projects/fastqc/ (accessed                   L. B. (2015). Gut microorganisms as promising targets for the management
+   December 1, 2018).                                                                          of type 2 diabetes. Diabetologia 58, 2206–2217. doi: 10.1007/s00125-015-
+Bastian, M., Heymann, S., and Jacomy, M. (2009). Gephi: an open source                         3712-7
+   software for exploring and manipulating networks in Proceedings of the Third             Drosos, I., Tavridou, A., and Kolios, G. (2015). New aspects on the metabolic role
+   International ICWSM Conference, (San Jose: ICWSM).                                          of intestinal microbiota in the development of atherosclerosis. Metabolism 64,
+Benson, A. K., Kelly, S. A., Legge, R., Ma, F., Low, S. J., Kim, J., et al. (2010).            476–481. doi: 10.1016/j.metabol.2015.01.007
+   Individuality in gut microbiota composition is a complex polygenic trait shaped          Eckburg, P. B., Bik, E. M., Bernstein, C. N., Purdom, E., Dethlefsen, L., Sargent,
+   by multiple environmental and host genetic factors. Proc. Natl. Acad. Sci. U.S.A.           M., et al. (2005). Diversity of the human intestinal microbial flora. Science 308,
+   107, 18933–18938. doi: 10.1073/pnas.1007028107                                              1635–1638. doi: 10.1126/science.1110591
+Bolger, A. M., Lohse, M., and Usadel, B. (2014). Trimmomatic: a flexible                    NIH HMP Working Group, N. I. H., Working Group, N. H. W., Peterson,
+   trimmer for illumina sequence data. Bioinformatics 30, 2114–2120. doi: 10.1093/             J., Garges, S., Giovanni, M., Mcinnes, P., et al. (2009). The NIH human
+   bioinformatics/btu170                                                                       microbiome project. Genome Res. 19, 2317–2323. doi: 10.1101/gr.096651.109
+Cardinale, M., Grube, M., Erlacher, A., Quehenberger, J., and Berg, G. (2015).              Jackson, M. A., Verdi, S., Maxan, M. E., Shin, C. M., Zierer, J., Bowyer, R. C. E., et al.
+   Bacterial networks and co-occurrence relationships in the lettuce root                      (2018). Gut microbiota associations with common diseases and prescription
+   microbiota. Environ. Microbiol. 17, 239–252. doi: 10.1111/1462-2920.12686                   medications in a population-based cohort. Nat. Commun. 9, 2655. doi: 10.1038/
+Chen, P., Xie, H., Maslov, S., and Redner, S. (2007). Finding scientific gems with             s41467-018-05184-7
+   google’s pagerank algorithm. J. Informetr. 1, 8–15. doi: 10.1016/j.joi.2006.06.001       Joossens, M., Huys, G., Cnockaert, M., De Preter, V., Verbeke, K., Rutgeerts, P.,
+Chow, C. E., Kim, D. Y., Sachdeva, R., Caron, D. A., and Fuhrman, J. A. (2014).                et al. (2011). Dysbiosis of the faecal microbiota in patients with crohn’s disease
+   Top-down controls on bacterial community structure: microbial network                       and their unaffected relatives. Gut 60, 631–637. doi: 10.1136/gut.2010.223263
+   analysis of bacteria. T4-like viruses and protists. ISME J. 8, 816–829. doi: 10.         Kim, J., and Hastak, M. (2018). Social network analysis: characteristics of online
+   1038/ismej.2013.199                                                                         social networks after a disaster. Int. J. Inform. Manag. 38, 86–96. doi: 10.1016/j.
+Chu, H., Khosravi, A., Kusumawardhani, I. P., Kwon, A. H. K., Vasconcelos, A. C.,              ijinfomgt.2017.08.003
+   Cunha, L. D., et al. (2016). Gene-microbiota interactions contribute to the              Kong, W., Meldgin, D. R., Collins, J. J., and Lu, T. (2018). Designing microbial
+   pathogenesis of inflammatory bowel disease. Science 352, 1116. doi: 10.1126/                consortia with defined social interactions. Nat. Chem. Biol. 14, 821–829.
+   science.aad9948                                                                             doi: 10.1038/s41589-018-0091-7
+Corthésy, B., Gaskins, H. R., and Mercenier, A. (2007). Cross-talk between                  Leinonen, R., Akhtar, R., Birney, E., Bower, L., Cerdeno-Tárraga, A., Cheng, Y.,
+   probiotic bacteria and the host immune system. J. Nutr. 137, 781S–790S.                     et al. (2011). The european nucleotide archive. Nucleic Acids Res. 39, D28–D31.
+   doi: 10.1093/jn/137.3.781S                                                                  doi: 10.1093/nar/gkq967
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                         8                                                    June 2019 | Volume 10 | Article 1205
+Dai et al.                                                                                                                                      Interaction Patterns of Gut Microbiota
+
+
+
+Liang, Q., Chiu, J., Chen, Y., Huang, Y., Higashimori, A., Fang, J., et al. (2017). Fecal        Tomasello, G., Sorce, A., Damiani, P., Sinagra, E., and Carini, F. (2017). The
+   bacteria act as novel biomarkers for noninvasive diagnosis of colorectal cancer.                 importance of intestinal microbial flora (microbiota) and role of diet. Prog.
+   Clin. Cancer Res. 23, 2061–2070. doi: 10.1158/1078-0432.CCR-16-1599                              Nutr. 19, 342–344. doi: 10.23751/pn.v19i3.4495
+Magnusdottir, S., Heinken, A., Kutt, L., Ravcheev, D. A., Bauer, E., Noronha, A.,                Truong, D. T., Franzosa, E. A., Tickle, T. L., Scholz, M., Weingart, G., Pasolli, E.,
+   et al. (2017). Generation of genome-scale metabolic reconstructions for 773                      et al. (2015). MetaPhlAn2 for enhanced metagenomic taxonomic profiling. Nat.
+   members of the human gut microbiota. Nat. Biotechnol. 35, 81–89. doi: 10.1038/                   Methods 12, 902–903. doi: 10.1038/nmeth.3589
+   nbt.3703                                                                                      van der Ark, K. C. H., van Heck, R. G. A., Martins Dos Santos, V. A. P., Belzer,
+Marco, M. L., Pavan, S., and Kleerebezem, M. (2006). Towards understanding                          C., and de Vos, W. M. (2017). More than just a gut feeling: constraint-based
+   molecular modes of probiotic action. Curr. Opin. Biotechnol. 17, 204–210.                        genome-scale metabolic models for predicting functions of human intestinal
+   doi: 10.1016/j.copbio.2006.02.005                                                                microbes. Microbiome 5, 78. doi: 10.1186/s40168-017-0299-x
+Matsuoka, K., and Kanai, T. (2015). The gut microbiota and inflammatory bowel                    Varankovich, N. V., Nickerson, M. T., and Korber, D. R. (2015). Probiotic-
+   disease. Semin. Immunopathol. 37, 47–55. doi: 10.1007/s00281-014-0454-4                          based strategies for therapeutic and prophylactic use against multiple
+Miyoshi, J., and Chang, E. B. (2017). The gut microbiota and inflammatory bowel                     gastrointestinal diseases. Front. Microbiol. 6:685. doi: 10.3389/fmicb.2015.
+   diseases. Trans. Res. 179, 38–48. doi: 10.1016/j.trsl.2016.06.002                                00685
+Moreno-Indias, I., Cardona, F., Tinahones, F. J., and Queipo-Ortu no, M. I. (2014).              Verschuere, L., Rombaut, G., Sorgeloos, P., and Verstraete, W. (2000). Probiotic
+   Impact of the gut microbiota on the development of obesity and type 2 diabetes                   bacteria as biological control agents in aquaculture. Microbiol. Mol. Biol. Rev.
+   mellitus. Front. Microbiol. 5:190. doi: 10.3389/fmicb.2014.00190                                 64, 655–671. doi: 10.1128/mmbr.64.4.655-671.2000
+Noecker, C., Eng, A., Srinivasan, S., Theriot, C. M., Young, V. B., Jansson, J. K.,              Walker, A. W., Ince, J., Duncan, S. H., Webster, L. M., Holtrop, G., Ze, X., et al.
+   et al. (2016). Metabolic model-based integration of microbiome taxonomic                         (2011). Dominant and diet-responsive groups of bacteria within the human
+   and metabolomic profiles elucidates mechanistic links between ecological and                     colonic microbiota. ISME J. 5, 220–230. doi: 10.1038/ismej.2010.118
+   metabolic variation. mSystems 1:e00013–e15. doi: 10.1128/mSystems.00013-15                    Yamashita, T., Kasahara, K., Emoto, T., Matsumoto, T., Mizoguchi, T., Kitano,
+Russo, E., Bacci, G., Chiellini, C., Fagorzi, C., Niccolai, E., Taddei, A., et al. (2018).          N., et al. (2015). Intestinal immunity and gut microbiota as therapeutic targets
+   Preliminary comparison of oral and intestinal human microbiota in patients                       for preventing atherosclerotic cardiovascular diseases. Circ. J. 79, 1882–1890.
+   with colorectal cancer: a pilot study. Front. Microbiol. 8:2699. doi: 10.3389/                   doi: 10.1253/circj.CJ-15-0526
+   fmicb.2017.02699                                                                              Zelezniak, A., Andrejev, S., Ponomarova, O., Mende, D. R., Bork, P., and Patil,
+Sartor, R. B., and Wu, G. D. (2017). Roles for intestinal bacteria, viruses, and fungi              K. R. (2015). Metabolic dependencies drive species co-occurrence in diverse
+   in pathogenesis of inflammatory bowel diseases and therapeutic approaches.                       microbial communities. Proc. Natl. Acad. Sci. U.S.A. 112, 6449–6454. doi: 10.
+   Gastroenterology 152, 327.e–339.e. doi: 10.1053/j.gastro.2016.10.012                             1073/pnas.1421834112
+Selber-Hnatiw, S., Rukundo, B., Ahmadi, M., Akoubi, H., Al-Bizri, H., Aliu, A. F.,               Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P. I., et al.
+   et al. (2017). Human gut microbiota: toward an ecology of disease. Front.                        (2014). Potential of fecal microbiota for early-stage detection of colorectal
+   Microbiol. 8:1265. doi: 10.3389/fmicb.2017.01265                                                 cancer. Mol. Syst. Biol. 10, 766. doi: 10.15252/msb.20145645
+Shetty, S. A., Hugenholtz, F., Lahti, L., Smidt, H., and de Vos, W. M. (2017).                   Zhang, C., and Hua, Q. (2016). Applications of genome-scale metabolic models in
+   Intestinal microbiome landscaping: insight in community assemblage and                           biotechnology and systems medicine. Front. Physiol. 6:413. doi: 10.3389/fphys.
+   implications for microbial modulation strategies. FEMS Microbiol. Rev. 41,                       2015.00413
+   182–199. doi: 10.1093/femsre/fuw045                                                           Zuo, T., and Ng, S. C. (2018). The gut microbiota in the pathogenesis and
+Shrestha, R. K., Lubinsky, B., Bansode, V. B., Moinz, M. B., Mccormack, G. P., and                  therapeutics of inflammatory bowel disease. Front. Microbiol. 9:2247. doi: 10.
+   Travers, S. A. (2014). QTrim: a novel tool for the quality trimming of sequence                  3389/fmicb.2018.02247
+   reads generated using the Roche/454 sequencing platform. BMC Bioinformatics
+   15:33. doi: 10.1186/1471-2105-15-33                                                           Conflict of Interest Statement: The authors declare that the research was
+Sommer, F., Anderson, J. M., Bharti, R., Raes, J., and Rosenstiel, P. (2017). The                conducted in the absence of any commercial or financial relationships that could
+   resilience of the intestinal microbiota influences health and disease. Nat. Rev.              be construed as a potential conflict of interest.
+   Microbiol. 15, 630–638. doi: 10.1038/nrmicro.2017.58
+Tai, N., Wong, F. S., and Wen, L. (2015). The role of gut microbiota in the                      Copyright © 2019 Dai, Wang, Wu, Gao and Chen. This is an open-access article
+   development of type 1, type 2 diabetes mellitus and obesity. Rev. Endocr. Metab.              distributed under the terms of the Creative Commons Attribution License (CC BY).
+   Disord. 16, 55–65. doi: 10.1007/s11154-015-9309-0                                             The use, distribution or reproduction in other forums is permitted, provided the
+Tilg, H., Adolph, T. E., Gerner, R. R., and Moschen, A. R. (2018). The intestinal                original author(s) and the copyright owner(s) are credited and that the original
+   microbiota in colorectal cancer. Cancer Cell 33, 954–964. doi: 10.1016/j.ccell.               publication in this journal is cited, in accordance with accepted academic practice. No
+   2018.03.004                                                                                   use, distribution or reproduction is permitted which does not comply with these terms.
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                              9                                                  June 2019 | Volume 10 | Article 1205
+

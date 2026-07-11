@@ -1,0 +1,843 @@
+                                                                                                                          TYPE Original Research
+                                                                                                                          PUBLISHED 22 August 2023
+                                                                                                                          DOI 10.3389/fmicb.2023.1238199
+
+
+
+
+                                                    MV-CVIB: a microbiome-based
+OPEN ACCESS                                         multi-view convolutional
+                                                    variational information bottleneck
+EDITED BY
+Jinbo Xiong,
+Ningbo University, China
+
+REVIEWED BY
+Yulin Zhang,
+                                                    for predicting metastatic
+Shandong University of Science and
+Technology, China
+Quan Zou,
+                                                    colorectal cancer
+University of Electronic Science and
+Technology of China, China
+                                                    Zhen Cui1 , Yan Wu2*, Qin-Hu Zhang3 , Si-Guo Wang1 , Ying He1
+*CORRESPONDENCE
+Yan Wu                                              and De-Shuang Huang3*
+  yanwu@tongji.edu.cn
+                                                    1
+De-Shuang Huang                                       Institute of Machine Learning and Systems Biology, College of Electronics and Information Engineering,
+  dshuang@eias.ac.cn                                Tongji University, Shanghai, China, 2 College of Electronics and Information Engineering, Tongji
+                                                    University, Shanghai, China, 3 EIT Institute for Advanced Study, Ningbo, Zhejiang, China
+RECEIVED 11 June 2023
+ACCEPTED 02 August 2023
+PUBLISHED 22 August 2023
+
+CITATION
+                                                    Introduction: Imbalances in gut microbes have been implied in many human
+Cui Z, Wu Y, Zhang Q-H, Wang S-G, He Y and          diseases, including colorectal cancer (CRC), inﬂammatory bowel disease, type 2
+Huang D-S (2023) MV-CVIB: a                         diabetes, obesity, autism, and Alzheimer’s disease. Compared with other human
+microbiome-based multi-view convolutional
+variational information bottleneck for
+                                                    diseases, CRC is a gastrointestinal malignancy with high mortality and a high
+predicting metastatic colorectal cancer.            probability of metastasis. However, current studies mainly focus on the prediction
+Front. Microbiol. 14:1238199.                       of colorectal cancer while neglecting the more serious malignancy of metastatic
+doi: 10.3389/fmicb.2023.1238199
+                                                    colorectal cancer (mCRC). In addition, high dimensionality and small samples lead
+COPYRIGHT                                           to the complexity of gut microbial data, which increases the difficulty of traditional
+© 2023 Cui, Wu, Zhang, Wang, He and Huang.
+This is an open-access article distributed under    machine learning models.
+the terms of the Creative Commons Attribution       Methods: To address these challenges, we collected and processed 16S
+License (CC BY). The use, distribution or
+reproduction in other forums is permitted,          rRNA data and calculated abundance data from patients with non-metastatic
+provided the original author(s) and the             colorectal cancer (non-mCRC) and mCRC. Different from the traditional health-
+copyright owner(s) are credited and that the        disease classiﬁcation strategy, we adopted a novel disease-disease classiﬁcation
+original publication in this journal is cited, in
+accordance with accepted academic practice.         strategy and proposed a microbiome-based multi-view convolutional variational
+No use, distribution or reproduction is             information bottleneck (MV-CVIB).
+permitted which does not comply with these
+terms.                                              Results: The experimental results show that MV-CVIB can effectively predict
+                                                    mCRC. This model can achieve AUC values above 0.9 compared to other state-
+                                                    of-the-art models. Not only that, MV-CVIB also achieved satisfactory predictive
+                                                    performance on multiple published CRC gut microbiome datasets.
+                                                    Discussion: Finally, multiple gut microbiota analyses were used to elucidate
+                                                    communities and differences between mCRC and non-mCRC, and the metastatic
+                                                    properties of CRC were assessed by patient age and microbiota expression.
+
+                                                    KEYWORDS
+
+                                                    microbiome, multi-view, information bottleneck, metastatic colorectal cancer, risk
+                                                    assessment
+
+
+
+                                                    1. Introduction
+                                                        The human intestine is one of the most important organs in the digestive system, which
+                                                    maintains the normal life activities of the human body through metabolism (Cho and Blaser,
+                                                    2012). Microbes in the gut derive energy from the food we eat and release metabolites and
+                                                    hormones to regulate physical health. As our microbial research continues to deepen, more
+                                                    and more investigations show that the chemical signals released by human gut microbes
+                                                    play a key role in human health and disease (Gilbert et al., 2018). From the perspective
+                                                    of human health, the intestinal flora in the body contributes to the construction of the
+
+
+Frontiers in Microbiology                                                   01                                                               frontiersin.org
+Cui et al.                                                                                                             10.3389/fmicb.2023.1238199
+
+
+
+
+immune system and participates in and regulates the physiological             took a microbial phylogenetic tree matrix as input and used a
+processes of various cells (De Sordi et al., 2019). More importantly,         convolutional neural network (CNN) for disease prediction. Wirbel
+a variety of complex diseases have been confirmed to be related               et al. (2021) developed SIAMCAT, a multifunctional R toolbox for
+to certain intestinal flora, including inflammatory bowel disease,            machine learning-based comparative metagenomics. The toolbox
+type 2 diabetes, Alzheimer’s disease, HIV, autism, obesity, and               contains a variety of feature matrices such as genes, pathways,
+cardiovascular and cerebrovascular diseases (Schmidt et al., 2018;            and microbial taxa to statistically infer host disease phenotype
+Shkoporov et al., 2019). Some malignancies, such as colorectal                associations. Grazioli et al. proposed multimodal variational
+cancer (CRC), have also been shown to be associated with gut                  information bottleneck (MVIB), a multimodal representation that
+microbes (Chen et al., 2022; Wani et al., 2022). CRC is the third             can input species relative abundance, strain-level marker profiles,
+leading cause of cancer deaths, and ∼20% of patients develop                  and metabolomic data and learn meaningful joint codes through
+metastases, known as metastatic colorectal cancer (mCRC). It                  information bottleneck theory (Grazioli et al., 2022). This study
+mainly includes colon cancer liver metastasis, multiple lymph node            used multiple published microbiome disease phenotype datasets
+metastasis, hematogenous metastasis, and implantation metastasis              including CRC and achieved excellent predictive performance.
+(Enquist et al., 2014). All of this emerging evidence confirms that           However, the relative independence among relative abundances,
+the gut microbiome can be a potential predictor of a variety of               strain-level marker profiles, and metabolomic data contains rich
+diseases and cancers (Zou et al., 2017).                                      cross-modal information in addition to the modal information of
+    With the advent of the genome era, the development of high-               the microbiome, which may lead to model uncertainty (Holzinger
+throughput sequencing technology has provided a new technical                 et al., 2022).
+platform for the study of microbial community structure (Zhou                      Compared with the traditional health-disease classification
+et al., 2015). In particular, 16S rRNA gene sequencing has become             strategy, we adopt a new disease-disease classification strategy,
+an important means to study the composition and distribution of               which identifies more severe diseases among sick patients. Disease-
+gut microbial communities (Langille et al., 2013). It fully shows             disease sample features are often more difficult to distinguish
+the diversity of human gut flora and reveals potential factors                than healthy-disease sample features, which is also a challenge for
+for disease aggravation. Although much evidence suggests that                 predictive models. Figure 1 shows the specific strategy process.
+the gut microbiome can be used to predict colorectal cancer,                       In this study, we propose a multi-view convolutional variational
+few investigations have used microbial data to identify mCRC.                 information bottleneck (MV-CVIB) model to specifically address
+Therefore, effectively extracting key features of the microbiota from         the prediction problem of mCRC. The variational information
+gut microbial data faces a series of challenges (Cammarota et al.,            bottleneck (VIB) can extract all the judgmental information that
+2020; Wang and Zou, 2023). Since disease samples are small and                is helpful for disease prediction while filtering out redundant
+more difficult to obtain than healthy samples, a large number                 information (Alemi et al., 2016). For deep neural networks,
+of studies use healthy-disease groups rather than disease-disease             forgetting details enables the model to form general concepts and
+groups. A small number of samples and many features can lead to               improves generalization performance. The Qiime2 tool was used
+the curse of dimensionality, that is, features are highly sparse, such        to process and obtain the final relative abundance data (Hall and
+as strain-level informative data containing hundreds of thousands             Beiko, 2018). We calculated the Euclidean distance between each
+of genetic markers (Somorjai et al., 2003; Akay and Hess, 2019).              sample based on the relative abundance of the microbiome and
+However, it is almost difficult for traditional machine learning              took the samples with the closest Euclidean distance as neighbors.
+models to mine valuable information from such small sample data.              Therefore, the nearest neighbor information between each sample
+Second, although gene signatures provide more information than                can be regarded as a new view. MV-CVIB expands the microbiome
+microbial abundance data, more feature information also requires              input data structure to the maximum capacity while also being
+huge computational resources, which may lead to overfitting and               insensitive to outliers in the data. Not only that, to test the
+greatly increase the time cost (Yang et al., 2021).                           generalization ability of MV-CVIB, we also performed various
+    Considering the metastatic characteristics of CRC, non-                   experiments on multiple published control-CRC datasets.
+metastatic colorectal cancer (non-mCRC) patients are more                          The contributions of this study are as follows:
+worried about mCRC with higher mortality (Reyes et al., 2019;
+Rumpold et al., 2020). Existing microbiome-based CRC prediction                 (1) Current studies mainly focus on the prediction of CRC while
+methods mainly use species relative abundance or strain-level                       neglecting the more severe mCRC. We are the first to apply
+marker profiles or a combination of the two. With the development                   deep learning to the microbiome-based mCRC prediction
+of deep learning, it has become feasible to use deep learning                       problem and achieve excellent prediction results.
+to predict CRC from gut microbiome data (Marcos-Zambrano                        (2) Compared with the traditional health-disease classification
+et al., 2021; Salim et al., 2023). The MicroPheno method is based                   strategy, we adopt a new disease-disease classification
+on 16S rRNA sequence data, subsamples it, and computes the                          strategy, which identifies more severe diseases among sick
+k-mer representation of the sequence, and the final k-mer is                        patients. Identifying more complex diseases from diseases
+used to complete disease prediction (Asgari et al., 2018). Oh and                   is more conducive to mining the underlying nature of
+Zhang (2020) proposed dimensionality reduction of microbiome                        disease exacerbations.
+abundance data or gene signature profiles with multiple different               (3) We compute the nearest neighbor information for the
+autoencoders, and then classical machine learning methods were                      relative abundance data and feed it together as a view
+used to complete disease classification. Reiman et al. (2020)                       into the VIB with convolution and pooling modules.
+
+
+
+
+Frontiers in Microbiology                                                02                                                          frontiersin.org
+Cui et al.                                                                                                                     10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 1
+    (A) Traditional classiﬁcation strategy for microbiome-based disease prediction is health to disease. (B) Our strategy for microbiome-based disease
+    prediction is disease to disease, focusing on predicting malignancy from disease, such as the prediction from non-metastatic colorectal cancer
+    (non-mCRC) to metastatic colorectal cancer (mCRC).
+
+
+
+
+                                                                                  TABLE 1 Speciﬁc information for non-mCRC patients and mCRC patients.
+        The VIB can extract all the judgmental information
+        that is helpful for disease prediction while filtering out
+                                                                                   Sample ID            Disease status             Age           Gender
+        redundant information. Since we introduce convolution
+        and pooling operations into the model, the data in                         SRR8873486           Non-mCRC                     68          Male
+
+        the input stream become smoother, which increases the                      SRR8873495           Non-mCRC                     74          Male
+        robustness and generalization ability of the model and                     SRR8873494           Non-mCRC                     68          Male
+        avoids overfitting.
+                                                                                   SRR8873483           Non-mCRC                     65          Female
+
+                                                                                   SRR8873496           Non-mCRC                     66          Female
+2. Materials and methods                                                           SRR8873491           Non-mCRC                     38          Male
+
+2.1. Datasets                                                                      SRR8873490           Non-mCRC                     54          Female
+
+                                                                                   SRR8873493           mCRC                         44          Female
+    To evaluate and analyze predictive models, we collected 16S
+                                                                                   SRR8873492           mCRC                         70          Male
+rRNA data from the gut microbiota of patients with metastatic
+colorectal cancer (mCRC, n = 9) and non-metastatic colorectal                      SRR8873487           mCRC                         82          Female
+cancer (non-mCRC, n = 7) from the National Center for                              SRR8873484           mCRC                         85          Male
+Biotechnology Information (NCBI) (Coordinators, 2015). The
+                                                                                   SRR8873489           mCRC                         56          Female
+original data come from the People’s Hospital of Wuhan University,
+and the data type is raw sequence read. Raw sequence data                          SRR8873488           mCRC                         73          Male
+
+can be accessed through the NCBI Sequence Read Archive                             SRR8873498           mCRC                         32          Male
+(SRA) database (https://www.ncbi.nlm.nih.gov/bioproject/?term=
+                                                                                   SRR8873485           mCRC                         61          Female
+PRJNA531761). Table 1 shows the specific information of all
+samples. Figure 2 shows that each sample is isolated in the gut.                   SRR8873497           mCRC                         68          Male
+
+The pre-processing of this dataset will be described in detail in the
+next section.
+    In addition, we also collected three control-CRC datasets
+from published studies to evaluate the generalization ability of                  datasets and had unique true labels, diseased or healthy. Therefore,
+the model, specifically including colorectal (Pasolli et al., 2016),              this study does not perform predictions on the future health of
+colorectal-EMBL, and early-colorectal-EMBL (Zeller et al., 2014).                 the samples. Table 2 shows the specific information of the three
+Only the CRC group and the healthy group were included in these                   public datasets.
+
+
+
+Frontiers in Microbiology                                                    03                                                               frontiersin.org
+Cui et al.                                                                                                             10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 2
+    Each sample is isolated differently from the gut.
+
+
+
+                                                                             TABLE 2 Three CRC datasets from published studies.
+2.2. Pre-processing
+                                                                              Datasets                         Total     Control       Disease
+    First, we converted sra files on NCBI to fastq.gz files using                                            samples     sample        samples
+fastq-dump version 2.8.0 in SRA Toolkit and then converted it to
+                                                                              Colorectal (CRC1)                121           73            48
+multiple fastq files with forward and reverse. The next step is to
+import these data into Qiime2 and review the data quality. Next, we           Colorectal-EMBL (CRC2)           199           103           96
+
+denoise the data using Deblur with default parameters. The specific           Early-colorectal-EMBL (CRC3)      96           52            44
+role is to filter out noisy sequences, remove chimeric sequences,
+accidental sequences (sequences that occur only once), and de-
+redundant these sequences. The purpose is to obtain the signature
+                                                                                  For PCA, the original microbial characteristic information
+table and reference sequence.
+                                                                             of samples is projected into the dimension with the maximum
+    Finally, we used Qiime2 to analyze the composition of
+                                                                             projection information as far as possible. The advantage of PCA
+microbial communities from the denoised data. Among them, the
+                                                                             is that the loss of feature information after dimension reduction is
+feature table represents the relative abundance of species and serves
+                                                                             minimal. The disadvantage is that in the case of complete ignorance
+as the input feature vector of the proposed model.
+                                                                             of the data, PCA cannot better retain data information. For PCoA,
+                                                                             it is a non-constrained dimension reduction method, and PCoA
+                                                                             can find the most important coordinates in the distance matrix
+2.3. Multiple types of dimensionality                                        without changing the mutual position relationship between mCRC
+reduction analysis                                                           and non-mCRC. The disadvantage is that PCoA can only roughly
+                                                                             understand the similarity or difference between samples but cannot
+    In this study, to explore the internal structural characteristics        accurately calculate the degree of difference. For t-SNE, it is a non-
+of the pre-processed data and the degree of cognitive difference             linear dimension reduction method, which can preserve the local
+between mCRC and non-mCRC, we used various types of                          features of the dataset. The disadvantage of t-SNE is that the setting
+dimensionality reduction analysis methods (He et al., 2023),                 of hyperparameters is relatively strict, and an improper setting
+including principal components analysis (PCA) (Jiang et al.,                 will lead to poor results. Similar to PCoA, NMDS also uses the
+2022), principal co-ordinates analysis (PCoA) (Wang et al.,                  sample similarity distance matrix for dimension reduction analysis.
+2016), t-distributed stochastic neighbor embedding (t-SNE) (Kostic           It is worth noting that NMDS focuses on the ordering relation of
+et al., 2015), and non-metric multidimensional scaling (NMDS)                values in the distance matrix. When there are more samples, NMDS
+(Mekadim et al., 2022). The difference analysis section in Figure 3          can more accurately reflect the differences among samples. The
+shows an outline of the four dimensionality reduction approaches             disadvantage of NMDS is that it is easy to fall into the local optimal
+between mCRC and non-mCRC.                                                   point, and it needs to run several times with different random
+
+
+
+Frontiers in Microbiology                                               04                                                           frontiersin.org
+Cui et al.                                                                                                                   10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 3
+    Work ﬂowchart. Pre-processing: We collected the sequence information of the samples from NCBI and obtained the species abundance data
+    through a series of quality control and ﬁltering methods, and at the same time, we calculated the nearest neighbor information of the samples.
+    Variance Analysis: We map abundance data into a two-dimensional space through dimensionality reduction. (A) PCA is used for dimensionality
+    reduction and visualization. (B) PCoA is used for dimensionality reduction and visualization. (C) T-SNE is used for dimensionality reduction and
+    visualization. (D) NMDS is used for dimensionality reduction and visualization. Community Analysis: (A) We used the species accumulation curve
+    (SAC) to describe the real situation of the disease samples. (B) We used volcano plots to visualize upregulated and downregulated points. MV-CVIB:
+    Flowchart of the proposed method. The method speciﬁcally includes three fully connected layers, a two-dimensional convolutional layer, a
+    maximum pooling layer, a PoE module, a decoding module, and an output layer.
+
+
+
+
+Frontiers in Microbiology                                                   05                                                               frontiersin.org
+Cui et al.                                                                                                                         10.3389/fmicb.2023.1238199
+
+
+
+
+starts to be more likely to obtain the global optimal solution. In                   labels. To make the notation more compact, a collection of data
+addition, we also performed four types of dimensionality reduction                   views is represented as a data point X = {X i | ith view present}. We
+visualization analysis on three CRC datasets. Overall, similar to                    set U to be a stochastic encoding of X, defined by the parameter
+the case of mCRC, there is a large overlap between healthy and                       encoder p (u|x; θ ), which comes from the deep neural network
+diseased sample points. Specific experimental results are included                   of the intermediate layers in the upstream part of the model.
+in Supplementary material.                                                           Furthermore, in the rest of this study, X, Y, and U are represented
+    Considering the small number of samples and more feature                         as random variables, and x, y, and u are their multidimensional
+information in mCRC and non-mCRC, we used four different types                       instances, respectively. θ is a parameter vector, and θ is a function
+of dimensionality reduction methods to mine the distribution rules                   parameterized by θ . S is a set.
+of samples in the dimensional space. According to the results, the                       Referring to the information bottleneck theory (Tishby et al.,
+spatial distribution of mCRC and non-mCRC is different, but some                     2000), the purpose is to learn to encode U, so as to maximize the
+samples overlap in space. However, compared with non-mCRC,                           information provided to Y and maximize the compression to X.
+mCRC is formed by further deterioration on the basis of non-                         Therefore, maximizing the mutual information I (U, Y; θ ) between
+mCRC, so there are differences in microbial abundance features. In                   U and Y can be written as follows:
+addition, to further show the significance index of the difference
+between the groups, we performed an analysis of similarities                                                                                 
+                                                                                                                                  p u, y|θ
+                                                                                                             Z
+(ANOSIM) (Buttigieg and Ramette, 2014) on the mCRC dataset                                  I (U, Y; θ ) =
+                                                                                                                         
+                                                                                                                 p u, y|θ log                     dydu.       (1)
+and three CRC datasets, respectively. As a non-parametric test                                                                  p (u|θ ) p y|θ
+method, ANOSIM has been widely used to evaluate the overall
+                                                                                                                 R            p(u,y|θ )
+similarity and similar significance of two sets of experimental                          Let I (U, Y; θ ) =     p u, y|θ log p(u|θ)p       dydu. be a valid
+                                                                                                                                    (y|θ )
+data. The results are detailed in Supplementary material. From the                   solution to maximize (1). However, given the constraint that
+experimental results, there are statistically significant differences                maximizing compression imposes on U, we need to forget as much
+between the groups of the mCRC, CRC1, and CRC2 datasets (R-                          information about X as possible. Therefore, the objective function
+value of >0 and P-value of <0.05). There is a difference between                     can be written as follows:
+the groups in the CRC3 dataset but not significant (R-value of >0
+and P-value of >0.05), which may be related to the fact that the
+samples included in the dataset are early CRC patients and late                                   max RIB (θ ) = I (U, Y; θ ) − βI (U, X; θ) ,                 (2)
+                                                                                                   θ
+CRC patients.
+                                                                                     where max RIB (θ) = I (U, Y; θ ) − βI (U, X; θ ) , is the Lagrange
+                                                                                              θ
+                                                                                     multiplier greater than or equal to 0 and controls the trade-off.
+2.4. Microbial Community Analysis                                                    I (U, Y; θ) can make U to predict Y, and βI (U, X; θ ) is a constraint
+                                                                                     that U is the minimal sufficient statistic for X.
+    To measure the species richness status in the community and                          We refer to the solution process by Alemi et al. (2016) for the
+judge whether the number of samples is sufficient, we used the                       bottleneck of deep variational information. Equation (2) can be
+species accumulation curve (SAC) (Gotelli and Colwell, 2001) to                      rewritten as follows:
+describe the real situation of the disease samples. With the help of
+the SAC, we can not only estimate the diversity difference between
+                                                                                                                     N
+different communities reflected by the number of samples but                                                 1 X                                  
+                                                                                              JDeepVIB =             E      − log q yn |f (xn , ε)
+also estimate the upper limit of community diversity under the                                               N     ε∼p(ε)
+                                                                                                               n=1
+condition that the number of samples is sufficient. In addition,                                                                   
+                                                                                                             +βKL p (U|xn ) , r (U) ,                          (3)
+based on the principle of statistical testing, we use the volcano plot
+to show the distribution of abundance level differences between the
+                                                                                     where ε ∼ N (0, I) is denoted as the auxiliary Gaussian noise
+samples. The detailed results are shown in the Community Analysis
+                                                                                     variable, and KL is the Kullback–Leibler divergence. It is worth
+section of Figure 3.
+                                                                                     noting that f is originally an encoding function, but in this study, it
+    From the SAC, we can observe that the curve eventually flattens
+                                                                                     is a neural network. The introduction of f has a re-parameterization
+out, which confirms that the number of samples is reasonable. In
+                                                                                     trick (Kingma and Welling, 2013), that is, p (u|x; θ ) dx = p (ε) dε,
+other words, the number of mCRC and non-mCRC in the dataset
+                                                                                     where u = f (x, ε) can be regarded as a deterministic variable,
+can effectively reflect the species diversity and species richness of
+                                                                                     in particular, considering that this formula can make the noise
+the samples. From the volcano plot, there are some significant
+                                                                                     variable independent. Thus, backpropagation is used to optimize
+points, including 24 upregulated points and 63 downregulated
+                                                                                     the gradient of the objective function of equation (3). Overall, the
+points, most of which have no significant difference.
+                                                                                     calculation will be easier. Furthermore, a multivariate Gaussian
+                                                                                     distribution with a diagonal covariance structure u = f (x, ε) is the
+                                                                                     target of the variational approximation posterior, and u = µ + σ ε
+2.5. The multi-view convolutional                                                    is re-parameterized.
+variational information bottleneck                                                        Since our model has multi-view input, we take into account
+                                                                                     the nearest neighbor information between each sample. Therefore,
+    We set Y to be a random variable. X 1 , X 2 , . . . , X V represent a set        we can further improve the objective function of Deep VIB
+of multi-view input random variables, and Y is their ground-truth                    in equation (3), andX as a multi-view random variable can be
+
+Frontiers in Microbiology                                                       06                                                                  frontiersin.org
+Cui et al.                                                                                                                       10.3389/fmicb.2023.1238199
+
+
+
+
+expressed as X. The p (U|x) of equation (3) can be expressed                         b. The purpose is to perform binary classification operations. y
+as p U|x1 , x2 , . . . , xV , with the joint of V available data views
+                             
+                                                                                     models two diagnostic CRC labels, such as mCRC and non-mCRC.
+as the condition. We refer to the method in multimodal                               Furthermore, for other published CRC datasets in this study, y
+variational autoencoder (MVAE) (Wu and Goodman, 2018), where                         models two diagnosed disease labels, such as CRC or healthy. In
+conditional independence between different modes of U and                            addition, in equation (5) mentioned above, r (U) and r (U) are
+                                                ∼
+approximate p U|xi with q U|xi = q U|xi p (U) is assumed.                            spherical Gaussian distributions with K dimensions, where r (U) =
+                                                    
+∼
+q U|xi is a random encoder for the i-th data view, and p (U) is a
+                                                                                    p (U) = N (0, I). We set K = 256 and β = 10−5 .
+                                                                                         All experiments were performed under Windows 10 with
+prior. Therefore, the product of multiple single-view posteriors can
+                                                                                     NVIDIA GTX 1650 GPU and CUDA 10.2 installed, where the
+be considered equivalent to the joint posterior, which can be written
+                                                                                     machine’s processor is AMD Ryzen7 4800H. The source code and
+as follows:
+                                                                                     data are available at: https://github.com/cuizhensdws.
+                                  QV         i
+                                               
+          1 2              V
+                                  i=1 p U|x
+    p U|x , x , . . . , x ∝ QV−1
+                                     i=1 p (U)
+       QV h              i
+                                ∼              i                                     2.7. Performance evaluation
+                              = q U|xi p (U)
+                                       
+                                                           V
+         i=1 q U|x                                        Y∼
+                                                              q U|xi (4)
+                                                                    
+    ≈                 QV−1                        = p (U)             .
+                               p (U)                                                      To evaluate the classification performance of the model more
+                          i=1                             i=1
+                                                                                     accurately and comprehensively, inspired by DeepMicro, we design
+    Equation (4) can be considered the product of experts (PoE).                     a similar evaluation scheme. The ratio of the training set and test
+Considering that the product of Gaussian experts is itself a Gaussian                set in the mCRC dataset is adjusted to 8:2. It is worth noting
+distribution (Cao and Fleet, 2014), once the probability distribution                that the random partition seed is also set the same as DeepMicro,
+is Gaussian, then PoE has a simple solution. Therefore, the objective                which guarantees a fair random training-test split. Furthermore,
+formulation of the multi-view-based convolutional variational                        for the published CRC dataset, we also adopted the same dataset
+information bottleneck can be written as follows:                                    partitioning scheme. The above settings can further reduce the
+                                                                                     information leakage and improve the efficiency of the response
+                       N
+                                                                                     model more accurately.
+                  1 X                                                                     We used a stratified 5-fold cross-validation applied to the
+                          E − log q yn |f xn1 , xn2 , . . . , xnV , ε
+                                                                     
+   JMV−CVIB =
+                  N     ε∼p(ε)                                                       training set and calculated the AUC score through the validation
+                    n=1
+                        "        V
+                                 Y ∼
+                                                    #                                set, and the epoch with the best parameters among all epochs was
+                                   q    i
+                                          
+                  +βKL p (U)         U|xn , r (U) .                       (5)        selected. The AUC can be written as follows:
+                                  i=1
+                                                                                                         P                             M∗(1+M)
+                                                                                                            i∈positive class ranki −      2
+                                                                                                 AUC =                                                      (7)
+2.6. Model implementation details                                                                                       M∗N
+                                                                                     where M is the number of positive samples, and Nis the number of
+    In MV-CVIB, we mainly input two data views, one is the
+                                                                                     negative samples.
+microbial relative abundance matrix and the other is the nearest
+neighbor information, for each sample generated based on the
+microbial relative abundance matrix. The sample nearest neighbor                     3. Results
+information matrix can be written as follows:
+                                                                                     3.1. Predictive performance of MV-CVIB on
+                           
+                                   r
+                                       X             2
+                                                                                     mcrc datasets
+              NNSample a, b =              RA ai − bi ,                  (6)
+                                                                                         To evaluate the performance of MV-CVIB, we compared
+where NNSample represents the sample nearest neighbor                                the existing advanced methods, including MVIB (Grazioli et al.,
+information matrix, NNSample represents the relative abundance                       2022), PopPhy-CNN (Reiman et al., 2020), DeepMicro (Oh and
+matrix, and ai and bi represent the i-th element of the row vector                   Zhang, 2020), random forest (RF), multilayer perceptron (MLP),
+and column vector, respectively.                                                     and SVM. To be fair, these methods are executed multiple
+    To avoid overfitting, dropout and early stopping are applied in                  times. Considering that different devices and parameter settings
+this study. Dropout greatly reduces the size of the neural network,                  may affect the prediction results, we can only ensure that each
+allowing the neural network to learn local features in the data. Early               method is relatively optimal rather than absolutely optimal. It
+stopping can stop training early when overfitting occurs. We used                    is important to note that DeepMicro is a framework consisting
+the dedicated stochastic encoder bi to embed different views of gut                  mainly of dimension reduction modules and classification modules.
+microbiome data. fmlp represents a multilayer perceptron (MLP).                      The DeepMicro model does not specify which combination has
+For the data of both the above views, we used the SiLU (Hendrycks                    the best predictive performance. Therefore, we compared all the
+and Gimpel, 2016) activation function for fully connected layers                     method combinations.
+and used dropout (p = 0.2) during training.                                              Our method consists of two parts, one is MV-CVIB which
+                                                              
+    We used a logistic regression model q y|u = σ fd (u) with                        contains the nearest neighbor information, and the other is MV-
+a logistic sigmoid function in the decoder and fd (u) = wT u +                       CVIB (single view) which uses only microbiome abundance data.
+
+
+
+Frontiers in Microbiology                                                       07                                                               frontiersin.org
+Cui et al.                                                                                                            10.3389/fmicb.2023.1238199
+
+
+
+
+                                                                            model is mediocre. In DeepMicro, the AUC value of AE + MLP
+                                                                            was 0.799. The predictive effect of CAE+MLP was slightly lower
+                                                                            than that of AE + MLP, and the AUC was 0.791.
+                                                                                Second, on the Colorectal-EMBL dataset, as shown in Figure 5,
+                                                                            the AUC value for RF is 0.89, which is higher than any other
+                                                                            method. This was followed by MV-CVIB and MV-CVIB (single
+                                                                            view) with AUC values of 0.825 and 0.821, respectively. Compared
+                                                                            with MVIB, the prediction performance of MV-CVIB is improved
+                                                                            by 1.1%. Compared with RF, the prediction performance of MV-
+                                                                            CVIB is reduced by 6.5% and that of MVIB is reduced by 7.6%. It
+                                                                            is worth noting that we cannot get the predicted results of PopPhy-
+                                                                            CNN because there is an infinite loop in the experiment process.
+                                                                                Finally, on the Early-Colorectal-EMBL dataset, as shown in
+                                                                            Figure 5, none of the methods has an AUC value above 0.6.
+                                                                            According to the previous ANOSIM analysis, there are differences
+                                                                            between the groups on the Early-Colorectal-EMBL dataset but not
+                                                                            significant. Therefore, we speculate that this may be a reason for
+                                                                            the AUC of each method to be less than 0.6. Compared with
+                                                                            other advanced methods, MV-CVIB achieved an AUC value of
+                                                                            0.589, while MV-CVIB (single view) was slightly lower, with an
+                                                                            AUC value of 0.586. Compared with MVIB, MV-CVIB improved
+    FIGURE 4
+    Comparison of AUC values of our method with state-of-the-art            performance by 4.6%. Once again, RF (AUC = 0.582) showed
+    methods on the mCRC dataset. The methods with asterisks are all         excellent performance on this dataset, outperforming all methods
+    from the DeepMicro model, and these methods are a combination           except ours. Moreover, in DeepMicro, any autoencoder combined
+    of methods in DeepMicro. The best performing AUC is indicated in
+    black bold.                                                             with RF achieved a high AUC value. As on the Colorectal-EMBL
+                                                                            dataset, PopPhy-CNN still produces an infinite loop on the Early-
+                                                                            Colorectal-EMBL dataset.
+
+For PopPhy-CNN, we modified the source code so that it is roughly
+consistent with our model framework. The original PopPhy-                   3.3. Ablation experiments
+CNN provided different experimental procedures. To ensure
+the consistency of the verification test, we made corresponding                  Considering that we have introduced multi-view, convolution,
+framework adjustments. For SVM and RF, we used the same grid                and pooling modules in MV-CVIB, to verify the impact of this
+search to set the hyperparameters, referring to MetAML (Pasolli             module on the overall performance of the method, we set up
+et al., 2016). Figure 4 shows the AUC values for each method.               multiple ablation experiments on the mCRC dataset and three CRC
+Specifically, the AUC value of MV-CVIB reached 0.917, better                datasets. Figure 6 shows the AUC values of different combinations
+than 0.893 of MV-CVIB (single view). In other words, the nearest            of the proposed method on different datasets. From the results of
+neighbor information helped improve the prediction performance              the ablation experiments, it can be observed that on the mCRC
+of MV-CVIB by 2.4%. Moreover, the AUC value of MV-CVIB and                  dataset, the impact of multi-view on the performance of the method
+MV-CVIB (single view) both exceeded that of MVIB, and the AUC               is slightly higher than that of the convolution module. However,
+value of MV-CVIB is 4.1% higher than that of MVIB. Slightly lower           on the three CRC datasets, the impact of the convolution module
+than MVIB is PopPhy-CNN, which has an AUC value of 0.864.                   on the performance of the method is slightly higher than that of
+Multiple combinations in the DeepMicro framework achieve an                 the multi-view.
+AUC value >0.75.                                                                 Overall, according to the results of the ablation experiments, we
+                                                                            speculate that when the number of samples is small, multi-view may
+                                                                            be easier to take advantage of the prediction performance; when the
+3.2. Predictive performance of MV-CVIB on                                   number of samples is large, the convolution module may be more
+                                                                            likely to take advantage of the prediction performance.
+CRC datasets in published studies
+
+    In this study, to more comprehensively evaluate our predictive
+model, we also performed predictive experiments on three CRC                3.4. The gut microbial diversity is different
+datasets. Figure 5 shows the AUC values for each method.                    in mcrc and non-mcrc patients
+    First, on the Colorectal dataset, the AUC value of the proposed
+model was 0.818, while the AUC value of MV-CVIB (single view)                   The stacked bar graphs of the microbiota (phylum level)
+was 0.814, both of which were superior to other advanced models.            of the non-mCRC group and the mCRC group are shown in
+Interestingly, RF and PopPhy-CNN both have the same AUC of                  Figure 7A. In their gut, the microbial community was dominated
+0.803. The AUC of MVIB is only 0.78, and the performance of the             by Firmicutes and Proteobacteria. Among them, a small number
+
+
+
+Frontiers in Microbiology                                              08                                                           frontiersin.org
+Cui et al.                                                                                                                   10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 5
+    Comparison of AUC values of our method with state-of-the-art methods on three CRC datasets. The methods with asterisks are all from the
+    DeepMicro model, and these methods are a combination of methods in DeepMicro. On the Colorectal dataset, we follow the partial AUC results
+    from DeepMicro. Speciﬁcally including AE + SVM* , VAE + SVM* , and CAE + RF* , the results of other combinations are derived from this study. Since
+    DeepMicro did not use Colorectal-EMBL and Early-Colorectal-EMBL datasets, the results on these two datasets are also derived from this study. The
+    best performing AUC is indicated in red font. (A) The AUC value of each method on the Colorectal dataset. (B) The AUC value of each method on the
+    Colorectal-EMBL dataset. (C) The AUC value of each method on the Early-Colorectal-EMBL dataset.
+
+
+
+of Verrucomicrobia were present in a 61-year-old mCRC patient.
+It can be observed from the figure that as the age of mCRC
+patients increases, the relative abundance of Firmicutes tends to
+decrease overall.
+     As shown in Figure 7B, to better describe the microbial
+richness and uniformity of the intestinal tract, we used the
+alpha diversity index to measure the intestinal ecosystem from
+different perspectives (Wang et al., 2018). It specifically includes
+eight indicators: richness, Shannon, Simpson, Pielou, invsimpson,
+Chao1, ACE, and goods coverage. Taken together, compared
+with non-mCRC patients, the number and diversity of intestinal
+communities in mCRC patients tended to increase, and the
+evenness index of intestinal communities in mCRC patients was
+significantly increased. In addition, from the perspective of goods
+coverage, the indices of non-mCRC and mCRC samples are close
+to 1, which indicates that the sequencing depth is reasonable, that
+is, the depth has basically covered all species in the sample. We also
+performed alpha diversity analysis on the three CRC datasets, and
+the specific analysis results are included in Supplementary material.
+                                                                                      FIGURE 6
+                                                                                      AUC comparison of different combinations of the proposed method
+                                                                                      on different datasets.
+
+3.5. Potential biomarker identiﬁcation with
+statistical differences                                                          represent microbial groups that play an important role in non-
+                                                                                 mCRC samples, and red nodes represent microbial groups that play
+    To further mine the differences between non-mCRC and                         an important role in mCRC samples. In the histogram of LDA value
+mCRC samples, we used STAMP to output significantly different                    distribution in Figure 7E, we can clearly find that there are far more
+OTUs within the 95% confidence interval (Parks et al., 2014).                    biomarkers with statistical differences in mCRC samples than in
+As shown in Figure 7C, the mean proportion value at OTU83                        non-mCRC samples. Therefore, this may be more conducive to the
+was significantly higher in mCRC patients than in non-mCRC                       prediction of metastatic disease in CRC patients, so as to make early
+patients. Second, at OTU99, OTU215, and OTU232, mCRC                             diagnosis and treatment.
+patients were also higher than non-mCRC patients. Interestingly,
+the taxonomy of OTU215 was accurate to the species, specifically
+Propionibacterium acnes. Not only that, we also used the LDA effect
+size (LEfSe) (Segata et al., 2011) analysis to discover and explain              3.6. Patients’ age and metastatic risk
+the biomarkers with statistical differences between non-mCRC and                 assessment
+mCRC patients. As shown in the clade diagram of Figure 7D, yellow
+indicates species without significant differences, and both red and                   As mentioned earlier in this study, with the development
+green indicate significant differences. Among them, green nodes                  of    a standardized multidisciplinary team consultation
+
+
+
+Frontiers in Microbiology                                                   09                                                              frontiersin.org
+Cui et al.                                                                                                                       10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 7
+    (A) Microbiota (phylum level) stacked bar graphs of the non-mCRC group and mCRC group. (B) To better describe the microbial richness and
+    uniformity of the intestinal tract, we used the alpha diversity index to measure the intestinal ecosystem from different perspectives. (C) To further
+    mine the differences between non-mCRC and mCRC samples, we used STAMP to output signiﬁcantly different OTUs within the 95% conﬁdence
+    interval. (D) LDA effect size (LEfSe) analysis was used to discover and interpret biomarkers that were statistically different between non-mCRC and
+    mCRC patients. (E) Histogram of the distribution of LDA values.
+
+
+
+
+model, the survival rate of non-mCRC patients has been                             low-risk group. There is a possibility of cancer metastasis in all
+significantly improved. However, the metastatic nature of                          segments. It can be observed from Figure 8C that the expression
+non-mCRC cannot be ignored, and the therapeutic effect of                          of Desulfovibrionales showed a trend from high to low from left to
+most chemotherapy drugs on mCRC is limited. Therefore,                             right, while Thermoanaerobacterales and Actinomycetales showed
+compared with non-mCRC, the survival rate of mCRC is                               a trend of gradually increasing expression. From Figures 8A, C, it
+extremely low. To assess the relationship between patient age                      can be observed that Thermoanaerobacterales and Actinomycetales
+and metastatic risk of non-mCRC, we constructed a risk model                       are positively correlated with risk scores, and Desulfovibrionales
+to obtain a risk score. Patients will be divided into high-risk                    are negatively correlated with risk scores. Other flora showed
+and low-risk groups based on risk scores. Ultimately, we                           irregular expression trends. Desulfovibrionales produce hydrogen
+explored the relationship between microbiota expression and                        sulfide, a genotoxic compound in the gut. This substance can
+patient survival.                                                                  destabilize the genome or chromosomes (Dahmus et al., 2018;
+    As shown in Figure 8, patients with risk scores were divided                   Zhao et al., 2022). Several recent studies have shown that
+into high-risk and low-risk groups according to the cutoff value.                  genomic instability is found in more than 80% of sporadic
+Combining Figures 8A, B, it can be observed that as the risk                       CRCs. Actinomycetales are an important gut flora. Actinomycetales
+score increases, the age of patients presents a downward trend,                    involved in CRC development have different characteristics
+and the age span of the high-risk group is larger than that of the                 compared with healthy microbiota (Rebersek, 2021; Li et al., 2023).
+
+
+
+Frontiers in Microbiology                                                     10                                                                frontiersin.org
+Cui et al.                                                                                                                         10.3389/fmicb.2023.1238199
+
+
+
+
+    FIGURE 8
+    (A) According to the risk value, the high risk group and the low risk group are divided. (B) Scatter plot of the relationship between patient age and risk
+    status. (C) The heat map of the abundance expression of the bacterial group (order level).
+
+
+
+
+    Overall, the higher the risk score, the worse the prognosis,                    in the bacterial flora of patients and explore the biological process
+and the higher the expression of Desulfovibrionales, the                            and development rules of CRC metastasis on the basis of the
+better the prognosis, which may be the beneficial flora                             microbiome. This is conducive to further expanding the treatment
+before cancer metastasis; while the higher the expression of                        options for non-mCRC patients and improving the prognosis of
+Thermoanaerobacterales and Actinomycetales, the worse the                           non-mCRC patients.
+prognosis, which may be the bad flora after cancer metastasis.                          We employed a variety of microbiome analysis methods
+                                                                                    to explore the diversity of non-mCRC and mCRC. From the
+                                                                                    experimental results, the communities of non-mCRC and mCRC
+4. Discussion                                                                       were quite different, the distribution of the flora was complex
+                                                                                    and diverse, and the flora composition of different samples
+    Many complex reasons and limitations make microbiome-                           was different. Compared with the state-of-the-art methods for
+based disease prediction a challenging task. It is mainly reflected as              microbiome-based disease prediction, the proposed method MV-
+follows: (1) The composition of the human microbial community                       CVIB achieved higher AUC values on the mCRC dataset. In
+is very complex, and the boundaries between the bacterial                           addition, in order to more comprehensively evaluate MV-CVIB
+communities are fuzzy. (2) There are various ways to generate                       and verify its generalization ability, we collected datasets from
+microbial community characteristic data, which leads to data                        three published studies and conducted experiments. The number
+heterogeneity. (3) Human health status is dynamic rather than                       of samples in the three public CRC datasets does not exceed
+fixed, and healthy samples are not absolute, which may increase                     200, which belongs to high-dimensional small sample data. This
+data noise and outliers. (4) Conventional microbiome-based                          limitation may affect the experimental results. Therefore, in
+disease prediction mostly adopts the health-disease classification                  future, we can use transfer learning or data augmentation. The
+method, ignoring the deterioration process of the disease. We                       experimental results show that MV-CVIB achieves higher AUC
+adopted a new classification schema: disease-disease instead of                     values on two of the three datasets. Based on the predicted
+health-disease. We focussed on identifying more severe diseases,                    results, we performed a statistical analysis of potential biomarkers
+especially cancer and cancer metastases, from disease samples.                      in non-mCRC and mCRC. Finally, we modeled the risk score,
+This facilitates exploration and reveals the underlying properties of               explored the age trend of the risk score, and screened out
+disease exacerbation. It is meaningful for non-mCRC patients. We                    those bacterial orders that had positive and negative effects
+can obtain potential biomarkers through the analysis of differences                 on patients.
+
+
+
+Frontiers in Microbiology                                                      11                                                                 frontiersin.org
+Cui et al.                                                                                                                                               10.3389/fmicb.2023.1238199
+
+
+
+
+5. Conclusion                                                                                     the experimental data. Q-HZ, S-GW, and YH drafted the
+                                                                                                  manuscript. All authors contributed to the article and approved the
+    In this study, we propose a deep learning approach based                                      submitted version.
+on a multi-view convolutional variational information bottleneck
+for the prediction of mCRC. The multi-view contains species
+abundance data and sample field information, where the sample                                     Funding
+neighborhood information is obtained based on the species
+abundance data, which ensures that our method will not introduce                                      This study was supported by the grant of the National
+additional noise when inputting multi-view data, and has a                                        Key R&D Program of China (Nos. 2018YFA0902600 and
+better time and space complexity. Our results demonstrate that                                    2018AAA0100100) and partly supported by the National Natural
+the method has good predictive performance. However, on the                                       Science Foundation of China (Grant Nos. 62002266, 61932008,
+Colorectal-EMBL dataset, all deep learning methods are not as                                     and 62073231), respectively. This study was also supported by
+effective as RF, which may be related to the internal structural                                  the Key Project of Science and Technology of Guangxi (Grant
+characteristics of the dataset. We explored the degree of difference                              No. 2021AB20147), the Guangxi Natural Science Foundation
+between non-mCRC and mCRC from various perspectives,                                              (Grant Nos. 2021JJA170204 and 2021JJA170199), and the Guangxi
+analyzed those statistically significant differences in flora, and                                Science and Technology Base and Talents Special Project (Grant
+constructed an age risk assessment model to explore the rules of age                              No. 2021AC19354).
+and cancer metastasis. Of course, there are also some deficiencies in
+this study, mainly two points. First, due to concerns about patient
+privacy and medical ethics, the number of samples obtained is                                     Conﬂict of interest
+small, which may cause the model to fall into overfitting to small
+samples. Second, the prediction model is only for CRC data and                                        The authors declare that the research was conducted in the
+does not consider other disease data, which may lead to a lack of                                 absence of any commercial or financial relationships that could be
+generalizability of the model. We will also develop more effective                                construed as a potential conflict of interest.
+methods for more complex microbiome-based disease phenotype
+prediction and improve the scalability of the prediction method as
+much as possible.
+                                                                                                  Publisher’s note
+                                                                                                      All claims expressed in this article are solely those of the
+Data availability statement                                                                       authors and do not necessarily represent those of their affiliated
+                                                                                                  organizations, or those of the publisher, the editors and the
+    The datasets presented in this study can be found in                                          reviewers. Any product that may be evaluated in this article, or
+online repositories. The names of the repository/repositories and                                 claim that may be made by its manufacturer, is not guaranteed or
+accession number(s) can be found at: https://www.ncbi.nlm.nih.                                    endorsed by the publisher.
+gov/, PRJNA531761.
+
+                                                                                                  Supplementary material
+Author contributions
+                                                                                                      The Supplementary Material for this article can be found
+   ZC proposed and designed the algorithm. YW and D-SH                                            online at: https://www.frontiersin.org/articles/10.3389/fmicb.2023.
+demonstrated the effectiveness of the method and analyzed                                         1238199/full#supplementary-material
+
+
+
+
+References
+   Akay, A., and Hess, H. (2019). Deep learning: current and emerging                             precision medicine for cancer. Nat. Rev. Gastroenterol. Hepatol. 17, 635–648.
+applications in medicine and technology. IEEE J. Biomed. Health Inf. 23, 906–920.                 doi: 10.1038/s41575-020-0327-3
+doi: 10.1109/JBHI.2019.2894713
+                                                                                                     Cao, Y., and Fleet, D. J. (2014). Generalized product of experts for automatic
+   Alemi, A. A., Fischer, I., Dillon, J. V., and Murphy, K. (2016). Deep variational              and principled fusion of Gaussian process predictions. arXiv. [preprint].
+information bottleneck. arXiv. [preprint]. doi: 10.48550/arXiv.1612.00410                         doi: 10.48550/arXiv.1410.7827
+   Asgari, E., Garakani, K., McHardy, A. C., and Mofrad, M. R. K. (2018). MicroPheno:               Chen, Y.-C., Chuang, C.-H., Miao, Z.-F., Yip, K.-L., Liu, C.-J., Li, L.-H., et al. (2022).
+predicting environments and host phenotypes from 16S rRNA gene sequencing using                   Gut microbiota composition in chemotherapy and targeted therapy of patients with
+a k-mer based representation of shallow sub-samples. Bioinformatics 34, i32–i42.                  metastatic colorectal cancer. Front. Oncol. 12, 955313. doi: 10.3389/fonc.2022.955313
+doi: 10.1093/bioinformatics/bty296                                                                   Cho, I., and Blaser, M. J. (2012). The human microbiome: at the interface of health
+   Buttigieg, P. L., and Ramette, A. A. (2014). guide to statistical analysis in microbial        and disease. Nat. Rev. Genet. 13, 260–270. doi: 10.1038/nrg3182
+ecology: a community-focused, living review of multivariate data analyses. FEMS                      Coordinators, N. R. (2015). Database resources of the National Center for
+Microbiol. Ecol. 90, 543–550. doi: 10.1111/1574-6941.12437                                        Biotechnology Information. Nucleic Acids Res. 44, D7–D19. doi: 10.1093/nar/gkv1290
+    Cammarota, G., Ianiro, G., Ahern, A., Carbone, C., Temko, A., Claesson, M.                       Dahmus, J. D., Kotler, D. L., Kastenberg, D. M., and Kistler, C. A.
+J., et al. (2020). Gut microbiome, big data and machine learning to promote                       (2018). The gut microbiome and colorectal cancer: a review of bacterial
+
+
+
+
+Frontiers in Microbiology                                                                    12                                                                             frontiersin.org
+Cui et al.                                                                                                                                                    10.3389/fmicb.2023.1238199
+
+
+
+
+pathogenesis.    J.   Gastrointest.   Oncol.   9,   769–777.    doi:   10.21037/jgo.2018.              Rebersek, M. (2021). Gut microbiome and its role in colorectal cancer. BMC Cancer
+04.07                                                                                               21, 1325. doi: 10.1186/s12885-021-09054-2
+   De Sordi, L., Lourenço, M., and Debarbieux, L. (2019). The battle within:                           Reiman, D., Metwally, A. A., Sun, J., and Dai, Y. (2020). PopPhy-CNN: a
+interactions of bacteriophages and bacteria in the gastrointestinal tract. Cell Host                phylogenetic tree embedded architecture for convolutional neural networks to predict
+Microbe 25, 210–218. doi: 10.1016/j.chom.2019.01.018                                                host phenotype from metagenomic data. IEEE J. Biomed. Health Inf. 24, 2993–3001.
+                                                                                                    doi: 10.1109/JBHI.2020.2993761
+  Enquist, I. B., Good, Z., Jubb, A. M., Fuh, G., Wang, X., Junttila, M. R., et al. (2014).
+Lymph node-independent liver metastasis in a model of metastatic colorectal cancer.                     Reyes, C., Engel-Nitz, N. M., Byfield, S. D., Ravelo, A., Ogale, S., Bancroft, T.,
+Nat. Commun. 5, 3530. doi: 10.1038/ncomms4530                                                       et al. (2019). Cost of disease progression in patients with metastatic breast, lung, and
+                                                                                                    colorectal cancer. Oncologist 24, 1209–1218. doi: 10.1634/theoncologist.2018-0018
+   Gilbert, J. A., Blaser, M. J., Caporaso, J. G., Jansson, J. K., Lynch, S. V., and Knight,
+R. (2018). Current understanding of the human microbiome. Nat. Med. 24, 392–400.                       Rumpold, H., Niedersüß-Beke, D., Heiler, C., Falch, D., Wundsam, H. V., Metz-
+doi: 10.1038/nm.4517                                                                                Gercek, S., et al. (2020). Prediction of mortality in metastatic colorectal cancer in
+                                                                                                    a real-life population: a multicenter explorative analysis. BMC Cancer 20, 1149.
+    Gotelli, N. J., and Colwell, R. K. (2001). Quantifying biodiversity: procedures and
+                                                                                                    doi: 10.1186/s12885-020-07656-w
+pitfalls in the measurement and comparison of species richness. Ecol. Lett. 4, 379–391.
+doi: 10.1046/j.1461-0248.2001.00230.x                                                                  Salim, F., Mizutani, S., Zolfo, M., and Yamada, T. (2023). Recent advances of
+                                                                                                    machine learning applications in human gut microbiota study: from observational
+   Grazioli, F., Siarheyeu, R., Alqassem, I., Henschel, A., Pileggi, G., and Meiser, A.
+                                                                                                    analysis toward causal inference and clinical intervention. Curr. Opin. Biotechnol. 79,
+(2022). Microbiome-based disease prediction with multimodal variational information
+                                                                                                    102884. doi: 10.1016/j.copbio.2022.102884
+bottlenecks. PLoS Comput. Biol. 18, e1010050. doi: 10.1371/journal.pcbi.1010050
+                                                                                                       Schmidt, T. S., Raes, J., and Bork, P. (2018). The human gut microbiome: from
+   Hall, M., and Beiko, R. G. (2018). “16S rRNA gene analysis with
+                                                                                                    association to modulation. Cell 172, 1198–1215. doi: 10.1016/j.cell.2018.02.044
+QIIME2,” in Microbiome Analysis: Methods and Protocols, eds R. G. Beiko,
+W. Hsiao, and J. Parkinson (New York, NY: Springer New York), 113–129.                                 Segata, N., Izard, J., Waldron, L., Gevers, D., Miropolsky, L., Garrett, W. S., et al.
+doi: 10.1007/978-1-4939-8728-3_8                                                                    (2011). Metagenomic biomarker discovery and explanation. Genome Biol. 12, R60.
+                                                                                                    doi: 10.1186/gb-2011-12-6-r60
+    He, S., Ye, X., Sakurai, T., and Zou, Q. (2023). MRMD3.0: a python tool and
+webserver for dimensionality reduction and data visualization via an ensemble strategy.                 Shkoporov, A. N., Clooney, A. G., Sutton, T. D. S., Ryan, F. J., Daly, K. M., Nolan, J.
+J. Mol. Biol. 435, 168116. doi: 10.1016/j.jmb.2023.168116                                           A., et al. (2019). The human gut virome is highly diverse, stable, and individual specific.
+                                                                                                    Cell Host microbe 26, 527–541. e525. doi: 10.1016/j.chom.2019.09.009
+   Hendrycks, D., and Gimpel, K. (2016). Gaussian error linear units (gelus). arXiv.
+[preprint]. doi: 10.48550/arXiv.1606.08415                                                             Somorjai, R. L., Dolenko, B., and Baumgartner, R. (2003). Class prediction and
+                                                                                                    discovery using gene microarray and proteomics mass spectroscopy data: curses,
+   Holzinger, A., Dehmer, M., Emmert-Streib, E., Cucchiara, R., Augenstein, I., Del
+                                                                                                    caveats, cautions. Bioinformatics 19, 1484–1491. doi: 10.1093/bioinformatics/btg182
+Ser, J., et al. (2022). Information fusion as an integrative cross-cutting enabler to
+achieve robust, explainable, and trustworthy medical artificial intelligence. Inf. Fusion             Tishby, N., Pereira, F. C., and Bialek, W. (2000). The information bottleneck
+79, 263–278. doi: 10.1016/j.inffus.2021.10.007                                                      method. arXiv. [preprint]. doi: 10.48550/arXiv.physics/0004057
+   Jiang, L., Elrod, C., Kim, J. J., Swafford, A. D., Knight, R., and Thompson, W.                    Wang, C., and Zou, Q. (2023). Prediction of protein solubility based on sequence
+K. (2022). Bayesian multivariate sparse functional principal components analysis                    physicochemical patterns and distributed representation information with DeepSoluE.
+with application to longitudinal microbiome multiomics data. Ann. Appl. Stat. 16,                   BMC Biol. 21, 12. doi: 10.1186/s12915-023-01510-8
+2231–2249, 2219. doi: 10.1214/21-AOAS1587
+                                                                                                       Wang, Y., Xu, L., Gu, Y. Q., and Coleman-Derr, D. (2016). MetaCoMET: a web
+   Kingma, D. P., and Welling, M. (2013). Auto-encoding variational bayes. arXiv.                   platform for discovery and visualization of the core microbiome. Bioinformatics 32,
+[preprint]. doi: 10.48550/arXiv.1312.6114                                                           3469–3470. doi: 10.1093/bioinformatics/btw507
+   Kostic, A. D., Gevers, D., Siljander, H., Vatanen, T., Hyötyläinen, T., Hämäläinen,                 Wang, Z., Zolnik, C. P., Qiu, Y., Usyk, M., Wang, T., Strickler, H. D., et al. (2018).
+A. M., et al. (2015). The dynamics of the human infant gut microbiome in                            Comparison of fecal collection methods for microbiome and metabolomics studies.
+development and in progression toward type 1 diabetes. Cell Host Microbe 17, 260–273.               Front. Cell. Infect. Microbiol. 8, 301. doi: 10.3389/fcimb.2018.00301
+doi: 10.1016/j.chom.2015.01.001                                                                         Wani, A. K., Roy, P., Kumar, V., and Mir, T. U. G. (2022). Metagenomics and
+    Langille, M. G. I., Zaneveld, J., Caporaso, J. G., McDonald, D., Knights, D., Reyes,            artificial intelligence in the context of human health. Infect. Genet. Evol. 100, 105267.
+J. A., et al. (2013). Predictive functional profiling of microbial communities using 16S            doi: 10.1016/j.meegid.2022.105267
+rRNA marker gene sequences. Nat. Biotechnol. 31, 814–821. doi: 10.1038/nbt.2676                       Wirbel, J., Zych, K., Essex, M., Karcher, N., Kartal, E., Salazar, G., et al. (2021).
+   Li, W., Zhou, X., Yuan, S., Wang, L., Yu, L., Sun, J., et al. (2023). Exploring the              Microbiome meta-analysis and cross-disease comparison enabled by the SIAMCAT
+complex relationship between gut microbiota and risk of colorectal neoplasia using                  machine learning toolbox. Genome Biol. 22, 93. doi: 10.1186/s13059-021-02306-1
+bidirectional mendelian randomization analysis. Cancer Epidemiol. Biomarkers Prev.                     Wu, M., and Goodman, N. (2018). Multimodal generative models for scalable
+32, 809–817. doi: 10.1158/1055-9965.EPI-22-0724                                                     weakly-supervised learning. Adv. Neural Inf. Process. Syst. 31, 5580–5590.
+                                                                                                    doi: 10.5555/3327345.3327461
+   Marcos-Zambrano, L. J., Karaduzovic-Hadziabdic, K., Turukalo, T. L., Przymus, P.,
+Trajkovik, V., Aasmets, O., et al. (2021). Applications of machine learning in human                   Yang, C., Chowdhury, D., Zhang, Z., Cheung, W. K., Lu, A., Bian, Z., et al. (2021).
+microbiome studies: a review on feature selection, biomarker identification, disease                A review of computational tools for generating metagenome-assembled genomes
+prediction and treatment. Front. Microbiol. 12, 313. doi: 10.3389/fmicb.2021.634511                 from metagenomic sequencing data. Comput. Struct. Biotechnol. J. 19, 6301–6314.
+                                                                                                    doi: 10.1016/j.csbj.2021.11.028
+   Mekadim, C., Skalnikova, H. K., Cizkova, J., Cizkova, V., Palanova, A., Horak,
+V., et al. (2022). Dysbiosis of skin microbiome and gut microbiome in melanoma                         Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P. I., et al. (2014).
+progression. BMC Microbiol. 22, 63. doi: 10.1186/s12866-022-02458-5                                 Potential of fecal microbiota for early-stage detection of colorectal cancer. Mol. Syst.
+                                                                                                    Biol. 10, 766. doi: 10.15252/msb.20145645
+   Oh, M., and Zhang, L. (2020). DeepMicro: deep representation learning
+for disease prediction based on microbiome data. Sci. Rep. 10, 6026.                                   Zhao, Y., Zhong, X., Yan, J., Sun, C., Zhao, X., and Wang, X. (2022). Potential roles of
+doi: 10.1038/s41598-020-63159-5                                                                     gut microbes in biotransformation of natural products: an overview. Front. Microbiol.
+                                                                                                    13, 956378. doi: 10.3389/fmicb.2022.956378
+    Parks, D. H., Tyson, G. W., Hugenholtz, P., and Beiko, R. G. (2014). STAMP:
+statistical analysis of taxonomic and functional profiles. Bioinformatics 30, 3123–3124.               Zhou, J., He, Z., Yang, Y., Deng, Y., Tringe, S. G., and Alvarez-Cohen, L. (2015).
+doi: 10.1093/bioinformatics/btu494                                                                  High-throughput metagenomic technologies for complex microbial community
+                                                                                                    analysis: open and closed formats. MBio 6, e02288–14. doi: 10.1128/mBio.02288-14
+   Pasolli, E., Truong, D. T., Malik, F., Waldron, L., and Segata, N. (2016).
+Machine learning meta-analysis of large metagenomic datasets: tools and                                Zou, S., Fang, L., and Lee, M.-H. (2017). Dysbiosis of gut microbiota in
+biological insights. PLoS Comput. Biol. 12, e1004977. doi: 10.1371/journal.pcbi.10                  promoting the development of colorectal cancer. Gastroenterol. Rep. 6, 1–12.
+04977                                                                                               doi: 10.1093/gastro/gox031
+
+
+
+
+Frontiers in Microbiology                                                                      13                                                                                 frontiersin.org
+

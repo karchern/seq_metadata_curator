@@ -1,0 +1,675 @@
+                                                                                                                                                   ORIGINAL RESEARCH
+                                                                                                                                                published: 27 October 2021
+                                                                                                                                            doi: 10.3389/fonc.2021.763468
+
+
+
+
+                                              Intestinal Microbiota and
+                                              Gene Expression Reveal
+                                              Similarity and Dissimilarity
+                                              Between Immune-Mediated
+                                              Colitis and Ulcerative Colitis
+                                              Kazuko Sakai 1, Toshiharu Sakurai 2, Marco A. De Velasco 1, Tomoyuki Nagai 2,
+                                              Takaaki Chikugo 3, Kazuomi Ueshima 2, Yurie Kura 1, Takayuki Takahama 4,
+                                              Hidetoshi Hayashi 4, Kazuhiko Nakagawa 4, Masatoshi Kudo 2 and Kazuto Nishio 1*
+                           Edited by:         1 Department of Genome Biology, Faculty of Medicine, Kindai University, Osaka, Japan, 2 Department of Gastroenterology and
+
+                  Avtar Singh Meena,          Hepatology, Faculty of Medicine, Kindai University, Osaka, Japan, 3 Department of Diagnostic Pathology, Faculty of Medicine,
+       Centre for Cellular & Molecular        Kindai University, Osaka, Japan, 4 Department of Medical Oncology, Faculty of Medicine, Kindai University, Osaka, Japan
+               Biology (CCMB), India
+
+                        Reviewed by:
+              Pradeep Kumar Shukla,
+                                              Immune checkpoint inhibitors (ICIs) have become the standard of care for several cancers.
+       University of Tennessee Health         However, ICI therapy has also been associated with various immune-related adverse
+            Science Center (UTHSC),
+                                              events (irAEs). Clinical manifestations of immune-related colitis resemble those of
+                         United States
+                 Sandip Ashok Sonar,          inﬂammatory bowel diseases such as ulcerative colitis (UC). The composition of the
+            The University of Arizona,        bowel microﬂora is thought to inﬂuence the development of inﬂammatory bowel disease
+                         United States
+                                              and irAE colitis. We proﬁled the gene expressions and microbe compositions of colonic
+                  *Correspondence:
+                       Kazuto Nishio
+                                              mucosa from patients with solid cancers receiving anti-PD-L1 antibody treatment; we
+             knishio@med.kindai.ac.jp         then compared the expression proﬁles associated with irAE colitis with those associated
+                                              with UC. The pathway enrichment analysis revealed functional similarities between
+                   Specialty section:
+                                              inﬂamed regions of irAE colitis and UC. The common enriched pathways included
+         This article was submitted to
+                   Cancer Metabolism,         leukocyte extravasation and immune responses, whereas non-inﬂamed mucosa from
+               a section of the journal       patients with irAE colitis was distinct from patients with UC and was characterized by the
+                 Frontiers in Oncology
+                                              recruitment of immune cells. A similarity between the microbiota proﬁles was also
+         Received: 24 August 2021
+        Accepted: 11 October 2021             identiﬁed. A decreased abundance of Bacteroides species was observed in inﬂamed
+        Published: 27 October 2021            regions from both irAE colitis and UC based on a microbiota composition analysis of 16S
+                             Citation:        rDNA sequencing. Pathways associated with molecule transport systems, including fatty
+  Sakai K, Sakurai T, De Velasco MA,
+                                              acids, were enriched in inﬂamed and non-inﬂamed irAE colitis and inﬂamed UC, similar to
+     Nagai T, Chikugo T, Ueshima K,
+    Kura Y, Takahama T, Hayashi H,            Piphillin-inferred KEGG pathways. While UC is characterized by local regions of
+  Nakagawa K, Kudo M and Nishio K             inﬂammation, ICI treatment extends to non-inﬂammatory regions of the colonial mucosa
+(2021) Intestinal Microbiota and Gene
+     Expression Reveal Similarity and         where immune cells are reconstituted. This analysis of the similarity and heterogeneity of
+       Dissimilarity Between Immune-          irAE colitis and UC provides important information for the management of irAE colitis.
+Mediated Colitis and Ulcerative Colitis.
+             Front. Oncol. 11:763468.         Keywords: immune-related adverse event, ulcerative colitis, immune-checkpoint inhibitor, pathway enrichment
+     doi: 10.3389/fonc.2021.763468            analysis, gene expression, microbiota
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                           1                                       October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                      Similarity/dissimilarity of irAE and UC
+
+
+
+
+INTRODUCTION                                                                 maintaining peripheral tolerance (17, 18). ICIs may sway this
+                                                                             balance in favor of an increased TH17 cell response with robust
+Monoclonal antibodies targeting immune checkpoint cytotoxic T                IL-17 secretion and away from Treg-mediated self-tolerance,
+lymphocyte antigen-4 (CTLA-4), programmed death receptor-1                   which has been hypothesized to contribute to ICI-induced colitis
+(PD-1) and programmed death ligand 1 (PD-L1), referred to as                 (19). In the signaling pathways, IFN-g activates JAK-STAT
+immune checkpoint inhibitors (ICIs), have become a new                       signaling to induce PD-L1 expression on tumor cells, allowing
+standard of care for several cancers including lung cancer and               them to evade peripheral immune surveillance. JAK-STAT
+melanoma (1–3) as well as renal cell carcinoma (4). ICIs can be              activation by IFNs is also important for T cell activation and
+distinguished from other targeted therapies and chemotherapies in            differentiation (20), and aberrant signaling along various IFN-
+that they enhance anti-tumor T-cell activity, whilst traditional             JAK-STAT axes is known to contribute to the pathogenesis of
+antineoplastic agents exert direct cytotoxic effects (1–3). Therefore,       many autoimmune diseases (21) and irAE such as myocarditis
+although long-term survival is expected in some patients, ICIs               due to anti-PD-1 therapy (22). It is therefore plausible that the
+could lead to a new class of immune-related adverse events                   possible mechanisms driving irAEs include (i) activation of
+(irAEs), of which gastrointestinal (GI) irAEs are among the                  cytotoxic T cells; (ii) activation of B cells and increased
+most frequent and severe (5, 6). In their clinical presentation              autoantibody production; (iii) direct molecular mimicry and
+and endoscopic ﬁndings, irAE colitis resemble ulcerative colitis             off-target toxicity; (iv) activation of intracellular signaling and
+(UC) (7, 8). In our previous study, we have reported on the                  pro-inﬂammatory cytokine production; and (v) environmental
+association between responsiveness to ICI and the gut microbiota             modiﬁers of immune system activation, including composition
+(9). However, the functional relationship between ICI-induced                of the host gut microbiome. These mechanisms may help
+irAE and the gut microbiota remains unclear.                                 identify predictive biomarkers and targeted treatment strategies.
+    IrAEs are common and diverse, varying in incidence, timing,                  To gain additional insights and to shed additional light into
+and severity. Rapid diversiﬁcation and clonal expansion of T                 the link between ICI therapy and irAEs, we herein investigated
+cells, which can take place early in ICI treatment (10, 11), may             the microbiota and gene expressions in inﬂamed and uninﬂamed
+contribute to irAE pathogenesis. Epitope spreading allows                    mucosae of irAE colitis and UC patients. A functional
+diversiﬁed T cells to attack not only more targets on the tumor              enrichment analysis of the whole transcriptome and 16S rDNA
+but also normal tissues, leading to irAEs (12). Additionally, B              sequencing data obtained using an Ingenuity® Pathway Analysis
+cells interact intimately with T cells to produce antibodies with            (IPA) and Piphillin prediction (23) allowed us to compare the
+high reactivity against non-self and low reactivity against self.            functional attributes of the microbial communities in the studied
+ICIs, in causing iatrogenic T cell hyperactivation, additionally             environments. To the best of our knowledge, this is the ﬁrst study
+have been demonstrated to drive the peripheral accumulation of               to examine the similarities in gut bacterial communities and gene
+activated B-cell subpopulations and antibody-producing                       signatures between irAE colitis and UC.
+plasmablasts, which have been correlated with irAE
+development and severity (13). Expanded, activated B cells
+may contribute both directly and indirectly to irAE
+pathogenesis through mechanisms that may include cytokine                    METHODS
+production, further antigen presentation to T cells, and increased
+secretion and diversiﬁcation of autoreactive antibodies. The                 Patients and Controls
+innate immune system comprises a wide variety of cells,                      Eighteen patients with immune checkpoint inhibitor-induced
+including dendritic cells, natural killer (NK) cells,                        (irAE) colitis, 9 with ulcerative colitis (UC), and three healthy
+macrophages/monocytes, neutrophils, and innate lymphoid                      individuals were included in this study. The irAEs were deﬁned
+cells (ILCs). Together, they contribute to irAE pathogenesis                 as adverse events (AEs) with a potential immunologic basis that
+likely both in cooperation with and independent of adaptive                  required more frequent monitoring and potential intervention
+immune cells. Moreover, studies have reported associations of                with immune suppression or endocrine therapy (24).
+irAEs with neutrophil-mediated inﬂammatory response and                      Asymptomatic and transient abnormalities of laboratory
+formation of neutrophil extracellular traps, as well as high                 ﬁndings were not regarded as irAEs (i.e., asymptomatic subtle
+levels of circulating eosinophils (14, 15). Changes in the global            thyroid stimulating hormone (TSH) or aspartate
+immune response are facilitated and reﬂected by the milieu of                aminotransferase (AST)/alanine aminotransferase (ALT)
+circulating cytokines, which includes anti-inﬂammatory                       elevation spontaneously resolving without any interventions
+cytokines (e.g., IL-10, TGF-b), pro-inﬂammatory innate                       etc.). Concurrent irAE was deﬁned multi-organ irAE during a
+immune cytokines (e.g., IL-1, IL-6), and pro-inﬂammatory                     same treatment cycle. AEs occurring after initiation of next
+adaptive immune cytokines (e.g., IFN-g, IL-17) (16). ICIs may                treatment were not collected. All AEs were graded according to
+tip the balance of this milieu toward inﬂammation and                        Common Terminology Criteria for Adverse Events (CTCAE)
+autoimmunity (17). IL-17, for example, is a cytokine secreted                version 4 (25). In patients with gastrointestinal irAEs, clinical
+by helper T cells (speciﬁcally TH17 cells) that acts to suppress             symptoms such as diarrhea and bloody stool occurred at a
+regulatory T cells (Tregs) (17, 18). While TH17 cells have been              median of 3 months (1-10 months) after ICI initiation. UC
+described to play a pathogenic role in autoimmune disorders                  patients were diagnosed based on their clinical histories and
+(18), Tregs have immunosuppressive functions important in                    endoscopic and histological ﬁndings. In these patients, intestinal
+
+
+Frontiers in Oncology | www.frontiersin.org                              2                                October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                  Similarity/dissimilarity of irAE and UC
+
+
+
+biopsy tissue from an inﬂamed region (active) and a non-                end sequencing on the Thermo Fisher Scientiﬁc Ion S5 platform.
+inﬂamed region (inactive) were collected. The endoscopic                16S rDNA sequencing using the Illumina MiSeq platform was
+activity of colitis was assessed according to the Mayo                  performed on inactive intestinal biopsy tissue samples as
+endoscopic subscore (0: normal, 1: mild, 2: moderate, 3:                previously described (9). Brieﬂy, the V3-V4 16S rRNA region
+severe). Evaluation of the degree of inﬂammation was                    was ampliﬁed, followed by index PCR for adaptor ligation. The
+performed according to the Geboes score of ulcerative colitis.          pooled library was sequenced as paired-end 300-bp reads using
+The tissue sites evaluated were those with the highest degree of        MiSeq Reagent Kit V3 (Illumina). 16S rDNA sequencing using the
+endoscopic and histological inﬂammation in the multiple tissues         Thermo Fisher Scientiﬁc Ion S5 platform was performed on active
+collected. Endoscopic and histological evaluations were                 intestinal biopsy tissue samples. The 16S rDNA library was
+performed by a physician who is both a gastrointestinal                 prepared with the Ion 16S Metagenomics Kit (Thermo Fisher
+endoscopist and a gastroenterologist. Non-inﬂamed mucosae               Scientiﬁc), according to the manufacturer’s instructions. For library
+were deﬁned as mucosae that were endoscopically not                     preparation, the V2, V3, V4, V6, V7, V8, and V9 16S rRNA region
+inﬂamed; biopsies were taken from the right colon (Mayo                 was ampliﬁed, followed by end repair and barcoded-adaptors
+endoscopic subscore 0) or the ileum. For controls, biopsies             ligation using the Ion Plus Fragment Library Kit (Thermo Fisher
+were taken from uninﬂamed mucosae from 3 non-IBD patients               Scientiﬁc). The pooled library was sequenced as single-end 400-bp
+and feces samples were collected from 3 healthy individuals. All        reads using the Ion S5 sequencing kit (Thermo Fisher Scientiﬁc).
+samples were immediately frozen and stored at −80°C.                        The FASTQ ﬁles were analyzed using the CLC Genomics
+                                                                        Workbench version 12.0 (Qiagen) and the Microbial Genomics
+Ethical Approval                                                        Module (Qiagen). Sequence reads were clustered into operational
+This study was conducted in compliance with the Helsinki                taxonomic units (OTUs) with a 99% identify threshold against
+Declaration and the Ethical Guidelines for Medical and Health           the Greengenes database, version 13.8. A set of sequences
+Research Involving Human Subjects by the Japanese                       representing OTUs were analyzed using Calypso (version 8.84)
+government. This study was approved by the ethical committee            (26) OTU abundance was normalized with cumulative-sum
+of the Kindai University Faculty of Medicine (28-224).                  scaling (CSS) and log2 transformation. Samples with a total
+                                                                        read count <1000 were ﬁltered from subsequent analyses.
+DNA/RNA Isolation
+DNA and RNA extraction from intestinal biopsy tissue samples            Pathway Enrichment Analysis
+were performed using an AllPrep DNA/RNA Mini Kit (Catalog               Pathway analysis of the gene expression data from human tissues
+#80204, Qiagen, Valencia, CA). The quality and quantity of the          was conducted using IPA (Version: 51963913) (Qiagen). Genes
+nucleic acid were veriﬁed using a NanoDrop 2000 device,                 with a fold change greater than 4 (the absolute value of a log2 fold
+PicoGreen dsDNA Reagent (Catalog #P7581), and RiboGreen                 change greater than 2) and an adjusted p value less than 0.05 were
+RNA reagent (Catalog #R11491) from Thermo Scientiﬁc                     considered as being differentially expressed and were subjected to
+(Wilmington, DE).                                                       IPA. The IPA analysis provided a Z-score that predicted the
+                                                                        direction of the change in the dataset and a p value from a right-
+Whole-Transcriptome Analysis                                            hand Fisher exact test. Positive Z-scores predicted activation, and
+For the whole transcriptome analysis, we used the AmpliSeq              negative Z-scores predicted inactivation of the enriched pathway.
+Transcriptome Human Gene Expression Kit (Catalog #A26325,                  Prediction of the functional proﬁles from the metagenomic
+Thermo Fisher Scientiﬁc). The RNA extracted from tissue                 16S rDNA sequencing analysis was performed using the online
+samples were reverse-transcribed using the SuperScript VILO             Piphillin server (KEGG version October 2018) (23).
+cDNA Synthesis kit (Catalog #11754050, Thermo Fisher
+Scientiﬁc), followed by multiplexed PCR ampliﬁcation, end               Statistical Analyses
+repair, and barcoded-adaptors ligation according to the                 Statistical analyses were performed using JMP (version 14.0; SAS
+manufacturer’s instructions.                                            Institute, Cary, NC), GraphPad Prism software (Version 8;
+   Pooled libraries were subjected to the Ion Chef System               GraphPad Software Inc., La Jolla, CA), and XLSTAT for
+(Thermo Fisher Scientiﬁc) for template preparation. Libraries           Microsoft Excel (Addinsoft SARL; Paris, France) for statistical
+were then loaded onto an Ion 550 chip and sequenced with the            analysis. The Pearson correlation coefﬁcient was used for
+Ion S5 sequencing system. The Ion Torrent Suite v5.10 software          quantifying linear correlation. The Mann-Whitney U-test was
+(Thermo Fisher Scientiﬁc) was used for base calling, alignment to       used to compare two groups. P values of less than 0.05 were
+the human reference genome (hg19), and quality control. Raw             considered statistically signiﬁcant.
+reads were then analyzed automatically using the AmpliSeqRNA
+plugin to generate gene-level expression values for all 20,802
+RefSeq human genes.
+                                                                        RESULTS
+16S rDNA Sequencing and Data Analysis
+16S rDNA sequencing was performed using the V3-V4 16S rRNA              Patient Characteristics
+region for paired-end sequencing on the Illumina MiSeq platform         In total, 18 patients with irAE colitis who had diarrhea and
+or the V2, V3, V4, V6, V7, V8, and V9 16S rRNA region for single-       underwent a colonoscopy were included. Clinical symptoms
+
+
+Frontiers in Oncology | www.frontiersin.org                         3                                 October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                                                Similarity/dissimilarity of irAE and UC
+
+
+
+such as diarrhea occurred at a median of 3 months (1-10                                         irAE (I-irAE, n=14) and UC (I-UC, n=9) and from inﬂamed
+months) after ICI initiation. Two patients were refractory to                                   (active) regions of irAE colitis (A-irAE, n=15) and UC (A-UC,
+corticosteroids and were treated with tumor necrosis factor                                     n=9), respectively.
+(TNF) blockade using inﬂiximab: one patient had a                                                   A functional characterization analysis was performed using
+perforation, and the other patient underwent an ileostomy                                       IPA to identify canonical pathways enriched in each group.
+because of unsuccessful medical treatment including                                             Figure 1 shows the biological trends of the I-irAE, I-UC,
+cyclosporin and cytapheresis. Patients had cancer of the lung                                   A-irAE, and A-UC regions compared with normal samples
+(11), stomach (2), kidney (3), ovary (1), and unknown origin (1)                                using the Z-score and p-value. The I-irAE and I-UC regions
+(Table 1). UC patients were signiﬁcantly younger than those                                     showed different tones, while the A-irAE and A-UC regions were
+with irAE colitis. IrAE colitis and UC were prominent in male                                   visually similar. Of the 712 canonical pathways, 14, 13, 108, and
+and female patients, respectively, but not statistically signiﬁcant                             101 pathways were signiﬁcantly enriched in the I-irAE, I-UC,
+because of small sample size. On the other hand, patients with                                  A-irAE, and A-UC regions, respectively, when compared with
+moderate or severe colitis were frequently observed in ulcerative                               normal samples. In inactive regions of irAE and UC, pathways
+colitis group compared with irAE colitis group, although it was                                 related to immune cells and responses, such as B cell, helper T
+not signiﬁcant. There was no signiﬁcant difference in grade score                               cell, and natural killer cells, were enriched in I-irAE (Figure 2A).
+between irAE colitis and UC, although there was a trend toward                                  Furthermore, the Th2 pathway was enriched and inversely
+higher grade in UC. Most patients with irAE colitis were able to                                correlated with the Th1 pathway, suggesting a Th2-dominant
+tolerate subsequent ICI therapy. However, all the patients who                                  milieu. However, P70 S6 kinase (p70S6K) signaling and
+restarted ICI therapy relapsed after ICI restart (median time, 5                                metabolic pathways, particularly those associated with
+months; range, 1–17 months). Concurrent irAEs (lung 2,                                          substance degradation, were enriched in I-UC; notably, no
+hypothalamus 1, skin 1, brain 1) developed in 5 patients with                                   overlap occurred between pathways enriched in I-irAE and
+irAE colitis.                                                                                   those enriched in I-UC (Figure 2B). Conversely, immune-
+                                                                                                related pathways such as NK cells, Th1, Th2 and the immune
+Similarity of Gene Expression Proﬁles                                                           response as well as neuro-inﬂammation pathways were enriched
+Between irAE and UC                                                                             in the A-irAE cohort. Remarkably, six of the top ten canonical
+Data from a whole transcriptome analysis of RNA extracted from                                  pathways enriched in A-irAE were also enriched in A-UC and
+colon biopsy samples was used to select differentially expressed                                included those involved in immune response and leukocyte
+genes (fold change >2 and p <0.05, ANOVA) in active and
+inactive regions of irAE and UC relative to normal controls.
+Based on these conditions, a total of 511, 1,698, 2,906 and 4,090
+genes were obtained from non-inﬂamed (inactive) regions of                                           A
+
+
+
+TABLE 1 | Patient characteristics.
+
+                                  Immune checkpoint             Ulcerative         P                 B
+                                    inhibitor-induced           colitis (UC)     value
+                                   colitis (irAE) n = 18           n=9
+
+Age, years          Median            66.5 (43 to 79)           23.0 (14 to      <0.001
+                    (range)                                          49)                             C
+Gender              Male                13 (72.2%)               3 (33.3%)       1.000
+                    Female              5 (27.8%)                6 (66.6%)
+Geboes score        Grade 1             3 (16.7%)                1 (11.1%)       0.426
+grade
+                    Grade 2             9 (50.0%)                2 (22.2%)                           D
+                    Grade 3              1 (5.6%)                1 (11.1%)
+                    Grade 4             5 (27.8%)                5 (55.6%)
+Colitis activity    Mild                9 (50.0%)                1 (11.1%)       0.059
+                    Moderate            7 (38.9%)                4 (44.4%)
+                    Severe              2 (11.1%)                4 (44.4%)
+Cancer types        Lung                11 (61.1%)                   –              –
+                    Stomach             2 (11.1%)                    –                           FIGURE 1 | Biological trends for I-irAE, I-UC, A-irAE, and A-UC regions
+                    Kidney              3 (16.7%)                    –                           compared with normal samples. The size and color of each tile reﬂect the
+                    Ovary                1 (5.6%)                    –                           p value (−log) and the z-score, which reﬂect the overall predicted activation
+                    Unknown              1 (5.6%)                    –                           state (<0: inhibited, >0: activated), respectively, compared with the normal
+Availability of     Yes                 14 (77.8%)               9 (100%)           –            sample. The intensity scale of the z-score ranges from dark blue (low value) to
+inactive tissue     No                  4 (22.2%)                 0 (0%)                         dark orange (high value). (A) Featured canonical pathways of inactive irAE
+Availability of     Yes                 15 (83.3%)               9 (100%)           –            (n = 14) and normal control (n = 3). (B) Featured canonical pathways of
+active tissue       No                  3 (16.7%)                 0 (0%)                         inactive UC (n = 9) and normal control (n = 3). (C) Featured canonical
+                                                                                                 pathways of active irAE (n = 15) and normal control (n = 3). (D) Featured
+*P values were based on the Fisher’s exact test for categorical data and the Mann-Whitney
+                                                                                                 canonical pathways of active UC (n = 9) and normal control (n = 3).
+U test for continuous data.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                                 4                                       October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                                               Similarity/dissimilarity of irAE and UC
+
+
+
+                                                                                               and A-UC compared to normal samples included ICAM1,
+                                                                                               ITGB2, CD28, CD40, CD80, CD86, and CD4, which are
+  A
+                                                                                               upstream regulatory molecules related to inﬂammation. The
+                                                                                               gene expression of those genes was found to be signiﬁcantly
+                                                                                               increased compared to normal samples. These molecules are
+                                                                                               suggested to contribute common molecular events in inﬂamed
+  B                                                                                            UC as well as inﬂamed irAE.
+                                                                                                  We further examined the differences in gene expressions
+                                                                                               between A-irAE and A-UC directly and extracted the featured
+                                                                                               pathways. The most activated pathway observed in A-UC was
+                                                                                               “crosstalk between dendritic cells and natural killer cells”
+  C                                                                                            pathway (Figure S3A). This suggests an innate immune
+                                                                                               mechanism were speciﬁcally activated in A-UC. Furthermore,
+                                                                                               tumor necrosis factor (TNF) was selected as the most predictive
+                                                                                               upstream regulatory molecules in A-UC (Figure S3B), which
+                                                                                               could be related with the activation of innate immunity.
+  D
+                                                                                               Similarity of Microbial Composition
+                                                                                               Between irAE and UC
+                                                                                               To characterize the intestinal microbial composition, colonial
+                                                                                               mucosa samples were submitted for microbiota proﬁling using
+                                                                                               16S rDNA sequencing. The cleaned sequences were clustered into
+                                                                                               OTUs with a sequence identity threshold of 99%. A redundancy
+ FIGURE 2 | Diagrams of the top 10 canonical pathways in an enrichment
+                                                                                               analysis (RDA) showed inﬂammation (RDA1) as the primary factor
+ analysis. The bar plots show the z-score, which reﬂects the overall predicted
+ activation state (<0: inhibited, >0: activated) (left), and the p value (−log) (right).
+                                                                                               inﬂuencing taxa (Figure 3A). A non-metric multidimensional
+ (A) Ten most statistically signiﬁcant canonical pathways of inactive irAE and a               scaling (NMDS) analysis also showed that the groups could be
+ normal control. (B) Ten most statistically signiﬁcant canonical pathways of                   classiﬁed as active and inactive components (Figure 3B).
+ inactive UC and a normal control. (C) Ten most statistically signiﬁcant
+ canonical pathways of active irAE and a normal control. (D) Ten most
+ statistically signiﬁcant canonical pathways of active UC and a normal control.
+
+
+
+
+extravasation (Figures 2C, D). Overall, these results indicated a                                                 A
+
+functional similarity between A-irAE and A-UC, but not
+be twee n no n-inﬂ amed regions, base d on the gene
+expression proﬁles.
+   To further examine the functional similarity between irAE
+and UC, we performed a Pearson correlation analysis using the
+Z-scores of the enrichment scores from the canonical pathways
+that were analyzed (Figure S1). Generally, moderately positive
+correlations were observed between I-irAE and I-UC (r=0.5482)                                                     B
+and between A-irAE and I-irAE (r=0.7112) (Figures S1A, B).
+However, a strong positive correlation was observed between the
+A-irAE and A-UC (r =0.9581) regions (Figure S1C), whereas
+none were present between the inactive and active regions of UC
+(Figure S1D). Overall, these results show some similarity
+between inﬂamed and non-inﬂamed regions in irAE, but more
+notably, our ﬁndings revealed a strong similarity between
+inﬂamed mucosal regions of irAE and UC.
+   To investigate the mechanisms that could explain similarities
+between inﬂammatory irAE and inﬂammatory UC, we analyzed                                        FIGURE 3 | Comparison of biodiversity indices between different groups of
+                                                                                                tissue microbiota. (A) Redundancy analysis (RDA) plot showing the
+pathways common to A-UC and A-irAE. Among the 239 genes
+                                                                                                relationship of inﬂammation and disease status. Plot at operational taxonomic
+comprising six pathways common to A-irAE and A-UC, we                                           units (OTUs) level. The contribution rate of each component is shown in
+extracted the top 100 genes that differed from normal samples                                   parentheses. (B) Non-metric multidimensional scaling (NMDS) plot showing
+using the signal-to-noise ratio, followed by unsupervised                                       the relationship of inﬂammation and disease status. Plot at operational
+hierarchically clustered based one minus Pearson correlation                                    taxonomic units (OTUs) level. The NMDS stress value was 0.134, which is
+                                                                                                considered to be statistically reliable due to it is less than 0.2.
+(Figure S2). The clusters that were upregulated in both A-irAE
+
+
+Frontiers in Oncology | www.frontiersin.org                                                5                                      October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                             Similarity/dissimilarity of irAE and UC
+
+
+
+
+Hierarchical Clustering and Relative                                                 top 50 species. Bacteroides_586379 and _562995 were
+Abundance of Taxa                                                                    signiﬁcantly absent in inﬂamed irAE and UC. In Cluster 3,
+Signiﬁcant differences in the relative abundances of bacterium                       Enterobacteria and other species were enriched in inﬂamed
+species were analyzed. A heatmap of the top 50 contributing                          regions, as reported previously (27, 28). The enrichment of
+bacterial species visualized three different clusters consisting of                  Microbacterium in inﬂamed regions was detected as has been
+taxa with a low (Cluster 1), no difference (Cluster 2), and high                     previously reported for IBD patients (29). Together, the
+(Cluster 3) normalized abundance in inﬂamed regions                                  abundance compositions of the top 50 taxa at the species level
+(compared with non-inﬂamed and normal samples)                                       were similar between the inﬂamed regions of irAE and UC and
+(Figure 4). Cluster 1 contained abundant taxa in I-irAE, I-UC,                       the non-inﬂamed regions of irAE and UC, respectively.
+and normal samples. The results for normal tissue were clustered
+together with those for non-inﬂamed samples. Cluster 3 was                           Inferred Microbial Function
+characterized by enriched abundant taxa in the inﬂamed samples                       Furthermore, the potential consequences for community
+(A-irAE and A-UC). No distinct clusters of irAE and UC were                          functioning were assessed based on 16S rDNA data using
+formed independently. The normalized abundance of 50 genera                          Piphillin. Of the estimated 342 metagenomic KEGG pathway
+and the signiﬁcant differences between sample groups are listed                      functions, the 50 most abundant pathways were selected by
+in Table S1. Compared with the normalized abundance between                          Piphillin. Figure 5 shows the correlation heatmap for the
+inﬂamed vs. non-inﬂamed samples, signiﬁcant differences were                         relative abundances of the 50 most abundant pathways in I-
+observed in 16/23, 1/10 and 17/17 of the taxa species in Clusters                    irAE, I-UC, A-irAE, A-UC, and normal samples. In the
+1, 2, and 3, respectively (Table S1). Among the 16 taxa with                         functional pathway analysis, inﬂamed regions tended to be
+signiﬁcant differences between the inﬂamed vs. non-inﬂamed                           classiﬁed as different from non-inﬂamed regions. The top 50
+groups in Cluster 1, signiﬁcant decrease in the normalized                           abundant pathways of each group were compared with the
+abundances of 11 species in A-irAE and 11 species in A-UC                            normal pathways. A signiﬁcant difference in the abundance of
+were observed when compared with normal mucosa. A                                    these 50 pathways between inﬂamed and non-inﬂamed groups
+decreased normalized abundance of the Cluster 1 species was                          vs. normal regions was seen, and 23 pathways exhibited
+commonly observed in inﬂamed (but not in non-inﬂamed) irAE                           signiﬁcantly different abundance between non-inﬂamed irAE
+and UC mucosa. Bacteroides was the most abundant taxa in the                         vs. normal regions (p<0.05) (Table S2). No differences in
+                                                                                     abundant pathways were observed between non-inﬂamed UC
+                                                                                     vs. normal regions. This ﬁnding indicates functional similarities
+                                                                                     between irAE colitis and UC microbiota in inﬂamed irAE
+                                                                                     regions. Furthermore, 5 pathways were selected based on a
+                                                                                     large fold-change (Log2 ratio>2) in abundance between A-irAE
+                                                                                     and normal regions. Five pathways have been characterized by
+                                                                                     Piphillin as being associated with intestinal ﬂora: butanoate and
+                                                                                     fatty acid metabolism, quorum sensing ATP binding cassette
+                                                                                     transporters, and two-component systems. This evidence
+                                                                                     suggests that this dysbiosis may affect the transport systems of
+                                                                                     substances from the ﬂora to the mucosa and mucosal defense.
+                                                                                         A comparison of the predicted functional pathways suggests
+                                                                                     the similarity of the microbiota proﬁle between inﬂamed regions
+                                                                                     of irAE and UC. No common signiﬁcant pathways in inﬂamed
+                                                                                     and non-inﬂamed UC were seen, while 23 of the 50 pathways
+                                                                                     differed signiﬁcantly between inﬂamed and non-inﬂamed
+                                                                                     irAE regions.
+
+
+
+
+                                                                                     DISCUSSION
+                                                                                     This study investigated the similarities and differences in irAE,
+                                                                                     UC, and normal samples by comparing the gene expression
+                                                                                     proﬁles of colonial mucosal tissues and microbiota composition.
+                                                                                     Furthermore, the statuses of inﬂamed and non-inﬂamed regions
+ FIGURE 4 | Heatmap of unsupervised hierarchical clustering of tissue
+ microbiota composition at species level based on the Bray-Curtis distance           in the same patients were compared to determine whether the
+ metric. The bacteria that are shown represent the 50 most abundant taxa             results of a detailed examination of the local mucosa would
+ across all fraction samples. Taxa abundance is shown according to color             reﬂect the pathological condition.
+ ranging from red (highly abundant) to blue (rare or absent) and the values of          The importance of the local ﬂora component has been
+ taxa correspond to the heatmap scale on top of the main heatmap.
+                                                                                     discussed in IBD (30), but few reports have discussed local
+
+
+Frontiers in Oncology | www.frontiersin.org                                      6                                October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                                     Similarity/dissimilarity of irAE and UC
+
+
+
+
+ FIGURE 5 | Correlation heatmap of relative abundance of 50 most abundant inferred KEGG orthology pathways selected by Piphillin in I-irAE (n = 14), I-UC (n = 9),
+ A-irAE (n = 15), A-UC (n = 9), and normal samples (n = 3) using Pearson’s correlation metric. Values were scaled to z-score and colors correspond to correlation,
+ red = high correlation and blue = low correlation. Dendrograms represent average distance. Two main clusters were identiﬁed, and samples characterized by
+ inﬂamed (A-irAE and A-UC) and non-inﬂamed (I-irAE, I-UC, and normal) status were correlated accordingly.
+
+
+differences in irAE colitis. The present study showed similar and                    not ulcerative colitis (UC). In Europe and the United States, CD
+distinct proﬁles of mucosal gene expression and microbiota                           prevalence appears to be higher in females than in males (36, 37),
+composition. Clinically, similarities and differences between                        while in Asia the opposite has been observed (38, 39). These
+irAE colitis and IBD, including UC, have been reported. IrAE                         results have potential clinical implications. Sex-associated
+exerts a similar phenotype, histology, and serological                               differences exists in immune systems. Immune checkpoint
+characteristics to those of IBD (Crohn’s disease and UC), but                        inhibitor monotherapy-associated hepatitis is frequently
+with a more aggressive course of disease with acute inﬂammation                      observed in males in Japan (40). On the other hand, no clear
+(31–33). On the other hand, the similarities in the gene                             evidence of gender difference of irAE colitis has not been
+expression proﬁles in regions of irAE and UC have not been                           reported. A randomized controlled trial demonstrated that of
+clariﬁed until this study.                                                           1,011 patients who began treatment with pembrolizumab (anti-
+    Gene expression proﬁling and microbial composition                               PD1) therapy or placebo, 622 (61.5%) were men and 389 (38.5%)
+analyses of colonial mucosa, showed similarities between irAE                        were women; 386 patients (38.2%) were aged 50 to 64 years, 377
+and UC, suggesting that analyses of the local mucosa and                             (37.3%) were younger than 50 years, and 248 (24.5%) were 65
+microbial composition might be important for understanding                           years and older (41). A meta-analysis using The Cancer Genome
+the pathogenesis of irAE and IBD.                                                    Atlas (TCGA) omics data also shows and validated that minimal
+    The strong correlation between the Z-scores for the inﬂamed                      sex-associated differences in irAEs including irAEs colitis among
+regions of irAE and UC suggests a large degree of similarity. A                      cancer patients who received immune checkpoint inhibitor
+correlation analysis of the Z-scores for the whole transcriptomes                    therapy (42). Thus, it may be unnecessary to consider gender
+was able to quantify the degree of similarity and was found to be                    effects for irAE management in clinical practice.
+useful for evaluating similarity. These results were consistent                          In this study, we evaluated the transcriptome of irAE colitis in
+with the clinical feature that UC is a local inﬂammatory lesion                      the patients treated with mainly anti-PD-1 blockade. Compared
+and that no changes are seen in non-inﬂammatory areas (34, 35).                      to other immune checkpoint inhibitors, irAE colitis induced by
+The canonical pathways of enrichment analysis also                                   anti-CTLA-4 are frequent, potentially severe and resemble IBD,
+demonstrated a similarity between inﬂamed irAE and UC                                whereas those induced by PD-1 blockade seem to be less frequent
+regions, but not between non-inﬂamed irAE and UC regions.                            and clinically more diverse. Three recent systematic literature
+Immune cell reconstitution may have occurred in non-inﬂamed                          reviews and meta-analyses of published studies have assessed the
+regions of irAE, but not of UC.                                                      risks of diarrhea and colitis in patients treated with anti-PD-1
+    Gender differences in IBD have been reported for                                 and/or anti-CTLA-4 (6). The incidence of colitis was 0.7%–1.6%
+epidemiology and other factors. In IBD, gender-speciﬁc                               for anti-PD-1, 5.7%–9.1% for anti-CTLA-4% and 13.6% for the
+differences have been reported for Crohn’s disease (CD), but                         combination of both therapies. It may be necessary to consider
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                      7                                      October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                   Similarity/dissimilarity of irAE and UC
+
+
+
+the impact of therapeutic targets on irAE colitis management in           are reconstituted, whereas UC consists of local inﬂammatory
+clinical practice.                                                        lesions. However, this study is limited by its retrospective design
+    Unsupervised microbial abundance clustering also showed               and small sample size, thus, future studies examining larger sample
+distinct taxa compositions between inﬂamed and non-inﬂamed                sizes are needed to conﬁrm the ﬁndings of this study.
+regions. This result is consistent with previous reports of ﬂora
+taxonomy in IBD patients (43) suggesting that inﬂamed regions
+are likely to be reﬂected in the ﬂora of IBD. Andoh et al. reported
+that the bacterial composition during the remission (non-
+                                                                          DATA AVAILABILITY STATEMENT
+inﬂamed) phases of UC, but not Crohn’s disease, resembled                 Raw 16S rRNA gene amplicon sequences are be deposited to
+that of normal mucosa (31). While we did not investigate                  DNA Data Bank of Japan/Sequence Read Archive (DDBJ/DRA)
+Crohn’s disease in the present cohort, we are interested in               under the accession number DRA012351, DRA012819,
+exploring the similarities between irAE and Crohn’s disease in            and DRA012820.
+a future study.
+    The top 5 enriched pathways shared by inﬂamed irAE, UC,
+and non-inﬂamed irAE regions were selected during an inferred
+microbial function analysis performed using Piphillin.                    ETHICS STATEMENT
+Reportedly, pathways related to butanoate and fatty acid
+metabolism are closely related to IBD colitis (32). A decrease            The studies involving human participants were reviewed and
+in anaerobic bacteria represented by Clostridium and                      approved by the ethical committee of the Kindai University
+Fusobacterium leads to a decrease in butyric acid production,             Faculty of Medicine (28–224). The patients/participants provided
+abnormal mucosal repair, decreased anti-inﬂammatory activity,             their written informed consent to participate in this study.
+and the defective induction of regulatory T cells. These events
+may lead to the onset of IBD (33, 44). However, Clostridium and
+Fusobacterium were not abundant in the presently reported
+cohort. Other contributing bacteria should be present. The                AUTHOR CONTRIBUTIONS
+concentration of quorum-sensing molecule secreted by bacteria             KS contributed experimental design, data collection, data
+is known to control bacterial growth and to regulate immunity             acquisition, analysis and interpretation of the data, writing the
+(45, 46). The activation of the two-component system through an           ﬁrst draft of the paper. TS contributed experimental design, data
+increase in the abundance of Enterobacteriaceae is involved in            collection, and data acquisition. MD contributed experimental
+the pathogenesis of colitis (47). An association between the two-         design analysis and interpretation of the data. TC contributed
+component system and Enterobacteriaceae may exist, since                  data acquisition, analysis and interpretation of the data. TN, KU,
+various Enterobacteriaceae were selected as the ﬂora in Cluster           YK, TT, HH, and KNa contributed sample preparation, patient
+3. Bacteria secretes proteins into the extracellular environment          recruitment. MK contributed experimental design, sample
+and mediates interactions between bacteria and eukaryotic hosts           preparation, study supervision. KNi contributed experimental
+(48). Type I secretion systems are very similar to ATP-binding            design, sample preparation, writing the ﬁrst draft of the paper.
+cassette (ABC) transporters in many Gram-negative bacteria,               All authors contributed to the article and approved the
+and ABC transporters that secrete small molecules out of the cell         submitted version.
+(49). Colitis was preceded by altered gut bacterial composition,
+suggesting that the deletion of ATP-binding cassette B1 (Abcb1)
+led to fundamental changes in host-microbiota interactions in a
+mouse model (50). Another critical role of Abcb1 was suggested            FUNDING
+by the ﬁnding that Abcb1 expression identiﬁed a subpopulation
+of pro-inﬂammatory Th17 cells that were resistant to treatment            This work was supported in part by a Grant-in Aid for Scientiﬁc
+with glucocorticoids (50). The cytokine-mediated downregulation           Research (C) from the Japan Society for the Promotion of
+of the major human efﬂux transporter ABCB1 in inﬂamed intestinal          Science Grant Numbers JP19K07722 awarded to KS and in
+tissues in UC patients is presumably dependent on disease activity,       part by a Grant-in Aid for Scientiﬁc Research on Innovative
+with a possible contribution from interleukin-8 (51). A decrease in       Areas “Frontier Research on Chemical Communications” (No
+sigmoidal ABCB1 expression in UC was associated with disease              JP17H06400 & JP17H06404) awarded to KN.
+activity (52). Taken together, the present results suggest that
+enriched pathways related to bacterial molecule transport
+systems, including fatty acids, are commonly observed in                  ACKNOWLEDGMENTS
+inﬂamed and non-inﬂamed irAE and inﬂamed UC, based on a
+functional pathway analysis of taxa. We speculated that dysbiosis         The authors thank Mr. Yoshihiro Mine (Center for Instrumental
+was related to the onset of inﬂammation commonly occurring in             Analyses Central Research Facilities, Kindai University Faculty
+irAE and UC. In conclusion, ICI treatment extends to the non-             of Medicine) for technical assistance provided during the study.
+inﬂammatory region of the colonial mucosa, where immune cells             The authors wish to thank Ms. Ayaka Kitano of the Department
+
+
+
+Frontiers in Oncology | www.frontiersin.org                           8                                October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                                              Similarity/dissimilarity of irAE and UC
+
+
+
+of Genome Biology, Kindai University Faculty of Medicine.                               Supplementary Figure 2 | Similar regulatory mechanisms related to inﬂamed
+                                                                                        regions of irAE colitis and UC. (A) Hierarchical clustering using one minus Pearson
+The data underlying this article will be shared on reasonable
+                                                                                        correlation distance and average linkage for individual disease. (B) Genes in clusters
+request to the corresponding author.                                                    1 and 2. (C) Differential gene expression of upstream regulatory molecules (ICAM1,
+                                                                                        ITGB2, CD40, CD80, CD86, CD28, and CD4) associated with enhanced
+                                                                                        expression. Data are represented as the mean ± SD. P values were based on the
+                                                                                        Mann-Whitney U test. **P < 0.005; *P < 0.05.
+
+SUPPLEMENTARY MATERIAL                                                                  Supplementary Figure 3 | Differential expression analysis between inﬂamed
+                                                                                        (active) regions of irAE colitis (A-irAE) and UC (A-UC). (A) Diagrams of the top 10
+The Supplementary Material for this article can be found online                         canonical pathways in an enrichment analysis between A-irAE colitis and A-UC. The
+at: https://www.frontiersin.org/articles/10.3389/fonc.2021.                             bar plots show the z-score, which reﬂects the overall predicted activation state (<0:
+763468/full#supplementary-material                                                      inhibited, >0: activated) (left), and the p value (−log) (right). (B) Ten most statistically
+                                                                                        signiﬁcant upstream regulatory molecules in A-UC. The bar plots show the z-score,
+Supplementary Figure 1 | Relationships between irAE and UC in a pathway                 which reﬂects the overall predicted activation state (<0: inhibited, >0: activated)
+enrichment analysis. (A) Scatterplot of irAE and UC in inactive regions (Pearson        (left), and the p value (−log) (right).
+correlation coefﬁcient; r=0.5482, p=1.8528e-8). (B) Scatterplot of inactive and
+active regions of irAE (Pearson correlation coefﬁcient; r=0.7112, p=1.3676e-15).        Supplementary Table 1 | Heatmap showing microbial taxa at the species level
+(C) Scatterplot of irAE and UC in active regions (Pearson correlation coefﬁcient;       between inactive and active tissues.
+r=0.9581, p=1.6222e-159). (D) Scatterplot of inactive and active regions of UC
+(Pearson correlation coefﬁcient; r=0.2212, p=0.0003).                                   Supplementary Table 2 | Differentially abundant pathways.
+
+
+
+                                                                                        13. Lee DJ, Lee HJ Jr, Farmer JR, Reynolds KL. Mechanisms Driving Immune-
+REFERENCES                                                                                  Related Adverse Events in Cancer Patients Treated With Immune Checkpoint
+ 1. Garon EB, Rizvi NA, Hui R, Leighl N, Balmanoukian AS, Eder JP, et al.                   Inhibitors. Curr Cardiol Rep (2021) 23(8):98. doi: 10.1007/s11886-021-01530-2
+    Pembrolizumab for the Treatment of non-Small-Cell Lung Cancer. N Engl J             14. Hirschhorn N. Another Perspective on the Foundation for a Smoke-Free
+    Med (2015) 372(21):2018–28. doi: 10.1056/NEJMoa1501824                                  World. Lancet (2018) 391(10115):25. doi: 10.1016/S0140-6736(17)33312-3
+ 2. Hodi FS, O'Day SJ, McDermott DF, Weber RW, Sosman JA, Haanen JB, et al.             15. Scanvion Q, Bene J, Gautier S, Grandvuillemin A, Le Beller C, Chenaf C, et al.
+    Improved Survival With Ipilimumab in Patients With Metastatic                           Moderate-To-Severe Eosinophilia Induced by Treatment With Immune
+    Melanoma. N Engl J Med (2010) 363(8):711–23. doi: 10.1056/NEJMoa                        Checkpoint Inhibitors: 37 Cases From a National Reference Center for
+    1003466                                                                                 Hypereosinophilic Syndromes and the French Pharmacovigilance Database.
+ 3. Wolchok JD, Kluger H, Callahan MK, Postow MA, Rizvi NA, Lesokhin AM,                    Oncoimmunology (2020) 9(1):1722022. doi: 10.1080/2162402X.2020.1722022
+    et al. Nivolumab Plus Ipilimumab in Advanced Melanoma. N Engl J Med                 16. Kany S, Vollrath JT, Relja B. Cytokines in Inﬂammatory Disease. Int J Mol Sci
+    (2013) 369(2):122–33. doi: 10.1056/NEJMoa1302369                                        (2019) 20(23):6008. doi: 10.3390/ijms20236008
+ 4. Motzer RJ, Escudier B, George S, Hammers HJ, Srinivas S, Tykodi SS, et al.          17. Bettelli E, Carrier Y, Gao W, Korn T, Strom TB, Oukka M, et al. Reciprocal
+    Nivolumab Versus Everolimus in Patients With Advanced Renal Cell                        Developmental Pathways for the Generation of Pathogenic Effector TH17 and
+    Carcinoma: Updated Results With Long-Term Follow-Up of the                              Regulatory T Cells. Nature (2006) 441(7090):235–8. doi: 10.1038/nature04753
+    Randomized, Open-Label, Phase 3 CheckMate 025 Trial. Cancer (2020) 126              18. Eisenstein EM, Williams CB. The T(reg)/Th17 Cell Balance: A New Paradigm
+    (18):4156–67. doi: 10.1002/cncr.33033                                                   for Autoimmunity. Pediatr Res (2009) 65(5 Pt 2):26R–31R. doi: 10.1203/
+ 5. Friedman CF, Proverbs-Singh TA, Postow MA. Treatment of the Immune-                     PDR.0b013e31819e76c7
+    Related Adverse Effects of Immune Checkpoint Inhibitors: A Review. JAMA             19. Esfahani K, Miller WHJr. Reversal of Autoimmune Toxicity and Loss of
+    Oncol (2016) 2(10):1346–53. doi: 10.1001/jamaoncol.2016.1051                            Tumor Response by Interleukin-17 Blockade. N Engl J Med (2017) 376
+ 6. Soularue E, Lepage P, Colombel JF, Coutzac C, Faleck D, Marthey L, et al.               (20):1989–91. doi: 10.1056/NEJMc1703047
+    Enterocolitis Due to Immune Checkpoint Inhibitors: A Systematic Review.             20. Seif F, Khoshmirsafa M, Aazami H, Mohsenzadegan M, Sedighi G, Bahar M. The
+    Gut (2018) 67(11):2056–67. doi: 10.1136/gutjnl-2018-316948                              Role of JAK-STAT Signaling Pathway and its Regulators in the Fate of T Helper
+ 7. Abu-Sbeih H, Ali FS, Luo W, Qiao W, Raju GS, Wang Y. Importance of                      Cells. Cell Commun Signal (2017) 15(1):23. doi: 10.1186/s12964-017-0177-y
+    Endoscopic and Histological Evaluation in the Management of Immune                  21. Banerjee S, Biehl A, Gadina M, Hasni S, Schwartz DM. JAK-STAT Signaling
+    Checkpoint Inhibitor-Induced Colitis. J Immunother Cancer (2018) 6(1):95.               as a Target for Inﬂammatory and Autoimmune Diseases: Current and Future
+    doi: 10.1186/s40425-018-0411-1                                                          Prospects. Drugs (2017) 77(5):521–46. doi: 10.1007/s40265-017-0701-9
+ 8. Cheung VTF, Gupta T, Olsson-Brown A, Subramanian S, Sasson SC,                      22. Liu Y, Jiang L. Tofacitinib for Treatment in Immune-Mediated Myocarditis:
+    Heseltine J, et al. Immune Checkpoint Inhibitor-Related Colitis Assessment              The First Reported Cases. J Oncol Pharm Pract (2020) 1078155220947141.
+    and Prognosis: Can IBD Scoring Point the Way? Br J Cancer (2020) 123                    doi: 10.1177/1078155220947141
+    (2):207–15. doi: 10.1038/s41416-020-0882-y                                          23. Iwai S, Weinmaier T, Schmidt BL, Albertson DG, Poloso NJ, Dabbagh K, et al.
+ 9. Sakurai T, De Velasco MA, Sakai K, Nagai T, Nishiyama H, Hashimoto K,                   Piphillin: Improved Prediction of Metagenomic Content by Direct Inference
+    et al. Integrative Analysis of Gut Microbiome and Host Transcriptomes                   From Human Microbiomes. PloS One (2016) 11(11):e0166104. doi: 10.1371/
+    Reveals Associations Between Treatment Outcomes and Immunotherapy-                      journal.pone.0166104
+    Induced Colitis. Mol Oncol (2021). doi: 10.1002/1878-0261.13062                     24. Freeman-Keller M, Kim Y, Cronin H, Richards A, Gibney G, Weber JS.
+10. Subudhi SK, Aparicio A, Gao J, Zurita AJ, Araujo JC, Logothetis CJ, et al.              Nivolumab in Resected and Unresectable Metastatic Melanoma: Characteristics
+    Clonal Expansion of CD8 T Cells in the Systemic Circulation Precedes                    of Immune-Related Adverse Events and Association With Outcomes. Clin Cancer
+    Development of Ipilimumab-Induced Toxicities. Proc Natl Acad Sci U S A                  Res (2016) 22(4):886–94. doi: 10.1158/1078-0432.CCR-15-1136
+    (2016) 113(42):11919–24. doi: 10.1073/pnas.1611421113                               25. Common Terminology Criteria for Adverse Events (CTCAE version) 4.0.
+11. Oh DY, Cham J, Zhang L, Fong G, Kwek SS, Klinger M, et al. Immune                       Washington D.C.: US Department of Health and Human Services (2009).
+    Toxicities Elicted by CTLA-4 Blockade in Cancer Patients Are Associated             26. Zakrzewski M, Proietti C, Ellis JJ, Hasan S, Brion MJ, Berger B, et al. Calypso: A User-
+    With Early Diversiﬁcation of the T-Cell Repertoire. Cancer Res (2017) 77                Friendly Web-Server for Mining and Visualizing Microbiome-Environment
+    (6):1322–30. doi: 10.1158/0008-5472.CAN-16-2324                                         Interactions. Bioinformatics (2017) 33(5):782–3. doi: 10.1093/bioinformatics/btw725
+12. June CH, Warshauer JT, Bluestone JA. Is Autoimmunity the Achilles' Heel of          27. Frank DN, Robertson CE, Hamm CM, Kpadeh Z, Zhang T, Chen H, et al.
+    Cancer Immunotherapy? Nat Med (2017) 23(5):540–7. doi: 10.1038/nm.4321                  Disease Phenotype and Genotype are Associated With Shifts in Intestinal-
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                         9                                            October 2021 | Volume 11 | Article 763468
+Sakai et al.                                                                                                                                  Similarity/dissimilarity of irAE and UC
+
+
+
+    Associated Microbiota in Inﬂammatory Bowel Diseases. Inﬂamm Bowel Dis                     49. Thomas S, Holland IB, Schmitt L. The Type 1 Secretion Pathway - the
+    (2011) 17(1):179–84. doi: 10.1002/ibd.21339                                                   Hemolysin System and Beyond. Biochim Biophys Acta (2014) 1843(8):1629–
+28. Kostic AD, Xavier RJ, Gevers D. The Microbiome in Inﬂammatory Bowel                           41. doi: 10.1016/j.bbamcr.2013.09.017
+    Disease: Current Status and the Future Ahead. Gastroenterology (2014) 146                 50. Andersen V, Svenningsen K, Knudsen LA, Hansen AK, Holmskov U,
+    (6):1489–99. doi: 10.1053/j.gastro.2014.02.009                                                Stensballe A, et al. Novel Understanding of ABC Transporters ABCB1/
+29. Arredondo-Hernandez R, Schmulson M, Orduna P, Lopez-Leal G, Zarate                            MDR/P-Glycoprotein, ABCC2/MRP2, and ABCG2/BCRP in Colorectal
+    AM, Alanis-Funes G, et al. Mucosal Microbiome Proﬁles Polygenic Irritable                     Pathophysiology. World J Gastroenterol (2015) 21(41):11862–76. doi: 10.3748/
+    Bowel Syndrome in Mestizo Individuals. Front Cell Infect Microbiol (2020)                     wjg.v21.i41.11862
+    10:72(72). doi: 10.3389/fcimb.2020.00072                                                  51. Erdmann P, Bruckmueller H, Martin P, Busch D, Haenisch S, Muller J, et al.
+30. Shahir NM, Wang JR, Wolber EA, Schaner MS, Frank DN, Ir D, et al. Crohn's                     Dysregulation of Mucosal Membrane Transporters and Drug-Metabolizing
+    Disease Differentially Affects Region-Speciﬁc Composition and Aerotolerance                   Enzymes in Ulcerative Colitis. J Pharm Sci (2019) 108(2):1035–46.
+    Proﬁles of Mucosally Adherent Bacteria. Inﬂamm Bowel Dis (2020) 26                            doi: 10.1016/j.xphs.2018.09.024
+    (12):1843–55. doi: 10.1093/ibd/izaa103                                                    52. Ufer M, Hasler R, Jacobs G, Haenisch S, Lachelt S, Faltraco F, et al. Decreased
+31. Andoh A, Imaeda H, Aomatsu T, Inatomi O, Bamba S, Sasaki M, et al.                            Sigmoidal ABCB1 (P-Glycoprotein) Expression in Ulcerative Colitis Is
+    Comparison of the Fecal Microbiota Proﬁles Between Ulcerative Colitis and                     Associated With Disease Activity. Pharmacogenomics (2009) 10(12):1941–
+    Crohn's Disease Using Terminal Restriction Fragment Length Polymorphism                       53. doi: 10.2217/pgs.09.128
+    Analysis. J Gastroenterol (2011) 46(4):479–86. doi: 10.1007/s00535-010-0368-4
+32. Dryahina K, Smith D, Bortlik M, Machkova N, Lukas M, Spanel P. Pentane                    Conﬂict of Interest: KS reports personal fees from Roche Diagnostics, Bio‐Rad,
+    and Other Volatile Organic Compounds, Including Carboxylic Acids, in the                  SRL Diagnostics, AstraZeneca, Chugai Pharmaceutical outside the submitted
+    Exhaled Breath of Patients With Crohn's Disease and Ulcerative Colitis.                   work. KU has received personal fees and honoraria from Eisai. HH reported
+    J Breath Res (2017) 12(1):016002. doi: 10.1088/1752-7163/aa8468                           grants from the Japan Agency for Medical Research and Development during the
+33. Gagniere J, Raisch J, Veziant J, Barnich N, Bonnet R, Buc E, et al. Gut                   conduct of the study and grants and personal fees from AstraZeneca, Boehringer
+    Microbiota Imbalance and Colorectal Cancer. World J Gastroenterol (2016) 22               Ingelheim Japan Inc, Chugai Pharmaceutical, Ono Pharmaceutical, and Bristol-
+    (2):501–18. doi: 10.3748/wjg.v22.i2.501                                                   Myers Squibb and personal fees from Eli Lilly Japan, Kyorin Pharmaceutical,
+34. Feakins RM. Ulcerative Colitis or Crohn's Disease? Pitfalls and Problems.                 Merck Biopharma, MSD, Novartis, Pﬁzer Japan, Shanghai Haihe Biopharma, and
+    Histopathology (2014) 64(3):317–35. doi: 10.1111/his.12263                                Taiho Pharmaceutical outside the submitted work. KNa reports grants from
+35. Conrad K, Roggenbuck D, Laass MW. Diagnosis and Classiﬁcation of Ulcerative               Novartis, Boehringer Ingelheim, Pﬁzer, Takeda, SymBio Pharmaceuticals, Kyorin
+    Colitis. Autoimmun Rev (2014) 13(4-5):463–6. doi: 10.1016/j.autrev.2014.01.028            Pharmaceutical, CareNet, Nichi-Iko Pharmaceutical, Daiichi-Sankyo, Hisamitsu
+36. Kyle J. Crohn's Disease in the Northeastern and Northern Isles of Scotland:               Pharmaceutical, Yodosha, Clinical Trial, Medicus Shuppan Publishers, Ayumi
+    An Epidemiological Review. Gastroenterology (1992) 103(2):392–9.                          Pharmaceutical, Nikkei Business Publications, Thermo Fisher Scientiﬁc,
+    doi: 10.1016/0016-5085(92)90826-k                                                         Nanzando, Medical Review, Yomiuri Telecasting, Reno Medical, MSD, Eli Lilly,
+37. Wagtmans MJ, Verspaget HW, Lamers CB, van Hogezand RA. Gender-                            Bristol-Myers Squibb, Taiho Pharmaceutical, Ono Pharmaceutical, Chugai
+    Related Differences in the Clinical Course of Crohn's Disease. Am J                       Pharmaceutical, AstraZeneca, Astellas, and grants from Novartis, Boehringer
+    Gastroenterol (2001) 96(5):1541–6. doi: 10.1111/j.1572-0241.2001.03755.x                  Ingelheim, Pﬁzer, Takeda, SymBio Pharmaceuticals, Daiichi-Sankyo, Merck
+38. Prideaux L, Kamm MA, De Cruz PP, Chan FK, Ng SC. Inﬂammatory Bowel                        Serono, ICON, Parexel International, IQVIA Services, A2 Healthcare, AbbVie,
+    Disease in Asia: A Systematic Review. J Gastroenterol Hepatol (2012) 27                   EP-CRSU, Linical, Otsuka Pharmaceutical, EPS, Quintiles, CMIC Shift Zero, Eisai,
+    (8):1266–80. doi: 10.1111/j.1440-1746.2012.07150.x                                        Kissei Pharmaceutical, Kyowa Hakko Kirin, Bayer, inVentiv Health, Gritstone
+39. Yang SK, Loftus EV Jr, Sandborn WJ. Epidemiology of Inﬂammatory Bowel                     Oncology, GlaxoSmithKline, Covance, MSD, Eli Lilly, Bristol-Myers Squibb,
+    Disease in Asia. Inﬂamm Bowel Dis (2001) 7(3):260–70. doi: 10.1097/                       Taiho Pharmaceutical, Ono Pharmaceutical, Chugai Pharmaceutical,
+    00054725-200108000-00013                                                                  AstraZeneca, Astellas outside the submitted work. MK received fees for advisory
+40. Kitagataya T, Suda G, Nagashima K, Katsurada T, Yamamoto K, Kimura M,                     role from Eisai, Ono, MSD, Bristol-Myers Squibb, and Roche, lecture fees from
+    et al. Prevalence, Clinical Course, and Predictive Factors of Immune                      Eisai, Bayer, MSD, Bristol-Myers Squibb, Eli Lilly, and EA Pharma, and research
+    Checkpoint Inhibitor Monotherapy-Associated Hepatitis in Japan.                           funding from Gilead Sciences, Taiho, Sumitomo Dainippon Pharma, Takeda,
+    J Gastroenterol Hepatol (2020) 35(10):1782–8. doi: 10.1111/jgh.15041                      Otsuka, EA Pharma, Abbvie, and Eisai. KNi reports personal fees from Otsuka
+41. Eggermont AMM, Kicinski M, Blank CU, Mandala M, Long GV, Atkinson V,                      Pharmaceutical, Life Technologies Japan, Boehringer Ingelheim, Eli Lilly, Chugai
+    et al. Association Between Immune-Related Adverse Events and Recurrence-                  Pharmaceutical, Eisai, Pﬁzer, Novartis, MSD, Ono Pharmaceutical, Bristol‐Myers
+    Free Survival Among Patients With Stage III Melanoma Randomized to Receive                Squibb, SymBio Pharmaceuticals Limited, Solasia Pharma, Yakult Honsha, Roche
+    Pembrolizumab or Placebo: A Secondary Analysis of a Randomized Clinical                   Diagnostics, AstraZeneca, Sanoﬁ, Guardant Health, Takeda, Kobayashi
+    Trial. JAMA Oncol (2020) 6(4):519–27. doi: 10.1001/jamaoncol.2019.5570                    Pharmaceutical, and grants from Otsuka Pharmaceutical, Life Technologies
+42. Jing Y, Zhang Y, Wang J, Li K, Chen X, Heng J, et al. Association Between Sex             Japan, Boehringer Ingelheim, Eli Lilly, Ignyta, Astellas outside the submitted work.
+    and Immune-Related Adverse Events During Immune Checkpoint Inhibitor
+    Therapy. J Natl Cancer Inst (2021). doi: 10.1093/jnci/djab035                             The remaining authors declare that the research was conducted in the absence of
+43. Takahashi K, Nishida A, Fujimoto T, Fujii M, Shioya M, Imaeda H, et al. Reduced           any commercial or ﬁnancial relationships that could be construed as a potential
+    Abundance of Butyrate-Producing Bacteria Species in the Fecal Microbial Community         conﬂict of interest.
+    in Crohn's Disease. Digestion (2016) 93(1):59–65. doi: 10.1159/000441768
+44. Tanoue T, Atarashi K, Honda K. Development and Maintenance of Intestinal                  Publisher’s Note: All claims expressed in this article are solely those of the authors
+    Regulatory T Cells. Nat Rev Immunol (2016) 16(5):295–309. doi: 10.1038/nri.2016.36        and do not necessarily represent those of their afﬁliated organizations, or those of
+45. Chandran P, Satthaporn S, Robins A, Eremin O. Inﬂammatory Bowel Disease:                  the publisher, the editors and the reviewers. Any product that may be evaluated in
+    Dysfunction of GALT and Gut Bacterial Flora (I). Surgeon (2003) 1(2):63–75.               this article, or claim that may be made by its manufacturer, is not guaranteed or
+    doi: 10.1016/s1479-666x(03)80118-x                                                        endorsed by the publisher.
+46. Chandran P, Satthaporn S, Robins A, Eremin O. Inﬂammatory Bowel Disease:
+    Dysfunction of GALT and Gut Bacterial Flora (II). Surgeon (2003) 1(3):125–                Copyright © 2021 Sakai, Sakurai, De Velasco, Nagai, Chikugo, Ueshima, Kura,
+    36. doi: 10.1016/s1479-666x(03)80091-4                                                    Takahama, Hayashi, Nakagawa, Kudo and Nishio. This is an open-access article
+47. Rooks MG, Veiga P, Reeves AZ, Lavoie S, Yasuda K, Asano Y, et al. QseC                    distributed under the terms of the Creative Commons Attribution License (CC BY).
+    Inhibition as an Antivirulence Approach for Colitis-Associated Bacteria. Proc             The use, distribution or reproduction in other forums is permitted, provided the
+    Natl Acad Sci U S A (2017) 114(1):142–7. doi: 10.1073/pnas.1612836114                     original author(s) and the copyright owner(s) are credited and that the original
+48. Pallen MJ, Chaudhuri RR, Henderson IR. Genomic Analysis of Secretion Systems.             publication in this journal is cited, in accordance with accepted academic practice. No
+    Curr Opin Microbiol (2003) 6(5):519–27. doi: 10.1016/j.mib.2003.09.005                    use, distribution or reproduction is permitted which does not comply with these terms.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                              10                                         October 2021 | Volume 11 | Article 763468
+

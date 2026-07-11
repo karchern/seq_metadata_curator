@@ -1,0 +1,506 @@
+Journal of Gastrointestinal Cancer (2024) 55:207–218
+https://doi.org/10.1007/s12029-023-00925-4
+
+    RESEARCH
+
+
+
+Gut Microbiome Composition in Lynch Syndrome With and Without
+History of Colorectal Neoplasia and Non‑Lynch Controls
+S. B. Rifkin1,2 · M. A. Sze3 · K. Tuck1 · E. Koeppe1,2 · E. M. Stoffel1,2 · P. D. Schloss3
+
+Accepted: 24 February 2023 / Published online: 13 June 2023
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023
+
+
+Abstract
+Background While Lynch syndrome (LS) is a highly penetrant colorectal cancer (CRC) syndrome, there is considerable
+variation in penetrance; few studies have investigated the association between microbiome and CRC risk in LS. We analyzed
+the microbiome composition among individuals with LS with and without personal history of colorectal neoplasia (CRN)
+and non-LS controls.
+Methods We sequenced the V4 region of the 16S rRNA gene from the stool of 46 individuals with LS and 53 individuals
+without LS. We characterized within community and in between community microbiome variation, compared taxon abun-
+dance, and built machine learning models to investigate the differences in microbiome.
+Results There was no difference within or between community variations among LS groups, but there was a statisti-
+cally significant difference in both within and between community variation comparing LS to non-LS. Streptococcus and
+Actinomyces were differentially enriched in LS-CRC compared to LS-without CRN. There were numerous differences in
+taxa abundance comparing LS to non-LS; notably, Veillonella was enriched and Faecalibacterium and Romboutsia were
+depleted in LS. Finally, machine learning models classifying LS from non-LS controls and LS-CRC from LS-without CRN
+performed moderately well.
+Conclusions Differences in microbiome composition between LS and non-LS may suggest a microbiome pattern unique to
+LS formed by underlying differences in epithelial biology and immunology. We found specific taxa differences among LS
+groups, which may be due to underlying anatomy. Larger prospective studies following for CRN diagnosis and microbiome
+composition changes are needed to determine if microbiome composition contributes to CRN development in patients with LS.
+
+Keywords Lynch syndrome (LS) · Colorectal cancer (CRC) · Colorectal neoplasia (CRN) · Microbiome · DNA mismatch
+repair (MMR)
+
+
+Introduction                                                                 considerable variation in phenotypes of colorectal neoplasia
+                                                                             (CRN) among carriers of LS-associated germline variants
+Lynch syndrome (LS) is an autosomal dominant, highly                         [1]. This heterogeneity has been attributed to patient factors,
+penetrant colorectal cancer (CRC) syndrome caused by                         such as age, sex, specific MMR genetic mutation, and/or
+inherited defects in DNA mismatch repair (MMR) genes                         health behaviors including diet, physical activity, and smok-
+(MLH1, MSH2, MSH6, PMS2, and EPCAM). There is                                ing; however, the relative impact of these on the severity of
+                                                                             CRN is still unclear.
+                                                                                Accumulating evidence suggests that features of the micro-
+* S. B. Rifkin
+  srifkin@med.umich.edu                                                      biome contribute to sporadic colon cancer. Specific bacteria
+                                                                             with virulent toxins have been associated with CRC, including
+1
+     Department of Internal Medicine, Rogel Cancer Center,                   Bacteroides fragilis (ETBF), Escherichia coli (loci/colibactin/
+     University of Michigan, Ann Arbor, MI 48109, USA                        pks + Ec), Fusobacterium nucleatum (FadA adhesin/invasin),
+2
+     Division of Gastroenterology and Hepatology, University                 and other bacteria (e.g., Porphyromonas), but the majority
+     of Michigan School of Medicine, Ann Arbor, MI 48109,                    of studies have described global alterations in microbiome
+     USA
+                                                                             [2–11]. Recurrent patterns of dysbiosis, or imbalanced gut
+3
+     Department of Immunology and Microbiology, University                   microbiome, found in CRC cases include lower 𝛼 diversity,
+     of Michigan, Ann Arbor, MI 48109, USA
+
+
+                                                                                                                                   1  3
+                                                                                                                            Vol.:(0123456789)
+208                                                                              Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+
+differences in 𝛽 diversity, and recurring differences in func-   [20]. We merged paired-end reads into contigs, aligned them
+tional taxon abundances, namely decreased levels of benefi-      to the SILVA 16S rRNA sequence database, and removed
+cial commensal bacteria and increased pathogenic bacteria        low-quality sequences and chimeras [21]. We classified
+[12]. Furthermore, increasing dysbiosis may track with the       sequences by training a naive Bayesian classifier with a
+adenoma-adenocarcinoma spectrum and excision of colonic          16S rRNA gene training set (Ribosomal Database Project
+lesions has been shown to normalize the microbiome [13, 14].     (RDP)) [22]. We clustered sequences into operational taxo-
+   Few studies have investigated the dynamics of the micro-      nomic units (OTUs) using a 97% similarity cutoff with the
+biome composition in LS. These studies have not shown a          OptiClust clustering algorithm [23].
+consistent difference in the microbiome composition com-
+paring MMR pathogenic variant carriers with CRC and/or
+adenoma to carriers without prior CRN. One larger study          Statistical Analysis
+followed a cohort of 100 patients with LS for 1 year and
+found that the microbiome in baseline stool sample differed      All statistical analyses were performed in R (version 4.0.2).
+by baseline diagnosis of adenoma, but also noted that his-       Baseline characteristics were characterized and compared
+tory of colon resection was more strongly associated with        according to study groups: LS subjects with a history of
+observed differences in microbiome composition [15].             CRC (LS-CRC), a history of adenoma (LS-adenoma), no
+Meanwhile, several smaller studies have noted a difference       history of either CRC or adenoma (LS-without CRN), and
+between individuals with and without LS [15–18].                 non-Lynch controls (non-LS controls). These baseline vari-
+   Our aim was to determine whether there were differ-           ables were assessed using medians and interquartile ranges
+ences in the microbiome composition among individuals            for continuous variables, and as frequencies and percentages
+with LS with and without personal history of CRN and             for categorical variables.
+non-LS controls.                                                    We quantified the variation in microbial communities
+                                                                 using metrics for α-diversity (inverse Simpson index) to
+Methods                                                          quantify the variation within groups and β-diversity-based
+                                                                 distance metric (Bray–Curtis) to quantify the variation
+Study Design                                                     between groups (distance). Inverse Simpson index and
+                                                                 Bray–Curtis distance values were calculated with rarefac-
+                                                                 tion using the mothur software package. We compared dif-
+Subjects We enrolled 46 individuals with genetically con-        ferences in the inverse Simpson index according to study
+firmed LS from the University of Michigan cancer genetics        groups (LS-CRC, LS-adenoma, LS-without CRN, and non-
+clinic. We enrolled 53 individuals without LS and without        LS controls), history of surgery (including total colectomy,
+a history of CRN (non-LS controls) recruited from the local      left hemicolectomy, right colectomy, and no surgery), and
+Ann Arbor community. Individuals with diagnoses of HIV/          MMR pathogenetic variant (MLH1, MSH2, MSH6, PSM2,
+AIDS, hepatitis B or C, and/or inflammatory bowel disease        EPCAM) using pairwise Kruskal–Wallis test. We also mod-
+were excluded. All study participants provided informed          eled α-diversity (within community diversity) as the inde-
+consent. The study protocol was approved by the University       pendent variable using a multivariable linear regression
+of Michigan IRB (HUM00113700).                                   model with study group (LS-CRC, LS-adenoma, LS-without
+                                                                 CRN, and non-LS controls) as the dependent variable while
+Data Collection At enrollment, participants filled out ques-     also controlling for age, BMI, and sex. We then compared
+tionnaires eliciting information on demographics, medical        differences in the Bray–Curtis distance by study group (LS-
+comorbidities, current medications, and family history. Sub-     CRC, LS-adenoma, LS-without CRN, and non-LS controls),
+jects provided a stool sample for sequencing using a Zymo        history of colon surgery, and MMR pathogenetic variant
+stool collection kit and DNA/RNA Shield Collection tube.         using pairwise PERMANOVA. To visualize the Bray–Cur-
+                                                                 tis distance values, non-metric multidimensional scaling
+16S rRNA Gene Sequencing and Analysis                            (NMDS) was calculated, and results were plotted using the
+                                                                 vegan R package. We repeated these analyses comparing LS
+DNA was extracted using a 96-well Soil DNA isolation             groups to non-LS and compared each individual LS study
+kit and an epMotion 5075 automated pipetting system.             groups to non-LS to identify which group was driving a
+We amplified the V4 region of the 16S rRNA gene using            difference.
+custom barcoded primers and sequenced it using Illumina             We then identified taxa that were differentially abundant
+MiSeq sequencer [19]. The 16S rRNA gene sequences were           between study groups (LS-CRC, LS-adenoma, LS-without
+curated using the mothur software package (version 1.47.0)       CRN, and non-LS controls), history of colon surgery, and
+
+
+
+13
+Journal of Gastrointestinal Cancer (2024) 55:207–218                                                                                    209
+
+among MMR pathogenic variants in patients with LS using                      Results
+beta-binomial regression with the Corncob package in R.
+This analysis models associations between covariates of                      Baseline Characteristics of Study Participants
+interest and both the mean taxon abundance and variation
+in taxon abundance allowing for overdispersion, which is                     The 99 study participants were grouped as follows: 17 LS-
+characteristic of microbiome data [24]. The Corncob pack-                    adenoma, 10 LS-CRC, 19 LS-without CRN, and 53 non-LS
+age uses the Benjamini-Hochberg (B-H) method to adjust                       controls. Subjects were 83% female and had a median age of
+p-values in the multiple correlation analyses and controls for               40.5 years and a median BMI of 26.6 kg/m2 (see Table 1).
+the expected false discovery rate at 0.05. We repeated these                 LS-CRC and LS-without CRN had a lower BMI compared
+analyses comparing all LS groups to non-LS controls. Asso-                   to LS-adenoma and non-LS controls. Sex and tobacco use
+ciations between groups and taxa with adjusted p-values less                 were not different across these three groups. Patients with
+than 0.05 were considered statistically significant.                         LS were older than non-LS controls. Patients with LS-CRC
+   We then trained machine learning classification models                    were more likely to have a MLH1 and MSH2 and less likely
+comparing (1) LS with a history of CRC to LS without a his-                  to have a MSH6 gene defect.
+tory of CRC or adenoma, (2) LS with a history of adenoma to
+LS without a history of CRC or adenoma, and (3) all individu-                Associations Between History of CRN and Gut
+als with LS to non-LS controls. We first combined information                Microbiome
+from the individual taxa and evaluated the ability to classify
+LS patient using logistic regression models from the mikropml                We calculated within community diversity or alpha diversity
+package in R [25]. We then created a model that incorporated                 using inverse Simpson index and found the median value
+taxa as well as key demographic risk factors including age,                  was 3.62. Among individuals with LS, there was no dif-
+sex, and BMI to determine if these demographic risk factors                  ference when we compared LS-CRC to LS-without CRN
+improved the model. We computed the area under the receiver                  or LS-adenoma to LS-without CRN (Fig. 1A). Because we
+operator characteristic curve (AUROC) to measure the ability                 noticed a difference between LS and non-LS, we repeated
+of each model (taxa alone and taxa plus demographic factors)                 these analyses comparing each LS group (LS-CRC, LS-
+to correctly classify subjects to their true groups. We compared             adenoma, LS-without CRN) to non-LS to determine which
+the cross-validated AUROC to the testing AUROC to evaluate                   group was driving the difference. The inverse Simpson
+the generalizability of each model and to check whether the                  index was higher in LS-CRC relative to non-LS controls
+models were overfit.                                                         (p-value = 0.008) and LS-without CRN compared to non-LS
+
+
+Table 1  Baseline characteristics of LS with and without CRN and non-LS controls
+Characteristic                 Non-LS controls,         LS-no CRN, N = 19a      LS-adenoma, N = 17a      LS-CRC, N = 10a       p-valueb
+                               N = 53a
+
+Age                            36 (31, 40)              52 (38, 60)             56 (51, 66)              64 (55, 69)           <0.001
+BMI                            28 (24, 32)              25 (23, 28)             31 (24, 32)              24 (21, 27)            0.03
+Sex                                                                                                                             0.3
+  Female                       47 (89%)                 15 (79%)                12 (71%)                 9 (90%)
+  Male                         6 (11%)                  4 (21%)                 4 (24%)                  1 (10%)
+Surgery                                                                                                                        <0.001
+  No surgery                                            19 (100%)               17 (100%)                0 (0%)
+  L hemicolectomy                                       0 (0%)                  0 (0%)                   2 (20%)
+  R hemicolectomy                                       0 (0%)                  0 (0%)                   2 (20%)
+  Colectomy                                             0 (0%)                  0 (0%)                   6 (60%)
+Gene                                                                                                                             0.01
+  EPCAM                                                 1 (5.3%)                1 (5.9%)                 1 (10%)
+  MLH1                                                  3 (16%)                 4 (24%)                  3 (30%)
+  MSH2                                                  2 (11%)                 7 (41%)                  3 (30%)
+  MSH6                                                  11 (58%)                5 (29%)                  0 (0%)
+  PMS2                                                  2 (11%)                 0 (0%)                   3 (30%)
+a
+    Median (IQR); n (%)
+b
+    Kruskal-Wallis rank sum test; Fisher’s exact test
+
+
+                                                                                                                             13
+210                                                                                          Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+controls (p-value = 0.007), but there was no difference                  to non-LS controls (p-value = 0.11). The difference in commu-
+between LS-adenoma and non-LS controls. There was a                      nity structure between LS and non-LS was driven by LS-CRC
+significant difference in inverse Simpson index according                and LS-adenoma and not LS-without CRC. In converse, we
+to history of colon surgery (p-value = 0.02).                            found no differences in community structure when we com-
+   PERMANOVA analyses were performed to compare the                      pared by pathogenic variant groups among LS (Fig. 2).
+overall community structure of the gut microbiota of all sam-
+ples based on the OTU relative abundance (Fig. 2). When                  Differentially Abundant Taxa by History
+we performed PERMANOVA analysis among patients with                      of Adenoma, Colon Cancer, Colon Surgery,
+LS, we found no differences in beta diversity or community               and LS Status
+distance according to history of adenoma (p-value = 0.64) or
+CRC (p-value = 0.11) compared to without CRN. We did find                Veillonella was depleted in LS-adenoma compared to LS-
+a difference in community structure according to a history of            without CRN and is the only taxon difference between
+colon surgery (p-value < 0.001); however, there were only 2              these groups, whereas Veillonella, Streptococcus, and
+people with a history of left hemicolectomy and 2 people with            Actinomyces were differentially enriched in LS-CRC com-
+history of right hemicolectomy. These small numbers could                pared to LS-without CRN (Figs. 3 and 4). Notably, we
+have made the community structures appear more different                 identified the same differentially abundant genera associ-
+because of sampling error due to smaller numbers not rep-                ated with LS with history of colon surgery compared to LS
+resenting intraindividual heterogeneity of these populations.            without surgery, Streptococcus and Actinomyces (Figs. 5
+   Variation in community structure was associated with                  and 6). We found several taxa that differed between LS
+LS status compared to non-LS controls (Fig. 2), even when                and non-LS controls (Fig. 4). Compared to non-LS con-
+we corrected for age (p-value < 0.001). Again, we wanted to              trols, Veillonella, 2 members of Streptococcus, Lacto-
+determine which LS group was responsible for the observed                coccus, Lachnospiraceae, and Clostridium XIVa were
+difference between the community structures in LS and non-               enriched and 2 members of Faecalibacterium, Rumino-
+LS. Therefore, we repeated the PERMANOVA analyses com-                   coccus, and Bacteroides were depleted in total LS. When
+paring each LS group (LS-CRC, LS-adenoma, LS-without                     we looked separately at each group compared to non-LS
+CRN) to non-LS. We found a significant difference in com-                controls, Veillonella and Lachnospiraceae were enriched
+munity structure when we compared LS-CRC to non-LS con-                  in LS-without CRN and Romboutsia and Faecalibacte-
+trols (p-value < 0.001) and LS-adenoma to non-LS controls                rium were depleted (Fig. 4). Parabacteroides, Veillonella,
+(p-value = 0.003), but no difference between LS-without CRN              and Erysipelotrichaceae were depleted and unclassified
+
+
+
+
+Fig. 1  Alpha diversity by A group status, B MMR pathogenic variant, and C surgery history
+
+
+13
+Journal of Gastrointestinal Cancer (2024) 55:207–218    211
+
+Fig. 2  Beta diversity (between
+community) assessed with PER-
+MANOVA by A group status, B
+MMR pathogenic variant, and
+C surgery history
+
+
+
+
+                                                       13
+212                                                                                            Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+
+
+
+Fig. 3  Differential abundance of OTUs by study group among LS assessed with beta-binomial regression
+
+
+
+
+Fig. 4  Differential abundance of OTUs by study group assessed with beta-binomial regression
+
+
+13
+Journal of Gastrointestinal Cancer (2024) 55:207–218                                                          213
+
+Fig. 5  Differential abundance
+among LS by history of colon
+surgery assessed with beta-bino-
+mial regression: any surgery
+versus no surgery
+
+
+
+
+Fig. 6  Differential abundance among LS by history of colon surgery assessed with beta-binomial regression
+
+
+                                                                                                             13
+214                                                                                         Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+
+
+
+Fig. 7  Differential abundance of OTUs by LS pathogenic variant assessed with beta-binomial regression
+
+
+
+Lachnospiraceae and Clostridium XIVa were enriched in                    LS-without CRN built with taxa and demographic factors
+LS-adenoma (Fig. 4). Veillonella, Pasteurellaceae, Strep-                (AUROC = 0.833, IQR: 0.5, 1.0) performed better than
+tococcus, Lactococcus, and Actinomyces were enriched                     taxa alone (AUROC = 0.667, IQR: 0.5, 1.0). However, the
+and Parabacteroides, Romboutsia, Clostridium IV, Erysip-                 confidence intervals were large and overlapped due to the
+elotrichaceae, and Lachnospiraceae were depleted in LS-                  small number of individuals included in these models. The
+without CRN. We found taxon abundance differences by                     model designed to classify LS-adenoma from LS-without
+pathogenic variant groups. MLH1, MSH2, and MSH6 were                     CRN performed poorly (AUROC = 0.50, IQR: 0.33, 0.67).
+depleted in Bifidobacterium, while MSH2 was enriched in                  The model performance improved slightly when demo-
+Actinomyces and both MLH1 and MS2 were enriched in                       graphic factors were added (AUROC = 0.56, IQR: 0.44,
+Streptococcus compared to PSM2 (Fig. 7).                                 0.88). The models built to classify LS and non-LS controls
+                                                                         performed well (AUROC = 0.69, IQR: 0.66, 0.72) and
+Classification of CRC and Adenoma History Using                          there was no change in AUROC when demographics were
+OTUs in a Machine Learning Model                                         added to the model (AUROC = 0.68, IQR: 0.66, 0.70).
+                                                                         The models that included both taxa and demographic fac-
+We compared the cross-validation AUROC to the test-                      tors demonstrated improved performance classifying LS
+ing AUROC for each model (Fig. 8). The testing models                    according to history of CRN compared to taxa only mod-
+were performed as well as the training models. There-                    els. Models built to distinguish LS from non-LS controls
+fore, we were able to conclude that the models were                      showed no improvement in model performance after add-
+not overfit (Table 2). The model comparing LS-CRC to                     ing demographics factors.
+
+
+
+
+13
+Journal of Gastrointestinal Cancer (2024) 55:207–218                                                                             215
+
+
+
+
+Fig. 8  Performance of machine learning models as measured by area under the ROC curve (AUROC) of A Hx of adenoma vs no Hx of CRN, B
+Hx of CRC vs no Hx of CRN, and C LS vs. non-LS controls
+
+
+Table 2  The training and testing AUC for models classifying LS-         LS with CRN (either CRC or adenoma) and without CRN.
+CRC from LS-without CRC, LS-adenoma from LS-without CRC, and             There were taxon-specific differences comparing individu-
+LS from non-LS controls
+                                                                         als with LS and history of CRC and LS without any CRN,
+Machine learning models            Traininga           Testinga          Streptococcus and Actinomyces. Notably, two Streptococ-
+                                                                         cus species, Streptococcus bovis and Streptococcus gallo-
+LS-CRC vs LS-without CRN
+                                                                         lyticus, have been frequently linked with colon cancer [26].
+ Genus                             0.68 (0.64, 0.71) 0.67 (0.5, 1.0)
+                                                                         Additionally, Actinomyces has been associated with CRN
+ Genus + demographic               0.69 (0.64, 0.74) 0.83 (0.5, 1.0)
+                                                                         in a systematic review [27]. However, we also found these
+LS-adenoma vs LS-without
+ CRN                                                                     same changes when we evaluated by history of surgery. Post-
+ Genus                             0.53 (0.48, 0.59) 0.50 (0.33, 0.67)   surgical anatomy may be an overriding factor confounding
+ Genus + demographic               0.55 (0.50, 0.63) 0.56 (0.44, 0.78)   the association between history of colon cancer and micro-
+LS vs non-LS controls                                                    biome composition as all individuals with a history of CRC
+ Genus                             0.69 (0.68, 0.70) 0.69 (0.66, 0.72)   underwent colorectal surgery.
+ Genus + demographic               0.67 (0.67,0.70) 0.68 (0.66, 0.70)       While there were no global differences among LS
+                                                                         comparing CRN to no history, we found both global and
+a
+    Median (IQR)                                                         multiple taxon level differences between LS and non-LS
+                                                                         controls. LS carriers had a higher alpha diversity com-
+                                                                         pared to non-LS controls. Similarly, there were significant
+Conclusion                                                               differences in community structure. Veillonella has been
+                                                                         associated with inflammatory conditions including Crohn’s
+Our study found significant differences in the microbiome                disease and hepatic encephalopathy and was enriched in
+between LS with or without CRN and non-Lynch controls                    LS. LS carriers can also have dysplastic crypts that may
+and few between LS with CRC from LS-without CRN. We                      provoke chronic low-level inflammation despite being
+found no global differences (alpha or beta diversity) between            histologically undetectable. Lower abundances of bacteria
+
+
+                                                                                                                          13
+216                                                                             Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+regularly associated with being anti-inflammatory includ-      et al. found that Clostridiaceae was depleted and Desulfovi-
+ing Faecalibacterium and Romboutsia were also depleted         brio was enriched in LS with baseline adenomas compared
+in LS [28]. These findings could be due to the significant     to no adenomas at baseline. They also observed that history
+differences in age between these groups. Veillonella was       of surgery was the most significant contributor to differences
+enriched in both LS-without CRN and history of CRC             in microbiome composition [15].
+compared to non-LS controls.                                       Only one other study explored whether different LS path-
+   Because we observed more differences in microbiome          ogenic variants were characterized by different gut microbial
+composition comparing LS to non-LS controls than com-          populations. Yan et al. found that MLH1 and MSH2 muta-
+paring LS groups to each other, it was unexpected that         tion carriers were depleted in Clostridiales and MLH1 were
+the machine learning models classifying (1) LS from non-       enriched in Blautia and Oscillospira [15]. We found that
+LS controls and (2) LS-CRC from LS-without CRN per-            MLH1, MSH2, and MSH6 were depleted in Bifidobacterium
+formed equally well. The differences in microbiome com-        while MLH1 and MS2 were enriched in Actinomyces and
+position between LS and non-LS controls might suggest          MSH2 was enriched in Streptococcus compared to PSM2. As
+that underlying microbiome composition of LS carriers is       noted above, we found similar differences in Streptococcus
+different potentially due to underlying genetic pathoge-       and Actinomyces when we evaluated by history of surgery.
+netic variants leading to changes in the colorectal epithe-    Post-surgical anatomy may also be confounding the associa-
+lium or mucosal immunity. We observed fewer differences        tion between LS pathogenic variant and microbiome compo-
+in microbiome composition among LS groups according to         sition as individuals with MLH1 and MSH2 were more likely
+history of CRN, but the LS-CRC microbiome was different        to be diagnosed with cancer and require curative colorectal
+enough from LS-without CRN to allow a machine model            surgery compared to PSM2.
+to distinguish between these two groups. The observed              While correlation studies in humans have not yet pro-
+differences between LS-CRC and LS-without CRN and              vided evidence that microbiome contribute to cancer devel-
+the ability of our machine learning model to decipher the      opment in LS, LS animal models provide evidence that the
+two groups might also be due to history of colon resection,    microbiome may drive carcinogenesis in LS. A study con-
+which was associated with similar differences in microbi-      ducted in a MSH2 Lynch mouse model ­(APCMin/MSH2−/−)
+ome composition. Conversely, we did not observe either         demonstrated that bacterial-derived butyrate might drive
+global or taxon level differences between LS-adenoma and       hyperproliferation in MMR-deficient cecal epithelial cells
+LS-without CRN and furthermore the model we built to           marked by deregulated beta-catenin activity [30]. By treating
+classify these two groups did not perform well.                these mice with antibiotics or a diet low in carbohydrates,
+   Other studies have similarly found that the microbiome      the study authors reduced both butyrate levels and the total
+compositions of subgroups of LS according to CRN his-          number of polyps by 75%. This finding may explain the
+tory were like each other but different compared to the        lack of any protective effect observed in LS carriers rand-
+microbiome composition of non-LS controls. Mori et al.         omized to resistant starch despite increasing their levels of
+did not observe a difference between LS with CRC and           butyrate concentration in the CAPP2 randomized control
+LS with endometrial cancer (GC) but noted a statistically      trial in contrast to the protective effect observed in sporadic
+significant difference in the community structure between      CRC [31]. Another MSH2 knockout mouse model exposed
+non-LS controls compared to LS. The authors hypothe-           to conventional microbiome exhibited increased epithelial
+sized there might be an underlying fecal microbiota pat-       turnover rates, increased rate of spontaneous mutations in
+tern associated with LS [16]. Similarly, Lu et al. found no    MSH2-deficient crypts, and increased microsatellite insta-
+difference in microbiome composition among LS carriers         bility compared to specific pathogen free (SPF mice) [32].
+with and without cancer, but observed that LS carriers         The authors hypothesized that bacterial presence in MMR-
+were enriched in B. fragilis and Parabacteroides dista-        deficient crypts drives epithelial turnover and subsequent
+sonis, and Pseudomonadaceae family compared to non-LS          mutations in DNA.
+controls [17]. Ferrarese et al. found stool microbiome from        One strength of this study is that it is the largest study
+LS carriers was enriched in Bacteroidetes and Proteobac-       of LS to include non-LS controls for comparisons. Prior
+teria and depleted in in the Firmicutes and Ruminococ-         studies comparing LS patient to non-LS controls were
+caceae compared to non-LS controls [18].                       based on small cohorts with less than 10 subjects in each
+   Fewer studies have noted differences in microbiome com-     groups making their findings subject to internal and exter-
+position among patients with LS with adenomas and CRC          nal validity issues. Our similar findings of notable differ-
+compared to LS with no CRN. Gonzalez et al. found non-         ences between LS and controls with a larger sample size
+significant difference in several genera when they compared    strengthen and confirm this repeated finding.
+LS with cancer to LS without cancer, but sample size was           There were several limitations to our study. The con-
+very limited (n = 8) [29]. In the largest study to date, Yan   trols were significantly younger compared to patients with
+
+
+13
+Journal of Gastrointestinal Cancer (2024) 55:207–218                                                                                            217
+
+LS, which might confound the differences in microbiome                    References
+composition we observed between these two groups. Age
+is an important contributing factor in microbiome varia-                   1. Møller P, et al. Cancer incidence and survival in Lynch syndrome
+tion. Furthermore, the study populations were female pre-                     patients receiving colonoscopic and gynaecological surveillance:
+                                                                              first report from the prospective Lynch syndrome database. Gut.
+dominant, and therefore, our results might not be general-                    2017;66(3):464–72. https://​doi.​org/​10.​1136/​gutjnl-​2015-​309675.
+izable. Additionally, we did not collect stool prospectively               2. Tjalsma H, Boleij A, Marchesi JR, Dutilh BE. A bacterial driver-
+and our investigation of differences in microbiome com-                       passenger model for colorectal cancer: beyond the usual suspects.
+position within LS carriers was based on prior diagnoses                      Nat Rev Microbiol. 2012;10(8):575–82. https://​doi.​org/​10.​1038/​
+                                                                              nrmic​ro2819.
+of colorectal adenomas and cancer. The stool microbiome                    3. Wu S, et al. A human colonic commensal promotes colon tumo-
+is more significant and informative if collected prior to                     rigenesis via activation of T helper type 17 T cell responses. Nat
+adenoma detection as our hypothesis is that microbiome                        Med. 2009;15(9):1016–22. https://​doi.​org/​10.​1038/​nm.​2015.
+composition may lead to the risk of polyp and cancer for-                  4. Dejea CM, et al. Patients with familial adenomatous polyposis
+                                                                              harbor colonic biofilms containing tumorigenic bacteria. Science.
+mation. As this was a cross-sectional study, stool collected                  2018;359(6375):592–7. https://​doi.​org/​10.​1126/​scien​ce.​aah36​48.
+might not accurately reflect the composition at the time                   5. Arthur JC, et al. Intestinal inflammation targets cancer-inducing
+adenoma or cancer was forming. Another limitation was                         activity of the microbiota. Science. 2012;338(6103):120–3.
+that the sample size was still too small to do multigroup                     https://​doi.​org/​10.​1126/​scien​ce.​12248​20.
+                                                                           6. De Almeida CV, de Camargo MR, Russo E, Amedei A. Role of
+analyses and adjust for covariates. Larger studies with                       diet and gut microbiota on colorectal cancer immunomodulation.
+prospective stool collection are needed to untangle how                       World J Gastroenterol. 2019;25(2):151–62. https://​doi.​org/​10.​
+microbiome protects against or contributes to carcinogen-                     3748/​wjg.​v25.​i2.​151.
+esis in LS.                                                                7. Zackular JP, Rogers MAM, Ruffin MT, Schloss PD. The human
+                                                                              gut microbiome as a screening tool for colorectal cancer. Cancer
+   In conclusion, we found significant global and specific                    Prev Res Phila Pa. 2014;7(11):1112–21. https://​doi.​org/​10.​1158/​
+differences in the microbiome composition when we com-                        1940-​6207.​CAPR-​14-​0129.
+pared individuals with LS to non-LS controls. This finding                 8. Drewes JL, et al. High-resolution bacterial 16S rRNA gene profile
+confirms observations from prior studies done with signif-                    meta-analysis and biofilm status reveal common colorectal cancer
+                                                                              consortia. NPJ Biofilms Microbiomes. 2017;3:34. https://​doi.​org/​
+icantly smaller sample sizes. Further studies investigating                   10.​1038/​s41522-​017-​0040-3.
+how differences in the epithelial biology and immunology                   9. Flemer B, et al. Tumour-associated and non-tumour-associated
+between LS carriers and non-LS controls might shape dif-                      microbiota in colorectal cancer. Gut. 2017;66(4):633–43. https://​
+ferences in the microbiome composition are warranted. We                      doi.​org/​10.​1136/​gutjnl-​2015-​309595.
+                                                                          10. Brim H, et al. Microbiome analysis of stool samples from African
+found no global differences and few specific taxa differ-                     Americans with colon polyps. PloS One. 2013;8(12):e81352. https://​
+ences when we compared LS-CRC to LS-without CRN.                              doi.​org/​10.​1371/​journ​al.​pone.​00813​52.
+While animal models suggest microbiome may contribute                     11. Lu Y, et al. Mucosal adherent bacterial dysbiosis in patients with
+to colorectal carcinogenesis, no clinical studies in people                   colorectal adenomas. Sci Rep. 2016;6(26337). https://​doi.​org/​10.​
+                                                                              1038/​srep2​6337.
+have documented an association between CRC and micro-                     12. Levy M, Kolodziejczyk AA, Thaiss CA, Elinav E. Dysbiosis
+biome in LS. A longitudinal collection of stool microbi-                      and the immune system. Nat Rev Immunol. 2017;17(4):219–32.
+ome in LS to detect the contribution of stool microbiome                      https://​doi.​org/​10.​1038/​nri.​2017.7.
+composition to carcinogenesis in LS would be invaluable                   13. Zhang Y, et al. Changes in gut microbiota and plasma inflam-
+                                                                              matory factors across the stages of colorectal tumorigenesis: a
+to investigating the role of microbiome composition in                        case-control study. BMC Microbiol. 2018;18(1):92. https://​doi.​
+CRC development.                                                              org/​10.​1186/​s12866-​018-​1232-6.
+                                                                          14. Sze MA, Baxter NT, Ruffin MT, Rogers MAM, Schloss PD.
+Acknowledgements We thank Katherine McBride who helped process                Normalization of the microbiota in patients after treatment for
+the samples.                                                                  colonic lesions. Microbiome. 2017;5(1):150. https://​doi.​org/​10.​
+                                                                              1186/​s40168-​017-​0366-3.
+Author Contribution MAS and PDS were involved in the conception           15. Yan Y, et al. Structure of the mucosal and stool microbiome in
+and design of the study. KT, EMS, and SBR were involved in sam-               Lynch syndrome. Cell Host Microbe. 2020;27(4):585–600. https://​
+ple collection. SBR processed the samples and analyzed the data. All          doi.​org/​10.​1016/j.​chom.​2020.​03.​005.
+authors interpreted the data. SBR and PDS wrote the manuscript. All       16. Mori G, et al. Gut microbiota analysis in postoperative Lynch
+authors reviewed and revised the manuscript. All authors read and             syndrome patients. Front Microbiol. 2019;10:1746. https://​doi.​
+approved the final manuscript.                                                org/​10.​3389/​fmicb.​2019.​01746.
+                                                                          17. Lu X, Kang Q, Jin P, Sheng J. The interactions between gut
+                                                                              microbiota and Lynch syndrome. Clin Gastroenterol Hepa-
+Availability of Data and Materials Datasets are available on reasonable       tol. 2017;15(1):e48. https://​doi.​org/​10.​1016/j.​cgh.​2016.​09.​116.
+request.                                                                  18. Ferrarese R, et al. Oral and fecal microbiota in Lynch syndrome. J
+                                                                              Clin Med. 2020;9(9):E2735. https://​doi.​org/​10.​3390/​jcm90​92735.
+Declarations                                                              19. Kozich JJ, Westcott SL, Baxter NT, Highlander SK, Schloss
+                                                                              PD. Development of a dual-index sequencing strategy and
+Competing Interests The authors declare no competing interests.               curation pipeline for analyzing amplicon sequence data on the
+
+
+
+                                                                                                                                       13
+218                                                                                               Journal of Gastrointestinal Cancer (2024) 55:207–218
+
+      MiSeq Illumina sequencing platform. Appl Environ Microbiol.             28. Mangifesta M, et al. Mucosal microbiota of intestinal pol-
+      2013;79(17):5112–20. https://​doi.​org/​10.​1128/​AEM.​01043-​13.           yps reveals putative biomarkers of colorectal cancer. Sci Rep.
+20.   Schloss PD, et al. Introducing mothur: open-source, platform-               2018;8(1):13974. https://​doi.​org/​10.​1038/​s41598-​018-​32413-2.
+      independent, community-supported software for describing and            29. Gonzalez A, Kapila N, Melendez-Rosado J, Liang H, Castro-Pavia
+      comparing microbial communities. Appl Environ Microbiol.                    F. An evaluation of the fecal microbiome in Lynch syndrome. J
+      2009;75(23):7537–41. https://​doi.​org/​10.​1128/​AEM.​01541-​09.           Gastrointest Cancer. 2021;52(1):365–8. https://​doi.​org/​10.​1007/​
+21.   Pruesse E, et al. SILVA: a comprehensive online resource for qual-          s12029-​021-​00588-z.
+      ity checked and aligned ribosomal RNA sequence data compatible          30. Belcheva A, et al. Gut microbial metabolism drives transformation
+      with ARB. Nucleic Acids Res. 2007;35(21):7188–96. https://​doi.​            of MSH2-deficient colon epithelial cells. Cell. 2014;158(2):288–
+      org/​10.​1093/​nar/​gkm864.                                                 99. https://​doi.​org/​10.​1016/j.​cell.​2014.​04.​051.
+22.   Wang Q, Garrity GM, Tiedje JM, Cole JR. Naive Bayesian clas-            31. Mathers JC, et al. Long-term effect of resistant starch on can-
+      sifier for rapid assignment of rRNA sequences into the new bac-             cer risk in carriers of hereditary colorectal cancer: an analysis
+      terial taxonomy. Appl Environ Microbiol. 2007;73(16):5261–7.                from the CAPP2 randomised controlled trial. Lancet Oncol.
+      https://​doi.​org/​10.​1128/​AEM.​00062-​07.                                2012;13(12):1242–9. https://​doi.​org/​10.​1016/​S1470-​2045(12)​
+23.   Westcott SL, Schloss PD. OptiClust, an improved method for assigning        70475-8.
+      amplicon-based sequence data to operational taxonomic units. mSphere    32. Pieters W, et al. Pro-mutagenic effects of the gut micro-
+      2017;2(2). https://​doi.​org/​10.​1128/​mSphe​reDir​ect.​00073-​17.         biota in a Lynch syndrome mouse model. Gut Microbes.
+24.   Martin BD, Witten D, Willis AD. Modeling microbial abundances               2022;14(1):2035660. https://​doi.​org/​10.​1080/​19490​976.​2022.​
+      and dysbiosis with beta-binomial regression. Ann Appl Stat.                 20356​60.
+      2020;14(1):94–115. https://​doi.​org/​10.​1214/​19-​aoas1​283.
+25.   Topçuoğlu BD, Lesniak NA, Ruffin MT, Wiens J, Schloss PD.               Publisher's Note Springer Nature remains neutral with regard to
+      A framework for effective application of machine learning to            jurisdictional claims in published maps and institutional affiliations.
+      microbiome-based classification problems. mBio. 11(3):e00434–
+      20. https://​doi.​org/​10.​1128/​mBio.​00434-​20.                       Springer Nature or its licensor (e.g. a society or other partner) holds
+26.   Andres-Franch M, et al. Streptococcus gallolyticus infection in         exclusive rights to this article under a publishing agreement with the
+      colorectal cancer and association with biological and clinical fac-     author(s) or other rightsholder(s); author self-archiving of the accepted
+      tors. PloS One. 2017;12(3):e0174305. https://​doi.​org/​10.​1371/​      manuscript version of this article is solely governed by the terms of
+      journ​al.​pone.​01743​05.                                               such publishing agreement and applicable law.
+27.   Yu L, et al. A systematic review of microbial markers for risk
+      prediction of colorectal neoplasia. Br J Cancer. 2022;1–11. https://​
+      doi.​org/​10.​1038/​s41416-​022-​01740-7.
+
+
+
+
+13
+

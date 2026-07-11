@@ -1,0 +1,897 @@
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                           7491
+
+            Ivyspring
+           International Publisher
+                                                                                                                            Theranostics
+                                                                                                      2021; 11(15): 7491-7506. doi: 10.7150/thno.59196
+Research Paper
+
+
+Microbial and genetic-based framework identifies drug
+targets in inflammatory bowel disease
+Zhihan Wang1,2*, Kai Guo3*, Pan Gao2,4, Qinqin Pu2, Ping Lin2,5, Shugang Qin2,6, Na Xie1, Junguk Hur2,
+Changlong Li1, Canhua Huang1,6, Min Wu2
+1.   West China School of Basic Medical Sciences & Forensic Medicine, Sichuan University, Chengdu, Sichuan 610041, China.
+2.   Department of Biomedical Sciences, School of Medicine and Health Sciences, University of North Dakota, Grand Forks, ND 58202, USA.
+3.   Department of Neurology, University of Michigan, Ann Arbor, MI 48109, USA.
+4.   Medical Research Institute, Wuhan University, Wuhan 430071, China.
+5.   State Key Laboratory of Trauma, Burns and Combined Injury, Institute of Surgery Research, Daping Hospital, Army Medical University, Chongqing 400038, China.
+6.   State Key Laboratory of Biotherapy and Cancer Center, West China Hospital, Sichuan University, and Collaborative Innovation Center for Biotherapy, Chengdu,
+     Sichuan 610041, China.
+
+*These authors contributed equally to this work.
+
+ Corresponding authors: Dr. Changlong Li, E-mail: changlongli@scu.edu.cn, West China School of Basic Medical Sciences & Forensic Medicine, Sichuan University,
+Chengdu, Sichuan 610041, China. Dr. Canhua Huang, E-mail: hcanhua@hotmail.com, State Key Laboratory of Biotherapy and Cancer Center, West China Hospital, and West
+China School of Basic Medical Sciences & Forensic Medicine, Sichuan University, and Collaborative Innovation Center for Biotherapy, Chengdu, Sichuan 610041, China. Dr.
+Min Wu, E-mail: min.wu@und.edu, Department of Biomedical Sciences, School of Medicine and Health Sciences, University of North Dakota, Grand Forks, ND 58202, USA.
+
+© The author(s). This is an open access article distributed under the terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0/).
+See http://ivyspring.com/terms for full terms and conditions.
+
+Received: 2021.02.08; Accepted: 2021.05.14; Published: 2021.06.01
+
+                Abstract
+                Rationale: With increasing incidence and prevalence of inflammatory bowel disease (IBD), it has become one
+                of the major public health threats, and there is an urgent need to develop new therapeutic agents. Although the
+                pathogenesis of IBD is still unclear, previous research has provided evidence for complex interplays between
+                genetic, immune, microbial, and environmental factors. Here, we constructed a gene-microbiota
+                interaction-based framework to discover IBD biomarkers and therapeutics.
+                Methods: We identified candidate biomarkers for IBD by analyzing the publicly available transcriptomic and
+                microbiome data from IBD cohorts. Animal models of IBD and diarrhea were established. The
+                inflammation-correlated microbial and genetic variants in gene knockout mice were identified by 16S rRNA
+                sequences and PCR array. We performed bioinformatic analysis of microbiome functional prediction and drug
+                repurposing. Our validation experiments with cells and animals confirmed anti-inflammatory properties of a
+                drug candidate.
+                Results: We identified the DNA-sensing enzyme cyclic GMP-AMP synthase (cGAS) as a potential biomarker
+                for IBD in both patients and murine models. cGAS knockout mice were less susceptible to DSS-induced colitis.
+                cGAS-associated gut microbiota and host genetic factors relating to IBD pathogenesis were also identified.
+                Using a computational drug repurposing approach, we predicted 43 candidate drugs with high potency to
+                reverse colitis-associated gene expression and validated that brefeldin-a mitigates inflammatory response in
+                colitis mouse model and colon cancer cell lines.
+                Conclusions: By integrating computational screening, microbiota interference, gene knockout techniques,
+                and in vitro and in vivo validation, we built a framework for predicting biomarkers and host-microbe interaction
+                targets and identifying repurposing drugs for IBD, which may be tested further for clinical application. This
+                approach may also be a tool for repurposing drugs for treating other diseases.
+
+                Key words: Inflammatory bowel disease, cyclic GMP-AMP synthase (cGAS), host transcriptome-microbiome
+                interaction, drug repurposing, brefeldin-a
+
+
+Introduction
+     Inflammatory bowel disease (IBD), including                                      inflammation in CD can affect any portion of the
+ulcerative colitis (UC) and Crohn’s disease (CD), is a                                gastrointestinal tract, while UC is restricted to the
+complex chronic inflammatory disease, typically                                       colon. IBD has become an urgent public health threat,
+manifested with diarrhea and weight loss. Mucosal                                     affecting 1.6 million Americans with 70,000 new cases
+
+                                                                                                                                            http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                            7492
+
+each year and more than 3.5 million people                   homeostasis remains to be determined.
+worldwide [1]. To date, the etiology of IBD remains                Application of current IBD drugs is severely
+incompletely understood though it is linked to genetic       limited by low efficacy, side effects or intolerance, and
+susceptibility, immunoregulatory factors, microbiome         particularly a drastic loss of response after long-term
+imbalance, and environmental factors [2].                    use [15]. Since the discovery and development of new
+       Transcriptome analysis and microbiota profiling       medications is time-consuming and labor-intensive,
+have emerged as promising approaches to assess host          drug repurposing or drug repositioning becomes an
+gene expression and survey microbiota composition            attractive strategy for identifying new uses of ‘old’
+quantitatively [3]. Understanding of host-microbiome         drugs to potentially treat many debilitating diseases
+interactions in IBD pathogenesis is a critical avenue        [16]. For instance, denosumab is an antibody to
+for     therapeutic     development.       Genome-wide       TNFSF11 and has been used in osteoporosis of
+association studies (GWAS) have identified                   postmenopausal women [16]. Since the TNFSF11
+approximately 240 driver genes of IBD through                genetic variant was found to be associated with CD by
+analyzing a large number of patients [4]. Many of            GWAS, denosumab has been repurposed for treating
+these genes are associated with key immunological            CD and completed phase 1/2 trials in 2019 [17]. A
+pathways, such as host-microbial interactions, innate        large-scale computational method [18] demonstrates
+immunity, adaptive immunity and autophagy [5]. For           the potency to reverse disease signatures via drug
+example,      NOD2-associated        dysregulation      of   discovery based on the Library of Integrated
+microbial sensing contributes to microflora dysbiosis        Network-Based Cellular Signatures (LINCS), a drug
+[6] and CARD9 impacts colitis by altering gut                perturbation database maintained by the Broad
+microbiota metabolism [7]. ATG16L1 affects                   Institute [19]. The Connectivity Map Linked User
+autophagy in Paneth cells and goblet cells and               Environment (CLUE) platform of LINCS is used to
+regulates      intestinal    inflammation         in    an   indicate treatment possibility of IBD by analyzing
+IL-22-dependent manner [8]. Moreover, NOD2 and               relationships between drugs and differentially
+ATG16L1 are required for human commensal                     expressed genes (DEGs) [20].
+Bacteroides fragilis-mediated protection from colitis [9].         Here, we established a novel microbiota and
+Intestinal inflammation in Card9-/- mice is attenuated       genetic-based      framework       using     a    system
+after inoculation of Lactobacillus strains [7]. As part of   bioinformatics approach based on host-microbiome
+the Integrative Human Microbiome Project (iHMP),             interactions and laboratory studies. We identified
+the IBD Multi’omics database (IBDMDB) is the first           cGAS as a potential biomarker in IBD, and knockout
+integrated study supporting a systems-level                  of cGAS in mice attenuated the inflammatory
+understanding of gut microbiome in IBD dynamics              response. Next, we predicted IBD candidate
+[10]. Altogether, the interactions between host and          therapeutics and validated the efficacy of the top
+enteric microbiota may guide rapid development of            candidate, brefeldin-a (BFA, a membrane protein
+treatments to improve intestinal health.                     transporter inhibitor), using colon cancer cell lines
+      Innate immunity plays a vital role in the              and mouse models. Our strategy may be applied to
+homeostasis of the intestine during the pathogenesis         potentially reposition candidate drug targets and
+of IBD. Cyclic GMP-AMP synthase (cGAS) is a                  drugs, promoting drug discovery and medical
+double-stranded DNA sensor and is essential for              improvement for other diseases.
+eliciting immune responses [11]. cGAS recognizes the
+DNA from various invading microbes to activate the           Methods
+adaptor, stimulator of the interferon genes (STING),
+                                                             Integrated Microbiome and Host
+and induce type I interferon (IFN) secretion following
+                                                             Transcriptome Analysis
+phosphorylation         of     interferon       regulatory
+transcription factor 3 (IRF3) by TANK binding kinase               Publicly available RNA-seq and microbiome
+1 (TBK1), and other pro-inflammatory cytokine                data on human IBD were collected from IBDMDB
+production through NF-κB nuclear translocation [11].         (http://ibdmdb.org) [10] (Table S1) and imported
+Intense research in recent years has implicated that         into R software version 4.0.2 [21]. The RNA-seq data
+cGAS signaling plays a role in the initiation and            were then normalized using a regularized log (rlog)
+pathogenesis of autoimmune diseases, cancers,                transformation implemented in the DESeq2 package
+Aicardi-Gourtières syndrome (AGS), skin cancer,              [22]. Principal component analysis (PCA) of the host
+acute pancreatitis, and sepsis [12]. Although the role       RNA-seq profile based on variance stabilizing
+of STING in regulating intestinal inflammation [13]          transformation data was used to examine the overall
+and tumorigenesiss [14] in mice has been reported, the       similarity among all groups.
+effect of cGAS on commensal microbiota in intestinal
+
+                                                                                                   http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                         7493
+
+      Only data from patients diagnosed as UC and                 For the diarrheal model induced by antibiotic
+non-IBD were used for integrated analyses, and a total      treatment, a broad-spectrum antibiotic cocktail or
+of 4,811 DEGs were identified from the RNA-seq data         individual antibiotic (5 mg/mL streptomycin, 0.5
+with the adjusted p-value < 0.01 cutoff. Relative           mg/mL vancomycin, 1 mg/mlL colistin, and 1
+abundances of bacteria were calculated for                  mg/mL Ampicillin) (Sigma-Aldrich, St. Louis, MO)
+microbiome data. Bacteria were filtered out with a          was added to drinking water for five days until
+relative abundance value < 0 in only three samples or       analysis, as described previously [26]. Streptomycin
+less, and 169 bacteria were found for the following         (STR) is a broad-spectrum antibiotic inhibiting both
+analysis.                                                   gram-positive     and     gram-negative      bacteria,
+      We used two datasets from 43 common patients          vancomycin (VAN) targets gram-positive bacteria,
+for the integrative analysis. Two-way orthogonal            colistin (COL) targets Enterobacteriaceae, and
+partial least squares (O2PLS), a method for pair-wise       ampicillin (AAM) targets gram-positive and some
+integration of multi-omics data, was used to identify       gram-negative bacteria [27].
+novel key pathways and biomarkers that strongly
+correlated with the disease progression among               Myeloperoxidase (MPO) Assay
+different data matrix projects [23]. The loading values          Colonic MPO levels were measured to determine
+for the joint covariance part from the O2PLS analysis       the degree of neutrophil infiltration. The colon was
+results were extracted to find highly inter-associated      weighed and homogenized in 50 mM hexadecyl
+genes and bacteria. Reactome [24] functional                trimethyl ammonium bromide (HTAB) - 50 mM
+enrichment analysis for the top 200 genes (around 5%        potassium phosphate (pH 6.0) buffer. The
+of the total DEGs) with the highest loading values was      homogenate was centrifuged at 13,400 × g for 6 min at
+performed with the richR (https://github.com/               4 °C. The supernatant was collected or restored at -80
+hurlab/richR) package.                                      °C until use. 7 μL of tissue homogenate was mixed
+                                                            with 200 μL of reaction buffer (16.7 mg/mL
+Mice                                                        o-dianisidine dihydrochloride, 50 mM potassium
+     Wild-type (WT) C57BL/6NHsd mice were                   phosphate buffer [pH 6.0], 0.0006% H2O2) and was
+obtained from ENVIGO (Indianapolis, IN).                    read at 450 nm using a spectrophotometer at 30 s
+Cgastm1a(EUCOMM)Hmgu mice (Cgas-/- or cGAS KO mice)         intervals as previously performed [28].
+were kindly provided by Dr. Charlie Rice (Rockefeller
+University, NY) [25]. All mice were housed in the           Enzyme-linked Immunosorbent Assay (ELISA)
+animal facility at the University of North Dakota                Colonic intestinal tissue lysed with radiation
+(UND) and treated according to guidelines approved          immunoprecipitation     (RIPA)     buffer    (Thermo
+by the Institutional Animal Care and Use Committee          Scientific, Waltham, MA) for cytokine analysis. The
+(IACUC) of UND. The age- and gender-matched mice            lysate was centrifuged at 15000 × g for 10 min, and
+(8-12 weeks old) were randomly allocated to different       then the supernatant was collected. Paired (capture
+experimental groups based on their genotypes.               and detection) antibodies and standard recombinant
+                                                            mouse IL-1β (eBioscience, San Diego, CA), TNF-α
+Mice Treatments                                             (eBioscience), and IFN-β (Invitrogen, Waltham, MA)
+      The experimental model of acute colitis induced       were used to determine cytokine concentrations
+by dextran sulfate sodium (DSS, 3% wt/vol,                  following the manufacturer’s instructions [29].
+36,000-50.000 kD; MP Biomedicals, LLC, Aurora, OH)
+was administered in drinking water ad libitum for           Immunoblotting
+seven days, following four days of normal distilled              Mouse colon biopsies were freeze-thawed in
+water. Control mice were fed with distilled water for       RIPA buffer with protease and phosphatase inhibitor
+11 days. Daily monitoring of mouse body weight,             cocktail (ThermoFisher Scientific). The supernatant’s
+survival rate, and disease activity index (DAI), with a     protein concentration was quantified using the Pierce
+score of 1-4, including three parameters: weight loss,      BCA protein assay kit (ThermoFisher Scientific). We
+fecal blood, and stool consistency (0: no weight loss,      resuspended the samples in 5X loading buffer
+no blood, normal stool; 1: 1-5% weight loss; 2: 5-10%       (ThermoFisher Scientific) and heated to 100 ℃ for 10
+weight loss, visible blood in the stool, loose stool; 3:    min. An equal amount of samples was resolved by
+10-20% weight loss; 4: >20% weight loss, gross              SDS-PAGE gel electrophoresis and transferred to the
+bleeding, diarrhea). Mice were sacrificed to collect        nitrocellulose membranes (Cytiva Amersham, LLC,
+intestine tissue and feces for further analysis at day 9.   Marlborough, MA). After blocked in TBS-T buffer
+Colon lengths were also measured at autopsy. Fecal          supplemented with 5% blotting-grade non-fat milk at
+samples were collected for microbiome analysis.             room temperature for 1.5 h, the membrane was
+                                                            subsequently incubated with antibodies against cGAS
+
+                                                                                                http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                        7494
+
+(D3O8O, Cell Signaling Technology [CST], Danvers,        labeled secondary antibody (R&D Systems,
+MA), STING (D2P2F, CST), p-TBK1 (D52C2, CST),            Minneapolis, MN). DNA was stained with 20 µg/mL
+TBK1 (D1B4, CST), TNF-α (D2D4, CST), NF-κB               4’,6’-diamidino-2-phenylindole (DAPI, Invitrogen)
+(D14E12, CST), Casp-1 (pro, sc-56036, Santa Cruz         [34]. Zeiss LSM-510 Meta Confocal Microscope was
+Biotechnology, Dallas, TE; cleaved, D57A2, CST),         used to obtain fluorescent images.
+IL-1β (pro, D3H1Z, CST; cleaved, 52718S, CST), and
+β-actin (sc-517582, Santa Cruz), followed with the       Fecal DNA Extraction and 16S rRNA Library
+appropriate HRP-conjugated secondary antibody            Preparation
+(Invitrogen) incubation, and detected by enhanced              According to the manufacturer, bacterial
+chemiluminescence (Cytiva Amersham) [30].                genomic DNA was extracted from approximately 0.2
+                                                         g of frozen fecal samples using the QIAamp Fast DNA
+Quantitative Polymerase Chain Reaction                   Stool Mini Kit (51604, Qiagen, Hilden, Germany). As
+(qPCR)                                                   previously described [35], the V3 and V4
+     Total RNA was extracted from mouse colon            hypervariable regions of the 16S rRNA gene were
+tissue homogenates with TRIzol reagent (Invitrogen),     amplified using the following primers: F
+reverse transcribed into cDNAs by the Superscript III    5‘-TCGTCGGCAGCGTCAGATGTGTATAAGAGAC
+kit (11752, Invitrogen), and real-time PCR was           AGCCTACGGGNGGCWGCAG-3’, R 5’-GTCTCGTG
+performed using SYBR Green Master Mix (A25742,           GGCTCGGAGATGTGTATAAGAGACAGGACTAC
+Applied Biosystems, LLC, Marlborough, MA) on the         HVGGGTATCTAATCC-3’, and incorporated to
+CFX Connect real-time PCR detection system               Illumina (San Diego, CA) adapters and indexing
+(Bio-Rad, Hercules, California) as previously            barcodes. The amplified, barcoded products were
+described [31]. The primer sequences are as follows:     purified using AMPure XP beads (Beckman Coulter,
+Cgas F: 5’- CCACTGAGCTCACCAAAGAT-3’; Cgas R:             Indianapolis, IN) and pooled and sequenced on the
+5’- CAGGCGTTCCACAACTTTATTC-3’; Sting F: 5’-              Illumina MiSeq platform.
+GGTCACCGCTCCAAATATGTAG-3’; Sting R: 5’-
+CAGTAGTCCAAGTTCGTGCGA-3’; Ifn-β F: 5’-                   16S rRNA Sequencing Analysis
+TCCGAGCAGAGATCTTCAGGAA-3’; Ifn-β R: 5’-                        The raw pair-end sequencing data in FASTQ
+TGCAACCACCACTCATTCTGAG-3’; Ifit-1 F: 5’-                 files were first assessed for quality by FastQC (version
+CGTAGCCTATCGCCAAGATTTA-3’; Ifit-1 R: 5’-                 0.11.3) [36] and filtered with Trimmomatic (version
+AGCTTTAGGGCAAGGAGAAC-3’; Gapdh F: 5’-                    0.36) [37] to remove low-quality reads (threshold
+TTGCTGTTGAAGTCGCAGGAG-3’; Gapdh R: 5’-                   quality < 30). Trimmed reads were assessed again for
+TGTGTCCGTCGTGGATCTGA -3’. These genes were               quality by FastQC. Taxonomy classification for
+normalized to the housekeeping gene Gapdh using 2-       trimmed reads was performed by Kraken 2 (version
+ΔΔCT method.                                             2.0.8-beta) [38] based on the MiniKraken2_v1
+                                                         database (version 201904), and sample report files
+Histology and Immunofluorescence                         were generated. Alpha diversity metrics based on
+      Colon samples were extracted and washed with       bacterial counts at the genus level were performed
+cold PBS, then immediately fixed with 10% formalin       using the estimate richness function within the
+for 24 h and embedded in paraffin. 5-μm histological     phyloseq package (version 1.32.0) [39] and Shannon
+sections were deparaffinized and stained with            and Simpson indexes to measure the richness of the
+hematoxylin and eosin (H&E) or Periodic acid-Schiff      communities within samples. Principal Coordinates
+(PAS) and analyzed by light microscopy (Nikon            Analysis (PCoA) plot using Bray-Curtis dissimilarity
+Eclipse 80i). Histological assessment of colitis was     was implemented based on bacterial counts at the
+performed with blinded genotypes as previously           genus level to reveal the differences between various
+described [32, 33]. The score criteria (0-3) included    groups. The ‘Adonis’ feature from vegan (version
+monocyte       infiltration,     epithelial    injury,   2.5-6) was used to assess whether sample grouping by
+polymorphonuclear cell filtration, and crypt             metadata factor accounted for inter-sample
+hyperplasia.                                             differences (https://CRAN.R-project.org/package=
+      For immunofluorescence analysis, the mouse         vegan). A significance P-value was generated by
+colon was immersed in the optimal cutting                comparing that obtained by R2 to that obtained from
+temperature (OCT) medium mold, snap-frozen in            1000 random data permutations. Treemaps were
+liquid nitrogen, and stored at -80 °C. 4 μm frozen       generated from the genus percentage in report files by
+sections were fixed in pre-chilled acetone for 5 min,    the     treemapify       package       (version    2.5.3)
+stained with primary antibody MUC5AC (sc-21701,          (https://CRAN.R-project.
+Santa Cruz), and then incubated with fluorescent-        org/package=treemapify) to show the relative
+
+
+                                                                                               http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                       7495
+
+abundance between different groups. Differential          DLD-1 cells was assessed by cell counting kit-8
+abundance analysis was performed using the DESeq2         (CCK-8) assay (APExBIO, #K1018). Cells were
+package (version 1.28.1) with p < 0.05 and |log2Fold      cultured overnight in 96-well (1 × 104 cells/well)
+Change| > 1 based on bacterial counts at the genus        plate. Drugs were diluted in distilled water to reach
+level, and adjusted p < 0.05 at the species level [22].   final concentrations of 0.01, 0.1, 1, 10, and 25 µM and
+The taxon sets for TSEA were downloaded from              0.05% DMSO as the negative control. Plates were
+MicrobiomeAnalyst, designed to predict biologically       cultured with the fresh drug-containing medium at 37
+or ecologically meaningful patterns from public           °C for 24 h. The absorbance of each well was
+datasets and known microbial signatures [40]. The         determined by using a 96-well multiscanner. After
+TSEA of biologically meaningful taxon sets were           subtracting background absorption, the results were
+performed with the richR package for predictive           expressed as a percentage of viability relative to
+potential microbial targets to develop effective          control cultures. Drug concentrations that inhibited
+therapies.                                                cell viability by 50% (IC50) were determined using
+                                                          GraphPad Prism 8 software.
+Relative Gene Expression Analysis by PCR                        RAW264.7 and SW480 cells were plated in 6-well
+Arrays                                                    (5 × 105 cells/well) plates for ELISA or RNA/protein
+      The real-time PCR primer sets of 85 genes (Table    isolation, respectively. To evaluate the anti-
+S7) were coated on 96-well plates (Eurofins Genomics)     inflammation efficacy of BFA and FLU, RAW264.7
+following the manufacturer’s instructions, optimized      cells were stimulated with Escherichia coli-derived
+according to the mouse RT2 Profiler PCR Array             lipopolysaccharides (LPS, O111:B4; SIGMA, L3024) at
+(PAMM-169Z, Qiagen) and relevant literature [41].         50 ng/ml concentration for different times alone or
+After normalizing the three housekeeping genes (Eef2,     with BFA at indicated concentrations in triplicates.
+Gapdh, and Tbp), the qPCR results were expressed as       The supernatant was collected for ELISA detection.
+relative fold change over the WT control. The             SW480 cells were stimulated with LPS (50 ng/mL)
+detection limit was 40 Ct. All experiments were           alone or with BFA (25 µM) for 24 h. Total RNA was
+performed in three biological replicates. The mouse       isolated from cells using TRIzol reagent and reverse
+transcriptomes were clustered according to genotype.      transcribed to cDNA. Changes in gene transcripts of
+Volcano plots and the heatmap were generated in the       CGASs, STING, IFN-β, and IFIT-1 were analyzed by
+R package ggplot2 with a cut-off of fold change > 2       RT-qPCR. The total protein lysates were collected
+and p-value < 0.05.                                       from SW480 cells using RIPA buffer. Changes in
+                                                          protein levels of cGAS, STING, TBK1, NFκB,
+Drug Repurposing Using the LINCS Drug-
+                                                          pro-IL-1β and pro-Casp-1, mature IL-1β (p17), cleaved
+perturbation Data
+                                                          Casp-1 (p20), and NLRP3 (from CST, Invitrogen, and
+     DEGs from PCR arrays were first sorted by            Santa Cruz) were detected by western blot. Three
+log2FC values. The up-regulated and down-regulated        technical replicates were used for each sample.
+genes were then chosen to identify drugs and
+compounds against the LINCS database using the            Mouse Model Validation of Drug Efficacy
+Connectivity Map Linked User Environment (CLUE)                Acute colitis was induced in mice by 3% DSS in
+platform [42]. The drug connectivity score (CS) with a    drinking water ad libitum for seven days and followed
+negative value smaller than -80 was used to identify      with four days of normal distilled water. Control mice
+candidates and compounds.                                 were fed with distilled water for 11 days. The colitis
+                                                          group mice were randomly grouped and
+Cell Culture
+                                                          intraperitoneally injected with 100 µL vehicle (0.01%
+     Murine macrophage RAW264.7 cells and Human           DMSO) or BFA (2.5, 5, and 10 mg/kg) at day 4 and 6
+colon epithelial carcinoma cell lines, SW480 (ATCC,       post-DSS. Mice were evaluated daily for changes of
+CCL-228) and DLD-1 (ATCC, CCL-221) cells were             body weight. At day 9 and 11, mice were euthanized
+maintained in RPMI 1640 (Gibco, #A1049101) and            to harvest colons and blood for further analysis. Colon
+DMEM/F12          (Gibco,    #11330032)      medium,      lengths were measured at autopsy. Mouse colon
+supplemented with 10% fetal bovine serum, 1X              biopsies were lysed in HTAB buffer to determine the
+penicillin-streptomycin solution (Gibco, #15140163) at    MPO activity and in RIPA buffer for IL-1β secretion
+37 °C with 5% CO2.                                        (ELISA) and cGAS expression (immunoblotting).
+Anti-inflammatory Assay                                   Serum was separated from clotted blood by
+                                                          centrifugation. Serum AST and ALT were measured
+    The   cytotoxicity of  brefeldin-a (BFA,
+                                                          by ELISA (IT5530 and IT5508, G-Biosciences)
+MedChemExpress, HY-16592) and flubendazole
+                                                          according to the manufacturer’s instructions.
+(FLU, MedChemExpress, HY-B0294) on SW480 and
+
+                                                                                              http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                                 7496
+
+Statistical Analysis                                                                     Results
+      All data are mean ± s.d. For animal experiments,
+                                                                                         cGAS is Positively Associated with Human IBD
+GraphPad Prism software version 8 (GraphPad
+Software, CA) was used for the preparation of graphs                                           To identify the potential pathways in the
+and comparison by using unpaired t-test, one-way                                         pathogenesis of IBD, we built a novel potential
+ANOVA (Tukey’s post hoc), or two-way ANOVA                                               strategy based on host-microbiome interaction for
+between groups, Kaplan-Meier curves (log-rank test)                                      biomarker discovery and drug repurposing for IBD
+for survival analysis. Statistical analysis was also                                     (Figure 1A). We analyzed the host transcriptome data
+carried out in R (version 4.0.2) and plotted using                                       from the publicly available dataset (IBDMDB),
+ggplot (version 3.3.2) [21] and pheatmap (version                                        including 90 participants (43 CD, 25 UC, and 22
+1.0.12)        (https://CRAN.R-project.org/package=                                      non-IBDs (controls), with no statistically significant
+pheatmap). For all experiments, P < 0.05 was                                             differences in age and BMI (Figure S1A, Table S1). A
+considered to be statistically significant.                                              total of 243 biopsies of transcriptional profiling were
+                                                                                         selected, including 98 rectal, 53 colonic, and 92 ileal
+
+
+
+
+Figure 1. cGAS is Highly Associated with Human IBD. (A) Workflow for the exploration of drugs for IBD including three steps: I) target discovery, identify highly
+inter-correlated microbiome-transcriptome interactions by using O2PLS based on the human cohort to reveal potential biomarkers in IBD; II) experimental validation, studies
+on intestinal bacteria for functional prediction based on TSEA and transcriptomes for drug screening based on LINCS, respectively; III) drug validation, showing the working
+model of brefeldin-a for treatment of IBD. (B) Functional enrichment network of Reactome based on the top 200 highly inter-correlated genes. cGAS signaling pathway and
+downstream effectors are highlighted in orange. Each node corresponds to a Reactome term; the node’s size is the number of genes annotated to the term. Edges between nodes
+indicate genes shared between Reactome terms. IL, interleukin. (C) cGAS expression levels in the rectum. n = 49, 26, 23 independent samples for CD, UC, non-IBD. One-way
+ANOVA with Tukey’s post hoc test determined significance. See also Figure S1.
+
+
+
+                                                                                                                                                 http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                      7497
+
+subjects. We observed a clearer separation between       S2H-I). Taken together, these findings indicate that
+ileum with colon or rectum samples (Figure S1A),         cGAS may play a vital role in promoting innate
+consistent with the previous analysis that tissue        immune responses in IBD.
+location was a driver of intestinal gene expression            Next, we used mouse models of antibiotic-
+[10].                                                    associated diarrhea to investigate the effects of the
+      To identify genes that are highly related to gut   dysbiosis of the gut microbiota on cGAS signaling.
+microflora in IBD, a total of 4,811 differentially       Mice were treated with antibiotics cocktail (MIX
+expressed genes and 169 bacteria were selected to        group), including streptomycin (STR), vancomycin
+identify the joint covariation between the               (VAN), colistin (COL), and ampicillin (AAM), or
+transcriptomic and microbiome datasets by using the      treated individual antibiotic in the drinking water ad
+O2PLS approach and the loading value were shown          libitum (Figure S3A). The MIX mice with acquired
+in Table S2. The joint variation between UC and          depleted intestinal microbiota were usually
+non-IBD subjects revealed a strong positive linear       considered as pseudo-germ-free. STR, VAN, and
+correlation (R2 = 0.711; Figure S1B). Reactome           AAM treatment regimens caused a higher degree of
+pathways [24] enrichment analysis confirmed that the     colonic shortening, while MIX mice showed no
+immune-related pathways were significantly over-         colonic changes (Figure S3B). Histopathological
+represented (Figure 1B, Table S3). In particular, cGAS   assays showed no structural changes of the colon in
+signaling and its downstream effectors were              the MIX mice, while the STR, VAN, COL, and AAM
+significantly enriched, including cytosolic sensors of   groups displayed a varying degree of pathological
+pathogen-associated       DNA,       STING-mediated      changes including inflammatory infiltrates, destroyed
+induction of host immune responses, and IRF3- or         crypts, and goblet cell loss (Figure S3E-F). cGAS
+ZBP1(DAI)-mediated induction of type I IFN               pathway activation was shown by overexpression in
+pathways.                                                STR, VAN, and COL mice, although the degree was
+      The cGAS-STING pathway was enriched in             different (Figure S3C-D). Our data showed that
+up-regulated genes in ileum biopsies with CD and in      dysbacteriosis-induced      intestinal   inflammation
+rectum with both CD and UC, which had the same           resulted in cGAS activation. The differences observed
+trends as IL-17 signaling pathway [43] and the           between MIX and single antibiotic-treated mice may
+complement cascade [10] that have been confirmed by      be explained by the absence of the normal microbiota
+overrepresentation enrichment and implicated in the      or the presence of a remnant microbiota [44].
+inflamed intestines of IBD (Figure S1C). Compared to
+subjects without IBD, cGAS, STING, and TNF               Loss of Cgas Attenuated Inflammatory
+involved in the cGAS-STING signaling and IL1B and        Responses
+MUC5AC involved in IL-17 signaling pathways were               To explore the effect of cGAS loss on the colon,
+significantly differentially expressed in inflamed       we performed DSS-colitis experiments in cGAS
+rectum biopsies (Figure 1C, S1D). Overall, these data    germline knockout (KO) mice (Figure 2A). The Cgas-/-
+supported that cGAS may play a causal role in colitis.   mice have no apparent gross phenotype and no
+                                                         aberrant colonic inflammation compared with WT
+Colitis and Dysbacteriosis Activate cGAS and             control mice (Figure 2B-D). No significant difference
+Induce Type I IFN in Mice                                was found in intestinal shortening, MPO activity, and
+     We next used a standard model of 3% DSS             injury or proliferation between WT and cGAS KO
+(epithelial irritant) in drinking water ad libitum to    mice (Figure 2E-F, S4A-C). MUC5AC is a major
+induce IBD (Figure S2A). This colitis model was          gel-forming mucin secreted by goblet cells, which has
+appropriately established by DSS treatment. It           shown a protective role against helminth infection in
+significantly aggravated colitis’s clinical signs,       mice [45] and controls injury in the acutely inflamed
+including weight loss, DAI, colon length, colonic        colon [46]. The number of goblet cells and the
+MPO activity, pathological changes, and goblet cell      fluorescence intensity of Muc5ac in intestines were not
+secretion (Figure S2B-E, S2J-K). On the 9th-day post     significantly altered in KO mice than in the controls
+DSS challenge, where the severity of colitis nearly      (Figure S4D-E). Immunoblotting of colon extracts
+reached its peak, we observed a dramatic                 confirmed the absence of cGAS (Figure 2H).
+up-regulation of cGAS and downstream effectors at              After 7 days of DSS treatment following 4 days
+protein and mRNA levels in the inflamed colon            of recovery, Cgas-/- mice exhibited dramatically
+following DSS treatment compared to the drinking         reduced disease severity as measured by less weight
+water groups as controls (Figure S2F-G). Higher levels   loss, DAI scores, colonic shortening, and MPO
+of type I IFN induction IL-1β and TNFα were              expression (Figure 2B-C, 2E-F). WT mice began to die
+observed in the colon of DSS-exposed mice (Figure        after 8 days of DSS induction. No Cgas-/- mice died
+
+
+                                                                                             http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                                       7498
+
+within 9 days, which indicates a higher survival rate                                       Muc5ac in intestines by day 9 (Figure S4D-E).
+compared to WT mice (Figure 2D). Furthermore,                                               Importantly, inhibition of NF-κB, p-TBK1, and TBK1
+Cgas-/- mice presented significantly decreased                                              at protein levels and transcription of Ifit-1, and Ifn-β
+intestinal injury and inflammation to those in WT                                           were observed in the colon of cGAS deficient
+mice, displaying only mild histological inflammation                                        DSS-colitis mice (Figure 2G-H). The colonic
+features, less inflammatory infiltration, and no gross                                      pro-inflammatory cytokines TNF-α and IFN-β were
+ulceration or overall tissue damage in colons and                                           also decreased, while IL-1β increased in Cgas-/- mice
+small intestines at day 9 (Figure S4A-C). Consistent                                        compared to WT mice (Figure 2I). Taken together, our
+with the reduced disease symptoms and                                                       results demonstrated that cGAS plays an essential role
+inflammation, Cgas-/- mice showed no decrease in                                            in promoting the inflammatory response in colitis.
+goblet cell numbers and fluorescence intensity of
+
+
+
+
+Figure 2. cGAS Regulates Acute Intestinal Inflammation. (A) Experimental design. WT and Cgas-/- mice treated with water or 3% DSS in drinking water for 7 days and
+followed for normal water for 4 days. (B) Weight loss in DSS-exposed mice. (C) Disease activity index (DAI) of DSS-exposed mice. (D) Kaplan-Meier survival curve for 11 days
+after DSS treatment. (E) Length of the colons of WT or Cgas-/- mice treated with DSS or control at day 9. (F) Myeloperoxidase (MPO) activity in colon homogenates at day 9.
+(G) Colonic Cgas, Sting, Ifit-1, and Ifn-β transcripts determined in WT or Cgas-/- mice undergoing DSS-colitis at day 9. (H) Western blot analyses of colons at day 9. Lysates were
+probed against cGAS, STING, p65, p-TBK1, TBK1, and β-actin. (I) Inflammatory cytokine expression was quantified in whole colon tissues from WT or Cgas-/- mice at day 9 by
+ELISA. Data are presented as the mean ± s.d. n = 5-7 mice/group from three independent experiments; statistical significance determined by one-way ANOVA (Turkey’s post
+hoc) or two-way ANOVA. ns, no significant. See also Figure S4.
+
+
+                                                                                                                                                      http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                                      7499
+
+
+
+
+Figure 3. Difference of Microbiota in Stool Samples between WT and Cgas−/− Group. (A) Alpha diversity metrics to measure the richness of the communities in the
+feces. Dissecting filtered bacteria with Shannon and Simpson indexes (significance analyzed by t-test). Colors stand for different treatments. (B) Principal Coordinates Analysis
+(PCoA) based on bacterial 16S rRNA gene sequence abundance in fecal content. All samples were subjected to the beta diversity analysis of bacteria abundances generated using
+the Bray-Curtis distance metric. The shape of the dot represents different groups. Colors stand for different treatments. (C) Bacterial-taxon-based analysis at the phylum level
+in the feces. Relative abundance between different groups was expressed as a percentage (%) represented as treemap layout. Colors indicate the phylum information. Ten most
+abundant phyla of each group are shown. (D-E) Comparison of the significant differential microbiome at the genus level. Only bacteria with significant differences (p-value < 0.05
+& |log2Fold Change|>1) between the WT and Cgas-/- controls (D) and subjected to DSS (E) are depicted. (F) Taxon set enrichment analysis (TSEA) of potential biological taxon
+sets in inflamed Cgas-/- versus control and WT. 1, GOS plus FOS, inulin and anthocyanins; 2, Bifidobacterium lactis HN019 and Lactobacillus acidophilus NCFM. Throughout, n = 6
+in WT mice and n = 5 in cGAS KO mice for control, and n = 6 in WT mice and n = 3 in cGAS KO mice for DSS treatment. See also Figure S5-6.
+
+
+
+                                                                                            treatment and Cgas deficiency strongly influenced the
+cGAS Deficiency Alters the Composition of                                                   microbiota composition at the phylum level (Figure
+Gut Microbiota                                                                              3C, S5A). The most abundant phyla in WT vs. Cgas-/-
+      To probe the impact of cGAS signaling on                                              mice     included     Bacteroidetes, Firmicutes,   and
+microflora, we explored the effect of cGAS deficiency                                       Proteobacteria. DSS-treated mice showed increased
+on fecal microbiota with or without induction of acute                                      relative abundance of Firmicutes, Proteobacteria, and
+colitis with DSS. No difference was found in observed                                       Cyanobacteria, and decreased relative abundances of
+microbial richness in WT mice between both                                                  Bacteroidetes vs. control mice.
+phenotypes (Figure 3A). Moreover, Cgas-/- mice                                                    To understand the phylogenic detail, we
+showed no significant microbial richness difference                                         examined differential bacterial levels down to the
+from WT mice. On the other hand, DSS-treated Cgas-/-                                        genera and species classification (Figure 3D-E, S5B-C
+mice showed significantly lower taxa richness than                                          and S6, Table S4-5). Consistent with studies of
+the Cgas-/- control group and DSS-treated WT group.                                         microbiome        in   IBD      patients, Desulfovibrio,
+We discovered a distinct clustering of global                                               Enterococcus, and Escherichia at the genus level, and
+microbiota composition between groups at the genus                                          Desulfovibrio fairfieldensis, Escherichia coli, and
+level driven by both phenotype (water vs. DSS,                                              Salmonella enterica at the species level were more
+Pr(>F)=0.001) and genotype (WT vs. Cgas-/-,                                                 abundant, while genus Prevotella was significantly less
+Pr(>F)=0.001) evaluated by PCoA analysis using                                              prevalent in DSS-treated WT mice (Figure S5B, S6B).
+Bray-Curtis distances metrics (Figure 3B). DSS
+
+                                                                                                                                                     http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                               7500
+
+In the fecal pellets of Cgas-/- control mice, most                                      pathways including treatment with prebiotics (GOS
+bacteria were significantly decreased vs. the WT                                        plus FOS, inulin and anthocyanins) [47] and
+control group, with genus Helicobacter and species                                      probiotics (Bifidobacterium lactis HN019 and
+Bacteroides vulgatus increased and genera Blautia and                                   Lactobacillus acidophilus NCFM) [48], human breast
+Lactobacillus decreased (Figure 3D, S6A). Significantly,                                milk-fed [49], and administered low dose penicillium
+after disease onset, the genera Bacteroides and                                         [50], which have been implicated to be beneficial to
+Helicobacter were increased, and Parabacteroides and                                    IBD or irritable bowel syndrome. In summary, these
+Pseudomonas were decreased in Cgas-/- control and                                       observations indicate that cGAS has a functional role
+WT+DSS groups (Figure 3E, S5C and S6C-D).                                               in shaping the bacterial gut microbiota and is required
+Strikingly, the genera Desulfovibrio, Enterococcus, and                                 to adjust microbiota expansion in colitis, which would
+Escherichia were diminished in Cgas-/- mice compared                                    be a niche of host-microbiome based potential
+to WT mice under DSS treatment (Figure 3E).                                             therapeutic strategy.
+Meanwhile, Bacteroides vulgatus increased, and
+Clostridium perfringens, Enterococcus faecalis, Escherichia                             Loss of Cgas Affects IBD-Associated Genes
+sp., and Salmonella sp. decreased at the species level                                  Expression
+(Figure S6D).                                                                                To explore the effect of cGAS on the gene
+      To determine intrinsic and extrinsic factors                                      expression relevant to mouse IBD, we compared the
+associated with the disruption on microbial                                             expression of 85 genes in colons, including
+communities, we performed taxon set enrichment                                          inflammation, immunity, apoptosis, cell adhesion,
+analysis (TSEA) among the microbiome differentially                                     and known IBD-related genes, in WT and Cgas-/- mice
+between inflamed Cgas-/- versus control and WT+DSS                                      before and after DSS-colitis on day 9 (Figure 4A,
+groups (Figure 3F, Table S6). Interestingly, the                                        Tables S7 and S8). A total of 20 differentially
+cGAS-associated microbiome was predicted affecting                                      expressed genes were detected both in WT and Cgas-/-
+
+
+
+
+Figure 4. Real-time PCR-array Analysis of Dysregulated Genes Implicated by cGAS Gene Depletion. PCR-array analysis of colon tissue from WT and Cgas-/- mice
+subjected to DSS-induced colitis at day 9 (n = 5 per genotype for control and DSS treatment groups). (A) Heatmap represents up- and down-regulated genes profiling among
+groups. Genes with higher expression are depicted in red, with lower expression in green. (B) Venn diagram represents the number of genes significant DEGs between WT and
+Cgas-/- groups subjected to DSS-induced colitis (p < 0.05). The barplot shows the log2 fold change of the shared significant DEGs. Colors stand for different groups. (C)
+Protein-protein interaction network built using STRING. The nodes represent the proteins (genes); the edges represent the interaction of proteins (genes); blue and pink
+represent the same or opposite direction of gene changes in WT and Cgas-/- groups, respectively. (D) Lollipop chart represents KEGG pathways associated genes in Figure 4C
+displayed as the -log10 (FDR). The line is drawn at FDR = 0.05. FDR, false discovery rate.
+
+
+
+                                                                                                                                               http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                        7501
+
+mice, including Tlr4 and Il18 undergoing the same          mechanism of drug therapy, we observed decreased
+change, and Stat3, Ifng, Cxcl9, Atg16l1, and Casp1         transcript and protein levels of the cGAS-STING
+changing in the opposite direction (Figure 4B).            pathway and NLRP3 inflammasome in LPS-induced
+Furthermore, we mapped these shared DEGs between           SW480 by qPCR and western blot (Figure S7E-F).
+WT and Cgas-/- mice based on the STRING database to              The therapeutic application of BFA was also
+obtain potentially linked genes (Figure 4C), and the       examined in the acute 3% DSS-induced colitis model
+Mb21d1(CGAS) gene showed association with Tlr4,            (Figure 5B). BFA-administered mice were protected
+Il18, and Casp1. Enriched pathways from STRING             from DSS-induced inflammatory disease with less
+showed that the induced transcripts may be involved        weight loss (Figure 5C), DSS-induced colon
+in inflammatory bowel disease and dominance of             shortening (Figure 5D), reduced MPO activity (Figure
+immune-related pathways, including NF-kappa B,             5E), and decreased colonic inflammatory cytokine
+IL-17, Toll-like receptor signaling pathways, and Th17     IL-1β (Figure 5F). We next evaluated the impact of
+cell differentiation, confirming the specific role of      BFA doses on the preventive efficacy. Remarkably,
+cGAS and its potential interactions in response to         the low concentration of BFA (2.5 mg/kg) produced a
+bacterial infections under the colitis (Figure 4D).        more pronounced effect than higher concentrations (5
+                                                           and 10 mg/kg). Furthermore, BFA had no effect on
+Prediction of Candidate Compounds for IBD                  the serum AST and ALT levels in both DSS treatment
+      To identify potential drugs and compounds that       and vehicle groups, indicating that it has not caused
+can be used for IBD treatment, we first selected the       liver toxicity (Figure 5G). Consistent with the above
+over- and under-expressed genes between control and        cell experiment, BFA treatment can inhibit the
+DSS treatment groups in WT and Cgas-/- mice as a           expression of cGAS in the colon (Figure 5H). These
+disease signature, and then used these signatures to       results suggest that BFA can inhibit inflammatory
+query in CLUE platform, respectively. The closer the       response and mitigate colonic inflammation, through
+CS is to -100, the better the response showed by drugs     blocking cGAS (Figure 5I), which may be exerted by
+to reverse the expression of DEGs. The top 200 up-         inhibiting NLRP3 inflammasome [58] and STING [59].
+and down-scored medications were picked out with           Taken together, we identified a top drug candidate
+the lowest CS score, in which 43 common candidate          BFA for potential IBD treatment consideration
+drugs were in WT and Cgas-/- groups under DSS and          through the drug repurposing approach and
+water treatment at day 9 (Figure 5A, Table S9). 7 of the   validated the anti-inflammatory activity and potential
+43 candidates were published relevant to IBD.              mechanisms in vitro and in vivo.
+Azacitidine (DNA methyltransferase inhibitor) [51],
+ISOX      (HDAC       inhibitor)   [52],   ascorbic-acid   Discussion
+(antioxidant) [53], cosmosiin (cytochrome P450                   In this study, we designed a novel potential
+inhibitor) [54], IB-MECA (adenosine receptor agonist)      strategy based on host-microbiome interaction for
+[55], fostamatinib (SYK inhibitor) [56], and iloprost      biomarker discovery and drug repurposing for IBD
+(platelet aggregation inhibitor) [57] have been used as    (Figure 1A). By integrating public transcriptomic and
+a treatment or providing protective effects for IBD.       microbiome data sets from IBD cohorts, we observed
+      Among the top compounds, we investigated the         a significant correlation between cGAS signaling and
+anti-inflammatory activity of the protein synthesis        IBD-associated genes and pathways. Hence, we
+inhibitor brefeldin-a (BFA) and the tubulin inhibitor      focused on cGAS and revealed increased cGAS in IBD
+flubendazole (FLU), which have not been previously         patient biopsies and experimental models, which
+studied in IBD. The anti-inflammatory activities of        subsequently activated immune reactions and
+these drugs were examined in vitro in LPS-induced          inflammatory responses that may be associated with
+murine macrophage RAW264.7 cells. BFA decreased            gut microbiota.
+LPS-induced IL-6 and TNFα in the supernatant of                  Previous studies have generally focused on the
+RAW264.7 in a dose-dependent manner; however,              function of the cGAS-STING pathway in viral
+FLU increased IL-6 at high concentrations (Figure          infection, cancer immunity, and autoimmune
+S7A). Therefore, we next focused on the role of BFA,       disorders [12]. Our results demonstrated that cGAS
+whose treatment also inhibited IL-1β, IL-6, TNFα, and      was significantly up-regulated in inflamed human
+IFN-β in a time-dependent manner compared to               samples with CD and UC, and also in two
+vehicle controls (Figure S7D). BFA showed less             independent experimental models, DSS-colitis and
+cytotoxicity in SW480 human colon cancer cell line         antibiotic-associated diarrhea. Critically, we analyzed
+(IC50=4.652 µM) than that in DLD-1 cells (IC50=0.167       transcriptome and microbiome data of IBD patients
+µM) (Figure S7B-C). Thus, SW480 cells were selected        and screened out cGAS as a potential biomarker and
+for subsequent experiments. To validate the                drug target. Further analysis using genetic knockout
+
+                                                                                               http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                                   7502
+
+of cGAS in the inflammatory model strongly                                                STING inhibition may be promising for treating
+supported our notion that cGAS inhibition could                                           inflammatory diseases (such as AGS) through genetic
+rescue aspects of the inflammatory phenotype,                                             approaches [63] or chemical inhibitors [64].
+consistent with the literature in other autoimmune                                        Accordingly, therapeutic avenue through targeting
+disorders [60]. In IBD, ATG16L1 mutations promote                                         the cGAS-STING pathway may be realized one day
+IL-22 production through the STING pathway to                                             for infections, autoimmunity, inflammatory diseases
+excess epithelial cell death [13], while clear evidence                                   and cancers.
+for cGAS’ role in IBD has not been presented. Recent                                           We subsequently investigated variations in the
+research has implicated that STING agonists might                                         composition and relationship of host colonic
+have a potential therapeutic benefit in anticancer                                        transcriptomes and the intestinal microbiota in
+immune therapy [61] and antiviral responses [62], and                                     humans and mouse models. First, we found that
+
+
+
+
+Figure 5. Drug Repurposing on the LINCS Database for IBD. (A) The Venn diagram represents the top 200 drugs using the DEGs from WT and Cgas-/- groups under
+DSS and water treatment searching against LINCS, individually. Heatmap shows the common 43 candidate drugs with the score values. (B) Experimental design. B6 WT mice
+were treated with water or 3% DSS in drinking water for 7 days and followed with drinking water for 4 days. Brefeldin-a (BFA, 2.5, 5, and 10 mg/kg) or vehicle (0.01% DMSO)
+was injected intraperitoneally (i.p.) in mice at day 4 and day 6 post-DSS. (C) Weight change. a, p < 0.0001, 0.0001 and 0.0004 (2.5, 5, and 10 mg/kg BFA groups) for comparison
+with vehicle group at day 6 post-DSS; b, p < 0.0001 for comparison with vehicle group. (D) Lengths and gross morphological changes of colons. (E) Colonic MPO activity. (F)
+Colonic IL-1β levels. (G) Serum AST and ALT levels were quantified by ELISA. (H) Western blot measured cGAS expression in the colons of these mice. (I) Schematic diagram
+of BFA exerting anti-inflammatory activity through inhibiting cGAS-STING pathway. In addition to blocking the protein trafficking from ER to the Golgi and the translocation of
+STING to the ER-Golgi intermediate compartment, BFA inhibits cGAS to block type I interferon production. BFA also effectively impairs NLRP3 inflammasome activation. Data
+are presented as the mean ± s.d. by two-way ANOVA or one-way ANOVA (Turkey’s post hoc); n = 5 mice per group from three independent experiments. See also Figure S7.
+
+
+
+                                                                                                                                                  http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                           7503
+
+cGAS was critically associated with the abundance of        with the significant DEGs between cGAS KO and WT
+specific microbial taxa. cGAS-associated changes            after DSS treatment. Forty-three common candidate
+impacted multiple gut microbiota, such as Bacteroides,      drugs were identified in both WT and Cgas-/- groups,
+Lactobacillus, Prevotella, and Pseudomonas. Some of         which can reverse the DEGs in inflamed colons
+them are generally associated with gut health,              Remarkably, seven candidate compounds in our
+including Bacteroides, Bifidobacterium, and Prevotella as   screened results have already been reported for their
+key SCFA producers [65, 66], Coprococcus and                potential protective or therapeutic effects in IBD
+Lachnospiraceae for producing butyrate [65, 67], Blautia    [51-57]. The DNA methyltransferase inhibitor
+relating to bile metabolism [65, 68], and Lactobacillus     azacytidine has been indicated to induce complete
+exhibiting probiotic ability [68]. On the other hand,       remission in myelodysplastic syndrome associated
+Desulfovibrio [69], Enterococcus [70], Escherichia [71],    with IBD by suppressing pro-inflammatory cytokine
+and Pseudomonas [72] are frequently found at high           responses [51]. There were no reports on the direct
+ratios in IBD patients than healthy individuals and         association between ISOX and IBD, but some other
+considered to be potential pathogens. Interestingly,        HDAC inhibitors are already tested as an anticancer
+Helicobacter has been recognized as a primary               treatment, and one of them (SCFA butyrate) is used to
+pathogenic factor for gastric and duodenal ulcers and       treat IBD [52]. Ascorbic acid (AA), known as vitamin
+gastric adenocarcinoma but prevents allergic                C, is important for patients suffering IBD since IBD
+disorders and chronic inflammatory conditions (i.e.,        patients are at risk of vitamin C deficiency. AA
+IBD) in increasingly robust experimental and                reduced oxidative stress and inﬂammatory response
+epidemiological evidence [73]. Additionally, we             in DSS-induced colitis and could modify the gut
+observed significantly increased strain diversity in        microbiota composition related to the pathogenesis of
+beneficial species such as Anaerostipes hadrus [74],        IBD [53]. Since some critical CYP isoforms have been
+Bacteroides vulgatus [68], and Faecalibacterium             reportedly linked to metabolism and pathogenesis or
+prausnitzii [75] in cGAS deficient mice, which may          etiology of UC, cosmosiin, as a cytochrome P450
+play unknown roles in inflammation-associated               (CYP) inhibitor, may play an effective role against IBD
+immunosuppression.                                          [54]. The adenosine receptor agonist IB-MECA was
+      Notably, our functional enrichment analysis           shown to alleviate inflammation in DSS-induced
+predicted several potential targets to develop effective    colitis and spontaneous colitis found in IL-10-deficient
+therapies. By using TSEA [40] analysis, our                 mice [55]. Fostamatinib, an SYK inhibitor, reduced the
+microbiome data were functionally profiled and              inflammatory damage in the acetic acid-induced
+compared to public datasets and known microbial             colitis [56]. Platelet aggregation inhibitor iloprost has
+signatures. Acinetobacter, Alistipes, and Parabacteroides   been demonstrated to be an antioxidant and
+(decreased abundance in Cgas-/-+DSS group) were             protective against colitis induced oxidative stress in
+enriched in prebiotics treatment (GOS plus FOS,             experimental colitis [57]. Hence our bioinformatics-
+inulin and anthocyanins), which significantly               based approach can effectively infer important
+decreased the pro-inflammatory cytokines both in            repurposing drug candidates in both animal models
+infected Caco-2 cells and post-infectious irritable         and clinical trials.
+bowel syndrome mouse models [47], and probiotics                  To validate our drug repurposing findings, we
+treatment (Bifidobacterium lactis HN019 and                 chose to assess the anti-inflammatory properties of
+Lactobacillus acidophilus NCFM), which has positive         BFA and investigate a possible underlying
+effects on the treatment and maintenance of UC and          mechanism of benefiting IBD patients. BFA has been
+other associated IBD pathologies (pouchitis and             widely studied for its antitumor, antifungal, and
+cholangitis) [48]. Acinetobacter, Klebsiella, and           antiviral effects and apoptosis-inducing property [76].
+Pseudomonas (decreased abundance in Cgas-/-+DSS             BFA not only effectively inhibits protein trafficking
+group) were enriched in human breast milk-fed,              from the endoplasmic reticulum (ER) to the Golgi
+which is a protective factor against aberrant intestinal    apparatus [58], but also blocks type I IFN production
+inflammation and necrotizing enterocolitis in preterm       by impeding the translocation of STING to the
+infants [49]. Candidatus Phytoplasma and Prevotella         ER-Golgi intermediate compartment [59]. Apart from
+(decreased abundance in Cgas-/-+DSS group) were             the above, we demonstrated that BFA inhibited
+enriched in administered low dose penicillium, which        inflammation through blocking cGAS expression and
+reduces Th17 cells and subsequently suppresses the          type I IFN response in colitis model and human colon
+mouse colitis induced by DSS [50].                          cancer cells. Admittedly, acute DSS-induced colitis
+      In addition to the functional prediction from the     model may not accurately represent the IBD disease
+microbiome, we took a drug repurposing approach to          occurring in humans. Our validation assay presents a
+identify drugs with potential to treat IBD using CLUE       preliminary test for developing repurposing drugs,
+
+                                                                                                  http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                         7504
+
+which is yet to be confirmed for its correlation with       Principal Coordinates Analysis; qPCR: Quantitative
+human IBD. Therefore, chronic colitis models and            Polymerase Chain Reaction; RIPA: radiation
+human specimens should be considered in future              immunoprecipitation;     SLE:    systemic      lupus
+studies to clarify the significance of cGAS in the          erythematosus; STING: stimulator of the interferon
+pathogenesis of human IBD as well as the efficacy and       genes; STR: streptomycin; TBK1: TANK binding
+mechanisms of therapeutic candidates (i.e., BFA).           kinase 1; Tregs: regulatory T lymphocytes; TSEA:
+      Altogether, we provide a new framework to             Taxon Set Enrichment Analysis; UC: ulcerative colitis;
+identify biomarkers correlated with gut microbiota          UND: university of North Dakota; VAN: vancomycin;
+and immunity in the pathogenesis of IBD. We used            WT: wild type.
+these inflammation-correlated microbial and genetic
+variants as potential drug targets for IBD. Notably,        Supplementary Material
+our findings are twofold, including modified                Supplementary figures.
+microbiota affecting the host’s immune response and         http://www.thno.org/v11p7491s1.zip
+leading to intestinal inflammation, and in turn, the        Supplementary tables.
+effect of the altered immune response in Cgas-/- mice       http://www.thno.org/v11p7491s2.zip
+on the microbiota. Furthermore, we combined
+multi-pronged approaches for drug repurposing and           Acknowledgements
+validation, including bioinformatic analysis of IBD               The authors thank Charlie Rice (Rockefeller
+cohorts and drugs, gene transcriptome and protein           University) for kindly providing Cgastm1a(EUCOMM)Hmgu
+interactome, as well as cell culture and animal             mice. This project was supported by the National
+experimental studies. Collectively, our studies here        Institutes of Health (NIH) grants R01 AI138203,
+offered a promising systemic framework to connect           AI109317 grants, P20 GM103442, and GM113123 to
+disease gene expression with microbiome for                 MW, the National Key Research and Development
+biomarker and therapeutics discovery applicable to          Project     (2020YFA0509400,       2020YFC2002705),
+IBD and successfully demonstrated the potential             Guangdong Basic and Applied Basic Research
+therapeutic effects and underlying mechanisms of            Foundation (2019B030302012), and National Natural
+repurposing drugs. This strategy may be broadly             Science Foundation of China (81821002 and 81790251)
+applied to other cases and have the potential to speed      to CH, and the Science and Technology Department of
+up drug discovery.                                          Sichuan Province (No. 2019YJ0050) to CL. The Human
+                                                            core, Histology core, and Imaging core at UND were
+Abbreviations
+                                                            acknowledged for the support of the work.
+      AAM: ampicillin; AGS: Aicardi-Gourtières              Histological services were provided by the UND
+syndrome; ALT: alanine aminotransferase; AST:               Histology Core Facility supported (NIH) / NIGMS
+asparate aminotransferase; BFA: brefeldin-a; Casp-1:        award P20GM113123, DaCCoTA CTR NIH grant
+caspase-1; CCK-8: cell counting kit-8; CD: Crohn’s          U54GM128729, and UND SMHS funds. Figures 1A
+disease; cGAS: cyclic GMP-AMP synthase; CLUE:               and 5I were created by modifying illustrations
+Connectivity Map Linked User Environment; COL:              provided by Servier Medical Art (SMART,
+colistin; CS: connectivity score; CST: Cell Signaling       smart.servier.com) licensed under a Creative
+Technology; DAI: disease activity index; DAPI:              Commons Attribution 3.0 Unported License and
+4’,6’-diamidino-2-phenylindole; DEGs: differential          Vecteezy.com.
+expressed       genes;      ELISA:       enzyme-linked
+immunosorbent assay; ER: endoplasmic reticulum;             Data Availability
+FLU: flubendazole; GWAS: genome-wide association                 All relevant data supporting this study’s key
+studies; H&E: hematoxylin and eosin; IACUC:                 findings are available within the supplementary
+Institutional Animal Care and Use Committee; IBD:           information     files   and    available   from    the
+inflammatory bowel disease; IBDMDB: IBD Multi’s             corresponding author upon reasonable request. The
+omics database; IC50: 50% inhibiting concentration;         original 16S rDNA-seq data is deposited in the NCBI
+IFN: type I interferon; iHMP: Integrative Human             Bio-Project ID: PRJNA684767. Data underlying
+Microbiome       Project;   IL:    interleukins;    i.p.:   Figures 1 and S1 are provided in Tables S1-3 and IBD
+intraperitoneally;    IRF3:    interferon    regulatory     multi’s omics database (http://ibdmdb.org). Data
+transcription factor 3; LINCS: Library of Integrated        underlying Figure 3F is provided in Table S6 and the
+Network-Based        Cellular      Signatures;     LPS:     taxon sets were downloaded from Microbiome-
+lipopolysaccharides; MPO: myeloperoxidase; O2PLS:           Analyst         (https://www.microbiomeanalyst.ca/
+orthogonal partial least squares; OCT: optimal cutting      MicrobiomeAnalyst/faces/docs/Resources.xhtml).
+temperature; PAS: Periodic acid-Schiff; PCoA:               Source data in the figures are provided in Table S10.
+
+                                                                                                http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                                    7505
+                                                                                         18. Chen B, Ma L, Paik H, Sirota M, Wei W, Chua MS, et al. Reversal of cancer
+Code Availability                                                                            gene expression correlates with drug efficacy and reveals therapeutic targets.
+     For this study, R software (v 4.0.2) was used. The                                      Nat Commun. 2017; 8: 16022.
+                                                                                         19. Koleti A, Terryn R, Stathias V, Chung C, Cooper DJ, Turner JP, et al. Data
+code is available at https://github.com/guokai8/                                             Portal for the Library of Integrated Network-based Cellular Signatures
+IBD.                                                                                         (LINCS) program: integrated access to diverse large-scale cellular perturbation
+                                                                                             response data. Nucleic acids research. 2018; 46: D558-D66.
+                                                                                         20. Keenan AB, Jenkins SL, Jagodnik KM, Koplev S, He E, Torre D, et al. The
+Author Contributions                                                                         Library of Integrated Network-Based Cellular Signatures NIH Program:
+                                                                                             System-Level Cataloging of Human Cells Response to Perturbations. Cell Syst.
+     MW, CH, CL, ZW, and KG conceived of and                                                 2018; 6: 13-24.
+designed the project. ZW performed most of the                                           21. Team RC. R: A language and environment for statistical computing. 2013.
+                                                                                         22. Love MI, Huber W, Anders S. Moderated estimation of fold change and
+experiments, obtained profiled feces and prepared                                            dispersion for RNA-seq data with DESeq2. Genome Biol. 2014; 15: 550.
+sequencing library. KG designed implemented                                              23. Bouhaddani SE, Houwing-Duistermaat J, Salo P, Perola M, Jongbloed G, Uh
+                                                                                             H-W. Evaluation of O2PLS in Omics data integration. BMC bioinformatics.
+bioinformatic methods and processed and aligned                                              2016; 17 Suppl 2: 11.
+                                                                                         24. Fabregat A, Jupe S, Matthews L, Sidiropoulos K, Gillespie M, Garapati P, et al.
+sequencing data. PG participated in bioinformatics                                           The Reactome Pathway Knowledgebase. Nucleic Acids Res. 2018; 46:
+analysis and interpreted results. PG, QP, SQ, and PL                                         D649-d55.
+                                                                                         25. Schoggins JW, MacDuff DA, Imanaka N, Gainey MD, Shrestha B, Eitson JL, et
+participated in experiments. MW, CH, CL, JH, and                                             al. Pan-viral specificity of IFN-induced genes reveals new roles for cGAS in
+NX supervised and supported the work. ZW and KG                                              innate immunity. Nature. 2014; 505: 691-5.
+                                                                                         26. Ohnmacht C, Park JH, Cording S, Wing JB, Atarashi K, Obata Y, et al.
+wrote the manuscript and all authors reviewed and                                            MUCOSAL IMMUNOLOGY. The microbiota regulates type 2 immunity
+edited the manuscript.                                                                       through RORgammat(+) T cells. Science. 2015; 349: 989-93.
+                                                                                         27. Lichtman JS, Ferreyra JA, Ng KM, Smits SA, Sonnenburg JL, Elias JE.
+                                                                                             Host-Microbiota Interactions in the Pathogenesis of Antibiotic-Associated
+Competing Interests                                                                          Diseases. Cell Rep. 2016; 14: 1049-61.
+                                                                                         28. Kim JJ, Shajib MS, Manocha MM, Khan WI. Investigating intestinal
+     The authors have declared that no competing                                             inflammation in DSS-induced model of IBD. J Vis Exp. 2012.
+                                                                                         29. Guo Q, Shen N, Yuan K, Li J, Wu H, Zeng Y, et al. Caveolin-1 plays a critical
+interest exists.                                                                             role in host immunity against Klebsiella pneumoniae by regulating STAT5
+                                                                                             and Akt activity. European journal of immunology. 2012; 42: 1500-11.
+References                                                                               30. Wu M, Stockley PG, Martin WJ, 2nd. An improved western blotting technique
+                                                                                             effectively reduces background. Electrophoresis. 2002; 23: 2373-6.
+1.    Kaplan GG. The global burden of IBD: from 2015 to 2025. Nat Rev                    31. Lin P, Qin S, Pu Q, Wang Z, Wu Q, Gao P, et al. CRISPR-Cas13 Inhibitors Block
+      Gastroenterol Hepatol. 2015; 12: 720-7.                                                RNA Editing in Bacteria and Mammalian Cells. Mol Cell. 2020; 78: 850-61 e5.
+2.    de Souza HSP, Fiocchi C, Iliopoulos D. The IBD interactome: an integrated          32. Adolph TE, Tomczak MF, Niederreiter L, Ko HJ, Bock J, Martinez-Naves E, et
+      view of aetiology, pathogenesis and therapy. Nat Rev Gastroenterol Hepatol.            al. Paneth cells as a site of origin for intestinal inflammation. Nature. 2013; 503:
+      2017; 14: 739-49.                                                                      272-6.
+3.    Franzosa EA, Hsu T, Sirota-Madi A, Shafquat A, Abu-Ali G, Morgan XC, et al.        33. Li G, Fox J, 3rd, Liu Z, Liu J, Gao GF, Jin Y, et al. Lyn mitigates mouse airway
+      Sequencing and beyond: integrating molecular 'omics' for microbial                     remodeling by downregulating the TGF-beta3 isoform in house dust mite
+      community profiling. Nature reviews Microbiology. 2015; 13: 360-72.                    models. Journal of immunology (Baltimore, Md : 1950). 2013; 191: 5359-70.
+4.    de Lange KM, Moutsianas L, Lee JC, Lamb CA, Luo Y, Kennedy NA, et al.              34. Wu M, Pasula R, Smith PA, Martin WJ, 2nd. Mapping alveolar binding sites in
+      Genome-wide association study implicates immune activation of multiple                 vivo using phage peptide libraries. Gene Ther. 2003; 10: 1429-36.
+      integrin genes in inflammatory bowel disease. Nat Genet. 2017; 49: 256-61.         35. Klindworth A, Pruesse E, Schweer T, Peplies J, Quast C, Horn M, et al.
+5.    Pu Q, Lin P, Wang Z, Gao P, Qin S, Cui L, et al. Interaction among                     Evaluation of general 16S ribosomal RNA gene PCR primers for classical and
+      inflammasome, autophagy and non-coding RNAs: new horizons for drug.                    next-generation sequencing-based diversity studies. Nucleic Acids Res. 2013;
+      Precis Clin Med. 2019; 2: 166-82.                                                      41: e1.
+6.    Ramanan D, Tang MS, Bowcutt R, Loke Pn, Cadwell K. Bacterial sensor Nod2           36. Andrews S. FastQC: a quality control tool for high throughput sequence data.;
+      prevents inflammation of the small intestine by restricting the expansion of the       2010.
+      commensal Bacteroides vulgatus. Immunity. 2014; 41: 311-24.                        37. Bolger AM, Lohse M, Usadel B. Trimmomatic: a flexible trimmer for Illumina
+7.    Lamas B, Richard ML, Leducq V, Pham H-P, Michel M-L, Da Costa G, et al.                sequence data. Bioinformatics (Oxford, England). 2014; 30: 2114-20.
+      CARD9 impacts colitis by altering gut microbiota metabolism of tryptophan          38. Wood DE, Lu J, Langmead B. Improved metagenomic analysis with Kraken 2.
+      into aryl hydrocarbon receptor ligands. Nature medicine. 2016; 22: 598-605.            Genome biology. 2019; 20: 257.
+8.    Kabat AM, Harrison OJ, Riffelmacher T, Moghaddam AE, Pearson CF, Laing             39. McMurdie PJ, Holmes S. phyloseq: an R package for reproducible interactive
+      A, et al. The autophagy gene Atg16l1 differentially regulates Treg and TH2             analysis and graphics of microbiome census data. PloS one. 2013; 8: e61217.
+      cells to control intestinal inflammation. eLife. 2016; 5: e12444.                  40. Chong J, Liu P, Zhou G, Xia J. Using MicrobiomeAnalyst for comprehensive
+9.    Chu H, Khosravi A, Kusumawardhani IP, Kwon AHK, Vasconcelos AC,                        statistical, functional, and meta-analysis of microbiome data. Nat Protoc. 2020;
+      Cunha LD, et al. Gene-microbiota interactions contribute to the pathogenesis           15: 799-821.
+      of inflammatory bowel disease. Science (New York, NY). 2016; 352: 1116-20.         41. Larabi A, Barnich N, Nguyen HTT. New insights into the interplay between
+10.   Lloyd-Price J, Arze C, Ananthakrishnan AN, Schirmer M, Avila-Pacheco J,                autophagy, gut microbiota and inflammatory responses in IBD. Autophagy.
+      Poon TW, et al. Multi-omics of the gut microbial ecosystem in inflammatory             2020; 16: 38-51.
+      bowel diseases. Nature. 2019; 569: 655-62.                                         42. Subramanian A, Narayan R, Corsello SM, Peck DD, Natoli TE, Lu X, et al. A
+11.   Sun L, Wu J, Du F, Chen X, Chen ZJ. Cyclic GMP-AMP synthase is a cytosolic             Next Generation Connectivity Map: L1000 Platform and the First 1,000,000
+      DNA sensor that activates the type I interferon pathway. Science. 2013; 339:           Profiles. Cell. 2017; 171: 1437-52.e17.
+      786-91.                                                                            43. Haberman Y, Tickle TL, Dexheimer PJ, Kim M-O, Tang D, Karns R, et al.
+12.   Motwani M, Pesiridis S, Fitzgerald KA. DNA sensing by the cGAS-STING                   Pediatric Crohn disease patients exhibit specific ileal transcriptome and
+      pathway in health and disease. Nat Rev Genet. 2019; 20: 657-74.                        microbiome signature. J Clin Invest. 2014; 124: 3617-33.
+13.   Aden K, Tran F, Ito G, Sheibani-Tezerji R, Lipinski S, Kuiper JW, et al.           44. Hernández-Chirlaque C, Aranda CJ, Ocón B, Capitán-Cañadas F,
+      ATG16L1 orchestrates interleukin-22 signaling in the intestinal epithelium via         Ortega-González M, Carrero JJ, et al. Germ-free and Antibiotic-treated Mice
+      cGAS-STING. J Exp Med. 2018; 215: 2868-86.                                             are Highly Susceptible to Epithelial Injury in DSS Colitis. J Crohns Colitis.
+14.   Zhu Q, Man SM, Gurung P, Liu Z, Vogel P, Lamkanfi M, et al. Cutting edge:              2016; 10: 1324-35.
+      STING mediates protection against colorectal tumorigenesis by governing the        45. Hasnain SZ, Evans CM, Roy M, Gallagher AL, Kindrachuk KN, Barron L, et al.
+      magnitude of intestinal inflammation. Journal of immunology (Baltimore, Md             Muc5ac: a critical component mediating the rejection of enteric nematodes.
+      : 1950). 2014; 193: 4779-82.                                                           The Journal of experimental medicine. 2011; 208: 893-900.
+15.   Neurath MF. Current and emerging therapeutic targets for IBD. Nat Rev              46. Olli KE, Rapp C, O'Connell L, Collins CB, McNamee EN, Jensen O, et al.
+      Gastroenterol Hepatol. 2017; 14: 269-78.                                               Muc5ac Expression Protects the Colonic Barrier in Experimental Colitis.
+16.   Pushpakom S, Iorio F, Eyers PA, Escott KJ, Hopper S, Wells A, et al. Drug              Inflamm Bowel Dis. 2020; 26: 1353-67.
+      repurposing: progress, challenges and recommendations. Nat Rev Drug                47. Chen Q, Ren Y, Lu J, Bartlett M, Chen L, Zhang Y, et al. A Novel Prebiotic
+      Discov. 2019; 18: 41-58.                                                               Blend Product Prevents Irritable Bowel Syndrome in Mice by Improving Gut
+17.   Franke A, McGovern DP, Barrett JC, Wang K, Radford-Smith GL, Ahmad T, et               Microbiota and Modulating Immune Response. Nutrients. 2017; 9.
+      al. Genome-wide meta-analysis increases to 71 the number of confirmed              48. Saez-Lara MJ, Gomez-Llorente C, Plaza-Diaz J, Gil A. The role of probiotic
+      Crohn's disease susceptibility loci. Nat Genet. 2010; 42: 1118-25.                     lactic acid bacteria and bifidobacteria in the prevention and treatment of
+
+
+                                                                                                                                                   http://www.thno.org
+Theranostics 2021, Vol. 11, Issue 15                                                                                                                          7506
+      inflammatory bowel disease and other related diseases: a systematic review of     76. Paek SM. Recent Synthesis and Discovery of Brefeldin A Analogs. Mar Drugs.
+      randomized human clinical trials. Biomed Res Int. 2015; 2015: 505878.                 2018; 16.
+49.   Thai JD, Gregory KE. Bioactive Factors in Human Breast Milk Attenuate
+      Intestinal Inflammation during Early Life. Nutrients. 2020; 12.
+50.   Jin S, Zhao D, Cai C, Song D, Shen J, Xu A, et al. Low-dose penicillin exposure
+      in early life decreases Th17 and the susceptibility to DSS colitis in mice
+      through gut microbiota modification. Sci Rep. 2017; 7: 43662.
+51.   Kono M, Komeda Y, Sakurai T, Okamoto A, Minaga K, Kamata K, et al.
+      Induction of Complete Remission by Azacitidine in a Patient with
+      Myelodysplastic Syndrome-Associated Inflammatory Bowel Disease. J Crohns
+      Colitis. 2018; 12: 499-502.
+52.   Meddens CA, van der List ACJ, Nieuwenhuis EES, Mokry M. Non-coding
+      DNA in IBD: from sequence variation in DNA regulatory elements to novel
+      therapeutic potential. Gut. 2019; 68: 928-41.
+53.   Yan H, Wang H, Zhang X, Li X, Yu J. Ascorbic acid ameliorates oxidative
+      stress and inflammation in dextran sulfate sodium-induced ulcerative colitis
+      in mice. Int J Clin Exp Med. 2015; 8: 20245-53.
+54.   Sen A, Stark H. Role of cytochrome P450 polymorphisms and functions in
+      development of ulcerative colitis. World J Gastroenterol. 2019; 25: 2846-62.
+55.   Mabley J, Soriano F, Pacher P, Haskó G, Marton A, Wallace R, et al. The
+      adenosine A3 receptor agonist, N6-(3-iodobenzyl)-adenosine-5'-N-methyl-
+      uronamide, is protective in two murine models of colitis. Eur J Pharmacol.
+      2003; 466: 323-9.
+56.   Can G, Ayvaz S, Can H, Demirtas S, Aksit H, Yilmaz B, et al. The Syk Inhibitor
+      Fostamatinib Decreases the Severity of Colonic Mucosal Damage in a Rodent
+      Model of Colitis. J Crohns Colitis. 2015; 9: 907-17.
+57.   Aytaç E, Teksöz S, Saygılı S, Tortum OB, Yavuz N, Sözer V, et al. Iloprost
+      reduces colitis induced oxidative stress: An experimental study in rats. Turk J
+      Gastroenterol. 2013; 24: 224-9.
+58.   Hong S, Hwang I, Gim E, Yang J, Park S, Yoon SH, et al. Brefeldin A-sensitive
+      ER-Golgi vesicle trafficking contributes to NLRP3-dependent caspase-1
+      activation. Faseb j. 2019; 33: 4547-58.
+59.   Dobbs N, Burnaevskiy N, Chen D, Gonugunta VK, Alto NM, Yan N. STING
+      Activation by Translocation from the ER Is Associated with Infection and
+      Autoinflammatory Disease. Cell Host Microbe. 2015; 18: 157-68.
+60.   Gao D, Li T, Li XD, Chen X, Li QZ, Wight-Carter M, et al. Activation of cyclic
+      GMP-AMP synthase by self-DNA causes autoimmune diseases. Proc Natl
+      Acad Sci U S A. 2015; 112: E5699-705.
+61.   An X, Zhu Y, Zheng T, Wang G, Zhang M, Li J, et al. An Analysis of the
+      Expression and Association with Immune Cell Infiltration of the cGAS/STING
+      Pathway in Pan-Cancer. Mol Ther Nucleic Acids. 2019; 14: 80-9.
+62.   Yamamoto T, Kanuma T, Takahama S, Okamura T, Moriishi E, Ishii KJ, et al.
+      STING agonists activate latently infected cells and enhance SIV-specific
+      responses ex vivo in naturally SIV controlled cynomolgus macaques. Sci Rep.
+      2019; 9: 5917.
+63.   Lee-Kirsch MA, Gong M, Chowdhury D, Senenko L, Engel K, Lee YA, et al.
+      Mutations in the gene encoding the 3'-5' DNA exonuclease TREX1 are
+      associated with systemic lupus erythematosus. Nat Genet. 2007; 39: 1065-7.
+64.   Haag SM, Gulen MF, Reymond L, Gibelin A, Abrami L, Decout A, et al.
+      Targeting STING with covalent small-molecule inhibitors. Nature. 2018; 559:
+      269-73.
+65.   Forbes JD, Chen CY, Knox NC, Marrie RA, El-Gabalawy H, de Kievit T, et al. A
+      comparative study of the gut microbiota in immune-mediated inflammatory
+      diseases-does a common dysbiosis exist? Microbiome. 2018; 6: 221.
+66.   Imhann F, Vich Vila A, Bonder MJ, Fu J, Gevers D, Visschedijk MC, et al.
+      Interplay of host genetics and gut microbiota underlying the onset and clinical
+      presentation of inflammatory bowel disease. Gut. 2018; 67: 108-19.
+67.   Schirmer M, Franzosa EA, Lloyd-Price J, McIver LJ, Schwager R, Poon TW, et
+      al. Dynamics of metatranscription in the inflammatory bowel disease gut
+      microbiome. Nat Microbiol. 2018; 3: 337-46.
+68.   Gevers D, Kugathasan S, Denson LA, Vázquez-Baeza Y, Van Treuren W, Ren
+      B, et al. The treatment-naive microbiome in new-onset Crohn's disease. Cell
+      Host Microbe. 2014; 15: 382-92.
+69.   Rowan F, Docherty NG, Murphy M, Murphy B, Calvin Coffey J, O'Connell PR.
+      Desulfovibrio bacterial species are increased in ulcerative colitis. Dis Colon
+      Rectum. 2010; 53: 1530-6.
+70.   Seishima J, Iida N, Kitamura K, Yutani M, Wang Z, Seki A, et al. Gut-derived
+      Enterococcus faecium from ulcerative colitis patients promotes colitis in a
+      genetically susceptible mouse host. Genome Biol. 2019; 20: 252.
+71.   Negroni A, Costanzo M, Vitali R, Superti F, Bertuccini L, Tinari A, et al.
+      Characterization of adherent-invasive Escherichia coli isolated from pediatric
+      patients with inflammatory bowel disease. Inflamm Bowel Dis. 2012; 18:
+      913-24.
+72.   Wagner J, Short K, Catto-Smith AG, Cameron DJ, Bishop RF, Kirkwood CD.
+      Identification and characterisation of Pseudomonas 16S ribosomal DNA from
+      ileal biopsies of children with Crohn's disease. PLoS One. 2008; 3: e3578.
+73.   Yu Y, Zhu S, Li P, Min L, Zhang S. Helicobacter pylori infection and
+      inflammatory bowel disease: a crosstalk between upper and lower digestive
+      tract. Cell Death Dis. 2018; 9: 961.
+74.   Zhang Q, Wu Y, Wang J, Wu G, Long W, Xue Z, et al. Accelerated dysbiosis of
+      gut microbiota during aggravation of DSS-induced colitis by a
+      butyrate-producing bacterium. Sci Rep. 2016; 6: 27572.
+75.   Miquel S, Leclerc M, Martin R, Chain F, Lenoir M, Raguideau S, et al.
+      Identification of metabolic signatures linked to anti-inflammatory effects of
+      Faecalibacterium prausnitzii. mBio. 2015; 6.
+
+
+                                                                                                                                            http://www.thno.org
+

@@ -1,0 +1,352 @@
+Birkeland et al. Molecular Cancer  (2023) 22:161                                                                                                            Molecular Cancer
+https://doi.org/10.1186/s12943-023-01869-w
+
+
+
+
+    CO R R E S P O N D E N C E                                                                                                                                     Open Access
+
+
+Profiling small RNAs in fecal immunochemical
+tests: is it possible?
+Einar Birkeland1†, Giulio Ferrero2,3†, Barbara Pardini4,5, Sinan U. Umu6, Sonia Tarallo4,5, Sara Bulfamante7, Geir Hoff8,9,
+Carlo Senore7, Trine B Rounge10,11*† and Alessio Naccarati4,5*†
+
+
+    Abstract
+    Fecal microRNAs represent promising molecules with potential clinical interest as non-invasive diagnostic and
+    prognostic biomarkers. Colorectal cancer (CRC) screening based on the fecal immunochemical test (FIT) is an
+    effective tool for prevention of cancer development. However, due to the poor sensitivity of FIT especially for
+    premalignant lesions, there is a need for implementation of complementary tests. Improving the identification
+    of individuals who would benefit from further investigation with colonoscopy using molecular analysis, such as
+    miRNA profiling of FIT samples, would be ideal due to their widespread use. In the present study, we assessed
+    the feasibility of applying small RNA sequencing to measure human miRNAs in FIT leftover buffer in samples
+    from two European screening populations. We showed robust detection of miRNAs with profiles similar to those
+    obtained from specimens sampled using the established protocol of RNA stabilizing buffers, or in long-term
+    archived samples. Detected miRNAs exhibited differential abundances for CRC, advanced adenoma, and control
+    samples that were consistent for FIT and RNA-stabilizing buffers. Interestingly, the sequencing data also allowed for
+    concomitant evaluation of small RNA-based microbial profiles. We demonstrated that it is possible to explore the
+    human miRNome in FIT leftover samples across populations and envision that the analysis of small RNA biomarkers
+    can complement the FIT in large scale screening settings.
+    Keywords Small RNA sequencing, Fecal immunochemical test (FIT), Colorectal cancer screening, Stool biomarkers,
+    Microbiome, microRNAs
+
+
+
+
+                                                                                               4
+†
+ Einar Birkeland, Giulio Ferrero, Trine B Rounge, and Alessio Naccarati                         Italian Institute for Genomic Medicine (IIGM), c/o IRCCS Candiolo, Turin,
+have contributed equally to this work.                                                         Italy
+                                                                                               5
+                                                                                                Candiolo Cancer Institute, FPO-IRCCS, Candiolo, Turin, Italy
+*Correspondence:                                                                               6
+                                                                                                Department of Pathology, Institute of Clinical Medicine, University of
+Trine B Rounge                                                                                 Oslo, Oslo, Norway
+trinro@uio.no                                                                                  7
+                                                                                                Epidemiology and Screening Unit-CPO, University Hospital Città della
+Alessio Naccarati                                                                              Salute e della Scienza, Turin, Italy
+alessio.naccarati@iigm.it                                                                      8
+                                                                                                Section for colorectal cancer screening, Cancer Registry of Norway, Oslo
+1
+  Centre for Bioinformatics, Department of Informatics, University of Oslo,                    University Hospital, Oslo, Norway
+Oslo, Norway                                                                                   9
+                                                                                                Department of Research, Telemark Hospital, Skien, Norway
+2
+  Department of Clinical and Biological Sciences, University of Turin, Turin,                  10
+                                                                                                 Department of Research, Cancer Registry of Norway, Oslo, Norway
+Italy                                                                                          11
+                                                                                                 Centre for Bioinformatics, Department of Pharmacy, University of Oslo,
+3
+  Department of Computer Science, University of Turin, Turin, Italy                            Oslo, Norway
+
+
+                                           © The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use,
+                                           sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and
+                                           the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this
+                                           article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included
+                                           in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will
+                                           need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/. The
+                                           Creative Commons Public Domain Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available
+                                           in this article, unless otherwise stated in a credit line to the data.
+Birkeland et al. Molecular Cancer   (2023) 22:161                                                                 Page 2 of 7
+
+
+
+
+Introduction                                                   in FIT samples but we also tested the profiling robustness
+Colorectal cancer (CRC) is the third most common               by comparing sequencing data in FIT samples with feces
+malignancy and the second leading cause of cancer-             collected in stabilising buffers and long term archived
+related deaths [1]. The promotion of healthy lifestyles and    fecal samples. In addition, we showed that some gut
+dietary choices, the development of new strategies for         miRNAs differed in abundance between CRC/advanced
+disease management, and the implementation of global           adenomas (AA) and controls, suggesting a potential for
+screening programs are some of the strategies to reduce        discovering CRC biomarkers.
+CRC morbidity and mortality.
+   Screening of selected age groups at risk is considered      Materials and methods
+the most effective tool to prevent CRC development by          Cohorts and samples
+detecting early tumor forms and precancerous lesions           BCSN—FIT Bowel Cancer Screening in Norway (BCSN)
+[2]. In many European countries, the first step of CRC         is an ongoing (2012–2023) randomized trial comparing
+screening relies on non-invasive stool-based tests such as     once-only sigmoidoscopy with repeated FIT tests every
+the fecal immunochemical test (FIT). If the test is posi-      second year for up to four rounds. The study is a pilot
+tive, patients are invited to visual examinations based on     for the national screening program [9]. Stool samples are
+invasive endoscopic methods, such as colonoscopy. The          collected on plastic sticks designed to catch about 10 mg
+advantage of first-line FIT is the relatively low-cost and     of stool and then stored in a 2ml buffer (Eiken Chemi-
+ease of execution compared to colonoscopy. The FIT does        cals Ltd., Tokyo, Japan). Thirteen FIT samples from ano-
+not require specific preparation or dietary restriction and    nymized subjects participating in screening in 2015 were
+consequently has high acceptance rates. However, due to        randomly selected for the purpose of this feasibility study.
+its poor sensitivity for premalignant lesions and the bur-     Collected samples were stored in their original tubes at
+den associated with an excessive number of colonoscopy         -40˚C for up to 1 year.
+procedures, different countries adopt thresholds for FIT
+positivity that are suited to their colonoscopy capacity, in   NORCCAP—stool The Norwegian Colorectal Cancer
+a balancing act between sensitivity and specificity.           Prevention (NORCCAP) screening trial was carried out
+   This highlights the need for alternative biomarkers to      from 1999 to 2001 [10]. Participants were asked to bring
+improve CRC screening accuracy. The implementation of          a fresh frozen stool specimen collected at home less than
+complementary tests based on the analysis of the leftover      one week before sigmoidoscopy and to keep it in a 20 ml
+of FIT stool samples could help improve in the identifica-     vial in their home deep freezer (-20˚C) until attendance
+tion of those individuals that would benefit from further      for flexible sigmoidoscopy. Eleven anonymized stool
+investigation by colonoscopy. Both observational and           samples were randomly selected. Collected samples were
+experimental evidence point to a role for the gut micro-       stored without any stabilising buffer at -30˚C for approxi-
+biome in development and progression of CRC [3]. We            mately 17 years prior to RNA extraction.
+have shown that it is possible to profile the microbiome
+in FIT leftover samples and archived stool samples [4].        MITOS—FIT and stool The Italian biological samples
+However, larger discovery studies are needed to iden-          have been collected in the frame of the regular Piedmont
+tify clinically valuable biomarkers [5]. Small noncoding       Region CRC screening in the Microbiome and MiRNA in
+RNAs (sncRNAs), particularly microRNAs (miRNAs),               Torino Screening (MITOS) project. The Piedmont Region
+are detectable and stable in stool samples and are emerg-      screening program invites all residents, aged 59–69 to
+ing as a candidate source of biomarkers for the non-inva-      undergo a single sample biennial FIT (Eiken Chemicals
+sive diagnosis of gastrointestinal diseases, including CRC     Ltd., Tokyo, Japan). The collection of FIT leftovers for this
+[6]. Using small RNA sequencing, we have demonstrated          study started in April 2017 and is still ongoing. A total of
+the possibility to quantify the levels of both human and       185 subjects (classified based on colonoscopy results in
+microbial sncRNAs in human stool samples. Interest-            22 CRC, 80 AA, 30 non-advanced adenoma (nAA), and
+ingly, the combined use of human and microbial sncRNA          53 controls) were included in the present study. Among
+levels was more efficient than using the two biomarkers        them, 57 subjects (4 CRC, 25 AA, 6 nAA, and 22 con-
+alone in classifying CRC patients from colonoscopy-neg-        trols) also provided stool samples before undergoing
+ative control subjects [7].                                    colonoscopy. In this case, stool samples were collected at
+   While we have shown that gut-derived miRNAs are             home in nucleic acid collection and transport tubes with
+potential biomarkers for CRC, little is known about the        RNA stabilising solution (Norgen Biotek Corp.). Samples
+possibility of measuring them in a screening population        were brought to the hospital the day after the collection,
+by using the FIT buffer leftovers [8]. In this study, car-     they were immediately frozen at − 80 °C until nucleotide
+ried out in two independent European laboratories, we          extraction. FIT and stool samples were stored at -80˚C for
+showed not only the feasibility of small RNA sequencing        approximately 3–5 years prior to RNA extraction. Colo-
+Birkeland et al. Molecular Cancer   (2023) 22:161                                                             Page 3 of 7
+
+
+
+
+noscopy was recommended because the patients had             analyses were performed using the Spearman correlation
+abnormal or positive FIT results (i.e., there was blood in   method.
+the stool at the time of the test). AAs were defined based
+on the presence of high-grade dysplasia, villous compo-      Results and discussion
+nent, or lesion size of > 1 cm, as defined by Zarchy and     Cohort and alignment statistics
+Ershoff [11].                                                Fecal samples collected with different sampling, stor-
+                                                             age, and processing procedures were analysed to identify
+Small RNA extraction and library preparation                 stably detectable miRNAs with a potential to be used as
+FIT stool samples were obtained from buffer leftovers        CRC biomarkers (Fig. 1A). From the MITOS cohort, two
+contained in the original collection device (approximately   sample types were collected for each individual: stool
+1ml). NORCCAP feces was thawed and homogenized in            samples collected in RNA-stabilising buffer, and left-
+a buffer (Omnigene-GUT, DNAgenotek). For BCSN FIT            over buffer derived from CRC-screening FIT samples.
+and NORCCAP stool samples, RNA was extracted from            Two sets of anonymized Norwegian samples were also
+200 µl buffer leftovers and buffer mix, respectively. RNA    assessed: archived stool samples stored without stabilis-
+was purified using phenol-chloroform phase separation        ing buffer from the NORCCAP study, and leftover buffer
+and miRNeasy Mini Kit (cat. no. 217,004, Qiagen).            from Norwegian CRC-screening FIT samples from the
+  For the MITOS cohort, total RNA from stool and FIT         BCSN trial.
+leftover samples was extracted using 200 µl input mate-        As reported in Supplementary Table 1 A and B,
+rial and the Stool Total RNA Purification Kit (Norgen        a mean of 0.12% (range: 0.003–0.62%) and 0.15%
+Biotek Corp.) as previously described [7, 8].                (range:0.03–0.61%) of small RNA sequencing reads
+  sncRNA transcripts were converted into barcoded            were assigned to miRNAs, respectively, in stool samples
+cDNA libraries with the NEBNext Multiplex Small RNA          and in FIT leftover buffers. Considering 10 as the mini-
+Library Prep Set for Illumina following the NEBNext          mum number of normalised reads to define a miRNA as
+Multiplex Small RNA Library Prep (Protocol E7330, New        detected, on average 63 (range: 32–235) and 41 (range:
+England BioLabs Inc., USA) [7, 12].                          16–191) miRNAs were detected in stool and FIT leftover
+  The size selection of purified RNA fragments for the       samples, respectively (Supplementary Table 1 A-B). Still,
+MITOS cohort was performed as described in [7]. For          when accounting for differences in sequencing depth
+BCSN and NORCCAP samples the size selection was              by rarefaction, no differences in the number of miRNAs
+performed with a cut size optimized to cover RNA mol-        detected were found between sampling groups (p > 0.1).
+ecules from 17 to 47 nt in length. Small RNA libraries       The stool miRNAs detected in the MITOS cohort sam-
+were indexed and sequenced on Illumina platforms.            ples included most of the annotations observed in pre-
+  One miRNA, miR-1246, was validated in MITOS-               vious analyses performed on the same samples analysed
+FIT samples by quantitative Real-time PCR (qRT-PCR)          using a different pipeline [7, 8].
+(details in Supplementary Methods).                            For two FIT leftover samples, small RNA sequencing
+                                                             was performed on libraries generated from two different
+Bioinformatics and statistical analysis                      amounts of starting material (250 and 400 µl). Compar-
+Reads were quality filtered and adapters removed with        ing the rate of miRNA-mapped reads, similar rates were
+fastp in default settings. Mapping of reads on miRBase       observed (0.4–0.9% of mapped reads) with an average of
+v22.1 miRNA sequences was performed using smrnaseq           33 miRNAs (range: 31–34) consistently detected in each
+(https://nf-co.re/smrnaseq) with skip_mirdeep option.        experiment. No significant differences were observed
+miRNA-unmapped reads were aligned against the                among miRNA levels measured in such experiments and,
+human hg38 genome using Bowtie2 with –very-sensitive-        as expected, the levels of detected molecules were sig-
+local option. The human-unmapped reads were mapped           nificantly correlated (rho = 0.43–0.60, p < 0.001) (Supple-
+against microbial genomes using Kraken 2 (v2.1.2) as         mentary Fig. 1A and Supplementary Table 1 C). The
+described in [7].                                            intra-individual correlation between miRNA levels was
+  miRNA read count normalization and Differential            higher than among different individuals (Supplementary
+Expression (DE) analyses were performed with DESeq2.         Fig. 1B). Overall, differences were observed in miRNA
+Differential abundance analysis of reads mapped to           profiles related both to sampling procedure and to par-
+microbes was performed with SIAMCAT with default             ticipant population (see PCA analysis in Fig. 1B).
+settings. For more details, see Supplementary Methods.         Since the 57 stool samples from the MITOS cohort
+Concordance between sampling methods was evaluated           were collected from the same subjects donating FIT
+by comparing the mean abundance of features (miR-            leftover samples, a paired comparative analysis was per-
+NAs or microbial species) across datasets. Correlation       formed between the miRNA levels measured in the two
+                                                             biospecimens. The analysis was focused on the levels of
+Birkeland et al. Molecular Cancer       (2023) 22:161                                                                                     Page 4 of 7
+
+
+
+
+Fig. 1 A. Graphical representation of the study. B. Principal component analysis (PCA) of samples based on mature miRNA read counts. C. Bar plot
+reporting, for each cohort and sample type, the average levels of the miRNAs associated with the highest levels in MITOS-FIT leftover samples. D. Mean
+normalised abundance of miRNAs in paired MITOS-FIT (x-axis) and MITOS-Stool (y-axis) samples. Each point represents a miRNA coloured based on the
+Spearman correlation coefficient for comparison of paired samples. Only miRNAs detected in at least 15% of each sample type were included in this
+analysis. E. Scatterplot showing the log2FC of expression computed considering MITOS-stool (x-axis) and MITOS-FIT leftover (y-axis) miRNA levels in
+samples from CRC patients with respect to those from colonoscopy-negative subjects. F. Heatmap of the Z-score normalised miRNA levels in MITOS-stool
+and MITOS-FIT leftover samples. AA, advanced adenoma; nAA, non-advanced adenoma; CRC, colorectal cancer
+Birkeland et al. Molecular Cancer   (2023) 22:161                                                              Page 5 of 7
+
+
+
+
+23 miRNAs that were consistently identified across both        respect to colonoscopy-negative subjects (Supplemen-
+stool and FIT samples (exceeding a median of 10 nor-           tary Table 1F). The levels of the 23 miRNAs were char-
+malised reads; Fig. 1C and Supplementary Table 1D).            acterized by a coherent difference in both MITOS-stool
+Most of these miRNAs (n = 21) were previously detected         and MITOS-FIT samples (rho = 0.69, p < 0.001) (Fig. 1E).
+by us in an analysis of stool miRNome and nine of them         Clustering analysis of the miRNA levels in FIT leftover
+(miR-1246, -21-5p, -26a-5p, -148a-3p, let-7b-5p, -200b-        and stool samples of the MITOS cohort showed two
+3p, -194-5p, -1290) overlapped with a set of 25 stool          main miRNA clusters and a partial separation between
+miRNAs whose levels were consistently dysregulated in          colonoscopy-negative subjects and AA or CRC patients
+sporadic CRC patients from different European popula-          (Fig. 1F).
+tions [8]. Furthermore, these miRNAs correspond well              To technically validate the presence of miRNAs in
+with the most abundant miRNAs in circulation, includ-          FIT buffer leftover samples, the levels of miR-1246 were
+ing miR-1246, -320, -21-5p, -1290, -148a-3p being              evaluated by qRT-PCR in samples from 38 subjects of
+among the most abundant miRNAs in serum samples                the MITOS cohort (5 CRC, 19 AA, 6 nAA patients and
+[13] and plasma extracellular vesicles (EVs) samples [8].      8 colonoscopy-negative controls). The analysis con-
+In the latter study, miR-1246 was also significantly more      firmed the presence of this miRNA in all the analyzed
+abundant in plasma EVs of CRC cases than those from            samples (Ct < 33, Supplementary Table 1G). In addition,
+colonoscopy-negative controls [8]. As reported in Sup-         the miR-1246 FIT leftover levels measured by qRT-PCR
+plementary Table 1D, levels of 57% of these miRNAs             were significantly related with those detected by sRNA-
+were positively correlated (average rho = 0.36, p < 0.05)      Seq performed on the same sample (rho = 0.69, p < 0.001,
+between the two biospecimens. Among them, miR-                 Supplementary Fig. 1D). These results are consistent
+4713-3p, miR-1246, and miR-192-5p were characterised           with our previous qRT-PCR validation of miRNA detec-
+by the highest correlation. All the 23 miRNAs were also        tion in stool samples [8].
+detected in the Norwegian cohorts (Fig. 1C), despite the          Functional analysis of DE miRNA target genes showed
+different sampling, preservation, and RNA extraction           the prevalence of terms related to cell cycle regulation
+procedures. Still, the abundances observed in the NORC-        and DNA-damage response for the targets of miRNAs
+CAP samples were low compared to the other cohorts,            with increased levels in CRC patients (Supplementary
+and likely result from long storage times and lack of pres-    Table 1 H, I). Conversely, targets of miRNAs decreasing
+ervation buffer. Storage effects have been identified pre-     in patient samples were enriched in processes related to
+viously when assessing the microbiome in this cohort [4].      apoptosis, unfolded protein stress response, and immune
+   T﻿here was a positive correlation between paired FIT        response (Supplementary Table 1 H I).
+and stool samples for the mean normalised abundance
+of miRNAs (rho = 0.78, p < 0.001; Fig. 1D), which was also     Microbial profiling based on small RNAs
+found for the unpaired Norwegian samples (rho = 0.52,          After the identification of human miRNAs, the remain-
+p < 0.001) (Supplementary Fig. 1C). These data confirm         ing reads from sequencing were aligned against the
+that putative miRNAs can be consistently detected in           human genome and the subsequent unmapped reads
+both archived and newly-collected samples from differ-         were investigated for their microbial sncRNA content.
+ent populations.                                               This approach classified reads in the range of 36–40 nt,
+                                                               of which 38.5% and 37.4% were classified in the MITOS
+miRNA differential expression in MITOS-stool and MITOS-        stool and FIT samples, respectively.
+FIT samples                                                      Given the previous evidence on the concordance
+DE analysis was performed between stool and FIT left-          between microbial abundances estimated by small RNA
+over miRNA levels detected in MITOS subjects with CRC          sequencing and metagenomic data [7], the human-
+or AA (considered separately or together, CRC + AA)            unmapped sRNA-Seq reads were used to infer the
+with respect to colonoscopy-negative subjects. Con-            microbial abundance in our data. Overall, FIT samples
+sidering the 23 miRNAs detected in both biofluids, 12          displayed a higher abundance of taxa belonging to the
+were associated with significantly different levels in stool   Bacteroidetes phylum, whereas stool samples were domi-
+samples from CRC or AA patients (adj. p < 0.05; Supple-        nated by Firmicutes (Fig. 2A-B), with the composition
+mentary Table 1E). Comparing separately AA and CRC             of stool and FIT samples differing significantly (PER-
+patients with colonoscopy-negative subjects, four and          MANOVA p < 0.05; Fig. 2C). This could indicate a dif-
+eight DE miRNAs were observed, respectively. Interest-         ferential sensitivity of bacteria to the buffer components
+ingly, let-7b-5p was DE in both comparisons. In addi-          in the FIT and Norgen buffers, where the former has a
+tion, four miRNAs were significantly more (let-7b-5p           relatively high concentration of the potent antimicrobial
+and miR-148a-3p) and less (miR-4451 and miR-11399)             compound sodium azide [14]. Still, at the species level,
+abundant in FIT leftover samples of CRC patients with          there was concordance between FIT and stool samples
+Birkeland et al. Molecular Cancer        (2023) 22:161                                                                                               Page 6 of 7
+
+
+
+
+Fig. 2 A-B. Classification of reads according to microbial taxa. Relative abundance of phyla in FIT leftover and stool samples from MITOS (A), BCSN, and
+NORCCAP (B) cohorts. C. Principal coordinate (PCo) plot of FIT and stool samples (including unpaired samples). D. Mean relative abundance of species in
+stool samples (y-axis) and FIT samples (x-axis), coloured according to the Spearman’s rho of the correlation between the relative abundances in paired FIT
+and stool samples. The solid diagonal line represents equal abundance in either biospecimen type
+
+
+(Fig. 2D). Within the MITOS study subjects, we assessed                        Supplementary Information
+differences in microbial taxa between colonoscopy-neg-                         The online version contains supplementary material available at https://doi.
+                                                                               org/10.1186/s12943-023-01869-w.
+ative and either CRC, AA, or CRC/AA (Supplementary
+Table 1 J), and although they were not statistically signifi-                    Supplementary Material 1
+cant, the direction and magnitude of differences in taxa
+                                                                                 Supplementary Material 2
+abundance between CRC cases and colonoscopy-neg-
+                                                                                 Supplementary Material 3
+ative subjects were consistent in stool and FIT samples
+(rho = 0.53, p = 0.002; Supplementary Fig. 2).
+                                                                               Acknowledgements
+                                                                               We would like to thank Jan Inge Nordby for performing laboratory analyses
+Conclusions                                                                    for the Norwegian samples. Sequencing services for Norwegian samples was
+Taken together, our results show that by using small RNA                       provided by the Norwegian Sequencing Centre (https://www.sequencing.uio.
+sequencing we can profile both stool miRNAs and micro-                         no), a national technology platform hosted by Oslo University Hospital and
+                                                                               the University of Oslo supported by the Research Council of Norway and the
+bial taxa in the left-over FIT buffer used in CRC screen-                      Southeastern Regional Health Authority.
+ing. The consistent levels of miRNAs between sampling
+methods suggest that FIT may be used for miRNA bio-                            Authors’ contributions
+                                                                               Concept and design (TBR, AN); Collection and assembly of the data (GH,
+marker research in large scale screening settings. This                        TBR, AN, CS); Experimental tasks, data analysis and interpretation (EB, GF, BP,
+feasibility study also confirms that the alterations in gut                    SUU, ST); Provisions of study materials or patients (GH, CS, SB, ST); Manuscript
+miRNA levels in CRC patients observed in FIT samples                           writing (EB, GF, BP, TBR, and AN); Manuscript editing (All); Final approval of the
+                                                                               version (All).
+may be used to detect miRNAs in FIT as biomarkers to
+improve screening performance.
+Birkeland et al. Molecular Cancer            (2023) 22:161                                                                                                    Page 7 of 7
+
+
+
+
+Funding                                                                              5.    Kvaerner AS, Birkeland E, Bucher-Johannessen C, Vinberg E, Nordby JI, Kangas
+This work was supported by the Italian Institute for Genomic Medicine (IIGM)               H, Bemanian V, Ellonen P, Botteri E, Natvig E, et al. The CRCbiome study:
+and Compagnia di San Paolo Torino, Italy (to AN, BP, and ST). This project                 a large prospective cohort study examining the role of lifestyle and the
+has received funding from the European Union’s Horizon 2020 research and                   gut microbiome in colorectal cancer screening participants. BMC Cancer.
+innovation program under grant agreement No 825410 (ONCOBIOME project                      2021;21:930.
+to AN, BP, and ST). The research leading to these results has received funding       6.    Francavilla A, Tarallo S, Pardini B, Naccarati A. Fecal microRNAs as non-invasive
+from AIRC under IG 2020—ID. 24882 – P.I. Naccarati Alessio Gordon (to AN)                  biomarkers for the detection of colorectal cancer: a systematic review.
+and under IG2019—ID. 23473—P.I. Senore Carlo (to CS). This project also                    Minerva Biotecnologica. 2019;31:30–42.
+received funding from the Norwegian Cancer Society open call 2017 (190179)           7.    Tarallo S, Ferrero G, Gallo G, Francavilla A, Clerico G, Realis Luc A, Manghi
+to TBR and 2018 (198048) to TBR and from the Cancer Registry of Norway’s                   P, Thomas AM, Vineis P, Segata N et al. Altered Fecal Small RNA Profiles in
+funds to TBR.                                                                              Colorectal Cancer Reflect Gut Microbiome Composition in Stool Samples.
+                                                                                           mSystems 2019, 4.
+Data Availability                                                                    8.    Pardini B, Ferrero G, Tarallo S, Gallo G, Francavilla A, Licheri N, Trompetto M,
+The datasets used and/or analysed during the current study are available from              Clerico G, Senore C, Peyre S, et al. A fecal MicroRNA signature by small RNA
+the corresponding author on reasonable request.                                            sequencing accurately distinguishes colorectal cancers: results from a Multi-
+                                                                                           center Study. Gastroenterology. 2023;165:582–599e588.
+                                                                                     9.    Zhu MM, Xu XT, Nie F, Tong JL, Xiao SD, Ran ZH. Comparison of immu-
+Declarations                                                                               nochemical and guaiac-based fecal occult blood test in screening and
+                                                                                           surveillance for advanced colorectal neoplasms: a meta-analysis. J Dig Dis.
+Competing interests                                                                        2010;11:148–60.
+The authors declare that they have no competing interests.                           10.   Bretthauer M, Gondal G, Larsen K, Carlsen E, Eide TJ, Grotmol T, Skovlund
+                                                                                           E, Tveit KM, Vatn MH, Hoff G. Design, organization and management of a
+Ethics approval and consent to participate                                                 controlled population screening study for detection of colorectal neoplasia:
+For the MITOS cohort the study design and the informed consent were                        attendance rates in the NORCCAP study (norwegian Colorectal Cancer
+approved by the local Ethics committee (AOU Città della salute e della                     Prevention). Scand J Gastroenterol. 2002;37:568–73.
+Scienza di Torino, Italy). For the NORCCAP and BCSN cohorts, anonymized              11.   Zarchy TM, Ershoff D. Do characteristics of adenomas on flexible sigmoidos-
+samples were used. This was approved by the Norwegian Regional Ethics                      copy predict advanced lesions on baseline colonoscopy? Gastroenterology.
+Committee—South-East (REC) projects, S-98052 and 2011/1272, respectively.                  1994;106:1501–4.
+                                                                                     12.   Ferrero G, Cordero F, Tarallo S, Arigoni M, Riccardo F, Gallo G, Ronco G, Allasia
+Received: 28 April 2023 / Accepted: 25 September 2023                                      M, Kulkarni N, Matullo G, et al. Small non-coding RNA profiling in human
+                                                                                           biofluids and surrogate tissues from healthy individuals: description of the
+                                                                                           diverse and most represented species. Oncotarget. 2018;9:3097–111.
+                                                                                     13.   Umu SU, Langseth H, Bucher-Johannessen C, Fromm B, Keller A, Meese E,
+                                                                                           Lauritzen M, Leithaug M, Lyle R, Rounge TB. A comprehensive profile of
+                                                                                           circulating RNAs in human serum. RNA Biol. 2018;15:242–50.
+References                                                                           14.   Zouiouich S, Mariadassou M, Rue O, Vogtmann E, Huybrechts I, Severi G,
+1. Xi Y, Xu P. Global colorectal cancer burden in 2020 and projections to 2040.            Boutron-Ruault MC, Senore C, Naccarati A, Mengozzi G, et al. Comparison of
+    Transl Oncol. 2021;14:101174.                                                          Fecal Sample Collection Methods for Microbial Analysis embedded within
+2. Buskermolen M, Cenin DR, Helsingen LM, Guyatt G, Vandvik PO, Haug U,                    Colorectal Cancer Screening Programs. Cancer Epidemiol Biomarkers Prev.
+    Bretthauer M, Lansdorp-Vogelaar I. Colorectal cancer screening with faecal             2022;31:305–14.
+    immunochemical testing, sigmoidoscopy or colonoscopy: a microsimulation
+    modelling study. BMJ. 2019;367:l5383.
+3. Vleugels JLA, Hazewinkel Y, Fockens P, Dekker E. Natural history of diminu-       Publisher’s Note
+    tive and small colorectal polyps: a systematic literature review. Gastrointest   Springer Nature remains neutral with regard to jurisdictional claims in
+    Endosc. 2017;85:1169–1176e1161.                                                  published maps and institutional affiliations.
+4. Rounge TB, Meisal R, Nordby JI, Ambur OH, de Lange T, Hoff G. Evaluating
+    gut microbiota profiles from archived fecal samples. BMC Gastroenterol.
+    2018;18:171.
+

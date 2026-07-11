@@ -1,0 +1,529 @@
+Genes & Genomics (2023) 45:627–635                                                                                     Online ISSN 2092-9293
+https://doi.org/10.1007/s13258-022-01340-y                                                                              Print ISSN 1976-9571
+
+    RESEARCH ARTICLE
+
+
+
+Identification of DNA methylation and genetic alteration
+simultaneously from a single blood biopsy
+Xiaomin Chen1 · Jiahui Liu1 · Jun Li1 · Yinpeng Xie1 · Zichen Yu1 · Lu Shen1 · Qingfeng Liu1 · Wei Wu1 · Qiang Zhao1 ·
+Haoxiang Lin1 · Gaotong Liu1 · Qiuping Luo1 · Ling Yang1 · Yi Huang1 · Meiru Zhao1 · Xin Yi1 · Xuefeng Xia1
+
+Received: 20 April 2022 / Accepted: 26 October 2022 / Published online: 13 December 2022
+© The Author(s) under exclusive licence to The Genetics Society of Korea 2022
+
+
+Abstract
+Background High-throughput sequencing of blood cell-free DNA (cfDNA) techniques offer an opportunity to characterize
+and monitor cancer rapidly in a non-invasive and real-time manner. Nonetheless, there lacks a tool within therapeutic arsenal
+to identify multi-omics alterations simultaneously from a single biopsy. In current times, bisulfite-based sequencing detects
+5mC and 5hmC at single-base resolution is the golden standard of DNA methylation, while the degradation of DNA and
+biased sequencing data are the problems of this method.
+Objective To identify the consistency analysis of methylation and genetic variation with single library, we presented a
+platform detecting multi-omics data simultaneously from a single blood biopsy using bisulfite-free method of genomic
+methylation sequencing (GM-seq) mediated by TET enzyme.
+Methods We detected methylomic and genetic changes simultaneously from a single blood biopsy in NA12878 and randomly
+chose ten blood biopsies from colorectal cancer or lung cancer patients to validate the ability of GM-seq.
+Results Similar cytosine methylation level between whole genome bisulfite sequencing (WGBS) and GM-seq were identified
+in NA12878. Moreover, longer insert size, CpGs coverage and GC distribution were outperformed than WGBS. In addition,
+the comparison of the single nucleotide polymorphism (SNP), insertion-deletion (Indel) and copy number variation (CNV)
+in NA12878 or ctDNA from liver cancer between GM-seq and whole genome sequencing (WGS) show a good consistency,
+indicating that this method is feasible for detecting genetic variation in blood.
+Conclusion In conclusion, our work demonstrated a method for identification of the methylated modification and genetic
+variations simultaneously from a single blood biopsy.
+
+Keywords Blood biopsy · Cell-free DNA (cfDNA) · DNA methylation · Genetic variation · GM-seq
+
+
+Introduction                                                                methylate modification and genetic alteration of circulating
+                                                                            tumour DNA (ctDNA) in blood provide a potential oppor-
+Historically, tissue-based high-throughput sequencing is the                tunity to monitor tumor initiation and progression in the era
+primary approach for detecting, characterizing and monitor-                 of precision cancer medicine, which have finally enabled
+ing various cancers (Cescon et al. 2020). Given the costs,                  the introduction of liquid biopsy assays into clinical practice
+risks and insufficient tissue that limit the application of inter-          (Ignatiadis et al. 2021). Based on this, the FDA has already
+ventional biopsies. As opposed to tissue sampling, blood-                   approved several reagent kits for diagnosing cancer, which
+based liquid biopsy is not limited by sampling frequency and                is a tipping point for the widespread use of the liquid biopsy
+tumor accessibility (Gandara et al. 2018). The analysis of                  in the clinic for cancer screening and diagnosis (Ignatiadis
+                                                                            et al. 2021).
+                                                                                Genetic alteration is a feature of tumor genome. The
+Xiaomin Chen, Jiahui Liu, Jun Li and Yinpeng Xie have equally
+                                                                            accumulation of gene mutation, including single nucleotide
+contributed to this work.
+                                                                            polymorphism (SNP), insertion and deletion (Indel), copy
+* Xuefeng Xia                                                               number variations (CNV) and structure variants (SV), can all
+  xiaxf@geneplus.org.cn                                                     give rise to the occurrence and development of tumors (Gar-
+1                                                                           raway and Lander 2021) Genotyping and mutation detection
+     GenePlus, Beijing, China
+
+
+                                                                                                                                  1  3
+                                                                                                                           Vol.:(0123456789)
+628                                                                                               Genes & Genomics (2023) 45:627–635
+
+
+of biomarker-guided therapies are widely applicated in the          inherent biases and increased sequencing cost (Olova et al.
+past two decades in tumor biopsy. With the arrival of ctDNA         2018). To overcome the limitation of BS-seq, bisulfite-free
+in blood, non-invasive cancer detection has begun. PCR-             methods have emerged and displayed remarkable advantages
+based experiment of estimating mutations of EGFR to iden-           than BS-seq in the recent years, including TET-assisted
+tify resistance to the corresponding targeted drugs have been       pyridine borane sequencing (TAPS) to determinate 5mC
+approved in lung cancer (Li et al. 2017). Panel-based high-         and 5hmC (Liu et al. 2019). Compared with BS-seq, TAPS
+throughput deep sequencing further increase sensitivity by          showed higher mapping rate and quality, better even cover-
+providing more opportunities for mutation detection (Ode-           age and lower sequencing cost than BS-seq (Liu et al. 2019).
+gaard et al. 2018). DNA methylation is another important            Enzymatic methyl-seq (EM-Seq) was another bisulfite-free
+mechanism that plays an essential role in the regulation of         method, which oxidize and glucosylate 5 and 5hmC to 5gmC
+biological processes, including development (Greenberg and          by TET2 and βGT, then APOBEC3A deaminated unmeth-
+Bourc'his 2019), aging (Unnikrishnan et al. 2019) and cancer        ylated C to U (Vaisvila et al. 2021). EM-Seq showed better
+(Koch et al. 2018) without changing DNA sequence (Smith             performance in mapping efficiency and GC coverage than
+and Meissner 2013). Studies have also shown that abnormal           BS-Seq (Vaisvila et al. 2021).
+DNA methylation is also closely related to the occurrence              To date, the concurrent analysis of methylation and
+and development of cancer (Klutstein et al. 2016). Bisulfite        genetic variation with single library is still unidentified. We
+sequencing (BS-seq) has been the gold standard to quan-             developed a TET enzyme-based platform (GM-seq) and
+tify DNA methylation at base-level-resolution (Kobayashi            established a set of analytical process to detect methylomic
+and Kono 2012). Bisulfite treatment chemically convert              and genetic changes simultaneously from a single blood
+unmethylated cytosine to uracil by deamination, however,            biopsy. Similar cytosine methylation level between whole
+5 and 5hmC are resistant to deamination. In the subsequent          genome bisulfite sequencing (WGBS) and GM-seq were
+PCR amplification, methylated C (5 and 5hmC) remains C              identified in NA12878. Of particular interest, longer insert
+while unmethylated C is readout as T. Oxidative bisulfite           size, CpGs coverage and GC distribution were outperformed
+sequencing (oxBS-seq) is developed to determinate 5mC               than WGBS. In addition, the comparison of the single nucle-
+(Booth et al. 2012), as well as ten-eleven translocation (TET)      otide polymorphism (SNP), insertion-deletion (Indel) and
+assisted bisulfite sequencing (TAB-seq) for detecting 5hmC          copy number variation (CNV) in NA12878 or ctDNA from
+(Yu et al. 2012). All the methods involve bisulfite applica-        liver cancer between GM-seq and whole genome sequencing
+tion, which resulting in the degradation of DNA (Tanaka             (WGS) also show a good consistency, indicating that this
+and Okamoto 2007).                                                  method is feasible for detecting genetic variation in blood.
+    High-throughput sequencing of blood cell-free DNA               Taken together, GM-seq provides an efficient and accurate
+(cfDNA) techniques offer an opportunity to characterize             technique to help us study tumor muli-omics simultane-
+and monitor cancer rapidly in a non-invasive and real-time          ously from a single biopsy, showing great promise in clini-
+manner. Changes of cfDNA in multiple forms, including               cal utilities.
+fragmentation patterns, epigenetic changes, copy num-
+ber variations (CNV), distribution of circulating tumor
+DNA (ctDNA), germline single-nucleotide polymorphism                Materials and methods
+(SNP), somatic single-nucleotide variation (SNV) and etc.
+offer comprehensive information to monitor tumor biology            Sample collection and DNA extraction
+from the process of tumorigenesis, progression, evolution,
+to disease recurrence eventually, showing substantial and           Seven lung cancer, three colorectal cancer and eight liver
+clinically relevant potentials in early-stage diagnosis, drug       cancer cfDNA samples were enrolled in this study from
+response prediction, therapeutic outcomes assessment and            the sample bank of Geneplus-Beijing Institute. The studies
+patients’ prognosis. Nonetheless, even though multi-omics           were conducted in accordance with the Declaration of Hel-
+alterations in cfDNA is becoming an ambrosia in precision           sinki and were approved by an Institutional Review Board.
+oncology, there lacks a tool within therapeutic arsenal to          About 4 ml plasma was isolated from blood and cfDNA
+identify these changes simultaneously from a single biopsy,         was extracted from the plasma with the MagMAX Cell-Free
+given drastic chemical changes needed for detecting one             DNA Kit following the manufacturer’s instructions.
+type of changes prevents the sustain and identification of
+other signals. This severely limits its utility to those precious   GM‑seq and WGS process
+DNA samples with low input. In addition, the conversion
+of unmodified cytosine to thymine leading to unbalanced             We utilized Hieff ­NGS® Ultima Pro DNA Library Prep Kit
+nucleotide composition, which resulting in poor sequencing          for Illumina (Yeason, cat. on. 12201ES96) for end repair,
+quality low mapping rates, uneven genome coverages and              A-tailing, and adaptor ligation. After magnetic beads were
+
+13
+Genes & Genomics (2023) 45:627–635                                                                                                        629
+
+purified, 5-methylcytosine (5mC) and 5-hydroxymethyl-                   CpG coverage were generated using methylKit 1.4.0. The
+cytosine (5hmC) were oxidized to 5-acylcytosine (5fC) or                GC bias plot was generated using Picard’s CollectGCBias-
+5-carboxyl cytosine (5caC) by TET enzyme, then 5fC or                   Metrics. Correlation analysis was performed using methyl-
+5caC was treated with pyridine borane and reduced to dihyd-             Kit version 1.4.0 with default settings except for a minimum
+rouracil (DHU). Finally, PCR amplification is performed and             coverage threshold of one read (Vaisvila et al. 2021). All the
+barcode is introduced to obtain the sequencing library. After           data of WGBS in this study was referred to Romualdas’s
+going through this series of processes the methylated cyto-             (Vaisvila et al. 2021) to compare with ours of GM-seq. The
+sine would be identified as thymine (T) by MGI T7 sequenc-              sequencing data metrics for WGBS, GM-seq, and WGS data
+ing platform. The samples for whole genome sequencing                   was shown in Supplementary Table.
+directly were also going through the same procedures that
+were used for GM-seq but without oxidation and pyridine
+borane reduction preparation. Whole genome analyses were                Result
+performed by the sequencing library we constructed above.
+                                                                        Study design
+Analysis of sequencing data
+                                                                        The procedures in this study are summarized in Fig. 1. Spe-
+The raw fastq and bam files were evaluated using BWA (Li                cifically, to evaluate the reliability of GM-seq, we compared
+and Durbin. 2009) and SAMtools software (Li et al. 2009).               the libraries and methylation levels between GM-seq and
+Alignment and analysis of DNA-sequencing data were per-                 WGBS, as well as genetic alteration between GM-seq and
+formed utilizing asTair tools (https://​bitbu​cket.​org/​bsbla​         WGS. We performed methylation analyses on the NA12878
+bludw​ig/​astair/​wiki/​Home) in automated mode from raw                genomic DNA in our investigation. The procedure of GM-
+fastq files to finalized genotyping data. This pipeline utilized        seq is as follows: ten-eleven translocation (TET) oxidation of
+GATK tools and ExomeDepth tools to perform base quality                 5mC and 5hmC to 5-carboxylcytosine (5caC), then pyridine
+score, genotype calling and variant annotation, including               borane reduction of 5caC to dihydrouracil (DHU). Subse-
+SNP and Indel. And ichorCNA were employed to analyze                    quent PCR converts DHU to thymine, enabling a C-to-T
+genome-wide CNV and calculate insert size. Sequencing                   transition of 5mC and 5hmC. While for WGBS bisulfite
+data were analyzed by three computational pipelines in order            treatment was employed to convert unmethylated cytosine to
+to understand the reliability of the detection of fungi, bac-           uracil and leaving 5mC and/or 5hmC intact. Genetic altera-
+teria, and viruses: Kraken, Kaiju and SNAP. BLAST was                   tion analyses were compared between GM-seq and WGS
+used to compare the sequencing results with the high-risk               with NA12878 and validated within the blood biopsies of
+microorganisms. For methylation analyses, diagrams for                  lung and colorectal cancer patients.
+
+
+                                                     GM-seq
+                                                                        Fragmented
+              WGBS                                                      gDNA or cfDNA
+                           Fragmented                                   End repair and
+                           gDNA or cfDNA                                A-tailing
+                           End repair and
+                                                     C mC hmC caC
+                                                                                                           WGS
+                           A-tailing                                     Adapter Ligation                              Fragmented
+         C    mC hmC caC                                                                                               gDNA or cfDNA
+                                                     C    caC caC caC
+                             Adapter Ligation                                                                          End repair
+                                                                         TET oxidation and
+                                                                                                                       and A-tailing
+         U    mC hmC U                                                   pyridine borane              C mC hmC caC
+                                                     C DHU DHU DHU
+                              Bisulfite                                  reduction
+                             treatment                                                                                   Adapter Ligation
+          T   C   C   T                               C   T   T   T                                    C   C   C   C
+                              Library                                    Library                                          Library
+                              amplification                              amplification                                    amplification
+
+   Sequencing and data             comparison   Sequencing and data             comparison       Sequencing and data
+        analyses                                     analyses                                         analyses
+
+
+Fig. 1  Study flowchart
+
+
+                                                                                                                                13
+630                                                                                                                                                            Genes & Genomics (2023) 45:627–635
+
+
+Comparison of methylome analyses                                                                       0.8% for GM-seq (333,111/37,917,987, Fig. 2E, Figure
+between GM‑seq and WGBS                                                                                S1E). Furthermore, GM-seq and WGBS still resulted in
+                                                                                                       highly correlated methylation detection (R = 0.87, Fig. 2F,
+To assess the performance of GM-seq in comparison with                                                 Figure S1F). In addition, GM-seq consumes less process-
+WGBS, which is the most widely used method and it is the                                               ing time and takes up less memory during the analysis pro-
+current golden standard, we performed methylation analy-                                               cess (Table 1). Overall, the above results indicated that the
+sis with NA12878 DNA using both methods. Firstly, GM-                                                  methylation levels identified by the two methods are highly
+seq library had a slightly larger insert size compared with                                            comparable but the GM-seq showed improved detecting
+WGBS (Fig. 2A, Figure S1A). Moreover, GM-seq library                                                   accuracy and sensitivity compared against WGBS.
+also resulted in less GC bias than WGBS (Fig. 2B, Figure
+S1B). We also compared CpG island numbers detected
+from GM-seq and WGBS libraries, the results showed
+GM-seq could cover more CpG loci at minimal observed
+sequencing depths, within a range of 1–25 × (Fig. 2C, Fig-
+ure S1C). To assess the accuracy of GM-seq, we detected                                                Table 1  The processing time and memory GM-seq and WGS con-
+the methylation levels of these two methods in NA12878                                                 sumed in analyzing NA12878 genomic DNA
+and obtained comparable results (Fig. 2D, Figure S1D).
+                                                                                                       Method    Fastqc (h) Fq2bam (h) Bamqc (h) CallCpG (h) Mem-
+Compared with WGBS, GM-seq (51,212,002) detected                                                                                                             orymax
+more CpGs than WGBS (37,917,987) at sequencing cov-                                                                                                          (G)
+erage depths of 23 × , and WGBS failed to detect 26%
+                                                                                                       GM-seq 1                                   84             2           1            25
+(13,627,126/51,212,002) of the currently known CpG sites
+                                                                                                       WGBS 0.5                                   160            2           1            35
+identified by GM-seq, while this failure rate was about
+
+
+                   A                                                  B                                                                 C
+                                   0.8                                                  4                                                         60
+                                                          GM-seq                                                                                                            GM-seq
+                                                                                                          GM-seq
+
+
+
+
+                                                                                                                         CpG Covered (Millions)
+                                                                                                                                                  50
+
+
+
+
+                                                                      Normalized Coverage
+                                                          WGBS                                                                                                              WGBS
+                                   0.6                                                  3                 WGBS
+
+
+
+                  Percentage (%)
+                                                                                                                                                  40
+
+                                   0.4                                                  2                                                         30
+
+                                                                                                                                                  20
+                                   0.2                                                  1
+                                                                                                                                                  10
+
+                                       0                                                0                                                         0
+                                           0    100 200 300 400 500                         0       50             100                                 0           10         20
+                                                   Insert size (bp)                             GC content (%)                                             Observed Coverage Depth
+
+                      D                                               E                                                                      F
+                                60
+                                                                      GM-seq                                 WGBS
+                                50                                                                                                                                       R = 0.87
+
+
+
+
+        Methylation level (%)
+                                40
+
+                                30                                           1.36 M              3.76 M            0.33 M
+                                20
+
+                                10
+
+                                   0
+                                               GM-seq    WGBS
+
+
+Fig. 2  Comparison of methylome analyses between GM-seq and                                            detected by GM-seq and WGBS in NA12878 genomic. D The num-
+WGBS. A Insert sizes in NA12878 genomic DNA by GM-seq and                                              ber of CpGs detected by the GM-seq and WGBS at the depth of
+WGBS. B GC-bias plot for GM-seq and WGBS libraries. C The                                              23× . F CpG methylation correlation between libraries made using
+number of CpGs covered by GM-seq and bisulfite libraries at mini-                                      NA12878 DNA for GM-seq and WGBS
+mum coverage depths of 1 × through 25 × . E Methylation level
+
+
+13
+Genes & Genomics (2023) 45:627–635                                                                                     631
+
+
+Comparison of genetic mutation detected                          mutations that NA12878 harbored by GM-seq and WGS
+between GM‑seq and WGS                                           and compared the detection rates of SNP and Indel between
+                                                                 these two sequencing methods. The high detection rates
+To evaluate the performance to detect genetic alterations of     of SNP and Indel indicated the capability of both methods
+GM-seq, we conducted WGS and GM-seq using NA12878                (Fig. 3A). Furthermore, at the coverage depth of 23x, GM-
+genomic DNA simultaneously. We firstly detected the              seq reached a high consistency with WGS in SNP (95.9%)
+
+
+     A                                                   B
+                     120                                         SNP                               Indel
+                                    SNP   Indel
+                           97.95 96.96    99.46 97.87
+                     100
+                                                         WGS                GM-seq      WGS                       GM-seq
+
+
+
+
+Detection rate (%)
+                      80
+
+                      60
+                                                        0.37M    3.7M          0.16M 0.24M          0.78M          0.16M
+                      40
+
+                      20
+
+                       0
+                            GM-seq          WGS
+
+
+               C                          GM-seq                                        WGS
+
+
+
+
+Fig. 3  Comparison of whole genome analyses between GM-seq and   GM-seq WGS in NA12878 genomic DNA. C Genome-wide CNV
+WGS. A Detection rate of SNP and Indel in NA12878 genomic DNA    detected by GM-seq and WGS in patients with lung cancer
+by GM-seq and WGS. B The number of SNP and Indel covered by
+
+
+                                                                                                                13
+632                                                                                                    Genes & Genomics (2023) 45:627–635
+
+Table 2  Clinical Characteristics of 10 lung or colorectal cancer         WGS simultaneously. Sequencing results showed consist-
+patients                                                                  ent quality scores between GM-seq and WGS for each sam-
+Sample ID        Age        Gender        Stage       Tumor               ple (Figure S4). Furthermore, the base content per base for
+                                                                          read1 and read2 in GM-seq is also similar to that of WGS
+Sample 1         69         Male          IV          Lung cancer
+                                                                          (Figure S5). Besides, the insert sizes of two approaches were
+Sample 2         63         Male          IV          Lung cancer
+                                                                          highly similar (Figure S6). Among these eight patients, the
+Sample 3         64         Female        IV          Lung cancer
+                                                                          detected CNV events of the two methods are highly over-
+Sample 4         76         Male          IV          Lung cancer
+                                                                          lapped, where shared CNV events accounted for about
+Sample 5         61         Female        IV          Lung cancer
+                                                                          85–90% (Fig. 4A, B and Figure S7). For instance, in sample
+Sample 6         50         NA            IV          Colorectal cancer
+                                                                          11, GM-seq detected 89.7% (131/146) of CNV events iden-
+Sample 7         67         Male          IV          Lung cancer
+                                                                          tified in WGS, while WGS exhibited the ability to identify
+Sample 8         64         Male          IV          Colorectal cancer
+                                                                          85.6% (131/153) CNV events that GM-seq detected.
+Sample 9         69         Male          IV          Lung cancer
+                                                                              Besides, GM-seq showed a high agreement with WGS in
+Sample 10        46         Female        IV          Colorectal cancer
+                                                                          terms of SNP (Fig. 4A and Figure. S7) and Indel (Fig. 4A
+                                                                          and Figure. S7) detection. To further evaluate the utility of
+                                                                          GM-seq, we also applied this method to detect the hepati-
+Table 3  Clinical Characteristics of 8 liver cancer patients              tis B virus (HBV) infection and in result, five out of the six
+Sample ID         Age        Gender         Stage        HBV infection
+                                                                          HBV-positive patients (5/6, 83.3%) were detected by GM-
+                                                                          seq. Taken together, all the results further confirmed the
+Sample 11         57         Male           II           Yes              high consistency between GM-seq and WGS, substantiat-
+Sample 12         45         Male           I            No               ing the capability of GM-seq to detect genomic alterations
+Sample 13         51         Male           IIIb         No               in addition to methylomic changes in cancer patients, and
+Sample 14         58         Male           IIIb         Yes              demonstrating the powerful value of GM-seq in detecting
+Sample 15         65         Female         I            Yes              multi-omics changes in real-world clinical use.
+Sample 16         66         Male           IIIa         Yes
+Sample 17         64         Male           IIIa         Yes
+Sample 18         64         Male           II           Yes              Discussion
+
+                                                                          Recently, liquid biopsy has become a promising method
+and Indel (83.0%) detection (Fig. 3B, Figure S1G, H). Given               that has several advantages over conventional tissue biopsy:
+NA12878 genomic DNA harbors no copy number variation                      the sampling procedure is non-invasive, easier, cheaper and
+(CNV), we randomly chose ten blood biopsies from patients                 could be repeated serially in a real-time manner. It was also
+with cancer (including colorectal cancer and lung cancer                  suitable for the monitoring of treatments and is not affected
+from our sample bank, Table 2) to validate the ability of                 by the heterogeneity of tumors which serves as a main limi-
+GM-seq to identify CNVs. Similar insert sizes between GM-                 tation of tissue biopsies in cancer (Cescon et al. 2020), thus
+seq and WGS libraries were obtained (Figure S2). Besides,                 the clinical applications of ctDNA in precision oncology
+GM-seq and WGS coincided in detecting CNV events, in                      were extremely clinically relevant and highly promising. The
+terms of that all the patients were detected with the highly              detection of genetic alterations and epigenetic modifications
+comparable CNV events by GM-seq and WGS (Fig. 3C,                         of ctDNA are the most common indicators in liquid biopsy.
+Figure S3). These data showed the capability of GM-seq in                 Up to now, bisulfite sequencing is the most extensively
+detecting genetic alteration.                                             applied method to detect 5mC and 5hmC. However, the dis-
+                                                                          advantage of WGBS is that it degrades the majority of the
+Validation the priority of GM‑seq by liver cancer                         DNA and generate sequencing libraries with low complex-
+samples                                                                   ity, which may due to the conversion of nearly all cytosine
+                                                                          to thymine (Liu et al. 2019; Tanaka and Okamoto. 2007).
+To further validate the performance of GM-seq to detect                   Therefore, separate samples and independent libraries are
+genetic alterations from single blood biopsies simultane-                 needed for WGS and WGBS, and it’s conceivably reason-
+ously, we enrolled eight liver cancer patients to verify the              able that this would lead to sample exhaustion. In this study,
+accuracy and efficiency of GM-seq coupled with WGS.                       we developed a bisulfite-free platform to detect DNA meth-
+Among the patients with liver cancer, six out of eight were               ylation and genetic alteration simultaneously, the GM-seq
+with hepatitis B infection. The detailed clinicopathological              library showed longer insert size, less GC-bias profile and
+characteristics of the samples are listed in Table 3. We drew             normalized dinucleotide distributions than WGBS. Moreo-
+blood from these participants and performed GM-seq and                    ver, we detected more CpG loci compared with WGBS. We
+
+
+13
+Genes & Genomics (2023) 45:627–635                                                                                             633
+
+
+ A                 CNV                                      SNP                                        Indel
+                                     GM-seq     WGS                        GM-seq        WGS                          GM-seq
+  WGS
+
+
+
+
+                                                                                     0.1M              0.62M               0.06M
+     22               131               15
+                                              0.97M           3.47M              0.31M
+
+
+
+
+     B                           GM-seq                                                           WGS
+
+
+
+
+Fig. 4  Validation in liver cancer patient. A Venn diagram of detected CNV, SNP and Indel by GM-seq or WGS. B Comparison of CNVs
+detected by GM-seq and WGS
+
+
+
+also analyzed the genetic alterations including SNP, Indel        two oxidation processes to reach proper conversion rate (Liu
+and CNV between GM-seq and WGS, and similar results               et al. 2019; Siejka-Zielińska et al. 2021). While we adjusted
+were obtained from blood samples. Hence, this method              the pH of oxidized buffer in GM-seq to pH 6.0. At this PH
+could be a replacement of WGBS and WGS to identify the            level, only one oxidation process is required, which effec-
+DNA methylation and alteration in blood.                          tively improves the oxidation efficiency and simplifies the
+   Recently, the limitations of WGBS have driven several          operation processes. Secondly, cfDNA was purified by using
+new approaches for detecting DNA methylation of 5mC and           Bio-Spin® P-30 Gel Column and 1.8 × magnetic beads, thus
+5hmC, which are the most predominant DNA modification             there were two purification steps in TAPS process (Liu et al.
+(Zhao et al. 2020). The TET-assisted pyridine borane sequenc-     2019), while GM-seq used 3 × magnetic beads directly purified
+ing (TAPS) was applied to detect 5mC and 5hmC, in which           DNA in just one step. The two-step procedure for purifica-
+methylated 5mC and 5hmC are firstly oxidized by TET to            tion after oxidation would cause losses of DNA templates. In
+5caC and then reduced by pyridine borane with high conver-        GM-seq technology, the median oxidation recovery rate was
+sion efficiency. Another bisulfite-free method named EM-seq,      improved to 84.56%, which was 51.04% higher than TAPS
+which oxidized and glucosylated 5mC and 5hmC to 5gmC              technology. Finally, TAPS technology used Zymo-Spin col-
+by TET2 and βGT, then unmodified C is deaminated to U by          umns to recycle the nucleic acid (Liu et al. 2019), but this step
+APOBEC3A. Although EM-seq showed better performance               is inefficient and unstable due to the high concentrations of
+than BS-seq, the conversion of unmethylated C still causes        NaAC (about 600 mM) and pyridinborane (about 1 M), cou-
+low complexity of DNA. Similar library construction method        pled with a low pH (about 4.3) in the reaction system. In GM-
+as TAPS did, GM-seq also showed the better performance            seq, we used an optimized magnetic bead recovery method
+than BS-seq, including library construction, CpG loci detec-      and 3 × magnetic beads to recycle DNA directly, achieving a
+tion and coverage. Compared with TAPS, we modified our            median cfDNA recovery rate of 71 with 43% higher compari-
+GM-seq in the following 3 points. Firstly, the oxidation buffer   son with TAPS. Thus, for the 10 ng cfDNA samples, if the
+used in TAPS process was of pH at 8.0 and the methylation         raw bases of sequencing were about 100G, the depth of the
+conversion rate is not favorable at this pH, thus it required     sequence libraries could reach a mean depth of 11.6x, ranged
+
+
+                                                                                                                       13
+634                                                                                                                Genes & Genomics (2023) 45:627–635
+
+from 8.2 to 22 × for TAPS (Liu et al. 2019), while the cover-                        and 5-hydroxymethylcytosine at single-base resolution. Science
+age depth in GM-seq ranged from 29 to 39x, indicating that                           336:934–937
+                                                                                Cescon DW, Bratman SV, Chan SM, Siu LL (2020) Circulating tumor
+GM-seq retained more available DNA templates and reduced                             DNA and liquid biopsy in oncology. Nat Cancer 1:276–290
+the templates losses compared with TAPS. Meanwhile, the                         Gandara DR, Paul SM, Kowanetz M, Schleifman E, Zou W, Li Y,
+same sequencing data could be further used for whole genome                          Rittmeyer A, Fehrenbacher L, Otto G, Malboeuf C et al (2018)
+analyses considering unmodified cytosines were intact, and                           Blood-based tumor mutational burden as a predictor of clinical
+                                                                                     benefit in non-small-cell lung cancer patients treated with atezoli-
+the detected SNP, Indel and CNV are consistent with WGS,                             zumab. Nat Med 24:1441–1448
+resulting in reducing sequencing cost, less processing time                     Garraway LA, Lander ES (2021) Lessons from the cancer genome.
+and sample input.                                                                    Cell 153:17–37
+   To summarize, we draw a conclusion that tumor genome                         Greenberg MVC, Bourc’his D (2019) The diverse roles of DNA meth-
+                                                                                     ylation in mammalian development and disease. Nat Rev Mol
+and methylome changes could be detected and analyzed simul-                          Cell Biol 20:590–607
+taneously using less blood samples wtih GM-seq than conven-                     Ignatiadis M, Sledge GW, Jeffrey SS (2021) Liquid biopsy enters the
+tional process. Meanwhile, GM-seq could also detect the HBV                          clinic - implementation issues and future challenges. Nat Rev Clin
+infection in addition. It makes it possible to detect multi-omics                    Oncol 18:297–312
+                                                                                Klutstein M, Nejman D, Greenfield R, Cedar H (2016) DNA methyla-
+data simultaneously, including methylomic changes, genetic                           tion in cancer and aging. Cancer Res 76:3446–3450
+variations, virus infection and so on. It connotes GM-seq is                    Kobayashi H, Kono T (2012) DNA methylation analysis of germ cells
+a more efficient, less traumatic but accurate approach. Taken                        by using bisulfite-based sequencing methods. Methods Mol Biol
+together, we believe that GM-seq is likely to be applied to                          825:223–235
+                                                                                Koch A, Joosten SC, Feng Z, de Ruijter TC, Draht MX, Melotte V,
+clinical practice in the future and has the potential to replace                     Smits KM, Veeck J, Herman JG, Nest LV et al (2018) Author cor-
+WGS as one of the golden sequencing methods in multi-omics                           rection: analysis of DNA methylation in cancer: location revisited.
+studies.                                                                             Nat Rev Clin Oncol 15:467
+                                                                                Li H, Durbin R (2009) Fast and accurate short read alignment with
+Supplementary Information The online version contains supplemen-                     Burrows-Wheeler transform. Bioinformatics 25:1754–1760
+tary material available at https://​doi.​org/​10.​1007/​s13258-​022-​01340-y.   Li Y, Xu H, Su S, Ye J, Chen J, Jin X, Lin Q, Zhang D, Ye C, Chen
+                                                                                     C (2017) Clinical validation of a highly sensitive assay to detect
+Author contributions XY, LY and XX conceived the idea of the pre-                    EGFR mutations in plasma cell-free DNA from patients with
+sent study. JL, LS, WW and MZ performed the sequence process. XC,                    advanced lung adenocarcinoma. PLoS ONE 12:e0183331
+JL, QL, QZ, HL, GL, QL analyzed the data. XC, YX wrote the manu-                Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth
+script. ZY and XX reviewed the manuscript.                                           G, Abecasis G, Durbin R, 1000 Genome Project Data Process-
+                                                                                     ing Subgroup (2009) The sequence alignment/map format and
+Funding This work was supported by Shenzhen Post-doctoral Funding                    SAMtools. Bioinformatics 25:2078–2079
+to Dr. Yinpeng Xie.                                                             Liu Y, Siejka-Zielinska P, Velikova G, Bi Y, Yuan F, Tomkova M, Bai
+                                                                                     C, Chen L, Schuster-Bockler B, Song CX (2019) Bisulfite-free
+Data availability The data that support the findings of this study are               direct detection of 5-methylcytosine and 5-hydroxymethylcytosine
+available from the corresponding author upon reasonable request.                     at base resolution. Nat Biotechnol 37:424–429
+                                                                                Odegaard JI, Vincent JJ, Mortimer S, Vowles JV, Ulrich BC, Banks
+Declarations                                                                         KC, Fairclough SR, Zill OA, Sikora M, Mokhtari R et al (2018)
+                                                                                     Validation of a plasma-based comprehensive cancer genotyping
+Conflict of interest Xiaomin Chen, Jiahui Liu, Jun Li, Yinpeng Xie,                  assay utilizing orthogonal tissue and plasma-based methodolo-
+Zichen Yu, Lu Shen, Qingfeng Liu, Wei Wu, Qiang Zhao, Haoxiang                       gies. Clin Cancer Res 24:3539–3549
+Lin, Gaotong Liu, Qiuping Luo, Ling Yang, Yi Huang, Meiru Zhao,                 Olova N, Krueger F, Andrews S, Oxley D, Berrens RV, Branco MR,
+Xin Yi and Xuefeng Xia declare that they have no conflicts of interest.              Reik W (2018) Comparison of whole-genome bisulfite sequencing
+                                                                                     library preparation strategies identifies sources of biases affecting
+Ethical approval and consent to participate All procedures performed                 DNA methylation data. Genome Biol 19:33
+in studies involving human participants were in accordance with the             Siejka-Zielińska P, Cheng J, Jackson F, Liu Y, Soonawalla Z, Reddy S,
+Helsinki Declaration (as revised in 2013). Written informed consent                  Silva M, Puta L, McCain M, Culver E et al (2021) Cell-free DNA
+was obtained from the patient. The authors are accountable for all                   TAPS provides multimodal information for early cancer detection.
+aspects of the work in ensuring that questions related to the accuracy               Sci Adv 7:eabh0534
+or integrity of any part of the work are appropriately investigated and         SmithMeissner ZD (2013) A DNA methylation: roles in mammalian
+resolved.                                                                            development. Nat Rev Genet 14:204–220
+                                                                                Tanaka K, Okamoto A (2007) A Degradation of DNA by bisulfite
+Consent for publication Written informed consent for publication was                 treatment. Bioorg Med Chem Lett 17:1912–1915
+obtained from all participants.                                                 Unnikrishnan A, Freeman WM, Jackson J, Wren JD, Porter H, Rich-
+                                                                                     ardson A (2019) A The role of DNA methylation in epigenetics
+                                                                                     of aging. Pharmacol Ther 195:172–185
+                                                                                Vaisvila R, Ponnaluri VKC, Sun Z, Langhorst BW, Saleh L, Guan S,
+                                                                                     Dai N, Campbell MA, Sexton BS, Marks K et al (2021) Enzy-
+References                                                                           matic methyl sequencing detects DNA methylation at single-base
+                                                                                     resolution from picograms of DNA. Genome Res 31:1280–1289
+Booth MJ, Branco MR, Ficz G, Oxley D, Krueger F, Reik W, Balasu-                Yu M, Hon GC, Szulwach KE, Song CX, Zhang L, Kim A, Li X,
+    bramanian S (2012) Quantitative sequencing of 5-methylcytosine                   Dai Q, Shen Y, Park B et al (2012) Base-resolution analysis
+
+
+13
+Genes & Genomics (2023) 45:627–635                                                                                                             635
+
+    of 5-hydroxymethylcytosine in the mammalian genome. Cell              Springer Nature or its licensor (e.g. a society or other partner) holds
+    149:1368–1380                                                         exclusive rights to this article under a publishing agreement with the
+Zhao LY, Song J, Liu Y, Song CX, Yi C (2020) Mapping the epigenetic       author(s) or other rightsholder(s); author self-archiving of the accepted
+    modifications of DNA and RNA. Protein Cell 11:792–808                 manuscript version of this article is solely governed by the terms of
+                                                                          such publishing agreement and applicable law.
+Publisher's Note Springer Nature remains neutral with regard to
+jurisdictional claims in published maps and institutional affiliations.
+
+
+
+
+                                                                                                                                      13
+

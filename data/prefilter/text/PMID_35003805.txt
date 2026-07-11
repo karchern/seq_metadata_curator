@@ -1,0 +1,681 @@
+Hindawi
+Depression Research and Treatment
+Volume 2021, Article ID 7967552, 10 pages
+https://doi.org/10.1155/2021/7967552
+
+
+
+
+Research Article
+Gut Microbiota and Depressive Symptoms at the End of CRT for
+Rectal Cancer: A Cross-Sectional Pilot Study
+
+          Velda J. Gonzalez-Mercado ,1 Jean Lim,2 Leorey N. Saligan,3 Nicole Perez,1
+          Carmen Rodriguez,4 Raul Bernabe,5 Samia Ozorio,4 Elsa Pedro,6 Farrah Sepehri,4
+          and Brad Aouizerat7
+          1
+            Rory Meyers College of Nursing, New York University, New York, NY, USA
+          2
+            University of Miami, Miami, FL, USA
+          3
+            Intramural Program, National Institute of Nursing Research/National Institute of Health, Bethesda, MD, USA
+          4
+            College of Nursing, University of South Florida, Tampa, FL, USA
+          5
+            Department of General Studies, University of Puerto Rico, San Juan, Puerto Rico
+          6
+            School of Pharmacy, Medical Science Campus, University of Puerto Rico, San Juan, Puerto Rico
+          7
+            Bluestone Center for Clinical Research, Department of Oral and Maxillofacial Surgery College of Dentistry, New York University,
+            New York, NY, USA
+
+          Correspondence should be addressed to Velda J. Gonzalez-Mercado; vg2145@nyu.edu
+
+          Received 25 May 2021; Accepted 24 November 2021; Published 29 December 2021
+
+          Academic Editor: Marcin Rzeszutek
+
+          Copyright © 2021 Velda J. Gonzalez-Mercado et al. This is an open access article distributed under the Creative Commons
+          Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work
+          is properly cited.
+
+          Background. The role of alterations in gut microbiota composition (termed dysbiosis) has been implicated in the pathobiology of
+          depressive symptoms; however, evidence remains limited. This cross-sectional pilot study is aimed at exploring whether
+          depressive symptom scores changed during neoadjuvant chemotherapy and radiation therapy to treat rectal cancer, and if gut
+          microbial taxa abundances and predicted functional pathways correlate with depressive symptoms at the end of chemotherapy
+          and radiation therapy. Methods. 40 newly diagnosed rectal cancer patients (ages 28-81; 23 males) were assessed for depressive
+          symptoms using the Hamilton Rating Scale for Depression (HAM-D) and provided stool samples for 16S rRNA sequencing.
+          Gut microbiome data were analyzed using QIIME2, and correlations and regression analyses were performed in R. Results.
+          Participants had signiﬁcantly higher depressive symptoms at the end as compared to before CRT. The relative abundances of
+          Gemella, Bacillales Family XI, Actinomyces, Streptococcus, Lactococcus, Weissella, and Leuconostocaceae were positively
+          correlated (Spearman’s rho = 0:42 to 0.32), while Coprobacter, Intestinibacter, Intestimonas, Lachnospiraceae,
+          Phascolarctobacterium, Ruminiclostridium, Ruminococcaceae (UCG-005 and uncultured), Tyzzerella, and Parasutterella
+          (Spearman’s rho = −0:43 to − 0:31) were negatively correlated with HAM-D scores. Of the 14 predicted MetaCyc pathways that
+          correlated with depressive symptom scores at the end of CRT, 11 (79%) were associated with biosynthetic pathways.
+          Conclusions. Signiﬁcant bacterial taxa and predicted functional pathways correlated with depressive symptoms at the end of
+          chemotherapy and radiation therapy for rectal cancer which warrants further examination and replication of our ﬁndings.
+
+
+
+1. Introduction                                                        and constipation), cancer and/or CRT can negatively inﬂu-
+                                                                       ence patients’ psychological health, precipitating mood
+Rectal cancer is prevalent worldwide, with more than 43,000            disorders, including depression [4, 5]. The prevalence of
+new patients in the US annually [1]. A large proportion of             depression during active treatment (e.g., patients surgically
+newly diagnosed rectal cancer patients undergo preoperative            treated) for rectal cancer may be as high as 47% [6], and
+neoadjuvant chemotherapy and radiation therapy (CRT) [2,               depression continues to aﬀect 24-31% of patients after treat-
+3]. In addition to the physiological side eﬀects (e.g., diarrhea       ment completion [4]. However, the literature on the
+2                                                                                          Depression Research and Treatment
+
+prevalence of depressive symptoms and whether depressive           being at least 18 years of age; (2) no history of inﬂammatory
+symptom scores changed during CRT for rectal cancer is             conditions, infectious conditions, other cancers, sleep disor-
+not available.                                                     ders, or comorbidities associated with sleep disturbance (e.g.,
+     Depressive symptoms frequently include loss of interest,      sleep apnea); and (3) with no prior use of antidepressant
+sadness, irritability, feelings of worthlessness, hopelessness,    medications, anti-insomnia medications, antibiotics, probio-
+guilt or anxiety, concerns over death, or suicidal ideation,       tics, prebiotics, steroids, or immune-suppressant agents one
+as well as associated symptoms such as changes in appetite,        month before each assessment time-point [2, 14, 15, 17, 18].
+weight loss or weight gain, sleep disturbances, psychomotor        Data collection was conducted from September 2017 to
+activity, decreased energy, indecisiveness, or distracted          April 2019 at three ambulatory radiotherapy facilities in
+attention [7]. Further, depressive symptoms in cancer              Tampa Bay, Florida, United States. All procedures per-
+patients have been reported to be associated with poor qual-       formed in our study were in accordance both with the ethical
+ity of life and lower survival [6, 8]. Unfortunately, depression   standards of the institutional and/or national research com-
+in patients often goes undiagnosed and undertreated in part        mittees and with the 1964 Helsinki Declaration and its later
+because of the lack of laboratory-based diagnostic and prog-       amendments or comparable ethical standards. Written
+nostic tools [9]. Evidence suggests that the perturbation of       informed consents were provided by all participants.
+the gut microbiota (deﬁned as a diverse collection of micro-
+organisms that inhabit the gastrointestinal tract; [10]) can       2.2. Demographic Characteristics, Clinical Information, and
+inﬂuence depressive symptoms via the gut-brain axis and            Assessment of Depressive Symptoms. After obtaining
+that depression phenotyping focusing on the gut micro-             informed consent, study participants completed the demo-
+biome may produce a microbiota-based signature that can            graphic questionnaire including information on age, gender,
+serve as a biomarker for depression [11, 12].                      and occupation. The research team recorded information
+     Changes in gut microbiota composition induced by              from the medical chart including the following: tumor stage,
+factors such as cancer or its treatment have been suggested        type of chemotherapy, number of prescribed RT fractions,
+to be associated or potentially causal of dysbiosis (a disrup-     before CRT hemoglobin (Hgb) levels, and body mass index
+tion in the balance, diversity, and function of symbiotic          (BMI). Information for each variable is summarized in
+intestinal microbial communities) [2, 13] in depression and        Table 1. Depression was assessed by the clinician-rated 17-
+other comorbidities/symptoms [2, 11, 14–16]. We recently           item Hamilton Rating Scale for Depression (HAM-D17)
+reported reduced alpha diversity (Shannon Diversity and            [19], using the conventional Structured Interview Guide for
+Observed Operational Taxonomic Units (OTUs)) in rectal             the HAM-D [17, 20]. The forms were administered prior,
+cancer patients in the middle and at the end of CRT com-           and at the last week of CRT treatment. Hamilton [19] pro-
+pared to before CRT, suggesting that CRT is associated with        vides detailed information on the HAM-D17 scale. Overall
+alterations in gut microbiota composition [15]. However,           acceptable psychometric properties have been reported for
+few microbiome studies had identiﬁed speciﬁc roles of bacte-       the HAM-D, including internal consistency [21]. In our
+rial taxa in cancer-related comorbidities such as depression.      study, the Cronbach alphas for the HAM-D17 was 0.86 at
+Therefore, this pilot study is aimed at exploring whether          before treatment and 0.84 at the end of CRT. A cutoﬀ score
+depressive symptom scores changed during CRT, and if               of ≥15 has been used previously in cancer patients to screen
+gut microbial taxa abundances and predicted functional             for depression, with higher scores indicating more symp-
+pathways correlate with depressive symptoms at the end of          toms of depression [17, 22].
+CRT in rectal cancer participants who were not taking anti-            Total DNA was isolated from 250 mg stool aliquots col-
+depressants. Results of this study will further our under-         lected at the end of CRT using the PowerSoil DNA Isolation
+standing of the underpinnings of CRT-related depressive            Kit (MoBio, Carlsbad, CA), per the manufacturer’s protocol.
+symptoms and may inform future strategies for the develop-         The V3-V4 regions of the 16S rRNA gene were ampliﬁed
+ment of microbial signature/biomarkers to detect intensiﬁ-         and sequenced using Illumina’s 16S rRNA gene library prep-
+cation of depressive symptoms placing patients at risk for         aration and sequencing workﬂow. Reads were trimmed at a
+acute depression during CRT in rectal cancer patients.             Q = 25 threshold using Trim Galore! v0.44, denoised into
+                                                                   amplicon sequence variants (ASVs) using the DADA2
+2. Methods                                                         plugin in QIIME2-2019.17, and the resulting ASVs were
+                                                                   taxonomically assigned against the SILVA v132 database
+2.1. Study Sample and Setting. Prior to data collection, the       using a naïve Bayes classiﬁer [16]. The ASV table was rare-
+study protocol received approval by the Institutional Review       ﬁed to 4,226 sequences per sample and used for alpha and
+Board from the Southeastern Academic Medical Center.               beta diversity calculations in QIIME2. MetaCyc [23] path-
+Patients interested in participating in this study were            way abundances were predicted from the rareﬁed table using
+screened by the research team for eligibility using a brief        QIIME2’s q2-picrust2 plugin [24].
+health history interview that included relevant questions
+about their cancer history, cancer treatments, current medi-       2.3. Statistical Analyses. Stool sample collection and 16S
+cations, and other health conditions. Forty newly diagnosed        rRNA gene analysis procedures have been described previ-
+rectal cancer patients programmed to receive CRT were              ously by our group [2, 17]. Statistical diﬀerences between
+included in this study. Eligibility criteria have been described   depression scores were computed using a two-tailed t-test
+in our previous publications including the following: (1)          with a signiﬁcance threshold of 0.05. Associations between
+Depression Research and Treatment                                                                                                 3
+
+                                              Table 1: Summary of measurements.
+
+Variables                                                                Method of measurement                   Frequency
+                                                                     17-item Hamilton Rating Scale for        Before and end of
+Depressive symptoms
+                                                                           Depression (HAM-D17)                   treatment
+Gut microbiome                                                   Stool samples for 16S rRNA sequencing        End of treatment
+Age, gender, occupational status                                             Demographic form                 Before treatment
+Type of chemotherapy, tumor stage, number of treatments, body   Health form information gathered from their
+                                                                                                              Before treatment
+mass index, hemoglobin                                                         health record
+
+
+depressive symptom scores and microbial diversity variables      symptom scores at the end of CRT (Table 4). Eleven
+were assessed using the Spearman correlation test on sam-        (~79%) of these were biosynthetic pathways, of which six
+ples collected at the end of CRT. To ﬁt a multiple linear        (i.e., biosynthesis of inosine-5 ′ -phosphate, L-methionine
+regression model that adjusted for important confounding         (pathways I and III), mono-trans, poly-cis decaprenyl phos-
+variables (e.g., age), Spearman correlations were also calcu-    phate, L-alanine, and S-adenosyl-L-methionine) were posi-
+lated between depressive symptom scores and taxa and path-       tively correlated with depressive symptoms, while ﬁve (i.e.,
+way abundances for end of CRT samples. Automatic                 biosynthesis of CMP-legionaminate, ﬂavin, GDP-mannose,
+variable selection was performed on genera and pathways          phosphopantothenate, and coenzyme A) were negatively
+whose abundances were statistically signiﬁcantly correlated      correlated with depressive symptom scores (Table 4). The
+with depressive symptom scores using the regsubsets              remaining three nonbiosynthetic pathways were negatively
+function in the leap package in R. The subset of variables       correlated with depressive symptom scores and included
+producing the highest R2 was used to build the ﬁnal              acetyl-CoA fermentation to butanoate, chondroitin sulfate
+permutation-based multiple linear regression model using         degradation, and myo-, chiro-, and scyllo-inositol degrada-
+the lmp function in the lmPerm package in R. A p value           tion pathways (Table 4). Further, with respect to multiple
+cutoﬀ of 0.05 is used for all statistical tests.                 regression, automatic subset selection bacterial taxa
+                                                                 measured at the end of RT and predicted pathway abun-
+3. Results                                                       dance variables showed that Bacillales Family XI and
+                                                                 Ruminococcaceae UCG-005 general along with the pre-
+3.1. Patient Characteristics and Depressive Symptom Scores.      dicted abundances of coenzyme A biosynthesis and myo-,
+Study participants (n = 40) had a mean age of 58:9 years ±       chiro-, and scyllo-inositol degradation pathways were opti-
+11:3, and 58% were males (Table 2). Participants showed          mally negatively and positively correlated with depressive
+signiﬁcantly higher mean depressive symptom scores               symptom scores, after controlling for age (Figure 1; R2 =
+(12:4 ± 8:7) indicating higher severity of depression at the     0:37; adjusted R2 = 0:28; SE of estimate = 7:16; F ð5,34 Þ =
+end than before CRT (9:4 ± 7:7, tð47Þ = −3:1, p < 0:003).        3:98, p = 0:006).
+Ten participants (25%) before CRT and ﬁfteen participants
+(38%) at the end of CRT had depressive symptom scores
+that exceeded the cutoﬀ score for depression of ≥15 [17, 22].    4. Discussion
+3.2. The Gut Microbiome Is Associated with Depressive            In this pilot study, we aimed to explore whether depressive
+Symptom Scores at the End of CRT. In this cross-sectional        symptom scores changed during CRT to treat rectal cancer,
+pilot study, we observed no signiﬁcant associations between      and if gut microbial taxa abundances and predicted func-
+alpha diversity, phylum abundances, and depressive symp-         tional pathways correlate with depressive symptoms at the
+tom scores at the end of CRT (data not shown). At the genus      end of CRT. While depressive symptoms are common in
+level, however, we found that the relative abundances of Fir-    the general population worldwide [25], depression in the
+micutes genera, including Gemella, Bacillales Family XI,         cancer population is a major health concern because it is
+Streptococcus, Lactococcus, Weissella, and Leuconostocaceae,     often associated with poor adherence to treatment, higher
+as well as Actinomyces (phylum Actinobacteria), were posi-       tumor recurrence, and lower survival rates [6, 8, 26]. Our
+tively correlated with depressive symptom scores (Spear-         study showed that rectal cancer patients may present with
+man’s rho = 0:32 to 0.42). On the other hand, negative           increased levels of depressive symptoms even before treat-
+correlations between depressive symptom scores and the           ment. This ﬁnding is important given that previous reports
+abundances of Coprobacter (phylum Actinobacteria), Para-         have also shown that depression is frequently underdiag-
+sutterella (phylum Proteobacteria), and other Firmicutes         nosed and undertreated [22, 27]. The physical and psycho-
+genera Intestinibacter, Intestimonas, Lachnospiraceae            logical strain associated with a patient’s cancer diagnosis
+NK4A136 group, Phascolarctobacterium, Ruminiclostridium,         may be interpreted as a normal response to cancer and/or
+Ruminococcaceae (UCG-005 and uncultured), and Tyzzerella         its treatment, and in the absence of a standard of care that
+were observed (Spearman’s rho = −0:43 to − 0:31) (Table 3).      supports ongoing clinical assessment for depression, failure
+    From the ASV abundance data, 14 predicted MetaCyc            to identify symptoms of depression may occur. Reasons for
+[23] pathways were signiﬁcantly correlated with depressive       underdiagnosis and undertreatment of depression reported
+4                                                                                                Depression Research and Treatment
+
+Table 2: Study participants’ (n = 40) demographic and clinical          in the literature include treatment-related side eﬀects that
+characteristics.                                                        can mask depressive symptoms (e.g., fatigue and lack of
+                                                                        energy), people with cancer that are expected to have poor
+Characteristics                                Participants (n = 40)    mood, reduced time available in the treatment setting, scarce
+Gender                                                                  data on depression drug trials among cancer patients, and
+  M                                                   23 (58%)          the lack of biomarkers for depression [9, 22, 27, 28]. Our
+Occupation                                                              ﬁndings have several clinical implications including the
+  Working                                             17 (42%)          importance of the need for routine depression surveillance,
+  Retired                                             13 (33%)
+                                                                        referrals to mental health professionals, treatment of depres-
+                                                                        sion, and the importance of patient education before CRT
+  Handicapped                                         10 (25%)
+                                                                        initiation [2, 29], as well as the need for non-invasive objec-
+Chemotherapy                                                            tive indicator of potential depression.
+  5FU                                               17 (42%)                 Although the causal interplay between cancer, CRT, gut
+  Xeloda                                            23 (58%)            microbial composition, and depression remain undercharac-
+                                                  Median (IQR)          terized, emerging evidence suggests that cancer treatments
+Age                                                58 (53, 67)          mediate changes in gut microbial composition, causing
+Tumor stage                                          3 (3, 3)           abnormalities in the gut-brain axis that may result in depres-
+                                                                        sive symptoms. Brieﬂy, one hypothesis is that changes in gut
+Number of treatments                               28 (23, 33)
+                                                                        microbial composition can be aﬀected through CRT-
+BMI                                              27.5 (23.6, 30.1)      induced cellular responses that increase intestinal perme-
+Hemoglobin                                       11.8 (10.7, 13.2)      ability and facilitate translocation of bacteria associated with
+BMI = body mass index.                                                  peripheral inﬂammatory immune response [30, 31]. This
+                                                                        increases systemic levels of proinﬂammatory cytokines, lead-
+Table 3: Statistically signiﬁcant correlations between genus relative   ing to behavioral comorbidities such as depressive symp-
+abundances and the Hamilton Depression Rating Scale scores at the       toms [32–34]. More detailed information on the eﬀects of
+end of CRT.                                                             cancer treatments on the gut microbiome [30, 31] and its
+                                                                        relationship with behavioral comorbidities can be found in
+                                                     End-CRT            recent reviews [32–34]. Because the gut and central nervous
+Genus
+                                             Rho            p value
+                                                                        systems are linked via a bidirectional communication
+Phylum: Actinobacteria                                                  network [35], another possibility is that the central nervous
+Actinomyces                                  0.40                0.01   system sends signals to the gut environment, resulting in
+Actinomycetaceae                             0.40                0.01   modulation of the gut microbiota composition and function
+Actinomycetales                              0.38                0.02   [36]. For example, animal studies demonstrated that germ-
+Phylum: Bacteroidetes                                                   free mice receiving fecal microbiota transplantation from
+                                                                        depressed human patients presented more depressive symp-
+Coprobacter                                  -0.32               0.05
+                                                                        toms, and their microbiota were diﬀerent compared to mice
+Phylum: Firmicutes                                                      receiving fecal microbiota transplantation from healthy
+Bacillales Family XI                         0.42            0.007      recipients, suggesting that depressive-like symptoms can be
+Gemella                                      0.42            0.007      transferred via the microbiota [37]. Conversely, probiotic
+Intestinibacter                              -0.37            0.02      intervention can alleviate and improve depressive symptoms
+Intestinimonas                               -0.43           0.005      [38, 39]. On the other hand, cancer-related symptoms, such
+Lachnospiraceae NK4A136 group                -0.32            0.05      as muscle wasting (sarcopenia; [40]), body weight loss,
+                                                                        weakness, muscle atrophy and fat depletion (cachexia;
+Lactococcus                                  0.34            0.03
+                                                                        [41–43]), anorexia [44], and social isolation [45], can also
+Phascolarctobacterium                        -0.32            0.04
+                                                                        lead to depressive symptoms. In this regard, sarcopenia,
+Ruminiclostridium 6                          -0.39            0.01      cachexia, anorexia, and social isolation are also associated
+Ruminococcaceae UCG-005                      -0.32            0.05      with microbial dysbiosis in preclinical models [41, 46–48].
+Ruminococcaceae uncultured                   -0.41           0.009      For example, Pötgens et al. [41] observed an increased abun-
+Streptococcaceae                             0.37            0.02       dance of Enterobacteriaceae and altered gut barrier function
+Streptococcus                                0.37            0.02       in animal models of cancer cachexia. Taken together, the
+Tyzzerella                                   -0.35            0.03
+                                                                        relationship between cancer, CRT, gut microbial composi-
+                                                                        tion, and depression is potentially complex and warrants
+Weissella                                    0.32            0.04
+                                                                        further large-scale, controlled studies to elucidate the eﬀects
+Phylum: Proteobacteria                                                  they exert on each other.
+Parasutterella                               -0.31               0.05        We found preliminary associations between abundances
+CRT = chemotherapy and radiation therapy.                               of Firmicutes, Actinobacteria, and Proteobacteria taxa and
+                                                                        predicted pathways with depressive symptom scores at the
+                                                                        end of CRT for rectal cancer. Firmicutes, Actinobacteria,
+                                                                        and Proteobacteria are generally dominant in the healthy
+Depression Research and Treatment                                                                                                                                                                                                                                                                                      5
+
+Table 4: Statistically signiﬁcant correlations between MetaCyc pathway abundances and the Hamilton Depression Rating Scale scores at the
+end-CRT samples.
+
+                                                                                                                                                                                                                                             End-CRT
+MetaCyc pathway
+                                                                                                                                                                              Rho                                                                                                                  p value
+Acetyl-CoA fermentation to butanoate II                                                                                                                                       -0.37                                                                                                                    0.02
+Chondroitin sulfate degradation I (bacterial)                                                                                                                                 -0.33                                                                                                                    0.04
+CMP-legionaminate biosynthesis I                                                                                                                                              -0.41                                                                                                                    0.009
+Flavin biosynthesis I (bacteria and plants)                                                                                                                                   -0.36                                                                                                                     0.02
+Inosine-5 ′ -phosphate biosynthesis III                                                                                                                                       0.33                                                                                                                        0.04
+GDP-mannose biosynthesis                                                                                                                                                      -0.33                                                                                                                     0.04
+L-methionine biosynthesis I                                                                                                                                                   0.36                                                                                                                      0.02
+L-methionine biosynthesis III                                                                                                                                                 0.42                                                                                                                     0.007
+Mono-trans, poly-cis decaprenyl phosphate biosynthesis                                                                                                                        0.36                                                                                                                      0.02
+Myo-, chiro-, and scyllo-inositol degradation                                                                                                                                 -0.39                                                                                                                     0.01
+Phosphopantothenate biosynthesis I                                                                                                                                            -0.39                                                                                                                     0.02
+Superpathway of coenzyme A biosynthesis I (bacteria)                                                                                                                          -0.42                                                                                                                    0.007
+Superpathway of L-alanine biosynthesis                                                                                                                                         0.36                                                                                                                     0.02
+Superpathway of S-adenosyl-L-methionine biosynthesis                                                                                                                           0.33                                                                                                                     0.04
+CRT = chemotherapy and radiation therapy.
+
+                 0.3
+                0.28
+                0.28
+                0.27
+                0.27
+                0.27
+
+
+
+ Adjusted R 2
+                0.26
+                0.26
+                0.26
+                0.24
+                0.24
+                0.23
+                0.18
+                0.17
+                0.12
+                0.11
+
+
+
+
+                                                                                                                                                                                                                                                                   myo-, chiro- and scyllo-
+
+
+
+
+                                                                                                                                                                                                               Coenyzme A bioysnthesisI ∗∗
+                                                            Bacillales Family XI∗
+
+                                                                                                                                                   Ruminococcaceae UCG-005∗
+                                                                                                  Streptococcaceae
+
+
+                                                                                                                      Ruminococcaceae uncultured
+                                     Age
+                                                                                                                                                                                                                                             CMP-legionaminate                                Inosine-5'-phosphate
+
+
+
+
+                                                                                                                                                                               L-methionine biosynthesis III
+                                           Intestinimonas
+                                                                                    Actinomyces
+                       (Intercept)
+
+
+                                                                                                                                                                                                                                                  biosynthesis I                                    biosynthesis III
+                                                                                                                                                                                                                                                                      inositol degradation
+
+
+
+
+Figure 1: All subset regression results showing, for each subset size, the two subsets of predictor variables yielding the highest adjusted R2
+for predicting depressive symptom scores. ∗ indicates predictors (coeﬃcients) signiﬁcantly correlated with depression scores, based on
+permutation test p values in the ﬁnal multiple regression model.
+
+human gut [49]. However, consistent with our results,                                                                Streptococcal infections are linked to depression-like behav-
+several genera from these phyla, including Actinomyces                                                               ior and/or to behavioral abnormalities (i.e., bacterial-
+(phylum Actinobacteria), Streptococcus, and Weissella (phy-                                                          infection-induced autoantibodies in pediatric autoimmune
+lum Firmicutes), have been associated with depression [11,                                                           neuropsychiatric disorders associated with streptococcal
+37, 50–52]. Particularly, higher Streptococcus abundances                                                            infection (PANDAS)) in animal models [53, 54]. Polymicro-
+were detected in patients with major depressive disorders                                                            bial infections between Actinomyces species and members of
+(MDD) using a similar 16S rRNA gene sequencing protocol                                                              the Streptococcus genus have also been reported [55–57].
+and the same measure of depression used in our study [52].                                                           Besides infections, associations between Actinomyces strains
+6                                                                                              Depression Research and Treatment
+
+and chronic inﬂammatory diseases such as Crohn’s disease                   The positive correlation of Lactobacillus abundance and
+[58, 59] and higher depressive symptoms [60, 61] have also            negative correlation of Phascolarctobacterium, Intestimo-
+been reported. Adding to the complex association between              nas/Megamonas, and Parasutterella abundances with
+gut microbiome and depression, there is also evidence that anti-      depressive symptom scores in our study diﬀered from ﬁnd-
+microbials used to treat depression can result in gut dysbiosis       ings from previous research. Lower Lactobacillus
+through antimicrobial eﬀects (Ting-Ting [62, 63]). Another Fir-       abundances were previously detected in chronic variable
+micutes genus that was signiﬁcantly associated with depressive        stress-induced depression rat model compared to controls
+symptom scores, Weissella, was previously identiﬁed in infants        using 16S rRNA gene sequencing [76]. Higher Phascolarcto-
+born to mothers exposed to psychological stressors and dis-           bacterium, Intestimonas/Megamonas, and Parasutterella
+tress such as intimate partner violence [64]. Nevertheless,           abundances were previously detected in active-MDD
+the source of these depression-associated genera in the gut           patients compared to controls using reverse transcription-
+and the exact mechanisms of how they aﬀect or are aﬀected             quantitative polymerase chain reaction and 16S rRNA gene
+by brain functions and behavior require further study.                pyrosequencing approaches [51]. Nevertheless, besides
+    Most of the bacteria genera that signiﬁcantly correlated          depression, Streptococcus and Parasutterella abundances
+with depressive symptoms in this study were classiﬁed to              may also be aﬀected by rectal cancer itself or by treatment
+the phylum Firmicutes. Interestingly, some taxa belonging             side eﬀects [17, 73, 77]. For example, a combination of fecal
+to the phylum Firmicutes (i.e., Lachnospiraceae, Ruminiclos-          bacterial candidates, including Streptococcus bovis/Strepto-
+tridium, and Ruminococcaceae) that play roles in the short-           coccus gallolyticus, was proposed as biomarkers for early
+chain fatty acid (SCFA) production were inversely associated          detection of adenomatous polyps and colon cancer [73,
+with depressive symptoms. SCFAs (e.g., acetate, propionate,           77]. Further, increased abundance of Parasutterella was
+and butyrate) are microbially derived metabolites produced            related to chemotherapy-induced gastrointestinal toxicity
+by the bacterial fermentation of dietary carbohydrates. SCFAs         in animal models [78]. It is, of course, possible that our study
+serve as a source of energy for intestinal cells, a histone deacet-   ﬁndings diﬀered from ﬁndings in previous research because
+ylase inhibitor that regulates immune homeostasis, and/or a           most of the available literature is based on the clinical diag-
+mediator of neurotransmitter production [65]. The observed            nostic classiﬁcation for depression while our study focuses
+negative correlations between Lachnospiraceae and Rumino-             on depressive symptoms.
+coccaceae abundances with depressive symptoms in our study                 Our investigation revealed the ﬁnding that our multiple
+were consistent with previous studies [51, 66]. Park et al. [65]      regression model explained 28% of the observed variance
+proposed that a reduction in the abundances of fermentation-          with p < 0:001 and suggested that patients with higher
+related bacteria may suggest a decay in SCFA production,              depression scores tend to have higher levels of Bacillales
+which in turn may be associated with intestinal barrier dys-          and lower levels of Ruminococcaceae. Future larger-scale
+function and an inﬂammatory response that can cause depres-           studies using animal models and/or anaerobic culture will
+sion [67]. In another study, decreased levels of butyrate-            be useful in conﬁrming the functional roles of these speciﬁc
+producing bacteria (Ruminococcaceae_UG-013 and Lacknos-               taxa in depression and their utility as microbial biomarkers
+piraceae_NK4A136_ group) were found to be associated with             for depression [11]. While for our sample, bacterial genera
+high levels of inﬂammatory factors such as CRP and TNF-               were signiﬁcantly associated with depressive symptom
+alpha [68]. There is also clinical evidence of a positive associ-     scores; it is important to acknowledge that depressed mood
+ation between stool acetate levels with depressive symptoms,          is a multifactorial condition inﬂuenced by multiple contrib-
+as well as negative associations between butyrate and propio-         uting factors (e.g., tumor type, prior psychological factors
+nate levels with depressive symptoms [69]. While the associa-         (preexisting mental health problems and their severity), psy-
+tions between gut bacterial abundances, SCFA levels, gut              chological response to diagnoses (coping behavior), and
+physiology, and depressive symptoms require further study,            social and contextual factors (unemployment and lack of
+SCFA levels have been proposed as potential noninvasive bio-          social support); [79]. However, ﬁndings of our study suggest
+markers for various health conditions [70] including depres-          that gut microbiome disruption may be present before overt
+sion [71]. For instance, there is clinical evidence of                clinical depression is recognized, a ﬁnding that may prove
+improvement of depression and an increase in the SCFA-                useful in future research aimed at identifying biomarkers
+producing bacteria (e.g., Roseburia, Ruminococcus, and Eubac-         to aid in the establishment of clinical depression. Associa-
+terium) with an almond-based low carbohydrate diet [72] in            tions between other relevant factors including social and con-
+patients with chronic diseases. Additionally, a recent review         textual factors potentially contributing to depressive
+on correlations between gut bacterial metabolites with depres-        symptoms among people with cancer have been supported
+sion suggests that gut bacteria (i.e., Escherichia spp and Lacto-     in prior exhaustive reviews [79]. Further research that
+bacillus plantarum) may be a new target for depression                includes biological factors, as well as behavioral factors such
+because of their ability to regulate the neurotransmitter seroto-     as lack of coping strategy for handling the trauma of a cancer
+nin (5-HT) levels in the body [71]. This is important because a       diagnosis, is required. This knowledge may shed light on per-
+disrupted serotonergic system may lead to depressive symp-            sonalized medicine/interventions for risk factor reduction.
+toms [71]. As such, besides bacterial abundances, SCFAs                    As previously stated, the underpinnings of CRT-related
+may be useful as potential biomarkers for the assessment of           depressive symptoms have not been fully elucidated. Based
+depression [71] and as potential therapeutic anti-                    on the MetaCyc pathway predictions [80], depressive symp-
+inﬂammatory agents [73, 74] for depression [75].                      toms appeared to correlate mainly with biosynthetic
+Depression Research and Treatment                                                                                               7
+
+pathways (e.g., ﬂavin biosynthesis and S-adenosyl-L-methio-       environmental factors, pain, stress, diet, and diarrhea) that
+nine biosynthesis). This is remarkable since our pathway          may aﬀect the variability of the gut microbiota measure-
+predictions point to mechanisms that researchers have             ments and/or depressive symptoms in patients with rectal
+proposed to contribute to the biologic underpinnings of           cancer. As the outcomes of this study were dependent on
+depression: gut dysbiosis resulting in low production of          clinician-rated depressive symptoms, future research may
+micronutrients and gut dysbiosis promotion of inﬂamma-            also consider comparing our ﬁndings with participants’
+tion [11, 80]. In fact, riboﬂavin (vitamin B2) deﬁciency has      self-reported depressive symptoms perhaps using other vali-
+been associated with depression in women [81], and the ﬂa-        dated measures of depression (e.g., the PROMIS depression
+vin biosynthesis I pathway was inversely associated with          forms). The availability of a larger sample size would permit
+depressive symptoms in our study. Acetyl CoA fermentation         the exclusion of somatic symptoms of depression in future
+to butanoate II was also inversely associated with depressive     studies. Controlling for these and other behavioral manifes-
+symptoms. This is interesting because there is evidence that      tations of depressive symptoms may inform the impact of
+acetyl-CoA is one of the pathways known for the production        these symptoms on gut microbiota and address a needed
+of the anti-inﬂammatory SCFA butyrate [17, 80, 82]. These         gap in the literature.
+ﬁndings also have further research implications since ribo-
+ﬂavin supplementation has been suggested to improve mood          6. Conclusions
+in individuals [83], and sodium butyrate administration was
+reported to have antidepressant-like eﬀects in animal models      Overall, our results indicated that rectal cancer patients expe-
+[84]. However, others have found in animal models that            rience increases in depressive symptoms before CRT, which
+administration of the sodium propionate (also a SCFA) but         can worsen after treatment. We also identiﬁed taxa and pre-
+not sodium butyrate induces antidepressant-like eﬀects            dicted pathways that were signiﬁcantly correlated with
+[85]. Further, the ﬁnding that the S-adenosyl methionine          depressive symptom scores. Our ﬁndings served to inform
+biosynthesis pathway was negatively correlated with depres-       future larger-scale clinical studies involving not only genus-
+sive symptom scores is interesting since S-adenosyl methio-       level 16S rRNA gene analysis but also metatranscriptomics,
+nine has been used as an antidepression supplement [86].          metagenomics, culturing experiments, and animal models.
+Two degradation pathways (chondroitin sulfate and myo-,           These future studies will contribute to the body of the litera-
+chiro-, and scyllo-inositol) were also negatively correlated      ture of the underpinnings of depressive symptoms and clini-
+with depressive symptom scores. Chondroitin sulfate has           cal depression and facilitate the identiﬁcation of microbial
+been found to play an important role in synaptic transmis-        targets for eﬀective diagnosis and clinical interventions.
+sion and plasticity in animal models [87] while evidence sug-
+gests that inositol may play a role in the management/            Data Availability
+alleviation of depression [88]. Conversely, the positive corre-
+lation of mono-trans, poly-cis decaprenyl phosphate biosyn-       The data used to support the ﬁndings of this study are avail-
+thetic pathway abundances with depressive symptom scores          able from the corresponding author upon request. It will be
+may be linked to similar increases in Actinobacteria (such as     deposited in a database when the study is complete.
+Actinomyces) abundances with depressive symptom scores,
+since this pathway is found in Mycobacterium species classi-      Disclosure
+ﬁed to the phylum Actinobacteria [89, 90]. Therefore, these
+candidate pathways and their metabolites warrant further          The content is solely the responsibility of the authors and
+investigation as they may shed light on the assessment and        does not necessarily represent the oﬃcial views of the NIH.
+treatment of CRT-related symptoms such as depression
+and fatigue [14].                                                 Conflicts of Interest
+5. Limitations                                                    The authors declare that they have no conﬂicts of interest.
+
+Our results must be interpreted with caution as our pilot         Acknowledgments
+study has notable limitations including the brief duration
+of the follow-up and lack of a control group. For example,        We thank all the staﬀ at Tampa General Hospital Cancer
+we cannot rule out that the inﬂuence of CRT on depressive         Center, the Cancer Care team at AdventHealth Tampa,
+symptoms could be due to the cancer nor can we rule out           and the St. Joseph’s Hospital Cancer Institute for the collab-
+the confounding eﬀects of cancer and CRT on the gut micro-        orative clinical recruitment support. This study would not
+biome composition. Inclusion of a control group of patients       have been possible without the participants. We also thank
+without CRT could have strengthened the inference on the          the Biobehavioral Laboratory at the University of South
+inﬂuence of CRT on depressive symptoms, as would the              Florida’s College of Nursing for Illumina sequencing
+collection of stool samples before CRT to assess microbiota       support. Thanks are extended to Miss Sara Marrero for her
+changes impacted by the CRT administration and control-           insightful proofreading and editing role. This work was sup-
+ling for CRT side eﬀects. Additional studies with larger          ported by the National Institute of Nursing Research
+numbers of participants are needed to further examine the         (NINR) of the National Institutes of Health (NIH) under
+role of other factors (e.g., tumor samples, lifestyle, social     Award number K23NR020039.
+8                                                                                                       Depression Research and Treatment
+
+References                                                                        bance among rectal cancer patients,” Journal of Sleep Research,
+                                                                                  vol. 29, no. 3, p. e12915, 2020.
+ [1] R. L. Siegel, K. D. Miller, and A. Jemal, “Cancer statistics,           [17] V. J. González-Mercado, J. Lim, G. Yu et al., “Co-occurrence of
+     2019,” CA: a Cancer Journal for Clinicians, vol. 69, no. 1,                  symptoms and gut microbiota composition before neoadju-
+     pp. 7–34, 2019.                                                              vant chemotherapy and radiation therapy for rectal cancer: a
+ [2] V. J. González-Mercado, W. A. Henderson, A. Sarkar et al.,                   proof of concept,” Biological Research for Nursing, vol. 23,
+     “Changes in gut microbiome associated with co-occurring                      no. 3, pp. 513–523, 2021.
+     symptoms development during chemo-radiation for rectal                  [18] V. J. González-Mercado, J. Lim, L. Berk, M. Esele, C. S.
+     cancer: a proof of concept study,” Biological Research for Nurs-             Rodríguez, and G. Colón-Otero, “Gut microbiota diﬀerences
+     ing, vol. 23, no. 1, pp. 31–41, 2021.                                        in Island Hispanic Puerto Ricans and mainland non- His-
+ [3] National Comprehensive Cancer Network, “Clinical practice                    panic whites during chemoradiation for rectal cancer: a
+     guidelines in oncology; rectal cancer,” 2016, https://www                    pilot study,” Current Problems in Cancer, vol. 44, no. 4, arti-
+     .nccn.org/Store/Login/Register.aspx?returnurl=https%3a%                      cle 100551, 2020.
+     2f%2fwww.nccn.org%2fprofessionals%2fphysician_gls%                      [19] M. Hamilton, “A rating scale for depression,” Journal of Neu-
+     2fpdf%2frectal.pdf.                                                          rology, Neurosurgery, and Psychiatry, vol. 23, no. 1, pp. 56–
+ [4] Y. Chongpison, M. C. Hornbrook, R. B. Harris et al., “Self-                  62, 1960.
+     reported depression and perceived ﬁnancial burden among                 [20] J. B. Williams, “A structured interview guide for the Hamilton
+     long-term rectal cancer survivors,” Psychooncology, vol. 25,                 Depression Rating Scale,” Archives of General Psychiatry,
+     no. 11, pp. 1350–1356, 2016.                                                 vol. 45, no. 8, pp. 742–747, 1988.
+ [5] T. K. Gosselin, S. Beck, D. H. Abbott et al., “The symptom              [21] A. Kieslich da Silva, M. Reche, A. Lima, M. P. A. Fleck,
+     experience in rectal cancer survivors,” Journal of Pain and                  E. Capp, and F. M. Shansis, “Assessment of the psychometric
+     Symptom Management, vol. 52, no. 5, pp. 709–718, 2016.                       properties of the 17- and 6-item Hamilton Depression Rating
+ [6] L. J. F. Santos, J. B. S. Garcia, J. S. Pacheco, É. B. M. Vieira, and        Scales in major depressive disorder, bipolar depression and
+     A. M. Santos, “Quality of life, pain, anxiety and depression in              bipolar depression with mixed features,” Journal of Psychiatric
+     patients surgically treated with cancer of rectum,” Arquivos                 Research, vol. 108, pp. 84–89, 2019.
+     Brasileiros de Cirurgia Digestiva, vol. 27, no. 2, pp. 96–100,          [22] W. M. Lydiatt, D. Denman, D. P. McNeilly, S. E. Puumula, and
+     2014.                                                                        W. J. Burke, “A randomized, placebo-controlled trial of citalo-
+ [7] T. McCarter, “Depression overview,” American Health & Drug                   pram for the prevention of major depression during treatment
+     Beneﬁts, vol. 1, no. 3, pp. 44–51, 2008.                                     for head and neck cancer,” Archives of Otolaryngology – Head
+ [8] E. H. Shinn, A. Valentine, A. Jethanandani et al., “Depression               & Neck Surgery, vol. 134, no. 5, pp. 528–535, 2008.
+     and oropharynx cancer outcome,” Psychosomatic Medicine,                 [23] R. Caspi, R. Billington, I. M. Keseler et al., “The MetaCyc data-
+     vol. 78, no. 1, pp. 38–48, 2016.                                             base of metabolic pathways and enzymes - a 2019 update,”
+ [9] T. L. Huang and C. C. Lin, “Advances in biomarkers of major                  Nucleic Acids Research, vol. 48, no. D1, pp. D445–D453, 2020.
+     depressive disorder,” Advances in Clinical Chemistry, vol. 68,          [24] M. G. Langille, J. Zaneveld, J. G. Caporaso et al., “Predictive
+     pp. 177–204, 2015.                                                           functional proﬁling of microbial communities using 16S rRNA
+[10] T. C. Fung, C. A. Olson, and E. Y. Hsiao, “Interactions between              marker gene sequences,” Nature Biotechnology, vol. 31, no. 9,
+     the microbiota, immune and nervous systems in health and                     pp. 814–821, 2013.
+     disease,” Nature Neuroscience, vol. 20, no. 2, pp. 145–155,             [25] A. J. Ferrari, F. J. Charlson, R. E. Norman et al., “Burden of
+     2017.                                                                        depressive disorders by country, sex, age, and year: ﬁndings
+[11] S. G. Cheung, A. R. Goldenthal, A. C. Uhlemann, J. J. Mann,                  from the global burden of disease study 2010,” PLoS Medicine,
+     J. M. Miller, and M. E. Sublette, “Systematic review of gut                  vol. 10, no. 11, article e1001547, 2013.
+     microbiota and major depression,” Frontiers in Psychiatry,              [26] J. L. Sotelo, D. Musselman, and C. Nemeroﬀ, “The biology of
+     vol. 10, p. 34, 2019.                                                        depression in cancer and the relationship between depression
+[12] K. Sanada, S. Nakajima, S. Kurokawa et al., “Gut microbiota                  and cancer progression,” International Review of Psychiatry,
+     and major depressive disorder: a systematic review and meta-                 vol. 26, no. 1, pp. 16–30, 2014.
+     analysis,” Journal of Aﬀective Disorders, vol. 266, pp. 1–13,           [27] R. M. Saracino and C. J. Nelson, “Identiﬁcation and treatment
+     2020.                                                                        of depressive disorders in older adults with cancer,” Journal of
+[13] N. B. Perez, C. Dorsen, and A. Squires, “Dysbiosis of the gut                Geriatric Oncology, vol. 10, no. 5, pp. 680–684, 2019.
+     microbiome: a concept analysis,” Journal of Holistic Nursing,           [28] R. Bandu, H. J. Lee, H. M. Lee et al., “Liquid chromatography/
+     vol. 38, no. 2, pp. 223–232, 2020.                                           mass spectrometry-based plasma metabolic proﬁling study of
+[14] V. J. González-Mercado, J. Lim, S. Marrero, E. Pedro, and L. N.              escitalopram in subjects with major depressive disorder,” Jour-
+     Saligan, “Gut microbiota and fatigue in rectal cancer patients: a            nal of Mass Spectrometry, vol. 53, no. 5, pp. 385–399, 2018.
+     cross-sectional pilot study,” Supportive Care in Cancer, vol. 29,       [29] U. Polat, A. Arpaci, S. Demir, S. Erdal, and S. Yalcin, “Evalua-
+     no. 8, pp. 4615–4621, 2021.                                                  tion of quality of life and anxiety and depression levels in
+[15] V. J. Gonzalez-Mercado, J. Perez-Santiago, D. Lyon et al., “The              patients receiving chemotherapy for colorectal cancer: impact
+     role of gut microbiome perturbation in fatigue induced by                    of patient education before treatment initiation,” Journal of
+     repeated stress from chemoradiotherapy: a proof of concept                   Gastrointestinal Oncology, vol. 5, no. 4, pp. 270–275, 2014.
+     study,” Advances in Medicine, vol. 2020, Article ID 6375876,            [30] J. E. Bajic, I. N. Johnston, G. S. Howarth, and M. R. Hutchin-
+     2020.                                                                        son, “From the bottom-up: chemotherapy and gut-brain axis
+[16] V. J. González-Mercado, A. Sarkar, F. J. Penedo et al., “Gut                 dysregulation,” Frontiers in Behavioral Neuroscience, vol. 12,
+     microbiota perturbation is associated with acute sleep distur-               p. 104, 2018.
+Depression Research and Treatment                                                                                                                9
+
+[31] B. A. Hollingsworth, D. R. Cassatt, A. L. DiCarlo et al., “Acute      [47] L. Feng, W. Zhang, Q. Shen et al., “Bile acid metabolism dysreg-
+     radiation syndrome and the microbiome: impact and review,”                 ulation associates with cancer cachexia: roles of liver and gut
+     Frontiers in Pharmacology, vol. 12, article 643283, 2021.                  microbiome,” Journal of Cachexia, Sarcopenia and Muscle, 2021.
+[32] J. M. Deleemans, F. Chleilat, R. A. Reimer et al., “The               [48] K. M. Herremans, A. N. Riner, M. E. Cameron, and J. G.
+     chemo-gut study: investigating the long-term eﬀects of che-                Trevino, “The microbiota and cancer cachexia,” Interna-
+     motherapy on gut microbiota, metabolic, immune, psycho-                    tional Journal of Molecular Sciences, vol. 20, no. 24,
+     logical and cognitive parameters in young adult cancer                     p. 6267, 2019.
+     survivors; study protocol,” BMC Cancer, vol. 19, no. 1,               [49] E. Rinninella, P. Raoul, M. Cintoni et al., “What is the healthy
+     p. 1243, 2019.                                                             gut microbiota composition? A changing ecosystem across
+[33] K. R. Jordan, B. R. Loman, M. T. Bailey, and L. M. Pyter, “Gut             age, environment, diet, and diseases,” Microorganisms, vol. 7,
+     microbiota-immune-brain interactions in chemotherapy-                      no. 1, p. 14, 2019.
+     associated behavioral comorbidities,” Cancer, vol. 124,               [50] Z. Chen, J. Li, S. Gui et al., “Comparative metaproteomics
+     no. 20, pp. 3990–3999, 2018.                                               analysis shows altered fecal microbiota signatures in patients
+[34] B. C. Song and J. Bai, “Microbiome-gut-brain axis in cancer                with major depressive disorder,” Neuroreport, vol. 29, no. 5,
+     treatment-related psychoneurological toxicities and symp-                  pp. 417–425, 2018.
+     toms: a systematic review,” Supportive Care in Cancer,                [51] H. Jiang, Z. Ling, Y. Zhang et al., “Altered fecal microbiota
+     vol. 29, no. 2, pp. 605–617, 2021.                                         composition in patients with major depressive disorder,”
+[35] R. Hills, B. Pontefract, H. Mishcon, C. Black, S. Sutton, and              Brain, Behavior, and Immunity, vol. 48, pp. 186–194, 2015.
+     S. Theberge, “Gut microbiome: profound implications for diet          [52] P. Lin, B. Ding, C. Feng et al., “Prevotella and Klebsiella
+     and disease,” Nutrients, vol. 11, no. 7, p. 1613, 2019.                    proportions in fecal microbial communities are potential
+[36] M. C. Flux and C. A. Lowry, “Finding intestinal fortitude: inte-           characteristic parameters for patients with major depressive
+     grating the microbiome into a holistic view of depression                  disorder,” Journal of Aﬀective Disorders, vol. 207, pp. 300–
+     mechanisms, treatment, and resilience,” Neurobiology of Dis-               304, 2017.
+     ease, vol. 135, article 104578, 2020.                                 [53] T. Barichello, L. R. Simões, J. S. Generoso et al., “Depression-
+[37] P. Zheng, B. Zeng, C. Zhou et al., “Gut microbiome remodeling              like adult behaviors may be a long-term result of experimental
+     induces depressive-like behaviors through a pathway mediated               pneumococcal meningitis in Wistar rats infants,” Neurochem-
+     by the host's metabolism,” Molecular Pychiatry, vol. 21, no. 6,            ical Research, vol. 41, no. 10, pp. 2771–2778, 2016.
+     pp. 786–796, 2016.                                                    [54] K. Yaddanapudi, M. Hornig, R. Serge et al., “Passive transfer of
+[38] M. Pirbaglou, J. Katz, R. J. de Souza, J. C. Stearns, M. Motamed,          streptococcus-induced antibodies reproduces behavioral dis-
+     and P. Ritvo, “Probiotic supplementation can positively aﬀect              turbances in a mouse model of pediatric autoimmune neuro-
+     anxiety and depressive symptoms: a systematic review of ran-               psychiatric disorders associated with streptococcal infection,”
+     domized controlled trials,” Nutrition Research, vol. 36, no. 9,            Molecular Psychiatry, vol. 15, no. 7, pp. 712–726, 2010.
+     pp. 889–898, 2016.                                                    [55] J. E. Clarridge 3rd and Q. Zhang, “Genotypic diversity of clin-
+[39] C. Wallace and R. Milev, “The eﬀects of probiotics on depres-              ical Actinomyces species: phenotype, source, and disease cor-
+     sive symptoms in humans: a systematic review,” Annals of                   relation among genospecies,” Journal of Clinical
+     General Psychiatry, vol. 16, no. 1, p. 14, 2017.                           Microbiology, vol. 40, no. 9, pp. 3442–3448, 2002.
+[40] R. D. Nipp, G. Fuchs, A. El-Jawahri et al., “Sarcopenia is asso-      [56] M. Gajdács and E. Urbán, “The Pathogenic Role of Actinomy-
+     ciated with quality of life and depression in patients with                ces spp. and Related Organisms in Genitourinary Infections:
+     advanced cancer,” The Oncologist, vol. 23, no. 1, pp. 97–104,              Discoveries in the New, Modern Diagnostic Era,” Antibiotics,
+     2018.                                                                      vol. 9, no. 8, p. 524, 2020.
+[41] S. A. Pötgens, H. Brossel, M. Sboarina et al., “_Klebsiella oxy-      [57] V. Hinić, C. Straub, E. Schultheiss, P. Kaempfer, R. Frei, and
+     toca_ expands in cancer cachexia and acts as a gut pathobiont              D. Goldenberger, “Identiﬁcation of a novel 16S rRNA gene
+     contributing to intestinal dysfunction,” Scientiﬁc Reports,                variant of Actinomyces funkei from six patients with purulent
+     vol. 8, no. 1, p. 12321, 2018.                                             infections,” Clinical Microbiology and Infection, vol. 19, no. 7,
+[42] H. Sun, T. Sudip, X. Fu, S. Wen, H. Liu, and S. Yu, “Cachexia is           pp. E312–E314, 2013.
+     associated with depression, anxiety and quality of life in cancer     [58] N. B. Perez, F. Wright, and A. Vorderstrasse, “A microbial
+     patients,” BMJ Supportive & Palliative Care, 2020.                         relationship between irritable bowel syndrome and depressive
+[43] M. J. Tisdale, “Mechanisms of cancer cachexia,” Physiological              symptoms,” Biological Research for Nursing, vol. 23, no. 1,
+     Reviews, vol. 89, no. 2, pp. 381–410, 2009.                                pp. 50–64, 2021.
+[44] M. L. Chen and H. K. Chang, “Physical symptom proﬁles of              [59] R. Pittayanon, J. T. Lau, G. I. Leontiadis et al., “Diﬀerences in
+     depressed and nondepressed patients with cancer,” Palliative               gut microbiota in patients with vs without inﬂammatory bowel
+     Medicine, vol. 18, no. 8, pp. 712–718, 2004.                               diseases: a systematic review,” Gastroenterology, vol. 158, no. 4,
+[45] B. Liu, X. Wu, L. Shi et al., “Correlations of social isolation and        pp. 930–946.e1, 2020.
+     anxiety and depression symptoms among patients with breast            [60] G. G. Nascimento, M. T. Gastal, F. Leite et al., “Is there an asso-
+     cancer of Heilongjiang province in China: the mediating role               ciation between depression and periodontitis? A birth cohort
+     of social support,” Nursing Open, vol. 8, no. 4, pp. 1981–                 study,” Journal of Clinical Periodontology, vol. 46, no. 1,
+     1989, 2021.                                                                pp. 31–39, 2019.
+[46] F. Dunphy-Doherty, S. M. O'Mahony, V. L. Peterson et al.,             [61] R. Neuendorf, A. Harding, N. Stello, D. Hanes, and
+     “Post-weaning social isolation of rats leads to long-term dis-             H. Wahbeh, “Depression and anxiety in patients with inﬂam-
+     ruption of the gut microbiota-immune-brain axis,” Brain,                   matory bowel disease: a systematic review,” Journal of Psycho-
+     Behavior, and Immunity, vol. 68, pp. 261–273, 2018.                        somatic Research, vol. 87, pp. 70–80, 2016.
+10                                                                                                   Depression Research and Treatment
+
+[62] T.-T. Huang, J.-B. Lai, Y. L. du, Y. Xu, L. M. Ruan, and                  Journal of Pharmaceutical and Biomedical Analysis, vol. 138,
+     S.-H. Hu, “Current understanding of gut microbiota in                     pp. 231–239, 2017.
+     mood disorders: an update of human studies,” Frontiers               [77] S. Rezasoltani, M. Sharafkhah, H. Asadzadeh Aghdaei et al.,
+     in Genetics, vol. 10, 2019.                                               “Applying simple linear combination, multiple logistic and
+[63] D. Macedo, A. Filho, C. N. Soares de Sousa et al., “Antidepres-           factor analysis methods for candidate fecal bacteria as novel
+     sants, antimicrobials or both? Gut microbiota dysbiosis in                biomarkers for early detection of adenomatous polyps and
+     depression and possible implications of the antimicrobial                 colon cancer,” Journal of Microbiological Methods, vol. 155,
+     eﬀects of antidepressant drugs for antidepressant eﬀective-               pp. 82–88, 2018.
+     ness,” Journal of Aﬀective Disorders, vol. 208, pp. 22–32, 2017.     [78] R. A. Forsgård, V. G. Marrachelli, K. Korpela et al., “Chemo-
+[64] P. J. W. Naude, S. Claassen-Weitz, S. Gardner-Lubbe et al.,               therapy-induced gastrointestinal toxicity is associated with
+     “Association of maternal prenatal psychological stressors and             changes in serum and urine metabolome and fecal microbiota
+     distress with maternal and early infant faecal bacterial proﬁle,”         in male Sprague-Dawley rats,” Cancer Chemotherapy and
+     Acta Neuropsychiatrica, vol. 32, no. 1, pp. 32–42, 2020.                  Pharmacology, vol. 80, no. 2, pp. 317–332, 2017.
+[65] M. Park, J. Choi, and H. J. Lee, “Flavonoid-rich orange juice        [79] C. L. Niedzwiedz, L. Knifton, K. A. Robb, S. V. Katikireddi, and
+     intake and altered gut microbiome in young adults with                    D. J. Smith, “Depression and anxiety among people living with
+     depressive symptom: a randomized controlled study,” Nutri-                and beyond cancer: a growing clinical and research priority,”
+     ents, vol. 12, no. 6, p. 1815, 2020.                                      BMC Cancer, vol. 19, no. 1, p. 943, 2019.
+[66] A. Naseribafrouei, K. Hestad, E. Avershina et al., “Correlation      [80] R. T. Liu, A. D. Rowan-Nash, A. E. Sheehan et al., “Reductions
+     between the human fecal microbiota and depression,” Neuro-                in anti-inﬂammatory gut bacteria are associated with depres-
+     gastroenterology and Motility, vol. 26, no. 8, pp. 1155–1162,             sion in a sample of young adults,” Brain, Behavior, and Immu-
+     2014.                                                                     nity, vol. 88, pp. 308–324, 2020.
+[67] A. L. Lopresti, G. L. Maker, S. D. Hood, and P. D. Drummond,         [81] M. Naghashpour, R. Amani, R. Nutr, S. Nematpour, and M. H.
+     “A review of peripheral biomarkers in major depression: the               Haghighizadeh, “Riboﬂavin status and its association with
+     potential of inﬂammatory and oxidative stress biomarkers,”                serum hs-CRP levels among clinical nurses with depression,”
+     Progress in Neuro-Psychopharmacology & Biological Psychia-                Journal of the American College of Nutrition, vol. 30, no. 5,
+     try, vol. 48, pp. 102–111, 2014.                                          pp. 340–347, 2011.
+[68] M. Duan, F. Liu, H. Fu, S. Lu, and T. Wang, “Preoperative            [82] M. Vital, A. C. Howe, and J. M. Tiedje, “Revealing the bacterial
+     microbiomes and intestinal barrier function can diﬀerentiate              butyrate synthesis pathways by analyzing (meta) genomic
+     prodromal Alzheimer’s disease from normal neurocognition                  data,” mBio, vol. 5, no. 2, article e00889, 2014.
+     in elderly patients scheduled to undergo orthopedic surgery,”        [83] T. S. Rao, M. R. Asha, B. N. Ramesh, and K. S. Rao, “Under-
+     Frontiers in Cellular and Infection Microbiology, vol. 11, article        standing nutrition, depression and mental illnesses,” Indian
+     592842, 2021.                                                             Journal of Psychiatry, vol. 50, no. 2, pp. 77–82, 2008.
+[69] B. Müller, A. J. Rasmusson, D. Just et al., “Fecal short-chain       [84] W. R. Resende, S. S. Valvassori, G. Z. Réus et al., “Eﬀects of
+     fatty acid ratios as related to gastrointestinal and depressive           sodium butyrate in animal models of mania and depression:
+     symptoms in young adults,” Psychosomatic Medicine, vol. 83,               implications as a new mood stabilizer,” Behavioural Pharma-
+     no. 7, pp. 693–699, 2021.                                                 cology, vol. 24, no. 7, pp. 569–579, 2013.
+[70] T. Pang, S. T. Leach, T. Katz, A. S. Day, and C. Y. Ooi, “Fecal
+                                                                          [85] J. Li, L. Hou, C. Wang, X. Jia, X. Qin, and C. Wu, “Short term
+     biomarkers of intestinal health and disease in children,” Fron-
+                                                                               intrarectal administration of sodium propionate induces
+     tiers in Pediatrics, vol. 2, p. 6, 2014.
+                                                                               antidepressant-like eﬀects in rats exposed to chronic unpre-
+[71] O. V. Averina, Y. A. Zorkina, R. A. Yunes et al., “Bacterial              dictable mild stress,” Frontiers in Psychiatry, vol. 9, p. 454,
+     metabolites of human gut microbiota correlating with depres-              2018.
+     sion,” International Journal of Molecular Sciences, vol. 21,
+                                                                          [86] I. Galizia, L. Oldani, K. Macritchie et al., “S-Adenosyl methio-
+     no. 23, p. 9234, 2020.
+                                                                               nine (SAMe) for depression in adults,” Cochrane Database of
+[72] M. Ren, H. Zhang, J. Qi et al., “An almond-based low carbohy-             Systematic Reviews, vol. 10, no. 10, article CD011286, 2016.
+     drate diet improves depression and glycometabolism in
+                                                                          [87] E. Albiñana, J. Gutierrez-Luengo, N. Hernández-Juarez et al.,
+     patients with type 2 diabetes through modulating gut microbi-
+                                                                               “Chondroitin sulfate induces depression of synaptic transmis-
+     ota and GLP-1: a randomized controlled trial,” Nutrients,
+                                                                               sion and modulation of neuronal plasticity in rat hippocampal
+     vol. 12, no. 10, p. 3036, 2020.
+                                                                               slices,” Neural Plasticity, vol. 2015, Article ID 463854, 2015.
+[73] J. Butt, S. Werner, M. Willhauck-Fleckenstein et al., “Serology
+                                                                          [88] T. Mukai, T. Kishi, Y. Matsuda, and N. Iwata, “A meta-analysis
+     ofStreptococcus gallolyticussubspeciesgallolyticusand its asso-
+                                                                               of inositol for depression and anxiety disorders,” Human Psy-
+     ciation with colorectal cancer and precursors,” International
+                                                                               chopharmacology, vol. 29, no. 1, pp. 55–63, 2014.
+     Journal of Cancer, vol. 141, no. 5, pp. 897–904, 2017.
+                                                                          [89] D. C. Crick, M. C. Schulbach, E. E. Zink et al., “Polyprenyl
+[74] C. Nastasi, M. Candela, C. M. Bonefeld et al., “The eﬀect of
+                                                                               phosphate biosynthesis in Mycobacterium tuberculosis and
+     short-chain fatty acids on human monocyte-derived dendritic
+                                                                               Mycobacterium smegmatis,” Journal of Bacteriology, vol. 182,
+     cells,” Scientiﬁc Reports, vol. 5, no. 1, article 16148, 2015.
+                                                                               no. 20, pp. 5771–5778, 2000.
+[75] G. Caspani, S. Kennedy, J. A. Foster, and J. Swann, “Gut micro-
+                                                                          [90] D. Kaur, P. J. Brennan, and D. C. Crick, “Decaprenyl diphos-
+     bial metabolites in depression: understanding the biochemical
+                                                                               phate synthesis in Mycobacterium tuberculosis,” Journal of
+     mechanisms,” Microbial Cell, vol. 6, no. 10, pp. 454–481, 2019.
+                                                                               Bacteriology, vol. 186, no. 22, pp. 7564–7570, 2004.
+[76] M. Yu, H. Jia, C. Zhou et al., “Variations in gut microbiota and
+     fecal metabolic phenotype associated with depression by 16S
+     rRNA gene sequencing and LC/MS-based metabolomics,”
+

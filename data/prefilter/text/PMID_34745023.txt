@@ -1,0 +1,552 @@
+                                                                                                                                               ORIGINAL RESEARCH
+                                                                                                                                            published: 20 October 2021
+                                                                                                                                      doi: 10.3389/fmicb.2021.705583
+
+
+
+
+                                             The Capacity to Produce Hydrogen
+                                             Sulfide (H2S) via Cysteine
+                                             Degradation Is Ubiquitous in the
+                                             Human Gut Microbiome
+                                             Domenick J. Braccia 1 , Xiaofang Jiang 2 , Mihai Pop 1,3 and A. Brantley Hall 1,4*
+                                             1
+                                              Center for Bioinformatics and Computational Biology, University of Maryland, College Park, College Park, MD,
+                                             United States, 2 National Library of Medicine, National Institutes of Health, Bethesda, MD, United States, 3 Department
+                                             of Computer Science, University of Maryland, College Park, College Park, MD, United States, 4 Department of Cell Biology
+                                             and Molecular Genetics, University of Maryland, College Park, College Park, MD, United States
+
+
+                                             As one of the three mammalian gasotransmitters, hydrogen sulfide (H2 S) plays a
+                                             major role in maintaining physiological homeostasis. Endogenously produced H2 S
+                                             plays numerous beneficial roles including mediating vasodilation and conferring
+                                             neuroprotection. Due to its high membrane permeability, exogenously produced H2 S
+                                             originating from the gut microbiota can also influence human physiology and is
+                            Edited by:
+                                             implicated in reducing intestinal mucosal integrity and potentiating genotoxicity and is
+                            Kylie Allen,     therefore a potential target for therapeutic interventions. Gut microbial H2 S production
+           Virginia Tech, United States
+                                             is often attributed to dissimilatory sulfate reducers such as Desulfovibrio and Bilophila
+                       Reviewed by:
+                                             species. However, an alternative source for H2 S production, cysteine degradation, is
+                  Franck Carbonero,
+   Washington State University Health        present in some gut microbes, but the genes responsible for cysteine degradation
+    Sciences Spokane, United States          have not been systematically annotated in all known gut microbes. We classify
+              Buck Timothy Hanson,
+    Biosciences Division, Los Alamos
+                                             mechanisms of cysteine degradation into primary, secondary, and erroneous levels
+   National Laboratory, United States        of H2 S production and perform a comprehensive search for primary, secondary, and
+                  *Correspondence:           erroneous cysteine-degrading enzymes in 4,644 non-redundant bacterial genomes
+                       A. Brantley Hall
+                                             from the Unified Human Gastrointestinal Genome (UHGG) catalog. Of the 4,644
+                   halllab@halllab.org
+                                             genomes we have putatively identified 2,046 primary, 1,951 secondary, and 5 erroneous
+                   Specialty section:        cysteine-degrading species. We identified the presence of at least one putative cysteine-
+         This article was submitted to
+                                             degrading bacteria in metagenomic data of 100% of 6,623 healthy subjects and the
+Microbial Physiology and Metabolism,
+               a section of the journal      expression of cysteine-degrading genes in metatranscriptomic data of 100% of 736
+             Frontiers in Microbiology       samples taken from 318 individuals. Additionally, putative cysteine-degrading bacteria
+            Received: 05 May 2021            are more abundant than sulfate-reducing bacteria across healthy controls, IBD patients
+      Accepted: 29 September 2021
+        Published: 20 October 2021           and CRC patients (p < 2.2e-16, Wilcoxon rank sum test). Although we have linked
+                              Citation:      many taxa with the potential for cysteine degradation, experimental validation is required
+      Braccia DJ, Jiang X, Pop M and         to establish the H2 S production potential of the gut microbiome. Overall, this study
+           Hall AB (2021) The Capacity
+                                             improves our understanding of the capacity for H2 S production by the human gut
+   to Produce Hydrogen Sulfide (H2 S)
+            via Cysteine Degradation Is      microbiome and may help to inform interventions to therapeutically modulate gut
+          Ubiquitous in the Human Gut        microbial H2 S production.
+                           Microbiome.
+          Front. Microbiol. 12:705583.       Keywords: metagenomics, hydrogen sulfide, human health, inflammatory bowel disease (IBD), colorectal cancer,
+     doi: 10.3389/fmicb.2021.705583          microbiome, gut microbiome
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    1                                         October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                             H2 S Production via Cysteine-Degradation
+
+
+
+
+INTRODUCTION                                                               (recently reclassified from the class Deltaproteobacteria) with
+                                                                           Desulfovibrio spp. and Bilophila wadsworthia being the most
+Hydrogen sulfide (H2 S) is a consequential molecule produced by            abundant representatives in the human gut (Gibson et al., 1988;
+the gut microbiota with pleiotropic effects on human physiology.           Waite et al., 2020). Sulfate and sulfite are used by SRB as
+It is one of the three physiological gasotransmitters, along with          terminal electron acceptors for anaerobic respiration (Levine
+carbon monoxide and nitric oxide, and is produced endogenously             et al., 1998). While SRB are prevalent in human populations, their
+in many tissues including, but not limited to, the brain, heart            relative abundances are generally very low and are dependent
+and liver (Wang, 2009). Endogenous H2 S production occurs                  on ecological interactions with other hydrogenotrophs, such
+via the enzymes cystathionine beta-synthase (cbs), cystathionine           as methanogens and acetogens (Gibson et al., 1988; Deng
+gamma-lyase (cse) and 3-mercaptopyruvate sulfur transferase (3-            et al., 2015; Yao et al., 2018). Methane (CH4 ) is primarily
+mst) (Kimura, 2009). cbs, cse and 3-mst are tightly regulated              produced by the methanogen Methanobrevibacter smithii (Miller
+pyridoxal-50 -phosphate (PLP)-dependent enzymes and produce                et al., 1982) and is one of the primary gases present in
+H2 S primarily from the degradation of cysteine (Percudani and             mammalian flatus. Sulfate-reducing bacteria and methanogens
+Peracchi, 2003; Figure 1B). H2 S produced by these enzymes                 have been historically considered mutually exclusive in microbial
+plays a litany of physiological roles including: suppression               communities due to the competition for hydrogen (Gibson
+of oxidative stress in the brain, regulation of blood pressure             et al., 1988). However, experiments carried out on human
+through vasodilation and protection of hepatic stellate cells from         flatus have shown that both H2 S and CH4 production occurs
+cirrhosis in the liver (Wang, 2012). As a result, abnormally low           simultaneously in some individuals, seemingly contradicting the
+endogenous levels of H2 S are hypothesized to be an underlying             notion that methanogens and sulfate-reducing bacteria cannot
+cause of peripheral artery disease, and efforts have been made             co-exist (Suarez et al., 1997).
+to measure serum levels of H2 S quickly and non-invasively                     Unlike the comprehensively characterized pathways for
+as a proxy for early detection of peripheral artery disease                dissimilatory sulfate reduction, the species of the gut microbiome
+(Shekarriz et al., 2020).                                                  responsible for H2 S production via degradation of sulfur-
+    Microbes in the gastrointestinal tract also contribute to              containing amino acids (cysteine and methionine) have not been
+H2 S production in humans. A majority of the microbially                   comprehensively characterized. Gut microbial involvement in
+produced H2 S originates in the colon, where estimates of luminal          amino acid fermentation has garnered recent attention, as many
+concentrations of H2 S range from 0.3 to 3.4 mM (Suarez et al.,            physiologically relevant downstream metabolites are produced
+1997). The serum concentration of H2 S in healthy individuals is           by gut microbial degradation of amino acids (Lin et al., 2017;
+difficult to measure but is estimated to range from 34.0 to 36.4           Figure 1A). Depending on dietary intake, a pool of sulfur-
+µM (Furne et al., 2008). H2 S readily diffuses across the intestinal       containing amino acids is available for fermentation by gut
+epithelium and can enter circulation influencing host physiology           microbiota (Silvester and Cummings, 1995). Various studies
+(Furne et al., 2001). Excessive production of H2 S by gut microbes         have demonstrated that cysteine supplementation leads to far
+has been linked with decreased mucosal integrity through                   more H2 S production than inorganic sulfate supplementation
+reduction of mucosal disulfide bonds (Blachier et al., 2021),              underscoring the comparative importance of the cysteine-
+inhibition of colonocyte butyrate oxidation via cytochrome-c               degradation pathway in total H2 S production (Levine et al., 1998;
+inhibition (Gibson et al., 1988), and genotoxicity (Furne et al.,          Deng et al., 2015; Yao et al., 2018).
+2001; Figure 1C). A prime example of the gut microbiome                        It is important to delineate between H2 S produced via
+effecting gut health is association of Fusobacterium nucleatum—            dissimilatory sulfate reduction and H2 S produced via cysteine
+a known H2 S producer—with colonic tumors (Castellarin et al.,             degradation because different approaches are necessary to
+2012; Figure 1C).                                                          modulate these two sources of H2 S production. Because of
+    While the mammalian pathways of H2 S production have been              the poor annotation of the genes which produce H2 S via
+well studied, the contribution of gut-microbial H2 S production            cysteine degradation across species of the gut microbiome,
+to circulating H2 S levels and the subsequent systemic effects on          the relative contributions of cysteine-degradation and sulfate-
+human physiology are largely unknown. The first step toward a              reduction to overall exogenous H2 S production are unclear.
+better understanding of the effects of H2 S on human physiology            To address this gap, we designed a bioinformatic approach to
+is to identify which microbial species are responsible for H2 S            first identify putative cysteine-degrading bacteria in the human
+production. There are two major sources for H2 S production                gut microbiome and then compared the relative abundances
+in the human gut microbiota, dissimilatory sulfate reduction               of putative cysteine-degrading bacteria and sulfate-reducing
+(DSR) and the degradation of the sulfur-containing amino acids             bacteria across metagenomic data from Inflammatory Bowel
+cysteine and methionine (Carbonero et al., 2012). We must note             Disease (IBD), colorectal cancer (CRC), and healthy cohorts
+that sulfate is first reduced to sulfite before H2 S is produced,          (Supplementary Figure 1).
+however, we refer to this process as sulfate reduction for the
+remainder of this work.
+    In the literature, H2 S production is often attributed to              RESULTS
+the well-characterized dissimilatory sulfate reduction pathway
+(Wang, 2012). Common representatives of sulfate-reducing                   To identify species capable of H2 S production via cysteine-
+bacteria (SRB) are found in the phylum Desulfobacterota                    degradation in the human gut microbiome, we curated profile
+
+
+Frontiers in Microbiology | www.frontiersin.org                        2                                  October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                                H2 S Production via Cysteine-Degradation
+
+
+
+
+  FIGURE 1 | H2 S production via cysteine degradation in the human gut microbiome. (A) Pathways of H2 S production via cysteine degradation in the human gut
+  microbiome. Pathways with labels ending in “activity” refer to a set of genes that convert cysteine to the indicated products. Cysteine desulfurase activity
+  (CYD) = (dcyD, mgl, metC, cysM, cysK, malY, yhaM, tnaA, iscS). AMetR = AdoMet recycling present in Bacillus subtilis (metK, various methylases, mtnN, luxS) (Hullo
+  et al., 2007). (B) Visualization of H2 S production across human tissues (image obtained from Papatheodorou et al., 2020). H2 S is produced endogenously in the
+  brain, liver, and heart via cystathionine gamma-lyase and cystathionine beta-synthase and is tightly regulated to avoid toxic effects of H2 S overproduction. Color
+  coded organs refer to the type of H2 S production active in those organs. (C) Physiological effects of H2 S on the healthy, IBD and CRC gut. H2 S contributes to the
+  degradation of the protective mucosal barrier which could cause or exacerbate inflammation and infection by opportunistic species for patients diagnosed with IBD.
+  In CRC, Fusobacterium nucleatum is closely associated with colonic tumors and are well known H2 S producers (Castellarin et al., 2012).
+
+
+
+Hidden Markov Models (pHMMs) of enzymes with experimental                              inhabit the human gut. Of the representative UHGG species,
+evidence of H2 S production via cysteine-degradation and                               44.1% (2,046/4,644) contain one or more primary cysteine-
+classified them into primary, secondary and erroneous producers                        degrading gene, 42.0% (1,951/4,644) contain one or more
+of H2 S. Enzymes which produce H2 S via cysteine degradation                           secondary cysteine-degrading gene, and 1.1% (5/4,644) contain
+as their primary function are labeled “primary” (dcyD, yhaM,                           one or more erroneous cysteine-degrading gene. Aside from
+mgl, sseA) and enzymes which also participate in separate                              known cysteine-degrading bacterial species compiled in the
+mechanism(s), such as the transsulfuration pathway and maltose                         manual curation step, an additional 3,065 species from the
+regulon modulation, have been labeled “secondary” (metC, malY,                         UHGG catalog were found to contain one or more cysteine-
+cysK, cysM, mccB). Enzymes which have a well-defined function                          degrading genes (Figure 2, Supplementary Figure 2, and
+other than H2 S production via cysteine-degradation are labeled                        Supplementary Table 2).
+“erroneous” (tnaA, iscS, mccA). Please see Supplementary Note 1                           The prevalence and relative abundance of putative cysteine-
+for more information.                                                                  degrading bacteria and sulfate-reducing bacteria was calculated
+                                                                                       for 10,700 metagenomic samples from healthy, IBD, CRC, and
+                                                                                       adenoma cohorts (Lewis et al., 2015; Pasolli et al., 2017; Franzosa
+Cysteine-Degrading Genes Are Widely                                                    et al., 2019; Proctor and Huttenhower, 2019). Among the 6,632
+Distributed in the Human Gut                                                           healthy subjects, there is a markedly higher relative abundance
+Microbiome                                                                             of putative primary and secondary cysteine-degrading bacteria
+We performed a homolog search for these H2 S producing                                 compared to sulfate-reducing bacteria (p < 2.2e-16, two-sided
+enzymes across 4,644 species in the Unified Human                                      Wilcoxon Rank Sum Test) (Figure 3). This suggests that cysteine-
+Gastrointestinal Genome (UHGG) collection (Almeida et al.,                             degradation may contribute considerably to H2 S production for
+2020) using HMMER (2021) (Figure 2 and Supplementary                                   the average healthy person. Cysteine-degrading genes are also
+Figure 1A). This collection comprises 4,644 non-redundant                              widespread in healthy populations with 100% of the 6,623 healthy
+genome sequences from species representatives generated by                             subjects containing at least one putative cysteine-degrading
+clustering 204,938 genome sequences from bacteria known to                             bacteria in their gut microbiome (Figure 3).
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    3                                         October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                                H2 S Production via Cysteine-Degradation
+
+
+
+
+  FIGURE 2 | Presence of cysteine-degrading genes across the human gut microbiome. Important genera of the human gut microbiome and the presence/absence of
+  cysteine-degrading genes in each clade. The taxonomic tree is obtained from the Unified Human Gastrointestinal Genome collection (UHGG) (Almeida et al., 2020)
+  which is built on the Genome Taxonomy Database (GTDB) (Chaumeil et al., 2020). Phyla names are annotated on the left side. Phyla followed by a capital letter, e.g.,
+  Desulfobacterota (A), indicate a novel phyla classified by the GTDB-tk (Chaumeil et al., 2020). The bar chart in the center of the figure represents the number of
+  species contained under each genus or higher clade. The color of the circles on the right indicates whether the gene is a primary (green), secondary (yellow) or
+  erroneous (red) producer of H2 S (Supplementary Note 1). The circles on the right side represent the number of species in each clade that contain hits to the genes
+  specified. Nodes collapsed at levels higher than genus are because all genomes in that clade contain the same combination of genes reported in the grid on the
+  right. The full, untruncated version of this figure is available in the supplementary information (Supplementary Figure 2).
+
+
+
+Increased Relative Abundance of                                                        cysteine-degrading bacteria are significantly more abundant than
+Putative Hydrogen Sulfide Producing                                                    sulfate-reducing bacteria across IBD and CRC populations from
+                                                                                       metagenomic samples obtained from curatedMetagenomicData
+Bacteria in the Inflammatory Bowel                                                     (Pasolli et al., 2017), the Integrative Human Microbiome
+Disease and Colorectal Cancer Gut                                                      Project 2 (HMP2) (Proctor and Huttenhower, 2019), PRISM
+Microbiomes                                                                            (Lewis et al., 2015; Franzosa et al., 2019) (all p < 2.2 × 10−16 )
+We assessed the relative abundance of putative cysteine-                               (Figures 3A–D).
+degrading bacteria and sulfate-reducing bacteria in individuals                           Putative primary cysteine-degrading bacteria are significantly
+with the two most common clinical manifestations of                                    more abundant in CRC than in the control groups (W = 123,784,
+inflammatory bowel disease (IBD), Crohn’s disease and                                  p = 7.4 × 10−11 ) (Figure 3A) while putative secondary cysteine-
+ulcerative colitis, colorectal cancer (CRC) and healthy controls                       degrading bacteria were found to be significantly less abundant in
+(Schirmer et al., 2019). Putative primary and secondary                                CRC compared to healthy controls (W = 79,734; p = 1.2 × 10−6 ).
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    4                                         October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                             H2 S Production via Cysteine-Degradation
+
+
+
+
+  FIGURE 3 | Putative primary and secondary cysteine-degrading bacteria are more prevalent than (SRB) among individuals with IBD, CRC, and healthy controls.
+  Relative abundances of putative cysteine-degrading bacteria and sulfate-reducing bacteria across healthy and diseased populations. Relative abundances were
+  calculated using Kraken2 (Wood et al., 2019) (see section “Materials and Methods”). (A) Data obtained from curatedMetagenomicData (Pasolli et al., 2017). Number
+  of samples per disease category: control = 560, CRC = 352, adenoma = 143, IBD = 148. (B) Data obtained from HMP2 (Almeida et al., 2020). Number of samples
+  per disease category: non-IBD = 359, ulcerative colitis (UC) = 367, Crohn’s disease (CD) = 591. (C) Data obtained from PRISM (Franzosa et al., 2019). Number of
+  samples per disease category: control = 56, UC = 76, CD = 88. (D) Data obtained from study on Pediatric Crohn’s Disease (Lewis et al., 2015). Number of samples
+  per disease category: control = 26, CD = 86.
+
+
+
+A similar trend follows for ulcerative colitis and Crohn’s                           compared to healthy controls and putative secondary cysteine-
+disease compared to healthy controls. Putative primary cysteine-                     degrading bacteria are significantly less abundant than in healthy
+degrading bacteria are significantly more abundant in IBD when                       controls (Figures 3B,C). Within pediatric Crohn’s disease, there
+
+
+Frontiers in Microbiology | www.frontiersin.org                                  5                                        October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                                  H2 S Production via Cysteine-Degradation
+
+
+
+
+  FIGURE 4 | Cysteine-degrading genes are actively expressed in healthy adults. This analysis confirms that the H2 S producing genes considered in this work are
+  actively expressed in healthy adults. The y-axis displays TPM counts for each gene involved in H2 S production via both cysteine degradation and dissimilatory sulfate
+  reduction. The legend on the right indicates the mode of H2 S production for each of the genes examined. Metatranscriptomic reads from HPFS (number of
+  individuals = 308, number of samples = 677) (David et al., 2014; Abu-Ali et al., 2018) (number of individuals = 10, number of samples = 59) (David et al., 2014) were
+  aligned to gene hit sequences identified in the homolog search step using salmon (Patro et al., 2017) and visualized by the ggplot2 (Wickham, 2011) package in R
+  (Supplementary Figure 1C). Certain primary and secondary H2 S producing genes are actively produced by gut bacteria in healthy adults and erroneous producers
+  of H2 S appear to be less actively transcribed.
+
+
+
+is no apparent difference in the abundance of putative primary                          dsrB (Figure 4 and Supplementary Figure 4). yhaM and mgl
+and secondary cysteine-degrading bacteria (Figure 3D).                                  are the most actively transcribed primary cysteine-degrading
+                                                                                        genes with malY and cysK being the most actively transcribed
+Primary and Secondary                                                                   secondary cysteine-degrading genes. The erroneous cysteine-
+Cysteine-Degrading Genes Are Actively                                                   degrading genes tnaA, iscS, and mccA are considerably less
+                                                                                        transcribed across healthy human gut microbiomes (Figure 4).
+Expressed in the Human Gut Microbiome                                                   These results suggest that primary and secondary cysteine
+To confirm in vivo transcription of cysteine-degrading genes
+                                                                                        degradation could be prominent pathways of H2 S production in
+and sulfate-reducing genes in the human gut microbiome, we
+                                                                                        some individuals.
+analyzed 736 metatrasncriptomic sequencing runs from 318
+individuals across two studies: (1) The Health Professionals
+Follow-up Study (number of individuals = 308, number of
+                                                                                        Core Dissimilatory Sulfate Reduction
+samples = 677) (Abu-Ali et al., 2018) and (2) David et al.                              Genes and Methanogenesis Genes Are
+(2014) (number of individuals = 10, number of samples = 59).                            Co-expressed in vivo
+Both studies took multiple samples from participants over the                           Previously, in vitro assays have indicated that methanogens and
+course of time and/or dietary intervention, hence the distinction                       sulfate-reducing bacteria compete for hydrogen and may thus
+between number of individuals and number of samples.                                    mutually exclude one another (Gibson et al., 1988). However,
+Our analysis revealed that 86.5% (637/736) of samples show                              through analysis of 736 metatranscriptomic samples obtained
+expression of at least one primary cysteine-degrading gene, 89.7%                       from 318 individuals across two studies (David et al., 2014;
+(660/736) of samples showed expression of at least one secondary                        Abu-Ali et al., 2018), we observed that core genes involved
+cysteine-degrading gene and 84.1% (619/736) of samples showed                           in dissimilatory sulfate reduction and methanogenesis are
+expression of dissimilatory sulfate reduction genes dsrA and                            simultaneously expressed in 25.8% (175/677) of samples from
+
+
+Frontiers in Microbiology | www.frontiersin.org                                     6                                         October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                              H2 S Production via Cysteine-Degradation
+
+
+
+the HPFS study and in 11.9% (7/59) of samples from the David             of mutual exclusivity of CH4 and H2 S producing bacteria. To
+et al. (2014) study (Supplementary Figure 4). This suggests that         resolve this discrepancy, we examined the transcriptional co-
+the mutual exclusivity of sulfate reducing bacteria and methane          occurrence of methanogens and sulfate-reducing bacteria, and
+producing bacteria observed in vitro does not necessarily apply          cysteine-degrading bacteria in the human gut and found the
+to the complex biogeography of the gut.                                  co-occurrence of all three pathways. This discrepancy between
+                                                                         in vitro experiments and in vivo observations could be explained
+                                                                         by the complex biogeography of the gut in which methanogens
+DISCUSSION                                                               and sulfate-reducing bacteria occupy distinct niches or from H2 S
+                                                                         production via cysteine degradation.
+Due to its role as a mammalian gasotransmitter, H2 S plays                   The primary limitation of this study is the lack of
+important roles in maintaining physiological homeostasis.                experimental confirmation of primary, secondary and erroneous
+However, H2 S may also cause deleterious effects in a                    putative cysteine-degrading bacteria. This could be addressed by
+concentration-dependent manner. Therefore, it is of great                performing a screen for H2 S production via cysteine degradation
+importance to understand the sources of exogenous H2 S                   for all culturable strains that we have identified as putative
+production in the gut in order to tease out the links between            cysteine-degrading bacteria. There are many reactions in which
+H2 S and human physiology. The source of gut microbial                   H2 S is formed as an intermediate, such as assimilatory sulfate
+H2 S production is often attributed to dissimilatory sulfate             reduction, however, these reactions do not result in significant
+reduction, with far less attention given to H2 S production via          production of H2 S and are thus not relevant to total H2 S
+the degradation of the sulfur-containing amino acid cysteine.            production by the gut microbiome. Therefore, we limited our
+In fact, there has not been a microbiome-wide annotation of              search for H2 S producing bacteria to pathways in which H2 S
+the potential for H2 S production via cysteine degradation. The          was the endpoint, or byproduct, and not just an intermediate of
+systematic annotation we performed in this study expands our             the pathway. Our search identified the genes for dissimilatory
+understanding of which species can potentially produce H2 S in           sulfate reduction in Eggerthella and Gordonibacter species. We
+the gut, the majority of which have not been previously reported         have included these species as sulfate-reducing bacteria though
+to have the capability for H2 S production. Our analysis of              there is little evidence to suggest that these species are true sulfate
+shotgun sequenced metagenomic data from 10,700 metagenomic               reducers (Müller et al., 2015; Nguyen et al., 2018). Experimental
+samples revealed that putative cysteine-degrading bacteria               validation of these claims is necessary to confirm Eggerethella
+are ubiquitous inhabitants of the human gut microbiome and               spp. and Gordonibacter spp. as non-sulfate-reducing bacteria. We
+are present at significantly higher relative abundance than              also note that our search for H2 S producing genes included only
+sulfate-reducing bacteria. Furthermore, our analysis of 736              the 4,644 representative genomes in UHGG. The full UHGG
+metatranscriptomic samples from 318 healthy individuals                  collection contains 204,938 non-redundant genomes with core
+demonstrates that primary and secondary cysteine-degrading               and accessory gene information that may contain other putative
+genes are, in fact, actively expressed in the gut. These results         H2 S-producing sub-species that we did not analyze. Another
+suggest that primary and secondary cysteine degradation could            potential shortcoming of this analysis is the overrepresentation
+be prominent pathways of H2 S production in some individuals.            of western countries in the data pool used. An expanded set of
+Therefore, cysteine degradation is an important aspect to                samples would be required to claim that primary and secondary
+consider when designing studies to assess the effects of H2 S on         putative cysteine-degrading bacteria are globally prevalent in the
+human health or modulate gut microbial H2 S production.                  human gut microbiome. Finally, we note that sulfate-reducing
+    We also explored the relative abundance of putative cysteine-        bacteria may be mucosally associated and present at low relative
+degrading bacteria in IBD and CRC to understand whether these            abundances which could mean that stool metagenomics may
+bacteria could contribute to or promote disease progression.             underestimate the true abundance of sulfate-reducing bacteria
+We found that primary putative cysteine-degrading bacteria are           in the human gut.
+significantly more abundant in CRC samples than in healthy                   In conclusion, we show that the relative abundance of primary
+controls. While relative abundances of sulfate-reducing bacteria         putative cysteine-degrading bacteria is significantly higher than
+are modestly higher in CRC compared to healthy controls,                 sulfate-reducing bacteria across healthy individuals as well as
+primary putative cysteine-degrading bacteria are far more                individuals with colorectal cancer and inflammatory bowel
+abundant. This finding corroborates previous studies linking             disease. These results bolster previous studies suggesting the
+H2 S and the progression of CRC (Castellarin et al., 2012) and           importance of dietary cysteine in gut microbial H2 S production.
+highlights the need to identify the dominant source of H2 S in           The systematic annotation of putative H2 S-producing species
+the CRC gut. Importantly, it remains to be elucidated whether            performed in this study can serve as a resource for future
+or not this difference in relative abundance translates to higher        studies examining the links between H2 S and disease and could
+production of H2 S via cysteine degradation.                             help these studies to tease out the concentration-dependent
+    Prior studies suggested that methanogens and sulfate-                effects of H2 S on human health. Overall, this work informs
+reducing bacteria are mutually exclusive, potentially due to their       future approaches to modulate gut microbial H2 S production
+competition for hydrogen. However, subsequent studies have               via dietary interventions and may lead to an improved
+reported the presence of both CH4 and H2 S in the human                  understanding of the complex interplay between H2 S and human
+flatus (Suarez et al., 1997), seemingly contradicting this notion        health and disease.
+
+
+Frontiers in Microbiology | www.frontiersin.org                      7                                    October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                  H2 S Production via Cysteine-Degradation
+
+
+
+
+MATERIALS AND METHODS                                                     Calculating Relative Abundances With
+                                                                          Kraken 2
+Supplementary Figure 1 provides a visual overview of the
+                                                                          Raw        sequencing      reads      for      samples       from
+computational workflow carried out in this manuscript. This
+                                                                          curatedMetagenomicData, HMP2, PRISM, and Lewis et al.
+workflow is available at https://github.com/dombraccia/H2S.
+                                                                          (2015) were downloaded and extracted with NCBI’s SRA
+                                                                          toolkit v2.10.9 (SRA-Tools, 2021). Quality control and adapter
+Curation of Profile Hidden Markov                                         trimming of the fastq sequence files were done with the Trim
+Models Involved in Cysteine-Degradation                                   Galore wrapper v0.6.6 (Babraham Bioinformatics-Trim Galore,
+and Sulfate-Reduction                                                     2021). To remove potential human contaminants, quality-
+We performed a literature search to identify genes involved in            trimmed reads were screened against the human genome (hg19)
+H2 S production via dissimilatory sulfate reduction and sulfur-           with Bowtie2 v2.4.2 (Langmead and Salzberg, 2012). Taxonomy
+containing amino acid degradation by gut bacteria (Awano et al.,          profiling of the cleaned metagenomic reads were generated using
+2005; Shatalin et al., 2011; Suwabe et al., 2011; Carbonero et al.,       Kraken 2 (2.0.8-beta) (Wood et al., 2019) to estimate the relative
+2012; Nava et al., 2012; Shimada et al., 2016).                           abundance of bacterial species present in each dataset. These
+   The pHMMs corresponding to the gene families responsible               relative abundances are then processed and plotted in Figure 3.
+for H2 S production were obtained from TIGRFAM or HAMAP
+(the pHMMs used are listed in Supplementary Table 1).                     Transcriptomic Analysis of Hydrogen
+If neither a TIGRFAM nor HAMAP pHMM was available                         Sulfide Producing Genes and Methane
+for a given gene or the profile was too broadly defined,                  Producing Genes
+we opted to construct a custom pHMM to represent the
+                                                                          We sought to confirm the active expression of H2 S producing
+gene of interest. Custom pHMMs were constructed by 1.
+                                                                          genes and CH4 producing genes alongside the existing genomic
+concatenating amino acid sequences pertaining to the gene
+                                                                          evidence presented using metatranscriptomic data from David
+of interest 2. performing a multiple sequence alignment over
+                                                                          et al. (2014) and the Health Professionals Follow-up Study (Abu-
+these amino acid sequences using MUSCLE (Edgar, 2004) 3.
+                                                                          Ali et al., 2018). Confirming the expression of H2 S producing and
+constructing the pHMMs from the multiple sequence alignments
+                                                                          CH4 producing genes involved the following steps: 1. Metadata
+using hmmbuild from the HMMER tool suite (HMMER,
+                                                                          for samples was downloaded from the SRA run selector.2 2.
+2021). This was done to avoid identifying spurious homolog
+                                                                          Raw sequencing data was downloaded using fasterq-dump from
+hits in the subsequent search step. pHMMs are detailed in
+                                                                          the SRA toolkit version 2.10.9 (SRA-Tools, 2021). 3. Manually
+Supplementary Table 1.
+                                                                          curated H2 S producing genes and CH4 producing genes were
+                                                                          given as input to salmon index (Patro et al., 2017). 4. Raw RNA-
+Search for Putative Hydrogen Sulfide                                      seq data were then quantified against the manually curated gene
+Producing Bacteria in the Human Gut                                       sequence database using the salmon quant command with the –
+The pHMMs of H2 S producing genes were searched against                   validateMappings option on for better performance. The raw
+4,644 genome sequences from UHGG (Almeida et al., 2020)                   counts of reads mapped per gene were normalized to TPM values
+using the hmmscan method from hmmer v3.1 (HMMER, 2021)                    for downstream analysis. The threshold for considering an H2 S
+(Supplementary Figure 1A). Hits were filtered based on a                  gene “expressed” was TPM > = 10. A sample was said to be
+conservative E-value threshold (E-value < 1 × 10−110 ) and an             “methane producing” if ≥80% of the 16 genes involved in the
+additional bit score threshold was applied for TIGRFAM pHMMs              methanogenesis pathway recruited one or more read mapping.
+to avoid calling spurious hits. Hits to HAMAP and custom                  These genes are listed in the x-axis of Supplementary Figure 3.
+pHMMs were only filtered based on the E-value threshold.                  The results were then parsed with custom shell and R scripts and
+Next, the bacterial genomes receiving hits were categorized into          visualized in Figure 4 and Supplementary Figure 3 using the R
+putative primary, secondary, and erroneous cysteine degraders             package ggplot2 (Wickham, 2011). All scripts and workflow is
+based on the known mechanisms of the genes used in the                    available at https://github.com/dombraccia/H2S.
+search space. Genomes receiving hits to the dsrAB operon were
+labeled as sulfate-reducing bacteria. Please see Supplementary
+Note 1 for a detailed description of the primary, secondary,              DATA AVAILABILITY STATEMENT
+and erroneous classification scheme. Primary, secondary, and
+erroneous putative cysteine-degrading bacteria across UHGG                Publicly available datasets were analyzed in this study. These data
+were then visualized by uploading a taxonomic tree in newick              can be found here: HMP2: https://portal.hmpdacc.org/; PRISM:
+tree format to the iTOL (Letunic and Bork, 2019) web interface            available via SRA with BioProject number PRJNA400072; Lewis
+(Figure 2). Gene containments for each of the UHGG genomes                et al. (2015): available via SRA under SRP057027; UHGG:
+were converted to the EXTERNALSHAPE file format specified by              https://www.ebi.ac.uk/ena/data/view/PRJEB33885; David et al.
+iTOL documentation1 and uploaded to the iTOL visualization file           (2014): available via SRA with BioProject number PRJNA202303;
+from the previous step.                                                   HPFS: available via SRA with BioProject number PRJNA354235;
+
+1                                                                         2
+    https://itol.embl.de/help.cgi                                             https://trace-ncbi-nlm-nih-gov
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                       8                                        October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                                              H2 S Production via Cysteine-Degradation
+
+
+
+and curatedMetagenomicData: available via R/Bioconductor by                                       Table 1). pHMMs were searched across the UHGG database using hmmscan
+running ‘BiocManager::install(“curatedMetagenomicData”)’ in                                       (HMMER) (HMMER, 2021) and gene containments are reported in Figure 2 and
+                                                                                                  Supplementary Figure 2. (B) Relative abundances of putative primary,
+an R console.
+                                                                                                  secondary and erroneous cysteine-degrading bacteria were compared across
+                                                                                                  healthy, IBD and CRC individuals and reported in Figure 3. (C)
+                                                                                                  Metatranscriptomic sequencing reads from HPFS (number of individuals = 308,
+AUTHOR CONTRIBUTIONS                                                                              number of samples = 677) (David et al., 2014; Abu-Ali et al., 2018) (number of
+                                                                                                  individuals = 10, number of samples = 59) (David et al., 2014) were aligned and
+DB performed all analyses. AH, XJ, and MP conceived                                               quantified against UHGG gene hits using salmon (Patro et al., 2017) and results
+                                                                                                  are visualized in Figure 4 using ggplot2 (Wickham, 2011).
+and supervised the work. All authors contributed to
+manuscript preparation.                                                                           Supplementary Figure 2 | Prevalence of cysteine-degrading genes across
+                                                                                                  UHGG. Depiction of complete set of cysteine-degrading genes present across the
+                                                                                                  UHGG collection. All genera from Figure 2 are included here as well as less
+                                                                                                  prominent bacteria and computationally assembled genomes. Left: complete
+FUNDING                                                                                           taxonomic tree of UHGG genomes. Middle: bar chart representing the total
+                                                                                                  number of genomes under specified clade. Right: presence/absence of putative
+DB was supported in part by the National Science Foundation                                       primary, secondary and erroneous cysteine-degrading genes among the UHGG
+award DGE-1632976. XJ was supported by the Intramural                                             representative genome collection.
+Research Program of the NIH, National Library of Medicine.                                        Supplementary Figure 3 | Gene expression of methane producing genes in the
+MP was supported by the NIH grant R01-AI-100947.                                                  human gut. Genes involved in the production of CH4 by Methanobrevibacter
+AH was supported by the startup funding from the                                                  smithii expressed in healthy individuals. Metatranscriptomic reads from the Health
+University of Maryland.                                                                           Professionals Follow-up Study (HPFS) (number of individuals = 308, number of
+                                                                                                  samples = 677) (David et al., 2014; Abu-Ali et al., 2018) (number of
+                                                                                                  individuals = 10, number of samples = 59) (David et al., 2014) were aligned to
+                                                                                                  genes involved in methane production by Methanobrevibacter smithii using
+SUPPLEMENTARY MATERIAL                                                                            salmon (Patro et al., 2017) and visualized by R package ggplot2 (Wickham, 2011;
+                                                                                                  Supplementary Figure 1).
+The Supplementary Material for this article can be found                                          Supplementary Figure 4 | Co-expression of DSR, methanogenesis and
+online at: https://www.frontiersin.org/articles/10.3389/fmicb.                                    cysteine-degrading genes by the human gut microbiome. Genes involved in the
+2021.705583/full#supplementary-material                                                           production of CH4 via methanogenesis and H2 S via dissimilatory sulfate reduction
+                                                                                                  (DSR) and cysteine-degradation expressed in healthy individuals.
+Supplementary Figure 1 | Computational workflow. (A) Representative bacterial                     Metatranscriptomic reads from the Health Professionals Follow-up Study (HPFS)
+genomes from the United Human Gastrointestinal Genomes collection (UHGG)                          (Abu-Ali et al., 2018) (number of individuals = 308, number of samples = 677) and
+(Almeida et al., 2020) were downloaded and profile hidden markov models                           (David et al., 2014; Abu-Ali et al., 2018) (number of individuals = 10, number of
+(pHMMs) representing cysteine-degrading genes were manually curated after                         samples = 59) were aligned and quantified with salmon (Patro et al., 2017) and
+extensive literature search (Supplementary Note 1 and Supplementary                               visualized by R package ggplot2 (Wickham, 2011).
+
+
+
+
+REFERENCES                                                                                        David, L. A., Maurice, C. F., Carmody, R. N., Gootenberg, D. B., Button, J. E.,
+                                                                                                     Wolfe, B. E., et al. (2014). Diet rapidly and reproducibly alters the human gut
+Abu-Ali, G. S., Mehta, R. S., Lloyd-Price, J., Mallick, H., Branck, T., Ivey, K. L., et al.          microbiome. Nature 505, 559–563. doi: 10.1038/nature12820
+   (2018). Metatranscriptome of human faecal microbial communities in a cohort                    Deng, Y. F., Liao, X. D., Wang, Y., Liang, J. B., and Tufarelli, V. (2015). Prebiotics
+   of adult men. Nat. Microbiol. 3, 356–366. doi: 10.1038/s41564-017-0084-4                          mitigate in vitro sulfur-containing odour generation in caecal content of pigs.
+Almeida, A., Nayfach, S., Boland, M., Strozzi, F., Beracochea, M., Shi, Z. J., et al.                Ital. J. Anim. Sci. 14:3762. doi: 10.4081/ijas.2015.3762
+   (2020). A unified catalog of 204,938 reference genomes from the human gut                      Edgar, R. C. (2004). MUSCLE: multiple sequence alignment with high accuracy and
+   microbiome. Nat. Biotechnol. 39, 105–114. doi: 10.1038/s41587-020-0603-3                          high throughput. Nucleic Acids Res. 32, 1792–1797. doi: 10.1093/nar/gkh340
+Awano, N., Wada, M., Mori, H., Nakamori, S., and Takagi, H. (2005). Identification                Franzosa, E. A., Sirota-Madi, A., Avila-Pacheco, J., Fornelos, N., Haiser, H. J.,
+   and functional analysis of Escherichia coli cysteine desulfhydrases. Appl.                        Reinker, S., et al. (2019). Gut microbiome structure and metabolic activity in
+   Environ. Microbiol. 71, 4149–4152. doi: 10.1128/aem.71.7.4149-4152.2005                           inflammatory bowel disease. Nat. Microbiol. 4, 293–305.
+Babraham Bioinformatics-Trim Galore (2021). Babraham Bioinformatics - Trim                        Furne, J., Saeed, A., and Levitt, M. D. (2008). Whole tissue hydrogen sulfide
+   Galore! [Internet]. Available online at: https://www.bioinformatics.babraham.                     concentrations are orders of magnitude lower than presently accepted values.
+   ac.uk/projects/trim_galore/ (accessed August 18, 2021).                                           Am. J. Physiol.-Regul. Integr. Comp. Physiol. 295, R1479–R1485.
+Blachier, F., Andriamihaja, M., Larraufie, P., Ahn, E., Lan, A., and Kim, E. (2021).              Furne, J., Springfield, J., Koenig, T., DeMaster, E., and Levitt, M. D. (2001).
+   Production of hydrogen sulfide by the intestinal microbiota and epithelial cells                  Oxidation of hydrogen sulfide and methanethiol to thiosulfate by rat tissues:
+   and consequences for the colonic and rectal mucosa. Am. J. Physiol.-Gastrointest                  a specialized function of the colonic mucosa. Biochem. Pharmacol. 62, 255–259.
+   Liver Physiol. 320, G125–G135.                                                                    doi: 10.1016/s0006-2952(01)00657-8
+Carbonero, F., Benefiel, A. C., Alizadeh-Ghamsari, A. H., and Gaskins, H. R.                      Gibson, G. R., Macfarlane, G. T., and Cummings, J. H. (1988). Occurrence
+   (2012). Microbial pathways in colonic sulfur metabolism and links with health                     of sulphate-reducing bacteria in human faeces and the relationship of
+   and disease. Front Physiol. 3:448. doi: 10.3389/fphys.2012.00448                                  dissimilatory sulphate reduction to methanogenesis in the large gut. J. Appl.
+Castellarin, M., Warren, R. L., Freeman, J. D., Dreolini, L., Krzywinski, M., Strauss,               Bacteriol. 65, 103–111. doi: 10.1111/j.1365-2672.1988.tb01498.x
+   J., et al. (2012). Fusobacterium nucleatum infection is prevalent in human                     HMMER (2021). HMMER [Internet]. Available online at: http://hmmer.org/
+   colorectal carcinoma. Genome Res. 22, 299–306. doi: 10.1101/gr.126516.111                         (accessed August 18, 2021).
+Chaumeil, P.-A., Mussig, A. J., Hugenholtz, P., and Parks, D. H. (2020). GTDB-                    Hullo, M.-F., Auger, S., Soutourina, O., Barzu, O., Yvon, M., Danchin, A., et al.
+   Tk: a toolkit to classify genomes with the Genome Taxonomy Database.                              (2007). Conversion of methionine to cysteine in Bacillus subtilis and its
+   Bioinformatics 36, 1925–1927.                                                                     regulation. J. Bacteriol. 189, 187–197. doi: 10.1128/jb.01273-06
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                               9                                            October 2021 | Volume 12 | Article 705583
+Braccia et al.                                                                                                                            H2 S Production via Cysteine-Degradation
+
+
+
+Kimura, H. (2009). Hydrogen sulfide: from brain to gut. Antioxid Redox Signal. 12,              Shimada, T., Tanaka, K., and Ishihama, A. (2016). Transcription factor DecR
+   1111–1123. doi: 10.1089/ars.2009.2919                                                            (YbaO) controls detoxification of L-cysteine in Escherichia coli. Microbiology
+Langmead, B., and Salzberg, S. L. (2012). Fast gapped-read alignment with Bowtie                    162, 1698–1707. doi: 10.1099/mic.0.000337
+   2. Nat. Methods 9, 357–359. doi: 10.1038/nmeth.1923                                          Silvester, K. R., and Cummings, J. H. (1995). Does digestibility of meat protein
+Letunic, I., and Bork, P. (2019). Interactive Tree Of Life (iTOL) v4: recent updates                help explain large bowel cancer risk? Nutr. Cancer 24, 279–288. doi: 10.1080/
+   and new developments. Nucleic Acids Res. 47, W256–W259.                                          01635589509514417
+Levine, J., Ellis, C. J., Furne, J. K., Springfield, J., and Levitt, M. D. (1998). Fecal        SRA-Tools (2021). SRA-Tools - NCBI [Internet]. Available online at: https://github.
+   hydrogen sulfide production in ulcerative colitis. Am. J. Gastroenterol. 93,                     com/ncbi/sra-tools (accessed August 18, 2021).
+   83–87. doi: 10.1111/j.1572-0241.1998.083_c.x                                                 Suarez, F., Furne, J., Springfield, J., and Levitt, M. (1997). Insights
+Lewis, J. D., Chen, E. Z., Baldassano, R. N., Otley, A. R., Griffiths, A. M., Lee, D.,              into human colonic physiology obtained from the study of
+   et al. (2015). Inflammation, antibiotics, and diet as environmental stressors of                 flatus composition. Am. J. Physiol.-Gastrointest Liver Physiol. 272,
+   the gut microbiome in pediatric Crohn’s disease. Cell Host Microbe 18, 489–500.                  G1028–G1033.
+   doi: 10.1016/j.chom.2015.09.008                                                              Suwabe, K., Yoshida, Y., Nagano, K., and Yoshimura, F. (2011). Identification
+Lin, R., Liu, W., Piao, M., and Zhu, H. (2017). A review of the relationship between                of an l-methionine γ-lyase involved in the production of hydrogen sulfide
+   the gut microbiota and amino acid metabolism. Amino Acids. 49, 2083–2090.                        from l-cysteine in Fusobacterium nucleatum subsp. nucleatum ATCC 25586.
+   doi: 10.1007/s00726-017-2493-3                                                                   Microbiology 157, 2992–3000. doi: 10.1099/mic.0.051813-0
+Miller, T. L., Wolin, M. J., Macario, E. C., and Macario, A. J. (1982). Isolation of            Waite, D. W., Chuvochina, M., Pelikan, C., Parks, D. H., Yilmaz, P.,
+   Methanobrevibacter smithii from human feces. Appl. Environ. Microbiol. 43,                       Wagner, M., et al. (2020). Proposal to reclassify the proteobacterial classes
+   227–232. doi: 10.1128/aem.43.1.227-232.1982                                                      Deltaproteobacteria and Oligoflexia, and the phylum Thermodesulfobacteria
+Müller, A. L., Kjeldsen, K. U., Rattei, T., Pester, M., and Loy, A. (2015). Phylogenetic            into four phyla reflecting major functional capabilities. Int. J. Syst. Evol.
+   and environmental diversity of DsrAB-type dissimilatory (bi)sulfite reductases.                  Microbiol. 70, 5972–6016. doi: 10.1099/ijsem.0.004213
+   ISME J. 9, 1152–1165. doi: 10.1038/ismej.2014.208                                            Wang, R. (2009). Hydrogen sulfide: the third gasotransmitter in biology and
+Nava, G. M., Carbonero, F., Croix, J. A., Greenberg, E., and Gaskins, H. R. (2012).                 medicine. Antioxid Redox Signal. 12, 1061–1064. doi: 10.1089/ars.2009.2938
+   Abundance and diversity of mucosa-associated hydrogenotrophic microbes in                    Wang, R. (2012). Physiological implications of hydrogen sulfide: a whiff
+   the healthy human colon. ISME J. 6, 57–70. doi: 10.1038/ismej.2011.90                            exploration that blossomed. Physiol. Rev. 92, 791–896. doi: 10.1152/physrev.
+Nguyen, L. H., Abu-Ali, G., Mehta, R. S., Lloyd-Price, J., Song, M., Yan, Y.,                       00017.2011
+   et al. (2018). Su1940 - Dietary Patterns, Sulfur Intake, and the Abundance of                Wickham, H. (2011). ggplot2. WIREs Comput. Stat. 3, 180–185. doi: 10.1002/wics.
+   Sulfate-Reducing Bacteria. Gastroenterology 154:S–640.                                           147
+Papatheodorou, I., Moreno, P., Manning, J., Fuentes, A. M.-P., George, N., Fexova,              Wood, D. E., Lu, J., and Langmead, B. (2019). Improved metagenomic analysis with
+   S., et al. (2020). Expression Atlas update: from tissues to single cells. Nucleic                Kraken 2. Genome Biol. 20:257.
+   Acids Res. 48, D77–D83.                                                                      Yao, C. K., Rotbart, A., Ou, J. Z., Kalantar-Zadeh, K., Muir, J. G., and Gibson,
+Pasolli, E., Schiffer, L., Manghi, P., Renson, A., Obenchain, V., Truong, D. T., et al.             P. R. (2018). Modulation of colonic hydrogen sulfide production by diet
+   (2017). Accessible, curated metagenomic data through ExperimentHub. Nat.                         and mesalazine utilizing a novel gas-profiling technology. Gut Microbes. 9,
+   Methods 14, 1023–1024. doi: 10.1038/nmeth.4468                                                   510–522.
+Patro, R., Duggal, G., Love, M. I., Irizarry, R. A., and Kingsford, C. (2017).
+   Salmon provides fast and bias-aware quantification of transcript expression.                 Conflict of Interest: The authors declare that the research was conducted in the
+   Nat. Methods 14, 417–419. doi: 10.1038/nmeth.4197                                            absence of any commercial or financial relationships that could be construed as a
+Percudani, R., and Peracchi, A. (2003). A genomic overview of pyridoxal-                        potential conflict of interest.
+   phosphate-dependent enzymes. EMBO Rep. 4, 850–854. doi: 10.1038/sj.embor.
+   embor914                                                                                     Publisher’s Note: All claims expressed in this article are solely those of the authors
+Proctor, L., and Huttenhower, C. (2019). The integrative human microbiome                       and do not necessarily represent those of their affiliated organizations, or those of
+   project. Nature 569, 641–648. doi: 10.1038/s41586-019-1238-8                                 the publisher, the editors and the reviewers. Any product that may be evaluated in
+Schirmer, M., Garner, A., Vlamakis, H., and Xavier, R. J. (2019). Microbial genes               this article, or claim that may be made by its manufacturer, is not guaranteed or
+   and pathways in inflammatory bowel disease. Nat. Rev. Microbiol. 17, 497–511.                endorsed by the publisher.
+   doi: 10.1038/s41579-019-0213-6
+Shatalin, K., Shatalina, E., Mironov, A., and Nudler, E. (2011). H2S: a universal               Copyright © 2021 Braccia, Jiang, Pop and Hall. This is an open-access article
+   defense against antibiotics in bacteria. Science 334, 986–990. doi: 10.1126/                 distributed under the terms of the Creative Commons Attribution License (CC BY).
+   science.1209855                                                                              The use, distribution or reproduction in other forums is permitted, provided the
+Shekarriz, R., Friedrichsen, D. M., Brooks, B., Silaski, G., Rios, L., Wiest, E., et al.        original author(s) and the copyright owner(s) are credited and that the original
+   (2020). Sensor of transdermal biomarkers for blood perfusion monitoring. Sens                publication in this journal is cited, in accordance with accepted academic practice. No
+   Bio-Sens Res. 28:100328. doi: 10.1016/j.sbsr.2020.100328                                     use, distribution or reproduction is permitted which does not comply with these terms.
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                            10                                            October 2021 | Volume 12 | Article 705583
+

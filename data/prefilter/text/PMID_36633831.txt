@@ -1,0 +1,588 @@
+Clinical and Translational Oncology (2023) 25:1661–1672
+https://doi.org/10.1007/s12094-022-03061-w
+
+    RESEARCH ARTICLE
+
+
+
+Prediction model of colorectal cancer (CRC) lymph node metastasis
+based on intestinal bacteria
+Wu Yinhang1,2,3 · Zhuang Jing2,3 · Zhou Jie2 · Jin Yin2,3 · Wu Xinyue2 · Song Yifei2 · Fan Zhiqing2 · Wu Wei2,3 ·
+Han Shuwen2,3
+
+Received: 26 October 2022 / Accepted: 21 December 2022 / Published online: 12 January 2023
+© The Author(s), under exclusive licence to Federación de Sociedades Españolas de Oncología (FESEO) 2023
+
+
+Abstract
+Background Lymph node metastasis is the main metastatic mode of CRC. Lymph node metastasis affects patient prognosis.
+Objective To screen differential intestinal bacteria for CRC lymph node metastasis and construct a prediction model.
+Methods First, fecal samples of 119 CRC patients with lymph node metastasis and 110 CRC patients without lymph node
+metastasis were included for the detection of intestinal bacterial 16S rRNA. Then, bioinformatics analysis of the sequenc-
+ing data was performed. Community structure and composition analysis, difference analysis, and intragroup and intergroup
+correlation analysis were conducted between the two groups. Finally, six machine learning models were used to construct a
+prediction model for CRC lymph node metastasis.
+Results The community richness and the community diversity at the genus level of the two groups were basically consistent.
+A total of 12 differential bacteria (Agathobacter, Catenibacterium, norank_f__Oscillospiraceae, Lachnospiraceae_FCS020_
+group, Lachnospiraceae_UCG-004, etc.) were screened at the genus level. Differential bacteria, such as Agathobacter,
+Catenibacterium, norank_f__Oscillospiraceae, and Lachnospiraceae_FCS020_group, were more associated with no lymph
+node metastasis in CRC. In the discovery set, the RF model had the highest prediction accuracy (AUC = 1.00, 98.89% correct,
+specificity = 55.21%, sensitivity = 55.95%). In the test set, SVM model had the highest prediction accuracy (AUC = 0.73,
+72.92% correct, specificity = 69.23%, sensitivity = 88.89%). Lachnospiraceae_FCS020_group was the most important vari-
+able in the RF model. Lachnospiraceae_UCG − 004 was the most important variable in the SVM model.
+Conclusion CRC lymph node metastasis is closely related to intestinal bacteria. The prediction model based on intestinal
+bacteria can provide a new evaluation method for CRC lymph node metastasis.
+
+Keywords Colorectal cancer (CRC) · Lymph node metastasis · Intestinal bacteria · Prediction model · Machine learning
+algorithm
+
+                                                                            Abbreviations
+                                                                            PCC	Pearson correlation coefficient
+Wu Yinhang and Zhuang Jing have contributed equally to this work.
+                                                                            LDA	Linear discriminant analysis
+* Wu Wei                                                                    LR	Logistic regression
+  hchwuwei2018@126.com; ww@hzhospital.com                                   RF	Random forest
+* Han Shuwen                                                                NN	Neural network
+  shuwenhan985@163.com; ww@hzhospital.com                                   GBDT	Gradient boosted decision tree
+1                                                                           SVM	Support vector machine
+     The Second School of Clinical Medicine, Zhejiang Chinese
+     Medical University, No. 548 Binwen Road, Binjiang District,
+     Hangzhou 310053, Zhejiang Province, China
+2
+     Huzhou Central Hospital, Affiliated Central Hospital Huzhou            Introduction
+     University, No. 1558, Sanhuan North Road, Wuxing District,
+     Huzhou 313000, Zhejiang Province, China                                Colorectal cancer (CRC) is the third major malignant
+3
+     Key Laboratory of Multiomics Research and Clinical                     tumor in the world in terms of morbidity and mortal-
+     Transformation of Digestive Cancer of Huzhou, No. 1558,                ity. At present, endoscopic therapy, surgical resection,
+     Sanhuan North Road, Wuxing District, Huzhou 313000,                    chemotherapy drugs, targeted drugs, immunotherapy,
+     Zhejiang Province, China
+
+
+                                                                                                                             1  3
+                                                                                                                      Vol.:(0123456789)
+1662                                                                               Clinical and Translational Oncology (2023) 25:1661–1672
+
+
+radiotherapy, and other combined treatments have greatly                CRC has a multistep pathogenesis involving environmen-
+improved the overall survival (OS) of CRC [1]. However,              tal and genetic factors [13]. It is worth noting that microor-
+recurrence and metastasis are the main factors affecting             ganisms have been confirmed to be involved in the occur-
+the survival and prognosis of colorectal cancer [2]. CRC             rence and development of CRC. There are more than 800
+often exhibits malignant metastatic behavior involving the           kinds of bacteria, more than 7,000 bacterial strains and hun-
+lymph nodes, liver, and lungs. Lymphatic metastasis is one           dreds of trillions of different bacteria living in the normal
+of the most crucial metastases. Lymph node metastasis                human intestine. Under normal circumstances, they restrict
+is a key factor in colorectal cancer stage. Among CRC-               each other and have a symbiotic relationship with the intes-
+related adverse prognostic factors, regional lymph node              tine, benefiting each other [14]. The intestinal flora imbal-
+involvement is an important factor that can independently            ance caused by the number of probiotic bacteria (such as
+predict postoperative survival and local lesion recurrence           Bifidobacterium, Lactobacillus, and Bacteroides) decreased.
+[3]. Studies have shown that the 5-year survival rate for            The number of pathogenic bacteria (such as enterotoxin Bac-
+positive lymph node metastases is significantly reduced              teroides, Escherichia coli, and Clostridium difficile bacteria)
+to 30–60%, and the probability of cancer recurrence is               increased, the bacteria secreted toxins increased [15], and
+30–35% [4]. In conclusion, thorough dissection of CRC                the signal pathways in intestinal bacteria were related to
+metastatic lymph nodes and timely understanding of the               abnormal activation and associated with increased microbial
+timing of postoperative adjuvant chemotherapy can signifi-           metabolites [16]. Both are associated with intestinal mucosal
+cantly improve the prognosis of CRC patients.                        injury, chronic intestinal inflammation, and the development
+    In general, lymph node metastasis of colon cancer follows        of colorectal cancer. It has been found that Fusobacterium
+the sequence from near to far, first to the fat lobe of the intes-   nucleatum can induce the expression of ICAM1 to enhance
+tinal wall, then to the mesangial, then to the middle mesan-         the adhesion between CRC cells and endothelial cells and
+gial vessels, then to the root of the mesangial, and finally to      promote the extravasation and metastasis of tumor cells
+the supraclavicular lymph node via the para-aorta. However,          [17]. Butyrate-producing microorganisms reduce placental-
+there is also the phenomenon of CRC retrograde metastasis            specific 8 (PLAC8) expression and inhibit the growth and
+or even skipping metastasis [5]. At present, imaging meth-           migration of CRC cells [18]. Therefore, imbalance of intes-
+ods (CT, PET-CT, and MRI) are used to detect lymph node              tinal flora is also associated with lymph node metastasis.
+metastasis, which is likely to be missed [6]. Although there            Based on these characteristics, this study established a
+are many methods to detect CRC lymph node metastasis,                prediction model of CRC lymph node metastasis by identi-
+it is relatively difficult to detect CRC lymph node metas-           fying the intestinal flora related to CRC lymph node metas-
+tasis due to the anatomical structure of intra-abdominal             tasis to provide new prediction targets for CRC lymph node
+lymph node tissue and the complexity of CRC lymph node               metastasis and options for intraoperative lymph node dissec-
+metastasis. In addition, some intraoperative evaluations of          tion and subsequent postoperative adjuvant chemotherapy.
+fluorescent probes (such as indocyanine green fluorescence
+[7] or gamma-glutamyl transpeptidase-activatable fluores-
+cence probe [8]), fluorescence imaging combined with rapid           Methods
+OSNA [9], etc., are expected to be a new method for lymph
+node metastasis of colon cancer, but their feasibility and           Subjects
+accuracy remain to be investigated.
+    The gold standard for diagnosing positive lymph nodes is         The participants we recruited were CRC patients who were
+still postoperative pathological biopsy [10]. Regional lymph         admitted to Huzhou Central Hospital from February 2019
+node involvement [11], the number of lymph nodes involved,           to June 2021. The cohort up to December 2020 was the dis-
+and the total number of lymph nodes examined (lymph node             covery set, and the cohort after December 2020 was the test
+ratio, LNR) [12] are important factors influencing the prog-         set. After obtaining informed consent, stool samples were
+nosis of postoperative colon cancer patients. However, intra-        collected, before receiving surgery. Subsequently, cancer
+operative lymph node dissection, pathologist qualification           tissue was obtained by surgery or colonoscopy, and patho-
+level, and other related factors may lead to incomplete lymph        logical examinations were performed. Finally, the subjects
+node clearance. Therefore, accurate preoperative prediction          were divided into CRC patients with lymph node metastasis
+of lymph node metastasis of CRC can guide clinical use of            and CRC patients without lymph node metastasis according
+chemotherapy and other means to reduce tumor load, reduce            to the pathological data. In the present study, there were
+clinical stage, and thus reduce the risk of postoperative local      118 CRC patients with lymph node metastasis and 110 CRC
+recurrence and distant metastasis. However, the prediction or        patients without lymph node metastasis. Among them, 90
+assessment of lymph node metastasis with low trauma and              CRC patients with lymph node metastasis and 90 CRC
+high accuracy is still needed.                                       patients without lymph node metastasis were used as the
+
+13
+Clinical and Translational Oncology (2023) 25:1661–1672                                                                    1663
+
+discovery set. The flowchart for recruiting participants was        Intestinal bacterial 16S rRNA detection
+shown in Supplementary Figure 1. Clinical staging followed
+the staging guidelines of the American Joint Council on             Bacterial 16S V3–V4 rRNA genes were sequenced using
+Cancer (AJCC). The Huzhou Central Hospital ethics com-              the Illumina MiSeq platform after DNA extraction from
+mittee (No. 20180705–01) and Chinese clinical trial registry        stool samples and PCR amplification. The steps involved in
+(http://​www.​chictr.​org.​cn, ChiCTR1900024775) approved           microorganism detection include library construction and
+the patient clinical solutions and informed consent.                sequencing, followed by bioinformatics analysis. The spe-
+   Inclusion criteria: pathologically confirmed patients with       cific research methods were as follows:
+lymph node metastasis and without any CRC lymph node
+metastasis; and 2) CRC patients who signed informed con-            (1) DNA extraction and PCR amplification: An E.Z.N.A.®
+sent (themselves or their family members).                              Stool DNA Kit (Omega Bio-Tek, Norcross, GA, U.S.)
+   The exclusion criteria were as follows: (1) complications            was used to extract total DNA from the stool samples.
+with other malignant tumors; (2) serious heart and lung dis-            The quality of the purified DNA was determined by
+eases; (3) oral history of intestinal flora preparation 1 month         a Nanodrop ND-1000 spectrophotometer (LabTech,
+before admission; (4) other intestinal diseases, such as ulcer-         Washington, DC, USA) with absorbances at 260 nm
+ative colitis and Crohn's disease; (5) history of antibiotics           and 280 nm (A260/A280). Electrophoresis with a 2.0%
+use within 3 months; (6) CRC patients with any chemo-                   (w/v) agarose gel was used to verify the integrity of
+therapy, radiotherapy, or immunotherapy. All subjects signed            the DNA. The V3–V4 region of the bacterial 16S ribo-
+informed consent according to the guidelines approved by                somal RNA gene (the primers of 16S V3–V4 rDNA
+the Ethics Committee of Huzhou Central Hospital.                        was as follows: forward, CCT​ACG​GGNGGC​WGC​
+   The basic information and pathological data of the sub-              AG; reverse, GAC​TAC​HVGGG​TAT​CTA​ATC​C) and
+jects were added and presented in Table 1.                              fungal ITS ribosomal RNA gene (using the primers
+                                                                        1F 5′-CTT​GGT​CAT​TTA​GAG​GAA​GTAA-3′ and 2R
+Stool sample collection                                                 5′-GCT​GCG​TTC​TTC​ATC​GAT​GC-3′) were amplified
+                                                                        by PCR. PCR amplification was performed at 95 °C for
+The subjects were told to have fecal samples collected before           3 min, 25 cycles at 95 °C for 30 s, 55 °C for 30 s, and
+breakfast. In the absence of laxatives or lubricants, approxi-          72 °C for 45 s and a final extension at 72 °C for 5 min.
+mately 5–10 g of stool samples is collected after defecation.           PCR amplifications used a 25 μl volume containing 5 μl
+Within half an hour, stool samples were stored in a labora-             of DNA template, 2 μl of Nextera XT Index Primer 1
+tory − 80° freezer. Samples should not be stored for more               (10 M), 2 μl of Nextera XT Index Primer 2 (10 M), and
+than one month.                                                         16 μl of ddH2O. PCR for each gene used three biologi-
+
+
+Table 1  The basic information                                     CRCs with lymph node     CRCs without lymph node    P value
+and pathological data of the                                       metastasis (n = 118)     metastasis (n = 110)
+subjects
+                                      Gender
+                                       Female                      35 (29.66%)              44 (40.00%)                   0.979
+                                       Male                        83 (70.34%)              66 (60.00%)
+                                      Age                          61.98 ± 9.70             67.17 ± 25.68                 0.059
+                                      BMI (kg/m2)                  23.58 ± 3.58             22.35 ± 3.29                  0.009
+                                      TNM staging
+                                       Stage I                     0                        51                          < 0.001
+                                       Stage II                    0                        59
+                                       Stage III                   85                       0
+                                       Stage IV                    33                       0
+                                      Tumor location
+                                       Colon                       48                       59                            0.051
+                                       Rectum                      70                       51
+                                      Histology grading
+                                       Poorly differentiated       60                       51                            0.516
+                                       Moderately differentiated   48                       54
+                                       Highly differentiated       10                       5
+
+
+
+                                                                                                                      13
+1664                                                                            Clinical and Translational Oncology (2023) 25:1661–1672
+
+    cal replicates, with three technical replicates per experi-   used to detect the characteristics of significant differences
+    ment. The amplicons were extracted from 2% agarose            in abundance, and the groups with significant differences in
+    gels, purified using the AxyPrep DNA Gel Extraction           abundance were found. Finally, LEfSe used linear discrimi-
+    Kit (Axygen Biosciences, Union City, CA, USA) and             nant analysis (LDA) to estimate the impact of each species'
+    quantified using QuantiFluor™-ST.                             abundance on the differential effect. It can be used to assess
+(2) MiSeq Library construction and sequencing: Qubit®             whether the mean values of two groups of samples are the
+    3.0 (Life Technologies, Invitrogen) was used to quan-         same. This analysis can be used to compare whether there is a
+    tify the purified PCR products. The products were             significant difference in the distribution of species in the two
+    ligated with a Y adapter, and the self-ligated Y adapt-       sample groups, and the P value can be corrected by a variety of
+    ers were removed using magnetic nanoparticles. The            methods. Statistical analysis was performed on the abundance
+    pooled DNA products were used to construct an Illu-           of bacteria at each level (phylum, class, order, family, genus,
+    mina Pair-End library, and the amplicon library was           and species) with significant differences.
+    pair-end-sequenced (2 × 250) on an Illumina MiSeq                (5) Correlation analysis
+    platform (Shanghai BIOZERON Co., Ltd.) according                 Intragroup correlation of different bacterial analyses was
+    to standard protocols.                                        performed on the Tutools platform (https://​wwwcl​oudtu​tu.​
+                                                                  com), a free online data analysis website. The relationship
+Sequencing data bioinformatics analysis                           between the heterogeneous bacteria and the sample was
+                                                                  determined on the Tutools platform, and a circus diagram was
+(1) Miseg amplicon sequencing was performed for the               drawn.
+16SV3-V4 region. After splicing, quality control and joint           (6) Functional predictive analysis
+removal, the optimized sequence was obtained. OTU clus-              PICRUSt (https://​github.​com/​picru​st/​picru​st1/) was used
+tering was performed based on the optimized sequence to           to standardize the OTU abundance table, namely remove the
+obtain an OTU abundance table for subsequent bioinfor-            16S marker gene in the species genome copy number. Then,
+matics analysis. Filter OTUs and keep comments on OTUs            the corresponding Greengene ID of each OTU was used to
+of the bacterial domain. OTUs with abundances of 1 and 2          annotate the COG and KEGG functions of OTUs to obtain
+and OTUs annotated to chloroplasts and mitochondria were          the annotation information of each functional level of OTUs
+removed. OTU leveling was performed based on the mini-            in COG and KEGG and the abundance information of each
+mum sample sequence number (35,000).                              function in different samples.
+   (2) Species annotation and assessment
+   Alpha diversity analysis: In a stool sample bacterial flora    Machine learning modeling
+diversity study on community ecology, Mothur (https://​
+www.​mothur.​org/​wiki/​Downl​oad_​mothur) was used to cal-       Using the logistic regression (LR) model, the random forest
+culate the Chao abundance index, and the Ace index was            (RF) model, neural network (NN) model, CatBoost model,
+used to assess the flora. The Shannon index and Simpson           gradient boosted decision tree (GBDT) model, and support
+index were calculated to evaluate the diversity of the bacte-     vector machine (SVM) model, through a multiple decision tree
+rial community, and the differences among the index groups        classifier, its classification results according to the properties
+were analyzed.                                                    on the dimensions of the samples in different decision trees
+   Beta diversity analysis: The distance matrix was cal-          to determine final classification are given after considering
+culated based on Bray–Curtis, weighted and unweighted             all the determination results. For the results of classification
+UniFrac distances, and the results were visualized by PCA,        problems, the probability maximum was taken, and the prob-
+PCoA and NMDS. Nonparametric ADONIS analysis was                  ability mean was taken for regression analysis to select the
+used to detect significant differences between groups.            most important biomarker for sample classification. A series of
+   (3) Community composition analysis                             sensitivity and specificity were calculated by setting different
+   The community composition of each sample was meas-             critical values for continuous variables, and then ROC curves
+ured at the genus level and represented by a community his-       were drawn with sensitivity as the ordinate and specificity as
+togram. Based on UPGMA, STAMP was used for sample                 the abscissa. The evaluation diagram (CV matrix) of the model
+level clustering analysis and heatmap construction. A Venn        is used to evaluate the accuracy of the model.
+diagram was used to analyze the number of coexisting and
+unique intestinal microbiota in the lymph node metastasis
+group and the group without lymph node metastasis.
+   (4) Difference analysis
+   STAMP software was used to analyze the differences
+in species abundance between groups: Student's T test was
+
+
+13
+Clinical and Translational Oncology (2023) 25:1661–1672                                                                                 1665
+
+
+Results                                                                 Bacteroides, Lactobacillus, Bifidobacterium, Subdol-
+                                                                        igranulum, and Eubacterium_hallii_group. Bacteria with
+Relationship between CRC lymph node metastasis                          high abundance in the population without lymph node
+and intestinal bacterial community and composition                      metastasis were Blautia, Lactobacillus, Streptococcus,
+                                                                        Escherichia-Shigella, Bacteroides, Bifidobacterium, Sub-
+Comparing the diversity of intestinal bacteria in CRC                   doligranulum, and Eubacterium_hallii_group. (Fig. 1B).
+patients with lymph node metastasis and CRC patients                    The number of common and unique OTUs in the two
+without lymph node metastasis, it was found that the                    groups was calculated. Among them, 654 types of over-
+community richness and the community diversity at the                   lapping OTUs were found, 153 types were unique to the
+genus level of the two groups were basically consistent                 CRC lymph node metastasis population, and 64 types were
+(Fig. 1A, D). In addition, we analyzed the composition and              unique to CRC without lymph node metastasis (Fig. 1C).
+the structure of the intestinal microbiota in both groups
+at the genus level. After sorting the top 28 bacteria by                Differential intestinal bacteria in CRC lymph node
+abundance, we found that the bacteria with higher abun-                 metastasis
+dance in the population with lymph node metastasis were
+as follows: Blautia, Escherichia-Shigella, Streptococcus,               Further analysis of the differences between CRCs with lymph
+                                                                        node metastasis and CRCs without lymph node metastasis
+
+
+
+
+Fig. 1  Community structure and composition. A Alpha diversity          distinct groups, the number of overlapping parts represents the num-
+analysis of intestinal bacteria at the genus level in CRC populations   ber of common species in the two groups, and the number of non-
+with and without lymph node metastasis. ACE, Simpson, Shannon,          overlapping parts represents the number of species unique to the cor-
+Chao, and Coverage indices, in turn. P values are indicated in the      responding group. Below is a bar chart of the total number of species
+figure. B Histogram of the top 28 bacterial abundances at the genus     in each grouping at the selected genus level. D NMDS analysis at the
+level in the two groups. C Venn diagram. Assorted colors represent      genus level of bacteria
+
+
+                                                                                                                                 13
+1666                                                                           Clinical and Translational Oncology (2023) 25:1661–1672
+
+at the genus level was performed, and a total of 12 bacteria     used as the discovery set, including 90 CRC patients with
+were screened, including Agathobacter, Catenibacterium,          lymph node metastasis and 90 CRC patients without lymph
+norank_f__Oscillospiraceae, Lachnospiraceae_FCS020_              node metastasis. A cohort after December 2020 was used
+group, Lachnospiraceae_UCG-004, Frisingicoccus, Anaer-           as the test set, including 28 CRC patients with lymph node
+oglobus, Rikenellaceae_RC9_gut_group, Catenibacillus,            metastasis and 20 CRC patients without lymph node metas-
+Eubacterium_fissicatena_group, Aggregatibacter, and              tasis. The CRC risk prediction models based on differential
+unclassified_f__Actinomycetaceae. The relative abundance         bacteria were constructed. The results showed that in the
+of these 12 differential bacteria was higher in CRC with-        discovery set, the RF model had better performance in pre-
+out lymph node metastasis (Fig. 2A and Supplementary             dicting the risk of CRC lymph node metastasis (AUC = 1.00,
+Figure 2). Finally, LDA was used to estimate the impact          98.89% correct, specificity = 55.21%, sensitivity = 55.95%).
+of species abundance at the genus level on the two groups.       In the test set, SVM model had better performance in pre-
+The results showed that significant differences in the popula-   dicting the risk of CRC lymph node metastasis (AUC = 0.73,
+tion with CRC lymph node metastasis included 12 bacteria         72.92% correct, specificity = 69.23%, sensitivity = 88.89%).
+(Escherichia-Shigella, Megamonas, unclassified_f__Lach-             In addition, Catenibacillus was the most important vari-
+nospiraceae, Lautropia, unclassified_f__Actinomycetaceae,        able in the LR model. Lachnospiraceae_FCS020_group was
+Eggerthella, etc.). Significant differences in the CRC popu-     the most important variable in the RF, GBDT and Catboost
+lation without lymph node metastasis included 16 bacteria        model. Eubacterium_fissicatena_group was the most impor-
+(Agathobacter 3.30974978579, Catenibacterium, Eubac-             tant variable in the NN model. Lachnospiraceae_UCG − 004
+terium_eligens_group, norank_f__norank_o__norank_c__             was the most important variable in the SVM model (Fig. 4).
+Clostridia 2.93278046723, Weissella, Microbacterium, etc.)
+(Fig. 2B, C).
+                                                                 Discussion
+The correlation of differentially abundant bacteria
+                                                                 The gut contains a large number of microorganisms, and the
+We analyzed the relationship of top 28 bacteria in the two       gut microbiota is symbiotic with the host and affects human
+groups. The results showed that there was no significant dif-    nutrition, metabolism, physiology, and immune development
+ference in the correlation between the highest abundance of      and function [19]. The imbalance of the intestinal microbial
+intestinal bacteria and the lymph node metastasis of CRC         community leads to a decrease in the number of probiot-
+(Fig. 3A).                                                       ics and an increase in the number of pathogenic bacteria,
+   We analyzed the correlation of differentially abundant        causing intestinal mucosal damage and chronic inflamma-
+bacteria between CRC lymph node metastasis and differ-           tion, which ultimately leads to CRC [15]. In addition, the
+ential bacteria found that Agathobacter, Catenibacterium,        related role of intestinal flora in the host can also affect CRC
+norank_f__Oscillospiraceae, Lachnospiraceae_FCS020_              lymph node metastasis and distant metastasis [20]. At pre-
+group, Lachnospiraceae_UCG-004, Frisingicoccus, Anaer-           sent, with the development of research methods, including
+oglobus, Rikenellaceae_RC9_gut_group, Catenibacillus,            meta-genomic sequencing, researchers have confirmed that
+Eubacterium_fissicatena_group, Aggregatibacter, and              intestinal community structure can affect intestinal physio-
+unclassified_f__Actinomycetaceae were more associated            logical and pathological functions and revealed that a variety
+with no lymph node metastasis in CRC (Fig. 3B).                  of bacteria participate in the occurrence and development
+   To further discuss the functions of intestinal bacteria, we   of colorectal cancer. However, how intestinal flora distur-
+further analyzed the distinct functions of bacteria between      bance systematically affects the progression and metasta-
+the two groups. The two groups were enriched in 24 func-         sis of CRC cells in the host is not clear. At present, Zhuo
+tions (including amino acid transport and metabolism, car-       Wei et al. found that Fusobacterium nucleatum significantly
+bohydrate transport and metabolism, transcription, riboso-       reduced the level of m6A modification mediated by meth-
+mal structure and biogenesis, replication, recombination,        yltransferase (METTL3), and at the level of the epigenome,
+and repair), and there was no significant difference between     the intestinal flora affected the abnormal gene expression
+the two groups (Supplementary Figure 3A-B).                      of CRC cells and promoted CRC metastasis [21]. Bertoc-
+                                                                 chi et al. also proposed a mechanism of liver metastasis of
+Construction of a prediction model for lymph node                colorectal cancer: some specific bacteria (mainly Escheri-
+metastasis of CRC​                                               chia coli) can damage the gut vascular barrier (GVB) and
+                                                                 then colonize the liver through the damaged intestinal vas-
+Finally, 118 CRC samples with lymph node metastasis and          cular barrier. Finally, the formation of a pre-metastatic niche
+110 CRC samples without lymph node metastasis were               (PMN) was induced to promote liver metastasis of tumor
+recruited. Among them, a cohort up to December 2020 was          cells [22]. Moreover, research has shown that CRC-related
+
+
+13
+Clinical and Translational Oncology (2023) 25:1661–1672    1667
+
+Fig. 2  Significant difference in
+bacterial community compo-
+sition and LEfSe multilevel
+analysis between groups. A
+T test was used to screen the
+differential intestinal bacteria
+in the two groups at the genus
+level. B LEfSe hierarchical tree.
+Distinct color nodes represent
+the microbial groups that are
+significantly enriched in the
+corresponding groups and have
+a considerable influence on the
+differences between groups.
+The pale yellow nodes indicate
+the microbial groups that have
+no significant difference among
+separate groups or have no sig-
+nificant effect on the difference
+between groups. C LDA discri-
+minant histogram. The greater
+the LDA score is, the greater the
+impact of species abundance on
+the differential effect
+
+
+
+
+                                                          13
+1668                                                                                    Clinical and Translational Oncology (2023) 25:1661–1672
+
+                                                                          metastases [23], confirming the role of intestinal bacteria
+                                                                          in CRC metastasis. However, whether intestinal flora can
+                                                                          promote or inhibit CRC lymph node metastasis and the pos-
+                                                                          sible mechanisms remain unclear. To identify intestinal flora
+                                                                          that may play a role in CRC lymph node metastasis, a variety
+                                                                          of characteristic bacteria were screened out in this study,
+                                                                          including Agathobacter, Catenibacterium, norank_f__Oscil-
+                                                                          lospiraceae, Lachnospiraceae_FCS020_group, Lachno-
+                                                                          spiraceae_UCG-004, Frisingicoccus, and so on. Moreover,
+                                                                          we found that Agathobacter, Catenibacterium, norank_f__
+                                                                          Oscillospiraceae, and Lachnospiraceae_FCS020_group
+                                                                          were more associated with no lymph node metastasis in
+                                                                          CRC. Lavelle et al. found that ulcerative colitis (UC) patients
+                                                                          with CRC had a reduced abundance of Lachnospira and
+                                                                          Agathobacter [24]. Oscillospira has been recognized as a
+                                                                          next-generation probiotic capable of producing butyrate and
+                                                                          other short-chain fatty acids (SCFAs) [25]. Lachnospiraceae
+                                                                          was found to be beneficial to intestinal mucosa and reduce
+                                                                          the risk of colitis [26, 27]. Lachnospiraceae_NK4A136_
+                                                                          group increased in acute colitis, and Erysipelatoclostridium
+                                                                          increased in chronic colitis [28]. Currently, few studies have
+                                                                          analyzed the association between CRC lymph node metas-
+                                                                          tasis and CRC. Lymph node metastasis is the main mode
+                                                                          of CRC metastasis. In this study, specific clinical samples
+                                                                          were included to screen and analyze bacteria characteristic
+                                                                          of CRC lymph node metastasis. The intestinal flora asso-
+                                                                          ciated with CRC lymph node metastasis was preliminarily
+                                                                          explored, and the correlation between groups and within
+                                                                          groups was analyzed. On the whole, the results of this study
+                                                                          are innovative.
+                                                                             The association between CRC lymph node metasta-
+                                                                          sis and intestinal flora is significant [29]. The colorectal
+                                                                          cancer microbiota showed an imbalance, with the overall
+                                                                          bacterial abundance and diversity decreasing and the com-
+                                                                          munity structure changing, while the bacterial numbers
+                                                                          of Clostridium, Streptococcus, Micromonospora, and Por-
+                                                                          phyromonas increased significantly [30–32]. The struc-
+                                                                          tural changes in the intestinal flora and lymph node metas-
+                                                                          tasis of CRC may be mutually reinforcing. The increase in
+                                                                          certain microorganisms and the decrease in beneficial bac-
+                                                                          teria may increase the risk of CRC lymph node metastasis
+Fig. 3  Correlation analysis of different bacteria within and between     and may assist or accelerate CRC lymph node metastasis.
+groups. A ChordDiagram. It shows the relationship between top 28          In addition, CRC lymph node metastasis may also interfere
+bacteria and groups. B ChordDiagram. It shows the relationship            with the intestinal microbiota structure, induce intestinal
+between different bacteria and groups. The top of the circle is the
+name of the species, and the bottom is the group, each in a distinct
+                                                                          microbiota disorder, and further increase the probability of
+color. Species abundance is shown as a percentage. The line indicates     metastasis. At present, animal experiments have found that
+the existence of a species in a group. The thicker the line segment is,   Streptococcus thermophilus, a mix of four Clostridiales
+the richer the species                                                    strains (CC4), has an effective antitumor effect [33, 34].
+                                                                          This finding suggests that the differential bacteria associ-
+primary cancer microbes, including F. nucleatum, F. necro-                ated with lymph node metastasis identified in this study
+phorum, Bacteroides fragilis, and Bacteroides thetaiotaomi-               may be able to function as potential drugs for the preven-
+cron, and several typical oral anaerobes (such as Prevotella              tion or treatment of CRC lymph nodes.
+intermedia and Selenomonas sputigena) persist in liver
+
+
+13
+Clinical and Translational Oncology (2023) 25:1661–1672                                                                             1669
+
+
+
+
+Fig. 4  Prediction model of CRC lymph node metastasis based on       The left panel shows the variable importance histogram of the model,
+differentially abundant bacteria. A–F are as follows: LR model, RF   the middle panel shows the AUC curve of the model, and the right
+model, NN model, SVM model, GBDT model, and CatBoost model.          panel shows the evaluation diagram (CV matrix) of the model
+
+
+
+
+                                                                                                                             13
+1670                                                                                  Clinical and Translational Oncology (2023) 25:1661–1672
+
+   In addition, it was found that bacterial clusters were cor-       bacteria shows high accuracy and can be used for the evalua-
+related with each other through intragroup correlation. There-       tion of intraoperative lymph node metastasis and postopera-
+fore, it is possible that different bacteria may participate in or   tive lymph nodes.
+assist each other in promoting or inhibiting CRC lymph node
+                                                                     Supplementary Information The online version contains supplemen-
+metastasis. In the follow-up study, microbial sequencing was         tary material available at https://​doi.​org/​10.​1007/​s12094-​022-​03061-w.
+performed on lymph nodes with CRC metastasis, which is
+likely to indicate that the flora is consistent with that found      Acknowledgements The authors gratefully acknowledge the database
+in this study. This will provide scientific guidance for more        available to us for this study. We thank the patients and volunteers for
+                                                                     their contributions to sample collection. All methods were performed
+accurate prediction of CRC lymph node metastasis and more            in accordance with the relevant guidelines and regulations.
+optimized surgical treatment and adjuvant treatment.
+   We further constructed a prediction model for CRC lymph           Authors contributions All authors participated in the conception and
+node metastasis based on differential intestinal bacteria. In        design of the study. Conceived and drafted the manuscript: WW and
+                                                                     HS. Wrote the paper: WY and ZJ. Recruited the sample and analyzed
+the discovery set, the RF model had the highest prediction           the data: WY, ZJ and JY. Drew figures: WX, SY and FZ. All authors
+accuracy (AUC = 1.00, 98.89% correct, specificity = 55.21%,          read and approved the paper.
+sensitivity = 55.95%). In the test set, SVM model had the
+highest prediction accuracy (AUC = 0.73, 72.92% correct,             Funding This work was supported by the Key Research and Develop-
+                                                                     ment Project of Zhejiang Province (2022C03026) and Zhejiang Medi-
+specificity = 69.23%, sensitivity = 88.89%). Shin-Ei et al. [35]     cal and Health Technology Project (2022KY1220).
+constructed an artificial neural network (ANN) based on basic
+CRC information, clinical data and pathological information          Availability of data and materials The datasets generated for this study
+of CRC, with high accuracy (AUC = 0.77) to predict the risk          can be accessed from the NCBI Sequence Read Archive (SRA) data-
+                                                                     base under the accession number PRJNA911321 and PRJNA911611.
+of CRC lymph node metastasis. Lymphangiogenic genes
+(VEGFC, Nrp-2, PDPN, LYVE-1, MRC1, CCL-21) [36],                     Declarations
+Sterol O-Acyltransferase 1 (SOAT1) [37] and other related
+genes were also found to be predictive targets of CRC lymph          Competing interests The authors declare that no potential conflicts
+node metastasis. However, these studies were all individual          of interest exist.
+studies and lacked large-center clinical validation. The predic-     Ethics approval and consent to participate All subjects signed
+tion model constructed in this study needs to be further evalu-      informed consent according to the guidelines approved by the Ethics
+ated with a larger sample size to further verify its relevance       Committee of Huzhou Central Hospital.
+and accuracy. Lymph node metastasis prediction is expected
+                                                                     Informed consent Informed consent was obtained from all the par-
+to provide a new method for the clinical guidance of surgi-          ticipants. All methods were carried out in accordance with relevant
+cal plans and adjuvant chemotherapy, reduce CRC metastasis           guidelines and regulations.
+and postoperative recurrence rates, and improve the overall
+survival rate of CRC patients.                                       Consent for publication Not applicable.
+   Metabolic products of intestinal microorganisms, including
+polyunsaturated fatty acids, secondary bile acids, and sphin-
+golipids, also promote or inhibit the occurrence and develop-
+ment of CRC [38, 39]. The potential role of intestinal bacterial     References
+metabolites in CRC lymph node metastasis was not considered
+                                                                      1. Sung H, Ferlay J, Siegel RL, Laversanne M, Soerjomataram I,
+in this study. At the same time, the intestinal flora is affected
+                                                                         Jemal A, et al. Global cancer statistics 2020: GLOBOCAN esti-
+by dietary habits, drug use and other factors [40, 41], so the           mates of incidence and mortality worldwide for 36 cancers in 185
+impact on the results of this analysis is inevitable. At the same        countries. CA Cancer J Clin. 2021;71(3):209–49.
+time, the sample size of this study was not sufficiently large,       2. Nanduri LK, Hissa B, Weitz J, Schölch S, Bork U. The prognostic
+                                                                         role of circulating tumor cells in colorectal cancer. Expert Rev
+which also limits the applicability of the research results. A
+                                                                         Anticancer Ther. 2019;19(12):1077–88.
+multicenter study and extensive data support further valida-          3. Chen K, Collins G, Wang H, Toh JWT. Pathological fea-
+tion to support the accuracy of microbial characterization and           tures and prognostication in colorectal cancer. Curr Oncol.
+predictive models for identifying CRC lymph node metastasis.             2021;28(6):5356–83.
+                                                                      4. Chen K, Wang H, Collins G, Hollands E, Law IYJ, Toh JWT.
+                                                                         Current perspectives on the importance of pathological features in
+                                                                         prognostication and guidance of adjuvant chemotherapy in colon
+Conclusion                                                               cancer. Curr Oncol. 2022;29(3):1370–89.
+                                                                      5. Zhang C, Zhang L, Xu T, Xue R, Yu L, Zhu Y, et al. Mapping
+                                                                         the spreading routes of lymphatic metastases in human colorectal
+In conclusion, specific intestinal bacteria for CRC lymph
+                                                                         cancer. Nat Commun. 2020;11(1):1993.
+node metastasis have been identified. The prediction model            6. Nakai N, Yamaguchi T, Kinugasa Y, Shiomi A, Kagawa H,
+constructed for CRC lymph node metastasis based on these                 Yamakawa Y, et al. Diagnostic value of computed tomography
+
+
+13
+Clinical and Translational Oncology (2023) 25:1661–1672                                                                                   1671
+
+      (CT) and positron emission tomography (PET) for paraaortic               undergoing screening for colorectal cancer. Gut Microbes.
+      lymph node metastasis from left-sided colon and rectal cancer.           2022;14(1):2078620.
+      Asian J Surg. 2020;43(6):676–82.                                   25.   Konikoff T, Gophna U. Oscillospira: a central, enigmatic
+ 7.   Liberale G, Bourgeois P, Larsimont D, Moreau M, Donckier                 component of the human gut microbiota. Trends Microbiol.
+      V, Ishizawa T. Indocyanine green fluorescence-guided surgery             2016;24(7):523–4.
+      after IV injection in metastatic colorectal cancer: a systematic   26.   DeDecker L, Coppedge B, Avelar-Barragan J, Karnes W, White-
+      review. Eur J Surg Oncol. 2017;43(9):1656–67.                            son K. Microbiome distinctions between the CRC carcinogenic
+ 8.   Kubo H, Hanaoka K, Kuriki Y, Komatsu T, Ueno T, Kojima R,                pathways. Gut Microbes. 2021;13(1):1854641.
+      et al. Rapid detection of metastatic lymph nodes of colorectal     27.   Surana NK, Kasper DL. Moving beyond microbiome-
+      cancer with a gamma-glutamyl transpeptidase-activatable fluo-            wide associations to causal microbe identification. Nature.
+      rescence probe. Sci Rep. 2018;8(1):17781.                                2017;552(7684):244–7.
+ 9.   Yeung TM, Wang LM, Colling R, Kraus R, Cahill R, Hompes R,         28.   Xu HM, Huang HL, Liu YD, Zhu JQ, Zhou YL, Chen HT, et al.
+      et al. Intraoperative identification and analysis of lymph nodes         Selection strategy of dextran sulfate sodium-induced acute or
+      at laparoscopic colorectal cancer surgery using fluorescence             chronic colitis mouse models based on gut microbial profile.
+      imaging combined with rapid OSNA pathological assessment.                BMC Microbiol. 2021;21(1):279.
+      Surg Endosc. 2018;32(2):1073–6.                                    29.   Yang J, Wei H, Zhou Y, Szeto CH, Li C, Lin Y, et al. High-
+10.   Le Voyer TE, Sigurdson ER, Hanlon AL, Mayer RJ, Macdonald                fat diet promotes colorectal tumorigenesis through modu-
+      JS, Catalano PJ, et al. Colon cancer survival is associated with         lating gut microbiota and metabolites. Gastroenterology.
+      increasing number of lymph nodes analyzed: a secondary survey            2022;162(1):135-149.e132.
+      of intergroup trial INT-0089. J Clin Oncol. 2003;21(15):2912–9.    30.   Reis SAD, da Conceição LL, Peluzio M. Intestinal microbi-
+11.   Johnson PM, Porter GA, Ricciardi R, Baxter NN. Increasing                ota and colorectal cancer: changes in the intestinal microen-
+      negative lymph node count is independently associated with               vironment and their relation to the disease. J Med Microbiol.
+      improved long-term survival in stage IIIB and IIIC colon can-            2019;68(10):1391–407.
+      cer. J Clin Oncol. 2006;24(22):3570–5.                             31.   Wirbel J, Pyl PT, Kartal E, Zych K, Kashani A, Milanese A,
+12.   Ahmad A, Reha J, Saied A, Espat NJ, Somasundar P, Katz SC.               et al. Meta-analysis of fecal metagenomes reveals global micro-
+      Association of primary tumor lymph node ratio with burden                bial signatures that are specific for colorectal cancer. Nat Med.
+      of liver metastases and survival in stage IV colorectal cancer.          2019;25(4):679–89.
+      Hepatobiliary Surg Nutr. 2017;6(3):154–61.                         32.   Si H, Yang Q, Hu H, Ding C, Wang H, Lin X. Colorectal cancer
+13.   Janney A, Powrie F, Mann EH. Host-microbiota maladaptation               occurrence and treatment based on changes in intestinal flora.
+      in colorectal cancer. Nature. 2020;585(7826):509–17.                     Semin Cancer Biol. 2021;70:3–10.
+14.   Zhou Z, Chen J, Yao H, Hu H. Fusobacterium and colorectal          33.   Li Q, Hu W, Liu WX, Zhao LY, Huang D, Liu XD, et al. Strepto-
+      cancer. Front Oncol. 2018;8:371.                                         coccus thermophilus Inhibits colorectal tumorigenesis through
+15.   Song M, Chan AT, Sun J. Influence of the gut microbiome, diet,           secreting β-galactosidase. Gastroenterology. 2021;160(4):1179-
+      and environment on risk of colorectal cancer. Gastroenterology.          1193.e1114.
+      2020;158(2):322–40.                                                34.   Montalban-Arques A, Katkeviciute E, Busenhart P, Bircher A,
+16.   Francescangeli F, De Angelis ML, Zeuner A. Dietary factors in            Wirbel J, Zeller G, et al. Commensal Clostridiales strains medi-
+      the control of gut homeostasis, intestinal stem cells, and colo-         ate effective anti-cancer immune response against solid tumors.
+      rectal cancer. Nutrients. 2019;11(12):2936.                              Cell Host Microbe. 2021;29(10):1573-1588.e1577.
+17.   Zhang Y, Zhang L, Zheng S, Li M, Xu C, Jia D, et al. Fuso-         35.   Kudo SE, Ichimasa K, Villard B, Mori Y, Misawa M, Saito
+      bacterium nucleatum promotes colorectal cancer cells adhesion            S, et al. Artificial intelligence system to determine risk of T1
+      to endothelial cells and facilitates extravasation and metasta-          colorectal cancer metastasis to lymph node. Gastroenterology.
+      sis by inducing ALPK1/NF-κB/ICAM1 axis. Gut Microbes.                    2021;160(4):1075-1084.e1072.
+      2022;14(1):2038852.                                                36.   Vellinga TT, Kranenburg O, Frenkel N, Ubink I, Marvin D,
+18.   Huang CC, Shen MH, Chen SK, Yang SH, Liu CY, Guo JW,                     Govaert K, et al. Lymphangiogenic gene expression is asso-
+      et al. Gut butyrate-producing organisms correlate to Placenta            ciated with lymph node recurrence and poor prognosis after
+      Specific 8 protein: Importance to colorectal cancer progression.         partial hepatectomy for colorectal liver metastasis. Ann Surg.
+      J Adv Res. 2020;22:7–20.                                                 2017;266(5):765–71.
+19.   Rinaldi E, Consonni A, Guidesi E, Elli M, Mantegazza R,            37.   Wang XC, Luo LM, Huang TS, Feng LF. SOAT1 is a
+      Baggi F. Gut microbiota and probiotics: novel immune sys-                new prognostic factor of colorectal cancer. Ir J Med Sci.
+      tem modulators in myasthenia gravis? Ann N Y Acad Sci.                   2021;191:1549–54.
+      2018;1413(1):49–58.                                                38.   Yang Y, Misra BB, Liang L, Bi D, Weng W, Wu W, et al. Inte-
+20.   Murota Y, Jobin C. Bacteria break barrier to promote metastasis.         grated microbiome and metabolome analysis reveals a novel
+      Cancer Cell. 2021;39(5):598–600.                                         interplay between commensal bacteria and metabolites in colo-
+21.   Chen S, Zhang L, Li M, Zhang Y, Sun M, Wang L, et al. Fuso-              rectal cancer. Theranostics. 2019;9(14):4101–14.
+      bacterium nucleatum reduces METTL3-mediated m(6)A mod-             39.   Kim M, Vogtmann E, Ahlquist DA, Devens ME, Kisiel JB,
+      ification and contributes to colorectal cancer metastasis. Nat           Taylor WR, et al. Fecal metabolomic signatures in colorectal
+      Commun. 2022;13(1):1248.                                                 adenoma patients are associated with gut microbiota and early
+22.   Bertocchi A, Carloni S, Ravenda PS, Bertalot G, Spadoni I, Lo            events of colorectal cancer pathogenesis. MBio. 2020. https://​
+      Cascio A, et al. Gut vascular barrier impairment leads to intes-         doi.​org/​10.​1128/​mBio.​03186-​19.
+      tinal bacteria dissemination and colorectal cancer metastasis to   40.   David LA, Maurice CF, Carmody RN, Gootenberg DB, Button
+      liver. Cancer Cell. 2021;39(5):708-724.e711.                             JE, Wolfe BE, et al. Diet rapidly and reproducibly alters the
+23.   Bullman S, Pedamallu CS, Sicinska E, Clancy TE, Zhang X, Cai             human gut microbiome. Nature. 2014;505(7484):559–63.
+      D, et al. Analysis of Fusobacterium persistence and antibiotic     41.   Weersma RK, Zhernakova A, Fu J. Interaction between drugs
+      response in colorectal cancer. Science. 2017;358(6369):1443–8.           and the gut microbiome. Gut. 2020;69(8):1510–9.
+24.   Lavelle A, Nancey S, Reimund JM, Laharie D, Marteau P, Tre-
+      ton X, et al. Fecal microbiota and bile acids in IBD patients
+
+
+                                                                                                                                   13
+1672                                                                                      Clinical and Translational Oncology (2023) 25:1661–1672
+
+Publisher's Note Springer Nature remains neutral with regard to           author(s) or other rightsholder(s); author self-archiving of the accepted
+jurisdictional claims in published maps and institutional affiliations.   manuscript version of this article is solely governed by the terms of
+                                                                          such publishing agreement and applicable law.
+Springer Nature or its licensor (e.g. a society or other partner) holds
+exclusive rights to this article under a publishing agreement with the
+
+
+
+
+13
+

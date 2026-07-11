@@ -1,0 +1,904 @@
+                                                                                                                   TYPE Original Research
+                                                                                                                   PUBLISHED 21 November 2023
+                                                                                                                   DOI 10.3389/fmolb.2023.1327893
+
+
+
+
+                                               Association between oral
+OPEN ACCESS                                    microbiome and seven types of
+EDITED BY
+Li Chen,
+Huazhong University of Science and
+                                               cancers in East Asian population: a
+Technology, China
+
+REVIEWED BY
+                                               two-sample Mendelian
+Long Bai,
+Sun Yat-sen University Cancer Center
+(SYSUCC), China
+                                               randomization analysis
+Sharvesh Raj Seeruttun,
+Sun Yat-sen University Cancer Center           Kexin Feng, Fei Ren and Xiang Wang*
+(SYSUCC), China
+
+*CORRESPONDENCE
+                                               Department of Breast Surgical Oncology, National Cancer Center, National Clinical Research Center for
+Xiang Wang,                                    Cancer, Cancer Hospital, Chinese Academy of Medical Sciences and Peking Union Medical College,
+  xiangw@vip.sina.com                          Beijing, China
+
+RECEIVED 25 October 2023
+ACCEPTED 10 November 2023
+PUBLISHED 21 November 2023
+
+CITATION
+                                               Background: The oral microbiome has been intricately linked to various
+Feng K, Ren F and Wang X (2023),               pathological conditions, notably cancer, though clear causal links remain
+Association between oral microbiome            elusive. This study aimed to investigate the potential causal relationships
+and seven types of cancers in East Asian
+population: a two-sample Mendelian
+                                               between the oral microbiome and seven major cancers: breast, lung,
+randomization analysis.                        pancreatic, colorectal, gastric, ovarian, and prostate cancers, leveraging
+Front. Mol. Biosci. 10:1327893.                Mendelian randomization (MR).
+doi: 10.3389/fmolb.2023.1327893
+
+COPYRIGHT
+                                               Methods: A two-sample MR analysis was conducted using genome-wide
+© 2023 Feng, Ren and Wang. This is an          association study (GWAS) data speciﬁc to oral microbiota in individuals of East
+open-access article distributed under the      Asian descent. Single nucleotide polymorphisms (SNPs) independent of
+terms of the Creative Commons
+Attribution License (CC BY). The use,
+                                               confounders served as instrumental variables (IVs) to deduce causality. MR
+distribution or reproduction in other          methodologies such as the inverse variance weighted (IVW) method, weighted
+forums is permitted, provided the original     median (WM) method, and Mendelian randomization-Egger (MR-Egger) method
+author(s) and the copyright owner(s) are
+credited and that the original publication
+                                               were employed. The study utilized datasets encapsulating a multitude of cancer
+in this journal is cited, in accordance with   cases and controls, focusing on Asian populations.
+accepted academic practice. No use,
+distribution or reproduction is permitted      Results: Our analysis revealed intricate associations between speciﬁc bacterial
+which does not comply with these terms.        genera of the oral microbiome and diverse cancers. Notably, Fusobacterium
+                                               showed mixed associations with various cancers, while genera like Prevotella
+                                               and Streptococcus exhibited nuanced roles across malignancies. The genus
+                                               Aggregatibacter demonstrated a multifaceted inﬂuence, positively correlating
+                                               with some cancers while inhibiting others.
+
+                                               Conclusion: Our ﬁndings underscore the profound implications of the oral
+                                               microbiome in systemic malignancies, suggesting potential modulatory roles
+                                               in cancer etiology. These insights, though preliminary, accentuate the need
+                                               for deeper exploration and could pave the way for novel therapeutic
+                                               strategies.
+
+                                               KEYWORDS
+
+                                               Mendelian randomization, cancers, oral microbiome, case-control study, 16S
+
+
+
+
+Frontiers in Molecular Biosciences                                   01                                                              frontiersin.org
+Feng et al.                                                                                                                   10.3389/fmolb.2023.1327893
+
+
+
+
+1 Introduction                                                                   remains in its nascent stages. This research bias not only limits our
+                                                                                 understanding of the relationship between the oral microbiome and
+    Globally, cancer incidence and mortality rates are escalating                cancer, but also hinders the discovery of potential preventive and
+alarmingly, with projections indicating about a 50% surge in the                 therapeutic methods. Secondly, most existing studies tend to focus
+global oncologic burden over the next two decades (Sung et al.,                  on a single type of cancer or 2-3 types of gastrointestinal cancers,
+2021). As delineated in the Cancer Statistics 2022 report (Siegel et al.,        lacking a comprehensive understanding of the microbial interactions
+2022), prostate cancer (PCa), lung cancer (LC), and colorectal                   across different cancer types. This limitation reduces our ability to
+cancer (CC) collectively account for an estimated 48% of all new                 understand how the oral microbiome functions across different cancer
+cases among males. In females, cancers of the breast (BC), lung (LC),            types, thereby restricting the potential to translate research ﬁndings into
+colon, and rectum comprise 52% of cancer diagnoses. Particularly in              practical applications. Additionally, traditional observational studies
+China, ovarian cancer (OC) has become the second leading cause of                usually rely on microbiome sequencing technologies, which, due to
+death among gynecological malignancies.                                          technical and sampling limitations, result in signiﬁcant heterogeneity in
+    The intricate landscape of the human oral microbiome is a                    research outcomes. For instance, different sequencing platforms and
+dynamic consortium of microorganisms that play pivotal roles in                  data processing workﬂows may yield varying results, while the
+maintaining oral health and systemic wellness. Over recent decades,              collection, handling, and storage of samples may also affect the
+advances in metagenomic sequencing have unveiled the profound                    composition and diversity analysis of the microbiom. These
+complexity and diversity of these microbial communities. While the               technical and methodological constraints diminish the repeatability
+oral microbiome has been historically associated with oral-speciﬁc               and comparability of research ﬁndings, posing challenges for
+diseases such as periodontitis and dental caries, emerging evidence              researchers to obtain more accurate, consistent, and interpretable data.
+has spotlighted its potential inﬂuence on systemic conditions,                        The primary objective of our inquiry is to explore the putative
+notably cancers. Traditionally linked to oral-speciﬁc diseases like              causal relationship between the oral microbiome and a spectrum of
+periodontitis and dental caries, emerging evidence now highlights                predominant malignancies, including breast, lung, pancreatic,
+the potential inﬂuence of the oral microbiome on systemic                        colorectal, gastric (GC), prostate, and ovarian cancers. By
+conditions, notably cancers. The complex interactions between                    constructing a theoretical framework underscoring the role of
+oral pathogens and host immunity, coupled with the metabolites                   oral microbial communities in oncogenesis, our scholarly
+produced, have been implicated in tumorigenesis, suggesting a                    endeavors aim to catalyze the development of innovative
+plausible link between oral microbial dysbiosis and cancer                       therapeutic strategies. In the emerging ﬁeld of microbiome-
+progression (Teles et al., 2020). Previous research has                          cancer interconnections, our study serves as a forefront endeavor
+demonstrated links between the oral microbiome and several                       exploring the diverse associations between the oral microbiome and
+types of cancers, including colorectal cancer (Warren et al.,                    a broad range of prevalent cancers. Unlike previous studies that
+2013), lung cancer (Vogtmann et al., 2022), and pancreatic                       often focused on individual cancer types or speciﬁc microbial
+cancer (Fan et al., 2018; Herremans et al., 2022). This                          species, our research adopts a comprehensive approach,
+connection, although nascent, poses profound implications for                    examining the interplay between the diverse oral microbial
+cancer diagnostics, therapeutics, and prevention strategies. In this             communities and various cancer types. This holistic perspective
+context, understanding the intricate interplay between the oral                  is crucial for unveiling the widespread implications of oral microbial
+microbiome and carcinogenic pathways emerges as a frontier in                    dysbiosis across various oncologic landscapes. Moreover, our study
+oncological research. However, traditional observational studies                 pioneers the use of MR to delineate the causal relationships between
+were impeded by inherent limitations, such as local confounding,                 the oral microbiome and cancer, overcoming the inherent
+and the potential for reverse causality.                                         limitations of traditional observational studies. This innovative
+    Mendelian randomization (MR), based on the principles of                     methodology not only enhances the robustness of our ﬁndings
+Gregor Mendel’s laws of heredity, has become a useful approach                   but also advances the scientiﬁc discourse towards more precise
+in the ﬁeld. By exploiting the randomness inherent in genetic                    causal inferences in the microbiome-cancer nexus.
+classiﬁcation during meiosis, MR transforms genetic variation
+into a powerful tool for inferring causality, avoiding traditional
+confounding and reducing the bias inherent in observational studies.             2 Materials and methods
+The advent of widespread genome-wide association studies (GWAS)
+has ampliﬁed the potential of MR to dissect the complexities of                  2.1 Study design and data sources
+genetic causation, enabling researchers to distinguish between pure
+correlation and true causation. Furthermore, as the line between                     In this study, the oral microbiota represented the exposure
+genetics and epidemiology continues to blur, MR acts as a beacon,                variable, whereas seven different types of cancers were the
+guiding the scientiﬁc community to more robust and reliable causal               outcomes. We have taken into consideration the speciﬁc genetic
+inferences (Bowden and Holmes, 2019; Burgess et al., 2019).                      and environmental factors present in Asian populations, which may
+    In delving into the research realm of the interrelations between             inﬂuence the relationship between oral microbiota and cancer.
+the oral microbiome and various cancers, the shortcomings of                     Previous research has demonstrated that the composition of oral
+existing studies begin to emerge. Initially, compared to the                     microbiota in Asian populations may differ from other ethnic
+extensive research on gut microbiome, studies on the oral                        groups, potentially impacting the onset and progression of
+microbiome are relatively scarce. While the gut microbiome has                   cancer. Therefore, both our exposure and outcome data are
+been extensively studied, the exploration of the oral microbiome                 derived from GWAS studies conducted on East Asian populations.
+
+
+
+Frontiers in Molecular Biosciences                                          02                                                               frontiersin.org
+Feng et al.                                                                                                                                    10.3389/fmolb.2023.1327893
+
+
+
+
+TABLE 1 Summary of the GWAS included in this Mendelian randomization study.
+
+      Exposures/outcomes                           Consortium                      Ethnicity              Sample sizes                     N. SNPs                   Year
+           Oral microbiome                            CNGBdb                       East Asian                    2948                   Tongue N = 8426               2021
+
+                                                                                                          Tongue N = 2017                Saliva N = 8009
+
+                                                                                                           Saliva N = 1914
+
+              Breast cancer                   NBDC Human Database                  East Asian                 N = 95283                   N = 8919992                 2020
+
+               Lung cancer                    NBDC Human Database                  East Asian                N = 212453                   N = 8885805                 2020
+
+           Pancreatic cancer                  NBDC Human Database                  East Asian                N = 196187                   N = 8885075                 2020
+
+           Colorectal cancer                  NBDC Human Database                  East Asian                N = 202807                   N = 8885369                 2020
+
+              Gastric cancer                  NBDC Human Database                  East Asian                N = 202308                   N = 8885324                 2020
+
+              Prostate cancer                 NBDC Human Database                  East Asian                N = 109347                   N = 8878753                 2020
+
+              Ovarian cancer                  NBDC Human Database                  East Asian                 N = 90451                   N = 8876088                 2020
+
+GWAS, genome-wide association studies; SNPs, single nucleotide polymorphisms; IVs, instrumental variables; CNGBdb, China National GeneBank DataBase; NBDC, national bioscience
+database centre.
+
+
+
+     A two-sample MR analysis was conducted using summary                                   2.2 Selection of genetic instrumental
+statistics derived from a previously published GWAS that                                    variables
+investigated the oral microbiota of individuals of East Asian
+descent. This GWAS, being the ﬁrst of its kind on a large scale                                  In MR, single nucleotide polymorphisms (SNPs) are harnessed
+within an East Asian population, targeted 2017 tongue dorsum                                as instrumental variables (IVs) to attenuate reverse causation and a
+samples and 1915 salivary samples, employing high-depth whole-                              litany of inaccuracies endemic to observational epidemiological
+genome sequencing. The dataset utilized in this study comprised                             analyses. For the purpose of to validate the initial assumption,
+309 tongue dorsum microbiomes (N = 2,017) and 285 salivary                                  SNPs were initially chosen based on a genome-wide signiﬁcance
+microbiomes (N = 1,915) (Liu X. et al., 2021). The samples                                  threshold of p < 5 × 10−8. Nevertheless, given the limited number of
+underwent rigorous inclusion criteria, which involved ensuring a                            SNPs that exhibited an association with the oral microbiome at this
+variant calling rate of at least 98%, a mean sequencing depth of over                       particular threshold, a less stringent criterion of p < 5 × 10−6 was
+20×, absence of population stratiﬁcation in principle component                             employed. In order to account for potential linkage disequilibrium
+analysis (PCA), and the removal of related individuals based on                             (LD) among the chosen SNPs, a clumping technique was performed.
+pairwise identity by descent estimates. In addition, the study used                         This procedure involved utilizing a window size of 10,000 kilobases
+stringent criteria, including a minimum mean depth of 8×, Hardy-                            and setting a threshold of an R2 value less than 0.001, as outlined by
+Weinberg equilibrium (HWE) values over 10–5, and a genotype                                 Abecasis et al. (2010) and Purcell et al. (2007). In addition, in order
+calling rate higher than 98% for the analyzed variations. Following                         to maintain allele consistency, the exposure and outcome datasets
+stringent quality control protocols, a comprehensive cohort of                              underwent a process of harmonization. This involved removing
+2,984 participants was assembled, consisting of 2,017 individuals                           SNPs with non-concordant alleles and SNPs with intermediate allele
+with tongue dorsum samples and 1,915 persons with salivary                                  frequencies, hence reducing ambiguity. The SNPs that were selected
+samples. Subsequently, a dataset comprising about 10 million                                with great care were afterwards employed as the deﬁnitive genetic
+variants, encompassing both common and low-frequency variants                               IVs for the subsequent MR analysis. Furthermore, the F statistics
+with a minor allele frequency (MAF) of at least 0.5%, was                                   were computed for each SNP both individually and cumulatively.
+maintained for further analysis. For a more comprehensive                                   The calculation was performed using the formula: F = R2 * (N–2)/
+understanding of the methods employed in this study, including                              (1–R2), where R2 denotes the proportion of the variance in the
+sample collection, sequencing techniques, creation of microbiome                            exposure variable that is accounted for by each IV. In the study
+traits, and observational and genotyping studies, readers are referred                      conducted by Burgess et al. (2018) and Burgess et al. (2011), IVs with
+to the work of Liu X. et al. (2021).                                                        F statistics below ten were deemed to be poor instruments and were
+     The data included in this investigation for the sevencancers                           consequently removed from the MR analysis.
+originated from a comprehensive GWAS performed on an Asian
+population. This is a large-scale GWAS conducted on an East Asian
+population for 27 diseases (Ishigaki et al., 2020). The study included                      2.3 MR analysis
+a total of 5552 cases and 89731 controls of BC; 6563 cases and
+195745 controls of GC, 442 cases and 195745 cotrols of PC,                                      Various statistical methodologies were utilized to examine the
+4050 cases and 208403 controls of LC; 720 cases and                                         causal relationship between breast cancer and the oral microbiome.
+89731 controls of OC, 5408 cases and 103903 controls of PCa;                                These methodologies encompassed the inverse variance weighted
+7062 cases and 195745 controls of CC (Ishigaki et al., 2020). The                           (IVW) method (Burgess and Thompson, 2015), the Simple mode,
+summary of the GWAS included in this MR study was in Table 1.                               Weighted mode, weighted median (WM) method (Bowden et al.,
+
+
+
+Frontiers in Molecular Biosciences                                                     03                                                                       frontiersin.org
+Feng et al.                                                                                                              10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 1
+   The ﬂowchart of Mendelian randomization analysis. IVW, inverse variance weighted; MR, Mendelian randomization; MVMR, multivariable Mendelian
+   randomization; SNPs, single nucleotide polymorphisms; IVs, instrumental variables; CNGBdb, China National GeneBank DataBase; BBJ, BioBank Japan
+   Project.
+
+
+
+
+2016), and the Mendelian randomization-Egger (MR-Egger)                       0.05. Furthermore, the MR-PRESSO approach was employed to
+method (Burgess and Thompson, 2017). The IVW method is a                      assess the existence of pleiotropy and address the issue of horizontal
+widely utilized technique, most effective when all IVs adhere to the          pleiotropy through the identiﬁcation and exclusion of probable
+fundamental assumptions of MR: absence of horizontal pleiotropy               outliers. Following this, we conducted leave-one-out assessment
+and unbiased estimations. Alternatively, the WM method, by                    to determine if signiﬁcant alterations in the causal effects were
+computing the median of all instrumental variable effect                      observed both before and after the elimination of outliers (Verbanck
+estimates, emerges as a commendable choice when some                          et al., 2018).
+instrumental variables do not satisfy MR assumptions, such as                      The study provides estimates of effect sizes or odds ratios (ORs)
+exhibiting horizontal pleiotropy. The MR-Egger method, besides                together with their respective 95% conﬁdence intervals (CIs). The
+estimating causal effects, detects and corrects for horizontal                statistical tests employed in this study were conducted using a two-
+pleiotropy, proving valuable when horizontal pleiotropy is                    sided approach. The studies were conducted using the open-source
+suspected (Burgess and Thompson, 2015). Associations between                  statistical software R (version: 4.2.2). The analyses were mostly
+variables were deemed signiﬁcant if the resulting p-value of IVW              conducted using the TwoSampleMR program (version: 0.5.6)
+method was less than 0.05 with the estimate direction of other four           (Verbanck et al., 2018) and MR-PRESSO (version 1.0).
+MR methods were consistent with IVW.
+
+                                                                              3 Results
+2.4 Sensitivity analysis
+                                                                              3.1 Instrumental variables selection
+     Multiple tests were employed, encompassing the heterogeneity
+test, pleiotropy test, and leave-one-out sensitivity test. The                     The ﬂowchart depicted in Figure 1 provides an overview of the
+Cochrane’s Q test was employed to evaluate the comprehensive                  MR analysis procedure. Following the removal of SNPs inﬂuenced
+pleiotropy in the IVW MR ﬁndings as p-value <0.05 implying the                by linkage disequilibrium and palindrome structure, a combined
+presence of heterogeneity. The determination of the average                   count of 8009 SNPs linked to salivary microbiomes and 8426 SNPs
+horizontal pleiotropy of the IVs in MR-Egger regression was                   linked to tongue microbiomes were retained for subsequent analysis,
+based on the intercept term and the evaluation of funnel plot                 utilizing a suggestive signiﬁcance threshold of p < 5.0 × 10−6. The
+asymmetry (Hemani et al., 2018). The existence of heterogeneity               SNPs included in this study represent species. The F-statistics of the
+was considered signiﬁcant if the signiﬁcance level was below p <              instrumental variables varied between 20.01 and 32.44, all of which
+
+
+
+Frontiers in Molecular Biosciences                                       04                                                            frontiersin.org
+Feng et al.                                                                                                                  10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 2
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and breast cancer (A), tongue, (B) saliva.
+
+
+
+
+were statistically signiﬁcant and exceeded the threshold of 10. These           manifested in both tongue and saliva samples. Among them,
+results suggest that there is no indication of weak instrument bias.            Aggregatibacter and Gemella were positively correlated
+The statistical analysis conducted by Cochran’s Q test revealed no              (OR >1), whereas Fusobacterium, Streptococcus, Campylobacter
+statistically signiﬁcant heterogeneity (p > 0.05). The P- values of             A, and Saccharimonadaceae TM7x were negatively associated
+MR-PRESSO and the MR-Egger regression were all over 0.05,                       with disease progression (OR <1). The causal effects of tongue
+indicating no horizontal pleiotropy among the chosen SNPs. The                  and saliva bacterial species on lung cancer were shown in
+leave-one-out sensitivity analysis revealed that individual SNPs did            Figures 3A, B.
+not exhibit a dominant inﬂuence on the overall evaluation. Detailed
+data regarding the MR results of speciﬁc tongue microﬂora at genus              3.2.3 Pancreatic cancer
+level related to seven cancers can be found in the Supplementary                    A total of 48 bacterial species in the tongue (26 genus and
+Table S1, and results of saliva microﬂora were in Supplementary                 18 family) and 51 bacterial species in saliva (29 genus and 21 family)
+Table S2.                                                                       had statistically signiﬁcant relationships with PC. For PC, a total of
+                                                                                ten genera were present across both sample sources. Fusobacterium
+                                                                                and Veillonellaceae F0422 emerged as potential risk factors (OR >1),
+3.2 Causal effects of oral microbiota on the                                    while genera such as Prevotella, Oribacterium, Aggregatibacter,
+development of seven cancer types                                               Solobacterium,         Pauljensenia,      Streptococcus,     Gemella,
+                                                                                Porphyromonas, Saccharimonadaceae TM7x, and Lanceﬁeldella
+3.2.1 Breast cancer                                                             might confer protective beneﬁts (OR <1). The causal effects of
+    A total of 31 bacterial species in the tongue (16 genera and                tongue and saliva bacterial species on pancreatic cancer were shown
+12 family) and 36 bacterial species in saliva (19 genera and 16 family)         in Figures 4A, B.
+had statistically signiﬁcant relationships with BC. Seven genera were
+shared by both the tongue and saliva, including Aggregatibacter,                3.2.4 Colorectal cancer
+Fusobacterium, Streptococcus and Saccharimonadaceae TM7x                            A total of 39 bacterial species in the tongue (21 genera and
+(OR >1), Prevotella, Oribacterium, and Solobacterium (OR <1).                   17 family) and 49 bacterial species in saliva (20 genera and 27 family)
+The causal effects of tongue and saliva bacterial species on breast             had statistically signiﬁcant relationships with CC. Thirteen genera
+cancer were shown in Figures 2A, B.                                             were shared by both the tongue and saliva, including Pauljensenia,
+                                                                                Fusobacterium, Catonella, Campylobacter_A, Haemophilus,
+3.2.2 Lung cancer                                                               Granulicatella, Saccharimonadaceae TM7x (OR >1), Prevotella,
+    A total of 32 bacterial species in the tongue (11 genus and                 Solobacterium, Streptococcus, Gemella, Lachnoanaerobaculum,
+11 family) and 37 bacterial species in saliva (18 genus and 24 family)          Lanceﬁeldella (OR <1). The causal effects of tongue and saliva
+had statistically signiﬁcant relationships with LC. For LC, six genera          bacterial species on colorectal cancer were shown in Figures 5A, B.
+
+
+
+Frontiers in Molecular Biosciences                                         05                                                             frontiersin.org
+Feng et al.                                                                                                                  10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 3
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and lung cancer (A), tongue, (B) saliva.
+
+
+
+
+   FIGURE 4
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and pancreatic cancer (A), tongue, (B) saliva.
+
+
+
+
+Frontiers in Molecular Biosciences                                         06                                                              frontiersin.org
+Feng et al.                                                                                                                   10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 5
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and colorectal cancer (A), tongue, (B) saliva.
+
+
+
+
+   FIGURE 6
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and gastric cancer (A), tongue, (B) saliva.
+
+
+
+
+3.2.5 Gastric cancer                                                             had statistically signiﬁcant relationships with GC. Seven genera were
+    A total of 35 bacterial species in the tongue (12 genera and                 identiﬁed both in the tongue and saliva samples associated with
+15 family) and 40 bacterial species in saliva (25 genera and 20 family)          gastric cancer. Notably, Neisseria, Fusobacterium, Haemophilus D,
+
+
+
+Frontiers in Molecular Biosciences                                          07                                                             frontiersin.org
+Feng et al.                                                                                                                  10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 7
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and prostate cancer (A), tongue, (B) saliva.
+
+
+
+
+and Granulicatella were observed to potentially promote the disease             3.3 Comprehensive relationship between
+(OR >1), while Prevotella, Pauljensenia, Streptococcus,                         speciﬁc oral microbiota genera and diverse
+Campylobacter A, and Lanceﬁeldella might exhibit protective                     cancers
+roles (OR <1). The causal effects of tongue and saliva bacterial
+species on gastric cancer were shown in Figures 6A, B.                               Within the diverse ecosystem of oral microbiota, certain
+                                                                                bacterial genera have arisen as potential modulators of various
+3.2.6 Prostate cancer                                                           cancer types, as discerned from an integrated analysis of both
+     A total of 27 bacterial species in the tongue (17 genus and                saliva and tongue datasets. The genus Aggregatibacter show cases
+14 family) and 42 bacterial species in saliva (24 genus and 17 family)          a multifaceted inﬂuence, with a promotive role in breast and lung
+had statistically signiﬁcant relationships with PCa. In prostate                cancers, an inhibitory stance towards pancreatic and prostate
+cancer samples, nine genera were identiﬁed from both the tongue                 cancers, a nuanced effect on colorectal, gastric and ovarian
+and saliva. Strikingly, Oribacterium, Pauljensenia, Campylobacter A,            cancers. Haemophilus D reveals an intriguing proﬁle, acting as a
+Catonella, Lachnoanaerobaculum, and RUG343 were implicated in                   promoter for breast, stomach, and lung cancers, while seemingly
+possibly elevating the disease risk (OR >1). In contrast,                       offering protection against prostate cancer. Fusobacterium stands
+Aggregatibacter, Solobacterium, Streptococcus, and Gemella were                 out with its diverse associations, promoting breast, colorectal and
+potentially inhibitory (OR <1). The causal effects of tongue and                pancreatic cancers, while adopting a more complex mixed stance on
+saliva bacterial species on prostate cancer were shown in                       prostate cancers. Interestingly, it exhibits inhibitory effects against
+Figures 7A, B.                                                                  ovarian and lung cancers. The genus Prevotella leans towards an
+                                                                                inhibitory role in breast, stomach, and colorectal cancers, but its
+3.2.7 Ovarian cancer                                                            association with pancreatic cancer is mixed, and it distinctly
+    A total of 39 bacterial species in the tongue (20 genus and                 promotes lung cancer. Streptococcus, a ubiquitous member of the
+16 family) and 33 bacterial species in saliva (22 genus and 15 family)          oral microbiome, presents a mosaic of effects. While it demonstrates
+had statistically signiﬁcant relationships with OC. In the context of           mixed associations with a suite of cancers, including breast,
+OC, seven genera coexisted in both sample types. Interestingly,                 colorectal, stomach, prostate, and ovarian, its inﬂuence on
+Streptococcus,      Campylobacter       A,      Granulicatella,   and           pancreatic cancer is predominantly inhibitory, and for lung
+Saccharimonadaceae TM7x might enhance disease risk (OR >1),                     cancer, it remains diverse. This intricate dance of associations
+in contrast to Solobacterium, Fusobacterium, Gemella, and                       continues with Capnocytophaga, which suppresses breast and
+Saccharimonadaceae umgs 1558 which appeared to be protective                    ovarian cancers, but promotes stomach, lung, and notably,
+(OR <1). The causal effects of tongue and saliva bacterial species on           prostate cancers. Porphyromonas, on the other hand, consistently
+ovarian cancer were shown in Figures 8A, B.                                     inhibits stomach and pancreatic cancers. The canvas of associations
+
+
+
+Frontiers in Molecular Biosciences                                         08                                                             frontiersin.org
+Feng et al.                                                                                                                  10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 8
+   Circular Heatmap of Mendelian randomization results of oral microﬂora at species level and ovarian cancer (A), tongue, (B) saliva.
+
+
+
+
+broadens with Solobacterium promoting breast and stomach                        potential linkage akin to that observed between the fecal
+cancers, inhibiting pancreatic and ovarian, while showing mixed                 microbiome and breast cancer risk (Wu et al., 2022). Particularly,
+tendencies for colorectal, prostate, and lung cancers. Pauljensenia             a linkage seems to exist between breast cancer and the oral
+mostly exerts inhibitory effects, especially against stomach,                   microbiota. Women with periodontal disease, triggered by
+pancreatic, prostate, and lung cancers, but its inﬂuence on breast              speciﬁc bacteria like the red complex (Porphyromonas,
+and colorectal cancers remains mixed. Other genera, including                   Tannerella, and Treponema) and the orange complex
+Veillonella, Granulicatella, Neisseria, Haemophilus, Leptotrichia               (Fusobacterium, Prevotella, Peptostreptococcus, Streptococcus,
+A, Veillonellaceae F0422, RUG343, and Leptotrichia, further                     Eubacterium, and Campylobacter), are observed to have a
+enrich this complex tapestry of interactions, each with their                   heightened risk of breast cancer (Thompson et al., 2017; Wang
+distinct patterns of promotion, inhibition, or mixed effects on                 et al., 2017; Huang et al., 2018). The presence of oral pathogens has
+various cancers. Summary of multiple cancers in relation to oral                also been discovered in breast cancer tumor tissues, notably
+microbiota genera was presented in Table 2. The comprehensive                   Fusobacterium. The suggested mechanism involves these bacteria
+relationships between speciﬁc oral microﬂora at genus level and                 entering breast tissues via the bloodstream, potentially driving
+diverse cancers were shown in Figure 9.                                         inﬂammation and tumorigenic processes (Parhi et al., 2020; Little
+                                                                                et al., 2023). In addition, the ability of Fusobacterium to colonize
+                                                                                malignant breast tumors by adhering to GalNAc receptors points
+4 Discussion                                                                    towards a possible mechanism. Such colonization could alter the
+                                                                                tumor microenvironment, modulating host cell signaling, immune
+    The oral microbiome has the second highest amount of                        responses, or even producing metabolites that promote cancers.
+diversity, with a diverse range of bacterial genera and families,               Streptococcus species are abundant in the oral cavity (Yu et al., 2022).
+which was second only to that of gut (Caselli et al., 2020). The                In women without breast tumors, researchers observed elevated
+relationship between the oral microbiota and various forms of                   levels of Lactococcus and Streptococcus, suggesting these bacteria
+cancers has been the focus of numerous studies, but the exact                   may possess anti-cancer properties. Another study found that in
+mechanisms and implications remain partially understood. Our                    healthy patients, the relative abundance of Streptococcus was
+study, using MR, provides insights into this relationship (Allen                higher, while there was a negative correlation between the stage
+and Sears, 2019).                                                               of breast cancer and bacterial load in tumor tissue. Through MR
+    Numerous studies have delved into the relationship between oral             analysis, we conﬁrmed the association of Aggregatibacter,
+microbiota and breast cancer, uncovering various facets of their                Fusobacterium, Streptococcus, and Saccharimonadaceae, along
+interaction. A study conducted in Ghana probed the association                  with Prevotella, Oribacterium, and Solobacterium, with breast
+between the oral microbiome and breast cancer, identifying a                    cancer.
+
+
+
+Frontiers in Molecular Biosciences                                         09                                                             frontiersin.org
+Feng et al.                                                                                                                         10.3389/fmolb.2023.1327893
+
+
+
+
+TABLE 2 Summary of multiple cancers in relation to bacteria (genera) present in both tongue and saliva.
+
+  Outcomes           Mechanism       Quantity    Bacterial (genus)
+   Breast cancer       promote          5        Aggregatibacter, Campylobacter, Fusobacterium, Streptococcus, TM7x
+
+                       inhibit          1        Prevotella
+
+                        mix             7        Aggregatibacter, Fusobacterium, Oribacterium, Saccharimonadaceae, Streptococcus, Solobacterium, Haemophilus
+
+ Colorectal cancer     promote          1        Haemophilus
+
+                       inhibit          1        Gemella
+
+                        mix             9        Campylobacter, Catonella, Fusobacterium, Granulicatella, Lanceﬁeldella, Pauljensenia, Solobacterium, TM7x,
+                                                 Streptococcus
+
+   Lung cancer         promote          0        None
+
+                       inhibit          0        None
+
+                        mix             5        Aggregatibacter, Campylobacter, Fusobacterium, Streptococcus, TM7x
+
+  Gastric cancer       promote          1        Haemophilus
+
+                       inhibit          2        Lanceﬁeldella, Prevotella
+
+                        mix             6        Campylobacter, Fusobacterium, Granulicatella, Pauljensenia, Saccharimonadaceae, Streptococcus
+
+ Pancreatic cancer     promote          0        None
+
+                       inhibit          3        Gemella, Pauljensenia, Treponema
+
+                        mix             8        F0422, Fusobacterium, Lanceﬁeldella, Prevotella, Saccharimonadaceae, Solobacterium, Streptococcus, TM7x
+
+  Ovarian cancer       promote          1        Fusobacterium
+
+                       inhibit          1        Solobacterium
+
+                        mix             6        Campylobacter, Gemella, Granulicatella, Saccharimonadaceae, Streptococcus, TM7x
+
+  Prostate cancer      promote          2        Campylobacter, Oribacterium
+
+                       inhibit          0        None
+
+                        mix             8        Aggregatibacter, Catonella, Leptotrichia, Pauljensenia, RUG343, Saccharimonadaceae, Solobacterium, Streptococcus
+
+
+
+
+    Lung cancer, another major global health concern, may ﬁnd its                   progression. These microbial communities have also been
+etiological roots intertwined with oral health. In three US cohort                  validated in previous literature.
+studies, Vogtmann et al. found certain types of oral ﬂora, like                         Pancreatic cancer, a highly aggressive digestive system
+Streptococcus, has a favourable association with the risk of                        malignancy, has ascended to the third leading cause of cancer-
+developing lung cancer. Streptococcus abundance was                                 related deaths with an increasing incidence rate, imposing
+associated with 1.14 times the risk of lung cancer (95%                             signiﬁcant global health and economic burdens. Characterized by
+conﬁdence interval = 1.06–1.22) (Vogtmann et al., 2022). Sun                        late symptom manifestation and limited therapeutic options, its 5-
+et al. (2023) and Zhang et al. (2019) also reported the levels of                   year survival rate is below 9%, earning it the moniker king of cancers.
+Streptococcus in saliva samples collected from patients with LC                     In a landmark study utilizing the Cancer Prevention Study II (CPSII)
+are considerably elevated compared to those in control samples.                     and Prostate, Lung, Colorectal and Ovarian (PLCO) prospective
+A study by Yan et al. demonstrated Capnocytophaga and                               databases, Fan et al. found Porphyromonas gingivalis and
+Veillonella were signiﬁcantly higher in the saliva from lung                        Aggregatibacter, were associated with higher risk of pancreatic
+cancer patients (Yan et al., 2015). A study sought to                               cancer (adjusted OR for presence vs. absence = 1.60 and 95% CI
+prospectively investigate the association of the oral                               1.15 to 2.22; OR = 2.20 and 95% CI 1.16 to 4.18, respectively) and
+microbiome with lung cancer risk, involving 156 incident lung                       Phylum Fusobacteria was associated with decreased PC risk (Fan
+cancer cases and 156 individually matched controls (Shi et al.,                     et al., 2018). Herremans et al.’s review summarized the correlation
+2021). Capnocytophaga was associated with a decreased risk of                       between oral microbiota and pancreatic cancer (Herremans et al.,
+lung cancer with ORs and 95% CIs of 0.53 (0.31–0.92). These                         2022). Oral bacteria associated with an increased risk of pancreatic
+studies suggested that the oral microbiome may present new                          cancer include Porphyromonas (Michaud et al., 2013),
+avenues for lung cancer prevention. In our study, we found a                        Aggregatibacter, Enterobacteriaceae, Lachnospiraceae G7 (35),
+positive correlation between Aggregatibacter and Gemella with                       Bacteroidaceae (Vogtmann et al., 2020), Staphylococcaceae
+LC, while Fusobacterium, Streptococcus, Campylobacter A, and                        (Vogtmann et al., 2020), Gemella adiacens (Farrell et al., 2012),
+Saccharimonadaceae were negatively associated with LC                               and Firmicutes (Al-Zyoud et al., 2019; Wei et al., 2020). Conversely,
+
+
+
+Frontiers in Molecular Biosciences                                             10                                                                    frontiersin.org
+Feng et al.                                                                                                             10.3389/fmolb.2023.1327893
+
+
+
+
+   FIGURE 9
+   The comprehensive relationships between speciﬁc oral microﬂora at genus level and diverse cancers.
+
+
+
+
+oral bacteria associated with a decreased risk of pancreatic cancer           F0422 belongs to the phyla Firmicutes, a common oral
+include Fusobacterium (Mitsuhashi et al., 2015; Wei et al., 2020) and         microbiome that may be related to gastrointestinal cancers (Asili
+Leptotrichia (Torres et al., 2015; Fan et al., 2018), Haemophilus             et al., 2023). Research has indicated a correlation between Prevotella
+(Vogtmann et al., 2020), Streptococcus mitis (Wei et al., 2020),              bacteria presence and symptoms of pancreatic cancer. Notably, a
+Neisseria (Wei et al., 2020), and Proteobacteria (Al-Zyoud et al.,            higher abundance of Prevotella (p = 0.008) was observed in patients
+2019). In our study, by MR analysis, the association of                       reporting jaundice (Wei et al., 2020).
+Fusobacterium, Aggregatibacter, Solobacterium, Streptococcus,                      Colorectal cancer, with its burgeoning global incidence, shown
+Gemella, Porphyromonas, Saccharimonadaceae, and Lanceﬁeldella                 associations with gut microbiome. Disruptions in the intestinal ﬂora
+with pancreatic cancer was demonstrated, aligning with previous               can stimulate an excessive immune response, leading to the release
+research. We also found Veillonellaceae, Prevotella, Oribacterium             of inﬂammatory cytokines such as TNF-α, IL-16, and IL-1β (Chen F.
+were associated with pancreatic cancer. Veillonellaceae                       et al., 2022; Kong et al., 2023). Speciﬁc periodontopathogens, like
+
+
+
+Frontiers in Molecular Biosciences                                       11                                                           frontiersin.org
+Feng et al.                                                                                                            10.3389/fmolb.2023.1327893
+
+
+
+
+Fusobacterium nucleatum, have been linked to the development of              literature on associations of ovarian cancers with oral microbiota
+CC and hold potential as biomarkers for cancer diagnosis (Negrut             is nascent, emerging evidence suggests potential risk elevations tied
+et al., 2023). Alterations in the oral microbiome, including                 to alterations in bacterial proﬁles in numerous compartments,
+varying levels of speciﬁc taxa like Streptococcus and Prevotella,            including vaginal, cervicovaginal (Nené et al., 2019), upper
+have been noted in individuals with CC. Furthermore, a higher                genital tract (Zhou et al., 2019), peritoneal (Miao et al., 2020),
+abundance of certain oral-like bacterial networks in colonic                 serum (Kim et al., 2020), and fecal (Mori et al., 2019) compartments
+tissue correlated with CC, whereas an increased abundance of                 in patients with OC.
+Lachnospiraceae was inversely associated with the colonization                    In the present study, we obtained several important ﬁndings.
+of colonic tissue by these oral-like bacterial networks, hinting at a        First of all, Streptococcus is the sole bacterial genus associated
+potential protective effect against CC (Negrut et al., 2023).                with all seven cancer types. Streptococcus is predominantly found
+Evidence indicates that the oral microbiome may colonize the                 in the oral cavity, pharynx, and nasal passages. Its association
+gut, resulting in the dysregulation of gut microbes. This                    with multiple cancers is established, underscored by studies
+colonization fosters an intestinal inﬂammatory and                           indicating shifts in its abundance at respective cancerous sites.
+immunosuppressive          microenvironment,         which      could        Speciﬁcally, increased levels were discerned in the mammary
+potentially facilitate tumorigenesis and progression of CC (Mo               tissues of breast cancer patients, bronchoalveolar lavage ﬂuids of
+et al., 2022).                                                               lung cancer patients, gastric mucosa of those with stomach
+    The oral microbiota is a crucial factor in the onset and                 cancer, ovarian tissues in ovarian cancer patients, prostate
+progression of gastric cancer in humans, associated with                     tissues in prostate cancer subjects, and within the microbial
+inﬂammation of the gastric mucosa, interactions in the upper                 communities of the pancreas (Xie et al., 2022). Then,
+gastrointestinal tract, and the infection and transmission of                excluding prostate cancer, Fusobacterium exhibits associations
+Helicobacter pylori (Stasiewicz and Karpiński, 2022). The oral               with six other cancer types. Fusobacterium is an oral bacterium,
+microbiota of gastric cancer patients exhibits signiﬁcant                    recent investigations have revealed the its intricate involvement
+differences compared to healthy individuals, with an increased               in colorectal, breast and pancreatic cancers pathogenesis
+abundance of certain oral bacteria such as Porphyromonas                     (Bullman et al., 2017; Parhi et al., 2020; Alon-Maimon et al.,
+gingivalis, Fusobacterium, and Streptococci, potentially linked to           2022; Ou et al., 2022; Udayasuryan et al., 2022). In our MR
+the onset and advancement of gastric cancer (Șurlin et al., 2020).           analysis, Fusobacterium is a favorable factor for breast, colorectal
+Like CC, the abundance of certain oral bacteria can migrate to the           and pancreatic cancers, consistent with published studies. This
+stomach, altering the gastric microbial milieuoral, producing                bacterium’s capability to adhere to both healthy and neoplastic
+harmful metabolites or carcinogens in the stomach, and elevating             cells hinge on speciﬁc molecular recognition, subsequently
+cancer risks. In study of Shu et al., the abundance of Fusobacterium,        activating      β-catenin-centric      transcriptional     pathways,
+Prevotella, Neisseria were signiﬁcantly changed, compared to                 potentiating carcinogenesis. Fusobacterium can migrate to the
+healthy controls (Zhang et al., 2022). Chronic prostatitis (CP)              intestines, reshaping the microbial landscape (Yu et al., 2017;
+and benign prostatic hyperplasia (BPH) are chronic inﬂammation               Chen S. et al., 2022). This translocation plays a pivotal role in
+in the prostate and the etiology is linked to the disorders of oral          establishing      a   tumor-immunosuppressive           environment,
+microbiome (Boland et al., 2013).                                            augmenting cancer cell spread by triggering the host’s innate
+    The migration of bacteria and chronic inﬂammation also                   immune mechanisms (Dai et al., 2018; Zhao et al., 2022).
+apply for the correlation between oral microbiota and prostate               Noteworthy is the concurrent identiﬁcation of Fusobacterium
+cancer. Research suggests a potential association between oral               in oral and colorectal cancer specimens from patients,
+microbiota and the development of prostate diseases, notably                 highlighting the profound interplay between oral microbiota
+prostate cancer (Fang et al., 2021). A common chronic                        and      colorectal    malignancy.       Furthermore,      Prevotella,
+inﬂammatory condition, periodontal disease, shares risk                      recognized as the second most abundant genus in the human
+factors with prostate diseases. Inﬂammation is deemed a                      oral microbiome, has inhibitory role in breast, stomach, and
+signiﬁcant factor in the progression of prostate diseases.                   colorectal cancers in our MR analysis. In the published literature
+Periodontal disease could potentially lead to increased                      (Niccolai et al., 2020; Huh et al., 2022), the inﬂuence of Prevotella
+expression of pro-inﬂammatory cytokines, thereby impacting                   on cancer progression appears to be multifaceted, contingent
+prostate health. Additionally, periodontal treatment can                     upon the cancer type, its stage, the host’s immunological proﬁle,
+signiﬁcantly alleviate symptoms of prostatic inﬂammation.                    and different body sites. Emerging evidence delineates its
+Furthermore, oral pathogens, such as Porphyromonas                           potential     anticancer     properties,      manifested     through
+gingivalis and Fusobacterium nucleatum, might migrate to the                 mechanisms such as the ampliﬁcation of immune responses,
+prostate via the bloodstream, inducing analogous pathogenic                  attenuation of inﬂammation, or induction of cellular
+effects (Wu et al., 2019). These bacterial aggregates may lead               apoptosis. Conversely, other studies implicate Prevotella in
+to the development of chronic inﬂammation and may cause                      exacerbating cancer progression, possibly by bolstering cellular
+damage and abnormal proliferation of prostate cells, or even                 proliferation, invasiveness, or metastatic activities. Such
+cancer, thereby increasing the risk of prostate cancer (Fang et al.,         dichotomies emphasize the need for nuanced interpretations
+2021).                                                                       of Prevotella’s role in oncogenesis and progression. Such
+    OC is leading oncological cause of death among women. Unlike             disparities underscore the premise that identical bacterial taxa
+the above cancers, there is no sufﬁcient evidence substantiating             might manifest contrasting effects, contingent upon the
+causal relationships between oral bacteria and OC. While the                 environmental conditions they inhabit. Finally, in both
+
+
+
+Frontiers in Molecular Biosciences                                      12                                                           frontiersin.org
+Feng et al.                                                                                                                   10.3389/fmolb.2023.1327893
+
+
+
+
+colorectal and gastric cancers, Haemophilus stands out as the sole              5 Conclusion
+bacterial genus exerting a purely promotive effect. Haemophilus
+emerges as a commonly found inhabitant, predominantly                                Utilizing recent GWAS datasets and Mendelian randomization,
+residing within the oral cavity. Intriguingly, a heightened                     the ﬁndings of this study support the plausibility of a causal
+abundance of this bacterial genus has been observed in                          relationship between oral microbiota and seven cancers. These
+individuals diagnosed with colorectal cancer. This                              links suggest diverse roles in inﬂuencing cancer evolution,
+proliferation might be attributed to its potential role in                      utilizing distinct mechanisms to alternately inhibit or advance
+inducing inﬂammatory responses and aberrations in the                           cancer progression. Particular bacteria, notably Streptococcus and
+immune system, thereby fostering the progression of                             Fusobacterium, displaying signiﬁcant correlations with various
+colorectal cancer. Complementing this, certain studies have                     cancers. The study offers a foundational step towards
+illuminated the signiﬁcant distinction in the absolute                          understanding the profound implications of the oral microbiome
+abundance of Haemophilus between gastric cancer patients                        in systemic malignancies.
+and their healthy counterparts (p ≤ 0.05) (Liu D. et al., 2021;
+Zhang et al., 2022). Such ﬁndings dovetail with our research,
+underscoring the contributory role of Haemophilus in the                        Data availability statement
+advancement of both gastric and colorectal cancers.
+    In essence, a singular bacterium may manifest dual roles in                     Publicly available datasets were analyzed in this study. The data
+oncogenesis, utilizing distinct mechanisms to alternately inhibit or            of oral microbime can be found here: https://db.cngb.org/search/
+advance cancer progression. The association between the oral                    project/CNP0001664. The data of seven types of cancers can be
+microbiome and cancer has signiﬁcant implications for public                    found here: https://gwas.mrcieu.ac.uk/.
+health and clinical practice. Screening for alterations in the oral
+microbiome may become part of routine cancer risk assessments.
+Patients with a dysbiotic oral microbiome may beneﬁt from early                 Author contributions
+intervention strategies, such as microbiome modulation through
+diet, prebiotics, probiotics, or even microbiota transplants.                      KF: Conceptualization, Data curation, Investigation,
+Furthermore, our ﬁndings suggest that manipulation of the oral                  Writing–original draft. FR: Formal Analysis, Methodology,
+microbiome may serve as a novel therapeutic avenue. If a certain                Visualization, Writing–original draft. XW: Supervision,
+bacterial genus is found to promote carcinogenesis, strategies to               Writing–review and editing.
+suppress this microbial population may be pursued. Conversely, if
+certain bacteria are found to exert protective effects, these may be
+encouraged through targeted therapies.                                          Funding
+    This study possesses several notable strengths. Firstly, it utilizes
+the most up-to-date GWAS data pertaining to the oral microbiome                     The author(s) declare that no ﬁnancial support was received for
+and employs MR as a methodological approach to establish causal                 the research, authorship, and/or publication of this article.
+connections. Furthermore, our comprehensive analysis reveals the
+unexplored and multifaceted causal relationship between oral
+microbiota and diverse cancers. The complex network of                          Conﬂict of interest
+relationships between oral microbiota and cancer development
+highlights the importance of a comprehensive understanding of                       The authors declare that the research was conducted in the
+this intricate system. As we continue to explore this area, these               absence of any commercial or ﬁnancial relationships that could be
+ﬁndings provide new insights for future research and potential                  construed as a potential conﬂict of interest.
+treatment approaches. This is the ﬁrst Mendelian Randomization
+analysis on the relationship between oral microbiota and various
+cancers in an East Asian population. Additionally, it was precisely             Publisher’s note
+identiﬁed down to the species level.
+    However, it is important to note that this study has several                    All claims expressed in this article are solely those of the authors and
+limitations that need to be addressed. The potential for                        do not necessarily represent those of their afﬁliated organizations, or
+horizontal pleiotropy may impact the selection of instrumental                  those of the publisher, the editors and the reviewers. Any product that
+variables in MR studies. The oral microbiome can be inﬂuenced                   may be evaluated in this article, or claim that may be made by its
+by a variety of factors, including genetic inheritance, lifestyle               manufacturer, is not guaranteed or endorsed by the publisher.
+choices, dietary changes, and environmental factors.
+Instrumental variables may only account for a small portion
+of the observed variability, and further research is needed to fully            Supplementary material
+understand the complex changes in the oral microbiota.
+Additionally, our MR analysis focused on populations of                              The Supplementary Material for this article can be found online
+Asian ancestry, and our ﬁndings may not be generalizable to                     at: https://www.frontiersin.org/articles/10.3389/fmolb.2023.1327893/
+populations of European ancestry.                                               full#supplementary-material
+
+
+
+
+Frontiers in Molecular Biosciences                                         13                                                                frontiersin.org
+Feng et al.                                                                                                                                                       10.3389/fmolb.2023.1327893
+
+
+
+
+References
+  Abecasis, G. R., Altshuler, D., Auton, A., Brooks, L. D., Durbin, R. M., Gibbs, R. A.,                   Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., et al.
+et al. (2010). A map of human genome variation from population-scale sequencing.                         (2018). The mr-base platform supports systematic causal inference across the human
+Nature 467 (7319), 1061–1073. Epub 2010/10/29. doi:10.1038/nature09534                                   phenome. Elife 7, e34408. Epub 2018/05/31. doi:10.7554/eLife.34408
+  Allen, J., and Sears, C. L. (2019). Impact of the gut microbiome on the genome and                       Herremans, K. M., Riner, A. N., Cameron, M. E., McKinley, K. L., Triplett, E. W.,
+epigenome of colon epithelial cells: contributions to colorectal cancer development.                     Hughes, S. J., et al. (2022). The oral microbiome, pancreatic cancer and human diversity
+Genome Med. 11 (1), 11. Epub 2019/02/26. doi:10.1186/s13073-019-0621-2                                   in the age of precision medicine. Microbiome 10 (1), 93. Epub 20220615. doi:10.1186/
+                                                                                                         s40168-022-01262-7
+  Alon-Maimon, T., Mandelboim, O., and Bachrach, G. (2022). Fusobacterium
+nucleatum and cancer. Periodontol 89 (1), 166–180. Epub 2022/03/05. doi:10.1111/                           Huang, Y. F., Chen, Y. J., Fan, T. C., Chang, N. C., Chen, Y. J., Midha, M. K., et al.
+prd.12426                                                                                                (2018). Analysis of microbial sequences in plasma cell-free DNA for early-onset breast
+                                                                                                         cancer patients and healthy females. BMC Med. Genomics 11 (Suppl. 1), 16. Epub
+  Al-Zyoud, W., Hajjo, R., Abu-Siniyeh, A., and Hajjaj, S. (2019). Salivary microbiome
+                                                                                                         20180213. doi:10.1186/s12920-018-0329-y
+and cigarette smoking: a ﬁrst of its kind investigation in Jordan. Int. J. Environ. Res.
+Public Health 17 (1), 256. Epub 20191230. doi:10.3390/ijerph17010256                                       Huh, J. W., Kim, M. J., Kim, J., Lee, H. G., Ryoo, S. B., Ku, J. L., et al. (2022).
+                                                                                                         Enterotypical Prevotella and three novel bacterial biomarkers in preoperative stool
+   Asili, P., Mirahmad, M., Rezaei, P., Mahdavi, M., Larijani, B., and Tavangar, S. M.
+                                                                                                         predict the clinical outcome of colorectal cancer. Microbiome 10 (1), 203. Epub 2022/11/
+(2023). The association of oral microbiome dysbiosis with gastrointestinal cancers and
+                                                                                                         30. doi:10.1186/s40168-022-01388-8
+its diagnostic efﬁcacy. J. Gastrointest. Cancer. Epub 2023/01/05. doi:10.1007/s12029-
+022-00901-4                                                                                                Ishigaki, K., Akiyama, M., Kanai, M., Takahashi, A., Kawakami, E., Sugishita, H., et al.
+                                                                                                         (2020). Large-scale genome-wide association study in a Japanese population identiﬁes
+  Boland, M. R., Hripcsak, G., Albers, D. J., Wei, Y., Wilcox, A. B., Wei, J., et al. (2013).
+                                                                                                         novel susceptibility loci across different diseases. Nat. Genet. 52 (7), 669–679. Epub
+Discovering medical conditions associated with periodontitis using linked electronic
+                                                                                                         20200608. doi:10.1038/s41588-020-0640-3
+health records. J. Clin. Periodontol. 40 (5), 474–482. Epub 2013/03/19. doi:10.1111/jcpe.
+12086                                                                                                      Kim, S. I., Kang, N., Leem, S., Yang, J., Jo, H., Lee, M., et al. (2020). Metagenomic
+                                                                                                         analysis of serum microbe-derived extracellular vesicles and diagnostic models to
+  Bowden, J., Davey Smith, G., Haycock, P. C., and Burgess, S. (2016). Consistent
+                                                                                                         differentiate ovarian cancer and benign ovarian tumor. Cancers (Basel) 12 (5), 1309.
+estimation in mendelian randomization with some invalid instruments using a weighted
+                                                                                                         Epub 2020/05/28. doi:10.3390/cancers12051309
+median estimator. Genet. Epidemiol. 40 (4), 304–314. Epub 2016/04/12. doi:10.1002/
+gepi.21965                                                                                                 Kong, C., Liang, L., Liu, G., Du, L., Yang, Y., Liu, J., et al. (2023). Integrated
+                                                                                                         metagenomic and metabolomic analysis reveals distinct gut-microbiome-derived
+   Bowden, J., and Holmes, M. V. (2019). Meta-analysis and mendelian randomization:
+                                                                                                         phenotypes in early-onset colorectal cancer. Gut 72 (6), 1129–1142. Epub 2022/08/
+a review. Res. Synth. Methods 10 (4), 486–496. Epub 2019/03/13. doi:10.1002/jrsm.1346
+                                                                                                         12. doi:10.1136/gutjnl-2022-327156
+  Bullman, S., Pedamallu, C. S., Sicinska, E., Clancy, T. E., Zhang, X., Cai, D., et al.
+                                                                                                           Little, A., Tangney, M., Tunney, M. M., and Buckley, N. E. (2023). Fusobacterium
+(2017). Analysis of Fusobacterium persistence and antibiotic response in colorectal
+                                                                                                         nucleatum: a novel immune modulator in breast cancer? Expert Rev. Mol. Med. 25, e15.
+cancer. Science 358 (6369), 1443–1448. Epub 2017/11/25. doi:10.1126/science.aal5240
+                                                                                                         Epub 20230403. doi:10.1017/erm.2023.9
+  Burgess, S., Davey Smith, G., Davies, N. M., Dudbridge, F., Gill, D., Glymour, M. M.,
+                                                                                                          Liu, D., Chen, S., Gou, Y., Yu, W., Zhou, H., Zhang, R., et al. (2021b). Gastrointestinal
+et al. (2019). Guidelines for performing mendelian randomization investigations.
+                                                                                                         microbiota changes in patients with gastric precancerous lesions. Front. Cell Infect.
+Wellcome Open Res. 4, 186. Epub 2020/08/11. doi:10.12688/wellcomeopenres.15555.2
+                                                                                                         Microbiol. 11, 749207. Epub 2021/12/28. doi:10.3389/fcimb.2021.749207
+   Burgess, S., Foley, C. N., and Zuber, V. (2018). Inferring causal relationships between
+                                                                                                           Liu, X., Tong, X., Zhu, J., Tian, L., Jie, Z., Zou, Y., et al. (2021a). Metagenome-genome-
+risk factors and outcomes from genome-wide association study data. Annu. Rev.
+                                                                                                         wide association studies reveal human genetic impact on the oral microbiome. Cell
+Genomics Hum. Genet. 19, 303–327. Epub 2018/05/02. doi:10.1146/annurev-genom-
+                                                                                                         Discov. 7 (1), 117. Epub 2021/12/08. doi:10.1038/s41421-021-00356-0
+083117-021731
+                                                                                                           Miao, R., Badger, T. C., Groesch, K., Diaz-Sylvester, P. L., Wilson, T., Ghareeb, A.,
+  Burgess, S., Thompson, S. G., and CRP CHD Genetics Collaboration (2011). Avoiding
+                                                                                                         et al. (2020). Assessment of peritoneal microbial features and tumor marker levels as
+bias from weak instruments in mendelian randomization studies. Int. J. Epidemiol. 40
+                                                                                                         potential diagnostic tools for ovarian cancer. PLoS One 15 (1), e0227707. Epub 2020/01/
+(3), 755–764. Epub 2011/03/19. doi:10.1093/ije/dyr036
+                                                                                                         10. doi:10.1371/journal.pone.0227707
+  Burgess, S., and Thompson, S. G. (2015). Multivariable mendelian randomization: the
+                                                                                                           Michaud, D. S., Izard, J., Wilhelm-Benartzi, C. S., You, D. H., Grote, V. A.,
+use of pleiotropic genetic variants to estimate causal effects. Am. J. Epidemiol. 181 (4),
+                                                                                                         Tjønneland, A., et al. (2013). Plasma antibodies to oral bacteria and risk of
+251–260. Epub 20150127. doi:10.1093/aje/kwu283
+                                                                                                         pancreatic cancer in a large European prospective cohort study. Gut 62 (12),
+  Burgess, S., and Thompson, S. G. (2017). Interpreting ﬁndings from mendelian                           1764–1770. Epub 20120918. doi:10.1136/gutjnl-2012-303006
+randomization using the mr-egger method. Eur. J. Epidemiol. 32 (5), 377–389. Epub
+                                                                                                           Mitsuhashi, K., Nosho, K., Sukawa, Y., Matsunaga, Y., Ito, M., Kurihara, H., et al.
+2017/05/21. doi:10.1007/s10654-017-0255-x
+                                                                                                         (2015). Association of Fusobacterium species in pancreatic cancer tissues with
+  Caselli, E., Fabbri, C., D’Accolti, M., Soffritti, I., Bassi, C., Mazzacane, S., et al. (2020).        molecular features and prognosis. Oncotarget 6 (9), 7209–7220. doi:10.18632/
+Deﬁning the oral microbiome by whole-genome sequencing and resistome analysis: the                       oncotarget.3109
+complexity of the healthy picture. BMC Microbiol. 20 (1), 120. Epub 2020/05/20. doi:10.
+                                                                                                           Mo, S., Ru, H., Huang, M., Cheng, L., Mo, X., and Yan, L. (2022). Oral-intestinal
+1186/s12866-020-01801-y
+                                                                                                         microbiota in colorectal cancer: inﬂammation and immunosuppression. J. Inﬂamm.
+  Chen, F., Dai, X., Zhou, C. C., Li, K. X., Zhang, Y. J., Lou, X. Y., et al. (2022a).                   Res. 15, 747–759. Epub 20220204. doi:10.2147/jir.S344321
+Integrated analysis of the faecal metagenome and serum metabolome reveals the role of
+                                                                                                           Mori, G., Orena, B. S., Cultrera, I., Barbieri, G., Albertini, A. M., Ranzani, G. N., et al.
+gut microbiome-associated metabolites in the detection of colorectal cancer and
+                                                                                                         (2019). Gut microbiota analysis in postoperative lynch syndrome patients. Front.
+adenoma. Gut 71 (7), 1315–1325. Epub 2021/09/01. doi:10.1136/gutjnl-2020-323476
+                                                                                                         Microbiol. 10, 1746. Epub 2019/08/17. doi:10.3389/fmicb.2019.01746
+  Chen, S., Zhang, L., Li, M., Zhang, Y., Sun, M., Wang, L., et al. (2022b). Fusobacterium
+                                                                                                           Negrut, R. L., Cote, A., and Maghiar, A. M. (2023). Exploring the potential of oral
+nucleatum reduces mettl3-mediated M(6)a modiﬁcation and contributes to colorectal
+                                                                                                         microbiome biomarkers for colorectal cancer diagnosis and prognosis: a systematic
+cancer metastasis. Nat. Commun. 13 (1), 1248. Epub 2022/03/12. doi:10.1038/s41467-
+                                                                                                         review. Microorganisms 11 (6), 1586. Epub 20230615. doi:10.3390/
+022-28913-5
+                                                                                                         microorganisms11061586
+  Dai, Z., Coker, O. O., Nakatsu, G., Wu, W. K. K., Zhao, L., Chen, Z., et al. (2018).
+                                                                                                           Nené, N. R., Reisel, D., Leimbach, A., Franchi, D., Jones, A., Evans, I., et al. (2019).
+Multi-cohort analysis of colorectal cancer metagenome identiﬁed altered bacteria across
+                                                                                                         Association between the cervicovaginal microbiome, Brca1 mutation status, and risk of
+populations and universal bacterial markers. Microbiome 6 (1), 70. Epub 2018/04/13.
+                                                                                                         ovarian cancer: a case-control study. Lancet Oncol. 20 (8), 1171–1182. Epub 2019/07/14.
+doi:10.1186/s40168-018-0451-2
+                                                                                                         doi:10.1016/s1470-2045(19)30340-7
+  Fan, X., Alekseyenko, A. V., Wu, J., Peters, B. A., Jacobs, E. J., Gapstur, S. M., et al.
+                                                                                                           Niccolai, E., Russo, E., Baldi, S., Ricci, F., Nannini, G., Pedone, M., et al. (2020).
+(2018). Human oral microbiome and prospective risk for pancreatic cancer: a
+                                                                                                         Signiﬁcant and conﬂicting correlation of il-9 with Prevotella and Bacteroides in human
+population-based nested case-control study. Gut 67 (1), 120–127. Epub 2016/11/02.
+                                                                                                         colorectal cancer. Front. Immunol. 11, 573158. Epub 2021/01/26. doi:10.3389/ﬁmmu.
+doi:10.1136/gutjnl-2016-312580
+                                                                                                         2020.573158
+  Fang, C., Wu, L., Zhu, C., Xie, W. Z., Hu, H., and Zeng, X. T. (2021). A potential
+                                                                                                           Ou, S., Wang, H., Tao, Y., Luo, K., Ye, J., Ran, S., et al. (2022). Fusobacterium
+therapeutic strategy for prostatic disease by targeting the oral microbiome. Med. Res.
+                                                                                                         nucleatum and colorectal cancer: from phenomenon to mechanism. Front. Cell Infect.
+Rev. 41 (3), 1812–1834. Epub 20201230. doi:10.1002/med.21778
+                                                                                                         Microbiol. 12, 1020583. Epub 2022/12/17. doi:10.3389/fcimb.2022.1020583
+  Farrell, J. J., Zhang, L., Zhou, H., Chia, D., Elashoff, D., Akin, D., et al. (2012).
+                                                                                                           Parhi, L., Alon-Maimon, T., Sol, A., Nejman, D., Shhadeh, A., Fainsod-Levi, T., et al.
+Variations of oral microbiota are associated with pancreatic diseases including
+                                                                                                         (2020). Breast cancer colonization by Fusobacterium nucleatum accelerates tumor
+pancreatic cancer. Gut 61 (4), 582–588. Epub 20111012. doi:10.1136/gutjnl-2011-
+                                                                                                         growth and metastatic progression. Nat. Commun. 11 (1), 3259. Epub 20200626. doi:10.
+300784
+                                                                                                         1038/s41467-020-16967-2
+
+
+
+
+Frontiers in Molecular Biosciences                                                                  14                                                                               frontiersin.org
+Feng et al.                                                                                                                                                    10.3389/fmolb.2023.1327893
+
+
+
+
+  Purcell, S., Neale, B., Todd-Brown, K., Thomas, L., Ferreira, M. A., Bender, D., et al.                Vogtmann, E., Hua, X., Yu, G., Purandare, V., Hullings, A. G., Shao, D., et al. (2022).
+(2007). Plink: a tool set for whole-genome association and population-based linkage                   The oral microbiome and lung cancer risk: an analysis of 3 prospective cohort studies.
+analyses. Am. J. Hum. Genet. 81 (3), 559–575. Epub 2007/08/19. doi:10.1086/519795                     J. Natl. Cancer Inst. 114 (11), 1501–1510. doi:10.1093/jnci/djac149
+  Shi, J., Yang, Y., Xie, H., Wang, X., Wu, J., Long, J., et al. (2021). Association of oral            Wang, H., Altemus, J., Niazi, F., Green, H., Calhoun, B. C., Sturgis, C., et al. (2017).
+microbiota with lung cancer risk in a low-income population in the southeastern USA.                  Breast tissue, oral and urinary microbiomes in breast cancer. Oncotarget 8 (50),
+Cancer Causes Control 32 (12), 1423–1432. Epub 20210825. doi:10.1007/s10552-021-                      88122–88138. Epub 20170814. doi:10.18632/oncotarget.21490
+01490-6
+                                                                                                         Warren, R. L., Freeman, D. J., Pleasance, S., Watson, P., Moore, R. A., Cochrane, K.,
+ Siegel, R. L., Miller, K. D., Fuchs, H. E., and Jemal, A. (2022). Cancer statistics, 2022.           et al. (2013). Co-occurrence of anaerobic bacteria in colorectal carcinomas. Microbiome
+CA Cancer J. Clin. 72 (1), 7–33. Epub 2022/01/13. doi:10.3322/caac.21708                              1 (1), 16. Epub 2014/01/24. doi:10.1186/2049-2618-1-16
+  Stasiewicz, M., and Karpiński, T. M. (2022). The oral microbiota and its role in                      Wei, A. L., Li, M., Li, G. Q., Wang, X., Hu, W. M., Li, Z. L., et al. (2020). Oral
+carcinogenesis. Semin. Cancer Biol. 86 (Pt 3), 633–642. Epub 20211104. doi:10.1016/j.                 microbiome and pancreatic cancer. World J. Gastroenterol. 26 (48), 7679–7692. doi:10.
+semcancer.2021.11.002                                                                                 3748/wjg.v26.i48.7679
+  Sun, Y., Liu, Y., Li, J., Tan, Y., An, T., Zhuo, M., et al. (2023). Characterization of lung          Wu, L., Li, B. H., Wang, Y. Y., Wang, C. Y., Zi, H., Weng, H., et al. (2019). Periodontal
+and oral microbiomes in lung cancer patients using culturomics and 16s rrna gene                      disease and risk of benign prostate hyperplasia: a cross-sectional study. Mil. Med. Res. 6
+sequencing. Microbiol. Spectr. 11 (3), e0031423. Epub 2023/04/24. doi:10.1128/                        (1), 34. Epub 2019/11/14. doi:10.1186/s40779-019-0223-8
+spectrum.00314-23
+                                                                                                        Wu, Z., Byrd, D. A., Wan, Y., Ansong, D., Clegg-Lamptey, J. N., Wiafe-Addai, B., et al.
+  Sung, H., Ferlay, J., Siegel, R. L., Laversanne, M., Soerjomataram, I., Jemal, A., et al.           (2022). The oral microbiome and breast cancer and nonmalignant breast disease, and its
+(2021). Global cancer statistics 2020: globocan estimates of incidence and mortality                  relationship with the fecal microbiome in the Ghana breast health study. Int. J. Cancer
+worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 71 (3), 209–249. Epub                   151 (8), 1248–1260. Epub 20220630. doi:10.1002/ijc.34145
+2021/02/05. doi:10.3322/caac.21660
+                                                                                                        Xie, Y., Xie, F., Zhou, X., Zhang, L., Yang, B., Huang, J., et al. (2022). Microbiota in
+  Șurlin, P., Nicolae, F. M., Șurlin, V. M., Ș, P., Ungureanu, B. S., Didilescu, A. C., et al.        tumors: from understanding to application. Adv. Sci. (Weinh) 9 (21), e2200470. Epub
+(2020). Could periodontal disease through periopathogen Fusobacterium nucleatum Be                    2022/05/24. doi:10.1002/advs.202200470
+an aggravating factor for gastric cancer? J. Clin. Med. 9 (12), 3885. Epub 20201129.
+                                                                                                        Yan, X., Yang, M., Liu, J., Gao, R., Hu, J., Li, J., et al. (2015). Discovery and validation
+doi:10.3390/jcm9123885
+                                                                                                      of potential bacterial biomarkers for lung cancer. Am. J. Cancer Res. 5 (10), 3111–3122.
+  Teles, F. R. F., Alawi, F., Castilho, R. M., and Wang, Y. (2020). Association or                    Epub 20150915.
+causation? Exploring the oral microbiome and cancer links. J. Dent. Res. 99 (13),
+                                                                                                        Yu, L., Maishi, N., Akahori, E., Hasebe, A., Takeda, R., Matsuda, A. Y., et al. (2022).
+1411–1424. Epub 2020/08/20. doi:10.1177/0022034520945242
+                                                                                                      The oral bacterium Streptococcus mutans promotes tumor metastasis by inducing
+  Thompson, K. J., Ingle, J. N., Tang, X., Chia, N., Jeraldo, P. R., Walther-Antonio, M.              vascular inﬂammation. Cancer Sci. 113 (11), 3980–3994. Epub 20220912. doi:10.1111/
+R., et al. (2017). A comprehensive analysis of breast cancer microbiota and host gene                 cas.15538
+expression. PLoS One 12 (11), e0188873. Epub 20171130. doi:10.1371/journal.pone.
+                                                                                                        Yu, T., Guo, F., Yu, Y., Sun, T., Ma, D., Han, J., et al. (2017). Fusobacterium nucleatum
+0188873
+                                                                                                      promotes chemoresistance to colorectal cancer by modulating autophagy. Cell 170 (3),
+  Torres, P. J., Fletcher, E. M., Gibbons, S. M., Bouvet, M., Doran, K. S., and Kelley, S. T.         548–563. Epub 2017/07/29. doi:10.1016/j.cell.2017.07.008
+(2015). Characterization of the salivary microbiome in patients with pancreatic cancer.
+                                                                                                        Zhang, C., Hu, A., Li, J., Zhang, F., Zhong, P., Li, Y., et al. (2022). Combined non-
+PeerJ 3, e1373. Epub 20151105. doi:10.7717/peerj.1373
+                                                                                                      invasive prediction and new biomarkers of oral and fecal microbiota in patients with
+  Udayasuryan, B., Ahmad, R. N., Nguyen, T. T. D., Umaña, A., Monét Roberts, L.,                      gastric and colorectal cancer. Front. Cell Infect. Microbiol. 12, 830684. Epub 2022/06/07.
+Sobol, P., et al. (2022). Fusobacterium nucleatum induces proliferation and                           doi:10.3389/fcimb.2022.830684
+migration in pancreatic cancer cells through host autocrine and paracrine
+                                                                                                        Zhang, W., Luo, J., Dong, X., Zhao, S., Hao, Y., Peng, C., et al. (2019). Salivary
+signaling. Sci. Signal 15 (756), eabn4948. Epub 2022/10/19. doi:10.1126/
+                                                                                                      microbial dysbiosis is associated with systemic inﬂammatory markers and predicted
+scisignal.abn4948
+                                                                                                      oral metabolites in non-small cell lung cancer patients. J. Cancer 10 (7), 1651–1662.
+  Verbanck, M., Chen, C. Y., Neale, B., and Do, R. (2018). Detection of widespread                    Epub 2019/06/18. doi:10.7150/jca.28077
+horizontal pleiotropy in causal relationships inferred from mendelian randomization
+                                                                                                        Zhao, L., Zhang, X., Zhou, Y., Fu, K., Lau, H. C., Chun, T. W., et al. (2022).
+between complex traits and diseases. Nat. Genet. 50 (5), 693–698. Epub 2018/04/25.
+                                                                                                      Parvimonas micra promotes colorectal tumorigenesis and is associated with
+doi:10.1038/s41588-018-0099-7
+                                                                                                      prognosis of colorectal cancer patients. Oncogene 41 (36), 4200–4210. Epub 2022/
+  Vogtmann, E., Han, Y., Caporaso, J. G., Bokulich, N., Mohamadkhani, A.,                             07/27. doi:10.1038/s41388-022-02395-7
+Moayyedkazemi, A., et al. (2020). Oral microbial community composition is
+                                                                                                        Zhou, B., Sun, C., Huang, J., Xia, M., Guo, E., Li, N., et al. (2019). The biodiversity
+associated with pancreatic cancer: a case-control study in Iran. Cancer Med. 9 (2),
+                                                                                                      composition of microbiome in ovarian carcinoma patients. Sci. Rep. 9 (1), 1691. Epub
+797–806. Epub 20191121. doi:10.1002/cam4.2660
+                                                                                                      2019/02/10. doi:10.1038/s41598-018-38031-2
+
+
+
+
+Frontiers in Molecular Biosciences                                                               15                                                                               frontiersin.org
+

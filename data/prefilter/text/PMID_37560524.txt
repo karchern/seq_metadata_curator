@@ -1,0 +1,751 @@
+                                                                                                                          TYPE Original Research
+                                                                                                                          PUBLISHED 25 July 2023
+                                                                                                                          DOI 10.3389/fmicb.2023.1178744
+
+
+
+
+                                                    An independent evaluation in a
+OPEN ACCESS                                         CRC patient cohort of
+                                                    microbiome 16S rRNA sequence
+EDITED BY
+Benoit St-Pierre,
+South Dakota State University, United States
+
+REVIEWED BY
+Liqiang Li,
+                                                    analysis methods: OTU clustering,
+National Clinical Research Center for Infectious
+Diseases, China
+Xianzhi Lin,
+                                                    DADA2, and Deblur
+Chinese Academy of Sciences (CAS), China
+
+*CORRESPONDENCE
+                                                    Guang Liu1,2† , Tong Li3† , Xiaoyan Zhu1 , Xuanping Zhang1 and
+Jiayin Wang
+   wangjiayin@xjtu.edu.cn                           Jiayin Wang1*
+                                                    1
+†
+These authors have contributed equally to this       School of Electronic and Information Engineering, Xi’an Jiaotong University, Xi’an, China, 2 Guangdong
+work                                                Hongyuan Pukong Medical Technology Co., Ltd., Guangzhou, China, 3 School of Bioscience and
+                                                    Bioengineering, South China University of Technology, Guangzhou, China
+RECEIVED 03 March 2023
+ACCEPTED 14 June 2023
+PUBLISHED 25 July 2023
+
+CITATION
+                                                    16S rRNA is the universal gene of microbes, and it is often used as a target gene to
+Liu G, Li T, Zhu X, Zhang X and Wang J (2023)       obtain proﬁles of microbial communities via next-generation sequencing (NGS)
+An independent evaluation in a CRC patient          technology. Traditionally, sequences are clustered into operational taxonomic
+cohort of microbiome 16S rRNA sequence
+analysis methods: OTU clustering, DADA2, and
+                                                    units (OTUs) at a 97% threshold based on the taxonomic standard using 16S rRNA,
+Deblur. Front. Microbiol. 14:1178744.               and methods for the reduction of sequencing errors are bypassed, which may lead
+doi: 10.3389/fmicb.2023.1178744                     to false classiﬁcation units. Several denoising algorithms have been published to
+COPYRIGHT                                           solve this problem, such as DADA2 and Deblur, which can correct sequencing
+© 2023 Liu, Li, Zhu, Zhang and Wang. This is an     errors at single-nucleotide resolution by generating amplicon sequence variants
+open-access article distributed under the terms
+of the Creative Commons Attribution License         (ASVs). As high-resolution ASVs are becoming more popular than OTUs and
+(CC BY). The use, distribution or reproduction      only one analysis method is usually selected in a particular study, there is a
+in other forums is permitted, provided the          need for a thorough comparison of OTU clustering and denoising pipelines. In
+original author(s) and the copyright owner(s)
+are credited and that the original publication in   this study, three of the most widely used 16S rRNA methods (two denoising
+this journal is cited, in accordance with           algorithms, DADA2 and Deblur, along with de novo OTU clustering) were
+accepted academic practice. No use,                 thoroughly compared using 16S rRNA ampliﬁcation sequencing data generated
+distribution or reproduction is permitted which
+does not comply with these terms.                   from 358 clinical stool samples from the Colorectal Cancer (CRC) Screening
+                                                    Cohort. Our ﬁndings indicated that all approaches led to similar taxonomic proﬁles
+                                                    (with P > 0.05 in PERMNAOVA and P <0.001 in the Mantel test), although
+                                                    the number of ASVs/OTUs and the alpha-diversity indices varied considerably.
+                                                    Despite considerable differences in disease-related markers identiﬁed, disease-
+                                                    related analysis showed that all methods could result in similar conclusions.
+                                                    Fusobacterium, Streptococcus, Peptostreptococcus, Parvimonas, Gemella, and
+                                                    Haemophilus were identiﬁed by all three methods as enriched in the CRC group,
+                                                    while Roseburia, Faecalibacterium, Butyricicoccus, and Blautia were identiﬁed by
+                                                    all three methods as enriched in the healthy group. In addition, disease-diagnostic
+                                                    models generated using machine learning algorithms based on the data from
+                                                    these different methods all achieved good diagnostic efficiency (AUC: 0.87–0.89),
+                                                    with the model based on DADA2 producing the highest AUC (0.8944 and 0.8907
+                                                    in the training set and test set, respectively). However, there was no signiﬁcant
+                                                    difference in performance between the models (P > 0.05). In conclusion, this study
+                                                    demonstrates that DADA2, Deblur, and de novo OTU clustering display similar
+                                                    power levels in taxa assignment and can produce similar conclusions in the case
+                                                    of the CRC cohort.
+
+                                                    KEYWORDS
+
+                                                    CRC, gut microbiome, denoising algorithms, comparison, DADA2, Deblur, OTU clustering
+
+
+
+
+Frontiers in Microbiology                                                   01                                                               frontiersin.org
+Liu et al.                                                                                                                 10.3389/fmicb.2023.1178744
+
+
+
+
+Introduction                                                                      mock communities, as it can accurately resolve sequence variants
+                                                                                  differing by a single nucleotide and present in as few as two reads,
+    Colorectal cancer (CRC) is the third most common cancer                       identify more real variants, and output fewer spurious sequences;
+globally, causing more than one million deaths annually (Brenner                  this provides alternative methods to explore strain-level variation
+et al., 2014; Stoffel and Murphy, 2020). The occurrence and                       (Callahan et al., 2016). In another study, it has been reported
+development of colorectal cancer often involve an adenoma-                        that both Deblur and DADA2 have high consistency, and both
+carcinoma process, which often occurs over many years and                         of them achieve outputs close to the ground truth in simulated
+involves a variety of mechanisms and gene mutations (Fearon and                   communities (Amir et al., 2017). Deblur also exhibited higher
+Vogelstein, 1990; Jones et al., 2008). The early symptoms of CRC                  performance stability than DADA2, with a higher frequency cutoff,
+are not obvious: they consist of body discomfort, dyspepsia, occult               when samples from the American Gut Project (http://americangut.
+blood in the stool, and other symptoms (Brenner et al., 2014).                    org) underwent two sequencing runs, as a larger fraction of ASVs
+As the disease progresses, clearer symptoms gradually appear,                     could be recalled in the second sequencing run (Amir et al., 2017).
+including changes in defecation habits, blood in the stool, diarrhea,                 Along with the widespread use of 16S rRNA sequencing, high-
+alternating diarrhea and constipation, and local abdominal pain,                  resolution ASVs have become more popular than OTUs. As only
+among others (Brenner et al., 2014). Not only does CRC inflict                    a single analysis method is usually selected in a particular study,
+mental and physical distress on patients, but it also imposes a heavy             there is a need for a thorough comparison of OTU clustering and
+economic burden and places pressure on patients and their families.               denoising pipelines, as different methods may lead to different
+Developed countries have now made significant advancements                        conclusions in some cases. However, there are not many studies
+in CRC screening, resulting in a gradual decline in incidence                     on this topic. OTU clustering approaches have been compared
+(Brenner et al., 2014). Therefore, early cancer screening and timely              using samples from chicken cecum (Allali et al., 2017) and preterm
+intervention are important for CRC patients (Díaz-Tasende, 2018;                  infants (Plummer and Twin, 2015), and a comparison of denoising
+Shaukat et al., 2021; Xi and Xu, 2021).                                           algorithms using environmental samples was reported in 2018
+    An increasing number of studies have shown a strong                           (Nearing et al., 2018). However, a thorough comparison between
+correlation between health and the intestinal microbiota; the                     denoising algorithms and OTU clustering approaches has yet
+microbiota can influence human health by regulating host                          to be conducted using clinical samples, and no comparison has
+immunity, inflammation, and cognitive function (Ashktorab et al.,                 been conducted specifically in colorectal cancer patients. In this
+2017; Zhang et al., 2017; Dalal et al., 2021). Studies have confirmed             study, based on 358 16S rRNA sequencing samples, including 184
+that the intestinal microbiota is a key environmental factor in the               CRC samples and 174 healthy human samples, a comparison was
+occurrence and development of CRC, as the composition of the                      conducted between two selected denoising methods (DADA2 and
+intestinal microbiota is significantly different in CRC compared                  Deblur), as well as de novo OTU clustering; additionally, disease-
+to that of healthy people (Zhang et al., 2017; Park et al., 2021).                related markers were identified and the potential efficiency of a
+For example, an increase in Fusobacterium nucleatum has been                      disease-diagnostic model based on machine learning algorithms
+confirmed to be closely related to CRC (Castellarin et al., 2012;                 was evaluated. The aim of this study was to assess whether similar
+Bullman et al., 2017). Therefore, fecal metagenomics may play                     biological conclusions regarding microbiome composition could be
+a beneficial role in early screening and clinical diagnosis of                    obtained using different methods.
+colorectal cancer.
+    16S rRNA has a unique structure that contains both conserved
+and variable regions, and it is present in all known bacteria                     Methods
+and archaea, so it is commonly used as a marker gene for
+bacterial community research using next-generation sequencing                     Data acquisition and study design
+(NGS) technology (Coenye and Vandamme, 2003; Sanschagrin
+and Yergeau, 2014; Yarza et al., 2014; Muthappa et al., 2022).                        A total of 358 samples from a Chinese cohort were selected
+Not only can the 16S rRNA sequencing approach decrease the                        for inclusion in this study; these consisted of 184 CRC samples
+high cost of metagenomic sequencing, but it can also mitigate                     and 174 healthy control samples. For each of these samples,
+the problem of host contamination (Boers et al., 2019). However,                  the V3-V4 region of the 16S rRNA gene was amplified using
+sequencing errors can also introduce some non-real nucleotide                     319F/806R primer, and an Illumina MiSeq was used to generate
+differences (Kunin et al., 2010; Aird et al., 2011; Schloss et al., 2011).        2×300bp reads. Reads were downloaded from the SRA database
+Traditionally, sequences are clustered into operational taxonomic                 with the accession number PRJNA763023 (Yang et al., 2021).
+units (OTUs) with a particular identity threshold (usually 97%)                   We selected samples from the older adult population (late-onset
+to reduce the interference of sequencing errors using the OTU                     CRC patients and age-matched healthy controls) within the Fudan
+clustering method (Edgar, 2013; Patin et al., 2013), and de novo                  cohort, and selected samples with > 20,000 sequences in order to
+clustering methods have been regarded as the optimal method of                    reduce the effect of lower numbers of sequences. The taxonomic
+assigning the 16S rRNA gene to OTUs (Westcott and Schloss, 2015).                 composition of bacteria as established using multiple approaches
+In recent years, several denoising algorithms have been created to                (OTU clustering, DADA2, and Deblur) was first compared, and
+solve this problem, such as DADA2 (Callahan et al., 2016) and                     disease-related markers obtained based on the aforementioned
+Deblur (Amir et al., 2017), which can correct sequencing errors by                methods were subsequently also compared (Figure 1). Next, the
+generating amplicon sequence variants (ASVs). DADA2 has been                      samples were randomly divided into a training set (70% of the data)
+reported to be more accurate than the OTU clustering method in                    for construction of a CRC classifier and a random forest model test
+
+
+Frontiers in Microbiology                                                    02                                                         frontiersin.org
+Liu et al.                                                                                                                  10.3389/fmicb.2023.1178744
+
+
+
+
+    FIGURE 1
+    Study design and ﬂow chart. A total of 358 stool samples from China were included in this study (184 samples from CRC patients and 174 from
+    healthy controls). The fecal microbiota was assessed using 16S rRNA gene sequencing. Samples were randomly divided into a training set (70%) and a
+    test set (30%). CRC, colorectal cancer; OTU clustering, de novo OTU-clustering-based analysis; DADA2,: DADA2 algorithm-based analysis; Deblur,
+    Deblur algorithm-based analysis.
+
+
+
+
+set (30% of the data), which was used in a testing phase to verify the          using the “classify-sklearn” algorithm via the feature-classifier
+potential of the model.                                                         plugin (Bokulich et al., 2018). Data on read numbers are listed
+                                                                                in Supplementary Table S1, and rarefaction plots are presented
+                                                                                in Supplementary Figure S1. We also conducted alpha and beta
+                                                                                diversity analyses using the diversity plugin in QIIME2.
+Data analysis
+
+    The 16S rRNA gene sequencing data were analyzed using the
+QIIME2 platform (v2020.2) (Hall and Beiko, 2018), which includes
+                                                                                Bacterial taxonomic analysis
+the VSEARCH software (Rognes et al., 2016) and software tools for
+                                                                                     Typically, 16S rRNA data are examined at the genus level in
+DADA2 (Callahan et al., 2016) and Deblur (Amir et al., 2017). For
+                                                                                further analysis, so genus profiles were entered into the following
+the OTU clustering method: in brief, primers were removed using
+                                                                                analyses. Bacterial taxonomic analyses were carried out, and
+the Cutadapt plugin, and paired reads were merged using the “join-
+                                                                                comparisons between the three methods were conducted using
+pairs” function of the VSEARCH plugin. The merged reads were
+                                                                                the Wilcoxon rank sum test (Bauer, 1972). Linear discriminant
+then dereplicated (using the “dereplicate-sequences” function),
+                                                                                analysis effect size (LEfSe, http://huttenhower.sph.harvard.edu/
+singletons were filtered (using the “feature-table filter-features”
+                                                                                lefse/) (Segata et al., 2011) was used to identify disease-associated
+function), chimeras were filtered (using the “uchime-ref ” function,
+                                                                                taxonomic features that could be used to explain differences
+with the Greengenes13_8 97% OTU database as a reference),
+                                                                                between controls and cases. These features were selected via LEfSe
+and the results were clustered at 97% identity using the de novo
+                                                                                analysis using the Kruskal–Wallis rank sum test (P < 0.05), and
+clustering method (the “cluster-features-de-novo” function) via the
+                                                                                linear discriminant analysis (LDA score > 2) was used to assess the
+QIIME2 VSEARCH plugin with default settings. For DADA2-based
+                                                                                effect size associated with each feature.
+methods, reads were truncated to lengths of 290 bp and 220 bp
+for the forward and reverse reads, respectively, to remove low-
+quality bases at the end of the reads, and the DADA2 plugin was
+run with default settings to construct the ASV feature table. For               Analysis of diagnostic models
+Deblur-based methods, the joined reads from VSEARCH were
+input into the Deblur plugin to construct the ASV feature table with                In order to differentiate CRC samples from healthy samples,
+default settings, and singletons were filtered. The OTUs and ASVs               a random forest (RF) model (Liu and Zhao, 2017; Yachida et al.,
+were then compared against the Silva Database (v138.1, https://                 2019) was built using the random Forest package (v4.6) in R.
+www.arb-silva.de, download code: qiime2 rescript get-silva-data–                Receiver operating characteristic (ROC) curves were constructed,
+pversion “138.1”–p-target “SSURef_NR99”) (Pruesse et al., 2007)                 and the area under the curve (AUC) was calculated to evaluate
+
+
+
+Frontiers in Microbiology                                                  03                                                              frontiersin.org
+Liu et al.                                                                                                             10.3389/fmicb.2023.1178744
+
+
+
+
+the diagnostic performance of these RF models using the pROC                  top 25 genera in terms of abundance; all these genera were
+package (v1.17.0.1) in R. Subsequently, differences between the               detected by all three methods, with only four genera showing
+three models (constructed based on each of the three methods)                 inter-method differences (Kruskal–Wallis, Pfdr < 0.05) (Figure 2D,
+in terms of diagnostic model efficiency were evaluated using the              Supplementary Table S6).
+roc.test() function in the pROC package.                                          PCoA analysis based on Bray–Curtis dissimilarity was used
+                                                                              to examine the sample clustering based on different methods;
+                                                                              the results showed that the three methods could not be clearly
+Statistical analysis                                                          distinguished, as most samples were clustered together, with a
+                                                                              P > 0.05 for PERMANOVA (Figure 2E). In addition, a Mantel test
+    The Mann–Whitney U test was employed to evaluate                          was performed to evaluate the correlations among the taxonomic
+differences between groups. Permutational multivariate analysis of            profiles obtained by the three methods; the results showed that
+variance (PERMANOVA) was conducted to analyze the variance                    there were significant correlations among the three profiles (r
+of the data generated using different methods, and the Mantel test            = 0.99, P < 0.001) (Figure 2F). These results indicated that,
+was used to analyze the associations between these data. Spearman             although there were some differences in the number of taxa
+correlation analysis was performed to analyze the correlations                obtained by the three methods, the taxonomic profiles obtained
+between microbiota features. Plots were constructed using the                 using the different methods were strongly correlated, and the
+ggplot2 package (v3.3.3) in R.                                                relative abundances of the expected taxa under each method were
+                                                                              strikingly similar.
+
+Results
+Variation in taxonomic community
+composition across different methods                                          Analysis of case–control differences
+
+     The number of OTUs/ASVs obtained using the three methods                     We analyzed the differences between cases and controls to
+varied considerably, with DADA2 obtaining the most variants,                  evaluate whether the different algorithms produced different
+followed by Deblur and OTU clustering (Figure 2A). At the                     disease-related outcomes. First, we found that although the
+taxonomic levels of genus and species, there was little difference            Shannon index was lower for CRC patient samples than
+between DADA2 and Deblur. However, OTU clustering obtained                    for healthy samples across all three methods, only DADA2
+the largest number at the genus level and Deblur the smallest.                identified a significant difference between the groups (Figure 3A).
+In terms of alpha diversity, we found that all indices differed               In contrast, inter-group differences on the Chao1 index and
+significantly between methods, as DADA2 produced the highest                  the observed OTUs index were observed under all methods
+Shannon index, while OTU clustering produced the highest                      (Supplementary Figures S2C, D).
+observed OTUs index and the highest Chao1 index (Figure 2B,                       According to the results of PCoA analysis based on Bray–Curtis
+Supplementary Figures S2A, B).                                                dissimilarity (Figures 3B–D), the samples from the CRC patients
+     For exploration of the difference among the three methods                and healthy controls could be clearly distinguished into two groups;
+in terms of taxonomic profiles generated, the genus level was                 the P-values of PERMANOVA were also significant, indicating that
+selected for analysis. First, the Venn analysis indicated that a total        the different methods could produce the same conclusion.
+of 429 genera could be detected by all three of the methods,                      Subsequently, LEfSe analysis was conducted to identify disease-
+accounting for 58.9% of the total number (the total number of                 related markers that distinguished the CRC group and the healthy
+detected genera was 729), and only 71 genera showed significant               group. Under this analysis, OTU clustering produced the largest
+differences (Kruskal–Wallis, Pfdr < 0.05) in abundance among the              number of markers (47 markers), followed by DADA2 (40 markers)
+three methods (Figure 2C, Supplementary Tables S2, S3). There                 and Deblur (39 markers) (Figures 3E, F, Supplementary Table S7,
+were 163 genera that were identified by both OTU clustering and               Supplementary Figures S3A–C). A total of 49 markers were
+DADA2, but not Deblur, and there were significant difference                  obtained, among which 37 could be detected using all three
+between these two groups for 4 genera (Mann–Whitney test,                     methods (Figures 3E, F). All three methods indicated enrichment
+Pfdr < 0.05) (Figure 2C, Supplementary Tables S2, S4). The genera             of 13 genera in the CRC group; these included Fusobacterium,
+obtained by OTU clustering and DADA2 mostly overlapped, with                  Gemella, Peptostreptococcus, and Streptococcus, which have been
+592 shared genera, accounting for 81.2% of the total number.                  reported on widely in CRC research (Kwong et al., 2018; Brennan
+Regarding the 14 genera shared only by DADA2 and Deblur (and                  and Garrett, 2019; Wong et al., 2019). In contrast, the different
+not OTU clustering), there was no difference between the two                  methods identified 23 genera as enriched in the healthy group; these
+groups (Figure 2C, Supplementary Table S2). Finally, an interesting           included Roseburia, Faecalibacterium, and Blautia, which have been
+finding was that OTU clustering and Deblur did not identify                   proven to have a positive effect on human health. However, the
+any genera in common beyond the 429 identified by all methods                 results for Lachnoclostridium, Escherichia-Shigella, and Megamonas
+(Figure 2C), indicating that the genera detected by Deblur were also          differed between the three methods. This indicates that, though
+detected by DADA2.                                                            there were a small number of differences in disease-related markers,
+     In most studies, taxa with higher abundance are more easily              identification of most of the markers could be reproduced using
+identified. Therefore, we also focused on comparison of the                   different methods.
+
+
+
+Frontiers in Microbiology                                                04                                                         frontiersin.org
+Liu et al.                                                                                                                          10.3389/fmicb.2023.1178744
+
+
+
+
+    FIGURE 2
+    Comparison of bacterial diversity and taxonomic analyses under each of the three methods. (A) Number of taxa assessed at different taxonomic
+    levels. (B) Shannon index across all samples calculated under each method. P-values for comparisons between two methods were calculated using
+    the Mann–Whitney U test; all three methods were compared via the Kruskal–Wallis test. (C) Venn diagram showing analysis at the genus level. (D)
+    Relative abundance of the top 25 genera across all samples; * indicates Kruskal–Wallis Pfdr < 0.05. (E) PCoA analysis among the three methods, with
+    P-values as calculated by PERMANOVA. (F) Mantel test comparing the taxonomic proﬁles obtained using each of the three methods. The number in
+    the lower cell represents the Spearman correlation coefficient; the circle in the upper cell represents the P-value of the correlation. * P < 0.05, ** P <
+    0.01, *** P < 0.001.
+
+
+
+
+Differences between disease-diagnostic                                               evaluated the diagnostic efficiency of these models on the basis
+models                                                                               of the AUC according to the associated ROC curves. All models
+                                                                                     could distinguish between CRC and healthy samples well, as the
+    One of the scenarios for application of an understanding of the                  AUC values were >86%. The results indicated that the model
+gut microbiome in CRC is early screening and auxiliary diagnosis;                    based on DADA2 analysis exhibited the best performance (training
+this is also the most valuable application of studies of this type.                  set: AUC = 89.4%, CI 85.72–93.16%; test set: AUC = 89.7%, CI
+Therefore, we used the random forest algorithm to construct                          82.71–95.44%), followed by the OTU clustering model (training
+disease diagnosis models based on the disease-related markers                        set: AUC = 88.9%, CI 84.83–92.93%; test set: AUC = 88.3%, CI
+identified through LEfSe analysis (Supplementary Table S7), and                      81.72–94.87%) and finally the Deblur model (training set: AUC =
+
+
+
+Frontiers in Microbiology                                                       05                                                                 frontiersin.org
+Liu et al.                                                                                                                 10.3389/fmicb.2023.1178744
+
+
+
+
+    FIGURE 3
+    Bacterial diversity and taxonomic analysis of differences between cases and controls. (A) Comparison of Shannon index between cases and controls,
+    with P-values as calculated for the Mann–Whitney U test. (B–D) PCoA analysis comparing cases and controls under (B) the OTU clustering method,
+    (C) the DADA2 method, (D) the Deblur method, with P-values calculated by PERMANOVA. (E) Venn diagram showing analysis of disease-related
+    markers based on LEfSe analysis. (F) Heatmap of disease-related markers based on LEfSe analysis. # represents enriched groups.
+
+
+
+
+86.8%, CI 82.45–91.15%; test set: AUC = 87.5%, CI 80.68–94.23%)                 models in the training set (P < 0.05) (Figure 4A). These results
+(Figures 4A, B, Supplementary Figures S4A–F). However, the only                 indicated that there was no significant difference between the three
+significant difference in AUC was between the DADA2 and Deblur                  methods in terms of the efficiency of the resulting diagnostic model.
+
+
+
+
+Frontiers in Microbiology                                                  06                                                             frontiersin.org
+Liu et al.                                                                                                                    10.3389/fmicb.2023.1178744
+
+
+
+
+    FIGURE 4
+    Disease classiﬁcation models based on disease-associated taxa. (A, B) The AUC value of disease classiﬁcation models using the random forest in the
+    training set (A) and testing set (B) based on disease-associated taxa from LEfSe. The color of the lines means the data were obtained from different
+    methods, and “*” suggested signiﬁcant differences (P < 0.05) between models using the roc.test() function, while NS suggested that there was no
+    signiﬁcant difference (P > 0.05).
+
+
+
+
+Discussion                                                                        that the threshold for 16S sequences with full length should be
+                                                                                  99% and that the threshold for the V4 region should be 100%
+    We compared the results obtained by using three methods                       in order to improve accuracy (Edgar, 2018). However, use of a
+(DADA2, Deblur, and OTU clustering) to analyze data from a                        higher threshold in OTU clustering may introduce identification
+clinical cohort. First, we found that DADA2 and Deblur could                      of spurious taxonomic units without correction of sequencing
+identify more ASVs than OTUs in the community (Figure 2A).                        errors, as employed under DADA2 and Deblur. In addition, data
+The reason for this is that, during the error-correction process                  from studies based on OTU clustering cannot be combined for
+of the denoising algorithms, the identity standard was 100%, and                  further analysis, which introduces major challenges in drawing
+the obtained ASVs were considered to represent real individuals.                  comparisons between different studies, while DADA2 and Deblur
+In contrast, during the process of de novo OTU clustering, the                    do not have this problem.
+identity standard was 97%, without no reliance on any database,                       After obtaining feature sequences (ASVs/OTUs), we compared
+and the number of OTUs was relatively low. The results under                      them with the reference database containing known taxa in order to
+the DADA2 and Deblur methods indicated higher alpha diversity                     obtain taxonomic information using the classify-sklearn algorithm,
+(Figure 2B, Supplementary Figures S2A, B). Comparing the two                      which is a form of naive Bayes classifier (a classification method
+denoising methods, the number of ASVs obtained using DADA2                        based on machine learning) (Bokulich et al., 2018). Previous studies
+was much higher than that obtained using Deblur (Figure 2A),                      have shown that the classify-sklearn algorithm could provide
+which may be because only singletons were removed from all                        more accurate annotation information at the genus and species
+samples by default under DADA2; in contrast, under Deblur, not                    levels (Kaehler et al., 2019; Ziemski et al., 2021). The results
+only were singletons in a single sample removed, but sequences                    showed that, as the annotation level increased, the gaps in the
+below 10 in all samples were also removed. These results suggest                  number of taxa obtained using each of the three methods gradually
+that DADA2 may be more sensitive to rare species. A report by                     narrowed, especially the gap between DADA2 and OTU clustering
+Nearing et al. has also claimed that DADA2 can obtain more ASVs                   (Figure 2A). At the species level, the largest number of taxa was
+than Deblur in analysis of simulated and environmental microbial                  obtained using DADA2 (1,618), followed by OTU clustering (1,427)
+communities (Nearing et al., 2018).                                               and then Deblur (1,084). At the genus level and higher, the numbers
+    All three methods included a process for removal of singletons                obtained using DADA2 and OTU clustering were very similar,
+with low frequencies, which not only removed some errors but                      whereas Deblur consistently identified the smallest number of
+also discarded some rare taxa. This requires users to make a                      taxa, with a loss of approximately 30%−70%. The number of
+reasonable selection of thresholds according to the purpose of                    taxa identified using Deblur was the lowest at the species level
+their analysis. OTU clustering has clear disadvantages in this                    and higher, which may be related to the process used under
+regard, as some sequences below the threshold cannot be accurately                Deblur for filtering sequences below 10 in all samples, resulting
+distinguished. The classic de novo clustering algorithm is Uparse                 in the removal of low-frequency taxa. DADA2 removed only
+(Edgar, 2013), whose developer, Robert Edgar, argued that the 97%                 singletons in all samples, which not only increased the number
+threshold for taxonomic classification was too low; he proposed                   of ASVs but also made it easier to obtain more taxa, especially
+
+
+
+Frontiers in Microbiology                                                    07                                                               frontiersin.org
+Liu et al.                                                                                                               10.3389/fmicb.2023.1178744
+
+
+
+
+at the species level. However, DADA2 and OTU obtained similar                 difference between the cases and controls as compared using
+numbers of taxa at the genus level and higher, indicating that                different methods.
+DADA2 had this advantage only at the species level. Therefore,                    LEfSe analysis was used to explore disease-related microbial
+DADA2 is recommended in cases where the researchers need more                 markers. A total of 49 markers (OTU-clustering: 47; DADA2:
+information on specifically on ASVs and at the species level.                 40; Deblur: 39) were obtained using the three methods,
+    Usually, further analysis of 16S rRNA data is conducted                   of which 37 markers (75.5%) could be reproduced using a
+at the genus level, so the genera profiles were selected for                  different method; the enrichment trend was consistent for
+subsequent analyses. Venn diagram analysis showed that the three              most markers (Figure 3F, Supplementary Figures S3A–C). For
+methods obtained a total of 729 genera, of which 429 genera                   example, Haemophilus, Granulicatella, Eggerthella, Fusobacterium,
+(58.9%) could be identified using all three methods (Figure 2C).              Parvimonas, Streptococcus, Gemella, Peptostreptococcus, and other
+Among these genera, 71 differed significantly among methods                   genera (for a total of 13) were found under all three methods
+(Kruskal–Wallis Pfdr < 0.05) (Figure 2C). OTU clustering and                  to be enriched in the CRC group. Fusobacterium, especially
+DADA2 shared 81% of the detected genera, while DADA2 and                      Fusobacterium nucleatum, is an important marker of CRC (Kostic
+Deblur shared only 60%. Regarding the 71 genera with inter-                   et al., 2012; Yang et al., 2021) and an opportunistic pathogen in
+method differences, most of the genera were enriched under                    many chronic oral and intestinal diseases, such as inflammatory
+OTU clustering (Supplementary Table S3), possibly because OTU                 bowel disease (IBD) (Weng et al., 2019). Fusobacterium nucleatum
+clustering retained more sequences. Although the number of                    has been reported to promote glycolysis and oncogenesis in CRC
+genera identified using DADA2 and OTU clustering was similar,                 by upregulating the lncRNA ENO1-IT1 (Hong et al., 2021) and
+each also identified some unique genera that was not identified               promoting CRC cell migration by modulating the long non-
+by the other, and the relative abundance of these unique genera               coding RNAs keratin7-antisense (KRT7-AS) and keratin7 (KRT7)
+was very low: the maximum abundance was 3.454e-06 among                       (Chen et al., 2020). Streptococcus is also a common pathogenic
+the 69 genera identified only by OUT clustering and 4.18e-                    genus that often causes inflammation and bacteremia, possibly
+06 among the 69 genera identified identified only by DADA2                    promoting CRC (Kwong et al., 2018; McAuliffe et al., 2019).
+(Figure 2C, Supplementary Table S5). Traditionally, genera with               Peptostreptococcus is an anaerobic, gram-positive bacterium, and
+higher abundance as regarded as playing an important role in                  Peptostreptococcus anaerobius has been reported to promote CRC
+the community. These results showed that the top 25 genera                    and modulate tumor immunity (Long et al., 2019). Haemophilus is
+could be detected by all three methods, including four significant            an opportunistic pathogen that may cause hemorrhagia and acute
+taxa (Kruskal–Wallis, Pfdr < 0.05, Supplementary Table S6). This              meningitis. Finally, Parvimonas is a fastidious, anaerobic, gram-
+indicates, although the three methods will lead to identification of          positive coccus that is widely found among healthy human oral and
+different genera, the differences are mainly reflected in genera with         gastrointestinal flora, and previous studies have demonstrated that
+low relative abundance, and researchers need to choose appropriate            Parvimonas micra is associated with CRC (Löwenmark et al., 2020;
+methods according to their objectives.                                        Xu et al., 2020).
+    PCoA analysis showed that the samples could not                               Roseburia, Faecalibacterium, [Eubacterium]_eligens_group,
+be distinguished well through use of different methods.                       Bilophila, Phascolarctobacterium, Butyricicoccus, Blautia, and
+PERMANOVA also indicated that the use of different methods had                other genera (for a total of 23) were found to be enriched in
+no significant effect on the microbial profile obtained (P>0.05)              the healthy group. Butyricicoccus and Faecalibacterium are
+(Figure 2E). The microbial profiles were robustly correlated                  butyric acid producers, which play an important role in intestinal
+across methods (Mantel test, n = 358, r = 0.99, P < 0.001)                    and host health and act as protectors against CRC (Miquel
+(Figure 2F), confirming the strong similarity of the results across           et al., 2013; Zhou et al., 2018; Chang et al., 2020). Butyric
+the three methods.                                                            acid is the main energy source of colonic epithelial cells and
+    In clinical research, disease-related bacteria are important for          can reduce the pH in the colon, regulate human immunity,
+researchers. Therefore, we compared the results of case–control               and exert anti-inflammatory effects. Faecalibacterium has been
+analyses based on each of the three methods. First, in alpha diversity        found in multiple studies to be significantly decreased in many
+analyses, inter-group differences in Shannon index were observed              diseases (Lopez-Siles et al., 2017), including Crohn’s disease
+only under DADA2, while inter-group differences on the Chao1                  (CD) (Martinez-Medina et al., 2006), ulcerative colitis (UC)
+index and the observed OTUs index were observed under all                     (Machiels et al., 2014), inflammatory bowel diseases (IBD)
+methods, with the CRC group showing significantly lower diversity             (Frank et al., 2007), and CRC. Roseburia can ferment various
+than the healthy group (Figure 3A, Supplementary Figures S2C, D).             carbohydrates and may play a positive role in exerting anti-
+This result was consistent with those of previous CRC studies,                inflammatory effects and preventing CRC (Machiels et al.,
+which have shown that alpha diversity is reduced in the CRC                   2014). Phascolarctobacterium produces short-chain fatty acids
+population (Yang et al., 2021); other studies have also observed              (SCFAs) and plays various important roles in maintaining human
+no significant difference in the Shannon index (Feng et al., 2015;            health, such as enhancing gastrointestinal function, reducing
+Wu et al., 2021). This finding suggests that researchers must                 inflammation levels, and influencing metabolic state and mood
+select the appropriate alpha index according to their methods.                of the host (Wu et al., 2017). Finally, Blautia produces acetic acid,
+PCoA analysis showed that all three methods could distinguish                 which not only contributes to gas emissions in the intestine but
+successfully between the CRC group and the healthy group,                     also exerts anti-inflammatory effects (Liu et al., 2021; Miyake et al.,
+with P < 0.05 in PERMANOVA (Figures 3B–D), confirming the                     2021).
+
+
+
+
+Frontiers in Microbiology                                                08                                                            frontiersin.org
+Liu et al.                                                                                                                    10.3389/fmicb.2023.1178744
+
+
+
+
+    The markers obtained using each of the three methods were not              Author contributions
+always completely consistent. For example, Lachnoclostridium was
+found to be enriched in the healthy group under OTU clustering,                    JW and GL designed the research study. GL
+enriched in the CRC group under DADA2, and not significantly                   and    TL    performed  bioinformatics analysis and
+enriched in either group under Deblur. Lachnoclostridium has                   wrote the manuscript. XZha and XZhu edited the
+been reported to be enriched in colorectal adenoma and cancer                  manuscript. All authors read and approved the final
+(Li et al., 2020). Escherichia-Shigella was found to be enriched in            manuscript.
+CRC under DADA2 and OTU clustering, which is consistent with
+previous studies (Wang et al., 2012; Han et al., 2019). Intestinibacter
+was found to be enriched in CRC under DADA2 and Deblur;                        Funding
+this genus has been reported to be associated with immune-
+mediated inflammatory diseases (IMIDs) and to be found in greater                  The work was supported by grants from the Natural Science
+abundance in CD (Forbes et al., 2018). Megamonas was found                     Basic Research Program of Shaanxi (grant number 2020JC-01).
+to be enriched in the healthy group only under OTU clustering.
+Megamonas has previously been reported to be enriched in healthy
+controls compared with cachectic cancer patients (Ubachs et al.,               Conﬂict of interest
+2021). Megamonas can ferment many carbohydrates, producing
+various intestinal epithelial cell nutrients, such as acetic acid,                 GL is employed by Guangdong Hongyuan Pukong Medical
+propionic acid, and lactic acid (Tian et al., 2020; Ubachs et al.,             Technology Co., Ltd.
+2021). Oscillibacter was found to be enriched in the healthy group                 The remaining authors declare that the research was conducted
+only under Deblur; this genus has previously been proven to be                 in the absence of any commercial or financial relationships that
+enriched in normal tissue samples compared to their respective                 could be construed as a potential conflict of interest.
+tumor counterparts (Loke et al., 2018). These results indicate
+that, even though a small number of markers differed between
+the methods, most of the disease-related markers identified were
+                                                                               Publisher’s note
+consistent across methods.
+                                                                                   All claims expressed in this article are solely those
+    Finally, random forest (RF) models were constructed to
+                                                                               of the authors and do not necessarily represent those of
+evaluate diagnostic efficiency based on each of the three methods.
+                                                                               their affiliated organizations, or those of the publisher,
+For the training set, the highest AUC was obtained for the DADA2
+                                                                               the editors and the reviewers. Any product that may be
+model, at 89.4%, followed by 88.9% for the OTU clustering model
+                                                                               evaluated in this article, or claim that may be made by
+and 86.8% for the Deblur model; the only significant difference
+                                                                               its manufacturer, is not guaranteed or endorsed by the
+in AUC was between DADA2 and Deblur (P < 0.05) (Figure 4A,
+                                                                               publisher.
+Supplementary Figures S4A, C, E). This trend was subsequently
+verified in the test set (DADA2 > OTU clustering > Deblur), but
+there were no significant differences among the AUCs for the three             Supplementary material
+models (P > 0.05) (Figure 4B, Supplementary Figures S4B, D, F).
+These results indicate that each of the different methods can achieve              The Supplementary Material for this article can be found
+good diagnostic efficiency, with DADA2 being the best.                         online at: https://www.frontiersin.org/articles/10.3389/fmicb.2023.
+    In conclusion, although there were differences in the number               1178744/full#supplementary-material
+of OTUs/ASVs obtained using the three methods, the differences
+in the numbers of taxa were smaller, especially for the comparison             SUPPLEMENTARY FIGURE S1
+between DADA2 and OTU clustering at the genus level.                           Rarefaction plots of the Shannon index (A–D) and observed OTUs index
+Moreover, the microbial profiles were strongly correlated. This                (E–H).
+
+indicates that the results obtained using the three methods are                SUPPLEMENTARY FIGURE S2
+
+comparable. Case–control analysis also showed that the three                   (A, B) Chao1 index (A) and observed OTUs index (B) of all samples using
+                                                                               three methods. P-values comparing two methods were calculated using the
+methods could yield similar results, with mostly consistent                    Mann–Whitney U test; the Kruskal–Wallis test was used in the
+identification of CRC-related markers. However, it should also                 three-method comparison. (C, D) Chao1 index (C) and observed OTUs (D)
+be noted that the three methods were performed with the                        for cases and controls based on three methods. P-values for comparisons
+                                                                               of the two groups were calculated using the Mann–Whitney U test.
+default parameters, and adjusting some of the parameters
+in the selected method could help users to obtain their                        SUPPLEMENTARY FIGURE S3
+                                                                               LEfSe analysis comparing CRC patients and controls based on three
+desired results.
+                                                                               methods.
+
+                                                                               SUPPLEMENTARY FIGURE S4
+
+Data availability statement                                                    The performance of the disease classiﬁcation models based on the three
+                                                                               methods was evaluated using AUCs. OTU clustering training set (A) and test
+                                                                               set (B); DADA2 training set (C) and test set (D); Deblur training set (E) and
+    The original contributions presented in the study are included             test set (F). The conﬁdence interval for the AUC value was calculated.
+in the article/Supplementary material, further inquiries can be                SUPPLEMENTARY TABLE S1
+directed to the corresponding author.                                          The reads were obtained per sample.
+
+
+
+
+Frontiers in Microbiology                                                 09                                                                 frontiersin.org
+Liu et al.                                                                                                                                                10.3389/fmicb.2023.1178744
+
+
+
+
+SUPPLEMENTARY TABLE S2                                                                              SUPPLEMENTARY TABLE S5
+The number of genera from venn analysis among three methods.                                        The averege relative abundance of genera only detected by OTU-clustering
+                                                                                                    or DADA2.
+SUPPLEMENTARY TABLE S3
+Kruskal–Wallis analysis of genera detected by three methods.                                        SUPPLEMENTARY TABLE S6
+                                                                                                    Kruskal–Wallis analysis of top25 genera detected by three methods.
+SUPPLEMENTARY TABLE S4
+Mann-Whitney test of genera detected by OTU-clustering and DADA2 alone                              SUPPLEMENTARY TABLE S7
+in venn analysis.                                                                                   LEfSe analysis between CRC and Control based on three methods.
+
+
+
+
+References
+  Aird, D., Ross, M. G., Chen, W. S., Danielsson, M., Fennell, T., Russ, C., et al. (2011).           Edgar, R. C.. (2013). UPARSE: highly accurate OTU sequences from microbial
+Analyzing and minimizing PCR amplification bias in Illumina sequencing libraries.                   amplicon reads. Nat. Methods. 10, 996–8. doi: 10.1038/nmeth.2604
+Genome Biol. 12, 18. doi: 10.1186/gb-2011-12-2-r18
+                                                                                                       Fearon, E. R., and Vogelstein, B. A. (1990). genetic model for colorectal
+   Allali, I., Arnold, J. W., Roach, J., Cadenas, M. B., Butz, N., Hassan, H.                       tumorigenesis. Cell. 61, 759–67. doi: 10.1016/0092-8674(90)90186-I
+M., et al. (2017). A comparison of sequencing platforms and bioinformatics
+                                                                                                        Feng, Q., Liang, S., Jia, H., Stadlmayr, A., Tang, L. et al. (2015). Gut microbiome
+pipelines for compositional analysis of the gut microbiome. BMC Microbiol. 17
+                                                                                                    development along the colorectal adenoma-carcinoma sequence. Nature communica.
+doi: 10.1186/s12866-017-1101-8
+                                                                                                    6, 6528. doi: 10.1038/ncomms7528
+   Amir, A., McDonald, D., Navas-Molina, J. A., Kopylova, E., Morton, J. T., Zech
+                                                                                                       Forbes, J. D., Chen, C. Y., Knox, N. C., Marrie, R. A., El-Gabalawy, H., Kievit,
+Xu, Z., et al. (2017). Deblur rapidly resolves single-nucleotide community sequence
+                                                                                                    D. T., et al. (2018). A comparative study of the gut microbiota in immune-
+patterns. mSystems. 2, 16. doi: 10.1128/mSystems.00191-16
+                                                                                                    mediated inflammatory diseases-does a common dysbiosis exist? Microbiome. 6, 1.
+   Ashktorab, H., Kupfer, S. S., Brim, H., and Carethers, J. M. (2017).                             doi: 10.1186/s40168-018-0603-4
+Racial disparity in gastrointestinal cancer risk. Gastroenterology. 153, 910–23.
+                                                                                                       Frank, D. N., St. Amand, A. L., Feldman, R. A., Boedeker, E. C., Harpaz, N., Pace,
+doi: 10.1053/j.gastro.2017.08.018
+                                                                                                    N. R., et al. (2007). Molecular-phylogenetic characterization of microbial community
+   Bauer, D. F. (1972). Constructing confidence sets using rank statistics. J. Am. Stat.            imbalances in human inflammatory bowel diseases. Proc. Natl. Acad. Sci. USA. 104,
+Assoc. 67, 687–690. doi: 10.1080/01621459.1972.10481279                                             13780–5. doi: 10.1073/pnas.0706625104
+    Boers, S. A., Jansen, R., and Hays, J. P. (2019). Understanding and overcoming the                Hall, M., and Beiko, R. G. (2018). 16S rRNA gene analysis with QIIME2. Methods
+pitfalls and biases of next-generation sequencing (NGS) methods for use in the routine              Mol. Biol. 1849, 113–29. doi: 10.1007/978-1-4939-8728-3_8
+clinical microbiological diagnostic laboratory. Eur. J. Clin. Microbiol. Infect. Dis. 38,
+                                                                                                       Han, S., Pan, Y., Yang, X., Da, M., Wei, Q., Gao, Y., et al. (2019). Intestinal
+1059–70. doi: 10.1007/s10096-019-03520-3
+                                                                                                    microorganisms involved in colorectal cancer complicated with dyslipidosis. Cancer
+   Bokulich, N. A., Kaehler, B. D., Rideout, J. R., Dillon, M., Bolyen, E.,                         Biol. Ther. 20, 81–9. doi: 10.1080/15384047.2018.1507255
+Knight, R., et al. (2018). Optimizing taxonomic classification of marker-gene
+                                                                                                       Hong, J., Guo, F., Lu, S. Y., Shen, C., Ma, D., Zhang, X., et al. (2021). F. nucleatum
+amplicon sequences with QIIME 2′s q2-feature-classifier plugin. Microbiome. 6, 90.
+                                                                                                    targets lncRNA ENO1-IT1 to promote glycolysis and oncogenesis in colorectal cancer.
+doi: 10.1186/s40168-018-0470-z
+                                                                                                    Gut. 70, 2123–37. doi: 10.1136/gutjnl-2020-322780
+   Brennan, C. A., and Garrett, W. S. (2019). Fusobacterium nucleatum—
+                                                                                                       Jones, S., Chen, W. D., Parmigiani, G., Diehl, F., Beerenwinkel, N., Antal, T., et al.
+symbiont, opportunist and oncobacterium. Nat. Rev. Microbiol. 17, 156–66.
+                                                                                                    (2008). Comparative lesion sequencing provides insights into tumor evolution. Proc.
+doi: 10.1038/s41579-018-0129-6
+                                                                                                    Natl. Acad. Sci. USA. 105, 4283–8. doi: 10.1073/pnas.0712345105
+  Brenner, H., Kloor, M., and Pox, C. P. (2014). Colorectal cancer. Lancet (London,
+                                                                                                       Kaehler, B. D., Bokulich, N. A., McDonald, D., Knight, R., Caporaso, J. G., Huttley,
+England). 383, 1490–502. doi: 10.1016/S0140-6736(13)61649-9
+                                                                                                    G. A., et al. (2019). Species abundance information improves sequence taxonomy
+   Bullman, S., Pedamallu, C. S., Sicinska, E., Clancy, T. E., Zhang, X., Cai, D., et al.           classification accuracy. Nat. Commun. 10, 4643. doi: 10.1038/s41467-019-12669-6
+(2017). Analysis of Fusobacterium persistence and antibiotic response in colorectal
+                                                                                                        Kostic, A. D., Gevers, D., Pedamallu, C. S., Michaud, M., Duke, F., Earl, A. M.,
+cancer. Science. 358, 1443–8. doi: 10.1126/science.aal5240
+                                                                                                    et al. (2012). Genomic analysis identifies association of Fusobacterium with colorectal
+    Callahan, B. J., McMurdie, P. J., Rosen, M. J., Han, A. W., Johnson, A. J. A., Holmes,          carcinoma. Genome Res. 22, 292–8. doi: 10.1101/gr.126573.111
+S. P., et al. (2016). DADA2: high-resolution sample inference from Illumina amplicon
+                                                                                                        Kunin, V., Engelbrektson, A., Ochman, H., and Hugenholtz, P. (2010). Wrinkles
+data. Nat. Methods. 13, 581–3. doi: 10.1038/nmeth.3869
+                                                                                                    in the rare biosphere: pyrosequencing errors can lead to artificial inflation of diversity
+    Castellarin, M., Warren, R. L., Freeman, J. D., Dreolini, L., Krzywinski, M., Strauss,          estimates. Environ. Microbiol. 12, 118–23. doi: 10.1111/j.1462-2920.2009.02051.x
+J., et al. (2012). Fusobacterium nucleatum infection is prevalent in human colorectal
+                                                                                                       Kwong, T. N. Y., Wang, X., Nakatsu, G., Chow, T. C., Tipoe, T., Dai, R.
+carcinoma. Genome Res. 22, 299–306. doi: 10.1101/gr.126516.111
+                                                                                                    Z. W., et al. (2018). Association between bacteremia from specific microbes
+   Chang, S. C., Shen, M. H., Liu, C. Y., Pu, C. M., Hu, J. M., Huang, C. J.                        and subsequent diagnosis of colorectal cancer. Gastroenterology. 155, 383–390.e8.
+A., et al. (2020). gut butyrate-producing bacterium Butyricicoccus pullicaecorum                    doi: 10.1053/j.gastro.2018.04.028
+regulates short-chain fatty acid transporter and receptor to reduce the progression
+                                                                                                       Li, T., Nakatsu, G., Chen, Y. X., Yau, T. O., Chu, E., Wong, S., et al. (2020). A novel
+of 1,2-dimethylhydrazine-associated colorectal cancer. Oncol. Lett. 20, 12190.
+                                                                                                    faecal Lachnoclostridium marker for the non-invasive diagnosis of colorectal adenoma
+doi: 10.3892/ol.2020.12190
+                                                                                                    and cancer. Gut. 69, 1248–57. doi: 10.1136/gutjnl-2019-318532
+   Chen, S., Su, T., Zhang, Y., Lee, A., He, J., Ge, Q., et al. (2020).
+                                                                                                       Liu, X., Mao, B., Gu, J., Wu, J., Cui, S., Wang, G., et al. (2021). Blautia-a
+Fusobacterium nucleatum promotes colorectal cancer metastasis by modulating
+                                                                                                    new functional genus with potential probiotic properties? Gut Microbes. 13, 1–21.
+KRT7-AS/KRT7. Gut Microbes. 11, 511–25. doi: 10.1080/19490976.2019.16
+                                                                                                    doi: 10.1080/19490976.2021.1875796
+95494
+                                                                                                       Liu, Y., and Zhao, H. (2017). Variable importance-weighted random forests. Quant
+   Coenye, T., and Vandamme, P. (2003). Intragenomic heterogeneity
+                                                                                                    Biol (Beijing, China). 5, 338–51. doi: 10.1007/s40484-017-0121-6
+between multiple 16S ribosomal RNA operons in sequenced bacterial
+genomes. FEMS Microbiol. Lett. 228, 45–9. doi: 10.1016/S0378-1097(03)0                                  Loke, M. F., Chua, E. G., Gan, H. M., Thulasi, K., Wanyiri, J. W., Thevambiga, I.,
+0717-1                                                                                              et al. (2018). Metabolomics and 16S rRNA sequencing of human colorectal cancers and
+                                                                                                    adjacent mucosa. PLoS ONE. 13, e0208584. doi: 10.1371/journal.pone.0208584
+   Dalal, N., Jalandra, R., Bayal, N., Yadav, A., Harshulika, K., Sharma, M., et al. (2021).
+Gut microbiota-derived metabolites in CRC progression and causation. J. Cancer Res.                    Long, X., Wong, C. C., Tong, L., Chu, E. S. H., Ho Szeto, C., Go,
+Clin. Oncol. 147, 3141–55. doi: 10.1007/s00432-021-03729-w                                          M. Y. Y., et al. (2019). Peptostreptococcus anaerobius promotes colorectal
+                                                                                                    carcinogenesis and modulates tumour immunity. Nat Microbiol. 4, 2319–30.
+   Díaz-Tasende, J. (2018). Colorectal cancer screening and survival. Rev. Esp. Enferm.
+                                                                                                    doi: 10.1038/s41564-019-0541-3
+Dig. 110, 681–3. doi: 10.17235/reed.2018.5870/2018
+                                                                                                        Lopez-Siles, M., Duncan, S. H., Garcia-Gil, L. J., and Martinez-Medina, M. (2017).
+  Edgar, R. C. (2018). Updating the 97% identity threshold for 16S ribosomal RNA
+                                                                                                    Faecalibacterium prausnitzii: from microbiology to diagnostics and prognostics. ISME
+OTUs. Bioinformatics. 34, 2371–5. doi: 10.1093/bioinformatics/bty113
+                                                                                                    J. 11, 841–52. doi: 10.1038/ismej.2016.176
+
+
+
+
+Frontiers in Microbiology                                                                      10                                                                           frontiersin.org
+Liu et al.                                                                                                                                                 10.3389/fmicb.2023.1178744
+
+
+
+
+   Löwenmark, T., Löfgren-Burström, A., Zingmark, C., Eklöf, V., Dahlberg, M., Wai,                    Stoffel, E. M., and Murphy, C. C. (2020). Epidemiology and mechanisms of the
+S. N., et al. (2020). Parvimonas micra as a putative non-invasive faecal biomarker for              increasing incidence of colon and rectal cancers in young adults. Gastroenterology. 158,
+colorectal cancer. Sci. Rep. 10 doi: 10.1038/s41598-020-72132-1                                     341–53. doi: 10.1053/j.gastro.2019.07.055
+   Machiels, K., Joossens, M., Sabino, J., De Preter, V., Arijs, I., Eeckhaut, V.,                     Tian, Y., Zuo, L., Guo, Q., Li, J., Hu, Z., Zhao, K., et al. (2020). Potential role
+et al. (2014). A decrease of the butyrate-producing species Roseburia hominis and                   of fecal microbiota in patients with constipation. Therap. Adv. Gastroenterol. 13,
+Faecalibacterium prausnitzii defines dysbiosis in patients with ulcerative colitis. Gut.            1756284820968423. doi: 10.1177/1756284820968423
+63, 1275–83. doi: 10.1136/gutjnl-2013-304833
+                                                                                                        Ubachs, J., Ziemons, J., Soons, Z., Aarnoutse, R., van Dijk, D. P. J., Penders, J.,
+   Martinez-Medina, M., Aldeguer, X., Gonzalez-Huix, F., Acero, D., and                             et al. (2021). Gut microbiota and short-chain fatty acid alterations in cachectic cancer
+Garcia-Gil, L. J. (2006). Abnormal microbiota composition in the ileocolonic                        patients. J. Cachexia Sarcopenia Muscle. 12, 2007–21. doi: 10.1002/jcsm.12804
+mucosa of Crohn’s disease patients as revealed by polymerase chain reaction-
+                                                                                                       Wang, T., Cai, G., Qiu, Y., Fei, N., Zhang, M., Pang, X., et al. (2012). Structural
+denaturing gradient gel electrophoresis. Inflamm. Bowel Dis. 12, 1136–45.
+                                                                                                    segregation of gut microbiota between colorectal cancer patients and healthy
+doi: 10.1097/01.mib.0000235828.09305.0c
+                                                                                                    volunteers. ISME J. 6, 320–9. doi: 10.1038/ismej.2011.109
+   McAuliffe, A., Bhat, V., and Cox, J. (2019). Streptococcus gallolyticus Group
+                                                                                                       Weng, Y. J., Gan, H. Y., Li, X., Huang, Y., Li, Z. C., Deng, H. M., et al. (2019).
+Bacteremia and Colonic Adenocarcinoma. J. Am. Osteopath. Assoc. 119, 65.
+                                                                                                    Correlation of diet, microbiota and metabolite networks in inflammatory bowel
+doi: 10.7556/jaoa.2019.011
+                                                                                                    disease. J. Dig. Dis. 20, 447–59. doi: 10.1111/1751-2980.12795
+   Miquel, S., Martín, R., Rossi, O., Bermúdez-Humarán, L. G., Chatel, J. M., Sokol,
+                                                                                                       Westcott, S. L., and Schloss, P. D. (2015). novo clustering methods outperform
+H., et al. (2013). Faecalibacterium prausnitzii and human intestinal health. Curr. Opin.
+                                                                                                    reference-based methods for assigning 16S rRNA gene sequences to operational
+Microbiol. 16, 255–61. doi: 10.1016/j.mib.2013.06.003
+                                                                                                    taxonomic units. PeerJ. 3, 1487. doi: 10.7717/peerj.1487
+   Miyake, T., Mori, H., Yasukawa, D., Hexun, Z., Maehira, H., Ueki, T., et al. (2021).
+                                                                                                       Wong, H. K., Ho, P. L., and Lee, C. K. (2019). Streptococcus gallolyticus
+The comparison of fecal microbiota in left-side and right-side human colorectal cancer.
+                                                                                                    bacteremia and colorectal carcinoma. Gastroenterology. 156, 291–2.
+Eur. Surg. Res. 62, 248–54. doi: 10.1159/000516922
+                                                                                                    doi: 10.1053/j.gastro.2018.07.059
+   Muthappa, D. M., Lamba, S., Sivasankaran, S. K., Naithani, A., Rogers, N.,
+                                                                                                       Wu Y, Jiao N, Zhu R, Zhang, Y, Wu, D. et al. (2021). Identification of microbial
+Srikumar, S., et al. (2022). 16S rRNA based profiling of bacterial communities
+                                                                                                    markers across populations in early detection of colorectal cancer. Nat Commun.
+colonizing bakery-production environments. Foodborne Pathog. Dis. 19, 485–94.
+                                                                                                    12:3063. doi: 10.1038/s41467-021-23265-y
+doi: 10.1089/fpd.2022.0014
+                                                                                                      Wu, F., Guo, X., Zhang, J., Zhang, M., Ou, Z., Peng, Y., et al. (2017).
+   Nearing, J. T., Douglas, G. M., Comeau, A. M., and Langille, M. G. I. (2018).
+                                                                                                    Phascolarctobacterium faecium abundant colonization in human gastrointestinal tract.
+Denoising the Denoisers: an independent evaluation of microbiome sequence error-
+                                                                                                    Exp. Ther. Med. 14, 3122–6. doi: 10.3892/etm.2017.4878
+correction approaches. PeerJ. 6, 5364. doi: 10.7717/peerj.5364
+                                                                                                        Xi, Y., and Xu, P. (2021). Global colorectal cancer burden in 2020 and projections
+  Park, J., Kim, N. E., Yoon, H., Shin, C. M., Kim, N., Lee, D. H., et al. (2021). Fecal
+                                                                                                    to 2040. Transl. Oncol. 14, 101174. doi: 10.1016/j.tranon.2021.101174
+microbiota and gut microbe-derived extracellular vesicles in colorectal cancer. Front.
+Oncol. 11, 650026. doi: 10.3389/fonc.2021.650026                                                       Xu, J., Yang, M., Wang, D., Zhang, S., Yan, S., Zhu, Y., et al. (2020). Alteration of the
+                                                                                                    abundance of Parvimonas micra in the gut along the adenoma-carcinoma sequence.
+   Patin, N. V., Kunin, V., Lidström, U., and Ashby, M. N. (2013). Effects of OTU
+                                                                                                    Oncol. Lett. 20 doi: 10.3892/ol.2020.11967
+clustering and PCR artifacts on microbial diversity estimates. Microb. Ecol. 65, 709–19.
+doi: 10.1007/s00248-012-0145-4                                                                         Yachida, S., Mizutani, S., Shiroma, H., Shiba, S., Nakajima, T., Sakamoto, T.,
+                                                                                                    et al. (2019). Metagenomic and metabolomic analyses reveal distinct stage-specific
+   Plummer, E., and Twin, J. A. (2015). Comparison of three bioinformatics pipelines
+                                                                                                    phenotypes of the gut microbiota in colorectal cancer. Nat. Med. 25, 968–76.
+for the analysis of preterm gut microbiota using 16S rRNA gene sequencing data. J.
+                                                                                                    doi: 10.1038/s41591-019-0458-7
+Proteomics Bioinform. 8, 283–91. doi: 10.4172/jpb.1000381
+                                                                                                       Yang, Y., Du, L., Shi, D., Kong, C., Liu, J., Liu, G., et al. (2021). Dysbiosis of
+   Pruesse, E., Quast, C., Knittel, K., Fuchs, B. M., Ludwig, W., Peplies, J., et al.
+                                                                                                    human gut microbiome in young-onset colorectal cancer. Nat. Commun. 12, 6757.
+(2007). SILVA: a comprehensive online resource for quality checked and aligned
+                                                                                                    doi: 10.1038/s41467-021-27112-y
+ribosomal RNA sequence data compatible with ARB. Nucleic Acids Res. 35, 7188–96.
+doi: 10.1093/nar/gkm864                                                                                 Yarza, P., Yilmaz, P., Pruesse, E., Glöckner, F. O., Ludwig, W., Schleifer, K. H.,
+                                                                                                    et al. (2014). Uniting the classification of cultured and uncultured bacteria and archaea
+   Rognes, T., Flouri, T., Nichols, B., Quince, C., and Mahé, F. V. (2016). Search a
+                                                                                                    using 16S rRNA gene sequences. Nat. Rev. Microbiol. 12, 635–45. doi: 10.1038/nrmicro
+versatile open source tool for metagenomics. PeerJ. 4, 2584. doi: 10.7717/peerj.2584
+                                                                                                    3330
+   Sanschagrin, S., and Yergeau, E. (2014). Next-generation sequencing of 16S
+                                                                                                       Zhang, F., Zhang, Y., Zhao, W., Deng, K., Wang, Z., Yang, C., et al. (2017).
+ribosomal RNA gene amplicons. J. Vis. Exp. doi: 10.3791/51709-v
+                                                                                                    Metabolomics for biomarker discovery in the diagnosis, prognosis, survival and
+   Schloss, P. D., Gevers, D., and Westcott, S. L. (2011). Reducing the effects of PCR              recurrence of colorectal cancer: a systematic review. Oncotarget. 8, 35460–72.
+amplification and sequencing artifacts on 16S rRNA-based studies. PLoS ONE. 6, 27310.               doi: 10.18632/oncotarget.16727
+doi: 10.1371/journal.pone.0027310
+                                                                                                       Zhou, L., Zhang, M., Wang, Y., Dorfman, R. G., Liu, H., Yu, T., et al. (2018).
+   Segata, N., Izard, J., Waldron, L., Gevers, D., Miropolsky, L., Garrett, W. S., et al.           Faecalibacterium prausnitzii produces butyrate to maintain Th17/Treg balance and to
+(2011). Metagenomic biomarker discovery and explanation. Genome Biol. 12, R60.                      ameliorate colorectal colitis by inhibiting histone deacetylase 1. Inflamm. Bowel Dis. 24,
+doi: 10.1186/gb-2011-12-6-r60                                                                       1926–40. doi: 10.1093/ibd/izy182
+    Shaukat, A., Kahi, C. J., Burke, C. A., Rabeneck, L., Sauer, B. G., Rex, D. K. A. C. G.,           Ziemski, M., Wisanwanichthan, T., Bokulich, N. A., and Kaehler, B. D. (2021).
+et al. (2021). Clinical guidelines: colorectal cancer screening 2021. Am. J. Gastroenterol.         Beating naive bayes at taxonomic classification of 16S rRNA gene sequences. Front.
+116, 458–79. doi: 10.14309/ajg.0000000000001122                                                     Microbiol. 12. doi: 10.3389/fmicb.2021.644487
+
+
+
+
+Frontiers in Microbiology                                                                      11                                                                             frontiersin.org
+

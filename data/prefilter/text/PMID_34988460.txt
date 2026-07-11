@@ -1,0 +1,750 @@
+Published online 22 December 2021                                                                               NAR Cancer, 2021, Vol. 3, No. 4 1
+                                                                                                             https://doi.org/10.1093/narcan/zcab049
+
+
+Characterization of the consensus mucosal
+microbiome of colorectal cancer
+Lan Zhao 1 , Susan M. Grimes1 , Stephanie U. Greer1 , Matthew Kubit1 , HoJoon Lee1 ,
+Lincoln D. Nadauld3 and Hanlee P. Ji 1,2,*
+1
+ Division of Oncology, Department of Medicine, Stanford University School of Medicine, Stanford, CA 94305, USA,
+2
+ Stanford Genome Technology Center, Stanford University, Palo Alto, CA 94304, USA and 3 Intermountain Precision
+Genomics Program, Intermountain Healthcare, Saint George, UT 84790, USA
+
+Received June 19, 2021; Revised November 18, 2021; Editorial Decision December 01, 2021; Accepted December 08, 2021
+
+
+
+ABSTRACT                                                                          GRAPHICAL ABSTRACT
+Dysbioisis is an imbalance of an organ’s microbiome
+and plays a role in colorectal cancer pathogenesis.
+Characterizing the bacteria in the microenvironment
+of a cancer through genome sequencing has advan-
+tages compared to culture-based profiling. However,
+there are notable technical and analytical challenges
+in characterizing universal features of tumor micro-
+biomes. Colorectal tumors demonstrate microbiome
+variation among different studies and across indi-
+vidual patients. To address these issues, we con-
+ducted a computational study to determine a consen-
+sus microbiome for colorectal cancer, analyzing 924                               INTRODUCTION
+tumors from eight independent RNA-Seq data sets. A                                Tumors such as colorectal cancer have specific biologi-
+standardized meta-transcriptomic analysis pipeline                                cal interactions with its surrounding commensal microbial
+was established with quality control metrics. Micro-                              species. Humans coexist with a rich diversity of bacteria and
+biome profiles across different cohorts were com-                                 viruses living within the confines of specific tissue niches.
+pared and recurrently altered microbial shifts spe-                               This collection of microbial organisms, referred to as the
+                                                                                  microbiome, vastly outnumber the eukaryotic cells making
+cific to colorectal cancer were determined. We iden-
+                                                                                  up our various tissues (1,2). The cellular interactions of spe-
+tified cancer-specific set of 114 microbial species                               cific organ tissue and the microbiome can be beneficial, neu-
+associated with tumors that were found among all                                  tral or pathogenic in terms of non-infectious human dis-
+investigated studies. Firmicutes, Bacteroidetes, Pro-                             eases. Beneficial microbes play critical roles in maintaining
+teobacteria and Actinobacteria were among the four                                immune function, metabolic homeostasis and overall health
+most abundant phyla for the colorectal cancer micro-                              (3). Neutral bacteria have no discernible consequences on
+biome. Member species of Clostridia were depleted                                 the host. Pathogenic microorganisms may increase the risk
+and Fusobacterium nucleatum was one of the most                                   and severity of conditions like inflammation (4), obesity (5),
+enriched bacterial species in tumors. Associations                                fatty liver disease (6), type 2 diabetes (7) and carcinogenesis
+between the consensus species and specific immune                                 (8). An indicator of a microbial influence in disease patho-
+cell types were noted. Our results are available as a                             genesis, dysbiosis is an imbalanced state of the naturally
+                                                                                  occurring microbiota where specific pathogenic microbes
+web data resource for other researchers to explore
+                                                                                  overgrow other components. This phenomenon leads to a
+(https://crc-microbiome.stanford.edu).                                            fundamental shift in the contents of the microbiome. This
+                                                                                  imbalance has the potential to lead to cancer (4). The mi-
+                                                                                  crobiome properties of colorectal cancer (CRC) have been
+                                                                                  of interest given that the colon and the rectum have the most
+                                                                                  abundant and diverse microbiome for any human organ.
+                                                                                  Many studies seek to identify specific microbiome proper-
+
+* To whom correspondence should be addressed. Tel: +1 650 721 1503; Email: genomics ji@stanford.edu
+
+
+ The Author(s) 2021. Published by Oxford University Press on behalf of NAR Cancer.
+ C
+This is an Open Access article distributed under the terms of the Creative Commons Attribution-NonCommercial License
+(http://creativecommons.org/licenses/by-nc/4.0/), which permits non-commercial re-use, distribution, and reproduction in any medium, provided the original work
+is properly cited. For commercial re-use, please contact journals.permissions@oup.com
+2 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+ties that are indicators of dysbiosis and influence colorectal    terium nucleatum and Peptostreptococcus stomatis were en-
+cancer development, phenotype and clinical outcomes.              riched in individuals with CRC compared to normal con-
+   We define two specific environmental niches for the anal-      trols. These studies were limited to fecal samples which rep-
+ysis of the colorectal cancer microbiome. Generally, the          resent a distinct niche from CRC tissue samples.
+largest and most diverse niche involves the microbial and            The direct sequencing analysis of CRC tumors and the
+viral contents of the fecal material within the colon. This is    tumor associated mucosa provides insight into the micro-
+a high biomass source for microbiomes. The smaller niche,         biota that are directly associated with the TME. Given their
+a subset of the fecal material, involves those microbes that      direct contact to the cellular milieu of the tumor, these mi-
+are in direct contact with the colorectal tumor. The colon        crobes may play a potential role in the physiopathology
+mucosa is composed of a thin layer of epithelial cells (the       of CRC (15). Citing the most widely validated example of
+epithelium), a layer of connective tissue (the lamina pro-        mucosa-proximal microbiome of CRC, many studies have
+pria) and a thin layer of muscle (muscularis propriate). The      demonstrated an enrichment of Fusobacterium nucleatum,
+formal pathologic definition of colon carcinoma refers to         which we will refer to as F. nucleatum for short, in CRC
+epithelial cells that have malignant properties and invaded       tumors. The initial discoveries were based on identifying
+past multiple layers of the mucosa (9). Therefore, a clinical     microbial sequence reads from genomics studies of CRCs
+diagnosis of colorectal cancer requires an adequate biopsy        (16). Some studies have shown that F. nucleatum is associ-
+of colon tissue which have all mucosal cell layers. Per the       ated with higher stage CRC and a lower density of T-cells in
+universally accepted histopathologic criteria, colon adeno-       the CRC TME. Some of these observations have been born
+carcinoma arises from the mucosal epithelium. This col-           out experimentally (17). For example, this bacteria activates
+orectal mucosa-associated microbiome has an important             the WNT signaling pathway in CRC cells and inhibits T-
+role in colorectal cancer biology given its direct contact to     cell-mediated immune responses against tumors (18).
+the colon epithelial tumor cells and its interactions with the       Obtaining a high-quality characterization of cancer mi-
+local tumor microenvironment (TME). Because of its direct         crobiomes has challenges. In the case of the mucosa-
+contact with the colon cellular microenvironment, this mi-        associated microbiome of colorectal cancer, samples are ex-
+crobiome niche is carried over after a biopsy or surgical re-     posed to contamination across multiple steps as a clinical
+section of a tumor. Thus, the tumor extracted DNA or RNA          biopsy is acquired, processed and sequenced. This includes
+reflect the microbial contents adjacent to and intermingled       the presence of microbial DNA among the molecular bi-
+with the colon mucosa.                                            ology reagents used sequencing and genetic characteriza-
+   For genomic microbial characterization of CRCs, next-          tion. Complicating any analysis, the use of stringent qual-
+generation sequencing (NGS) methods like RNA-Seq have             ity controls has been inconsistent for cancer-based genomic
+been used for determining the microbiomes of specific tis-        studies of the microbiome (19). These issues can dramati-
+sues. For example, Simon et al investigated >17 000 samples       cally skew microbiome results. Different sequencing meth-
+from publicly available human RNA-Seq data and found              ods such as 16S and RNA-Seq reveal different microbiome
+that a significant proportion of unmapped reads were of           features. As an added challenge, microbiomes vary among
+microbial origin (10). Sequencing the 16S rRNA gene is an-        individuals living in different geographic regions and ethnic
+other common method for determining microbiome char-              backgrounds. This fundamental variation among individ-
+acteristics. The 16S gene contains nine hypervariable re-         ual microbiomes makes it more difficult to identify common
+gions (V1-V9) that provide a sequence barcode for identi-         microbial species that may have a universal role in colorectal
+fying microbial species and conducting phylogenetic anal-         cancer tumorigenesis.
+ysis (11). Depending on the sequencing approach, micro-              Addressing these challenges, we developed a scheme to
+bial abundance estimation is represented in operational           analyze the colorectal cancer microbiome composition for
+taxonomic units (OTUs) or amplicon sequence variants              universally shared features and then determine their poten-
+(ASVs), which are usually mapped to the genus or species          tial role in modulating cancer and the immune system. Im-
+level (12). Each molecular dataset captures different aspects     portantly, we sought to identify consensus bacterial species
+about the patient’s microbiota; comparative analysis of data      that were consistently observed across multiple independent
+from these two methods may provide insights not possible          CRC cohorts––most studies have been limited to evaluating
+through a single data type alone.                                 the genera level. We utilized different RNA-Seq datasets in-
+   There is substantive evidence that dysbiosis is associated     cluding the Cancer Genome Atlas Colon Adenocarcinoma
+with the development and progression of CRC (11,13,14).           (TCGA-COAD) and those available from the Gene Expres-
+Studies have focused on either studying (1) the fecal con-        sion Omnibus (GEO) database. In total, 924 CRCs were in-
+tents from CRC patients or (2) direct analysis of CRC tu-         cluded in this study to investigate the different microbiome
+mors with the microbiome that is in direct contact with           profiles across different studies. Among the eight studies,
+the tumor epithelium. Citing a study from the former, Sob-        five used total RNA and three used mRNA selection. One
+hani et al. (13) performed one of the first studies to identify   of our goals was to determine common bacterial species
+cancer-related dysbiosis in CRC from the analysis of fecal        that were detected and associated with colorectal cancers
+material from patients. They found that an elevated repre-        regardless of this isolation RNA method (Table 1).
+sentation of the Bacteroides/Prevotella genus was present            With this large number of samples, we processed all data
+among the majority of CRCs in their sample set. Using a           in the same fashion. This analysis pipeline included con-
+similar approach, Yu et al. (14) did a metagenomic profiling      ducted a rigorous quality control to eliminate potential con-
+of CRC samples and showed that four microbial species, in-        taminants and reduce the effect of batch bias. To evalu-
+cluding Parvimonas micra, Solobacterium moorei, Fusobac-          ate the quality of our mucosa-associated RNA-Seq data
+                                                                                                      NAR Cancer, 2021, Vol. 3, No. 4 3
+
+
+Table 1. RNA-Seq datasets included in the study
+                                                                                                                   Sample       Bacterial
+Study                          Type of tissue              Sample origins            Type of RNA for sequencing     size         species
+IMS3                          Tumor (N = 924)              Western United States     Total RNA                       162           731
+TCGA                                                       Multiple countries*       mRNA and total RNA              564          4187
+GSE107422                                                  South Korea               mRNA per poly-A selection       109           744
+GSE146889                                                  Midwest United States     Total RNA                        42          1293
+GSE50760                                                   South Korea               mRNA per poly-A selection        18           951
+GSE95132                                                   Eastern United States     Total RNA                        10          1321
+GSE104836                                                  China                     Total RNA                       10           1729
+GSE137327**                                                Eastern United States     Total RNA                        9           3378
+IMS3                       Matched normal colon            Western United States     Total RNA                       162           635
+                                (N = 298)
+TCGA                                                       Multiple countries*       mRNA and total RNA              51           3763
+GSE146889                                                  Midwest United States     mRNA per poly-A selection       38           1412
+GSE50760                                                   South Korea               Total RNA                       18            883
+GSE95132                                                   Eastern United States     mRNA per poly-A selection       10           1395
+GSE104836                                                  China                     Total RNA                       10           1673
+GSE137327**                                                Eastern United States     Total RNA                       9            3305
+
+* Brazil, Germany, Israel, Poland, Russia, Ukraine, United States, Vietnam
+** Sequenced on BGI system. All other studies used Illumina.
+
+
+
+in evaluating microbiomes, we compared these results to a                       DNA was extracted using the Promega AS1030 Maxwell
+16S analysis for a subset of overlapping samples. We used                    16 Tissue DNA Purification Kit (Promega, Wiscon-
+the same tumor RNA-Seq to determine the cellular tumor                       sin, USA) following the manufacturer’s protocols. The
+microenvironment features of each tumor. Finally, we de-                     concentration of DNA was quantified with the Qubit
+rived a consensus microbiome composition across differ-                      system (Thermo-Fisher Scientific, Massachusetts, USA),
+ent CRC cohorts, determined dysbiosis features when ex-                      and DNA integrity was evaluated using LabChip GX
+amining normal tumor pairs and investigated several micro-                   (PerkinElmer, Waltham, Massachusetts, USA). Five hun-
+bial species’ association with CRC’s immune cellular char-                   dred nanograms DNA from each sample was sheared using
+acteristics. To facilitate the sharing of this consensus micro-              a Covaris E220 sonicator (Covaris, Massachusetts, USA)
+biome, our results are available and can be queried through                  (microTUBES AFA fibre, 10% duty cycle, 200 cbp, inten-
+a web data resource (https://crc-microbiome.stanford.edu).                   sity 5 and time 55 s) and purified by a 0.8× AMPure XP
+                                                                             (Beckman-Coulter, California, USA) bead cleanup. The hy-
+                                                                             pervariable regions (V3-4) of the 16S rRNA gene from each
+MATERIALS AND METHODS                                                        sample were amplified using Forward primer (5 -TCG TCG
+Colorectal tumor RNA-Seq data                                                GCA GCG TCA GAT GTG TAT AAG AGA CAG CCT
+                                                                             ACG GGN GGC WGC AG-3 ) and Reverse primer (5 -
+Seven RNA-Seq CRC datasets were downloaded either                            GTC TCG TGG GCT CGG AGA TGT GTA TAA GAG
+from NCI’s Genomic Data Commons (GDC) or the Se-                             ACA GGA CTA CHV GGG TAT CTA ATC C-3 ) with
+quence Read Archive (SRA) (Table 1). In addition, we had                     Illumina sequencing adaptors (Illumina, California, USA).
+an internal data set from an independent CRC set that                        The purified PCR products were then subjected to a mul-
+we refer to as IMS3. All participants signed a written in-                   tiplexing process using Nextera XT Index kit (Illumina,
+formed consent as part of a study protocol approved by                       California, USA) in 50 ␮l reactions. After PCR product
+Stanford University. Tumor tissues were collected and pre-                   cleanup, two batches of libraries were quantified and se-
+served on formalin-fixed paraffin-embedded (FFPE) slides.                    quenced using an Illumina MiSeq platform.
+All tumor samples were determined to have >60% cellular-
+ity in pathology review.
+                                                                             Sequence data processing for microbiome characterization
+DNA and RNA sequencing of the IMS3 colorectal tumors
+                                                                             Raw RNA-Seq data were preprocessed to remove adapter
+Tumor tissues from 2 mm punches or 5 ␮m scrolls from                         sequences and low-quality bases with Cutadapt (v2.4) (20).
+FFPE blocks were recovered and processed for nucleic acid.                   Trimmed data were then mapped to the human genome
+RNA was extracted from Maxwell 16 LEV RNA FFPE                               (GRCh38) using STAR (v2.5) (21). Uniquely mapped reads
+Purification Kit (Promega, Wisconsin, USA) following the                     were used for subsequent immune cell infiltration analysis.
+manufacturer’s instructions. RNA-Seq libraries were pre-                     Quality controlled (by fastp software) unmapped reads were
+pared using KAPA RNA HyperPrep Kit with RiboErase                            used as input data for taxonomic assignment for each OTU.
+(HMR) (Roche, California, USA) by 8 cycles of PCR. The                         Reverse reads from 16S amplicon sequencing were re-
+enriched libraries were quantified by qPCR using Kapa Li-                    moved from the analysis due to low sequence quality. The
+brary Quantification kit (Roche, California, USA) and sub-                   sequence was processed with DADA2 using maxN = 0,
+jected to Illumina MiSeq sequencing (100 bp paired-end                       maxEE = 2, truncQ = 2 parameters to do reads filtering
+reads).                                                                      and quality checks (22). Reads that passed the quality con-
+4 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+trol were used for taxonomy classification. ASV values were      Differential microbiome analysis
+determined for each sample.
+                                                                 Microbial differential analysis was performed using DE-
+                                                                 seq2 and Phyloseq (27). Statistical tests such as the Chi-
+Taxonomic microbiome classification                              Squared test and the Wilcoxon rank-sum test were per-
+                                                                 formed to examine the patient grouping information with
+Kraken2 was used as the meta-transcriptome classification
+                                                                 various clinical variables. Multiple testing correction was
+tool in our study. It relies on exact k-mer matches to as-
+                                                                 applied as previously described. Results were considered
+sign microbial sequences to specific taxonomic labels (23).
+                                                                 significant if the adjusted P-value was <0.05.
+Prior studies have used this program to define cancer micro-
+biomes. The unmapped reads from RNA-Seq were queried
+in a Kraken2 database we created on our server (18 Septem-       The CRC Microbiome Explorer website
+ber 2019), which contains taxonomic information (obtained
+                                                                 We developed a web-based data resource for our study
+from NCBI Taxonomy database), complete genomes in
+                                                                 (https://crc-microbiome.stanford.edu). The microbial
+Refseq for the bacterial, archaeal, viral, plasmid and eu-
+                                                                 abundance data was uploaded to a MySQL (v5.5.62)
+karyotic organisms. The microbial relative abundance was
+                                                                 relational database from kraken2 output converted to
+calculated based on the percentages of the microbiome on
+                                                                 mpa format. The database server has 32 GB RAM and 16
+the selected top ranked phyla/genera. Taxonomy classifica-
+                                                                 processors running Ubuntu (v16.04). The web application
+tion results were posted to the CRC consensus microbiome
+                                                                 was written using Ruby on Rails (v5.1.7 with ruby v2.4.2),
+website (https://crc-microbiome.stanford.edu). We applied
+                                                                 a framework well suited for use with a backend relational
+a frequency filter of 1% and an established list to eliminate
+                                                                 database. The application server uses Ubuntu (v16.04). The
+potential contaminating species.
+                                                                 application was deployed using Passenger and Apache2.
+    A portion of sequencing reads may originate from con-
+                                                                 The user interface utilizes Bootstrap (v3.4.1) for responsive
+taminating microbial DNA that are found in the general
+                                                                 sizing to different format clients and browsers. Jquery
+environment or contaminants from the sequencing assay.
+                                                                 dataTables provide standard formatting, search and fil-
+This includes contaminating microbes in the sample that
+                                                                 tering capability for query tables, and Highcharts is used
+come from clinical processing were present in the sequenc-
+                                                                 to format and display plots. All queries and plots are
+ing reagents or grew in the fluidic systems of sequencers. To
+                                                                 produced dynamically from the underlying database tables
+minimize the bias introduced by microbial species not asso-
+                                                                 based on user query parameters.
+ciated with the original CRC, we conducted multiple steps
+to reduce microbial filtering process. First, we eliminated
+taxa that were not present in at least one read count in 1%      RESULTS
+of the samples. Thus, rare contaminants that are underrep-
+                                                                 CRC microbiome composition estimation from unmapped
+resented are eliminated. Second, we used a list of known mi-
+                                                                 RNA-Seq
+crobial contaminants compiled by Eisenhofer et al., which
+addresses many of the potential sources of artifacts in          Overall, we analyzed eight primary CRC transcriptomic
+genomic-based microbiome characterization (24), was also         datasets (28–34) from a variety of sources that included
+filtered out from our study (Supplementary Table S1). This       the Cancer Genome Atlas (TCGA), the NIH Gene Expres-
+list was compiled by Eisenhofer et al. based on a series of      sion Omnibus (GEO), the NIH’s Short Read Archive (SRA)
+negative controls across multiple studies and part of their      and an independent dataset (IMS3). The CRC RNA-Seq
+‘RIDE’ minimum standards criteria which addresses many           studies included the TCGA COAD data set which had the
+of the potential sources of artifacts in genomic-based mi-       largest number of samples (n = 564) (35,36). In addition,
+crobiome characterization (24).                                  GEO had six different data sets with the highest number of
+                                                                 CRCs coming from GSE107422 (n = 109) and the small-
+                                                                 est set being GSE137327 (n = 9) (Table 1). The IMS3 data
+Gene expression quantification and immune cell infiltration
+                                                                 set contained 162 tumor and matched normal tissues. The
+analysis
+                                                                 total number of CRC samples were 924. An additional 298
+Gene counts table generated from RNA-Seq mapped reads            matching normal colon samples were available for assessing
+were normalized using TMM (weighted trimmed mean of              their microbiome characteristics. Except for GSE137327
+M-values) with the EdgeR package and converted to cpm            which used the BGI sequencing technology, all samples
+and log2 transformed (25). A filtering process was also per-     were sequenced with Illumina.
+formed to exclude genes without at least 1 cpm in 20% of            In terms of the type of RNA used for the sequencing,
+the samples. We used the program Xcell to estimate 64 tu-        five of the eight studies used total RNA for the RNA-seq
+mor infiltrating immune and stromal cell types, together         libraries (Table 1). Total RNA was used for the following
+with immune, stroma and tumor microenvironment (TME)             data sets: IMS3, GSE146889, GSE95132, GSE104836 and
+scores for each tumor’s or normal colon’s RNA-Seq data           GSE137327. Two of the data sets originated from formalin
+(xcell.ucsf.edu) (26). Multiple testing correction was applied   fixed paraffin embedded samples for which total RNA ex-
+using the p.adjust() function available in R, with the method    traction is required. For the total RNA from flash frozen
+set as ‘FDR’. Kruskal–Wallis rank sum test was used to de-       tumors, a ribosomal RNA depletion method was used to
+termine differential immune cell infiltration among patient      generate quality RNA-seq data that includes RNA from mi-
+groups using a threshold of multiple testing corrected P <       crobial organisms. The TCGA study and two others used
+0.05.                                                            mRNA. We noted that prior studies of the TCGA samples
+                                                                                         NAR Cancer, 2021, Vol. 3, No. 4 5
+
+
+have successfully identified microbiome features from this      present in at least one read count in 1% of the samples (Sup-
+source of RNA (19).                                             plementary Table S2). Fifteen and 172 bacterial taxons were
+   To process these CRC RNA-Seq cohorts, we removed hu-         observed from ASV on the phylum- and genus-level, respec-
+man genome sequences, low quality reads and adapter se-         tively.
+quences. Subsequently, we used the high quality microbial          From this data set, we compared the RNA-Seq and 16S
+(unmapped) reads from a given CRC sample for taxonomy           methods as a way of evaluating the accuracy of RNA-seq-
+classification with Kraken2 (Figure 1). We also conducted       based microbiome phylum and genus level characteriza-
+downstream processing and leveraged an updated database         tion. There were 12 common phyla identified from these
+that includes NCBI’s RefSeq sequence data for human, bac-       two platforms (Supplementary Figure S3). Actinobacteria,
+teria and viruses (Materials and Methods section). Across       Proteobacteria, Firmicutes and Bacteroidetes were the four
+this extended tumor cohort, we observed that an aver-           most prevalent (Supplementary Figure S3a) and abundant
+age of 83% of reads were uniquely mapped to the human           phyla (Supplementary Figure S3b). High Pearson correla-
+genome per sample. Quality controlled, unmapped RNA-            tion coefficients were observed for phylum-level prevalence
+Seq reads averaged 4% per sample. The percentage of un-         (0.977) and abundances (0.962) between 16S and RNA-Seq
+mapped reads for each dataset varies from 0.05% (TCGA)          data (Supplementary Figure S4a,b).
+to 19.86% (GSE107422) (Supplementary Figure S1). Vari-             We determined that the microbial diversity via a Shan-
+ations in the raw sequence data, unmapped reads and un-         non index estimate from RNA-Seq data was significantly
+mapped ratios were observed from each dataset. For ex-          higher compared to the results from the 16S data at the
+ample, the TCGA and GSE146889 cohorts had the largest           phylum/genus levels (Supplementary Figure S3). Statisti-
+number of total and unmapped sequences per a sample. The        cal significance was demonstrated using pairwise Wilcox
+GSE107422 as well as GSE104836 samples set had the high-        test (P < 2e-16). A total of 89 overlapped genera were evi-
+est percentages of unmapped reads (Supplementary Figure         dent when comparing these two different methods (Supple-
+S1). Thus, we normalized microbial abundances to the me-        mentary Table S3). Bacteroides and Faecalibacterium were
+dian sequencing depth within each cohort. Our results are       the two most enriched genera identified both from 16S and
+available for exploring and download at the following URL:      RNA-Seq data (Supplementary Figure S3a,b). The differ-
+https://crc-microbiome.stanford.edu.                            ences between the two were largely due to the viral genome
+   We identified the highest represented phyla from each co-    species that were present in the RNA-Seq data. Overall,
+hort and made comparisons of relative percentage abun-          these results support that RNA-Seq analysis of CRC can
+dance (Table 1, Figure 2A–G). Firmicutes, Proteobacteria,       determine microbiome features that overlap with 16S se-
+Bacteroidetes and Actinobacteria were the four top ranked       quencing. Thus, we opted to focus on using the RNA-Seq
+bacterial phyla identified from various CRC cohorts. The        data for the remainder of the study given the large number
+average relative abundance of Firmicutes (over 29.5%) had       of colorectal cancers which had this type of publically avail-
+the highest average abundance across the entire cohort. This    able data.
+species was followed by Proteobacteria (22.4%), Actinobac-
+teria (13.8%) and Bacteroidetes (11.5%). Variations of bac-
+                                                                The CRC consensus microbiome
+terial community composition were observed at the phy-
+lum level, such as Proteobacteria accounts for more than        From the 924 CRCs and the tumor RNA-Seq data, the
+half of the major phyla abundance in GSE137327, whereas         high-quality unmapped reads underwent Kraken2 process-
+this species only accounted for <10% in GSE104836 (Fig-         ing and species classification. All tumors were used regard-
+ure 2F,E). Other noticeable phyla include Fusobacteria and      less of whether there was a matched normal or not. The
+Deinococcus-Thermus (5.46% and 1.17% relatively). These         range of species identified prior to consensus filtering was
+phyla accounted for a small proportion of the total percent-    from 731 (IMS3) to 4187 (TCGA) (Table 1). To determine
+ages of relative abundance, respectively. Overall, the bacte-   the microbiome features that were generalizable across the
+rial community composition variations were observed at the      entire cohort, we created a union matrix representing all
+genus level (Supplementary Figure S2).                          samples and different species across the entire cohort. Sub-
+                                                                sequently, we applied a 1% prevalence filter, retaining only
+                                                                the bacterial and viral species above this frequency thresh-
+Comparing RNA-Seq versus 16S for identifying and charac-
+                                                                old. Among the eight studies, 126 microbial species were
+terizing CRC microbiome
+                                                                obtained from the 924 CRC tumors. We conducted an ad-
+One of the CRC cohorts had overlapping RNA-Seq and 16S          ditional level of filtering to determine if identify any species
+data from the same tumors (IMS3, n = 162). We used this         typically associated with contaminant artifacts. There were
+data for a comparison study between the two sequencing          a few species that are known environmental contaminants,
+methods. The processing and analysis of microbial reads de-     such as microbe belonging to the the Cutibacterium and
+rived from RNA-seq data were described above. The raw           Methylobacterium genera. These contaminants and others
+16S sequencing data were processed using DADA2 and              were removed, which resulted in a final consensus list of 114
+phyloseq pipelines. Adapters, low quality bases and ampli-      microbial species associated with CRCs (Table 1 and Sup-
+fication primers were filtered out. Approximately 95% of        plementary Table S4). All species were present for all sample
+16S rRNA sequences passed our quality control measures,         sets included in the study.
+bringing in an average of 47 000 reads per sample for tax-         We compared the 114 consensus species with the 61 mi-
+onomy assignments using Silva v132 annotation. DADA2            crobial biomarkers identified from meta-analysis of sev-
+detected 531 ASVs, after removal of ASVs that were not          eral fecal cohorts (37). Fourteen species (F. nucleatum,
+6 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+
+         A
+
+
+
+
+         B
+
+
+
+
+Figure 1. Pipeline for microbiome analysis using RNA-Seq data and analysis. (A) RNA-Seq data were processed and mapped to the Human genome.
+Mapped data were employed to do immune cell infiltration profiling. Unmapped reads were quality controlled and used as the input to do taxonomy
+classification. The downstream steps included in the pipeline are microbial abundance, differential analysis and microbe-trait correlation analysis. (B) A
+heatmap representing the phyla determined among the eight different data sets. The phyla of the colorectal tumor and normal microbiome’s representation
+is shown via a relative abundance percentage each phyla across each study. Red is indicative of a higher fraction and green indicates a lower fraction.
+                                                                                                         NAR Cancer, 2021, Vol. 3, No. 4 7
+
+
+
+     A                                             B                                                C
+
+
+
+
+     D                                 E                                   F                                  G
+
+
+
+
+Figure 2. CRC microbial composition varies across different studies. The top 12 most enriched phyla identified from each cohort: TCGA (A), GSE146889
+(B), GSE50760 (C), GSE95132 (D), GSE104836 (E), GSE137327 (F) and GSE107422 (G). In the heatmap, columns correspond to microbes, and rows to
+different dataset. Relative fractional abundances were represented by different colors.
+
+
+F. prausnitzii, F. plautii, B. longum, G. morbillorum, S. ther-                Bacteroidetes and Firmicutes species account for a sig-
+mophiles, B. fragilis, P. intermedia, P. asaccharolytica, R. in-            nificant proportion of the 114 microbial list (Figure 3).
+testinalis, E. coli, S. sputigena, P. micra and E. hallii) were             From our consensus CRC microbiome, >33% of these
+commonly observed in both tissue and fecal microbiomes                      species belong to the class of Clostridia (Figure 3A). This
+and half of them belong to the Firmicutes phylum. All re-                   class was the most frequently occurring among our co-
+maining species were distinct and specific to either tissue or              hort. Species belonging to Bacteroidetes (23.5%), Pro-
+fecal microbiome, suggesting major differences in the mi-                   teobacteria (16.5%) and Actinobacteria (10.4%) were the
+crobial compositions between these two habitats.                            second, third and fourth most predominant phyla among
+   To determine if this consensus list represented potential                the components of the consensus microbiome. Most mem-
+contaminants, we used a blacklist of contaminating micro-                   bers of the Clostridia have a commensal relationship with
+biome genera that was generated by Poore et al. (19). As pre-               the host and are involved in the maintenance of intesti-
+viously noted, Poore et al. only examined the microbiome                    nal health (41). Other well-characterized fecal species in-
+at the level of genera which included their contamination                   cluded Bacteroides megaterium, Bacteroides fragilis, Es-
+list. Using a combination of their computation and manual                   cherichia coli, Bacillus cereus, Faecalibacterium prausnitzii,
+annotated blacklist, we used a non-duplicated blacklist of                  Bacteroides vulgatus and Prevotella intermedia and were
+272 genera (Supplementary Table S5).                                        among the most abundant species of all the CRC sam-
+   Our consensus list of CRC-associated bacteria had 64                     ples across the cohort (Supplementary Table S3). Validat-
+non-overlapping genera. We compared the consensus CRC                       ing our analysis results, F. nucleatum was common among
+microbiome list with the blacklist genera comparison and                    the tumors, has been previously associated with CRC
+over 95% (109/114) of the bacterial species were not on the                 and has a mechanistic contribution towards colon cancer
+blacklist. This result shows that our consensus list was not                growth.
+skewed by contaminating genera as described by Poore et                        A number of these microbiome species are pathogens
+al. A total of five bacteria had genera that overlapped with                with the most prevalent being Clostridium difficile. Infec-
+the blacklist. On reviewing the literature we determined                    tion with this species leads to an infectious diarrhea and
+that four of these species had been previously identified in                is also associated with inflammatory bowel disease (IBD)
+the colon fecal microbiome including Alcanivorax sp. N3-                    (42). Clostridium perfringens is one of the most common
+2A (38), Hungatella hathewayi (39), Janibacter indicus (40)                 causes of food poisoning in the United States (43). Besides
+and Variovorax sp. PMC12 (38). The fifth was Pseudoxan-                     the pathogens such as Clostridium difficile and Clostridium
+thomonas suwonensis for which we did not identify a previ-                  perfringens, other potentially pathogens such as Akkerman-
+ous report.                                                                 sia muciniphila is a mucin-degrading bacterium. Pasteurella
+8 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+     A                                           B                                        E
+
+
+
+
+            C                                   D
+
+
+
+
+Figure 3. Colorectal cancer’s consensus microbial species. (A) Balloon plot to summarize and compare the taxa distribution for the 114 species at the
+phylum (x-axis) and class (y-axis) levels, where the area and color of the dots were proportional to their numerical value (Freq). (B) A correlation plot of
+the eight CRC cohorts. Red represents positive correlation and blue negative correlations. This correlogram indicates that the area and color of the dots
+are proportional to their correlation coefficients. (C) The PCA-based on Bray-Curtis dissimilarity was used to estimate the beta diversity of the cohorts.
+(D) This panel is a correlation heatmap. Panels (B and E) share the same color legend. (E) A correlation heatmap of the 114 species with stroma, immune,
+and TME scores derived from the same tissue. The rows are specific microbe species found in our colorectal cancer consensus microbiome. The columns
+are labeled with the cell type summaries derived from the RNA-seq data.
+
+
+multocida can cause a range of diseases in animals and hu-                       teobacteria and Firmicutes phyla. Proteobacteria spp occurs
+mans, particularly for skin infections.                                          as a free-living species which can be identified within the
+   Other species are commensal elements of normal gut mi-                        colon microbiota. Firmicutes phyla, especially in the class of
+crobiota. Some of them possess probiotic properties, like                        Clostridia were enriched in normal tissues, suggesting that
+Bacteroides xylanisolvens and Bacteroides ovatus. Others                         Clostridia spp. were potentially beneficial microbes. When
+play important roles in other mammalian species and ex-                          compared to the matched normal tissue set, 29 species were
+trinsic metabolic processes. For example, Lachnospiraceae                        only present in tumor tissues, this included two Fusobacteria
+bacterium can ferment polysaccharides into short-chain                           species and several other known pathogens (Streptococcus
+fatty acids and alcohols (44). Bacteroides cellulosilyticus,                     spp. and Prevotella spp.).
+a strictly anaerobic cellulolytic bacterium, metabolizes cel-                       We investigated the geographic associations of the eight
+lulose to smaller molecules and ferment various carbohy-                         datasets using the abundances of the selected 114 micro-
+drates (45). Ruthenibacterium lactatiformans is character-                       bial species specific to CRC tumors. We conducted a cor-
+ized by fermentative metabolism (46). Bacillus megaterium                        relation studies across the different data sets (Figure 3B–
+has probiotic potential (47).                                                    D). Our analysis included a correlation plots and a PCA-
+                                                                                 based on Bray-Curtis dissimilarity anlaysis that estimateed
+                                                                                 the beta diversity of the cohorts. The GSE137327 microbial
+Consensus microbiome from matched normal colon tissue
+                                                                                 profile was negatively associated with other cohorts, sug-
+From the 298 matched normal colon tissue and their RNA-                          gesting that the choice of sequencing platform may have
+Seq data, we applied the same bioinformatic process, qual-                       affected the microbiome profile (Figure 3B,E). This data
+ity control filtering and prevalence analysis with a union                       set was generated from a different sequencing platform, the
+matrix. The range of species identified prior to consensus                       BGI-Seq system versus the remainder of the studies which
+filtering was from 635 (IMS3) to 3763 (TCGA) (Table 1).                          were Illumina-based. Several Asian cohorts from different
+From this analysis, there were 153 species consistently found                    geographic locations were represented in this study. This in-
+among all matched normal tissues (Supplementary Table                            cluded GSE107422 and GSE50760 where the tumor sam-
+S6). More than half of the species were identical to the tu-                     ples originated from South Korea. For the GSE104836 co-
+mors’ 114 species list (Supplementary Figure S5). Interest-                      hort, the samples originated from mainland China. The
+ingly, the remaining consensus mucosa-associated micro-                          CRCs from all three of these studies were part of a dis-
+biome from normal colon tissue was quite different from                          tinct cluster with Asian origins (Figure 3B,E). The TCGA
+tumors, with a large proportion of them came from the Pro-                       samples originated from a variety of different countries in-
+                                                                                           NAR Cancer, 2021, Vol. 3, No. 4 9
+
+
+cluding Brazil, Germany, Israel, Poland, Russia, Ukraine,         with a subset of immune cells (DC, NK and other innate
+United States, Vietnam (Table 1). Thus, there was an in-          immune cells), indicating that there were some microbe-
+ternational geographic representation of CRCs from the            microbe interactions between them.
+TCGA data set (Supplementary Table S7).
+                                                                  Comparison of CRC versus matched normal microbiomes
+TME and immune cell correlations with the CRC consensus
+                                                                  To determine the differences between matched normal
+microbiome
+                                                                  and colon tissue microbiomes, we used the IMS3 and
+Using the same RNA-Seq data per sample, we determined             TCGA tumors. These two sample sets had sufficiently
+the immune cell estimations of each CRC across the cohort.        large numbers of matched normal tumor pairs to per-
+Currently, one can use bulk RNA-Seq data to infer the pro-        form statistically meaningful differential analysis. We com-
+portions of individual cell types from tumor samples. This        pared and identified microbial compositions between tumor
+process is generally referred to as cell deconvolution. To        and adjacent normal tissues at different taxonomic levels
+conduct this study we used the program xCell to make es-          (phylum/genus/species).
+timates about the relative cell populations among the CRC            Variations in the microbial phyla, genera and species rel-
+RNA-Seq data sets (26). This program deconvolutes gene            ative abundances were observed between tumor and nor-
+expression data to identify the relative representation of 64     mal groups, respectively (Figure 5). More specifically, at the
+immune and stromal cell types.                                    level of the phylum, increased proportion of Fusobacteria
+   After deconvoluting the gene expression data from our          and virus (adjusted P < 0.01) as well as depletion of Bac-
+cohort, we determined the association of TME components           teroidetes (adjusted P < 0.01) were detected in tumors. For
+that are referred to as the immune, stroma and TME scores.        example, the average percentage of the viral constituents
+For this analysis, we used the 114 tumor-specific microbial       among the total tumor microbiota was 30.70% compared
+species from the CRC consensus microbiome. As an ag-              to 11.43% in the adjacent normal tissues. The relative abun-
+gregate indicator of different types of cellular composition,     dances of Bacteroidetes (38.29% versus 22.56%) in normal
+Xcell provided each CRC with an immune score (the sum of          tissue was detected at a higher percentage than in the tumor
+all immune cell types), stroma score (the sum of all stroma       tissues. Significant differences in the abundances of three
+cell types) and TME score (the sum of all immune and stro-        genera were observed between tumor and adjacent normal
+mal cell types) (26). Stroma scores were mostly negatively        tissues. These genera were all under the above-mentioned
+correlated with the 114 CRC species compared to immune            phyla such as Fusobacteria and Bacteroidetes, which fol-
+and TME scores (Figure 3E).                                       lowed the same trend with the fold changes we observed at
+   Thirty-eight microbial species were selected which have        the phylum level.
+significant associations with specific types of the immune           A total of 13 microbial species were significantly differ-
+cells (Spearman correlations, FDR < 0.05) (Figure 4A).            entiated between the tumor and normal groups with an ad-
+Natural killer (NK) cells had a positive correlation with the     justed P < 0.05 (Figure 5C and Supplementary Table S8)
+majority of the selected microbial species. CD4 T, CD8 T,         in IMS3 cohort. For example, high abundance of F. nu-
+naı̈ve/pro B and T regulatory cells play opposite correla-        cleatum and Pasteurella multocida were identified among
+tion patterns with NK cells (Figure 4A). In other words,          the tumors compared to matched normal tissue as noted
+these cells were negatively correlated with more than half        by fold changes >1. The remaining 11 species were all de-
+of the CRC consensus microbes. Victivallales bacterium            creased in tumor. For instance, six members within the or-
+(CCUG447300) was one of the species that had a signifi-           der Chlostridales, namely, three Lachnospiraceae and three
+cant positive correlation with NK cell’s enrichment in the        Ruminococcaceae were depleted in tumors. Lachnospiraceae
+CRC TME (Spearman’s rho = 0.57; P < 1e-4). This species           are generally beneficial microorganisms that work to fight
+was significantly negative correlated with the CD4 naive T        off colon cancer by producing butyric acid (48). Faecal-
+cell’s abundance in the TME (Spearman’s rho = -0.45; P <          ibacterium prausnitzii from the family of Ruminococcaceae
+1e-4).                                                            was notable as one of the most prominent commensal bac-
+   Immune cells and microbe’s correlations were also inves-       teria in the human gut. The remaining five species that
+tigated in the adjacent normal samples (Figure 4B). NK            were differentially lower in their tumor presence included
+cells were positively correlated with the selected thirty-eight   Collinsella aerofaciens, and four members within the order
+microbial species. More negative correlations than positive       Bacteroidales (three Bacteroides and one Parabacteroides
+correlations between immune cells and microbes can be seen        genera). The overall diversity of the microbial community
+from the heatmap (Figure 4B). Distinct correlation patterns       significantly decreased in tumors compared to the matched
+have been found between tumor and normal tissues. For ex-         normal tissue at the species level (Figure 5F). However, the
+ample, macrophages and CD4 memory T cells were gener-             microbial diversity in the tumors relative to their matched
+ally positively correlated with the selected species in tumor     normal tissue was not significantly different at the phylum
+samples; however, the correlations changed to negative in         and genus levels.
+adjacent normal tissues. Similarly, we found that T regula-          From the TCGA dataset, we obtained 129 differential
+tory, CD4 T, T helper2, dendritic cells and monocytes had         enriched/depleted microbial species with adjusted-P <0.05
+different correlation patterns in tumor (positive) and nor-       in CRC (Supplementary Table S9). Among them, seven
+mal (negative) samples. A group of microbial species such         species (F. nucleatum, F. prausnitzii, Fusobacterium plau-
+as B. helcogenes, L. bacterium, P. cangingivalis, S. sputigena    tii, Ruthenibacterium lactatiformans, Lachnospiraceae bac-
+and E. harbinense have shown similar trends of correlations       terium, Lachnospiraceae bacterium Choco86 and Bacteroids
+10 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+
+
+Figure 4. Selected microbial species correlate with immune cells. Heatmaps show the correlation patterns between microbes and immune cells in the tumor
+microenvironment that include (A) tumor and normal samples (B). In the heatmaps, columns correspond to cell types, and rows to microbes. Spearman
+correlation values were represented by different colors, red means higher correlations, and green, lower ones.
+
+
+
+
+Figure 5. Tumor microbial composition is different from that of adjacent normal. The top 12 most abundant phyla (A) and genera (B) distribution plots
+for tumor and adjacent normal. Differentially enriched/depleted microbial species between tumor and adjacent normal (C), x-axis: log 2 fold changes,
+y-axis: microbial species names, and colors labeled their phylum levels. Comparison of Alpha diversity (Shannon index) between tumor and normal at the
+phylum (D), genus (E) and species (F) levels.
+                                                                                          NAR Cancer, 2021, Vol. 3, No. 4 11
+
+
+vulgatus) overlapped with the 13 species we identified from       role of Helicobacter pylori in the pathogenesis of gastric car-
+the IMS3 cohort. Fusobacterium nucleatum was found to be          cinoma (53), where bacteria is widely recognized as a micro-
+enriched in the tumor tissues in both the TCGA and IMS3           bial carcinogen and the most important known risk factor
+datasets, whereas the remaining six species were all depleted     for GC. Through our analysis, we found that CRC patients
+in tumors.                                                        are characterized by the enrichment of a set of microbes
+                                                                  which can have pathogenic effects in some circumstances
+A web-based CRC Microbiome Explorer Interface                     as well as depletion of health-related microorganisms. For
+                                                                  example, we identified 13 differentially enriched/depleted
+To enable access to the study’s results, we created an in-
+                                                                  microbes using 162 paired tumor and normal tissues sam-
+teractive database entitled the CRC Microbiome Explorer
+                                                                  ples. Among them, F. nucleatum has been detected as a pre-
+(https://crc-microbiome.stanford.edu/). The CRC Micro-
+                                                                  dominant species in tumors, which match well with previous
+biome Explorer enables the user to query the database by
+                                                                  studies. Several members of Clostridia possess the proper-
+‘Study’ or ‘Patient’. The ‘Study’ query displays an overview
+                                                                  ties of fermenting diverse plant polysaccharides, which are
+bar plot of the top 12 microbial phyla across all normal
+                                                                  beneficial to human health, were found to be depleted in
+when available and tumor samples in the queried study. Ad-
+                                                                  CRC tissues.
+ditionally, users can view a bar plot that displays the micro-
+                                                                     We defined a consensus CRC microbiota by searching the
+biome composition of each individual patient in the study.
+                                                                  most prevalent microbial species across several different co-
+Alternatively, the user can select a specific patient to submit
+                                                                  horts, which can be a valuable resource for future studies.
+for a ‘Patient’ query that generates a Sankey plot display-
+                                                                  Importantly, this set of microbes are present regardless of
+ing the top 10 microbial genii in each patient sample. The
+                                                                  the patients’ origins over a diverse range of geographic loca-
+patient-level microbial abundance data is also available as
+                                                                  tions and ethnicities. This consensus represents species that
+a searchable and sortable table. Kraken2 output files from
+                                                                  may interact with the cellular tumor microenvironment of
+each study are available for download as tar archived files
+                                                                  CRC. As an additional evaluation of the quality of this con-
+from the ‘Data Download’ tab.
+                                                                  sensus microbiome, we determined if these species had been
+                                                                  previously reported in in the literature as component species
+DISCUSSION
+                                                                  of the normal colon microbiome.
+The human microbiome is associated with human health,                The connection between microbiome and CRC is likely
+and dysbiosis can lead to a variety of disease such as colon      to be bidirectional: microbiome changes may happen be-
+cancer (49). The colon is the site of one of the most diverse     cause of CRC development but may also contribute to CRC
+human microbiomes (3,50). CRC is a heterogeneous ma-              progression (54). Integration information across datasets
+lignancy with distinct molecular features and clinical out-       provided key insights into the gut microbiota of CRC pa-
+comes among patients. Besides genetic alterations, the gut        tients. In conclusion, we identified tumor-specific bacteria
+microbiome may play a role in CRC initiation and progres-         patterns and signatures, which might serve as biomarkers
+sion (11,13,51,52). Most studies on CRC microbiota so far         for the prognosis of CRC. Our future works include iden-
+are conducted on fecal samples, which are obtained through        tified prognostic microbial signatures across various can-
+non-invasive methods and are widely available compared            cer types, and translating the microbiome biomarkers to the
+to tissue samples. When considering the examination of            clinic.
+the fecal versus mucosa-associated microbiomes, the anal-
+ysis of tissues is more directly related to the microbiota
+contributions to the cellular physiopathology of CRC (15).        DATA AVAILABILITY
+Thus, studying the microbiome in direct contact with the          All results from this study are available from the follow-
+CRC’s microenvironment is important for revealing poten-          ing URL: (https://crc-microbiome.stanford.edu). Sequence
+tial interactions and relationships. Moreover, microorgan-        data are available at the TCGA COAD study from the
+isms in the gut microbiota interact which changes the rep-        NCI’s Genomic Data Commons website: https://portal.
+resentation of any given species. In addition, it is estimated    gdc.cancer.gov/projects. Additional data sets were avail-
+that >60–80% of the microbes are nearly impossible to             able from the NIH’s GEO website from the following stud-
+culture using conventional microbiology techniques (15).          ies and their GEO identifiers (GSE107422, GSE146889,
+Thus, culture-independent analysis using high-throughput          GSE50760, GSE95132, GSE104836, GSE137327). The
+sequencing provides an opportunity to identify species that       IMS3 data sets are available at the online repository. The
+otherwise would be missed. Overall, we conducted this             scripts used in this study are available in an online reposi-
+NGS-based microbial study including a series of different         tory (https://github.com/sgtc-stanford/crc-microbiome).
+CRC tissue cohorts to identify tumor specific microbial pro-
+files for future clinical use. We also investigated infiltrated
+immune and stroma components in the TME as the phe-               SUPPLEMENTARY DATA
+notype of interest to link them with the marker microbial
+species we identified. Our results are available at a genomic     Supplementary Data are available at NAR Cancer Online.
+web resource for the CRC consensus microbiome (https:
+//crc-microbiome.stanford.edu).
+                                                                  ACKNOWLEDGEMENTS
+   Tumor-promoting effects of the microbiome in CRC oc-
+curs through a dysbiosis mechanism, rather than by infec-         Additional support came from the Clayville Foundation
+tions with specific pathogens (8). This is different from the     (S.U.G., S.M.G., H.P.J.).
+12 NAR Cancer, 2021, Vol. 3, No. 4
+
+
+Author Contributions: L.Z., H.L. and H.P.J. designed the                             nucleatum in colorectal carcinoma tissue and patient prognosis. Gut,
+study. M.K. conducted sequencing. G.S and C.S. opti-                                 65, 1973–1980.
+                                                                                 18. Rubinstein,M.R., Wang,X., Liu,W., Hao,Y., Cai,G. and Han,Y.W.
+mized the isolation process. L.D.N. oversaw the clinical                             (2013) Fusobacterium nucleatum promotes colorectal carcinogenesis
+and samples resources for a the IMS samples. L.Z. devel-                             by modulating E-cadherin/␤-catenin signaling via its FadA adhesin.
+oped the bioinformatic pipelines and analysis algorithms.                            Cell Host Microbe, 14, 195–206.
+L.Z., S.M.G., H.L. and H.P.J. analyzed the data. S.U.G. and                      19. Poore,G.D., Kopylova,E., Zhu,Q., Carpenter,C., Fraraccio,S.,
+S.M.G developed the website resource. L.Z., S.U.G. and                               Wandro,S., Kosciolek,T., Janssen,S., Metcalf,J., Song,S.J. et al. (2020)
+                                                                                     Microbiome analyses of blood and tissues suggest cancer diagnostic
+H.P.J. wrote the manuscript.                                                         approach. Nature, 579, 567–574.
+                                                                                 20. Martin,M. (2011) Cutadapt removes adapter sequences from
+                                                                                     high-throughput sequencing reads. EMBnet.journal, 17, 10–12.
+FUNDING                                                                          21. Dobin,A., Davis,C.A., Schlesinger,F., Drenkow,J., Zaleski,C., Jha,S.,
+                                                                                     Batut,P., Chaisson,M. and Gingeras,T.R. (2013) STAR: ultrafast
+Innovation in Cancer Informatics (to L.Z., H.L., H.P.J.);                            universal RNA-seq aligner. Bioinformatics, 29, 15–21.
+National Institutes of Health [2R01HG006137-04 to                                22. Callahan,B.J., McMurdie,P.J., Rosen,M.J., Han,A.W., Johnson,A.J.A.
+S.U.G., S.M.G., H.P.J.].                                                             and Holmes,S.P. (2016) DADA2: High-resolution sample inference
+                                                                                     from Illumina amplicon data. Nat. Methods, 13, 581–583.
+Conflict of interest statement. None declared.                                   23. Wood,D.E., Lu,J. and Langmead,B. (2019) Improved metagenomic
+                                                                                     analysis with Kraken 2. Genome Biol., 20, 257.
+                                                                                 24. Eisenhofer,R., Minich,J.J., Marotz,C., Cooper,A., Knight,R. and
+REFERENCES                                                                           Weyrich,L.S. (2019) Contamination in low microbial biomass
+ 1. Micah,H., Claire,F.-L. and Rob,K. (2007) The human microbiome                    microbiome studies: issues and recommendations. Trends Microbiol.,
+    project: exploring the microbial part of ourselves in a changing world.          27, 105–117.
+    Nature, 449, 804–810.                                                        25. Robinson,M.D., McCarthy,D.J. and Smyth,G.K. (2010) edgeR: a
+ 2. Knight,R., Callewaert,C., Marotz,C., Hyde,E.R., Debelius,J.W.,                   Bioconductor package for differential expression analysis of digital
+    McDonald,D. and Sogin,M.L. (2017) The microbiome and human                       gene expression data. Bioinformatics, 26, 139–140.
+    biology. Annu. Rev. Genomics Hum. Genet., 18, 65–86.                         26. Aran,D., Hu,Z. and Butte,A.J. (2017) xCell: digitally portraying the
+ 3. Quigley,E.M.M. (2013) Gut bacteria in health and disease.                        tissue cellular heterogeneity landscape. Genome Biol., 18, 220.
+    Gastroenterol. Hepatol., 9, 560–569.                                         27. McMurdie,P.J. and Holmes,S. (2013) phyloseq: an R package for
+ 4. Carding,S., Verbeke,K., Vipond,D.T., Corfe,B.M. and Owen,L.J.                    reproducible interactive analysis and graphics of microbiome census
+    (2015) Dysbiosis of the gut microbiota in disease. Microb. Ecol.                 data. PLoS One, 8, e61217.
+    Health Dis., 26, 26191.                                                      28. Network, T.C.G.A.The Cancer Genome Atlas, N. (2012)
+ 5. Turnbaugh,P.J., Hamady,M., Yatsunenko,T., Cantarel,B.L.,                         Comprehensive molecular characterization of human colon and
+    Duncan,A., Ley,R.E., Sogin,M.L., Jones,W.J., Roe,B.A.,                           rectal cancer. Nature, 487, 330–337.
+    Affourtit,J.P. et al. (2009) A core gut microbiome in obese and lean         29. Kim,S.-K., Kim,S.-Y., Kim,C.W., Roh,S.A., Ha,Y.J., Lee,J.L.,
+    twins. Nature, 457, 480–484.                                                     Heo,H., Cho,D.-H., Lee,J.-S., Kim,Y.S. et al. (2019) A prognostic
+ 6. Arslan,N. (2014) Obesity, fatty liver disease and intestinal microbiota.         index based on an eleven gene signature to predict systemic
+    World J. Gastroenterol., 20, 16452–16463.                                        recurrences in colorectal cancer. Exp. Mol. Med., 51, 1–12.
+ 7. Qin,J., Li,Y., Cai,Z., Li,S., Zhu,J., Zhang,F., Liang,S., Zhang,W.,          30. Kim,S.-K., Kim,S.-Y., Kim,J.-H., Roh,S.A., Cho,D.-H., Kim,Y.S. and
+    Guan,Y., Shen,D. et al. (2012) A metagenome-wide association study               Kim,J.C. (2014) A nineteen gene-based risk score classifier predicts
+    of gut microbiota in type 2 diabetes. Nature, 490, 55–60.                        prognosis of colorectal cancer patients. Mol. Oncol., 8, 1653–1666.
+ 8. Schwabe,R.F. and Jobin,C. (2013) The microbiome and cancer. Nat.             31. Hanley,M.P., Hahn,M.A., Li,A.X., Wu,X., Lin,J., Wang,J.,
+    Rev. Cancer, 13, 800–812.                                                        Choi,A.H., Ouyang,Z., Fong,Y., Pfeifer,G.P. et al. (2017)
+ 9. Fleming,M., Ravula,S., Tatishchev,S.F. and Wang,H.L. (2012)                      Genome-wide DNA methylation profiling reveals cancer-associated
+    Colorectal carcinoma: Pathologic aspects. J. Gastrointest. Oncol, 3,             changes within early colonic neoplasia. Oncogene, 36, 5035–5044.
+    153–173.                                                                     32. Li,M., Zhao,L.-M., Li,S.-L., Li,J., Gao,B., Wang,F.-F., Wang,S.-P.,
+10. Simon,L.M., Karg,S., Westermann,A.J., Engel,M., Elbehery,A.H.A.,                 Hu,X.-H., Cao,J. and Wang,G.-Y. (2018) Differentially expressed
+    Hense,B., Heinig,M., Deng,L. and Theis,F.J. (2018) MetaMap: an                   lncRNAs and mRNAs identified by NGS analysis in colorectal
+    atlas of metatranscriptomic reads in human disease-related RNA-seq               cancer patients. Cancer Med., 7, 4650–4664.
+    data. Gigascience, 7, giy070 .                                               33. Wang,H., Wang,D.H., Yang,X., Sun,Y. and Yang,C.S. (2020)
+11. Gao,Z., Guo,B., Gao,R., Zhu,Q. and Qin,H. (2015) Microbiota                      Colitis-induced IL11 promotes colon carcinogenesis. Carcinogenesis,
+    disbiosis is associated with colorectal cancer. Front. Microbiol., 6, 20.        42, 557–569 .
+12. Ames,N.J., Ranucci,A., Moriyama,B. and Wallen,G.R. (2017) The                34. DiGuardo,M.A., Davila,J.I., Jackson,R.A., Nair,A.A., Fadra,N.,
+    human microbiome and understanding the 16S rRNA gene in                          Minn,K.T., Atiq,M.A., Zarei,S., Blommel,J.H., Knight,S.M. et al.
+    translational nursing science. Nurs. Res., 66, 184–197.                          (2021) RNA-Seq Reveals Differences in Expressed Tumor Mutation
+13. Sobhani,I., Tap,J., Roudot-Thoraval,F., Roperch,J.P., Letulle,S.,                Burden in Colorectal and Endometrial Cancers with and without
+    Langella,P., Corthier,G., Van Nhieu,J.T. and Furet,J.P. (2011)                   Defective DNA-Mismatch Repair. J. Mol. Diagn., 23, 555–564.
+    Microbial dysbiosis in colorectal cancer (CRC) patients. PLoS One,           35. Cancer Genome Atlas,N. (2012) Comprehensive molecular
+    6, e16393.                                                                       characterization of human colon and rectal cancer. Nature, 487,
+14. Yu,J., Feng,Q., Wong,S.H., Zhang,D., Liang,Q.Y., Qin,Y., Tang,L.,                330–337.
+    Zhao,H., Stenvang,J., Li,Y. et al. (2017) Metagenomic analysis of            36. Cerami,E., Gao,J., Dogrusoz,U., Gross,B.E., Sumer,S.O.,
+    faecal microbiome as a tool towards targeted non-invasive                        Aksoy,B.A., Jacobsen,A., Byrne,C.J., Heuer,M.L., Larsson,E. et al.
+    biomarkers for colorectal cancer. Gut, 66, 70–78.                                (2012) The cBio cancer genomics portal: an open platform for
+15. Villéger,R., Lopès,A., Veziant,J., Gagnière,J., Barnich,N., Billard,E.,       exploring multidimensional cancer genomics data. Cancer Discov., 2,
+    Boucher,D. and Bonnet,M. (2018) Microbial markers in colorectal                  401–404.
+    cancer detection and/or prognosis. World J. Gastroenterol., 24,              37. Thomas,A.M., Manghi,P., Asnicar,F., Pasolli,E., Armanini,F.,
+    2327–2347.                                                                       Zolfo,M., Beghini,F., Manara,S., Karcher,N., Pozzi,C. et al. (2019)
+16. Kostic,A.D., Gevers,D., Pedamallu,C.S., Michaud,M., Duke,F.,                     Metagenomic analysis of colorectal cancer datasets identifies
+    Earl,A.M., Ojesina,A.I., Jung,J., Bass,A.J., Tabernero,J. et al. (2012)          cross-cohort microbial diagnostic signatures and a link with choline
+    Genomic analysis identifies association of Fusobacterium with                    degradation. Nat. Med., 25, 667–678.
+    colorectal carcinoma. Genome Res., 22, 292–298.                              38. Murphy,K., Curley,D., O’Callaghan,T.F., O’Shea,C.A.,
+17. Mima,K., Nishihara,R., Qian,Z.R., Cao,Y., Sukawa,Y., Nowak,J.A.,                 Dempsey,E.M., O’Toole,P.W., Ross,R.P., Ryan,C.A. and Stanton,C.
+    Yang,J., Dou,R., Masugi,Y., Song,M. et al. (2016) Fusobacterium
+                                                                                                            NAR Cancer, 2021, Vol. 3, No. 4 13
+
+
+    (2017) The composition of human milk and infant faecal microbiota              Ruthenibacterium lactatiformans gen. nov., sp. nov., an anaerobic,
+    over the first three months of life: A Pilot Study. Sci. Rep., 7, 40597.       lactate-producing member of the family Ruminococcaceae isolated
+39. Ohara,T. (2019) Identification of the microbial diversity after fecal          from human faeces. Int. J. Syst. Evol. Microbiol., 66, 3041–3049.
+    microbiota transplantation therapy for chronic intractable                 47. Afrilasari,W. and Meryandini,A. (2016) Effect of probiotic Bacillus
+    constipation using 16s rRNA amplicon sequencing. PLoS One, 14,                 megaterium PTB 1.4 on the population of intestinal microflora,
+    e0214085.                                                                      digestive enzyme activity and the growth of catfish (Clarias sp.).
+40. Hoyles,L., Honda,H., Logan,N.A., Halket,G., La Ragione,R.M. and                HAYATI J. Biosci., 23, 168–172.
+    McCartney,A.L. (2012) Recognition of greater diversity of Bacillus         48. Meehan,C.J. and Beiko,R.G. (2014) A phylogenomic view of
+    species and related bacteria in human faeces. Res. Microbiol., 163,            ecological specialization in the Lachnospiraceae, a family of digestive
+    3–13.                                                                          tract-associated bacteria. Genome Biol. Evol., 6, 703–713.
+41. Lopetuso,L.R., Scaldaferri,F., Petito,V. and Gasbarrini,A. (2013)          49. Ahn,J., Chen,C.Y. and Hayes,R.B. (2012) Oral microbiome and oral
+    Commensal Clostridia: leading players in the maintenance of gut                and gastrointestinal cancer risk. Cancer Causes Control, 23, 399–404.
+    homeostasis. Gut Pathog., 5, 23.                                           50. Nagpal,R., Yadav,H. and Marotta,F. (2014) Gut microbiota: the
+42. Bien,J., Palagani,V. and Bozko,P. (2013) The intestinal microbiota             next-gen frontier in preventive and therapeutic medicine? Front.
+    dysbiosis and Clostridium difficile infection: is there a relationship         Med., 1, 15.
+    with inflammatory bowel disease? Therap. Adv. Gastroenterol., 6,           51. Claesson,M.J., Jeffery,I.B., Conde,S., Power,S.E., O’Connor,E.M.,
+    53–68.                                                                         Cusack,S., Harris,H.M.B., Coakley,M., Lakshminarayanan,B.,
+43. Center for Disease Control and Prevention (2016) Foodborne germs               O’Sullivan,O. et al. (2012) Gut microbiota composition correlates
+    and illnesses. Centers Disease Control Prevent.                                with diet and health in the elderly. Nature, 488, 178–184.
+    https://www. cdc. gov/foodsafety/foodborne-germs.html, (Last               52. Hughes,L.A.E., J.,C.C., van den Brandt,P.A., van Engeland,M. and
+    accessed date August 14, 2021).                                                Weijenberg,M.P. (2017) Lifestyle, diet, and colorectal cancer risk
+44. Boutard,M., Cerisy,T., Nogue,P.-Y., Alberti,A., Weissenbach,J.,                according to (epi)genetic instability: current evidence and future
+    Salanoubat,M. and Tolonen,A.C. (2014) Functional diversity of                  directions of molecular pathological epidemiology. Curr. Colorect.
+    carbohydrate-active enzymes enabling a bacterium to ferment plant              Cancer Rep., 13, 455–469.
+    biomass. PLoS Genet., 10, e1004773.                                        53. Wroblewski,L.E., Peek,R.M. Jr and Wilson,K.T. (2010) Helicobacter
+45. Robert,C., Chassard,C., Lawson,P.A. and Bernalier-Donadille,A.                 pylori and gastric cancer: factors that modulate disease risk. Clin.
+    (2007) Bacteroides cellulosilyticus sp. nov., a cellulolytic bacterium         Microbiol. Rev., 23, 713–739.
+    from the human gut microbial community. Int. J. Syst. Evol.                54. Zitvogel,L., Daillère,R., Roberti,M.P., Routy,B. and Kroemer,G.
+    Microbiol., 57, 1516–1520.                                                     (2017) Anticancer effects of the microbiome and its products. Nat.
+46. Shkoporov,A.N., Chaplin,A.V., Shcherbakova,V.A., Suzina,N.E.,                  Rev. Microbiol., 15, 465–478.
+    Kafarskaia,L.I., Bozhenko,V.K. and Efimov,B.A. (2016)
+

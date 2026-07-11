@@ -1,0 +1,496 @@
+Received: 13 June 2023
+                         | Revised: 15 August 2023 | Accepted: 17 August 2023
+DOI: 10.1002/cam4.6483
+
+
+RESEARCH ARTICLE
+
+
+
+
+Assessment of bacterial and viral gut communities in
+healthy and tumoral colorectal tissue using RNA and DNA
+deep sequencing
+
+Ainhoa Garcia-­Serrano1 | Dhananjay Mukhedkar1,2 | Emilie Hultin1                                                                         |
+Ulla Rudsander1 | Yvonne Wettergren3 | Agustín Enrique Ure1 |
+Joakim Dillner1,4   | Laila Sara Arroyo-­Mühr1,4
+1
+ Department of Clinical Science,
+Intervention and Technology                         Abstract
+(CLINTEC), Karolinska Institutet,                   Background: Colorectal cancer (CRC) is known to present a distinct microbi-
+Stockholm, Sweden
+2
+                                                    ome profile compared to healthy mucosa. Non-­targeted deep-­sequencing strate-
+ Hopsworks AB, Stockholm, Sweden
+3
+                                                    gies enable nowadays full microbiome characterization up to species level.
+Department of Surgery, Sahlgrenska
+University Hospital, Sahlgrenska                    Aim: We aimed to analyze both bacterial and viral communities in CRC using
+Academy at University of Gothenburg,                these strategies.
+Gothenburg, Sweden
+                                                    Materials & Methods: We analyzed bacterial and viral communities using both
+4
+ Center for Cervical Cancer
+                                                    DNA and RNA deep-­sequencing (Novaseq) in colorectal tissue specimens from
+Elimination, Forskningsgatan F56
+Karolinska University Hospital                      10 CRC patients and 10 matched control patients. Following taxonomy classi-
+Huddinge, Stockholm, Sweden                         fication using Kraken 2, different metrics for alpha and beta diversities as well
+Correspondence
+                                                    as relative and differential abundance were calculated to compare tumoral and
+Joakim Dillner, Department of Clinical              healthy samples.
+Science, Intervention and Technology                Results: No viral differences were identified between tissue types, but bacterial
+(CLINTEC), Karolinska Institutet,
+Stockholm, Sweden.                                  species Polynucleobacter necessarius had a highly increased presence for DNA in
+Email: joakim.dillner@ki.se                         tumors (p = 0.001). RNA analyses showed that bacterial species Arabia massilien-
+                                                    sis had a highly decreased transcription in tumors (p = 0.002) while Fusobacterium
+Funding information
+Horizon 2020 Framework Programme,                   nucleatum transcription was highly increased in tumors (p = 0.002).
+Grant/Award Number: Human                           Discussion: Sequencing of both DNA and RNA enables a wider perspective of
+Exposome Assessment Platform
+                                                    micriobiome profiles. Lack of RNA transcription (Polynucleobacter necessarius)
+(874662); Nordic Information for
+Action eScience Center (NIASC), a                   casts doubt on possible role of a microorganism in CRC. The association of F.
+Nordic Center of Excellence in eScience             nucleatum mainly with transcription, may provide further insights on its role in
+funded by NordForsk, Grant/Award
+Number: 62721; Swedish state under
+                                                    CRC.
+the LUA-­ALF agreement, Grant/Award                 Conclusion: Joint assessment of the metagenome (DNA) and the metatranscrip-
+Number: ALFGBG-­542821                              tome (RNA) at the species level provided a huge coverage for both bacteria and
+                                                    virus and identifies differential specific bacterial species as tumor associated.
+
+                                                    KEYWORDS
+                                                    colorectal cancer, deep-­sequencing, gut microbiome
+
+
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided
+the original work is properly cited.
+© 2023 The Authors. Cancer Medicine published by John Wiley & Sons Ltd.
+
+Cancer Medicine. 2023;12:19291–19300.	﻿	                                                                              wileyonlinelibrary.com/journal/cam4     | 19291
+19292       |                                                                                                       GARCIA-­SERRANO et al.
+
+
+
+1       |    I N T RO DU CT ION                                 2      |     METHODS
+
+Human microbiome studies have grown exponentially               2.1         | Clinical study protocol
+in the last decades, documenting several key associa-
+tions to health and disease. Changes in microbiome di-          The present study includes biopsies from 10 patients who
+versity and dysbiotic states have been related to several       were diagnosed with Stages I–­III colon cancer after colo-
+diseases such as diabetes, obesity, autoimmune diseases,        noscopy examination and 10 patients that acted as con-
+and cancer.1–­5 The Hallmarks of Cancer now includes            trols where no tumor (neither malignant nor benign) was
+polymorphic microbiomes as new enabling character-              seen during colonoscopy examination. Cases and controls
+istics, highlighting its importance in both the carcino-        were matched by age and sex and description of all tumors
+genic processes as well as in prognosis or development          and 2/10 controls as well as results on their 16S rRNA
+of resistance to chemotherapy.6                                 sequencing analysis have previously been published.18
+    Colorectal cancer (CRC) is the third most common            Characteristics of age, sex, body mass index (BMI) and
+incident cancer worldwide and the second in terms of            tumor stage from these 20 patients can be seen in Table 1.
+mortality.7 CRC is one of the most studied cancers when         The study was approved by the Regional Ethical Review
+it comes to the human microbiome.8 Diet is a major CRC          Board in Gothenburg under study number 233-­10 and reg-
+risk factor and the microbiome has a direct effect on the       istered at Clini​calTr​ials.gov (ID: NCT03072641). Informed
+nutrient metabolism in the colorectal epithelium.1,3,9 The      consent was obtained from all study subjects. All research
+ecological composition of colonic mucosa can directly in-       was performed in accordance with relevant guidelines
+fluence tissue microenvironment and its functionality not       and regulations.
+only by the presence of certain microorganisms but also
+by their metabolic outputs.9 It has been widely demon-
+strated how gut microbiome shifts can lead to proinflam-        2.2         | DNA and RNA extraction
+matory states that favors tumorigenic processes.6,10 Many
+bacterial taxa such as enterotoxigenic Bacteroidetes fragilis   DNA was extracted using the AllPrep DNA/RNA/Pro-
+(ETBF) or Escherichia coli pks + have been related with         tein Kit (Qiagen), followed by polymerase chain reaction
+tissue damage and DNA mutations via the production              (PCR) inhibitor removal with the OneStep-­96 PCR Inhibi-
+and secretion of bacterial enterotoxins.11 Even so, the         tor Removal Kit (Zymo Research), and DNA concentra-
+most CRC-­associated bacterium is Fusobacterium nuclea-         tion measurement with the Qubit 2.0 Fluorometer (Life
+tum spp.12–­15 The abundance of F. nucleatum has been           Technologies). Total RNA was extracted with the AllPrep
+strongly associated not only with the presence of CRC but       DNA/RNA/Protein Kit (Qiagen) and reverse transcribed
+also with patient outcomes and even with chemotherapy           to single-­stranded cDNA using the high-­capacity cDNA
+resistance.12–­15                                               reverse transcription kit (ThermoFisher Scientific) fol-
+    Although many studies have described the human              lowing manufacturer's instructions. Double-­   stranded
+gut microbiome,16,17 microbiome assessment techniques           cDNA was prepared following step 2 of the Maxima H
+vary greatly both in the laboratory phase and in the bio-       Minus Double-­Stranded cDNA Kit (ThermoFisher Scien-
+informatic analysis phase. As next generation sequencing        tific) and the cDNA was cleaned using the GeneJET PCR
+(NGS) technologies are nowadays widely available at low
+costs, the power of this technology should be used to in-       TABLE 1           Clinical information for patients included in the
+crease the resolution of the microbiome profile in CRC. In      study.
+previous work with part of the samples used in the pres-
+ent study, we investigated the differences between healthy                                                             Non-­CRC
+                                                                    Group                  CRC patients                subjects
+mucosa and tumor tissue from CRC patients as well as
+the differences between those CRC patients and healthy              Sample size            n = 10                      n = 10
+subjects using 16S rRNA sequencing.18 These analysis fo-            Sex                    7 Females                   7 Females
+cused only on bacterial communities and were restricted                                    3 Males                     3 Males
+most of the times to a genus level classification due to the        Age
+technical limitations of only sequencing the 16S rRNA                 Mean(SD)             71.5 (9.78)                 70.8 (9.77)
+gene.19 In the present study, these issues were addressed
+                                                                    BMI
+by studying both bacterial and viral communities at the
+                                                                      Mean(SD)             24.96 (3.28)                NA
+species level in colorectal human samples using both
+                                                                    Stage                  I (1), II (4), III (5)      -­
+metagenomics and metatranscriptomics (both DNA and
+RNA deep-­sequencing).                                          Abbreviations: CRC, colorectal cancers; SD, standard deviation.
+GARCIA-­SERRANO et al.                                                                                                 | 19293
+
+Purification Kit (ThermoFisher Scientific). Thereafter,        objects. Results reported all species which comprised
+cDNA was subjected to PCR inhibitor removal with an            more than 0.1% (in at least one sample) of total bacterial or
+OneStep-­96 PCR Inhibitor Removal Kit (Zymo Research)          viral reads, separately. Bacterial and viral species relative
+and cDNA concentration measurement with a Qubit 2.0            abundance comparison using group F-­tests were carried
+Fluorometer (Life Technologies). Both DNA and cDNA             out for healthy mucosa and tumors in both DNA and RNA
+were stored at −20°C until further analysis.                   datasets (Tables S1–­S4). Relative abundance plots for top
+                                                               10 species were plotted for tumor and healthy mucosa in
+                                                               both DNA and RNA datasets. Observed species, Shannon
+2.3 | Whole genome and whole                                   and inverse Simpson alpha diversity indexes were cal-
+transcriptome sequencing                                       culated after rarefaction (between 68,535 and 5,034,325
+                                                               reads, depending on the subset analyzed) to standardize
+Extracted material (DNA and cDNA) was thereafter sub-          species representation regardless of sample depth. Differ-
+jected to library preparation, using the Nextera XT DNA        ences between groups for alpha diversity were calculated
+library preparation kit (Illumina) following the manufac-      using unpaired Wilcoxon tests. Bray–­Curtis and Jaccard
+turers' reference guide, starting with 1 ng of DNA/cDNA        beta diversity indexes were calculated to analyze differ-
+(as recommended by the manufacturer) and using unique          ences between bacterial and viral communities, visualized
+indexed adapters to facilitate pooling of the libraries.       using principal component analysis (PCoA) and ANOSIM
+Libraries were individually quantified using the Quan-         tests were used to stablish if differences between groups
+tiFluor system (Promega) and the library sizes were meas-      were greater than differences within groups. Finally, dif-
+ured using the Bioanalyzer (Agilent) as quality analysis.      ferential abundance (DA) analysis comparing tumor and
+All 20 libraries were normalized to 2 nM and pooled prior      healthy tissue was performed for DNA and RNA sepa-
+paired-­end sequencing using NovaSeq 6000 system (Illu-        rately. In this last step, species counts were transformed
+mina) at 2 × 150 bp aiming for 100 M high-­quality paired      using cumulative sum scaling (CSS), log2 transformation,
+end reads/sample.                                              as well as a pseudocount addition to handle data sparsity.
+                                                               P-­values obtained from DA analysis were corrected using
+                                                               False Discovery Rate (FDR). Statistical significance was
+2.4    | Bioinformatic preprocessing                           obtained when p < 0.01.
+
+Indexes, included in the Illumina adapters, were used to
+assign raw sequence reads obtained from the NextSeq500         3     |    RESULTS
+(Illumina) platform to the originating samples. Reads
+were quality checked and adapter trimmed with Trimmo-          3.1       | Sequencing coverage
+matic using 36 bp as minimal length for the reads.20 High-­
+quality reads were screened against the human reference        Raw input fastq files including both human and non-­human
+genome hg19 using NextGenMap21 and only reads that             reads had an average size of 18.24GB per sample (minimum
+did not map to the human genome, with >95% identity            12.5GB and maximum 21.2GB) for DNA and an average size
+over 75% of their length, were considered as non-­human        of 10.54GB per sample (minimum 1.3GB and maximum
+and further analyzed for microbiome. Once human reads          19.4GB) for RNA. Human reads constituted 83.73% (mini-
+were filtered from the data set, high-­quality non-­human      mum 42% and maximum 88.38%) of the reads per sample
+reads were classified using Kraken2 v. 2.1.1,22 which was      on average for DNA and 46.25% of the reads per sample on
+run against a reference database containing all RefSeq         average (29.76% minimum and 62.55% maximum) for RNA.
+bacterial and viral genomes (built in December 2020) with      After removing human reads, an average depth of 17,691,220
+a 0.1 confidence threshold.                                    reads per sample were remaining (minimum 8,035,413 and
+                                                               maximum 23,419,122) for DNA and an average coverage
+                                                               of 47,073,844 reads per sample (1,228,129 minimum and
+2.5    | Diversity analysis and statistics                     121,381,065 maximum) for RNA.
+
+All diversity analyses were performed at the species level
+using R (v.4.2.2). Packages used in this analysis were biom-   3.2       | Taxonomic classification
+format,23 phyloseq,24 ggvenn,25 tidyr,26 ggpubr,27 vegan,28
+vtable,29 metagenomeSeq,30 funrar,31 and superheat.32          Bacterial taxonomic resolution at the species level was at
+The biom files generated with kraken-­biom33 were used,        89.94% for DNA sequencing reads and 88.36% for RNA se-
+together with sample metadata, to construct phyloseq           quencing reads. We identified up to 5918 species corresponding
+19294   |                                                                                                          GARCIA-­SERRANO et al.
+
+
+
+to 6580 taxa when performing metagenomics and 5915 spe-                3.3 | Tumor versus healthy mucosa
+cies within 6694 taxa when analyzing metatranscriptomics.              (DNA)
+For viral species, taxonomic resolution was slightly higher,
+reaching 90.23% for DNA sequencing reads and 89.68% for                3.3.1     | Bacteria
+RNA sequencing reads (628 species were identified from 696
+taxa when performing metagenomics and 391 species from                 Comparing the bacterial species between colorectal
+436 taxa when performing metatranscriptomics).                         tumor specimens and healthy mucosa by analyzing the
+    Filtering by a minimum of 0.1% of relative abundance               relative abundance revealed statistically significant dif-
+in at least one sample translated into detection of 55 and 64          ferences (p < 0.01) for 12 bacterial species (Table S1).
+bacterial species for DNA and RNA sequencing analysis,                 Among those, Polynucleobacter necessarius (reported
+respectively. The top 10 bacterial species per group are pre-          not only to be found mainly in water ponds, but also to
+sented in Figures 1A (DNA) and 3A (RNA), and the rela-                 be significantly enriched in patients with septic shock
+tive abundances of the complete list of filtered species are           and as an important antibiotic-­resistant gene host34–­36),
+available in Tables S1 (DNA) and S3 (RNA). Ten viral species           was the species with highest F-­     value, being more
+were detected by metagenomics and six viral species were               abundant in tumors (Figure 1A, Table S1; F = 24.652,
+identified using metatranscriptomics, after filtering. Viral           p < 0.01).
+species relative abundances are presented in Figures 2A                   Alpha diversity indexes, which informed about di-
+(DNA), 4A (RNA) and in Tables S2 (DNA) and S4 (RNA).                   versity within samples, did not show any statistical
+
+
+
+
+F I G U R E 1 DNA Bacterial diversity of filtered reads. (A) Relative abundance grouped for top 10 bacterial species per group. (B)
+Observed, Shannon and Inverse Simpson alpha diversity indexes rarefacted at 5M reads. (C) Jaccard beta diversity PCoA. (D) Bray–­Curtis
+beta diversity PCoA.
+GARCIA-­SERRANO et al.                                                                                                               | 19295
+
+
+
+
+F I G U R E 2 DNA Viral diversity of filtered reads. (A) Relative abundance grouped for top 10 virus species per group. (B) Observed,
+Shannon and Inverse Simpson alpha diversity indexes rarefacted at 68K. (C) Jaccard beta diversity PCoA. (D) Bray–­Curtis beta diversity
+PCoA.
+
+
+differences between groups (Figure 1B). Beta indexes,                   T A B L E 2 Differentially (p < 0.01) abundant bacteria (healthy
+which informed about differences in bacterial communi-                  mucosa vs tumor) in DNA and RNA datasets.
+ties diversity among tumors and healthy tissue, were as-
+                                                                                                                  Log2 fold       adj
+sessed with two different indexes (Figure 1C,D), Jaccard                  Group         Species                   change          p-­value
+and Bray–­Curtis indexes, which showed a clear clustering
+                                                                          DNA           Polynucleobacter            6.5           0.001
+but not reaching statistically significance. DA analysis
+                                                                                           necessarius
+revealed only one bacterial species being more abundant
+                                                                          RNA           Arabia massiliensis       −12.68          0.0001
+in tumors when comparing with healthy tissue: Polynu-
+cleobacter necessarius (Table 2; log2 fold change of 6.5 and                            Fusobacterium               5.31          0.002
+                                                                                           nucleatum
+adjusted p = 0.001).
+
+
+3.3.2    | Virus                                                        3.4 | Tumor versus healthy mucosa
+                                                                        (RNA)
+Up to 10 viral species were identified when performing
+metagenomic analysis (Table S2). However, there was no                  3.4.1     | Bacteria
+statistically significance found when analyzing relative
+abundance of species, alpha diversity, beta diversity, or               Comparison of colorectal tumor and healthy mu-
+DA analysis (Figure 2).                                                 cosa tissue revealed a decreased relative abundance of
+19296   |                                                                                                          GARCIA-­SERRANO et al.
+
+
+
+
+F I G U R E 3 RNA Bacterial diversity of filtered reads. (A) Relative abundance grouped for top 10 bacterial species per group. (B)
+Observed, Shannon and Inverse Simpson alpha diversity indexes rarefacted at 771K reads. (C) Jaccard beta diversity PCoA. (D) Bray–­Curtis
+beta diversity PCoA.
+
+
+Arabia massiliensis (F = 26.021, p < 0.01) in tumors (Fig-             However, there was no statistically significance found
+ure 3A, Table S3). Alpha diversity indexes, which informed             when analyzing species relative abundance, alpha diver-
+about diversity within samples, did not show any statistical           sity, beta diversity nor DA analysis (Figure 4).
+differences between groups (Figure 3B). Bacterial commu-
+nities showed a clear clustering when evaluating Jaccard
+(p = 0.001) and Bray–­Curtis (p = 0.001) beta diversity indexes        4    |   DISC USSION
+(Figure 3C,D). DA analysis reported two bacterial species:
+Arabia massiliensis being more abundant in healthy tissue              We report an unbiased and deep sequencing of the
+(log2 fold change of −12.68 and adjusted p = 0.0001) and               metagenome and metatranscriptome in CRC cases with
+Fusobacterium nucleatum (log2 fold change of 5.31 and ad-              non-­ CRC controls, identifying three specific bacterial
+justed p = 0.002) being more abundant in tumors (Table 2).             species associated with the disease. P. necessarius and
+                                                                       F. nucleatum were highly increased in tumor specimens
+                                                                       when analyzing metagenomics and metatranscriptom-
+3.4.2     | Virus                                                      ics, respectively. Furthermore, A. massiliensis was highly
+                                                                       decreased in tumor tissue when analyzing RNA data. P.
+Up to six viral species were detected when analyzing me-               necessarius did not reach the established cut-­off when
+tatranscriptomes for both tumors and mucosa (Table S4).                analyzing RNA sequencing data (present in <0.1% of total
+GARCIA-­SERRANO et al.                                                                                                             | 19297
+
+
+
+
+F I G U R E 4 RNA Viral diversity of filtered reads. (A) Relative abundance grouped for top virus species per group. (B) Observed, Shannon
+and Inverse Simpson alpha diversity indexes rarefacted at 416K. (C) Jaccard beta diversity PCoA. (D) Bray–­Curtis beta diversity PCoA.
+
+
+bacterial transcripts in at least one sample). This species            DNA sequences, but most of these viruses were not ac-
+has been mostly identified in freshwater habitats,34 but               tively transcribed (apparently representing deposition).37
+there are studies where the corresponding genus has been                   Both A. massiliensis (recently identified in stool mate-
+reported to be significantly enriched in patients with sep-            rial)38 and F. nucleatum (the by far most CRC-­associated
+tic shock and as one important antibiotic resistance gene              bacterium in previous studies) were highly detected
+host.35,36 When encountering environmental microorgan-                 among the RNA sequences of the mucosa and the tumors,
+isms, it is important to identify if those really come from            respectively. Compared to DNA analysis, A. massiliensis
+the tumor/specimen, or if those correspond to deposition,              did not surpass the established cut-­off, and F. nucleatum
+and therefore, we highlight the importance of using nega-              did reach it, but its relative abundance presence was low
+tive controls to be able to search for microorganisms that             and not different between tumor and healthy mucosa
+may represent deposition/contamination. Also, both DNA                 specimens. The absence or low prevalence of these spe-
+and RNA analyses were performed within the exact same                  cies may be explained by the higher abundance of other
+samples, and a systematic identification was not detected.             species.
+Furthermore, observing a lack of RNA transcription casts                   Regarding viruses, there were no viral species de-
+doubt on possible role of this microorganism in colorec-               tected as statistically significant in any of the groups
+tal tumors. Previous studies on skin have detected several             (tumors vs mucosa) despite the depth of sequenc-
+hundreds of human papillomavirus types when analyzing                  ing achieved. A recent study on CRC studied the
+19298   |                                                                                                GARCIA-­SERRANO et al.
+
+
+
+relevance of the interplay between viruses and bacte-                This study demonstrated how deep sequencing of both
+ria, highlighting the importance of the co-­occurrence           DNA and RNA enables a wider perspective of microbiome
+of bacteriophages and their influence on the bacterial           profiles: individual microbial features can vary depending
+communities.39 The present study identified four differ-         on whether the metagenome or metatranscriptome is an-
+ent phages: all of them were identified while perform-           alyzed. Our combination of both DNA and RNA deep se-
+ing metagenomics (Acionnavirus Synechococcus phage               quencing in the same samples revealed that tumors had
+S-­CAM8 [closely related to Synechococcus phage s rim8,          more diversity in terms of microorganism presence while
+known to be enriched in late CRC stages40], Eganvirus            healthy tissues were more diverse when considering mi-
+Salmonella phage SW9, Aeribacillus phage AP45, and               croorganisms with active transcription, in agreement with
+uncultured crAssphage) and only one of them was de-              previous literature.46
+tected when analyzing metatrascriptomics (Aeribacillus               While F. nucleatum is already known to be a potential
+phage AP45). While 3/4 phages detected in metagenom-             CRC biomarker for screening, diagnosis, and progno-
+ics showed an increased relative abundance in CRC, as            sis prediction for patient outcomes,12–­15 the fact that we
+reported by other authors,41,42 the present study did not        found a stronger association with transcription of F. nu-
+find any statistical significance.                               cleatum (than merely the presence of the organism) may
+    The strengths of the study include that we compared          provide further insights on the role of this microorgan-
+different analysis (relative abundance, alpha and beta di-       ism in CRC. Additionally, the great depth achieved with
+versities as well as DA) for both DNA and RNA sequenc-           those sequencing methods provides a significant tool for
+ing data, aiming to detect bacteria and viruses up to the        the study of specific genes or transcripts of interest in
+species level. Prior to analysis, bacterial and viral species    microbiome-­host interactions.
+were filtered (0.1% of total bacterial/viral reads the pres-         The role of the recently identified A. massiliensis38 and
+ence in at least one sample) to reduce complexity, noise         P. necessarius needs to be further investigated to elucidate
+and technical variability while preserving data integrity        their implication in human health. The present study
+and representing main communities.43 Choosing the ap-            comprised strict cut-­offs to focus the analysis only on
+propriate cutoff for filtering is a key step in microbiome       abundant species (species present only in small amounts
+analysis since it can strongly influence the downstream          may conceivably represent contamination and were there-
+results and result in false positivity/negativity.43 We also     fore not studied); however, validation of these “putative”
+included multiple metrics for each analysis. Up to three         findings would be desirable and findings may need to be
+different indexes were used to analyze the alpha diversity,      considered carefully.
+offering a wide perspective of within sample diversity, in-
+creasing sensitivity for both richness and evenness.44 Beta
+diversity analyses included non-­phylogenetic indexes ac-        5   |   CONC LUSION
+counting for both qualitative (Jaccard) and quantitative
+(Bray–­Curtis) indexes to avoid bias of undersampling            Combining deep sequencing of both metagenome and
+meanwhile maintaining sensitivity to rare species45 and          metatranscriptome allowed a refined microbiome profile
+DA analysis to provide more reliable results for specific        of CRC. Diversity differences were stable between DNA
+species enrichment (more than just comparing relative            and RNA approaches, but the specific tumor-­associated
+abundances) since this normalized and transformed taxa           bacteria had some difference depending on whether the
+can account for data sparsity.30                                 metagenome or metatranscriptome was analyzed.
+    The limitations of the study may include the size of
+samples analyzed. The total number of different specimens        AUTHOR CONTRIBUTIONS
+was 20 (10 colorectal tumors and 10 healthy mucosa speci-        Ainhoa Garcia-­Serrano: Data curation (equal); for-
+mens). However, each specimen was sequenced using both           mal analysis (equal); investigation (equal); methodol-
+DNA and RNA unbiased approaches, and each library gen-           ogy (equal); software (equal); writing –­original draft
+erated (total of 40 libraries) provided a very large amount of   (lead); writing –­review and editing (equal). Dhanan-
+data (with an average of 18 M and 47 M high-­quality non-­       jay Mukhedkar: Formal analysis (equal); methodology
+human sequencing reads in DNA and RNA, respectively)             (equal); software (equal); validation (equal); writing –­
+detecting >6000 species. Adding data from different studies      review and editing (equal). Emilie Hultin: Investiga-
+present in public repositories to increase sample size was       tion (equal); methodology (lead); writing –­review and
+avoided to not introduce biases in selection of patients or      editing (equal). Ulla Rudsander: Conceptualization
+differences in the exact analysis methods used. The present      (equal); project administration (equal); resources (equal);
+study was based on a very careful matching of cases and          writing –­review and editing (equal). Yvonne Wettergren:
+controls as the most reliable strategy.                          Conceptualization (equal); funding acquisition (equal);
+GARCIA-­SERRANO et al.                                                                                                         | 19299
+
+resources (lead); supervision (supporting); writing –­review     Joakim Dillner https://orcid.org/0000-0001-8588-6506
+and editing (equal). Agustín Enrique Ure: Formal analy-          Laila Sara Arroyo-­Mühr https://orcid.
+sis (supporting); software (supporting); writing –­review        org/0000-0003-2498-5206
+and editing (equal). Joakim Dillner: Conceptualization
+(lead); funding acquisition (equal); project administra-         REFERENCES
+tion (lead); resources (equal); supervision (lead); writing –­    1. Valdes AM, Walter J, Segal E, Spector TD. Role of the gut
+review and editing (equal). Laila Sara Arroyo-­      Mühr:           microbiota in nutrition and health. BMJ. 2018;361:k2179.
+Data curation (supporting); formal analysis (lead); inves-           doi:10.1136/bmj.k2179
+                                                                  2. Gomes AC, Hoffmann C, Mota JF. The human gut micro-
+tigation (equal); methodology (equal); software (support-
+                                                                     biota: metabolism and perspective in obesity. Gut Microbes.
+ing); supervision (lead); validation (equal); visualization
+                                                                     2018;9(4):308-­325. doi:10.1080/19490976.2018.1465157
+(equal); writing –­original draft (supporting); writing –­        3. Dabke K, Hendrick G, Devkota S. The gut microbiome and
+review and editing (equal).                                          metabolic syndrome. J Clin Investig. 2019;129(10):4050-­4057.
+                                                                     doi:10.1172/JCI129194
+ACKNOWLEDGMENTS                                                   4. Miyauchi E, Shimokawa C, Steimle A, Desai MS, Ohno H.
+The authors acknowledge support from the National                    The impact of the gut microbiome on extra-­intestinal autoim-
+Genomics Infrastructure funded by Science for Life Labo-             mune diseases. Nat Rev Immunol. 2023;23(1):9-­23. doi:10.1038/
+                                                                     s41577-­022-­00727-­y
+ratory, the Knut and Alice Wallenberg Foundation and
+                                                                  5. Knippel RJ, Drewes JL, Sears CL. The cancer microbi-
+the Swedish Research Council, and SNIC/Uppsala Multi-
+                                                                     ome: recent highlights and knowledge gaps. Cancer Discov.
+disciplinary Center for Advanced Computational Science               2021;11(10):2378-­2395. doi:10.1158/2159-­8290.cd-­21-­0324
+for assistance with massively parallel sequencing and ac-         6. Hanahan D. Hallmarks of cancer: new dimensions. Cancer
+cess to the UPPMAX computational infrastructure.                     Discov. 2022;12(1):31-­46. doi:10.1158/2159-­8290.CD-­21-­1059
+   The authors thank Associate Professor Peter Rolny at           7. Sung H, Ferlay J, Siegel RL, et al. Global cancer statistics
+the Department of Medicine, Division of Gastroenterol-               2020: GLOBOCAN estimates of incidence and mortality
+ogy, Sahlgrenska University Hospital/Östra, Gothenburg,              worldwide for 36 cancers in 185 countries. CA Cancer J Clin.
+                                                                     2021;71(3):209-­249. doi:10.3322/caac.21660
+Sweden for being responsible for the inclusion of patients
+                                                                  8. Lloyd-­Price J, Abu-­  Ali G, Huttenhower C. The healthy
+and sampling of biopsies.                                            human microbiome. Genome Med. 2016;8(1):51. doi:10.1186/
+                                                                     s13073-­016-­0307-­y
+FUNDING INFORMATION                                               9. Han S, Zhuang J, Wu Y, Wu W, Yang X. Progress in research
+This Project was funded by the Nordic Information for                on colorectal cancer-­related microorganisms and metabolites.
+Action eScience Center (NIASC), a Nordic Center of Ex-               Cancer Manag Res. 2020;12:8703-­8720. doi:10.2147/CMAR.
+cellence in eScience funded by NordForsk (Project no.                S268943
+                                                                 10. Hale VL, Chen J, Johnson S, et al. Shifts in the fecal microbi-
+62721), the Swedish state under the LUA-­ALF agreement
+                                                                     ota associated with adenomatous polyps. Cancer Epidemiol
+(grant number ALFGBG-­     542821) and by the Human
+                                                                     Biomarkers Prev. 2017;26(1):85-­94. doi:10.1158/1055-­9965.
+Exposome Assessment Platform (Project No. 874662)                    EPI-­16-­0337
+granted by Horizon 2020.                                         11. Tjalsma H, Boleij A, Marchesi JR, Dutilh BE. A bacterial driver-­
+                                                                     passenger model for colorectal cancer: beyond the usual sus-
+CONFLICT OF INTEREST STATEMENT                                       pects. Nat Rev Microbiol. 2012;10(8):575-­582. doi:10.1038/
+The authors declare no competing interests.                          nrmicro2819
+                                                                 12. Gethings-­ Behncke C, Coleman HG, Jordao HW, et al.
+                                                                     Fusobacterium nucleatum in the colorectum, and its associa-
+DATA AVAILABILITY STATEMENT
+                                                                     tion with cancer risk and survival: a systematic review and meta-­
+Sequencing files for all the aligned, non-­human sequences
+                                                                     analysis. Cancer Epidemiol Biomarkers Prev. 2020;29(3):539-­548.
+in both metagenomic and metatranscriptomic data used                 doi:10.1158/1055-­9965.EPI-­18-­1295
+in this study are available at the Sequence Read Archive         13. Amitay EL, Werner S, Vital M, et al. Fusobacterium and col-
+(SRA) within the bio-­project ID PRJNA943491(https://                orectal cancer: causal factor or passenger? Results from
+www.ncbi.nlm.nih.gov/biopr​oject/​943491).                           a large colorectal cancer screening study. Carcinogenesis.
+                                                                     2017;38(8):781-­788. doi:10.1093/carcin/bgx053
+ETHICS STATE MENT                                                14. Yu TC, Guo F, Yu Y, et al. Fusobacterium nucleatum pro-
+                                                                     motes chemoresistance to colorectal cancer by modulating
+The study was approved by the Regional Ethical Review
+                                                                     autophagy. Cell. 2017;170(3):548-­563.e16. doi:10.1016/j.
+Board in Gothenburg under study number 233-­10. In-                  cell.2017.07.008
+formed consent was obtained from all study subjects.             15. Zhang S, Yang Y, Weng W, et al. Fusobacterium nucleatum
+                                                                     promotes chemoresistance to 5-­fluorouracil by upregulation of
+ORCID                                                                BIRC3 expression in colorectal cancer. J Exp Clin Cancer Res.
+Emilie Hultin     https://orcid.org/0000-0003-2169-0840              2019;38(1):14. doi:10.1186/s13046-­018-­0985-­y
+19300   |                                                                                                             GARCIA-­SERRANO et al.
+
+
+16. Integrative HMP (iHMP) Research Network Consortium.                 36. Bai Y, Ruan X, Xie X, Yan Z. Antibiotic resistome profile based
+    The integrative human microbiome project. Nature.                       on metagenomics in raw surface drinking water source and the
+    2019;569(7758):641-­648. doi:10.1038/s41586-­019-­1238-­8               influence of environmental factor: a case study in Huaihe River
+17. Ehrlich SD, The MetaHIT Consortium. MetaHIT: the European               basin, China. Environ Pollut. 2019;248:438-­447. doi:10.1016/j.
+    Union project on metagenomics of the human intestinal tract.            envpol.2019.02.057
+    Metagenomics of the Human Body. Springer; 2011:307-­         316.   37. Hultin E, Arroyo Mühr LS, Lagheden C, Dillner J. HPV tran-
+    doi:10.1007/978-­1-­4419-­7089-­3_15                                    scription in skin tumors. PLoS One. 2019;14(5):e0217942.
+18. Hibberd AA, Lyra A, Ouwehand AC, et al. Intestinal microbiota           doi:10.1371/journal.pone.0217942
+    is altered in patients with colon cancer and modified by probi-     38. Traore SI, Azhar EI, Yasir M, et al. Description of ‘Arabia mas-
+    otic intervention. BMJ Open Gastroenterol. 2017;4(1):e000145.           siliensis’ gen. nov., sp. nov., ‘Gordonibacter massiliensis’ sp.
+    doi:10.1136/bmjgast-­2017-­000145                                       nov., and ‘Bacilliculturomica massiliensis’ gen. Nov., sp. nov.,
+19. Brumfield KD, Huq A, Colwell RR, Olds JL, Leddy MB.                     isolated from a faecal specimen of a 50-­year-­old Saudi Bedouin
+    Microbial resolution of whole genome shotgun and 16S ampl-              woman. New Microbes New Infect. 2017;19:87-­90. doi:10.1016/j.
+    icon metagenomic sequencing using publicly available NEON               nmni.2017.05.011
+    data. PloS One. 2020;15(2):e0228899. doi:10.1371/journal.           39. Li M, Wang C, Guo Q, et al. More positive or more negative?
+    pone.0228899                                                            Metagenomic analysis reveals roles of virome in human
+20. Bolger AM, Lohse M, Usadel B. Trimmomatic: a flexible trimmer           disease-­related gut microbiome. Front Cell Infect Microbiol.
+    for illumina sequence data. Bioinformatics. 2014;30(15):2114-­          2022;12:846063. doi:10.3389/fcimb.2022.846063
+    2120. doi:10.1093/bioinformatics/btu170                             40. Nakatsu G, Zhou H, Wu WKK, et al. Alterations in enteric
+21. Sedlazeck FJ, Rescheneder P, von Haeseler A. NextGenMap:                Virome are associated with colorectal cancer and survival out-
+    fast and accurate read mapping in highly polymorphic ge-                comes. Gastroenterology. 2018;155(2):529-­541.e5. doi:10.1053/j.
+    nomes. Bioinformatics. 2013;29(21):2790-­2791. doi:10.1093/             gastro.2018.04.018
+    bioinformatics/btt468                                               41. Shen S, Huo D, Ma C, Jiang S, Zhang J. Expanding the
+22. Wood DE, Lu J, Langmead B. Improved metagenomic analy-                  colorectal cancer biomarkers based on the human gut
+    sis with kraken 2. Genome Biol. 2019;20(1):257. doi:10.1186/            Phageome. Microbiol Spectr. 2021;9(3):e0009021. doi:10.1128/
+    s13059-­019-­1891-­0                                                    Spectrum.00090-­21
+23. McMurdie PJ, Paulson JN. biomformat: an interface package           42. Zuo W, Michail S, Sun F. Metagenomic analyses of multiple
+    for the BIOM file format. 2022.                                         gut datasets revealed the association of phage signatures in
+24. McMurdie PJ, Holmes S. phyloseq: an R package for reproduc-             colorectal cancer. Front Cell Infect Microbiol. 2022;12:918010.
+    ible interactive analysis and graphics of microbiome census data.       doi:10.3389/fcimb.2022.918010
+    PLoS One. 2013;8(4):e61217. doi:10.1371/journal.pone.0061217        43. Cao Q, Sun X, Rajesh K, et al. Effects of rare microbiome taxa
+25. Yan L. ggvenn: Draw Venn Diagram by “ggplot2”. 2021.                    filtering on statistical analysis. Front Microbiol. 2021;11:607325.
+26. Wickham H, Vaughan DGM. tidyr: Tidy Messy Data. 2023.                   doi:10.3389/fmicb.2020.607325
+27. Kassambara A. ggpubr: “ggplot2” Based Publication Ready             44. DeJong TM. A comparison of three diversity indices based on
+    Plots. 2022 https://cran.r-­proje​ct.org/web/packa​ges/ggpub​r/         their components of richness and evenness. Oikos. 1975;26:222.
+    index.html                                                              doi:10.2307/3543712
+28. Oksanen J, Blanchet FG, Michael Friendly RK, et al. vegan:          45. Beck J, Holloway JD, Schwanghart W. Undersampling and the
+    Community Ecology Package. 2020.                                        measurement of beta diversity. Methods Ecol Evol. 2013;4:370-­
+29. Huntington-­  Klein N. vtable: Variable Table for Variable              382. doi:10.1111/2041-­210x.12023
+    Documentation. 2022.                                                46. Yao Q, Tang M, Zeng L, et al. Potential of fecal microbiota
+30. Paulson JN, Stine OC, Bravo HC, Pop M. Differential abun-               for detection and postoperative surveillance of colorec-
+    dance analysis for microbial marker-­gene surveys. Nat Methods.         tal cancer. BMC Microbiol. 2021;21(1):156. doi:10.1186/
+    2013;10(12):1200-­1202. doi:10.1038/nmeth.2658                          s12866-­021-­02182-­6
+31. Grenié M, Denelle P, Tucker CM, Munoz F, Violle C. funrar:
+    an R package to characterize functional rarity. Divers Distrib.
+    2017;23(12):1365-­1371. doi:10.1111/ddi.12629                       SUPPORTING INFORMATION
+32. Barter RL, Yu B. Superheat: an R package for creating beau-         Additional supporting information can be found online
+    tiful and extendable heatmaps for visualizing complex data. J       in the Supporting Information section at the end of this
+    Comput Graph Stat. 2018;27(4):910-­922. doi:10.1080/10618600.       article.
+    2018.1473780
+33. Dabdoub SM. kraken-­      biom: Enabling interoperative format
+    conversion for Kraken results. 2016.
+34. Hahn MW. Isolation of strains belonging to the cosmopolitan            How to cite this article: Garcia-­Serrano A,
+    polynucleobacter necessarius cluster from freshwater habi-             Mukhedkar D, Hultin E, et al. Assessment of
+    tats located in three climatic zones. Appl Environ Microbiol.          bacterial and viral gut communities in healthy and
+    2003;69(9):5248-­5254. doi:10.1128/AEM.69.9.5248-­5254.2003
+                                                                           tumoral colorectal tissue using RNA and DNA
+35. Wang C, Li Q, Tang C, et al. Characterization of the blood and
+    neutrophil-­specific microbiomes and exploration of potential
+                                                                           deep sequencing. Cancer Med. 2023;12:19291-
+    bacterial biomarkers for sepsis in surgical patients. Immun            19300. doi:10.1002/cam4.6483
+    Inflamm Dis. 2021;9(4):1343-­1357. doi:10.1002/iid3.483
+

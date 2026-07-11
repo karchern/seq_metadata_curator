@@ -1,0 +1,1002 @@
+                                                                                                                      TYPE Original Research
+                                                                                                                      PUBLISHED 11 January 2024
+                                                                                                                      DOI 10.3389/fmicb.2023.1292490
+
+
+
+
+                                                Identification of taxonomic
+OPEN ACCESS                                     changes in the fecal bacteriome
+                                                associated with colorectal polyps
+EDITED BY
+Ricardo Araujo,
+Universidade do Porto, Portugal
+
+REVIEWED BY
+Oscar Medina-Contreras,
+                                                and cancer: potential biomarkers
+Mexico Children’s Hospital, Mexico
+Babak Pakbin,
+Technical University of Munich, Germany
+                                                for early diagnosis
+Gongchao Jing,
+Qingdao Institute of Bioenergy and              Beatriz Alessandra Rudi Grion 1, Paula Luize Camargos Fonseca 2,
+Bioprocess Technology (CAS), China
+                                                Rodrigo Bentes Kato 3, Glen Jasper Yupanqui García 4,
+*CORRESPONDENCE
+Aristóteles Góes-Neto                           Aline Bruna Martins Vaz 5,6, Beatriz Nafría Jiménez 7,
+  arigoesneto@gmail.com
+                                                Ainhoa Lapitz Dambolenea 7, Koldo Garcia-Etxebarria 7,
+RECEIVED 11 September 2023
+ACCEPTED 26 December 2023                       Bertram Brenig 8, Vasco Azevedo 9, Luis Bujanda 7,
+PUBLISHED 11 January 2024
+                                                Jesus M. Banales 7,10,11 and Aristóteles Góes-Neto 1,4*
+CITATION
+Grion BAR, Fonseca PLC, Kato RB, García GJY,
+                                                1
+                                                 Laboratory of Molecular and Computational Biology of Fungi, Institute of Biological Sciences,
+Vaz ABM, Jiménez BN, Dambolenea AL,             Department of Microbiology, Federal University of Minas Gerais, Belo Horizonte, Brazil, 2 Integrative
+Garcia-Etxebarria K, Brenig B, Azevedo V,       Biology Laboratory, Institute of Biological Sciences, Department of Genetics, Ecology, and Evolution,
+Bujanda L, Banales JM and                       Federal University of Minas Gerais, Belo Horizonte, Brazil, 3 Public Health Laboratories, Ministry of
+Góes-Neto A (2024) Identification of            Health, Brasília, Brazil, 4 Graduate Program in Bioinformatics, Federal University of Minas Gerais, Belo
+taxonomic changes in the fecal bacteriome       Horizonte, Brazil, 5 Oswaldo Cruz Foundation (Fiocruz-MG), Minas Gerais, Brazil, 6 Medical School,
+associated with colorectal polyps and cancer:   Universidade José do Rosário Vellano (UNIFENAS), Belo Horizonte, Brazil, 7 Department of Liver and
+potential biomarkers for early diagnosis.       Gastrointestinal Diseases, Biodonostia Health Research Institute – Donostia University Hospital,
+Front. Microbiol. 14:1292490.                   Ikerbasque, San Sebastian, Spain, 8 Institute of Veterinary Medicine, Burckhardtweg, University of
+doi: 10.3389/fmicb.2023.1292490                 Göttingen, Göttingen, Germany, 9 Laboratory of Cellular and Molecular Genetics, Federal University of
+                                                Minas Gerais, Belo Horizonte, Brazil, 10 CIBERehd, Madrid, Spain, 11 Department of Biochemistry and
+COPYRIGHT                                       Genetics, University of Navarra, Pamplona, Spain
+© 2024 Grion, Fonseca, Kato, García, Vaz,
+Jiménez, Dambolenea, Garcia-Etxebarria,
+Brenig, Azevedo, Bujanda, Banales and Góes-
+                                                Colorectal cancer (CRC) commonly arises in individuals with premalignant
+Neto. This is an open-access article
+distributed under the terms of the Creative     colon lesions known as polyps, with both conditions being influenced by
+Commons Attribution License (CC BY). The        gut microbiota. Host-related factors and inherent characteristics of polyps
+use, distribution or reproduction in other
+                                                and tumors may contribute to microbiome variability, potentially acting as
+forums is permitted, provided the original
+author(s) and the copyright owner(s) are        confounding factors in the discovery of taxonomic biomarkers for both
+credited and that the original publication in   conditions. In this study we employed shotgun metagenomics to analyze the
+this journal is cited, in accordance with
+                                                taxonomic diversity of bacteria present in fecal samples of 90 clinical subjects
+accepted academic practice. No use,
+distribution or reproduction is permitted       (comprising 30 CRC patients, 30 with polyps and 30 controls). Our findings
+which does not comply with these terms.         revealed a decrease in taxonomic richness among individuals with polyps
+                                                and CRC, with significant dissimilarities observed among the study groups.
+                                                We identified significant alterations in the abundance of specific taxa associated
+                                                with polyps (Streptococcaceae, Lachnoclostridium, and Ralstonia) and CRC
+                                                (Lactobacillales, Clostridiaceae, Desulfovibrio, SFB, Ruminococcus, and
+                                                Faecalibacterium). Clostridiaceae exhibited significantly lower abundance in the
+                                                early stages of CRC. Additionally, our study revealed a positive co-occurrence
+                                                among underrepresented genera in CRC, while demonstrating a negative co-
+                                                occurrence between Faecalibacterium and Desulfovibrio, suggesting potential
+                                                antagonistic relationships. Moreover, we observed variations in taxonomic
+                                                richness and/or abundance within the polyp and CRC bacteriome linked to
+                                                polyp size, tumor stage, dyslipidemia, diabetes with metformin use, sex, age,
+                                                and family history of CRC. These findings provide potential new biomarkers
+                                                to enhance early CRC diagnosis while also demonstrating how intrinsic host
+                                                factors contribute to establishing a heterogeneous microbiome in patients with
+                                                CRC and polyps.
+
+
+
+Frontiers in Microbiology                                              01                                                                frontiersin.org
+Grion et al.                                                                                                            10.3389/fmicb.2023.1292490
+
+
+
+
+                                                KEYWORDS
+
+                                                colorectal cancer, gut microbiome, metagenomics, bacteriome, biomarkers
+
+
+
+
+1 Introduction                                                              (FIT) for detecting occult blood in feces, offer better accessibility
+                                                                            but have lower sensitivity for early-stage CRC (Elsafi et al., 2015).
+     Colorectal cancer (CRC) is a significant global health concern,        Enhancing the accessibility and sensitivity of diagnostic methods
+raking as the third most diagnosed cancer and the second deadliest          could facilitate the identification of asymptomatic individuals with
+cause of cancer-related deaths worldwide, affecting both sexes and          CRC or high-risk polyps, potentially leading to improved prognosis
+contributing to approximately 10% of cancer-related deaths (Sung            and survival rates.
+et al., 2021). Incidence rates of CRC are approximately four times               The presence of CRC is commonly associated with altered
+higher in developed countries compared to developing countries              microbial diversity within the gut, characterized by increased
+undergoing transition (Sung et al., 2021), and there is a concerning        abundance of pathogenic microorganisms and/or depletion of those
+upward trend in incidence rates in developing nations (Arnold               considered protective or beneficial (Wong and Yu, 2019). However,
+et al., 2017). The prognosis and chances of survival for individuals        the contribution of microorganisms found in fecal and mucosal
+with CRC largely depend on the stage of cancer at the time of               samples to CRC pathogenesis has not been fully elucidated. It is
+diagnosis, with better outcomes associated with early detection             plausible that CRC pathogenesis is influenced by microbial
+(Maringe et al., 2013; Rawla et al., 2019). Consequently, public            metabolism, the invasion of host cells and/or the modulation of host
+health agencies have placed emphasis on expanding CRC diagnostic            immune system by the microbiome (Ternes et al., 2020). Nonetheless,
+screening programs (Patel et al., 2022), aiming to improve early            numerous studies have demonstrated an enrichment of certain
+detection rates and ultimately reduce mortality rates associated            bacteria associated with CRC, which can serve as useful biomarkers
+with CRC.                                                                   for diagnosis, prognosis, and potentially treatment (Ternes et al., 2020).
+     The early detection of CRC presents a significant challenge                 Metagenomic studies have expanded our understanding of the
+due to low participation rates in screening programs among                  microbial diversity present in the tumor environment and its
+screen-eligible adults, with approximately one-third of individuals         involvement with the development of colorectal polyps (Mira-Pascual
+not participating (Joseph et al., 2018). Additionally, it is                et al., 2015; Peters et al., 2016; Yu et al., 2019). However, limited
+concerning to note that one in four diagnosed patients already              research has investigated the correlations between bacterial abundance
+have advanced neoplasia (U.S. Cancer Statistics: Colorectal Cancer          and the occurrence of polyps and CRC, considering their
+Stat Bite | CDC, 2022). CRC is a heterogeneous disease primarily            subclassifications, patient lifestyle, and associated comorbidities (Song
+attributed to distinct embryological origins of the right and left          and Chan, 2019). In this study, we analyzed the taxonomic diversity
+colon (Bufill, 1990) coupled with diverse genetic and epigenetic            of bacteria in fecal samples using shotgun sequencing, comparing the
+backgrounds (Grady and Carethers, 2008; Binefa et al., 2014;                relative abundance of bacteria among individuals with polyps, CRC,
+Petrelli et al., 2017). This heterogeneity leads to various pathways        and a control group.
+of carcinogenesis (Keum and Giovanucci, 2019), resulting in
+multiple molecular subtypes (Menter et al., 2019) and a wide
+range of clinical manifestations (Sawicki et al., 2021). While              2 Materials and methods
+hereditary syndromes and family history account for
+approximately 35–40% of CRC cases, the majority of cases                    2.1 Data collection
+(60–65%) are sporadic and arise from acquired genomic
+aberrations (Keum and Giovanucci, 2019). Therefore, CRC is a                    The fecal samples were collected between 2017 and 2018 by the
+multifactorial disease influenced by environmental factors.                 Biodonostia Health Research Institute – Donostia Hospital San
+     The majority of sporadic CRC cases arise in patients with              Sebastián, Spain, following the 2003 European Guidelines and the
+premalignant lesions known as polyps, with adenomas being the               2006 National Strategy against Cancer. The population-based
+predominant subtype (85–90%), along with a smaller proportion of            screening of CRC was approved by the Basque Autonomous
+serrated polyps (10–15%) (Conteduca et al., 2013). Colorectal               Government and implemented in 2009. The screening is based on the
+adenomatous polyps are present in nearly half of the population             detection of fecal occult blood (FOB) using a biennial FIT, targeting
+aged 60 and above (Levine and Ahnen, 2006), but only 10% of these           women and men between 50 and 69 years old and a colonoscopy
+polyps have the potential to develop CRC (Conteduca et al., 2013).          under sedation for FIT positive cases. The FIT test used was
+Colonoscopy remains the gold standard for CRC diagnosis                     OC-Sensor (Eiken Chemical Co. Tokyo, Japan). Only one sample was
+(Conteduca et al., 2013; 2014), despite being an invasive and costly        collected per patient, and the hemoglobin concentration cut-off
+procedure that limits accessibility (Issa and NouredDine, 2017).            (f-Hb) was 100 ng Hb/mL. All samples used had an f-Hb ≥ 20 μg
+Moreover, identifying polyps with cancerous potential, particularly         hemoglobin/g of feces, which is the threshold used in Spain to request
+the serrated subtypes, poses challenges due to anatomical and               colonoscopy examination.
+histological variations (Conteduca et al., 2013; Abdeljawad et al.,             Ninety participants were recruited from the screening, all with an
+2015). Alternative methods, such as fecal immunochemical test               f-Hb ≥ 20 μg Hb/g of feces, who subsequently underwent a
+
+
+
+
+Frontiers in Microbiology                                              02                                                              frontiersin.org
+Grion et al.                                                                                                                10.3389/fmicb.2023.1292490
+
+
+
+
+colonoscopy examination. Based on the colonoscopy results, the 90                library quality was assessed using the Agilent 2,100 Bioanalyzer, and
+individuals were divided into three groups: control group (n = 30; stool         shotgun metagenomic sequencing was performed using an Illumina
+samples from individuals with colonoscopy showing no intestinal                  HiSeq 2,500 instrument (Illumina, CA, United States).
+lesions, no history of diarrhea, and no history of previous intestinal
+infection), polyps group (n = 30; stool samples from individuals with
+colonoscopy showing polyps on the surface of the colon or rectum),               2.3 Data analysis
+and the CRC group (n = 30, which consists of individuals with biopsies
+confirming malignancy of colon or rectum lesions).                                   Overall quality of the reads was evaluated using FastQC vO.11.5
+     In addition to the exams, clinical information about each patient           (Andrews, 2010). Adapters and low-quality sequences (Phred
+was also collected and made available for each sample such as: sex,              score < 20) were removed with BBtools (Bushnell, 2014). Reads that
+weight, age, presence of comorbidities and genetic diseases,                     passed in quality check were mapped to the human genome
+medication use, tobacco smoking and alcohol consumption, polyps                  (GCF_000001405) using Bowtie2 v2.4.2 (Langmead and Salzberg,
+histology, tumor locations and CRC staging (Tables 1–3).                         2012) to remove host DNA. Reads without mapping to human
+                                                                                 genome were used to identify Bacteria through MAPseq v1.2.6
+                                                                                 (Matias Rodrigues et al., 2017). All the complete genomes of Bacteria
+2.2 Data processing                                                              found in the NCBI public database were used as reference, and
+                                                                                 Operational Taxonomic Units (OTUs) were classified using the
+    The samples were sent to the Laboratory of Molecular and                     complete 16S rRNA gene, with ≥97% identity threshold.
+Computational Biology of Fungi (LBMCF) for processing and
+sequencing. To optimize the extraction of DNA, the samples were
+homogenized in a vortex and lyophilized (Gudra et al., 2019). Total
+DNA was extracted with FastDNA kit (MP Biomedicals, CA,                          2.4 Statistical analysis
+United States) according to the manufacturer’s instructions.
+Metagenomic DNA was run in a gel to check for integrity and                           Statistical analyses of diversity and abundance were performed
+quantified using Qubit dsDNA BR Assay Kit (Thermo Fisher                         using the Microbiome Analyst platform (Dhariwal et al., 2017; Chong
+Scientific, MA, United States).                                                  et al., 2020). Sequencing depth was evaluated using rarefaction curves
+    Total metagenomic DNA was fragmented by standard shotgun                     for all samples. To explore bacterial taxonomic ranks, the relative
+sequencing. Libraries with an average fragment size of 450 bp were               abundance profiling was analyzed for all taxonomic levels. The
+prepared from genomic DNA using the NEBNext Fast DNA                             community profile per sample was assessed through alpha and beta
+Fragmentation and Library Preparation Kit (New England Biolabs,                  diversities, using Chao1 and Shannon diversity measures, and Bray-
+Ipswich, NE-USA) following the manufacturer’s instructions. The                  Curtis index, respectively. Additionally, a co-occurrence network was
+                                                                                 constructed based on statistically significant bacteria associated with
+TABLE 1 Clinical metadata from the individuals investigated in our study.        each group. All OTUs with significant statistical abundance within
+                                                                                 groups were analyzed using classical univariate statistical comparisons
+ Variables                  Control           Polyp            CRC               (ANOVA) for all taxonomy levels. Subsequently, we identified
+                            (n = 30)         (n = 30)        (n = 30)
+                                                                                 predictive features (biomarkers) through Random Forests, a machine
+ Male                         9 (30%)         16 (53%)        21 (70%)           learning algorithm for classification. We utilized 5,000 trees and seven
+ Female                      21 (70%)         14 (47%)        9 (30%)            predictors for the classification of the three groups. Also, we have
+ Mean age                       59               62              64              calculated accuracy and F1-score utilizing Weka (Frank et al., 2016),
+                                                                                 which are metrics for evaluation of models through Machine Learning
+ Family history of CRC        4 (13%)         6 (20%)         7 (23%)
+                                                                                 based on the confusion matrix from our Random Forest analysis. To
+ Hypertension                12 (40%)         14 (47%)        14 (47%)
+                                                                                 calculate these metrics, we first calculated the TPR (The True Positive
+ Dyslipidemia                 6 (20%)         15 (50%)        9 (30%)            Rate, also known as sensitivity or recall), FPR (False Positive Rate),
+ Obesity                      4 (13%)         10 (33%)        5 (17%)            TNR (True Negative Rate, or specificity), and FNR (False Negative
+ Overweight + Obesity        18 (60%)         24 (80%)        16 (53%)
+                                                                                 Rates). Finally, we calculated the precision, the number of true
+                                                                                 positives divided by the number of true positives plus the number of
+ Diabetes                      2 (7%)            0            4 (13%)
+                                                                                 false positives. These rates are important for evaluating the
+ Hypothyroidism               4 (13%)          2 (7%)          2 (7%)            performance of our model in each class.
+ Hyperthyroidism              4 (13%)            0             1 (3%)                 All clinical information regarding each patient, as well as
+ Depression/Anxiety           4 (13%)         6 (20%)          1 (3%)            information about polyp and CRC characteristics, were analyzed
+                                                                                 using the Chao1 and Shannon diversity indices, along with classical
+ Omeoprazole                  7 (23%)         4 (13%)         5 (17%)
+                                                                                 univariate statistical comparisons (ANOVA) for all taxonomic levels.
+ Calcium/Vitamin D            4 (13%)          2 (7%)         6 (20%)
+                                                                                      For all the above analysis in Microbiome Analyst, a low count
+ Aspirin                       2 (7%)          2 (7%)          2 (7%)            filter was applied to the abundance table, considering only OTUs with
+ Alcohol consumption         12 (40%)         14 (47%)        16 (57%)           a minimum of 2 counts and 20% prevalence in the samples. Low
+ Smoking                      5 (17%)         12 (40%)        7 (25%)
+                                                                                 abundance OTUs were removed based on prevalence. Additionally, a
+                                                                                 low variance filter (20%) was applied based on the inter-quantile range
+ Former smoking               5 (17%)          5 (7%)         10 (36%)
+                                                                                 (IQR) (10%). OTUs with low variance were removed based on the
+
+
+Frontiers in Microbiology                                                   03                                                             frontiersin.org
+Grion et al.                                                                                                         10.3389/fmicb.2023.1292490
+
+
+
+
+TABLE 2 Characteristics of polyp group.                                     TABLE 3 Characteristics of CRC group.
+
+ Histology                                   Polyp (n = 30)                  Tumor location                              CRC (n = 30)
+ Polyps ≥1 cm                                     24 (80%)                   Rectum                                          8 (29%)
+
+ Adenoma                                          29 (97%)                   Sigmoid colon                                   12 (43%)
+
+ Tubular                                          19 (65%)                   Descending colon                                3 (11%)
+
+ (Tubular + Tubulovillous)                        6 (21%)                    Splenic flexure                                  1 (3%)
+
+ Tubulovillous                                    4 (14%)                    Transverse colon                                 0 (0%)
+
+ Villous                                             0                       Ascending colon                                  2 (7%)
+
+ Serrated                                         14 (47%)                   Hepatic flexure                                  0 (0%)
+
+ Hyperplastic                                     12 (40%)                   Cecum                                            2 (7%)
+
+ Traditional serrated                              1 (3%)                    Unknown location*                                2 (7%)
+
+ Sessile serrated                                    0                       Staging of CRC
+
+                                                                             I                                               9 (50%)
+
+                                                                             II                                               5(28%)
+IQR. The number of OTUs remaining after the data filtering step was          III                                             2 (11%)
+subsequently submitted to data transformation using the centered-            IV                                              2 (11%)
+log-ratio (CLR) transformation.
+                                                                             Unknown staging**                               12 (40%)
+
+                                                                             Deaths from CRC                                 10 (33%)
+
+3 Results
+3.1 The alpha diversity in the polyp and                                    differences between the groups at any taxonomic level (value of
+CRC groups is lower compared to control                                     p = 0.15125, F-value = 1.9304 for the order level) (Figure 1B).
+group                                                                            To assess the variability of bacterial community among the three
+                                                                            study groups, beta diversity was analyzed (Figure 1C). Non-metric
+    Shotgun metagenomic sequencing of all 90 samples yielded a              multidimensional scaling (NMDS) analysis was employed to compare
+total of 2,460,307,369 raw reads. Among them, 1,391,392 were not            the similarities between the samples using the Bray-Curtis
+mapped to human genome corresponded to segments of 16S                      dissimilarity index. The significance of differences in beta diversity
+rDNA, which were subsequently assembled into operational                    among the study groups was determined using permutational
+taxonomic units (OTUs). The number of reads per sample ranged               multivariate analysis of variance (PERMANOVA). The NMDS
+from a minimum of 6,491 to a maximum of 28,333                              analysis revealed significant separation in bacteriome community
+(Supplementary Tables S1, S2). In total, 8,610 OTUs related to              diversity among groups at both the OTU level (value of p = 0.002;
+bacteria were identified across all samples, with 7,590 OTUs                F-value = 1.5641; R2 = 0.034709; NMDS stress = 0.26666) and the genus
+composed of more than two reads. Among these OTUs, 6,619                    level (value of p = 0.001; F-value = 1.7416; R2 = 0.038496; NMDS
+low-abundance features were removed based on prevalence in less             stress = 0.28604) (Figure 1C). Furthermore, there were high
+than 20% of the patients. Additionally, 98 low-variance features            dissimilarities observed among the control, polyps, and CRC groups,
+were removed based on interquartile range (IQR) calculations.               but with some overlaps between the microbial communities. This
+After applying these filtering steps, a total of 874 OTUs remained.         indicates that the microbiomes of control individuals may exhibit
+The rarefaction curves demonstrated sufficient sampling depth               some similarities to those of CRC patients, and conversely, some CRC
+for all groups, with less than 1% singletons observed in all samples        patients may have a microbiome that is more akin to that of
+(Supplementary Figure S1).                                                  unaffected individuals.
+    Alpha diversity is a measure of microbial diversity within a
+sample, taking into account both the richness (number of different
+species) and the abundance of operational taxonomic units (OTUs).           3.2 The microbiome of all patient groups is
+In this study, we evaluated alpha diversity using two indices: the          predominantly composed by firmicutes,
+Chao1 index, which measures richness and values rare species, and           bacteroidetes, actinobacteria, and
+the Shannon diversity index, which assesses both richness and               proteobacteria, with no significant
+abundance (Prehn-Kristensen et al., 2018). Based on the Chao1 index,        differences in relative abundance at
+we observed significantly different values among the groups at the          taxonomic level
+order taxonomic level (value of p <0.00017615; ANOVA test,
+F-value = 6.8271) (Figure 1A). The polyps and CRC groups exhibited               We performed a visual exploration and analysis of the taxonomic
+lower alpha diversity (median of 32.75 and 35.0, respectively)              composition in the CRC, polyps, and control groups, considering the
+compared to the control group (median = 37.5). Regarding the                relative abundance in percentage of microorganisms (Figure 2). At the
+Shannon diversity index, the CRC group showed a slight increase             phylum level, the samples are mainly dominated by Firmicutes,
+compared to the control group, but without statistically significant        followed by Bacteroidetes, Actinobacteria, and Proteobacteria. No
+
+
+Frontiers in Microbiology                                              04                                                              frontiersin.org
+Grion et al.                                                                                                                      10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 1
+    Alpha and beta diversity in the groups of patients with polyps, control, and CRC. (A) Alpha diversity at the Order level, using the Chao 1 index with a
+    value of p = 0.0017615 and an F-value = 6.8271; the polyps and CRC groups exhibit lower diversity compared to the control group. (B) Alpha diversity at
+    the order level, using the Shannon index, with a value of p = 0.15125 and an F-value = 1.9304; The CRC group tends to show higher alpha diversity.
+    (C) The NMDS analysis revealed a significant separation in the diversity of the bacterial community (value of p = 0.001, F-value = 1.7416, R2 = 0.038496,
+    NMDS Stress = 0.28604).
+
+
+
+
+    FIGURE 2
+    Relative abundance of bacteria in three groups. (A) Phylum level and (B) Genus level. At the phylum taxonomic level, the samples are predominantly
+    dominated by Firmicutes, followed by Bacteroides, Actinobacteria, and Proteobacteria. At the genus taxonomic level Bacteroides is the most abundant
+    genus in all three samples. The unassigned genera are moderately more abundant in CRC (37%) compared to control (30%), and polyps (28%).
+
+
+
+
+phylum showed a significantly differential abundance (Figure 2A). In                group (36%) and CRC (37%). There was also a slight decrease in
+terms of specific differences, the polyp group samples exhibited                    Actinobacteria abundance in the polyp group (8%) compared to the
+slightly higher levels of Bacteroidetes (42%) compared to the control               control group (11%) and CRC (10%). The abundance of Proteobacteria
+
+
+Frontiers in Microbiology                                                      05                                                                 frontiersin.org
+Grion et al.                                                                                                                   10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 3
+    Taxa with significant differences in abundance among the three study groups at the taxonomic levels of Order and Family were identified using the
+    ANOVA statistical method. (A,B) The abundance of the Order Lactobacillales (value of p = 0.0001; FDR = 0.007) and the Family Clostridiaceae (value of
+    p = 0.005; FDR = 0.019) decreased in the CRC group compared to the control group. (C) The abundance of the Family Streptococcaceae increased in
+    the samples of patients with polyps compared to the control group (value of p = 0.004; FDR = 0.019). (D) The abundance of the putative Family
+    Ruminoccoccaceae (value of p = 0.001; FDR = 0.026) increased in the CRC group compared to the polyp and control groups.
+
+
+
+
+was marginally decreased in the control group (4.7%) compared to                  CRC group and decreased in the polyp group, compared to the control
+polyps (5.7%) and CRC (6.4%) groups. Furthermore, the Firmicutes                  group (Figure 3D; value of p = 0.001; FDR = 0.026).
+to Bacteroidetes (F/B) ratio was higher in the control group compared                 Figure 2B illustrates the dominant genera in the three study
+to the CRC and polyp groups (Supplementary material).                             groups (with a more detailed analysis in Supplementary material).
+                                                                                  Figure 4 highlights the genera that exhibit significant value of p
+                                                                                  (<0.05) and significant False Discovery Rates (FDR) (<0.05). The
+3.3 Patients with polyps and CRC display                                          non-assigned genera are slightly more abundant in the CRC group
+notable differences in the relative                                               (37%) compared to the control (30%) and polyp (28%) groups.
+abundance of bacterial taxa at the order,                                         Bacteroides is the most prevalent genus in all samples and tends
+family, and genus levels                                                          to be increased in polyp patient samples (25%; control 21%
+                                                                                  CRC-18%); however, these differences are not statistically
+     At the taxonomic level of Order, there is a notable decrease in the          significant in our sampling context. Moreover, patients with
+relative abundance of Lactobacillales in CRC samples and an increase              polyps also show increased abundance, though not statistically
+in the polyp group, compared to the control group (Figure 3A; value               significant, of Parabacteroides (4.7%) and Barnesiela (1.6%)
+of p = 0.0001; FDR = 0.007). At the Family level, Clostridiaceae is less          compared to the control group (3.7% Parabacteroides; 2.5%
+abundant in CRC patient samples (Figure 3B; value of p = 0.005;                   Barnesiela) and CRC patients (2.9% Parabacteroides; 2.3%
+FDR = 0.019), while Streptococcaceae is more abundant in the polyp                Barnesiela). The abundance of Bifidobacterium, Dialister, and
+group and less abundant in the CRC group, compared to the control                 Akkermansia tends to be higher in the control group (7.7%; 3.1%;
+group (Figure 3C; value of p = 0.004; FDR = 0.019). Furthermore, the              0.8%, respectively) compared to CRC (5.3, 1.5 and 0.4%
+abundance of the putative family Ruminococcaceae is increased in the              respectively) and polyps (5.4, 1.6, and 0.3%, respectively), but
+
+
+Frontiers in Microbiology                                                    06                                                                frontiersin.org
+Grion et al.                                                                                                                10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 4
+    Taxa with significant differences in abundance among the three groups at the taxonomic level of Genus, using the ANOVA statistical method. (A) The
+    genus Faecalibacterium exhibits a significant reduction in abundance in the CRC patient group (value of p = 0.002, FDR = 0.012), compared to the
+    control and polyp groups. (B) The genus Ruminococcus shows a significant reduction in abundance in the CRC group (value of p = 0.001, FDR = 0.04),
+    compared to the control and polyp groups. (C) The genus Candidatus Arthromitus (or Segmented Filamentous Bacteria) exhibits a significant decrease
+    in abundance in the CRC group (value of p = 0.0002, FDR = 0.012), compared to the control and polyp groups. (D) The genus Lachnoclostridium
+    demonstrates a significant increase in abundance in the polyp group (value of p = 0.002, FDR = 0.042), compared to the control and CRC groups.
+    (E) The genus Desulfovibrio shows a significant increase in abundance in the CRC group (value of p = 0.004, FDR = 0.016), compared to the control
+    and polyp groups.
+
+
+
+
+these differences are not statistically significant in our sample                abundance is also significantly lower compared to the control
+condition (Figure 2B).                                                           (2.7%) and polyp (2.8%) groups (ANOVA; value of p 0.002;
+    The representation of the genus Ruminococcus is significantly                FDR = 0.012) (Figures 2B, 4A). The abundance of Suterella and
+lower in samples from patients with CRC compared to patients in                  Eubacterium rectale is slightly reduced in CRC samples (0.84 and
+the control and polyp groups (value of p = 0.001; FDR = 0.04;                    0.3% respectively) compared to the control group (1.2 and 0.6%,
+Figure 4B; Supplementary material) Faecalibacterium constitutes                  respectively) and polyp patients (1.7 and 0.5%); however, this
+~1.8% of the community composition in CRC samples, and its                       difference is not statistically significant (Figure 2B).
+
+
+Frontiers in Microbiology                                                   07                                                              frontiersin.org
+Grion et al.                                                                                                                 10.3389/fmicb.2023.1292490
+
+
+
+
+     Desulfovibrio constitutes ~1.9% of the composition in the CRC                classification error rate was lower for CRC (0.367 for OTU, 0.467 for
+group and is significantly overrepresented in these samples (value of             genus) and polyps (0.567 for OTU, 0.6 for genus).
+p = 0.0004; FDR 0.016; Figure 4E) compared to the control (1.0%) and                   Next, Figures 5B,D illustrate the classification performance of the
+polyp (0.36%) groups (Figure 2B). On the other hand, Prevotella                   three groups based on genus and OTUs. The Y-axis represents the ten
+shows is slightly higher abundant in CRC samples (3%) compared to                 most important classification variables, while the X-axis depicts the
+the control group (1.0%) and polyp patients (2.1%), however this                  MDA (mean decrease in accuracy), which measures the impact on
+difference is not statistically significant within our sample design              accuracy if the classifier on the Y-axis is removed from the
+(Figure 2B; Supplementary material).                                              classification process. At the genus level (Figure 5B), Candidatus
+     The abundance of the genus Lachnoclostridium is significantly                Arthromitus (or “SBF”) emerges as the taxon that most effectively
+increased in the polyp’s patient group compared to the control group              classifies the three study groups. It is notably less abundant in the
+(1.0%) and CRC patients (1.1%) (value of p = 0.002; FDR = 0.042;                  samples from CRC patients, with an accuracy greater than 0.008.
+Figure 4D). Paraprevotella and Ruminiclostridium also exhibit higher              Following Candidatus Arthromitus, Ruminococcus (accuracy >0.004)
+abundance in polyp patients (~0.12% for both) compared to the                     is also underrepresented in the CRC group. Conversely,
+control group (0.8 and 0.6%, respectively) and CRC patients (0.3 and              Lachnoclostridium is overrepresented in the polyp group, exhibiting
+0.4%, respectively), although these differences are not statistically             an accuracy greater than 0.04. Faecalibacterium, with an accuracy
+significant in our sample (Figure 2B). The abundance of Bilophila is              greater than 0.004, appears to be underrepresented as well.
+slightly decreased in control samples (0.8%) compared to CRC (1.3%)                    When considering the OTUs for classification (Figure 5D),
+and polyps (1.3%), but these differences are also not statistically               Candidatus Arthromitus remains the taxon that most accurately
+significant in this dataset. Lastly, the genus Odoribacter tends to have          characterizes the CRC group (accuracy >0.0014), and its abundance
+lower abundance in polyps (0.4%) compared to control (0.7%) and                   is significantly reduced within this group. Conversely, the abundance
+CRC (0.8%), but these differences are not statistically significant               of the putative family Ruminococcaceae is notably increased in the
+(Figure 2B; Supplementary material).                                              CRC group, and it classifies the group with accuracy greater than
+     We have identified a rare taxon in our sampling that is not                  0.0010. Similarly, the genus Desulfovibrio achieves an accuracy of
+represented in bar chart of Figure 2B but shows a significant                     approximately 0.0010 in describing the CRC group. The genus
+difference in its relative abundance among samples from different                 Lachnoclostridium is overrepresented in the polyp patient group and
+groups. This taxon was initially classified as Candidatus Arthromitus;            exhibits a classification accuracy greater than 0.0014. Furthermore,
+however, the genus is probably classified incorrectly in the database             an OTU associated with Faecalibacterium displays decreased
+output, as previously reported (Lundberg et al., 2017), and should                abundance in the CRC patient group and provides an accuracy of
+be replaced by Candidatus Savagella or Segmented Filamentous                      approximately 0.0010 to describe this group. Two putative classes of
+Bacteria (SFB). Candidatus Arthromitus belongs to the family                      Clostridiales demonstrate increased abundance in the CRC group,
+Lachnospiraceae (Thompson et al., 2012), while SFB belongs to the                 both with an accuracy exceeding 0.0006 in characterizing this group
+family Clostridiaceae (Thompson et al., 2013). Therefore, in this                 of patients.
+study, we interpret Candidatus Arthromitus as SFB (Ericsson et al.,                    We employed evaluation metrics for the classification model
+2014; Jonsson et al., 2020). Despite its low relative abundance                   generated by Random Forest, with metrics calculated through
+(0.003% in the CRC group, 0.007% in the control group, and 0.005%                 machine learning (Table 4; see Materials and Methods). The
+in the polyp group), this taxon is underrepresented in the CRC                    classification based on the Random Forest data shows a slightly better
+group (value of p = 0.0002; FDR = 0.012; Figure 4C;                               precision for CRC and Polyps groups. These results indicate that our
+Supplementary material).                                                          16S rDNA data can classify the groups with moderate precision.
+                                                                                  Intragroup variations in the microbiome likely explain the observed
+                                                                                  classification precision.
+
+3.4 The random forest analysis indicates
+that Candidatus Arthromithus provides
+better classification of the CRC group,                                           3.5 The underrepresented genera in the
+while the Lachnoclostridium is more                                               CRC microbiome, Faecalibacterium,
+effective in classifying the polyp group                                          Ruminococcus, and Candidatus
+                                                                                  Arthromitus, demonstrate a positive
+    Random Forest analyses were conducted at the genus taxonomic                  co-occurrence, while the overrepresented
+level (Figure 5A) and considering the OTUs (Figure 5C) to determine               genus Desulfovibrio in the CRC
+which taxa would be more effective in classifying the groups.                     microbiome exhibits a negative
+We utilized 5,000 trees and seven predictors for the analysis. At the             co-occurrence with Faecalibacterium
+genus level, the polyp group showed better separation than the control
+and CRC patient groups. For the classification based on OTUs, there                   Figure 6 illustrates the positive (in red) and negative (in blue)
+was a mixture of the polyp and control groups, but better separation              correlations among the genera with significantly increased or
+of the CRC patient group was observed. Both the genus and OTUs                    decreased abundance in the three groups of this study, as well the
+classifications achieved statistically significant accuracy in classifying        main associated taxa (value of p <0.05; Supplementary material). The
+the groups. Nevertheless, when considering the OTUs, the                          co-occurrence values are represented by the Pearson correlation
+
+
+
+
+Frontiers in Microbiology                                                    08                                                             frontiersin.org
+Grion et al.                                                                                                                      10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 5
+    Random forest and performance analysis of classification. Both the genus-level (A) and OTU-level classifications (C) achieved significant accuracy in
+    distinguishing the study groups; for CRC (0.367 for OTU, 0.467 for genus) and polyps (0.567 for OTU, 0.6 for genus). Out-of-bag (OOB) error rates
+    were 0.511 for genus-based classification and 0.522 for OTU-based classification. Candidatus Arthromitus (or SBF) is the taxon that best classifies the
+    three groups (precision >0.008; B,D) and is significantly less abundant in the samples of patients with CRC.
+
+
+
+
+TABLE 4 Evaluation metrics for the classification model generated by                co-occurrences with Streptococcus (−0.3103), Pediococcus (−0.3197),
+random forest.
+                                                                                    and Listeria (−0.3971). Another negative co-occurrence relationship
+ Metric                  Polyp              Control               CRC               involves Faecalibacterium with Porphyromonas (−0.3546), the latter
+                                                                                    displaying slightly increased abundance in the CRC patient samples.
+ Precision                64.81%              56.66%              64.56%
+                                                                                    Porphyromonas exhibited positive co-occurrence with Parvimonas
+ Recall (TPR)             43.33%              50.00%              39.47%            (0.3249) and Peptostreptococcus (0.5544), as well as negative
+ F1 score                 51.94%              53.12%              48.99%            co-occurrence with Bacteroides (−0.3314), Roseburia (−0.3209), and
+ Accuracy                 0.599%              0.559%              0.589%            Ruminococcus (−0.3468). Moreover, Ruminococcus showed negative
+                                                                                    co-occurrence with Flavobacterium (−0.3249) and positive
+                                                                                    co-occurrence with Coprococcus (0.3782), Eubacterium (0.3484), and
+                                                                                    Peptoniphilus (0.3152).
+coefficient, and taxa with a value of p less than 0.05 are considered                   Lachnoclostridium, the taxon that better describes the group of
+significant. The genera Faecalibacterium, C. arthromitus, and                       patients with polyps, demonstrates negative co-occurrences with
+Ruminococcus, which exhibited decreased abundance in the CRC                        Coprococcus (−0.3453) and Bifidobacterium (−0.3787). In contrast,
+group, demonstrate positive co-occurrence with each other.                          Lachnoclostidium exhibits positive co-occurrence with Bacteroides
+Additionally, Faecalibacterium displays a negative co-occurrence with               (0.3892), Streptococcus (0.318), Holdemania (0.331), Tannerella
+Desulfovibrio (−0.358), the only genus significantly more abundant in               (0.3235), Blautia (0.3437), and Bartonella (0.3693). Blautia, which is
+the CRC patient group. Furthermore, Desulfovibrio shows negative                    modestly overrepresented in CRC, exhibited positive co-occurrences
+
+
+
+
+Frontiers in Microbiology                                                      09                                                                 frontiersin.org
+Grion et al.                                                                                                                   10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 6
+    Co-occurrence network of genera with significantly increased or decreased abundance in the (A) Control, (B) Polyp, and (C) CRC groups. Genera with
+    significantly increased or decreased abundance in the study groups are shown in bold, and positive and negative correlations with the main associated
+    taxa are represented in red and blue, respectively. Faecalibacterium, C. Arthromitus, and Ruminococcus, genera underrepresented in CRC samples,
+    positively co-occur with each other. Faecalibacterium exhibits a negative co-occurrence with Desulfovibrio, the only genus with significantly enriched
+    abundance in the CRC group.
+
+
+
+
+with Eggerthella (0.3595) and negative co-occurrences with Prevotella              (21 out of 30). However, when comparing patients in subgroups
+(−0.3499), and Butyrivibrio (−0.345).                                              divided by sex, statistically significant differences were not found at
+                                                                                   any taxonomic level. Nonetheless, significant changes in alpha
+                                                                                   diversity were detected across all groups, both at the genus level and
+3.6 Clinical metadata indicates that the                                           when considering the OTUs (Figure 7A). Alpha diversity of the CRC
+intestinal microbiome can be influenced by                                         and polyp groups differed significantly between sexes. Men with CRC
+individual factors and underlying                                                  exhibited significant differences between sexes. Men with CRC
+characteristics associated to polyps and                                           displayed higher alpha diversity compared to women with CRC, while
+CRC                                                                                women with polyps exhibited increased alpha diversity compared to
+                                                                                   men (Chao 1, value of p = 0.02). Analyzing the three groups with
+     Host clinical variables, environmental and lifestyle factors may              patients separated solely by sex, similar taxonomic patterns emerged,
+influence the gut microbiome composition. These variables cannot                   but without statistically significant differences. Furthermore, within
+be controlled and potentially act as confounding factors when                      the female patient samples, it was found that the Clostridiaceae and
+searching for taxonomic biomarkers associated with CRC and polyps,                 the Clostridium genus were significantly underrepresented in the CRC
+using data obtained from patients. To manage these confounding                     group (value of p = 0.0001; FDR = 0.01; Figure 7B). Within the male
+factors, we performed separate analyses utilizing all available clinical           patient samples, the abundance of the putative Clostridiales class was
+and lifestyle metadata. The analysis of bacterial abundance in relation            significantly decreased in both polyp and CRC samples (value
+to the collected metadata did not yield significant differences for                of p = 0.0001; FDR = 0.04; Figure 7C), while the putative
+most of the metadata variables examined (Tables 1–3;                               Ruminoccoccaceae was overrepresented in CRC and underrepresented
+Supplementary Table S3). However, notable differences were observed                in polyps (value of p = 0.0001; FDR = 0.04; Figure 7D).
+for specific taxa (Figures 7, 8). For statistical analyses, only metadata              In our sampling, the mean age was higher in the CRC group
+groups with a minimum of four patients were considered                             (Table 1). However, no significant differences in alpha diversity were
+representative and included in the analysis. This approach allowed us              found for this variable. Nonetheless, the putative Bacteroidaceae
+to identify taxa that had statistical differences of abundance across              exhibits significantly reduced abundance in individuals aged 50 years
+specific metadata categories.                                                      or older (value of p = 3.85e−06; FDR = 0.003; Figure 7E).
+     In our data, it was observed that CRC was more prevalent among                    Regarding familiar history, 19% (n = 17/90) of the patients
+males, with male patients accounting for 70% of the total CRC patients             reported a family history of CRC (Table 1). Control and CRC patients
+
+
+Frontiers in Microbiology                                                     10                                                               frontiersin.org
+Grion et al.                                                                                                                      10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 7
+    Clinical metadata that can influence the gut microbiome in polyps and CRC patients. (A) Influence of sex on the alpha diversity of the intestinal
+    microbiome in patients with polyps, control, and CRC. Considering the OTUs, the diversity in the CRC and polyp groups was significantly different for
+    this variable, being lower and higher in women, respectively (Chao 1 index; value of p = 0.02). (B) The genus Clostridium exhibits a significantly
+    decreased abundance in women with CRC, compared to the control and polyp groups (value of p = 0.0001; FDR = 0.01). (C,D) Taxa that show
+    significantly altered abundance in men. The putative Class Clostridiales is underrepresented in men with polyps and CRC, compared to the control
+    group (value of p = 0.0001; FDR = 0.04). The putative Family Ruminoccoccaceae is overrepresented in the CRC group (value of p = 0.0001; FDR = 0.04).
+    (E) The family Bacteroidaceae exhibits a significantly reduced abundance in individuals aged 50 years or older (value of p = 3.85E−6; FDR = 0.003).
+    (F) Influence of family history on the alpha diversity of the gut microbiome in patients with polyps, control, and CRC. At the genus taxonomic level, the
+    alpha diversity in the CRC and control groups with a family history of CRC was significantly lower (Shannon index; value of p = 0.009). (G,H) Taxa that
+    show significantly altered abundance in the presence of a family history of CRC for all three groups considering the OTUs. The putative Family
+    Ruminoccoccaceae is underrepresented in the control and CRC groups with a family history of CRC (value of p = 2.50E−5; FDR = 0.02). On the other
+    hand, the Family Bacteroidaceae appeared with increased abundance in the control and CRC groups that had a family history of CRC (value of
+    p = 9.19E−5; FDR = 0.02). (I) The genus Lachnoclostridium exhibits a significantly higher abundance in individuals with polyps and no associated family
+    history of CRC (value of p = 0.0005; FDR = 0.03). (J) The family Streptococcaceae exhibits a significantly higher abundance in individuals with
+    dyslipidemia and both polyps and control groups (value of p = 7.45E−5; FDR = 0.005). (K,L) Taxa with significantly increased abundance in the presence
+    of diabetes. Parabacteroides and Clostridiales are increased in samples from patients with CRC associated with the clinical condition of diabetes with
+    the use of metformin (value of p = 1.30E−5; FDR = 0.008/value of p = 1.91E−5; FDR = 0.008, respectively).
+
+
+
+
+with familiar history of CRC exhibited significantly lower alpha                    association with dyslipidemia. It is worth noting that the family
+diversity at genus level (Shannon index, value of p = 0.009; Figure 7F).            Streptococcaceae was also overrepresented in the polyp group
+However, this pattern was not observed in patients with polyps.                     (Figure 3C).
+Moreover, Ruminicoccaceae was significantly underrepresented in                          In our sample, the most prevalent polyp subtype based on histology
+control and CRC patients with family history of CRC (Figure 7G,                     is tubular adenoma (Table 2). The hyperplastic subtype of serrated
+value of p = 2.50e−05; FDR = 0.02), while Bacteroidaceae is                         polyps appears in observed in almost half of the patients, often in
+overrepresented in these patients (Figure 7H, value of p = 9.19e−05;                association with other types of polyps. Polyps with a size of 1 cm or
+FDR = 0.02).                                                                        larger account for 80% of all patients. Additionally, it was found that
+    Patients with polyps have a significant increase in the abundance               alpha diversity at genus level is reduced in patients with polyps ≥1 cm,
+of Lachnoclostridium only when there is no familiar history of CRC                  compared to patients with polyps <1 cm (Figure 8A; value of p = 0.04).
+(Figure 7I; value of p = 0.0005; FDR = 0.03). Furthermore, patients                 Furthermore, the abundance of the genus Ralstonia is significantly
+with polyps showed the highest prevalence of dyslipidemia, with 50%                 increased in samples from patients with polyps ≥1 cm (Figure 8B; value
+of the group affected (x2 test, value of p = 0.0464; Table 1). When the             of p = 5.87e−05; FDR = 0.007), although with low read count.
+three groups of interest were divided into subgroups with and without                    In terms of tumor localization, the majority were described in the
+dyslipidemia, it was found that the family Streptococcaceae was                     sigmoid colon (43%) and rectum (29%), with only two patients having
+significantly overrepresented in samples from patients with this                    tumors located in the ascending colon (Table 3). However, no
+comorbidity (Figure 7J; value of p = 7.45e−05; FDR = 0.005). However,               significant differences were found regarding tumor location in
+in the case of patients with CRC, this taxon was not affected by the                our analysis.
+
+
+
+
+Frontiers in Microbiology                                                      11                                                                 frontiersin.org
+Grion et al.                                                                                                                        10.3389/fmicb.2023.1292490
+
+
+
+
+    FIGURE 8
+    Significant differences of diversity related to characteristics of polyps and CRC. (A) Influence of polyp size on the alpha diversity of the gut microbiome.
+    Considering the OTUs, polyps with a size ≥1 cm exhibit a reduction in alpha diversity (value of p = 0.04; Chao 1). (B) The genus Ralstonia exhibits a
+    significantly higher abundance in individuals with polyps ≥1 cm compared to smaller polyps (value of p = 5.87E−5; FDR = 0.007). (C) Alpha diversity
+    among patients with CRC is influenced by advanced clinical conditions that resulted in death. At the family taxonomic level, the diversity of the gut
+    microbiome in patients who died was high even when compared to other patients with CRC (value of p = 0.014; Chao1). (D,E,F) Taxa with significantly
+    different abundance in relation to CRC stage. The genus Pediococcus is underrepresented in individuals with stage III and IV CRC (value of p = 6.66E−6;
+    FDR = 0.0008). The genus Actinomyces is overrepresented in samples from individuals with stage III and IV CRC (value of p = 3.56E−5; FDR = 0.002). The
+    family Clostridiaceae exhibits significantly lower abundance in individuals with stage I and II CRC compared to the control and polyp groups (value of
+    p = 0.0002; FDR = 0.01).
+
+
+
+
+    Regarding the staging of CRC based on the TNM classification                     patients with terminal stages of CRC may undergo an expansion of
+system, our findings were limited to data from 18 out of 30 patients.                bacterial diversity in the intestinal microbiome.
+Half of them were in stage I and approximately 30% were in stage II                       In the CRC group, four patients reported having diabetes and
+(Table 3). No taxon was associated with disease progression when                     using metformin. Interestingly, we found that the putative genus
+analyzing all four stages together. However, when the samples were                   Parabacteroides and the class Clostridiales were significantly
+recategorized into early stages (I + II) and advanced stages (III + IV),             overrepresented in this subgroup with diabetes (Figure 7K; value of
+some significant associations were observed. The abundance of the                    p = 1.30e-0.5; FDR = 0.008/Figure 7L; value of p = 1.91e−05; FDR = 0.008).
+genus Pediococcus was significantly decreased in advanced cases of                   Other comorbidities and clinical information did not show significant
+CRC (Figure 8D), while the abundance of Actinomyces was increased                    differences in this study, likely due to the low number of patients
+(Figure 8E).                                                                         included in the analyses.
+    Furthermore, when analyzing the 14 patients in the early stage of
+CRC (I + II) separately, it was found the family Clostridiaceae,
+previously described as underrepresented in the CRC patient group,                   4 Discussion
+was even less abundant (value of p = 0.0002; FDR = 0.01; Figure 8F).
+This result suggests that the abundance of the Clostridiaceae family                     In this study, we used shotgun metagenomics data to investigate
+may serve as a potential marker for early stages of CRC.                             bacterial signatures in the progression of CRC in a Spanish population.
+    The mortality rate of the patients with CRC in this study was 33%                Our findings revealed a decrease in the alpha diversity of gut
+(Table 3). Among the deceased patients, three had tumors in their                    microbiota, which aligns with various intestinal and non-intestinal
+rectum, two in the sigmoid colon, three in the descending colon, and                 diseases (Malla et al., 2019). However, our alpha-diversity analysis
+two in the ascending colon. We observed a significant increase in                    using the Chao1 and Shannon indexes yielded contrasting results
+alpha diversity at the family level in the group that progressed to death            (Figures 1A,B). While Chao1 index indicated significantly lower alpha
+(value of p = 0.014; Chao1; Figure 8C). This finding suggests that                   diversity in patients with polyps and CRC compared to controls, the
+
+
+Frontiers in Microbiology                                                       12                                                                  frontiersin.org
+Grion et al.                                                                                                                 10.3389/fmicb.2023.1292490
+
+
+
+
+Shannon’s index suggested a higher diversity of gut bacteria in patients          encouraged. Additionally, Faecalibacterium had negative
+with CRC. These results imply that the bacteriome of patients with                co-occurrence with Desulfovibrio (Figure 6), a sulfate-reducing
+CRC and polyps has experienced a loss of taxa compared to the                     bacteria (Rey et al., 2013), suggesting a possible antagonistic
+control group, particularly those with low abundance. Nonetheless,                relationship between these taxa. Desulfovibrio was significantly more
+the bacterial community of the CRC patient group exhibited greater                abundant in the feces of the patients with CRC (Figure 4E), consistent
+evenness among the samples. Additionally, the NMDS analysis of beta               with previous research on sporadic CRC and Lynch Syndrome
+diversity also revealed distinct bacterial distributions among the                patients (Guo et al., 2016; Yan et al., 2020). Certain species of
+different groups (Figure 1C), indicating an altered gut bacterial                 Desulfovibrio are present in healthy populations and colonize the gut
+composition in the presence of polyps and CRC. These findings have                of approximately half of all humans (Rey et al., 2013; Chen Y. R. et al.,
+implications for disease diagnosis and prevention, and further                    2021). Interestingly, this study found a high abundance of Desulfovibrio
+investigation is warranted to understand the overlapping microbial                in some individuals in the control group, indicating the presence of
+communities and their potential role in microbial succession and                  different Desulfovibrio species associated with both CRC and healthy
+response to stress factors. It is important to consider the influence of          conditions. Furthermore, factors such as dietary habits may contribute
+enterotype and variable microbial signatures associated with CRC in               to the increased prevalence of this genus in the human gut (Wang
+interpreting the microbiome composition of CRC patients (Yang et al.,             et al., 2021).
+2019a; Zhao et al., 2021).                                                             The analysis of bacterial correlations in the bacteriome of CRC
+     The study identified significant taxonomic associations among                patients revealed significant associations between taxa with
+patients with CRC and polyps. Moreover, the Random Forest analysis                significantly distinct abundances and specific bacteria that showed an
+achieved a moderate level of precision in classifying the three study             increased tendency of abundance (Figure 6). Faecalibacterium and
+groups. We were able to highlight the primary taxa exhibiting                     Ruminococcus showed negative co-occurrence with Porphyromonas, a
+statistically significant variations in abundance across these groups.            bacterial genus related to intestinal inflammation (Lee et al., 2022;
+However, we acknowledge the potential impact of intra-group                       Sohn et al., 2022) and periodontitis, a condition known to increase the
+variation on the precision of any attempt to produce a classification             risk of colorectal adenoma (Lee et al., 2022). Parvimonas and
+method. One noteworthy finding in this study was the significant                  Peptostreptococcus, oral pathogens linked to CRC occurrence and
+difference in abundance of Clostridiaceae, particularly among patients            colonic adenomas (Long et al., 2019; Ternes et al., 2020; Zhao et al.,
+in the early stages of CRC (Figures 3B, 8F). This observation is                  2022), have a positive co-occurrence with Porphyromonas.
+consistent with a previous study that reported a gradual decrease in              Porphyromonas exhibited a negative co-occurrence with Bacteroides,
+the abundance of this family in CRC patients (Wang et al., 2017). The             a commensal bacteria of the human gut involved in maintaining
+order Lactobacillales, which includes lactic acid-producing bacteria              homeostasis (Lee et al., 2013) but also associated with adenomatous
+(LAB) known for their protective role against colorectal tumorigenesis            polyps (Chen C. et al., 2021). Interestingly, the abundance of
+(Bartley et al., 2018), was found to be underrepresented in the feces of          Bacteroides slightly increased in our group of patients with polyps
+CRC patients (Figure 3A). Conversely, the putative Ruminococcaceae                (Figure 6; Supplementary material), Furthermore, Roseburia, a
+exhibited higher abundance in the CRC group but lower representation              butyrate producer, also showed a negative co-occurrence with
+in samples from patients with polyps (Figure 3D). These patterns were             Porphyromonas, and its abundance was slightly increased in the polyp
+consistent with previous studies (Peters et al., 2016; Yang et al., 2019b;        group samples, which supports similar findings from another study
+Yan et al., 2020). Additionally, the genus Faecalibacterium, associated           (Uppakarn et al., 2021).
+with butyrate production (Lopez-Siles et al., 2017) which has several                  Lachnoclostridium, a previously established biomarker for polyps
+anti-tumor effects (Geng et al., 2021), was underrepresented in CRC               (Li et al., 2020), was significantly enriched in our polyp group without
+patient samples (Figure 4A). The genus Ruminococcus also showed                   a family history of CRC, supporting its potential for early CRC
+underrepresented in CRC samples (Figure 4B), while the putative                   detection and highlighting the involvement of possible genetic factors.
+family Ruminococcaceae displayed a significant increase (Figure 3D).              The negative co-occurrence between Lachnoclostridium and Coproco
+The literature reports conflicting results regarding the abundance of             ccus/Bifidobacterium, also reported in other study (Nogal et al., 2021),
+Ruminococcus in the presence of CRC (Flemer et al., 2017; Ternes                  along with higher prevalence of overweight/obesity in the polyp
+et al., 2020; Siddiqui et al., 2022), which may be attributed to                  group, may explain the increased abundance of Lachnoclostridium.
+differences in the phylogeny of these taxa families (La Reau et al.,              Bifidobacterium, which has been associated with decreased abundance
+2016) or the presence of pathogenic/opportunistic species within the              in polyps (Dadkhah et al., 2019), plays beneficial immune roles (Tan
+Ruminococcaceae that could contribute to colorectal tumorigenesis.                et al., 2016) and engages in cross-feeding with the butyrate producer
+     Faecalibacterium and Ruminococcus exhibit positive co-occurrence             Faecalibacterium (Rios-Covian et al., 2015), We hypothesize that the
+with SFB (previously Candidatus Arthromitus), which is also                       imbalances in Lachnoclostridium and Bifidobacterium may influence
+underrepresented in the CRC group. These taxa form a cluster with                 the colonization of Faecalibacterium (Kim et al., 2020), which is
+other commensal bacteria that also produce butyrate and lactic acid,              reduced in feces of CRC patients.
+as well as display anti-inflammatory and immunogenic functions                         Patients with polyps also showed a significantly higher prevalence
+(Figure 6). SFB primarily colonizes the small intestine (Chen et al.,             of dyslipidemia (Table 1), which is known as a potential risk factor for
+2018) and plays important roles in modulating the immune system                   the development of intestinal polyps. Unfavorable cholesterol profiles
+(Bolotin et al., 2014; Ladinsky et al., 2019), contributing to host               are more prevalent in these individuals (Passarelli and Newcomb,
+intestinal mucosal protection (Ivanov et al., 2009) and protection                2016; Xie et al., 2019). Furthermore, we found a significant increase in
+against pathogens (Woo et al., 2021). Limited studies have explored               the abundance of the Streptococcaceae in samples related to this
+the protective effect of SFB against CRC and further research is                  comorbidity (Figure 3C), and the genus Streptococcus has previously
+
+
+Frontiers in Microbiology                                                    13                                                             frontiersin.org
+Grion et al.                                                                                                               10.3389/fmicb.2023.1292490
+
+
+
+
+been associated with the consumption of cholesterol-rich diets                  highlight the complexity of the microbiota and emphasize the need
+(Garcia-Mantrana et al., 2018). However, it is worth noting that this           for larger studies to better understand its relationship with these
+taxon is not affected by the presence of dyslipidemia or CRC. Polyps            factors in the context of CRC.
+≥1 cm, known as advanced adenomas (Rex et al., 2017), exhibited                     This study aimed to investigate the differences in bacteriome
+significantly lower alpha diversity compared to the subgroup with               composition among control patients, individuals with polyps, and
+polyps <1 cm (Figure 8A). We propose that the loss of commensal taxa            those with CRC. Our findings revealed a reduction in taxonomic
+involved in maintaining colonic homeostasis may contribute to the               richness in individuals with polyps and CRC compared to control
+persistence of the polyp environment and subsequent CRC                         patients, along with significant changes in the abundance of certain
+development. Furthermore, we observed a significant increase in the             taxa. We identified potential taxonomic biomarkers for polyps
+abundance of the pro-inflammatory genus Ralstonia, albeit with low              (Streptococcaceae, Lachnoclostridium, and Ralstonia) and for CRC
+read counts in the samples (Figure 8B). This Gram-negative,                     (Lactobacillales, Clostridiaceae, Desulfovibrio, SFB, Ruminococcus,
+non-fermenting aerobic genus, belonging to the phylum                           and Faecalibacterium). In the early stages of CRC, the abundance of
+Proteobacteria, has been found in colonic crypts of healthy individuals         Clostridiaceae was significantly lower. We also observed a positive
+(Saffarian et al., 2019) and positively associated with colorectal              co-occurrence between Faecalibacterium and other underrepresented
+adenomas (Wang et al., 2022). Therefore, Ralstonia has the potential            genera in CRC (SFB and Ruminococcus), while showing a negative
+to enhance polyp screening in individuals with advanced adenomas,               co-occurrence with Desulfovibrio, indicating a potential antagonistic
+alongside Lachnoclostridium.                                                    relationship. Furthermore, we identified heterogeneity in the
+     Our study revealed heterogeneity in the bacteriome of CRC                  bacteriome associated with polyps and CRC, with differences in
+patients, specially related to the diversity and taxonomic composition.         taxonomic richness and/or abundance related to polyp size, tumor
+Although factors such as the location and stage of CRC are known to             stage, dyslipidemia, diabetes with metformin use, sex, age, and family
+potentially influence the variability of the microbiomes (Sheng et al.,         history of CRC. These results suggest that host clinical variables and
+2019; Suga et al., 2022), we did not observe associations in our study          underlying characteristics of polypoid lesions and tumors may
+population, which may be due to the limited number of patients.                 influence the bacteriome composition, potentially acting as
+Regarding the stage of CRC, the genus Pediococcus was significantly             confounding factors in the search for taxonomic biomarkers. Our
+reduced in advanced cases (Figure 8D), and showed a negative                    findings underscore the significance of bacteriome alterations in the
+co-occurrence with Desulfovibrio, suggesting a potential protective             occurrence and progression of CRC, while providing potential new
+role against CRC progression (Figure 6). Pediococcus species have               biomarkers for early CRC diagnosis.
+shown anti-tumoral properties against CRC (Villarante et al., 2011;
+Dubey et al., 2016). Therefore, further investigation is warranted to
+understand the potential protective role of Pediococcus in CRC
+progression. On the other hand, Actinomyces exhibited increased                 Data availability statement
+abundance (Figure 8E) and has been associated with the microbiome
+of patients with early-onset CRC (Xu et al., 2022), and its influence on            The datasets presented in this study can be found in online
+tumor microenvironment modulation. The precise role of                          repositories. The names of the repository/repositories and accession
+Actinomyces in CRC development requires further investigation. The              number(s) can be found below: https://www.ncbi.nlm.nih.gov/,
+prognosis of patients with CRC has also been linked to the microbiome           https://www.ncbi.nlm.nih.gov/bioproject/PRJNA961076.
+(Wei et al., 2016), and we have observed an increase in alpha diversity
+in patients who experienced disease progression leading to death
+(Figure 8C). This rise in microbial diversity in advanced stages may
+be attributed to opportunistic pathogens not typically found in a               Ethics statement
+healthy bacteriome. Furthermore, CRC patients exhibited higher
+relative abundance of non-assigned bacteria (Figure 2B), potentially                 The studies involving humans were approved by Biodonostia
+contributing to increased diversity in advanced cases. Therefore, there         Health Research Institute/Donostia University Hospital Ethics
+is still potential for discovering new taxa that may be associated with         Committee. The studies were conducted in accordance with the local
+the presence of CRC and could serve as prognostic biomarkers.                   legislation and institutional requirements. The participants provided
+     The gut bacteriome is influenced by various factors such as                their written informed consent to participate in this study.
+gender, age, family history and comorbidities (Liang et al., 2015; de
+la Cuesta-Zuluaga et al., 2019; Zhang et al., 2021; Ghosh et al., 2022).
+Our study revealed gender-associated patterns in alpha diversity                Author contributions
+measures, which support similar results in CRC samples from
+females (Liao et al., 2021) and findings suggest specific taxa playing             BG: Data curation, Formal analysis, Methodology, Visualization,
+important roles in CRC development in different sexes. We also                  Writing – original draft, Writing – review & editing. PF: Data curation,
+observed age-related alterations in specific bacterial families,                Formal analysis, Methodology, Visualization, Writing – original draft,
+associations between the abundance of certain taxa with family                  Writing – review & editing. RK: Software, Validation, Visualization,
+history, as well as variations in bacteria associated with diabetes in          Writing – original draft. GG: Software, Validation, Visualization,
+individuals using metformin. However, limited sample sizes may                  Writing – original draft. AV: Data curation, Formal analysis,
+have affected the detection of significant associations. These findings         Methodology, Writing – original draft. BJ: Writing – original draft,
+
+
+
+
+Frontiers in Microbiology                                                  14                                                             frontiersin.org
+Grion et al.                                                                                                                                                  10.3389/fmicb.2023.1292490
+
+
+
+
+Writing – review & editing. AD: Writing – original draft, Writing –                                Programa de Pós Graduação em Microbiologia ICB/UFMG and
+review & editing. KG-E: Writing – original draft, Writing – review &                               Pró-Reitoria de Pesquisa UFMG.
+editing. BB: Funding acquisition, Resources, Writing – review &
+editing. VA: Funding acquisition, Resources, Writing – review &
+editing. LB: Conceptualization, Project administration, Writing –                                  Conflict of interest
+original draft, Writing – review & editing. JB: Conceptualization,
+Project administration, Writing – original draft, Writing – review &                                   The authors declare that the research was conducted in the
+editing. AG-N: Conceptualization, Funding acquisition, Project                                     absence of any commercial or financial relationships that could
+administration, Resources, Writing – original draft, Writing – review                              be construed as a potential conflict of interest.
+& editing.
+
+                                                                                                   Publisher’s note
+Funding
+                                                                                                       All claims expressed in this article are solely those of the authors
+    The author(s) declare financial support was received for the                                   and do not necessarily represent those of their affiliated organizations,
+research, authorship, and/or publication of this article. This                                     or those of the publisher, the editors and the reviewers. Any product
+research was funded by the Basque government ELKARTEK                                              that may be evaluated in this article, or claim that may be made by its
+(KK-2022/0045).                                                                                    manufacturer, is not guaranteed or endorsed by the publisher.
+
+
+
+Acknowledgments                                                                                    Supplementary material
+    This work was supported by Fundação de Amparo à Pesquisa do                                         The Supplementary material for this article can be found online
+Estado de Minas Gerais (FAPEMIG) that provided a master’s                                          at: https://www.frontiersin.org/articles/10.3389/fmicb.2023.1292490/
+scholarship to BARG.1 We extend our sincere gratitude to the                                       full#supplementary-material
+
+
+
+References
+  Abdeljawad, K., Vemulapalli, K. C., Kahi, C. J., Cummings, O. W., and Snover, D. C.                Conteduca, V., Sansonno, D., Russi, S., and Dammacco, F. (2013). Precancerous
+(2015). Sessile serrated polyp prevalence determined by a colonoscopist with a high                colorectal lesions (review). Int. J. Oncol. 43, 973–984. doi: 10.3892/IJO.2013.2041
+lesion detection rate and an experienced pathologist. Gastrointest. Endosc. 81, 517–524.             Dadkhah, E., Sikaroodi, M., Korman, L., Hardi, R., Baybick, J., and Hanzel, D. (2019).
+doi: 10.1016/J.GIE.2014.04.064                                                                     Gut microbiome identifies risk for colorectal polyps. BMJ Open Gastroenterol. 6:e000297.
+  Andrews, S., (2010). FastQC: A quality control tool for high throughput sequence                 doi: 10.1136/BMJGAST-2019-000297
+data. Available at: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/                       de la Cuesta-Zuluaga, J., Kelley, S. T., Chen, Y., Escobar, J. S., Mueller, N. T., and Ley, R. E.
+  Arnold, M., Sierra, M. S., Laversanne, M., Soerjomataram, I., and Jemal, A. (2017).              (2019). Age- and sex-dependent patterns of gut microbial diversity in human adults.
+Global patterns and trends in colorectal cancer incidence and mortality. Gut 66,                   MSystems 4:e19. doi: 10.1128/MSYSTEMS.00261-19/SUPPL_FILE/MSYSTEMS.00261-19-
+683–691. doi: 10.1136/GUTJNL-2015-310912                                                           ST003.CSV
+
+  Bartley, A., Yang, T., Arocha, R., Malphurs, W. L., Larkin, R., and Magee, K. L. (2018).           Dhariwal, A., Chong, J., Habib, S., King, I. L., Agellon, L. B., and Xia, J. (2017).
+Increased abundance of Lactobacillales in the colon of Beta-adrenergic receptor Knock              MicrobiomeAnalyst: a web-based tool for comprehensive statistical, visual and meta-analysis
+out mouse is associated with increased gut bacterial production of short chain fatty acids         of microbiome data. Nucleic Acids Res. 45, W180–W188. doi: 10.1093/NAR/GKX295
+and reduced IL17 expression in circulating CD4+ immune cells. Front. Physiol. 9:1593.                Dubey, V., Ghosh, A. R., Bishayee, K., and Khuda-Bukhsh, A. R. (2016). Appraisal of
+doi: 10.3389/FPHYS.2018.01593/BIBTEX                                                               the anti-cancer potential of probiotic Pediococcus pentosaceus GS4 against colon
+  Binefa, G., Rodríguez-Moranta, F., Teule, À., and Medina-Hayas, M. (2014). Colorectal            cancer: in vitro and in vivo approaches. J. Funct. Foods 23, 66–79. doi: 10.1016/J.
+cancer: from prevention to personalized medicine. World J Gastroenterol: WJG 20:6786.              JFF.2016.02.032
+doi: 10.3748/WJG.V20.I22.6786                                                                        Elsafi, S. H., Alqahtani, N. I., Zakary, N. Y., and Al Zahrani, E. M. (2015). The
+  Bolotin, A., de Wouters, T., Schnupf, P., Bouchier, C., Loux, V., and Rhimi, M. (2014).          sensitivity, specificity, predictive values, and likelihood ratios of fecal occult blood test
+Genome sequence of “Candidatus Arthromitus” sp. strain SFB-mouse-NL, a commensal                   for the detection of colorectal cancer in hospital settings. Clin. Exp. Gastroenterol. 8:279.
+bacterium with a key role in postnatal maturation of gut immune functions. Genome                  doi: 10.2147/CEG.S86419
+Announc. 2:e14. doi: 10.1128/GENOMEA.00705-14                                                         Ericsson, A. C., Hagan, C. E., Davis, D. J., and Franklin, C. L. (2014). Segmented
+  Bufill, J. A. (1990). Colorectal cancer: evidence for distinct genetic categories based          filamentous bacteria: commensal microbes with potential effects on research. Comp.
+on proximal or distal tumor location. Ann. Intern. Med. 113, 779–788. doi:                         Med. 64, 90–98.
+10.7326/0003-4819-113-10-779                                                                         Flemer, B., Lynch, D. B., Brown, J. M. R., Jeffery, I. B., and Ryan, F. J. (2017). Tumour-
+  Bushnell, B. (2014). “BBTools software package.” Available online: http:/sourceforge.            associated and non-tumour-associated microbiota in colorectal cancer. Gut 66, 633–643.
+net/projects/bbmap (Accessed June 11, 2021).                                                       doi: 10.1136/GUTJNL-2015-309595
+   Chen, B., Chen, H., Shu, X., Yin, Y., Li, J., and Qin, J. (2018). Presence of segmented           Frank, E., Hall, M. A., and Witten, I. H. (2016). The WEKA workbench. Online
+filamentous bacteria in human children and its potential role in the modulation of                 appendix for data mining: Practical machine learning tools and techniques, 4th ed. New
+human gut immunity. Front. Microbiol. 9:1403. doi: 10.3389/FMICB.2018.01403/                       Zealand: Morgan Kaufmann.
+BIBTEX                                                                                               Garcia-Mantrana, I., Selma-Royo, M., Alcantara, C., and Collado, M. C. (2018). Shifts on
+   Chen, Y. R., Jing, Q. L., Chen, F. L., Zheng, H., and Chen, L. D. (2021). Desulfovibrio         gut microbiota associated to mediterranean diet adherence and specific dietary intakes on
+is not always associated with adverse health effects in the Guangdong gut microbiome               general adult population. Front. Microbiol. 9:890. doi: 10.3389/FMICB.2018.00890/BIBTEX
+project. PeerJ 9:e12033. doi: 10.7717/PEERJ.12033                                                    Geng, H. W., Yin, F. Y., Zhang, Z. F., Gong, X., and Yang, Y. (2021). Butyrate suppresses
+  Chen, C., Niu, M., Pan, J., Du, N., Liu, S., and Li, H. (2021). Bacteroides, butyric acid        glucose metabolism of colorectal cancer cells via GPR109a-AKT Signaling pathway and
+and t10,c12-CLA changes in colorectal adenomatous polyp patients. Gut Pathogens 13,                enhances chemotherapy. Front. Mol. Biosci. 8:634874. doi: 10.3389/FMOLB.2021.634874/
+1–9. doi: 10.1186/S13099-020-00395-0/FIGURES/3                                                     BIBTEX
+  Chong, J., Liu, P., Zhou, G., and Xia, J. (2020). Using MicrobiomeAnalyst for                      Ghosh, T. S., Shanahan, F., and O’Toole, P. W. (2022). The gut microbiome as a
+comprehensive statistical, functional, and meta-analysis of microbiome data. Nat.                  modulator of healthy ageing. Nat. Rev. Gastroenterol. Hepatol. 19, 565–584. doi: 10.1038/
+Protoc. 15, 799–821. doi: 10.1038/s41596-019-0264-1                                                s41575-022-00605-x
+
+
+
+Frontiers in Microbiology                                                                     15                                                                                  frontiersin.org
+Grion et al.                                                                                                                                                10.3389/fmicb.2023.1292490
+
+
+
+
+  Grady, W. M., and Carethers, J. M. (2008). Genomic and epigenetic instability in                     Menter, D. G., Davis, J. S., Broom, B. M., Overman, M. J., and Morris, J. (2019). Back
+colorectal cancer pathogenesis. Gastroenterology 135, 1079–1099. doi: 10.1053/J.                     to the colorectal cancer consensus molecular subtype future. Curr. Gastroenterol. Rep.
+GASTRO.2008.07.076                                                                                   21:5. doi: 10.1007/S11894-019-0674-9
+   Gudra, D., Shoaie, S., Fridmanis, D., Klovins, J., Wefer, H., and Silamikelis, I. (2019).           Mira-Pascual, L., Cabrera-Rubio, R., Ocon, S., Costales, P., and Parra, A. (2015).
+A widely used sampling device in colorectal cancer screening programmes allows for                   Microbial mucosal colonic shifts associated with the development of colorectal cancer
+large-scale microbiome studies. Gut 68, 1723–1725. doi: 10.1136/GUTJNL-2018-316225                   reveal the presence of different bacterial and archaeal biomarkers. J. Gastroenterol. 50,
+  Guo, F. F., Yu, T. C., Hong, J., and Fang, J. Y. (2016). Emerging roles of hydrogen sulfide        167–179. doi: 10.1007/S00535-014-0963-X/METRICS
+in inflammatory and neoplastic colonic diseases. Front. Physiol. 7:156. doi: 10.3389/                  Nogal, A., Louca, P., Zhang, X., Wells, P. M., Steves, C. J., and Spector, T. D. (2021).
+FPHYS.2016.00156/BIBTEX                                                                              Circulating levels of the short-chain fatty acid acetate mediate the effect of the gut
+  Issa, I. A., and NouredDine, M. (2017). Colorectal cancer screening: an updated                    microbiome on visceral fat. Front. Microbiol. 12:1943. doi: 10.3389/FMICB.2021.711359/
+review of the available options. World J. Gastroenterol. 23:5086. doi: 10.3748/WJG.V23.              BIBTEX
+I28.5086                                                                                               Passarelli, M. N., and Newcomb, P. A. (2016). Blood lipid concentrations and
+  Ivanov, I. I., Atarashi, K., Manel, N., Brodie, E. L., Shima, T., and Karaoz, U. (2009).           colorectal adenomas: a systematic review and meta-analysis of colonoscopy studies in
+Induction of intestinal Th17 cells by segmented filamentous bacteria. Cells 139, 485–498.            Asia, 2000–2014. Am. J. Epidemiol. 183:691. doi: 10.1093/AJE/KWV294
+doi: 10.1016/J.CELL.2009.09.033
+                                                                                                       Patel, S. G., May, F. P., Anderson, J. C., Burke, C. A., and Dominitz, J. A. (2022).
+ Jonsson, H., Hugerth, L. W., Sundh, J., Lundin, E., and Andersson, A. F. (2020).                    Updates on age to start and stop colorectal cancer screening: recommendations from
+Genome sequence of segmented filamentous bacteria present in the human intestine.                    the U.S. multi-society task force on colorectal cancer. Gastroenterology 162, 285–299.
+Commun. Biol. 3, 485–489. doi: 10.1038/s42003-020-01214-7                                            doi: 10.1053/J.GASTRO.2021.10.007
+  Joseph, D. A., King, J. B., Richards, T. B., and Thomas, C. C. (2018). Peer reviewed: use            Peters, B. A., Dominianni, C., Shapiro, J. A., Church, T. R., and Wu, J. (2016). The gut
+of colorectal cancer screening tests by state. Prev. Chronic Dis. 15:E80. doi: 10.5888/              microbiota in conventional and serrated precursors of colorectal cancer. Microbiome
+PCD15.170535                                                                                         4:69. doi: 10.1186/S40168-016-0218-6/TABLES/2
+  Keum, N. N., and Giovannucci, E. (2019). Global burden of colorectal cancer:                         Petrelli, F., Tomasello, G., Borgonovo, K., Ghidini, M., and Turati, L. (2017). Prognostic
+emerging trends, risk factors and prevention strategies. Nat. Rev. Gastroenterol. Hepatol.           survival associated with left-sided vs right-sided colon cancer: a systematic review and
+16:713732. doi: 10.1038/s41575-019-0189-8                                                            meta-analysis. JAMA Oncol. 3, 211–219. doi: 10.1001/JAMAONCOL.2016.4227
+  Kim, H., Jeong, Y., Kang, S., You, H. J., and Ji, G. E. (2020). Co-culture with                      Prehn-Kristensen, A., Zimmermann, A., Tittmann, L., Lieb, W., and Schreiber, S.
+Bifidobacterium catenulatum improves the growth, gut colonization, and butyrate                      (2018). Reduced microbiome alpha diversity in young patients with ADHD. PLoS One
+production of Faecalibacterium prausnitzii: in vitro and in vivo studies. Microorganisms             13:e0200728. doi: 10.1371/JOURNAL.PONE.0200728
+8:788. doi: 10.3390/MICROORGANISMS8050788                                                              Rawla, P., Sunkara, T., and Barsouk, A. (2019). Epidemiology of colorectal cancer:
+ Langmead, B., and Salzberg, S. L. (2012). Fast gapped-read alignment with Bowtie 2.                 incidence, mortality, survival, and risk factors. Przegla̜d Gastroenterologiczny 14:89. doi:
+Nat. Methods 9:357–359. doi: 10.1038/nmeth.1923                                                      10.5114/PG.2018.81072
+  La Reau, A. J., Meier-Kolthoff, J. P., and Suen, G. (2016). Sequence-based analysis of               Rex, D. K., Boland, C. R., Dominitz, J. A., Giardiello, F. M., and Johnson, D. A. (2017).
+the genus ruminococcus resolves its phylogeny and reveals strong host association.                   Colorectal cancer screening: recommendations for physicians and patients from the U.S.
+Microb. Gen. 2:e000099. doi: 10.1099/MGEN.0.000099                                                   multi-society task force on colorectal cancer. Gastroenterology 153, 307–323. doi:
+                                                                                                     10.1053/J.GASTRO.2017.05.013
+  Ladinsky, M. S., Araujo, L. P., Zhang, X., Veltri, J., Galan-Diez, M., and Soualhi, S.
+(2019). Endocytosis of commensal antigens by intestinal epithelial cells regulates                     Rey, F. E., Gonzalez, M. D., Cheng, J., Wu, M., and Ahern, P. P. (2013). Metabolic niche
+mucosal T cell homeostasis. Science 363:e42. doi: 10.1126/SCIENCE.AAT4042/SUPPL_                     of a prominent sulfate-reducing human gut bacterium. Proc. Natl. Acad. Sci. U. S. A. 110,
+FILE/AAT4042S3.MOV                                                                                   13582–13587. doi: 10.1073/PNAS.1312524110/SUPPL_FILE/SD01.XLSX
+  Lee, S. M., Donaldson, G. P., Mikulski, Z., Boyajian, S., and Ley, K. (2013). Bacterial              Rios-Covian, D., Gueimonde, M., Duncan, S. H., Flint, H. J., and De Los
+colonization factors control specificity and stability of the gut microbiota. Nature 501,            Reyes-Gavilan, C. G. (2015). Enhanced butyrate formation by cross-feeding between
+426–429. doi: 10.1038/nature12447                                                                    Faecalibacterium prausnitzii and Bifidobacterium adolescentis. FEMS Microbiol. Lett.
+                                                                                                     362:176. doi: 10.1093/FEMSLE/FNV176
+  Lee, Y. C., Liu, C. Y., Lee, C. L., Zhang, R. H., and Huang, C. J. (2022). The
+Periodontopathic pathogen, Porphyromonas gingivalis, involves a gut inflammatory                       Saffarian, A., Mulet, C., Regnault, B., Amiot, A., Tran-Van-Nhieu, J., and Ravel, J.
+response and exacerbates inflammatory bowel disease. Pathogens 11:e84. doi: 10.3390/                 (2019). Crypt- and mucosa-associated Core microbiotas in humans and their alteration
+PATHOGENS11010084/S1                                                                                 in colon cancer patients. MBio 10:e19. doi: 10.1128/mBio.01315-19
+ Levine, J. S., and Ahnen, D. J. (2006). Adenomatous polyps of the colon. N Engl J Med                 Sawicki, T., Ruszkowska, M., Danielewicz, A., Niedźwiedzka, E., and Arłukowicz, T.
+Overseas Ed 355, 2551–2557. doi: 10.1056/NEJMcp063038                                                (2021). A review of colorectal cancer in terms of epidemiology, risk factors, development,
+                                                                                                     symptoms and diagnosis. Cancers 13:2025. doi: 10.3390/CANCERS13092025
+  Li, T., Nakatsu, G., Chen, Y. X., Yau, T. O., Chu, E., and Wong, S. (2020). A novel faecal
+Lachnoclostridium marker for the non-invasive diagnosis of colorectal adenoma and                       Sheng, Q., Du, H., Cheng, X., Cheng, X., Tang, Y., and Pan, L. (2019). Characteristics
+cancer. Gut 69, 1248–1257. doi: 10.1136/GUTJNL-2019-318532                                           of fecal gut microbiota in patients with colorectal cancer at different stages and different
+                                                                                                     sites. Oncol. Lett. 18, 4834–4844. doi: 10.3892/OL.2019.10841/HTML
+  Liang, X., Bushman, F. D., and FitzGerald, G. A. (2015). Rhythmicity of the intestinal
+microbiota is regulated by gender and the host circadian clock. Proc. Natl. Acad. Sci.                 Siddiqui, R., Boghossian, A., Alharbi, A. M., and Alfahemi, H. (2022). The pivotal role
+U. S. A. 112, 10479–10484. doi: 10.1073/PNAS.1501305112/SUPPL_FILE/                                  of the gut microbiome in colorectal cancer. Biology 11:11642. doi: 10.3390/
+PNAS.201501305SI.PDF                                                                                 BIOLOGY11111642
+  Liao, H., Li, C., Ai, Y., and Kou, Y. (2021). Gut microbiome is more stable in males                 Sohn, J., Li, L., Zhang, L., Settem, R. P., Honma, K., and Sharma, A. (2022).
+than in females during the development of colorectal cancer. J. Appl. Microbiol. 131,                Porphyromonas gingivalis indirectly elicits intestinal inflammation by altering the gut
+435–448. doi: 10.1111/JAM.14943                                                                      microbiota and disrupting epithelial barrier function through IL9-producing CD4+ T
+                                                                                                     cells. Mol Oral Microbiol 37, 42–52. doi: 10.1111/OMI.12359
+  Long, X., Wong, C. C., Tong, L., Chu, E. S. H., Ho Szeto, C., and Go, M. Y. Y. (2019).
+Peptostreptococcus anaerobius promotes colorectal carcinogenesis and modulates                         Song, M., and Chan, A. T. (2019). Environmental factors, gut microbiota, and
+tumour immunity. Nat. Microbiol. 4, 2319–2330. doi: 10.1038/s41564-019-0541-3                        colorectal cancer prevention. Clin. Gastroenterol. Hepatol. 17:275. doi: 10.1016/J.
+   Lopez-Siles, M., Duncan, S. H., Garcia-Gil, L. J., and Martinez-Medina, M. (2017).                CGH.2018.07.012
+Faecalibacterium prausnitzii: from microbiology to diagnostics and prognostics. ISME                   Suga, D., Mizutani, H., Fukui, S., Kobayashi, M., Shimada, Y., and Nakazawa, Y.
+J. 11, 841–852. doi: 10.1038/ismej.2016.176                                                          (2022). The gut microbiota composition in patients with right- and left-sided colorectal
+  Lundberg, R., Bahl, M. I., Licht, T. R., Toft, M. F., and Hansen, A. K. (2017). Microbiota         cancer and after curative colectomy, as analyzed by 16S rRNA gene amplicon sequencing.
+composition of simultaneously colonized mice housed under either a gnotobiotic                       BMC Gastroenterol. 22, 1–13. doi: 10.1186/S12876-022-02382-Y/TABLES/4
+isolator or individually ventilated cage regime. Sci. Rep. 7, 1–11. doi: 10.1038/srep42245             Sung, H., Ferlay, J., Siegel, R. L., Laversanne, M., and Soerjomataram, I. (2021). Global
+  Malla, M. A., Dubey, A., Kumar, A., Yadav, S., Hashem, A., and Allah, E. F. A. (2019).             cancer statistics 2020: GLOBOCAN estimates of incidence and mortality worldwide for
+Exploring the human microbiome: the potential future role of next-generation                         36 cancers in 185 countries. CA Cancer J. Clin. 71, 209–249. doi: 10.3322/CAAC.21660
+sequencing in disease diagnosis and treatment. Front. Immunol. 10:2868. doi: 10.3389/                  Tan, T. G., Sefik, E., Geva-Zatorsky, N., Kua, L., Naskar, D., and Teng, F. (2016).
+FIMMU.2018.02868/BIBTEX                                                                              Identifying species of symbiont bacteria from the human gut that, alone, can induce
+  Maringe, C., Walters, S., Rachet, B., Butler, J., Fields, T., and Finan, P., (2013). Acta          intestinal Th17 cells in mice. Proc. Natl. Acad. Sci. U. S. A. 113, E8141–E8150. doi:
+Oncologica stage at diagnosis and colorectal cancer survival in six high-income countries:           10.1073/PNAS.1617460113/SUPPL_FILE/PNAS.201617460SI.PDF
+A population-based study of patients diagnosed during 2000–2007
+                                                                                                      Ternes, D., Karta, J., Tsenkova, M., Wilmes, P., Haan, S., and Letellier, E. (2020).
+  Matias Rodrigues, J. F., Schmidt, T. S. B., Tackmann, J., and Von Mering, C. (2017).               Microbiome in colorectal cancer: how to get from meta-omics to mechanism? Trends
+MAPseq: highly efficient k-mer search with confidence estimates, for rRNA sequence                   Microbiol. 28, 401–423. doi: 10.1016/J.TIM.2020.01.001/ATTACHMENT/371091AE-
+analysis. Bioinformatics 33, 3808–3810. doi: 10.1093/BIOINFORMATICS/BTX517                           DBF2-4759-93DB-08E4843EF211/MMC1.DOCX
+
+
+
+
+Frontiers in Microbiology                                                                       16                                                                             frontiersin.org
+Grion et al.                                                                                                                                                    10.3389/fmicb.2023.1292490
+
+
+
+
+  Thompson, C. L., Mikaelyan, A., and Brune, A. (2013). Immune-modulating gut                             Woo, V., Eshleman, E. M., Hashimoto-Hill, S., Whitt, J., Wu, S., and Engleman, L.
+symbionts are not “Candidatus Arthromitus”. Mucosal Immunol. 6, 200–201. doi:                           (2021). Commensal segmented filamentous bacteria-derived retinoic acid primes host
+10.1038/MI.2012.91                                                                                      defense to intestinal infection. Cell Host Microbe 29, 1744–1756.e5. doi: 10.1016/J.
+                                                                                                        CHOM.2021.09.010
+  Thompson, C. L., Vier, R., Mikaelyan, A., and Wienemann, T. (2012). “Candidatus
+Arthromitus” revised: segmented filamentous bacteria in arthropod guts are members                        Xie, C., Wen, P., Su, J., Li, Q., Ren, Y., and Liu, Y. (2019). Elevated serum triglyceride
+of Lachnospiraceae. Environ. Microbiol. 14, 1454–1465. doi: 10.1111/J.1462-2                            and low-density lipoprotein cholesterol promotes the formation of colorectal polyps.
+920.2012.02731.X                                                                                        BMC Gastroenterol. 19:195. doi: 10.1186/S12876-019-1115-9
+                                                                                                           Xu, Z., Lv, Z., Chen, F., Zhang, Y., Xu, Z., and Huo, J. (2022). Dysbiosis of human
+  U.S. Cancer Statistics: Colorectal Cancer Stat Bite | CDC. (2022). Retrieved December
+                                                                                                        tumor microbiome and aberrant residence of actinomyces in tumor-associated
+11, 2022, Available at: https://www.cdc.gov/cancer/uscs/about/stat-bites/stat-bite-
+colorectal.htm#print                                                                                    fibroblasts in young-onset colorectal cancer. Front. Immunol. 13:5205. doi: 10.3389/
+                                                                                                        FIMMU.2022.1008975/BIBTEX
+  Uppakarn, K., Bangpanwimon, K., Hongpattarakere, T., Wanitsuwan, W., and
+                                                                                                          Yan, Y., Drew, D. A., Markowitz, A., Lloyd-Price, J., Abu-Ali, G., and Nguyen, L. H.
+Article, R. (2021). Comparison of the human gut microbiota between Normal control
+                                                                                                        (2020). Structure of the mucosal and stool microbiome in Lynch syndrome. Cell Host
+subjects and patients with colonic polyps and colorectal cancer
+                                                                                                        Microbe 27, 585–600.e4. doi: 10.1016/J.CHOM.2020.03.005
+  Villarante, K. I., Elegado, F. B., Iwatani, S., Zendo, T., and Sonomoto, K. (2011).                     Yang, T. W., Lee, W. H., Tu, S. J., Huang, W. C., Chen, H. M., and Sun, T. H. (2019b).
+Purification, characterization and in vitro cytotoxicity of the bacteriocin from                        Enterotype-based analysis of gut microbiota along the conventional adenoma-carcinoma
+Pediococcus acidilactici K2a2-3 against human colon adenocarcinoma (HT29) and                           colorectal cancer pathway. Sci. Rep. 9, 10923–10913. doi: 10.1038/s41598-019-45588-z
+human cervical carcinoma (HeLa) cells. World J. Microbiol. Biotechnol. 27, 975–980. doi:
+10.1007/S11274-010-0541-1/METRICS                                                                         Yang, J., McDowell, A., Kim, E. K., Seo, H., Lee, W. H., and Moon, C. M. (2019a).
+                                                                                                        Development of a colorectal cancer diagnostic model and dietary risk assessment
+  Wang, T., Brown, N. M., McCoy, A. N., and Sandler, R. S. (2022). Omega-3                              through gut microbiome analysis. Exp. Mol. Med. 51, 1–15. doi: 10.1038/
+polyunsaturated fatty acids, gut microbiota, microbial metabolites, and risk of colorectal              s12276-019-0313-4
+adenomas. Cancers 14:4443. doi: 10.3390/CANCERS14184443/S1
+                                                                                                          Yu, S. Y., Xie, Y. H., Qiu, Y. W., Chen, Y. X., and Fang, J. Y. (2019). Moderate alteration
+  Wang, Y., Nguyen, L. H., Mehta, R. S., Song, M., and Huttenhower, C. (2021).
+                                                                                                        to gut microbiota brought by colorectal adenoma resection. J. Gastroenterol. Hepatol. 34,
+Association between the Sulfur microbial diet and risk of colorectal cancer. JAMA Netw.
+                                                                                                        1758–1765. doi: 10.1111/JGH.14735
+Open 4:e2134308. doi: 10.1001/JAMANETWORKOPEN.2021.34308
+  Wang, X., Ye, T., Chen, W. J., Lv, Y., Hao, Z., and Chen, J. (2017). Structural shift of gut            Zhang, Y. K., Zhang, Q., Wang, Y. L., Zhang, W. Y., Hu, H. Q., and Wu, H. Y. (2021).
+microbiota during chemo-preventive effects of epigallocatechin gallate on colorectal                    A comparison study of age and colorectal cancer-related gut bacteria. Front. Cell. Infect.
+carcinogenesis in mice. World J. Gastroenterol. 23:8128. doi: 10.3748/WJG.V23.I46.8128                  Microbiol. 11:1. doi: 10.3389/FCIMB.2021.606490/FULL
+
+  Wei, Z., Cao, S., Liu, S., Yao, Z., Sun, T., Li, Y., et al. (2016). Could gut microbiota serve         Zhao, L., Cho, W. C., and Nicolls, M. R. (2021). Colorectal cancer-associated
+as prognostic biomarker associated with colorectal cancer patients’ survival? A pilot study             microbiome patterns and signatures. Front. Genet. 12:2687. doi: 10.3389/
+on relevant mechanism. Oncotarget 7, 46158–46172. doi: 10.18632/ONCOTARGET.10064                        FGENE.2021.787176/BIBTEX
+  Wong, S. H., and Yu, J. (2019). Gut microbiota in colorectal cancer: mechanisms of                      Zhao, L., Zhang, X., Zhou, Y., Fu, K., Lau, H. C. H., and Chun, T. W. Y. (2022).
+action and clinical applications. Nat. Rev. Gastroenterol. 16, 690–704. doi: 10.1038/                   Parvimonas micra promotes colorectal tumorigenesis and is associated with prognosis
+s41575-019-0209-8                                                                                       of colorectal cancer patients. Oncogene 41, 4200–4210. doi: 10.1038/s41388-022-02395-7
+
+
+
+
+Frontiers in Microbiology                                                                          17                                                                              frontiersin.org
+

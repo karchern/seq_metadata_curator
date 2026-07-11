@@ -1,0 +1,753 @@
+Zhu et al. Genome Biology      (2019) 20:154
+https://doi.org/10.1186/s13059-019-1773-5
+
+
+
+
+ SOFTWARE                                                                                                                                       Open Access
+
+MicroPro: using metagenomic unmapped
+reads to provide insights into human
+microbiota and disease associations
+Zifan Zhu1, Jie Ren1, Sonia Michail2 and Fengzhu Sun1*
+
+
+  Abstract
+  We develop a metagenomic data analysis pipeline, MicroPro, that takes into account all reads from known and
+  unknown microbial organisms and associates viruses with complex diseases. We utilize MicroPro to analyze four
+  metagenomic datasets relating to colorectal cancer, type 2 diabetes, and liver cirrhosis and show that including
+  reads from unknown organisms significantly increases the prediction accuracy of the disease status for three of the
+  four datasets. We identify new microbial organisms associated with these diseases and show viruses play important
+  prediction roles in colorectal cancer and liver cirrhosis, but not in type 2 diabetes. MicroPro is freely available at
+  https://github.com/zifanzhu/MicroPro.
+  Keywords: Metagenomics, Next-generation shotgun sequencing, Human disease, Microbiome, Virus
+
+
+Introduction                                                                         various diseases such as colorectal cancer [8], type 2 dia-
+Trillions of microbes populate various sites of the human                            betes [9, 10], liver cirrhosis [11], and many others. In
+body and form microbiome communities [1]. These mi-                                  addition, human microbiota has been linked to the effect-
+croorganisms and their interactions between each other                               iveness of cancer chemotherapy [12]. In some studies, a
+and the host play an important role in many physiological                            single species or strain is associated with a disease while
+processes including metabolism, reproduction and im-                                 in other cases, groups of microorganisms interact to affect
+mune system activity [2, 3]. In the nineteenth century,                              human health [13].
+culture-based methods demonstrated that changes in                                     Mounting evidence connecting the microbiome with
+these microbes might lead to disease. Since then, many                               disease description has gradually brought about the con-
+subsequent studies confirmed these findings [4]. However,                            cept of a supervised predictive study of microorganisms
+the cultivation technology only provided a limited view                              for different diseases. Although most of the studies are
+since many microorganisms could not be cultured in vitro                             merely observational, which means we cannot simply
+[5]. Over the past 20 years, and thanks to the rapid devel-                          conclude the causality between microbes and the disease
+opment of sequencing technology, sequencing-based                                    [7], the existing correlations are sufficient to prove that
+methods have gradually replaced the cultivation technol-                             performing a predictive study about the effect of micro-
+ogy and have become the most widely used tools for mi-                               biota on diseases is plausible. More specifically, many
+crobial analysis. The 16S ribosomal RNA sequencing                                   advances in this area have made it possible to predict
+together with the recent shotgun whole genome sequen-                                the existence or states of a certain disease given informa-
+cing not only discovers large amounts of non-cultivable                              tion of the microorganisms for a specific subject.
+microbes, but also fundamentally changes the way micro-                                In the field of machine learning, a supervised predict-
+bial analysis is performed [6, 7]. Researchers are now find-                         ive study aims to build models based on sets of features
+ing more evidence correlating human microbiota with                                  to maximally approximate the response value or cor-
+                                                                                     rectly classify the label of a sample. In the microbiota-
+* Correspondence: fsun@usc.edu
+                                                                                     disease setting, the response can either be disease/non-
+1
+ Quantitative and Computational Biology Program, Department of Biological            disease or different subtypes within a disease; thus, a
+Sciences, University of Southern California, Los Angeles, CA, USA                    classification version of supervised predictive study is
+Full list of author information is available at the end of the article
+
+                                       © The Author(s). 2019 Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+                                       International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+                                       reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+                                       the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+                                       (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated.
+Zhu et al. Genome Biology   (2019) 20:154                                                                    Page 2 of 13
+
+
+
+
+desired [14]. However, the selection of features varies      assembly-based methods have the potential to capture
+greatly among different studies. Our study is focused on     microbes without reference genomes, thus solving the
+analyzing the microbial abundance in the context of          main problem of the reference-based methods. However,
+shotgun whole genome sequencing. A similar analysis          de novo assembly-based methods also have their own is-
+can also be applied to other choices of the feature          sues. Sequence assembly is computationally expensive
+including operational taxonomic units (OTUs, widely          and takes a lot of time and memory. For example, Minia
+used in 16S rRNA analysis) [15], NCBI non-redundant          3 [27] took 53 h and 63 GB memory to perform de novo
+Clusters of Orthologous Groups (COG) [16], or Kyoto          assembly while reference-based method, Centrifuge [19],
+Encyclopedia of Genes and Genomes (KEGG) groups              completed the mapping in less than 2 h and used 4 GB
+[17]. With many software packages like MetaPhlAn2            memory on the same machine for the QinJ_T2D dataset.
+[18] or Centrifuge [19] tackling the computation of the        Secondly, the roles of viruses in diseases are often
+microorganisms’ abundance, the microbiota-disease pre-       neglected. Within the human microbial community, bac-
+dictive study can be formulated as a machine learning        terium reads constitute the majority while virus reads
+task based on a species-by-sample matrix with qualita-       are reported as a small proportion of the total reads (less
+tive labels.                                                 than 5% in datasets analyzed in our study). Additionally,
+   Recently, many studies have focused on the predictive     an incomplete database of viral reference genomes and
+analysis between human microbiota and diseases. For          the high mutation rates of viruses make them even more
+example, Zeller et al. [8] developed a species abundance-    challenging to characterize and analyze [28]. Therefore,
+based LASSO [20] model to differentiate between colo-        most disease-related microbiome studies focus only on
+rectal cancer patients and healthy individuals. Qin et al.   the connection between bacteria and the disease. How-
+[11] used gene markers to predict liver cirrhosis based      ever, learning about viruses is important as the number
+on a Support Vector Machine (SVM) [21]. Moreover,            of viruses is about 10 times that of bacteria [29], and
+Pasolli et al. [22] built a database named curatedMeta-      they can play important roles in multiple diseases. Nor-
+genomicData, which stored uniformly processed micro-         man et al. [30] showed that enteric virome change hap-
+biome analysis results across 5716 publicly available        pened in patients with inflammatory bowel disease and
+shotgun metagenomic samples. Using this database,            bacteriophages might serve as antigens in the human
+Pasolli et al. developed a random forest [23] model to       immune system. Ren et al. [26] demonstrated that de-
+analyze the predictive power of different microbial fea-     creased viral diversity was observed in patients with liver
+tures (such as species abundance, pathway coverage) on       cirrhosis as compared to healthy individuals. Reyes et al.
+various diseases.                                            [31] identified disease-discriminatory viruses associated
+   However, the currently available approaches face a few    with childhood malnutrition, which might help to
+challenges. First, in microbiome studies, there are gener-   characterize gut microbiota development. Therefore, the
+ally two types of methods for microbial abundance            role of viruses in human diseases should be investigated.
+characterization from metagenomic datasets: reference-         In order to overcome the challenges mentioned
+based methods and de novo assembly-based methods.            above, we developed a metagenomic predictive pipe-
+Many reference-based methods involve the process of          line, MicroPro, which analyzes data in three main
+mapping short reads against known microbial reference        steps: (1) reference-based known microbial abundance
+sequences in the NCBI RefSeq database [24] or a catalog      characterization—perform taxonomic profiling based
+of taxon-associated marker sequences [18]. Microbial         on sequence alignment against reference genomes; (2)
+abundances can be estimated from the mapping results.        assembly-binning-based unknown organism feature
+However, a large proportion of the reads cannot be suc-      extraction—use cross-assembly to assemble the com-
+cessfully mapped to a particular reference, which results    bined unmapped reads from all samples and consider
+in the potential loss of valuable information. On the        each assembled contig as originated from an “un-
+other hand, de novo assembly-based methods do not            known” organism, which refers to an organism with
+need any reference genomes or marker sequences. These        no known references available in the database. Since
+methods create metagenomic assembled groups (MAGs)           some contigs may originate from the same organism,
+by first assembling the reads into contigs, then binning     we cluster assembled contigs into bins and then treat
+the metagenomic contigs into MAGs, and finally esti-         each bin as an “unknown” organism; and (3) machine
+mating the abundance profiles of the MAGs. For               learning predictive analysis—apply machine learning
+example, Xing et al. [25] and Ren et al. [26] both identi-   tools for predicting disease/non-disease or disease
+fied microbial species in the metagenomic datasets           states based on the species-by-sample matrix. To the
+through de novo assembling reads into contigs and then       best of my knowledge, this is the first predictive pipe-
+binning contigs into MAGs and analyzed disease associ-       line based on a combination of both known and un-
+ation with the relative abundance of the MAGs. De novo       known microbial organisms. We tested MicroPro on
+Zhu et al. Genome Biology     (2019) 20:154                                                                             Page 3 of 13
+
+
+
+
+four public NGS datasets and showed that consider-                       other hand, the de novo assembly-based method skipped
+ation of unknown organisms significantly increased                       the first step of MicroPro and performed assembly and
+the prediction accuracy for three of the four datasets.                  binning on the whole dataset. The simulation study
+Furthermore, we systematically investigated the effect                   showed that the predictive performance of the
+of viruses on multiple diseases with the virus version                   reference-based method was significantly lower than that
+of MicroPro. We examined the predictive power of                         of the de novo assembly-based method and MicroPro,
+the model with known and unknown viruses and                             since reference-based method only captured microbes
+showed that unknown viruses played an important                          within the reference database which possibly ignored
+role in disease prediction warranting further attention.                 other microbes important for the classification. De novo
+                                                                         assembly-based method and MicroPro had a similar per-
+Results                                                                  formance in terms of prediction, as they both used all
+MicroPro: a metagenomic disease-related prediction                       the reads in the sample without the information loss
+analysis pipeline taking unmapped reads into                             encountered in the reference-based method (Fig. 2).
+consideration                                                            However, in terms of computational cost, the reference-
+We developed a new metagenomic analysis pipeline,                        based method needed the fewest computing resources as
+MicroPro, to take into account both known and unknown                    sequence alignment was computationally cheaper than
+microbial organisms for the prediction of disease status.                assembly. Additionally, de novo assembly-based method
+MicroPro consists of three main steps: (1) reference-based               required at least twice the wall time and 1.5 times the
+known microbial abundance characterization, (2) assembly-                memory compared to MicroPro. This result was not
+binning-based unknown organism feature extraction, and                   unexpected since sequence assembly was the computa-
+(3) machine learning predictive analysis. Figure 1 presents              tional bottleneck for these two methods and MicroPro
+the procedures to extract the abundance table of both                    only assembled unmapped reads while de novo
+known and unknown microbial organisms. Various ma-                       assembly-based method assembled all of them (Table 1).
+chine learning tools can then be applied to study the associ-            In summary, MicroPro performed better in prediction than
+ation between microbial abundances and the disease.                      reference-based method and required much fewer comput-
+Detailed explanations of each step are available in the                  ing resources than de novo assembly-based method.
+“Methods” section.                                                         Sczyrba et al. [32] showed that Megahit [33] and Minia
+                                                                         3 [27] were among the top assemblers and produced
+Comparison between MicroPro, reference-based method,                     contigs of similar quality in the Critical Assessment of
+and de novo assembly-based method on simulated                           Metagenome Interpretation (CAMI) challenge. To com-
+dataset                                                                  pare these two assemblers, we tested Megahit and Minia
+We simulated 50 metagenomic shotgun sequenced sam-                       3 in the simulation study and found that they had a
+ples (25 cases and 25 controls) consisting of bacteria                   similar performance in prediction (Fig. 2), but Minia 3
+from 100 genera. Each sample had a size of 1 GB                          was computationally more efficient than Megahit
+(500 Mbp). The details of the simulation setup are de-                   (Table 1).
+scribed in the “Methods” section. We then tested Micro-
+Pro and compared it with the reference-based method                      Application of MicroPro to four real metagenomic
+and the de novo assembly-based method on the simu-                       datasets
+lated dataset for their prediction performance of disease                We downloaded four publicly available shotgun-
+status. The reference-based method only used the                         sequenced metagenomic datasets related to three differ-
+known microbial abundances produced in the first step                    ent diseases: colorectal cancer (CRC) [8], type 2 diabetes
+of MicroPro to perform the classification study. On the                  (T2D) [9, 10], and liver cirrhosis (LC) [11] (Table 2).
+
+
+
+
+ Fig. 1 Procedures of microbial abundance characterization in MicroPro
+Zhu et al. Genome Biology       (2019) 20:154                                                                                         Page 4 of 13
+
+
+
+
+ Fig. 2 Results of simulation studies. Boxplots of random forest AUC scores obtained using features from different methods are provided. Each
+ random forest classification model was repeatedly trained and tested 30 times. Student’s t test p values between pairs of methods are given
+
+
+  We then analyzed these four datasets using MicroPro.                     both had a similar prediction accuracy in the other two
+We found that MicroPro significantly improved the pre-                     datasets (Fig. 3b). Again, Megahit required much more
+diction accuracy over reference-based method in three                      computing resources than Minia 3 (Additional file 2:
+of the four datasets (Karlsson_T2D, QinJ_T2D, and                          Table S1). It suggests that for small datasets or with
+QinN_LC). This result uncovered the predictive value of                    ample computing resources, Megahit is a better choice
+the abundance profiles of unknown organisms that were                      over Minia 3 for real data. Unless specified, all the
+commonly ignored by many reference-based metage-                           following analyses are based on Megahit-assembled
+nomic analysis pipelines (Fig. 3a). We also compared                       contigs.
+MicroPro with de novo assembly-based method. Due to
+insufficient computing memory, we only used Minia 3                        Analysis of the role of unknown viruses in virus-only
+for de novo assembly. The prediction results showed                        prediction study
+that MicroPro (Minia 3) performed slightly better than                     To test the predictive power of the viral organisms
+de novo assembly-based method with the AUC increase                        within the microbial community, we applied the virus
+being significant in Zeller_CRC and QinN_LC and                            version of MicroPro to all the four datasets. Although
+weakly significant in Karlsson_T2D (Fig. 3b). As in the                    the prediction accuracy obtained by the abundance
+simulation study, the de novo assembly-based method                        profiles of known viruses was much lower than that ob-
+was computationally more expensive than MicroPro                           tained by known microbial abundances including bac-
+(Additional file 2: Table S1). Moreover, we compared the                   teria, adding the unknown feature significantly improved
+performance of MicroPro using two different assemblers:                    the prediction accuracy for datasets Zeller_CRC, QinJ_
+Megahit and Minia 3. The results showed that MicroPro                      T2D, and QinN_LC (Fig. 4). For Zeller_CRC and QinJ_
+(Megahit) performed significantly better than MicroPro                     T2D, the role of unknown viruses was remarkable as
+(Minia 3) in datasets Karlsson_T2D and QinJ_T2D and                        they increased the average AUC score from 0.55 to 0.72
+                                                                           and 0.56 to 0.65, respectively. For QinN_LC, the average
+Table 1 Wall time and memory use for individual methods                    AUC score with known viruses was 0.73 which was
+applied to the simulated dataset                                           much better than the other three datasets, and the inclu-
+                                        Wall time (min)     MaxRSS (GB)    sion of unknown viral abundances further increased it to
+Reference-based                         14                  0.2            0.80. These results highlight the advantage of MicroPro
+MicroPro (Megahit)                      81                  12             to consider both known and unknown microbial organ-
+MicroPro (Minia 3)                      43                  6              isms in metagenomic prediction study and further dem-
+De novo assembly-based (Megahit)        305                 20             onstrate the important association of viruses, especially
+                                                                           unknown viruses with multiple diseases.
+De novo assembly-based (Minia 3)        79                  9
+                                                                             On the other hand, we acknowledge that the increase
+Computing resources required for the individual methods used in the
+simulation study are provided. MaxRSS refers to maximum memory used by
+                                                                           in prediction accuracy for Karlsson_T2D is weaker than
+the corresponding method                                                   the other three datasets. Considering the fact that there
+Zhu et al. Genome Biology         (2019) 20:154                                                                                        Page 5 of 13
+
+
+
+
+Table 2 Four large-scaled metagenomic datasets spanning three different diseases
+Dataset name           Disease         Sample size          Number of cases            Number of controls    Data size (Gbp)       Reference
+Zeller_CRC             CRC             184                  91                         93                    915                   Zeller et al. [8]
+Karlsson_T2D           T2D             96                   53                         43                    296                   Karlsson et al. [9]
+QinJ_T2D               T2D             145                  71                         74                    376                   Qin et al. [10]
+QinN_LC                LC              237                  123                        114                   1200                  Qin et al. [11]
+Detailed information of the four metagenomic datasets analyzed in this paper is provided
+
+
+
+
+were only 28 unknown viral contigs found for this data-                           Alpha diversity analysis of the abundance profiles of both
+set (Additional file 3: Table S2), the number of unknown                          microbial organisms and viruses
+viruses were too small to play a major role in the predic-                        We also performed alpha diversity analysis for both mi-
+tion analysis hence the low AUC increment. However, in                            crobial and viral abundance profiles in the cases and
+the other T2D dataset QinJ_T2D, much more viral                                   controls. Figure 5 shows the results of using the abun-
+contigs were discovered (Additional file 3: Table S2),                            dance profiles of both known and unknown microbial
+suggesting that the detection of viral contigs can be                             organisms. Alpha diversity results based on the abun-
+dataset-dependent with confounding factors like sample                            dance profiles of only known or unknown organisms are
+collection method and shotgun sequencing protocols af-                            provided in Additional file 1: Figure S1-S2. For microbial
+fecting the generated metagenomic reads. For prediction                           alpha diversity (Fig. 5a), a consistent pattern of the case
+performance using both known and unknown viruses,                                 being less diverse is observed. This pattern is most re-
+QinN_LC (mean AUC = 0.80) and Zeller_CRC (mean                                    markable for QinN_LC, which corresponds to its high
+AUC = 0.72) are much higher than Karlsson_T2D (mean                               AUC score when using microbial abundances to differ-
+AUC = 0.58) and QinJ_T2D (mean AUC = 0.65), which                                 entiate between cases and controls (Fig. 3a). For the viral
+indicates the potential weaker prediction role of viruses                         alpha diversity, we did not identify statistically significant
+in T2D compared to the other two diseases.                                        differences between cases and controls for liver cirrhosis
+
+
+
+
+ Fig. 3 Prediction results on four real metagenomic datasets. a Boxplots of random forest AUC scores obtained by reference-based method and
+ MicroPro (with assembler Megahit). Each random forest classification model was repeatedly trained and tested 30 times. Student’s t test p values
+ are given. b Boxplots of random forest AUC scores obtained by MicroPro and de novo assembly-based method. Results of MicroPro with two
+ different assemblers are shown. Each random forest classification model was repeatedly trained and tested 30 times. Student’s t test p values
+ between pairs of methods are given
+Zhu et al. Genome Biology       (2019) 20:154                                                                                             Page 6 of 13
+
+
+
+
+ Fig. 4 Prediction results on four real metagenomic datasets only using viral abundances. Boxplots of random forest AUC scores obtained using
+ different viral features are provided. “Viral known” refers to only using known viral abundances to perform the classification while “Viral combined”
+ means using both known and unknown viral abundances. Each random forest classification model was repeatedly trained and tested 30 times.
+ Student’s t test p values are given
+
+
+
+
+ Fig. 5 Cumulative probability of the alpha diversity. Cumulative probability distributions of alpha diversity with Shannon index are shown.
+ Abundance profiles of both known and unknown organisms are used for the calculation. Plot a uses the abundance profiles of all the microbes
+ while plot b only uses the abundance profiles of viruses. p values based on the WMW test for the alpha diversity between the cases and the
+ controls are provided
+Zhu et al. Genome Biology        (2019) 20:154                                                                                Page 7 of 13
+
+
+
+
+(QinN_LC) and type 2 diabetes (Karlsson_T2D, QinJ_                            threshold, we found that 5.8–10.3% of the MAGs for the
+T2D) at the type I error of 0.05. Surprisingly, we discov-                    four datasets could be classified to the genus level
+ered that the viral diversity in CRC cases is much higher                     (Additional file 5: Table S4).
+than that in the healthy controls, a finding consistent
+with the result from a recent study of Nakatsu et al. [34]                    Prediction analysis between two T2D datasets
+that analyzed the viromes in CRC cases and controls.                          Although prediction within one study can give good re-
+                                                                              sults, prediction accuracy drops sharply when applied to
+Significantly associated microbial organisms for each                         a different dataset. Different experiment protocols, vari-
+disease                                                                       ous sequencing platforms, and variable time points of
+We explored the microbial organisms that were signifi-                        data collection are all possible reasons for the drop in
+cantly associated with a certain disease in the metage-                       the prediction accuracy. In our study, there were two
+nomic analysis. In our study, significantly associated                        T2D datasets, which offered an opportunity to analyze
+microbial organisms were selected by the Boruta feature                       the generalization potential of the predictive model
+selection method [35]. Table 3 illustrates that a majority                    across different studies. As shown in Fig. 6, the AUC
+of the selected microbes are unknown, further highlight-                      scores dropped markedly for both cases from above 0.75
+ing the advantage of our pipeline to characterize                             to around 0.6 when compared with the prediction within
+unknown microbes from unmapped reads. Detailed in-                            one study (Fig. 3a). When using Karlsson_T2D to pre-
+formation about the selected microbes in each dataset,                        dict QinJ_T2D, adding the unknown feature seemed to
+including mean abundances in cases and controls, is                           have no effect on the prediction accuracy. However, in
+provided in Additional file 4: Table S3. We further dis-                      the other case, adding the unknown features significantly
+cussed the novel microbe-disease associations discovered                      increased the AUC scores suggesting that in cross-study
+in this study (see the “Discussion” section). These                           settings, adding unknown organisms can result in higher
+discoveries can lay groundwork for future mechanistic                         prediction accuracy.
+understanding of the pathophysiology of the correspond-
+ing diseases.                                                                 Discussion
+                                                                              Many studies have described the development of com-
+Taxonomic assignments of the MAGs generated in four                           putational tools to investigate the association of micro-
+datasets                                                                      bial organisms with complex traits. However, most of
+To further identify the taxonomic assignment of the                           the available reference-based tools focus on the micro-
+MAGs derived in each dataset, we calculated the pair-                         bial species with a known reference genome, and the
+wise distance between each MAG and the reference                              reads not mapped to the known genomes are not con-
+genomes in the Centrifuge database (up to December                            sidered, which can result in the loss of potentially useful
+10, 2018) with Mash v.2.0 [36], a widely used alignment-                      information. Other de novo assembly-based methods de-
+free genome comparison tool based on the overlap of                           mand significant computing resources with long compu-
+kmers between genomes. We found that none of the                              tational time and large memory requirement. In order to
+pairwise Mash distance was below 0.05, a threshold sug-                       address these issues, we developed the MicroPro pipe-
+gested by the authors for distinguishing microbial                            line that extracts both known and unknown microbial
+genomes at the species level [36], which showed that the                      features within metagenomic datasets. We tested Micro-
+MAGs generated in all the four datasets did not overlap                       Pro in a disease prediction study involving four public
+with the genomes in the Centrifuge database at the spe-                       metagenomic datasets covering three different diseases.
+cies level. Nayfach et al. [37] suggested Mash distance of                    We show that the prediction accuracy is significantly in-
+0.35 as a genus-level threshold for microbes. Using this                      creased when adding unknown microbial features for
+                                                                              three of the four datasets, which demonstrates the
+Table 3 Summary of significantly associated microbes for each                 important predictive role of unknown organisms. Add-
+dataset                                                                       itionally, since MicroPro only assembles the unmapped
+                   # Significant microbes        # Known       # Unknown      reads, it is computationally much more efficient than de
+Zeller_CRC         49 (2313)                     8 (1287)      41 (1026)      novo assembly-based methods.
+                                                                                 Many studies have demonstrated the important role of
+Karlsson_T2D       25 (1379)                     4 (785)       21 (594)
+                                                                              viruses in human diseases like inflammatory bowel dis-
+QinJ_T2D           21 (1411)                     5 (925)       16 (486)
+                                                                              ease [30] and liver cirrhosis [26]. However, due to the
+QinN_LC            68 (1442)                     21 (936)      47 (506)       limited virus genome database and high mutation rates,
+Numbers of significantly associated microbes for each dataset are provided.   viruses were often neglected in metagenomic association
+“# Significant microbes”, “# Known” and “# Unknown” represent the number of
+selected significant, known and unknown microbes, respectively. Numbers
+                                                                              studies. The virus version of MicroPro aims at extracting
+shown in the parenthesis are the corresponding total count of microbes        both known and unknown viral features from sequenced
+Zhu et al. Genome Biology     (2019) 20:154                                                                                        Page 8 of 13
+
+
+
+
+ Fig. 6 Prediction analysis between two T2D datasets. Boxplots of random forest AUC scores obtained in the cross-study analysis are provided.
+ “MicroPro known” refers to using only known microbial abundance profile extracted by MicroPro as the feature while “MicroPro combined” refers
+ to using both known and unknown abundances. Each random forest classification model was repeatedly trained and tested 30 times. Student’s t
+ test p values are given
+
+
+reads. We performed prediction analysis with viral abun-                  mouth but may also inhabit the intestine [40]. Even
+dances extracted by the virus version of MicroPro on                      though our model discovered new organism associations
+the same public metagenomic datasets. The results indi-                   for disease prediction, it has been shown that the oral
+cated that viruses did play some roles in diseases like                   microbiota can influence the gut microbiome and has
+colorectal cancer and liver cirrhosis. Thus, the role of                  been detected in the stools of patients with cirrhosis [11].
+viruses should not be ignored in the metagenomic ana-                     Chen et al. [41] described Veillonella and other oral
+lysis. Also, for some datasets, like Zeller_CRC in our                    microbiota as discriminative taxa between patients with
+study, the power of predicting disease when using                         cirrhosis compared to controls. The permissive oral mi-
+known virus only was close to random guess. However,                      crobial invasion may be related to altered hepatic bile pro-
+the inclusion of unknown viral features remarkably                        duction or the frequent use of proton pump inhibitors in
+increased the prediction accuracy. This demonstrated                      this population. Both bile and gastric acid are natural gates
+that our pipeline was able to distinguish the role of vi-                 that can inhibit the survival of many of the ingested or-
+ruses by investigating unknown features.                                  ganisms. Furthermore, bacterial populations originating
+   We also discovered many novel microbial associations                   from the oral microbiota are capable of producing high
+with specific diseases and disease prediction. Some of                    levels of methyl mercaptan (CH3SH). Elevated blood
+these associations are consistent with what has been de-                  levels of CH3SH have been linked to the development of
+scribed in the past. We discovered a number of organisms                  hepatic encephalopathy [42]. The presence of both Dialis-
+which were predictive of liver cirrhosis. These organisms                 ter pneumosintes and Parvimonas micra was predictive of
+include Veillonella parvula, Veillonella rodentium, Fuso-                 the development of colorectal cancer in our model. Dialis-
+bacterium periodonticum, Lactobacillus salivarius, and                    ter pneumosintes was found in patients with periodontitis
+Selenomonas sp. oral taxon 136. These organisms fre-                      [43] and has been shown to have potential pathogenic
+quently inhabit the oral cavity, and many are pathogenic.                 roles in various human body sites including the lung and
+For example, Veillonella parvula is a bacterium in the                    brain [44]. It has been recently shown to be an important
+genus Veillonella. Veillonella are Gram-negative bacteria                 component of the dysbiotic microbiome in patients with
+anaerobic cocci. Veillonella parvula is well known for its                gastric cancer [45]. Parvimonas micra can cause infectious
+lactate fermenting abilities and inhabit the intestines and               endocarditis [46], native joint septic arthritis [47], and
+oral mucosa. In humans, Veillonella can cause osteomye-                   spondylodiscitis [48] and has also been associated with
+litis, endocarditis, periodontitis, and dental caries as well             gastric cancer [45]. Not only enrichment of specific organ-
+as various systemic infections [38]. Similarly, Fusobacter-               ism was predictive of colorectal cancer in our model, but
+ium is a genus of anaerobic, Gram-negative, non-spore-                    we also report depletion of specific organisms, such as
+forming bacteria, similar to Bacteroides. Although in the                 Cutibacterium acnes, is seen in association with this type
+past, Fusobacterium was considered part of the normal                     of cancer. While this organism was originally described in
+oral microbiome, the current consensus is that Fusobac-                   subjects with acne, it can still be found throughout the
+terium should always be treated as a pathogen [39] and                    digestive tract [49] and was originally named Propionibac-
+has been linked to periodontal diseases, ulcerative colitis,              terium acnes for its ability to generate propionic acid [50].
+and colon cancer. These organisms originate from the                      Propionic acid, among other short-chain fatty acids
+Zhu et al. Genome Biology   (2019) 20:154                                                                     Page 9 of 13
+
+
+
+
+(SCFA), contributes to the health of colonocytes and has     MicroPro: a pipeline of predicting phenotypes based on
+been shown to be depleted in colorectal cancer [51]. The     metagenomic data
+discovery that subjects with colorectal cancer harbor less   Step 1: Reference-based known microbial abundance
+Cutibacterium acnes could potentially explain the previ-     characterization
+ous reports of depletion of propionic acid in this popula-   We used Centrifuge [19] to map the reads to the microbial
+tion and may shed some light on the pathophysiology of       genomes and calculated the abundance profiles of known
+disease development (Additional file 4: Table S3).           microbial organisms from the metagenomic data. In terms
+   We acknowledge that there are limitations in our pipe-    of Centrifuge command, we set flag “-q” which indicated
+line. One potential issue of MicroPro is under the situ-     the input was in fastq format and the other arguments
+ation that the core genomes of some microbes are             were set as default. Centrifuge is an alignment-based taxo-
+present in the reference database while their correspond-    nomic profiling tool. Its microbial database contains all
+ing pan-genomes are not; MicroPro will report the core       the available bacterial, viral, and archaeal complete refer-
+genome in the known abundance profile and the                ence genomes in NCBI (up to January 4, 2018). Centrifuge
+remaining parts as separate unknown MAGs. This issue         also utilizes an expectation-maximization (EM) algorithm
+may not be problematic for the prediction of a disease       to compute the abundance for each microbial species.
+using random forest as it can use one of the abundance       This EM-based algorithm is similar in spirit as those used
+profiles for phenotype prediction. However, caution is       in Cufflinks [52], Sailfish [53], and GRAMMy [54]. It takes
+needed when the objective is to identify the microbes        into account reads mapped to multiple genomes or mul-
+significantly associated with the disease since both the     tiple locations in the same genome. In our study, we
+core genome and the corresponding MAG could be re-           adopted the species abundance calculated by Centrifuge
+ported as associations although they are actually from       as the known microbial feature.
+the same genome.
+   We also acknowledge that although unknown fea-
+tures are extracted through assembly and binning,            Step 2: Estimating abundance profiles of unknown
+more functional analysis is needed to further under-         microbial organisms based on reads assembly followed by
+stand the roles of each bin in diseases. Additionally,       contig binning
+the disease prediction study is only observational and       Although Centrifuge accurately characterizes known mi-
+does not show the causality between a certain or a           crobial relative abundance profiles, a large fraction of
+group of microbes and diseases. Furthermore, though          reads cannot be mapped to the known microbial organ-
+we only tested MicroPro in disease-related analysis,         isms. The average mapping rate for each dataset is about
+MicroPro is ready to be applied to any type of pheno-        35–40% in our study (Additional file 1: Figure S3). The
+type prediction metagenomic studies. By fully utilizing      large amount of unmapped reads can potentially provide
+both known and unknown organisms including vi-               extra information on the prediction accuracy of pheno-
+ruses in the microbiota, we expect MicroPro will help        types based on the metagenomic data. Therefore, our
+to largely improve the prediction accuracy and facili-       main objective in this step is to take into account the
+tate biomarker detections.                                   unmapped reads for phenotype prediction.
+                                                               After filtering out mapped reads from the metagenomic
+                                                             data, we performed cross-assembly on the unmapped
+Conclusions
+                                                             reads from all samples. We tested two assemblers: Mega-
+MicroPro provides a highly useful tool to study the asso-
+                                                             hit [33] and Minia 3 [27] in this step. Megahit assembles
+ciations between microbiota and diseases without
+                                                             large and complex metagenomic data de novo based on
+neglecting key information from unknown organisms.
+                                                             succinct de Bruijin graph. Minia 3 utilized a more space-
+The microbial prediction of disease can be useful in un-
+                                                             efficient bloom filter to perform sequence assembly. As
+derstanding disease pathogenesis and may become cru-
+                                                             shown in the “Results” section, Megahit performed better
+cial in laying groundwork for future development of
+                                                             in real data analysis in terms of prediction but required
+specific disease biomarkers.
+                                                             much more computing time and memory than Minia 3.
+                                                             After cross-assembly, we used MetaBAT 2.12.1 [55] to
+Methods                                                      perform binning on the assembled contig set. MetaBAT
+Datasets                                                     2.12.1 is a reference-free metagenomic binner, and its bin-
+We downloaded all the datasets using the links provided      ning criterion is based on tetranucleotide frequency and
+in the original papers [8–11]. The number of cases and       mean base coverage. This “reference-free” feature is cru-
+controls is given in Table 1. For Zeller_CRC, the “small     cial to our study, since the contig set to be binned con-
+adenoma” samples were treated as controls while the          tained no reads that could be mapped to a known
+“large adenoma” samples were removed.                        reference. Recent comparative studies on contig binning
+Zhu et al. Genome Biology       (2019) 20:154                                                                 Page 10 of 13
+
+
+
+
+[56] showed that MetaBAT 2.12.1 performs well com-            of variables selected at each split, which is the “mtry” ar-
+pared to other contig binning algorithms.                     gument of the randomForest function in R, for best pre-
+   Reads assembly and contig binning are highly import-       dictive performance. In terms of the measure of
+ant to recover unknown organisms from the unmapped            prediction accuracy, we adopted the area under the re-
+reads. Here, “unknown organisms” represent the organ-         ceiver operating characteristic curve (AUC) score, a
+isms without a known reference. Once we finished              widely used performance measure of the classification
+cross-assembly and metagenomic binning, we treated            model. An AUC score close to 1 indicated perfect classi-
+each contig bin as an unknown organism and the binned         fication, while a 0.5 AUC score revealed that the model
+reads as a part of its genome. In terms of defining the       was close to a random guess. The above procedure was
+feature of the unknown organisms, we still used the rela-     repeated 30 times.
+tive abundance, just as what we did for known species.
+The formula of the relative abundance (Ab) of unknown         Reference-based and de novo assembly-based methods
+organism i was:                                               Reference-based methods use a reference database to
+                                                              characterize microbial abundances. In this paper, the
+                rci
+    AbðiÞ ¼                 ;                                 AUC scores for the reference-based method were ob-
+              X
+              N
+                     rc j                                     tained by training a random forest classification model
+               j¼1                                            based only on the Centrifuge abundance output (i.e., the
+                                                              known abundance table in the MicroPro pipeline). De
+  where rc was the length normalized read counts,             novo assembly-based methods generate metagenomic
+which was defined as the number of reads mapped to            assembled groups by assembly and binning of raw reads
+that organism divided by its genome length. Here, calcu-      without the help of any reference genomes. To compare
+lating rc was a major issue, since we do not know the         its predictive performance with MicroPro, we imple-
+whole genome of the unknown organism. To overcome             mented de novo assembly-based method on all the four
+this challenge, we first mapped all the unmapped reads        metagenomic datasets. We first generated a cross-
+back to the contig set using BWA-aln [57] with param-         assembly of all the metagenomic reads in a dataset. Due
+eter “-n” set as 0.03 (only alignments with more than         to insufficient computing memory, cross-assembling all
+97% accuracy were considered mapped). Then, we calcu-         samples using Megahit was computationally infeasible.
+lated the length normalized read counts (rc) for each         Thus, we only used Minia 3 for cross-assembly. After
+contig according to the mapping results. Finally, for each    obtaining the assembled contigs, we performed metage-
+contig bin (i.e., each unknown organism), we took the         nomic binning of the assembled contigs by MetaBAT
+average rc of all the contigs that belonged to it as an ap-   2.12.1 and computed the contig bin abundances in the
+proximation of its real rc. We could compute the un-          same way as the MicroPro pipeline. The abundance pro-
+known feature for all contig bins using the above             file of bins was used as features for the random forest
+formula. In terms of combining the known and un-              classification studies
+known abundances, we calculated the mapping rate α
+(defined as the number of mapped reads/the number of          Simulation studies
+total reads) for each sample and multiplied the known         We performed simulation studies to compare the predict-
+and unknown abundances by α and 1 − α, respectively,          ive performance of MicroPro, reference-based method,
+so that the combined abundance table sums to one for          and de novo assembly-based method. We simulated 50
+each sample.                                                  shotgun metagenomic sequenced samples with 25 cases
+                                                              and 25 controls in the following way. To mimic the real
+Step 3: Predicting phenotypes using random forests            human gut microbial community, the abundance profiles
+In the above two steps, we extracted the relative abun-       used in the simulation were modified based on the known
+dance profiles of both known and unknown microbial            abundance table of the QinN_LC dataset. In particular, we
+organisms. We then trained a random forests [23] classi-      calculated the average relative abundance of the microbes
+fication model based on the combined abundance pro-           at the genus level among all control samples and only kept
+files to differentiate between the cases and the controls.    the top 100 bacterial genera by the descending order of
+Random forests is an ensemble of the decision tree algo-      abundance. Then, we divided this abundance vector by its
+rithm and is highly robust to over-fitting when the num-      sum and treated it as the standard abundance profile of
+ber of features is greater than the number of samples.        the control samples. For the case samples, we randomly
+Our analysis was performed with R package “random-            selected 10 microbes and multiplied their abundances by
+Forest.” We randomly separated the dataset into training      fi, i = 1, …, 10, where each fi was sampled from Uniform
+set and test set with a ratio of 7:3. During model train-     (0.1, 3). We renormalized the derived abundance vector to
+ing, we used tenfold cross-validation to tune the number      sum to 1 and used it as the standard abundance profile of
+Zhu et al. Genome Biology   (2019) 20:154                                                                                     Page 11 of 13
+
+
+
+
+the case samples. We also introduced absolute random            on the viral contigs and calculated viral bins’ abundance
+Gaussian noise with mean zero and standard deviation            using the same method as described in the previous sec-
+equal to each component to the standard abundance pro-          tion step 2.
+files to further diversify the microbial composition of the
+simulated samples. CAMISIM [58] was then used to gen-           Step 3: Predicting phenotypes based on viral abundance
+erate 50 samples with Illumina 2 × 150 bp paired-end            With both the known and unknown viral features at
+reads based on the generated abundance profiles. Each           hand, the next step was to perform the prediction ana-
+generated sample had a size of 1 GB (500 Mbp).                  lysis. We combined two viral features in the same way as
+   MicroPro with different assemblers Megahit and Minia         in the general MicroPro pipeline and trained a random
+3 was tested on the simulated datasets. Reference-based         forest model based on the extracted viral abundance.
+method only used the Centrifuge abundance output as the         We used tenfold cross-validation to tune the parameters
+feature of the classification study. For this simulated data-   and set AUC score as the measure of prediction
+set, we randomly picked 30 microbes out of 100 to gener-        accuracy.
+ate the reference genome database used in Centrifuge
+taxonomic profiling. De novo assembly-based method              Alpha diversity analysis
+generated metagenomic assembled groups by assembly              Alpha diversity is a widely used diversity measure in
+and binning of raw reads without any reference genomes.         microbiome studies. It is defined based on both the
+We also tested two assemblers Megahit and Minia 3 for           number of species within a sample and the abundance
+the de novo assembly-based method. The random forest            of each species. We performed alpha diversity analysis of
+classification analysis was performed in the same manner        both microbial and viral abundance profiles. Alpha di-
+as step 3 in the MicroPro pipeline. Since we used prede-        versity with Shannon index is calculated by package
+termined abundance profiles to simulate metagenomic             “vegan” in R.
+reads, we obtained the ground truth AUCs with these
+abundance profiles input as the classification feature.
+                                                                Significantly associated microbial organisms for each
+                                                                disease
+Predicting phenotypes based on virus abundance profiles
+                                                                We identified the significantly associated features by the
+Viruses play a very important role in the human micro-
+                                                                Boruta feature selection method [35]. Boruta is an itera-
+bial community by controlling the balance of different
+                                                                tive algorithm to select all relevant features through stat-
+bacterial organisms. However, due to its relatively low
+                                                                istical tests. The analysis was carried out with R package
+abundance, extraction of all the viral information, espe-
+                                                                “Boruta.”
+cially those without a known reference, remains a major
+difficulty. Aimed at making full use of all the viral fea-
+                                                                Predictive study between the two T2D datasets
+tures within metagenomic samples, the virus version of
+                                                                We trained a random forest model based on one of the
+MicroPro is similar in spirit to the general pipeline pre-
+                                                                T2D datasets and tested it on the other to obtain the
+sented in the previous section, except for an additional
+                                                                AUC score. Features included were also the known and
+step for viral contig detection. The full pipeline is shown
+                                                                unknown microbial abundance. Obtaining the known
+below.
+                                                                feature was essentially the same procedure as MicroPro’s
+                                                                step 1. We used the following strategy to calculate the
+Step 1: Known viral abundance extraction
+                                                                abundance profiles of the unknown microbial organisms.
+For the known viral abundance, we again used the soft-
+                                                                For the train set, we used MicroPro’s step 2 with assem-
+ware Centrifuge, but only extracted the viral abundances
+                                                                bler Megahit to find out the unknown microbial feature.
+from the Centrifuge profiling output and treated it as
+                                                                For the test set, instead of mapping back to its own con-
+the known viral feature.
+                                                                tig set, we aligned the unmapped reads in the test set
+                                                                against the train data contig set. In this way, we could
+Step 2: Unknown viral feature detection
+                                                                obtain a consistent feature matrix so that the following
+We performed cross-assembly using Megahit on the un-
+                                                                prediction analysis could be performed seamlessly.
+mapped reads filtered out by Centrifuge results. Before
+metagenomic binning, we applied VirFinder [26] for
+viral contigs detection. VirFinder utilized a logistic re-      Additional files
+gression model to differentiate between bacterial and
+                                                                 Additional file 1 : Figure S1. Cumulative probability of alpha diversity of
+viral contigs. We considered a contig as a virus if its Vir-     known profile. Plot A uses all the microbial abundances while plot B only
+Finder q value is smaller than 0.2. q value [59] is a            uses viral abundances. For both plots, only known abundances are used
+p value correction method targeting exact false discovery        for the calculation. Shannon index is set as the diversity index. WMW test
+                                                                 p values between the cases and the controls are provided. Figure S2.
+rate (FDR) control. We performed metagenomic binning
+Zhu et al. Genome Biology          (2019) 20:154                                                                                                    Page 12 of 13
+
+
+
+
+ Cumulative probability of alpha diversity of unknown profile. Plot A uses        Received: 11 December 2018 Accepted: 24 July 2019
+ all the microbial abundances while plot B only uses viral abundances. For
+ both plots, only unknown abundances are used for the calculation.
+ Shannon index is set as the diversity index. WMW test p values between
+ the cases and the controls are provided. Figure S3. Histograms of                References
+ mapping rates of each dataset. Dashed lines show the mean mapping                1. Savage DC. Microbial ecology of the gastrointestinal tract. Annu Rev
+ rate. (PDF 656 kb)                                                                   Microbiol. 1977;31:107–33.
+                                                                                  2. Mazmanian SK, Liu CH, Tzianabos AO, Kasper DL. An immunomodulatory
+ Additional file 2 : Table S1. Computing resources required for each
+                                                                                      molecule of symbiotic bacteria directs maturation of the host immune
+ method on four real metagenomic datasets are provided. MaxRSS refers
+                                                                                      system. Cell. 2005;122:107–18.
+ to the maximum memory used by the corresponding method. (XLSX 10
+                                                                                  3. Benson AK, Kelly SA, Legge R, Ma F, Low SJ, Kim J, Zhang M, Oh PL,
+ kb)
+                                                                                      Nehrenberg D, Hua K, et al. Individuality in gut microbiota composition is a
+ Additional file 3 : Table S2. Number of assembled contigs from                       complex polygenic trait shaped by multiple environmental and host
+ unmapped reads and number of detected viral contigs by VirFinder for                 genetic factors. Proc Natl Acad Sci U S A. 2010;107:18933–8.
+ each dataset are provided. (XLSX 9 kb)                                           4. Dethlefsen L, McFall-Ngai M, Relman DA. An ecological and evolutionary
+ Additional file 4 : Table S3. Significantly associated microbes selected             perspective on human-microbe mutualism and disease. Nature. 2007;449:
+ by Boruta feature selection method for each dataset are provided. The                811–8.
+ table also shows the mean abundance in cases and controls for each               5. Lagier JC, Dubourg G, Million M, Cadoret F, Bilen M, Fenollar F, Levasseur A,
+ selected microbes together with a FDR-adjusted WMW test p value for                  Rolain JM, Fournier PE, Raoult D. Culturing the human microbiota and
+ differences in the mean abundances. (XLSX 19 kb)                                     culturomics. Nat Rev Microbiol. 2018;16:540–50.
+ Additional file 5 : Table S4. A genus-level assignment for each MAG              6. Tannock GW. What immunologists should know about bacterial
+ generated from four metagenomic datasets is given. The corresponding                 communities of the human bowel. Semin Immunol. 2007;19:94–105.
+ Mash distance and p value are also provided. A MAG with multiple hits in         7. Cho I, Blaser MJ. The human microbiome: at the interface of health and
+ the database is reported in the table only if all of its hits belong to a            disease. Nat Rev Genet. 2012;13:260–70.
+ common microbial genus in the taxonomy tree. (XLSX 21 kb)                        8. Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI, Amiot A, Bohm
+                                                                                      J, Brunetti F, Habermann N, et al. Potential of fecal microbiota for early-
+                                                                                      stage detection of colorectal cancer. Mol Syst Biol. 2014;10:766.
+Acknowledgements                                                                  9. Karlsson FH, Tremaroli V, Nookaew I, Bergstrom G, Behre CJ, Fagerberg B,
+This research utilized resources of high-performance computing (HPC), which           Nielsen J, Backhed F. Gut metagenome in European women with normal,
+is supported by the University of Southern California.                                impaired and diabetic glucose control. Nature. 2013;498:99–103.
+                                                                                  10. Qin J, Li Y, Cai Z, Li S, Zhu J, Zhang F, Liang S, Zhang W, Guan Y, Shen D,
+                                                                                      et al. A metagenome-wide association study of gut microbiota in type 2
+Authors’ contributions                                                                diabetes. Nature. 2012;490:55–60.
+JR and FS conceived and designed the study. JR, ZZ, and FS designed the           11. Qin N, Yang F, Li A, Prifti E, Chen Y, Shao L, Guo J, Le Chatelier E, Yao J, Wu
+methodological framework. ZZ implemented the methods, carried out the                 L, et al. Alterations of the human gut microbiome in liver cirrhosis. Nature.
+computational analyses, and drafted the paper. SM explained the possible              2014;513:59–64.
+roles of the significantly associated microbial organisms found in the            12. Zitvogel L, Ma Y, Raoult D, Kroemer G, Gajewski TF. The microbiome in
+analysis. JR and SM modified the paper. SM and FS finalized the paper. All            cancer immunotherapy: diagnostic tools and therapeutic strategies. Science.
+authors agree to the content of the final paper.                                      2018;359:1366–70.
+                                                                                  13. Knights D, Parfrey LW, Zaneveld J, Lozupone C, Knight R. Human-associated
+Funding                                                                               microbial signatures: examining their predictive value. Cell Host Microbe.
+National Science Foundation (NSF) [DMS-1518001]; National Institutes of               2011;10:292–6.
+Health (NIH) [R01GM120624, 1R01GM131407] and [R01HD081197]. ZZ is                 14. Knights D, Costello EK, Knight R. Supervised classification of human
+supported by the Viterbi Fellowship.                                                  microbiota. FEMS Microbiol Rev. 2011;35:343–59.
+                                                                                  15. Schloss PD, Handelsman J. Introducing DOTUR, a computer program for
+                                                                                      defining operational taxonomic units and estimating species richness. Appl
+Availability of data and materials                                                    Environ Microbiol. 2005;71:1501–6.
+All the datasets used in this study are publicly available from the European      16. Tatusov RL, Fedorova ND, Jackson JD, Jacobs AR, Kiryutin B, Koonin EV,
+Nucleotide Archive (ENA) database (https://www.ebi.ac.uk/ena). Accession              Krylov DM, Mazumder R, Mekhedov SL, Nikolskaya AN, et al. The COG
+number for ZellerG_CRC is ERP005534 [8], for KarlssonFH_T2D is ERP002469              database: an updated version includes eukaryotes. BMC Bioinformatics.
+[9], for QinN_LC is ERP005860 [11], and for QinJ_T2D is SRA045646 [10].               2003;4:41.
+MicroPro is freely available at https://github.com/zifanzhu/MicroPro [60] and     17. Kanehisa M, Goto S, Kawashima S, Okuno Y, Hattori M. The KEGG resource
+https://doi.org/10.5281/zenodo.3336360 [61] under the GNU General Public              for deciphering the genome. Nucleic Acids Res. 2004;32:D277–80.
+License (GPL), version 3. The simulated data used in this study is available at   18. Truong DT, Franzosa EA, Tickle TL, Scholz M, Weingart G, Pasolli E, Tett A,
+Zenodo [62].                                                                          Huttenhower C, Segata N. MetaPhlAn2 for enhanced metagenomic
+                                                                                      taxonomic profiling. Nat Methods. 2015;12:902–3.
+Ethics approval and consent to participate                                        19. Kim D, Song L, Breitwieser FP, Salzberg SL. Centrifuge: rapid and sensitive
+Not applicable.                                                                       classification of metagenomic sequences. Genome Res. 2016;26:1721–9.
+                                                                                  20. Tibshirani R. Regression shrinkage and selection via the lasso. J R Stat Soc
+                                                                                      Ser B Methodol. 1996;58:267–88.
+Consent for publication                                                           21. Hearst MA, Dumais ST, Osuna E, Platt J, Scholkopf B. Support vector
+All authors have approved the manuscript for submission.                              machines. IEEE Intell Syst Appl. 1998;13:18–28.
+                                                                                  22. Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong DT, Beghini
+Competing interests                                                                   F, Malik F, Ramos M, Dowd JB, et al. Accessible, curated metagenomic data
+The authors declare that they have no competing interests.                            through ExperimentHub. Nat Methods. 2017;14:1023–4.
+                                                                                  23. Breiman L. Random forests. Mach Learn. 2001;45:5–32.
+Author details                                                                    24. Pruitt KD, Brown GR, Hiatt SM, Thibaud-Nissen F, Astashyn A, Ermolaeva O,
+1
+ Quantitative and Computational Biology Program, Department of Biological             Farrell CM, Hart J, Landrum MJ, McGarvey KM, et al. RefSeq: an update on
+Sciences, University of Southern California, Los Angeles, CA, USA.                    mammalian reference sequences. Nucleic Acids Res. 2014;42:D756–63.
+2
+ Department of Pediatrics, Division of Gastroenterology, Keck School of           25. Xing X, Liu JS, Zhong W. MetaGen: reference-free learning with multiple
+Medicine, University of Southern California, Los Angeles, CA, USA.                    metagenomic samples. Genome Biol. 2017;18:187.
+Zhu et al. Genome Biology             (2019) 20:154                                                                                                         Page 13 of 13
+
+
+
+
+26. Ren J, Ahlgren NA, Lu YY, Fuhrman JA, Sun F. VirFinder: a novel k-mer based          51. Ohigashi S, Sudo K, Kobayashi D, Takahashi O, Takahashi T, Asahara T,
+    tool for identifying viral sequences from assembled metagenomic data.                    Nomoto K, Onodera H. Changes of the intestinal microbiota, short chain
+    Microbiome. 2017;5:69.                                                                   fatty acids, and fecal pH in patients with colorectal cancer. Dig Dis Sci. 2013;
+27. Chikhi R, Rizk G. Space-efficient and exact de Bruijn graph representation               58:1717–26.
+    based on a Bloom filter. Algorithms Mol Biol. 2013;8:22.                             52. Trapnell C, Williams BA, Pertea G, Mortazavi A, Kwan G, van Baren MJ,
+28. Bonhoeffer S, Sniegowski P. Virus evolution: the importance of being                     Salzberg SL, Wold BJ, Pachter L. Transcript assembly and quantification by
+    erroneous. Nature. 2002;420:367 369.                                                     RNA-Seq reveals unannotated transcripts and isoform switching during cell
+29. Breitbart M, Rohwer F. Here a virus, there a virus, everywhere the same                  differentiation. Nat Biotechnol. 2010;28:511–5.
+    virus? Trends Microbiol. 2005;13:278–84.                                             53. Patro R, Mount SM, Kingsford C. Sailfish enables alignment-free isoform
+30. Norman JM, Handley SA, Baldridge MT, Droit L, Liu CY, Keller BC, Kambal A,               quantification from RNA-seq reads using lightweight algorithms. Nat
+    Monaco CL, Zhao G, Fleshner P, et al. Disease-specific alterations in the                Biotechnol. 2014;32:462–4.
+    enteric virome in inflammatory bowel disease. Cell. 2015;160:447–60.                 54. Xia LC, Cram JA, Chen T, Fuhrman JA, Sun F. Accurate genome relative
+31. Reyes A, Blanton LV, Cao S, Zhao G, Manary M, Trehan I, Smith MI, Wang D,                abundance estimation based on shotgun metagenomic reads. PLoS One.
+    Virgin HW, Rohwer F, Gordon JI. Gut DNA viromes of Malawian twins                        2011;6:e27992.
+    discordant for severe acute malnutrition. Proc Natl Acad Sci U S A. 2015;112:        55. Kang DD, Froula J, Egan R, Wang Z. MetaBAT, an efficient tool for accurately
+    11941–6.                                                                                 reconstructing single genomes from complex microbial communities. PeerJ.
+32. Sczyrba A, Hofmann P, Belmann P, Koslicki D, Janssen S, Droge J, Gregor I,               2015;3:e1165.
+    Majda S, Fiedler J, Dahms E, et al. Critical assessment of metagenome                56. Meyer F, Hofmann P, Belmann P, Garrido-Oter R, Fritz A, Sczyrba A, McHardy
+    interpretation-a benchmark of metagenomics software. Nat Methods. 2017;                  AC. AMBER: assessment of metagenome BinnERs. Gigascience. 2018;7:
+    14:1063–71.                                                                              giy069.
+33. Li D, Liu CM, Luo R, Sadakane K, Lam TW. MEGAHIT: an ultra-fast single-              57. Li H, Durbin R. Fast and accurate short read alignment with Burrows-
+    node solution for large and complex metagenomics assembly via succinct                   Wheeler transform. Bioinformatics. 2009;25:1754–60.
+    de Bruijn graph. Bioinformatics. 2015;31:1674–6.                                     58. Fritz A, Hofmann P, Majda S, Dahms E, Droge J, Fiedler J, Lesker TR,
+34. Nakatsu G, Zhou H, Wu WKK, Wong SH, Coker OO, Dai Z, Li X, Szeto CH,                     Belmann P, DeMaere MZ, Darling AE, et al. CAMISIM: simulating
+    Sugimura N, Lam TY, et al. Alterations in enteric virome are associated with             metagenomes and microbial communities. Microbiome. 2019;7:17.
+    colorectal cancer and survival outcomes. Gastroenterology. 2018;155:529–             59. Storey JD. The positive false discovery rate: a Bayesian interpretation and
+    541.e525.                                                                                the q-value. Ann Stat. 2003;31:2013–35.
+35. Kursa MB, Rudnicki WR. Feature selection with the Boruta package. J Stat             60. Zhu Z, Ren J, Michail S, Sun F. MicroPro: using metagenomic unmapped
+    Softw. 2010;36:1–13.                                                                     reads to provide insights into human microbiota and disease associations.
+36. Ondov BD, Treangen TJ, Melsted P, Mallonee AB, Bergman NH, Koren S,                      Github. 2019. https://github.com/zifanzhu/MicroPro. Accessed 15 July 2019.
+    Phillippy AM. Mash: fast genome and metagenome distance estimation                   61. Zhu Z, Ren J, Michail S, Sun F. MicroPro: using metagenomic unmapped
+    using MinHash. Genome Biol. 2016;17:132.                                                 reads to provide insights into human microbiota and disease associations.
+37. Nayfach S, Shi ZJ, Seshadri R, Pollard KS, Kyrpides NC. New insights from                Zenodo. 2019. https://doi.org/10.5281/zenodo.3336360.
+    uncultivated genomes of the global human gut microbiome. Nature. 2019;               62. Zhu Z, Ren J, Michail S, Sun F. MicroPro: using metagenomic unmapped
+    568:505–10.                                                                              reads to provide insights into human microbiota and disease associations.
+38. Mashima I, Theodorea CF, Thaweboon B, Thaweboon S, Scannapieco FA,                       Zenodo. 2019. https://doi.org/10.5281/zenodo.3334001.
+    Nakazawa F. Exploring the salivary microbiome of children stratified by the
+    oral hygiene index. PLoS One. 2017;12:e0185274.                                      Publisher’s Note
+39. Aliyu SH, Marriott RK, Curran MD, Parmar S, Bentley N, Brown NM, Brazier JS,         Springer Nature remains neutral with regard to jurisdictional claims in
+    Ludlam H. Real-time PCR investigation into the importance of                         published maps and institutional affiliations.
+    Fusobacterium necrophorum as a cause of acute pharyngitis in general
+    practice. J Med Microbiol. 2004;53:1029–35.
+40. Zoetendal EG, Raes J, van den Bogert B, Arumugam M, Booijink CC, Troost
+    FJ, Bork P, Wels M, de Vos WM, Kleerebezem M. The human small intestinal
+    microbiota is driven by rapid uptake and conversion of simple
+    carbohydrates. Isme j. 2012;6:1415–26.
+41. Chen Y, Ji F, Guo J, Shi D, Fang D, Li L. Dysbiosis of small intestinal microbiota
+    in liver cirrhosis and its association with etiology. Sci Rep. 2016;6:34055.
+42. Al Mardini H, Bartlett K, Record CO. Blood and brain concentrations of
+    mercaptans in hepatic and methanethiol induced coma. Gut. 1984;25:284–90.
+43. Contreras A, Doan N, Chen C, Rusitanonta T, Flynn MJ, Slots J. Importance
+    of Dialister pneumosintes in human periodontitis. Oral Microbiol Immunol.
+    2000;15:269–72.
+44. Moore WE, Moore LV. The bacteria of periodontal diseases. Periodontol
+    2000. 1994;5:66–77.
+45. Coker OO, Dai Z, Nie Y, Zhao G, Cao L, Nakatsu G, Wu WK, Wong SH, Chen
+    Z, Sung JJY, Yu J. Mucosal microbiome dysbiosis in gastric carcinogenesis.
+    Gut. 2018;67:1024–32.
+46. Gomez CA, Gerber DA, Zambrano E, Banaei N, Deresinski S, Blackburn BG.
+    First case of infectious endocarditis caused by Parvimonas micra. Anaerobe.
+    2015;36:53–5.
+47. Baghban A, Gupta S. Parvimonas micra: a rare cause of native joint septic
+    arthritis. Anaerobe. 2016;39:26–7.
+48. Uemura H, Hayakawa K, Shimada K, Tojo M, Nagamatsu M, Miyoshi-Akiyama
+    T, Tamura S, Mesaki K, Yamamoto K, Yanagawa Y, et al. Parvimonas micra as
+    a causative organism of spondylodiscitis: a report of two cases and a
+    literature review. Int J Infect Dis. 2014;23:53–5.
+49. Perry A, Lambert P. Propionibacterium acnes: infection beyond the skin.
+    Expert Rev Anti-Infect Ther. 2011;9:1149–56.
+50. Douglas HC, Gunter SE. The taxonomic position of Corynebacterium acnes.
+    J Bacteriol. 1946;52:15–23.
+

@@ -1,0 +1,614 @@
+                                                                                                                         TYPE Original Research
+                                                                                                                         PUBLISHED 18 January 2024
+                                                                                                                         DOI 10.3389/fonc.2023.1310054
+
+
+
+
+                                                  Tumor-associated microbiome
+OPEN ACCESS                                       features of metastatic colorectal
+EDITED BY
+Antonio Mario Scanu,
+University of Sassari, Italy
+                                                  cancer and clinical implications
+REVIEWED BY
+Rachel Violet Purcell,
+                                                  Ho Jung An 1,2, Mira A. Partha 3, HoJoon Lee 2, Billy T. Lau 2,
+University of Otago, New Zealand                  Dmitri S. Pavlichin 2, Alison Almeda 2, Anna C. Hooker 2,
+Romain Villéger,
+University of Poitiers, France                    Giwon Shin 2 and Hanlee P. Ji 2,3*
+*CORRESPONDENCE                                   1
+                                                   Department of Medical Oncology, St. Vincent’s Hospital, College of Medicine, The Catholic
+Hanlee P. Ji                                      University of Korea, Seoul, Republic of Korea, 2 Division of Oncology, Department of Medicine,
+  genomics_ji@stanford.edu                        Stanford University School of Medicine, Palo Alto, CA, United States, 3 Department of Electrical
+                                                  Engineering, Stanford University, Palo Alto, CA, United States
+RECEIVED 09 October 2023
+ACCEPTED 20 December 2023
+PUBLISHED 18 January 2024
+
+CITATION
+                                                  Background: Colon microbiome composition contributes to the pathogenesis
+An HJ, Partha MA, Lee H, Lau BT,                  of colorectal cancer (CRC) and prognosis. We analyzed 16S rRNA sequencing
+Pavlichin DS, Almeda A, Hooker AC, Shin G         data from tumor samples of patients with metastatic CRC and determined the
+and Ji HP (2024) Tumor-associated
+microbiome features of metastatic colorectal      clinical implications.
+cancer and clinical implications.
+Front. Oncol. 13:1310054.                         Materials and methods: We enrolled 133 patients with metastatic CRC at St.
+doi: 10.3389/fonc.2023.1310054
+                                                  Vincent Hospital in Korea. The V3-V4 regions of the 16S rRNA gene from the
+COPYRIGHT
+© 2024 An, Partha, Lee, Lau, Pavlichin, Almeda,
+                                                  tumor DNA were ampliﬁed, sequenced on an Illumina MiSeq, and analyzed using
+Hooker, Shin and Ji. This is an open-access       the DADA2 package.
+article distributed under the terms of the
+Creative Commons Attribution License (CC BY).
+The use, distribution or reproduction in other
+                                                  Results: After excluding samples that retained <5% of the total reads after
+forums is permitted, provided the original        merging, 120 samples were analyzed. The median age of patients was 63 years
+author(s) and the copyright owner(s) are          (range, 34–82 years), and 76 patients (63.3%) were male. The primary cancer sites
+credited and that the original publication in
+this journal is cited, in accordance with         were the right colon (27.5%), left colon (30.8%), and rectum (41.7%). All subjects
+accepted academic practice. No use,               received 5-ﬂuouracil-based systemic chemotherapy. After removing genera with
+distribution or reproduction is permitted
+                                                  <1% of the total reads in each patient, 523 genera were identiﬁed. Rectal origin,
+which does not comply with these terms.
+                                                  high CEA level (≥10 ng/mL), and presence of lung metastasis showed higher
+                                                  richness. Survival analysis revealed that the presence of Prevotella (p = 0.052),
+                                                  Fusobacterium (p = 0.002), Selenomonas (p<0.001), Fretibacterium (p = 0.001),
+                                                  Porphyromonas (p = 0.007), Peptostreptococcus (p = 0.002), and Leptotrichia
+                                                  (p = 0.003) were associated with short overall survival (OS, <24 months), while
+                                                  the presence of Sphingomonas was associated with long OS (p = 0.070). From
+                                                  the multivariate analysis, the presence of Selenomonas (hazard ratio [HR], 6.35;
+                                                  95% conﬁdence interval [CI], 2.38–16.97; p<0.001) was associated with poor
+                                                  prognosis along with high CEA level.
+
+                                                  Conclusion: Tumor microbiome features may be useful prognostic biomarkers
+                                                  for metastatic CRC.
+
+
+
+
+                                                  KEYWORDS
+
+                                                  tissue microbiome, metastasis, colon, rectum, adenocarcinoma
+
+
+
+
+Frontiers in Oncology                                                    01                                                                frontiersin.org
+An et al.                                                                                                                  10.3389/fonc.2023.1310054
+
+
+
+
+1 Introduction                                                                  conducted in accordance with the principles of the Declaration
+                                                                                of Helsinki.
+     The human microbiome plays a fundamental role in
+maintaining physiological homeostasis. Microbial dysbiosis
+contributes to the pathophysiology of human diseases, including                 2.2 Sequencing analysis
+colorectal cancer (CRC), which has a close physical proximity with
+the diverse microbial populations in the colon (1, 2). The tumor-                   The original sample set comprised 133 CRC tissue samples
+associated microbiome plays an important role in colorectal cancer              biopsied from patients with stage IV disease. Two scrolls of 7 to 8
+biology given its direct contact with the local tumor                           µm sections were sliced from the formalin-ﬁxed, parafﬁn-embedded
+microenvironment (TME). DNA sequencing analysis conducted                       (FFPE) block and stored at –20°C until their processing. Total
+directly on CRC tumors provides insights into the cancer-associated             genomic DNA was extracted using Maxwell® 16 FFPE Tissue LEV
+microbiota that is in direct contact with the local TME of CRCs. As             DNA Puriﬁcation Kit from Promega (Madison, Wisconsin, USA).
+an example, many studies investigating the tumor microbiome of                  ZymoBIOMIC Microbial Community DNA Standard (Zymo
+CRC have demonstrated an enrichment of Fusobacterium                            Research, Catalog No. D6300) was used as a positive control, and
+nucleatum (F. nucleatum) in colon carcinogenesis (3–5).                         DNA-free water was used as a negative control for 16S sequencing
+     Other studies have delineated how speciﬁc microbiome may                   and data analysis. For 16S rRNA gene amplicon library preparation,
+impact CRC pathophysiology. Preclinical studies have shown that                 we used 16S metagenomic sequencing library preparation according
+Bacteroides fragilis and Escherichia coli secrete enterotoxins that             to the manufacturer’s protocol (Illumina, San Diego, California,
+induce pro-inﬂammatory immune responses and DNA damage. The                     USA). Brieﬂy, 200 ng of mucosal DNA was ampliﬁed using primers
+direct adhesion of F. nucleatum to colon cells has been shown to exert          targeting the V3-V4 variable region of the 16S rRNA gene.
+similar effects. There is mounting evidence supporting the hypothesis               16S forward primer:
+that these effects promote colon carcinogenesis (6–10). Identiﬁcation of            5’-TCGTCGGCAGCGTCAGATGTGTATAAGAGACAGC
+speciﬁc microbiome alterations may provide clinically relevant                  CTACG GGNGGCWGCAG-3’;
+information when screening for early-stage CRC (11–16).                             16S reverse primer:
+     Speciﬁc microbiome features are also associated with CRC                       5’-GTCTCGTGGGCTCG GAGATGTGTAT
+prognosis. For example, the presence of F. nucleatum in CRC                     AAGAGACAGGACTACHVGGGTATCTAATCC-3”.
+tissues is correlated with advanced stage, microsatellite instability,              The DNA sample was adjusted to a ﬁnal concentration of 12 pM,
+and poor prognosis in patients with CRC who have undergone                      subjected to PCR ampliﬁcation and sequence library processing, and
+surgical resection (17, 18). Microbiome composition also inﬂuences              sequenced on an Illumina MiSeq platform (Illumina
+the efﬁcacy of cancer immunotherapy (19–21) and chemotherapy                    Technologies, USA).
+via various mechanisms (22–26).
+     Most microbiome studies on CRC have been conducted using
+tumor samples from surgical resections, which are typically                     2.3 16S rRNA data analysis
+performed with curative intent in lower-stage (i.e., I–III) patients.
+Therefore, little is known about the clinical implications of the                   Cutadapt software (version 1.14,-m30) was used to remove the
+microbiome composition in patients with stage IV metastatic CRC                 primer and adapter sequences. After ﬁltering low-quality reads and
+receiving systemic treatment. In this study, we conducted                       merging, 13 samples had low number of reads and were excluded from
+microbiome 16S rRNA sequencing using tumor tissues from                         the study. This step left 120 samples for further downstream analysis.
+patients with initially stage IV CRC and determined the                             The Divisive Amplicon Denoising Algorithm 2 (DADA2)
+correlation between the tissue microbiome and clinical outcomes.                program was used to analyze the data and generate amplicon
+                                                                                sequence variant (ASV) tables (Supplementary Figure S1). Then,
+                                                                                we converted these tables into phyloseq objects using the “phyloseq”
+2 Materials and methods                                                         package (v. 1.24.2). Features with ambiguous genus annotations
+                                                                                were discarded, and ASVs found in at least 1% of each sample were
+2.1 Study population                                                            selected. Microbiomes detected in the negative control were
+                                                                                subtracted from the in silico dataset.
+    All patients had a histological diagnosis of colorectal                         Two alpha indices were chosen to depict taxon diversity
+adenocarcinoma, initially as a stage IV disease, and received 5-                between the groups: richness determined by number of Observed-
+ﬂuouracil (5-FU)-based systemic chemotherapy and/or biological                  ASVs per sample (observed ASV) and evenness determined by
+agents (cetuximab or bevacizumab) after tissue sampling.                        diversity of ASVs per sample (Shannon index). The beta diversity to
+Treatment response was determined using the treatment                           depict intergroup dissimilarities was measured using UniFrac
+evaluation criteria for solid tumors (v. 1.1) (27).                             distances and visualized using principal component analysis
+    This study was approved by the Institutional Review boards (IRB)            (PCA). Linear discriminant analysis with effect size (LEfSe)
+of the St. Vincent’s Hospital (No. VC19TESI0114), and Stanford                  algorithm was used to deﬁne differential microbiome patterns
+Hospital (IRB number 55131). All the patients provided written                  (28). The relative microbiome abundance between the groups was
+informed consent to participate in this study. This study was                   visualized using a heat map.
+
+
+Frontiers in Oncology                                                      02                                                           frontiersin.org
+An et al.                                                                                                                           10.3389/fonc.2023.1310054
+
+
+
+
+                                                                                 TABLE 1 Baseline characteristics of the study population.
+2.4 Statistical analysis
+                                                                                  Characteristics                                   No. of patients
+     We performed a chi-squared test, Wilcoxon signed-rank test, and                                                                N = 120 (%)
+Spearman’s correlation to evaluate the results among the different
+                                                                                  Age                      Median (range)           63 (34–82)
+pipelines. The Mann–Whitney U test or one-way ANOVA test was
+used for alpha diversity comparison. Permutational multivariate analysis          Gender                   Male                     76 (63.3)
+of variance (PERMANOVA) was used to compare the beta diversity.                                            Female                   44 (36.7)
+     Progression-free survival (PFS) was measured from the date of
+                                                                                  Ethnicity                Korean                   120 (100%)
+ﬁrst-line systemic chemotherapy to the date of progression or censored
+at the last follow-up date. Overall survival (OS) was measured from the           ECOG                     0/1                      86 (71.7)
+                                                                                  performance status
+date of ﬁrst-line systemic chemotherapy until death from any cause, or
+the last censored date during follow-up. PFS and OS were calculated                                        ≥2                       34 (28.3)
+using the Kaplan–Meier method, and differences in survival between                Stage                    IV                       120 (100.0)
+groups were compared using the log-rank test. Variables with p value
+                                                                                  Primary                  Right side colon         33 (27.5)
+<0.07 were included in the Cox regression multivariable model, and
+                                                                                  tumor location
+adjusted hazard ratios (HR) with 95% conﬁdence intervals (CI) were
+calculated. A p value <0.05 was considered statistically signiﬁcant.                                       Left side colon          37 (30.8)
+
+Statistical analyses were performed using R software (version 3.6.1).                                      rectum                   50 (41.7)
+
+                                                                                  Tumor histology          Adenocarcinoma           120 (100.0)
+3 Results                                                                         Tumor                    Well                     12 (10.0)
+                                                                                  differentiation
+3.1 Patient characteristics                                                                                Moderate                 100 (83.3)
+
+                                                                                                           Poor                     8 (6.7)
+     The baseline characteristics of the 120 enrolled patients are
+summarized in Table 1. The median age was 63 years (range, 34–82                  CEA (ng/mL)              Median (range)           8 (0.27–>1,500)
+years), and 76 patients (63.3%) were male. All patients were of Korean            Number of                1                        56 (46.7)
+ethnicity. The distribution of the primary tumor sites was 27.5% in the           organ metastasis
+right colon, 30.8% in the left colon (excluding the rectum), and 41.7% in
+                                                                                                           2                        43 (35.8)
+the rectum. Twenty-one (18.5%) patients showed an involvement of three
+metastatic organs or more, which was deﬁned as a high tumor burden.                                        ≥3                       21 (18.5)
+
+     During the median follow-up period of 17.9 months (1.0–59.0),                Site of                  Lung                     30 (25.0)
+51 (42.5%) patients showed responses (complete or partial                         organ metastasis
+
+responses), and the median PFS was 8.9 months (1.0–52.0) after                                             Liver                    55 (45.8)
+ﬁrst-line treatment. Twenty-nine (24.2%) patients survived more
+                                                                                                           Lymph node               28 (23.3)
+than 24 months, and the median OS was 18.1 months (3.6–59.4).
+                                                                                                           Peritoneum               28 (23.3)
+
+                                                                                  KRAS/                    Yes                      62 (51.7)
+3.2 Microbiome composition                                                        NRAS mutation
+
+                                                                                  Microsatellite           High                     2 (1.7)
+     In total, 13.3 million reads were generated from 120 CRC tissues.            instability
+The median read length was approximately 392 bp (range, 283–590
+                                                                                  1st line                 FOLFOX                   35 (29.2)
+bp). A total of 43,551 ASVs were assigned based on 97% similarity;
+                                                                                  cytotoxic agent
+however, 30,693 (70.5%) remained unclassiﬁed at the genus level. We
+removed unclassiﬁed ASV, and ﬁltered out genera that showed an                                             FOLFIRI                  85 (70.8)
+
+abundance of less than 1% in each patient to remove possible artifacts             st
+                                                                                  1 line biologic agent    Cetuximab                47 (39.2)
+of sequencing errors or clustering algorithms. Finally, 523 genera were
+                                                                                                           Avastin                  66 (55.0)
+identiﬁed and analyzed. Pseudomonas was the most abundant,
+followed by Clostridium, Bacteroides, Rombroutsia, Flectobacillus, and                                     None                     7 (5.8)
+
+Staphylococcus, in descending order (Supplementary Figure S2).                    Overall                  Complete or              51 (42.5)
+                                                                                  response rate*           partial response
+
+                                                                                  Progression              Median (range)           8.9 months (1.0–52.0)
+3.3 Association of alpha diversity and                                            free survival
+clinical parameters                                                               Overall survival         Median (range)           18.1 months (3.6–59.4)
+
+                                                                                 ECOG, Eastern Cooperative Oncology Group; CEA, Carcinoembryonic antigen; FOLFOX, 5-
+    Alpha diversity describes the microbial diversity in terms of                FU,/oxaliplatin/leucovorin; FOLFIRI, 5-FU/irinotecan/leucovorin.
+richness (observed ASVs) and evenness (Shannon index). Alpha                     *1st line chemotherapy.
+
+
+
+
+Frontiers in Oncology                                                       03                                                                        frontiersin.org
+An et al.                                                                                                                            10.3389/fonc.2023.1310054
+
+
+
+
+diversity analysis revealed that cancer tissues originating from the                 3.4 Association of beta diversity and
+rectum showed higher microbiome richness than those from left- or                    clinical parameters
+right-sided CRC (p = 0.018), but there was no difference in
+microbiome diversity (Figure 1A). A trend towards higher                                 Beta diversity differed according to primary site (p = 0.03,
+microbiome richness (p = 0.057), but lower diversity (p = 0.047)                     Figure 2A), serum CEA level (p = 0.015, Figure 2B), or clinical T
+was observed in CRC tissues with high serum CEA level (≥ 10 ng/                      stage (p = 0.08, Figure 2C). Patients who survived longer than 24
+mL, Figure 1B). CRC tissues with peritoneal invasion (cT4) showed                    months (long-term survivors) showed distinct beta diversity
+lower microbiome diversity than those without peritoneal invasion                    compared to those who died within 24 months (short-term
+(p = 0.016, Figure 1C). Patients with lung metastasis showed higher                  survivors, p = 0.021, Figure 2D). Short-term survival was
+microbiome richness than those without lung metastasis (p = 0.026;                   associated with Bacteroides, Prevotella, Fusobacterium,
+Figure 1D). There were no signiﬁcant differences in alpha diversity                  Selenomonas, Fretibacterium, and Porphyromonas. In contrast,
+according to clinical outcomes, including response rate,                             Sphingomonas, Corynebacterium, Curvibacter, Enhydrobacter,
+progression, and survival.                                                           Paracoccus, Rothia, Caulobacter, and Dermacoccus were
+
+
+
+
+              A                                                             B
+
+
+
+
+              C                                                             D
+
+
+
+
+   FIGURE 1
+   Microbial diversity. Alpha-diversity index according to primary site (A), CEA level (B), clinical T stage (C), and presence of lung metastasis (D).
+
+
+
+
+Frontiers in Oncology                                                           04                                                                  frontiersin.org
+An et al.                                                                                                                          10.3389/fonc.2023.1310054
+
+
+
+
+                  A                                                             B
+
+
+
+
+                  C                                                              D
+
+
+
+
+   FIGURE 2
+   Principle co-ordinates analysis based on the Bray-Curtis distance according to primary site (A), CEA level (B), clinical T stage (C), and overall
+   survival (D).
+
+
+
+
+associated with long-term survival (Figure 3). The mean relative                     3.5 Prognostic implications of cancer
+abundances of Bacteroides, Selenomonas, Fretibacterium, and                          tissue microbiome
+Peptostreptococcus were higher in short-term survivors, while
+Rothia, Curvibacter, Corynebacterium, and Sphingomonas were                              The survival analysis revealed that the presence of Prevotella
+more abundant in long-term survivors (Table 2).                                      (p = 0.050), Fusobacterium (p = 0.002), Selenomonas (p <0.001),
+
+
+
+                  A                                         B
+
+
+
+
+   FIGURE 3
+   Survival analysis. Differential microbiome abundance between short term (<24 months) and long term (≥24 months) survivors analyzed by linear
+   discriminate analysis with effect size measurement (A). The listed genera were signiﬁcantly gathered for their respective groups (p<0.05). Heatmap
+   represents the relative abundance of each genera between two groups (B).
+
+
+
+
+Frontiers in Oncology                                                          05                                                                 frontiersin.org
+An et al.                                                                                                                   10.3389/fonc.2023.1310054
+
+
+
+
+TABLE 2 Average abundancies of microbiome genus between short
+term and long-term survival.
+                                                                               4 Discussion
+ Genus                  Long term          Short term          p value             We characterized the composition of the tissue microbiome in
+                      survivor (≥ 24      survivor (<24                        patients with metastatic CRC and identiﬁed potential microbiome
+                         months,            months,                            genera that may contribute to the prediction of survival outcomes in
+                         n = 49)             n = 71)
+                                                                               this population. Some clinical parameters are associated with
+ Prevotella                0.011                0.035            0.052         microbiome diversity. The rectal origin showed higher
+ Bacteroides               0.018                0.041            0.040         microbiome richness and distinct beta diversity, in accordance
+                                                                               with previous reports (29, 30). Patients with high CEA levels
+ Fusobacterium             0.014                0.013            0.923
+                                                                               showed higher microbiome richness, but lower diversity.
+ Selenomonas                0                   0.006            0.023         Peritoneal invasion (cT4) was associated with lower diversity.
+ Fretibacterium             0                   0.004            0.039         These are clinical parameters of poor prognosis in CRC; however,
+                                                                               we did not ﬁnd any signiﬁcant differences in alpha diversity
+ Porphyromonas              0                   0.002            0.016
+                                                                               according to the clinical outcomes. Microbiome feature was
+ Dermacoccus               0.001                  0              0.099         associated with survival outcomes. The presence of Prevotella,
+ Caulobacter               0.001                  0              0.101         Fusobacterium, Selenomonas, Fretibacterium, Porphyromonas,
+                                                                               Peptostreptococcus and Leptotrichia was associated with shorter
+ Rothia                    0.002                  0              0.047
+                                                                               OS, while Sphingomonas was associated with longer OS.
+ Paracoccus                0.016                  0              0.054             One strength of our study is that we performed microbiome
+ Enhydrobacter             0.003                0.001            0.199         analysis using tissue samples from patients with metastatic CRC
+                                                                               instead of stool samples. The colon tissue microbiome directly
+ Curvibacter               0.010                0.005            0.049
+                                                                               reﬂects features of the TME, and thus is less affected by extrinsic
+ Corynebacterium           0.016                0.006            0.024         factors such as diet, drug exposure, gut preparation, or sample
+ Sphingomonas              0.015                0.004            0.038         storage processes than stool samples (31). Studies comparing local
+                                                                               tumor tissues with stool microbiome patterns have yielded
+ Peptostreptococcus         0                   0.004            0.038
+                                                                               discordant results (11, 29, 30). Thus, direct determination of the
+ Leptotrichia               0                   0.004            0.060         tissue-associated microbiome from primary CRC tumors may
+                                                                               prove useful in future studies to conﬁrm its prognostic implications.
+Fretibacterium (p = 0.001), Porphyromonas (p = 0.007),                             Interestingly, the microbiomes related to poor prognosis in our
+Peptostreptococcus (p = 0.002), and Leptotrichia (p = 0.003) were              study belonged to the oral cavity. Microbiomes living in the oral
+associated with poor OS, while the presence of Sphingomonas was                cavity can translocate to the lower gut and participate in
+associated with good OS (p = 0.070) (Figure 4). In a multivariate              pathogenesis (32). Signiﬁcant enrichment of orally originated
+analysis, the presence of Selenomonas (HR, 6.35; 95% CI, 2.38–                 microbiomes has been observed in CRC tissues compared to
+16.97; p <0.001) remained a signiﬁcant poor prognostic factor,                 normal tissues (12, 16, 29, 33). Fusobacteria, particularly F.
+along with high serum CEA level (Table 3).                                     nucleatum, is an established part of the oral microbiome and has
+
+
+
+
+                A                           B                               C                                D
+
+
+
+
+                E                           F                                G                               H
+
+
+
+
+   FIGURE 4
+   Kaplan-Meier analysis of overall survival according to the presence or absence of speciﬁc microbes in the colorectal tissue. Prevotella
+   (A), Fusobacterium (B), Selenomonas (C), Fretibacterium (D), Porphyromonas (E), Peptostreptococcus (F), Leptotrichia (G), and Sphingomonas (H).
+
+
+
+
+Frontiers in Oncology                                                     06                                                              frontiersin.org
+An et al.                                                                                                                                    10.3389/fonc.2023.1310054
+
+
+
+
+TABLE 3 Variables associated with overall survival.                                             associated with the prognosis of lung or esophageal cancer (40,
+                                                                                                41). Peptostreptococcus involved in CRC carcinogenesis via direct
+                                Univariate                 Multivariate                         interaction with integrin a2/b1 activates PI3K-ALK-NF-ĸB
+                                  P value           HR (95% CI)            P value              signaling and immune modulation (42). Leptotrichia and
+                                                                                                Selenomonas are associated with high-grade CRC; however, their
+ Age (≥ 60)                          0.083           1.44 (0.87–2.40)         0.158
+                                                                                                prognostic signiﬁcance has not yet been reported (30). We also
+ Male                                0.975
+                                                                                                found that some prognostic parameters correlated with each
+ ECOG ≥ 2                            0.034           1.16 (0.69–1.93)         0.581             microbiome. Fusobacterium was detected more frequently in
+                                                                                                patients with high CEA level (p <0.001) and high tumor burden
+ Primary site                        0.517
+                                                                                                (p = 0.009). Patients with a high tumor burden showed more
+ Presence of                         0.129
+                                                                                                frequent Leptotrichia (p = 0.022) and Fretibacterium (p = 0.048).
+ RAS mutation
+                                                                                                In this study, Sphingomonas was associated with favorable
+ No. of metastatic sites             0.022           1.58 (0.90–2.78)         0.109             prognosis, which has been reported in breast, lung, and gastric
+ (≥ 3)
+                                                                                                cancer (43–45).
+ CEA ≥ 10 ng/mL                     <0.001           2.22(1.37–3.59)          0.001                 Most patients with CRC received 5-FU based chemotherapy. F.
+ Presence of each microbiome                                                                    nucleatum may cause 5-FU chemoresistance via mechanisms
+                                                                                                involving aberrant EMT, autophagy, apoptosis, or tumor cell
+    Bacteroides                      0.154
+                                                                                                cycle regulation in CRC (26, 34, 46). Porphyromonas enhances
+    Prevotella                       0.052           1.13 (0.63–2.04)         0.681             the viability of cancer cells exposed to chemotherapeutic agents,
+    Fusobacterium                    0.002           0.68 (0.35–1.32)         0.259             including 5-FU, by modifying apoptosis and cell cycle signaling in
+                                                                                                esophageal cancer (40). Several studies have reported that short-
+    Selenomonas                     <0.001          6.35 (2.38–16.97)        <0.001
+                                                                                                chain fatty acids (SCFA), including those produced by butyrate-
+    Fretibacterium                   0.002           0.40 (0.09–1.84)         0.240             producing bacteria, may be associated with 5-FU chemo-sensitivity
+    Porphyromonas                    0.011           1.68 (0.58–4.89)         0.339             in CRC. Yuan et al. reported that antibiotic administration
+                                                                                                decreased 5-FU efﬁcacy and was associated with a decrease of
+    Peptostreptococcus               0.003           1.49 (0.79–2.82)         0.221
+                                                                                                SCFA-producing bacteria, such as Blautia, Roseburia,
+    Leptotrichia                     0.006           0.99 (0.16–6.33)         0.995             Anaerotruncus, Oscillibacter, and Bacteroidetes, which could
+    Sphingomonas                     0.070           0.80 (0.44–1.47)         0.477             induce inﬂammation and abrogate antitumor activity. Another
+                                                                                                study reported that Roseburia, Dorea, and Anaerostipes in stool
+    Corynebacterium                  0.263
+                                                                                                samples of patients with locally advanced rectal cancer were
+    Curvibacter                      0.118                                                      overrepresented in 5-FU chemoradiation responders (47). In the
+    Enhydrobacter                    0.319                                                      present study, these microbiomes were not associated with 5-FU
+                                                                                                efﬁcacy or clinical outcomes. Porphyromonas or Prevotella, which
+    Paracoccus                       0.230
+                                                                                                might belong to the butyrate-producing microbiome (48–50), are
+    Rothia                           0.198                                                      associated with poor prognosis.
+    Caulobacter                      0.491                                                          Our study has some limitations. First, it was conducted at a
+                                                                                                single institution, and the sample size was relatively small. Due to its
+    Dermacoccus                      0.705
+                                                                                                retrospective nature, some important information, including prior
+HR, hazard ratio; CI, conﬁdence interval; ECOG, Eastern Cooperative Oncology Group; CEA,
+carcinoembryonic antigen.
+                                                                                                antibiotic or probiotic exposure, was missing. Second, we used
+                                                                                                FFPE samples, which may present sequencing quality or
+the potential to contribute to CRC carcinogenesis. Its presence in                              contamination issues during processing. To minimize these issues,
+CRC is associated with prognosis after surgical resection (8, 10, 17).                          we ﬁltered out reads of low quality, and ASVs with ambiguous
+These bacteria induce EMT, dysregulate the E-cadherin/b-catenin                                 genera annotations or those found in less than 1% of the samples
+complex, and secrete matrix metalloproteinases or chemokines,                                   were also discarded. Some microbiome was found in a small
+which enhance tumor aggressiveness and metastasis (34–37). Few                                  number of patients, so results should be interpreted in caution.
+studies reported a prognostic role of F. nucleatum in the metastatic                            Third, we investigated genera instead of species because of the low
+setting (38, 39). In the present study, Fusobacterium was associated                            sensitivity of the 16S rRNA sequencing method for classifying
+with poor survival outcomes. At the species level, F. nucleatum was                             species (51). Shotgun metagenomic sequencing was not
+detected in 15 (12.5%) patients, and its presence was signiﬁcantly                              performed because of high costs and excessive contamination
+associated with shorter OS (p <0.001; data not shown).                                          with human DNA in the tissue samples (3, 4). Some studies have
+     The prognostic signiﬁcance of other bacteria in CRC has not                                suggested that ﬁner taxonomic resolution could impede the clinical
+been widely studied (16). We also identiﬁed other bacterial genera                              availability of microbiome analyses for CRC (37).
+that may be contributing factors. For example, Porphyromonas                                        In conclusion, we performed comprehensive tumor
+promotes cell proliferation or inﬂammatory responses via                                        microbiome sequencing in patients with metastatic CRC and
+interaction with TLR2 or TLR4 in preclinical models, and is                                     identiﬁed distinct tumor microbiome features associated with
+
+
+
+
+Frontiers in Oncology                                                                      07                                                             frontiersin.org
+An et al.                                                                                                                                              10.3389/fonc.2023.1310054
+
+
+
+
+survival outcomes in this population. The presence of Selenomonas,                               Funding
+along with the typical oral carcinogenic microbiome in CRC tissues,
+may be a useful prognostic biomarker. To conﬁrm their clinical                                       The author(s) declare ﬁnancial support was received for the
+value, these microbiomes should be validated from RNA-ISH                                        research, authorship, and/or publication of this article. This study
+method and in stool samples from a large cohort.                                                 was funded by the Clayville Foundation, Fund for Innovation in
+                                                                                                 Cancer Informatics, Catholic Medical Center Research Foundation
+                                                                                                 in the program year of 2023, and a National Research Foundation of
+Data availability statement                                                                      Korea (NRF) grant funded by the Korean government (MSIT) (No.
+                                                                                                 RS-2023-00249672).
+   The data presented in the study are deposited in the NIH's Short
+Read Archive repository, accession number PRJNA808420: https://
+www.ncbi.nlm.nih.gov/sra/PRJNA808420.                                                            Acknowledgments
+                                                                                                     We would like to thank Editage (www.editage.co.kr) for English
+Ethics statement                                                                                 language editing.
+
+
+    The studies involving humans were approved by the
+institutional review boards (IRB) of St. Vincent’s Hospital (No.                                 Conﬂict of interest
+VC19TESI0114) and Stanford Hospital (IRB number 55131). The
+studies were conducted in accordance with the local legislation and                                  The authors declare that the research was conducted in the
+institutional requirements. The participants provided their written                              absence of any commercial or ﬁnancial relationships that could be
+informed consent to participate in this study.                                                   construed as a potential conﬂict of interest.
+
+
+
+                                                                                                 Publisher’s note
+Author contributions
+                                                                                                     All claims expressed in this article are solely those of the authors
+    HA: Conceptualization, Data curation, Formal analysis,                                       and do not necessarily represent those of their afﬁliated
+Funding acquisition, Investigation, Methodology, Resources,                                      organizations, or those of the publisher, the editors and the
+Writing – original draft. MP: Formal analysis, Writing – original                                reviewers. Any product that may be evaluated in this article, or
+draft. HL: Formal analysis, Software, Supervision, Validation,                                   claim that may be made by its manufacturer, is not guaranteed or
+Writing – review & editing. BL: Data curation, Methodology,                                      endorsed by the publisher.
+Supervision, Writing – review & editing. DP: Formal analysis,
+Writing – review & editing. AA: Project administration,
+Resources, Writing – review & editing. AH: Data curation,                                        Supplementary material
+Methodology, Supervision, Writing – review & editing. GS: Data
+curation, Methodology, Supervision, Writing – review & editing.                                       The Supplementary Material for this article can be found online
+HJ: Conceptualization, Funding acquisition, Project administration,                              at: https://www.frontiersin.org/articles/10.3389/fonc.2023.1310054/
+Resources, Supervision, Writing – review & editing.                                              full#supplementary-material.
+
+
+
+
+References
+  1. Selber-Hnatiw S, Rukundo B, Ahmadi M, Akoubi H, Al-Bizri H, Aliu AF, et al.                   6. Wu S, Rhee KJ, Albesiano E, Rabizadeh S, Wu X, Yen HR, et al. A human colonic
+Human gut microbiota: toward an ecology of disease. Front Microbiol (2017) 8:1265.               commensal promotes colon tumorigenesis via activation of T helper type 17 T cell
+doi: 10.3389/fmicb.2017.01265                                                                    responses. Nat Med (2009) 15(9):1016–22. doi: 10.1038/nm.2015
+   2. Garrett WS. Cancer and the microbiota. Sci (New York NY) (2015) 348(6230):80–                 7. Goodwin AC, Destefano Shields CE, Wu S, Huso DL, Wu X, Murray-Stewart TR,
+6. doi: 10.1126/science.aaa4972                                                                  et al. Polyamine catabolism contributes to enterotoxigenic Bacteroides fragilis-induced
+  3. Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM, et al.                       colon tumorigenesis. Proc Natl Acad Sci USA (2011) 108(37):15354–9. doi: 10.1073/
+Genomic analysis identiﬁes association of Fusobacterium with colorectal carcinoma.               pnas.1010203108
+Genome Res (2012) 22(2):292–8. doi: 10.1101/gr.126573.111                                           8. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. Fusobacterium
+  4. Castellarin M, Warren RL, Freeman JD, Dreolini L, Krzywinski M, Strauss J, et al.           nucleatum promotes colorectal carcinogenesis by modulating E-cadherin/b-catenin
+Fusobacterium nucleatum infection is prevalent in human colorectal carcinoma.                    signaling via its FadA adhesin. Cell Host Microbe (2013) 14(2):195–206. doi: 10.1016/
+Genome Res (2012) 22(2):299–306. doi: 10.1101/gr.126516.111                                      j.chom.2013.07.012
+  5. Villé ger R, Lopès A, Veziant J, Gagnière J, Barnich N, Billard E, et al. Microbial           9. Arthur JC, Perez-Chanona E, Mühlbauer M, Tomkovich S, Uronis JM, Fan TJ,
+markers in colorectal cancer detection and/or prognosis. World J Gastroenterol (2018)            et al. Intestinal inﬂammation targets cancer-inducing activity of the microbiota. Sci
+24(22):2327–47. doi: 10.3748/wjg.v24.i22.2327                                                    (New York NY) (2012) 338(6103):120–3. doi: 10.1126/science.1224820
+
+
+
+
+Frontiers in Oncology                                                                       08                                                                         frontiersin.org
+An et al.                                                                                                                                              10.3389/fonc.2023.1310054
+
+
+
+
+  10. Kostic AD, Chun E, Robertson L, Glickman JN, Gallini CA, Michaud M, et al.                  31. Yachida S, Mizutani S, Shiroma H, Shiba S, Nakajima T, Sakamoto T, et al.
+Fusobacterium nucleatum potentiates intestinal tumorigenesis and modulates the                  Metagenomic and metabolomic analyses reveal distinct stage-speciﬁc phenotypes of the
+tumor-immune microenvironment. Cell Host Microbe (2013) 14(2):207–15. doi:                      gut microbiota in colorectal cancer. Nat Med (2019) 25(6):968–76. doi: 10.1038/
+10.1016/j.chom.2013.07.007                                                                      s41591-019-0458-7
+   11. Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI, et al. Potential of          32. Komiya Y, Shimomura Y, Higurashi T, Sugi Y, Arimoto J, Umezawa S, et al.
+fecal microbiota for early-stage detection of colorectal cancer. Mol Syst Biol (2014)           Patients with colorectal cancer have identical strains of Fusobacterium nucleatum in
+10:766. doi: 10.15252/msb.20145645                                                              their colorectal cancer and oral cavity. Gut (2019) 68(7):1335–7. doi: 10.1136/gutjnl-
+  12. Thomas AM, Manghi P, Asnicar F, Pasolli E, Armanini F, Zolfo M, et al.                    2018-316661
+Metagenomic analysis of colorectal cancer datasets identiﬁes cross-cohort microbial               33. Zhao L, Cho WC, Nicolls MR. Colorectal cancer-associated microbiome patterns
+diagnostic signatures and a link with choline degradation. Nat Med (2019) 25(4):667–            and signatures. Front Genet (2021) 12:787176. doi: 10.3389/fgene.2021.787176
+78. doi: 10.1038/s41591-019-0405-7                                                                34. Ma CT, Luo HS, Gao F, Tang QC, Chen W. Fusobacterium nucleatum promotes
+  13. Zhu J, Hua RX, Jiang J, Zhao LQ, Sun X, Luan J, et al. Association studies of             the progression of colorectal cancer by interacting with E-cadherin. Oncol Lett (2018)
+ERCC1 polymorphisms with lung cancer susceptibility: a systematic review and meta-              16(2):2606–12. doi: 10.3892/ol.2018.8947
+analysis. PloS One (2014) 9(5):e97616. doi: 10.1371/journal.pone.0097616                          35. Rubinstein MR, Baik JE, Lagana SM, Han RP, Raab WJ, Sahoo D, et al.
+  14. Amitay EL, Krilaviciute A, Brenner H. Systematic review: Gut microbiota in fecal          Fusobacterium nucleatum promotes colorectal cancer by inducing Wnt/b-catenin
+samples and detection of colorectal neoplasms. Gut Microbes (2018) 9(4):293–307. doi:           modulator Annexin A1. EMBO Rep (2019) 20(4):e47638. doi: 10.15252/
+10.1080/19490976.2018.1445957                                                                   embr.201847638
+   15. Ai L, Tian H, Chen Z, Chen H, Xu J, Fang JY. Systematic evaluation of supervised           36. Uitto VJ, Baillie D, Wu Q, Gendron R, Grenier D, Putnins EE, et al.
+classiﬁers for fecal microbiota-based prediction of colorectal cancer. Oncotarget (2017)        Fusobacterium nucleatum increases collagenase 3 production and migration of
+8(6):9546–56. doi: 10.18632/oncotarget.14488                                                    epithelial cells. Infect Immun (2005) 73(2):1171–9. doi: 10.1128/IAI.73.2.1171-
+  16. Xu S, Yin W, Zhang Y, Lv Q, Yang Y, He J. Foes or friends? Bacteria enriched in           1179.2005
+the tumor microenvironment of colorectal cancer. Cancers (2020) 12(2):372. doi:                   37. Bersanelli M, Santoni M, Ticinesi A, Buti S. The urinary microbiome and
+10.3390/cancers12020372                                                                         anticancer immunotherapy: the potentially hidden role of unculturable microbes.
+  17. Mima K, Nishihara R, Qian ZR, Cao Y, Sukawa Y, Nowak JA, et al.                           Target Oncol (2019) 14(3):247–52. doi: 10.1007/s11523-019-00643-7
+Fusobacterium nucleatum in colorectal carcinoma tissue and patient prognosis. Gut                 38. Lee DW, Han SW, Kang JK, Bae JM, Kim HP, Won JK, et al. Association
+(2016) 65(12):1973–80. doi: 10.1136/gutjnl-2015-310101                                          between fusobacterium nucleatum, pathway mutation, and patient prognosis in
+   18. Viljoen KS, Dakshinamurthy A, Goldberg P, Blackburn JM. Quantitative                     colorectal cancer. Ann Surg Oncol (2018) 25(11):3389–95. doi: 10.1245/s10434-018-
+proﬁling of colorectal cancer-associated bacteria reveals associations between                  6681-5
+fusobacterium spp., enterotoxigenic Bacteroides fragilis (ETBF) and                                39. Yan X, Liu L, Li H, Qin H, Sun Z. Clinical signiﬁcance of Fusobacterium
+clinicopathological features of colorectal cancer. PloS One (2015) 10(3):e0119462.              nucleatum, epithelial-mesenchymal transition, and cancer stem cell markers in stage
+doi: 10.1371/journal.pone.0119462                                                               III/IV colorectal cancer patients. OncoTargets Ther (2017) 10:5031–46. doi: 10.2147/
+  19. Routy B, Le Chatelier E, Derosa L, Duong CPM, Alou MT, Daillère R, et al. Gut             OTT.S145949
+microbiome inﬂuences efﬁcacy of PD-1-based immunotherapy against epithelial                       40. Gao S, Liu Y, Duan X, Liu K, Mohammed M, Gu Z, et al. Porphyromonas
+tumors. Sci (New York NY) (2018) 359(6371):91–7. doi: 10.1126/science.aan3706                   gingivalis infection exacerbates oesophageal cancer and promotes resistance to
+  20. Gopalakrishnan V, Helmink BA, Spencer CN, Reuben A, Wargo JA. The                         neoadjuvant chemotherapy. Br J Cancer (2021) 125(3):433–44. doi: 10.1038/s41416-
+inﬂuence of the gut microbiome on cancer, immunity, and cancer immunotherapy.                   021-01419-5
+Cancer Cell (2018) 33(4):570–80. doi: 10.1016/j.ccell.2018.03.015                                 41. Liu Y, Yuan X, Chen K, Zhou F, Yang H, Yang H, et al. Clinical signiﬁcance and
+   21. Sivan A, Corrales L, Hubert N, Williams JB, Aquino-Michaels K, Earley ZM,                prognostic value of Porphyromonas gingivalis infection in lung cancer. Transl Oncol
+et al. Commensal Biﬁdobacterium promotes antitumor immunity and facilitates anti-               (2021) 14(1):100972. doi: 10.1016/j.tranon.2020.100972
+PD-L1 efﬁcacy. Sci (New York NY) (2015) 350(6264):1084–9. doi: 10.1126/                           42. Long X, Wong CC, Tong L, Chu ESH, Ho Szeto C, Go MYY, et al.
+science.aac4255                                                                                 Peptostreptococcus anaerobius promotes colorectal carcinogenesis and modulates
+ 22. Alexander JL, Wilson ID, Teare J, Marchesi JR, Nicholson JK, Kinross JM. Gut               tumour immunity. Nat Microbiol (2019) 4(12):2319–30. doi: 10.1038/s41564-019-0541-3
+microbiota modulation of chemotherapy efﬁcacy and toxicity. Nat Rev Gastroenterol                 43. Dong Z, Chen B, Pan H, Wang D, Liu M, Yang Y, et al. Detection of microbial
+Hepatol (2017) 14(6):356–65. doi: 10.1038/nrgastro.2017.20                                      16S rRNA gene in the serum of patients with gastric cancer. Front Oncol (2019) 9:608.
+  23. Geller LT, Barzily-Rokni M, Danino T, Jonas OH, Shental N, Nejman D, et al.               doi: 10.3389/fonc.2019.00608
+Potential role of intratumor bacteria in mediating tumor resistance to the                        44. Huang YF, Chen YJ, Fan TC, Chang NC, Chen YJ, Midha MK, et al. Analysis of
+chemotherapeutic drug gemcitabine. Sci (New York NY) (2017) 357(6356):1156–60.                  microbial sequences in plasma cell-free DNA for early-onset breast cancer patients and
+doi: 10.1126/science.aah5043                                                                    healthy females. BMC Med Genomics (2018) 11(Suppl 1):16. doi: 10.1186/s12920-018-
+   24. Wallace BD, Roberts AB, Pollet RM, Ingle JD, Biernat KA, Pellock SJ, et al.              0329-y
+Structure and inhibition of microbiome b-glucuronidases essential to the alleviation of           45. Peters BA, Hayes RB, Goparaju C, Reid C, Pass HI, Ahn J. The microbiome in
+cancer drug toxicity. Chem Biol (2015) 22(9):1238–49. doi: 10.1016/                             lung cancer tissue and recurrence-free survival. Cancer Epidemiol Biomarkers Prev
+j.chembiol.2015.08.005                                                                          (2019) 28(4):731–40. doi: 10.1158/1055-9965.EPI-18-0966
+  25. Bolyen E, Rideout JR, Dillon MR, Bokulich NA, Abnet CC, Al-Ghalith GA, et al.               46. Ternes D, Karta J, Tsenkova M, Wilmes P, Haan S, Letellier E. Microbiome in
+Reproducible, interactive, scalable and extensible microbiome data science using                colorectal cancer: how to get from meta-omics to mechanism? Trends Microbiol (2020)
+QIIME 2. Nat Biotechnol (2019) 37(8):852–7. doi: 10.1038/s41587-019-0209-9                      28(5):401–23. doi: 10.1016/j.tim.2020.01.001
+  26. Yu T, Guo F, Yu Y, Sun T, Ma D, Han J, et al. Fusobacterium nucleatum                       47. Yi Y, Shen L, Shi W, Xia F, Zhang H, Wang Y, et al. Gut microbiome
+promotes chemoresistance to colorectal cancer by modulating autophagy. Cell (2017)              components predict response to neoadjuvant chemoradiotherapy in patients with
+170(3):548–63.e16. doi: 10.1016/j.cell.2017.07.008                                              locally advanced rectal cancer: A prospective, longitudinal study. Clin Cancer Res an Off
+   27. Eisenhauer EA, Therasse P, Bogaerts J, Schwartz LH, Sargent D, Ford R, et al.            J Am Assoc Cancer Res (2021) 27(5):1329–40. doi: 10.1158/1078-0432.CCR-20-3445
+New response evaluation criteria in solid tumours: revised RECIST guideline (version              48. Wilson MJ, Hall V, Brazier J, Lewis MAO. Evaluation of a phenotypic scheme for
+1.1). Eur J Cancer (Oxford Engl 1990) (2009) 45(2):228–47. doi: 10.1016/                        identiﬁcation of the 'butyrate-producing' Peptostreptococcus species. J Med Microbiol
+j.ejca.2008.10.026                                                                              (2000) 49(8):747–51. doi: 10.1099/0022-1317-49-8-747
+  28. Segata N, Izard J, Waldron L, Gevers D, Miropolsky L, Garrett WS, et al.                    49. Okumura S, Konishi Y, Narukawa M, Sugiura Y, Yoshimoto S, Arai Y, et al. Gut
+Metagenomic biomarker discovery and explanation. Genome Biol (2011) 12(6):1–18.                 bacteria identiﬁed in colorectal cancer patients promote tumourigenesis via butyrate
+doi: 10.1186/gb-2011-12-6-r60                                                                   secretion. Nat Commun (2021) 12(1):1–14. doi: 10.1038/s41467-021-25965-x
+  29. Flemer B, Lynch DB, Brown JM, Jeffery IB, Ryan FJ, Claesson MJ, et al. Tumour-              50. Vital M, Howe AC, Tiedje JM. Revealing the bacterial butyrate synthesis
+associated and non-tumour-associated microbiota in colorectal cancer. Gut (2017) 66             pathways by analyzing (meta)genomic data. mBio (2014) 5(2):e00889. doi: 10.1128/
+(4):633–43. doi: 10.1136/gutjnl-2015-309595                                                     mBio.00889-14
+   30. Zwinsová B, Petrov VA, Hrivň á ková M, Smatana S, Micenková L, Kazdová N,            51. Plummer E, Twin J, Bulach DM, Garland SM, SNJJoP T. Bioinformatics. A
+et al. Colorectal tumour mucosa microbiome is enriched in oral pathogens and deﬁnes             comparison of three bioinformatics pipelines for the analysis of preterm gut microbiota
+three subtypes that correlate with markers of tumour progression. Cancers (2021) 13             using 16S rRNA gene sequencing data. J Proteomics Bioinform (2015) 8(12):283–91.
+(19):4799. doi: 10.3390/cancers13194799                                                         doi: 10.4172/jpb.1000381
+
+
+
+
+Frontiers in Oncology                                                                      09                                                                           frontiersin.org
+

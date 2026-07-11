@@ -1,0 +1,1271 @@
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26
+DOI 10.1186/s12881-018-0533-9
+
+
+
+
+ RESEARCH ARTICLE                                                                                                                                Open Access
+
+Identification of genetic variants for clinical
+management of familial colorectal tumors
+Mev Dominguez-Valentin1* , Sigve Nakken1, Hélène Tubeuf2,3, Daniel Vodak1, Per Olaf Ekstrøm1, Anke M. Nissen4,5,
+Monika Morak4,5, Elke Holinski-Feder4,5, Alexandra Martins2, Pål Møller1,6,7 and Eivind Hovig1,8,9
+
+
+  Abstract
+  Background: The genetic mechanisms for families who meet the clinical criteria for Lynch syndrome (LS) but do
+  not carry pathogenic variants in the mismatch repair (MMR) genes are still undetermined. We aimed to study the
+  potential contribution of genes other than MMR genes to the biological and clinical characteristics of Norwegian
+  families fulfilling Amsterdam (AMS) criteria or revised Bethesda guidelines.
+  Methods: The Hereditary Cancer Biobank of the Norwegian Radium Hospital was interrogated to identify
+  individuals with a high risk of developing colorectal cancer (CRC) for whom no pathogenic variants in MMR
+  genes had been found in routine diagnostic DNA sequencing. Forty-four cancer susceptibility genes were
+  selected and analyzed by using our in-house designed TruSeq amplicon-based assay for targeted sequencing.
+  RNA splicing- and protein-dedicated in silico analyses were performed for all variants of unknown significance
+  (VUS). Variants predicted as likely to affect splicing were experimentally analyzed by resorting to minigene
+  assays.
+  Results: We identified a patient who met the revised Bethesda guidelines and carried a likely pathogenic
+  variant in CHEK2 (c.470 T > C, p.I157T). In addition, 25 unique VUS were identified in 18 individuals, of which 2
+  exonic variants (MAP3K1 c.764A > G and NOTCH3 c.5854G >A) were analyzed in the minigene splicing assay
+  and found not to have an effect on RNA splicing.
+  Conclusions: Among high-risk CRC patients that fulfill the AMS criteria or revised Bethesda guidelines, targeted gene
+  sequencing identified likely pathogenic variant and VUS in other genes than the MMR genes (CHEK2, NOTCH3 and
+  MAP3K1). Our study suggests that the analysis of genes currently excluded from routine molecular diagnostic screens
+  may confer cancer susceptibility.
+  Keywords: Lynch syndrome, Gene panel testing, CHEK2, RNA splicing mutations
+
+
+Background                                                                            immunohistochemistry (IHC) testing for Lynch syn-
+Heredity represents a major cause of colorectal cancer                                drome (LS), no systematic approach to hereditary risk
+(CRC) with at least 20% of the cases estimated to de-                                 assessment exists [5].
+velop due to genetic factors and about 5% being linked                                  LS is caused by a defective MMR system due to pres-
+to inherited variants in cancer-predisposing genes [1–4].                             ence of germline defects in at least one of the MMR
+Currently, patients with CRC are referred to germline                                 genes, MLH1, MSH2, MSH6, PMS2 or to deletions of
+mismatch repair (MMR) testing based on the identifica-                                the 3′ portion of the EPCAM gene [6]. LS is clinically
+tion of high-risk phenotypic features (i.e. early age of on-                          classified according to the Amsterdam (AMS) criteria
+set, family history, clinical criteria), but beyond                                   and/or the Bethesda guidelines, both relying in clinical
+microsatellite     instability   (MSI)       and      MMR                             information and family history. The Bethesda guidelines
+                                                                                      also take into account the MSI signature characteristic
+                                                                                      of MMR-deficient tumors [7–10]. LS patients have an
+* Correspondence: mev_dv@yahoo.com
+1
+ Department of Tumor Biology, Institute for Cancer Research, Oslo University
+                                                                                      increased lifetime risk of CRC (70–80%), endometrial
+Hospital, Oslo, Norway                                                                cancer (50–60%), stomach cancer (13–19%), ovarian
+Full list of author information is available at the end of the article
+
+                                        © The Author(s). 2018 Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+                                        International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+                                        reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+                                        the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+                                        (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated.
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                   Page 2 of 19
+
+
+
+
+cancer (9–14%), cancers of the small intestine, the biliary   Targeted sequencing
+tract and brain as well as carcinoma of the ureters and       Genomic DNA was isolated from peripheral blood sam-
+renal pelvis [11].                                            ples and targeted sequencing was carried out using a
+  However, a high proportion of cases who meet the            TrueSeq amplicon based assay v.1.5 on a MiSeq appar-
+clinical criteria for LS (~ 60%) do not carry patho-          atus, as previously described [28, 29]. The 44-gene panel
+genic variants in the MMR genes and have been re-             used in this study includes genes associated with cancer
+ported as familial colorectal cancer type X (FCCTX)           predisposition as described in a prior study [28, 29].
+or Lynch-like syndrome (LLS) according to their MSI
+status [12–16]. The genetic mechanisms are undeter-           Sequencing data analysis
+mined in the majority of these families [14].                 Paired-end sequence reads were aligned to the human
+  DNA sequencing (DNA-seq) studies using multi-               reference genome (build GRCh37) using the BWA-mem
+gene panels have reported that as much as ~ 18% of            algorithm (v.0.7.8-r55) [30]. The initial sequence align-
+patients diagnosed with CRC below the age of 50 years         ments were converted to BAM format and subsequently
+have pathogenic variants in several genes that are not        sorted and indexed with SAMtools (v.1.1) [30]. Genotyp-
+traditionally associated with CRC (ATM, CHEK2,                ing of single nucleotide variants (SNV) and short indels
+BRCA1, BRCA2, CDKN2A and PALB2) [5, 17]. Not-                 was performed by GATK’s HaplotypeCaller. Filtering of
+ably, there is a need to determine whether these vari-        raw genotype calls and assessment of callable regions/
+ants contribute to hereditary CRC risk via the                loci were done according to GATK’s best practice proce-
+combination of low- and moderate-penetrance suscep-           dures, as described more detailed previously [28].
+tibility alleles [5, 17, 18].                                   Variants were annotated using ANNOVAR (version
+  Given the high frequency and wide spectrum of               November 2015) [31] and were queried against a range
+pathogenic variants, it has been suggested that gen-          of variant databases and protein resources, namely
+etic counseling and testing with a multigene panel            dbSNP (build 147) [32], 1000 Genome Project phase3
+should be considered for all patients with early-onset        [33], Exome Aggregation Consortium (ExAC) (http://
+CRC [17, 19–23]. Importantly, the identification of           exac.broadinstitute.org, accessed August 2015) [34],
+high-risk CRC patients is a major issue, because              Genome Aggregation Database (gnomAD) (http://gno-
+morbidity and mortality from CRC and extracolonic             mad.broadinstitute.org, accessed October 2017) [34],
+cancers in these patients and their relatives can be          Norwegian Germline Variations Database (http://norgen-
+decreased by early screening and intensive surveil-           e.no/vcf-miner/, accessed October 2017), ClinVar (May
+lance [19, 24–26].                                            2016) [35], UniProt Knowledgebase (release March
+  In an effort to discover inherited genetic variants         2016) [36] and the Pfam protein domain database (v29,
+that influence biological and clinical characteristics of     December 2015) [28, 37].
+familial CRC developed in unrelated high-risk pa-
+tients, who previously tested negative for pathogenic         Nomenclature and classification of genetic variants
+variants in MMR genes, we examined 44 cancer asso-            The nomenclature guidelines of the Human Genome
+ciated genes using next generation sequencing (NGS),          Variation Society (HGVS) were used to describe the de-
+and applied minigene-based assay to analyze the im-           tected genetic variants [38]. The recurrence of the iden-
+pact of a subset of genetic variants on RNA splicing.         tified variants was established by interrogating four
+                                                              databases (in their latest releases as of November 2016):
+                                                              the Leiden Open Variation Database (LOVD), the Uni-
+Methods                                                       versal Mutation Database (UMD), ClinVar and the Hu-
+Study population                                              man Gene Mutation Database (HGMD). The variants
+The Hereditary Cancer Biobank of the Norwegian Ra-            were classified according to the 5-tier classification sys-
+dium Hospital was used to identify unrelated high-risk        tem into the following categories: class 5 (pathogenic),
+CRC individuals from families that fulfilled the AMS cri-     class 4 (likely pathogenic), class 3 (uncertain variants or
+teria or the revised Bethesda guidelines [7–10, 27]. By       variants of unknown significance, VUS), class 2 (likely
+the standard diagnostic clinical techniques, all study sub-   not pathogenic) and class 1 (not pathogenic) [3].
+jects were demonstrated not to carry pathogenic variants
+or large genomic rearrangements in MMR genes                  In silico analyses of VUS
+(MLH1, MSH2, MSH6 or PMS2).                                   Two types of bioinformatics methods were used to pre-
+  Ethical approval for the study was granted by the Nor-      dict the impact of selected variants on RNA splicing.
+wegian Data Inspectorate and Ethical Review Board (ref        First, we used MaxEntScan (MES) and SSF-like (SSFL)
+2015/2382). All examined patients signed an informed          to predict variant-induced alterations in 3′ and 5′ splice
+consent for their participation in the study.                 site strength, as described by Houdayer et al. 2012 [39],
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                    Page 3 of 19
+
+
+
+
+except that here both algorithms were interrogated by         OneStep RT-PCR kit (Qiagen), as previously described
+using the integrated software tool Alamut Batch version       [43]. The sequences of the RT-PCR primers are shown
+1.5, (Interactive Biosoftware, http://www.interactive-bio-    in Additional file 1: Table S1. Later, RT-PCR products
+software.com). For prediction of variant-induced impact       were separated by electrophoresis on 2.5% agarose gel
+on exonic splicing regulatory elements (ESR), we              containing EtBr and visualized by exposure to UV light
+resorted to ΔtESRseq- [40], ΔHZei- [41], and SPANR-           under saturating conditions using the Gel Doc XR image
+based [42] as described by Soukarieh et al. [43]. Score       acquisition system (Bio-Rad), followed by gel-
+differences (Δ) between variant and wild-type (WT)            purification and Sanger sequencing for proper identifica-
+cases were taken as proxies for assessing the probability     tion of the minigenes’ transcripts. Finally, splicing events
+of a splicing defect. More precisely, we considered that a    were quantitated by performing equivalent fluorescent
+variant mapping at a splice site was susceptible of nega-     RT-PCR reactions followed by capillary electrophoresis
+tively impacting exon inclusion if ΔMES≥15% and               on an automated sequencer (Applied Biosystems), and
+ΔSSFL≥5% [39], whereas an exonic variant located out-         computational analysis by using the GeneMapper v5.0
+side the splice sites was considered as a probable inducer    software (Applied Biosystems).
+of exon skipping if negative Δ scores (below the thresh-
+olds described below) were provided by all the 3 ESR-         Results
+dedicated in silico tools. We chose the following thresh-     Clinical characteristics and family history
+olds: <− 0.5 for ΔtESRseq-, <− 10 for ΔHZei-, and < −         Upon querying the Hereditary Cancer Biobank of the
+0.5 for SPANR-based scores. In addition, we evaluated         Norwegian Radium Hospital for cases that fulfill the
+the possibility of variant-induced de novo splice sites by    AMS and/or the revised Bethesda guidelines, we identi-
+taking into consideration local changes in MES and            fied 34 unrelated potential high-risk CRC individuals
+SSFL scores. In this case, we considered that variants lo-    who did not carry pathogenic variants in MMR genes.
+cated outside the splice sites were susceptible of creating   The median age at first CRC diagnosis was 51.5 years
+a competing splice site if local MES scores were equal to     (range: 34–86 years).
+or greater than those of the corresponding reference             Pedigree information showed that 13 (38%) families
+splice site for the same exon.                                fulfilled the AMS I and/or II criteria and the revised Be-
+   In silico protein impact predictions of missense vari-     thesda guidelines while 21 (62%) met the revised Be-
+ants were performed with Align-GVGD (the VUS were             thesda guidelines only (Table 1). Fifteen (44%) patients
+predicted as deleterious when the values were from C35        had tumors with MSI and/or MMR IHC data available,
+or higher), SIFT, and MAPP using Alamut Batch version         of which 2 (13%) were MSI-high and/or MMR deficient.
+1.4.4 (Interactive Biosoftware) and additionally with         Clinical, family and tumor data information is detailed
+PolyPhen-2 and MutationTaster [44–48].                        in Table 1.
+
+Cell-based minigene splicing assays                           Germline findings
+In order to determine the impact of selected exonic vari-     Given that the families that fulfilled the AMS criteria
+ants on splicing, we performed functional assays based        and/or the Bethesda guidelines did not carry pathogenic
+on the comparative analysis of the splicing pattern of        variants in the MMR genes, we hypothesized that other
+WT and mutant reporter minigenes, as follows. First,          genes could be implicated in the genetic determinism of
+genomic regions containing the exon of interest (internal     these phenotypes.
+exons only) and at least 150 nucleotides of the flanking        In order to pursue this hypothesis, we collected DNA
+introns were amplified by PCR [49] using patients’ DNA        samples from all probands and performed high-
+as template and primers indicated in Additional file 1:       throughput sequencing of a panel of 44 cancer-
+Table S1. Next, representative minigenes were created         associated genes. For the 34 samples, mean depth of
+by inserting the PCR-amplified fragments into a previ-        coverage ranged from 127 to 507 with the fraction of
+ously linearized pCAS2 vector [43]. All constructs were       target bases with coverage ≥25 ranging from 80% to 93.
+sequenced to ensure that no unwanted mutations had            The NGS results revealed that each individual carried an
+been introduced into the inserted fragments during PCR        average of 26 SNV (between 19 and 33 per individual) in
+or cloning. Then, WT and mutant minigenes were trans-         the set of 44 cancer susceptibility genes, most of which
+fected into HeLa cells grown in 12-well plates (at ~ 70%      were common polymorphisms (allele frequency ≥ 1% in
+confluence) using the FuGENE 6 transfection reagent           the general population) according to the ExAC database,
+(Roche Applied Science). Twenty-four hours later, total       and some being classified as benign or likely benign
+RNA was extracted using the NucleoSpin RNA II kit             (class 1 or class 2) according to either ClinVar or the
+(Macherey Nagel) and, the minigenes’ transcripts were         American College of Medical Genetics and Genomics
+analyzed by semi-quantitative RT-PCR using the                (ACMG) guidelines [35, 50] (Table 2).
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                                                             Page 4 of 19
+
+
+
+
+Table 1 Summary of International Classification of Diseases, 9th Revision (ICD9), gender, age at diagnosis, clinical criteria and tumor
+molecular characteristics of the familial CRC families
+Patient_ID     Gender     ICD9 diagnosis (age)                                          AMS criteria     Revised Bethesda       Tumor molecular characteristics
+3222           F          CC (54), Hyperplastic polyp (55/61/62/63/65), BC (70)         0                Y                      MMR IHC proficient
+3308           F          CC (43), BC (51/52)                                           0                Y                      MMR IHC proficient
+3387           F          BC (40), OC (70), CC (80)                                     0                Y                      MMR IHC proficient
+3426           M          MM (39)                                                       I & II           Y                      na
+4932           F          CC (34), EC (40), Hyperplastic polyp (43), BT (46)            I & II           Y                      na
+5324           F          M (52), CC (59), SMC (na), BC (72)                            0                Y                      na
+6174           F          Hyperplastic polyp (63/67), BC (65)                           I & II           Y                      MMR IHC proficient
+6977           F          TC (66)                                                       0                Y                      MMR IHC proficient
+9876           F          M (45), BC (54)                                               0                Y                      na
+9998           F          Hyperplastic polyp (45), CC (45)                              II               Y                      MMR IHC proficient
+10,675         F          BC (51), Hyperplastic polyp (59), TC (60)                     II               Y                      na
+12,954         F          Hyperplastic polyp (69), ML (70)                              II               Y                      na
+13,072         M          Hyperplastic polyp (63/64/65), CC (65/67)                     0                Y                      na
+14,930         F          Hyperplastic polyp (86), CC (86)                              0                Y                      MMR IHC proficient
+18,843         F          BC (44), CC (49), SMC (na)                                    0                Y                      na
+19,411         M          PC (70)                                                       0                Y                      MSH6 IHC deficient
+19,673         F          BC (40/42)                                                    II               Y                      na
+20,612         F          Hyperplastic polyp (59/65), EC (70)                           0                Y                      na
+21,368         F          OC (62)                                                       0                Y                      na
+22,295         F          Hyperplastic polyp (53), M (58)                               0                Y                      na
+23,761         F          Hyperplastic polyp (40/42/44), BC (50)                        0                Y                      na
+23,910         F          M (43), Hyperplastic polyp (49), BC (63), BT (63)             0                Y                      na
+24,140         F          CC (45/67), BC (56)                                           0                Y                      na
+24,447         F          BC (57/66), CC (66)                                           0                Y                      MLH1/PMS2 IHC deficient and MSI
+11,705         F          THC (53), KC (53/63)                                          II               Y                      MMR IHC proficient
+12,673         F          OC (23), SMC (36), RC (62)                                    II               Y                      na
+13,393         M          RC (48), CST (58)                                             I & II           Y                      MMR IHC proficient and MSS
+14,963         F          Hyperplastic polyp (69), BC (62)                              0                Y                      na
+       a
+19609          F          CC (42), M (44), BC (57)                                      0                Y                      MMR IHC proficient
+22,953         F          BC (53)                                                       II               Y                      na
+24,789         F          CC (43), RC (65), BC (72)                                     I & II           Y                      MMR IHC proficient and MSS
+25,167         M          CC (55)                                                       I & II           Y                      MMR IHC proficient
+5597           M          Hyperplastic polyp (53/54), SC (55), KC (62)                  0                Y                      MMR IHC proficient
+8913           F          Hyperplastic polyp (59), BC (61), TC (69)                     0                Y                      na
+CRC colorectal, ICD9 diagnosis International Classification of Diseases, 9th Revision, CC colon cancer, BC breast cancer, AMS Amsterdam criteria, 0 not fulfill the AMS
+criteria, Y yes, MMR mismatch repair, IHC immunohistochemistry, MSI microsatellite instabily, MSS microsatellite stable, na not available, OC ovary cancer, MM
+multiple myeloma, EC endometrial cancer, BT brain tumor, M melanoma, SMC other malignant of the skin, TC trachea, bronchus, lung cancer, ML malignant
+neoplasms of lymphoid, PC prostate cancer, THC thyroid cancer, KC kidney cancer, RC rectum cancer, CST malignant neoplasm of connective and soft tissue, SC
+stomach cancer
+a
+  Patient carrying CHEK2 c.470 T > C, p.I157T
+
+
+  Importantly, we identified a likely pathogenic variant                                The CHEK2 c.470 T > C has been classified as patho-
+in a moderate-penetrance gene (CHEK2 c.470 T > C,                                     genic according to the ACMG guidelines [51], and has a
+p.I157T) in a female patient diagnosed with colon cancer                              lower allele frequency (1.89*10–3) in the Norwegian
+at 42 years, melanoma at 44 years and BC at 57 years                                  population, compared to the non-Finnish European
+with a proficient IHC MMR profile and fulfilling the re-                              population (5.4*10–3) (http://norgene.no/vcf-miner/ and
+vised Bethesda guidelines (Patient 19,609) (Table 1).                                 gnomAD database, respectively) [34, 35, 50]. The variant
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 5 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals
+Patient_           VUS                                        Benign or                   Polymorphisms                Total
+ID                 (Class 3)                                  Likely Benign                                            variants/
+                                                              variants (Class 1 or 2)                                  patient
+3222               NOTCH3                                     ATM NM_000051:              rs459552, rs659243,          28
+                   NM_000435:                                 c.5071A > C,                rs2240308, rs1799966,
+                   c.5854G >A,                                p.S1691R                    rs16942, rs16941,
+                   p.V1952 M                                  (rs1800059)                 rs169547, rs4986764,
+                   (rs115582213)b                             BRCA1 NM_007300:            rs1805107, rs506504,
+                   POLE NM_006231:                            c.5019G > A,                rs832582,
+                   c.3046G > A,                               p.M1673I                    rs5868032, rs1042821,
+                   p.V1016 M                                  (rs1799967)                 rs3219484, rs1044009,
+                   (rs147692158)                              PALB2 NM_024675:            rs152451, rs2228006,
+                                                              c.2993G > A,                rs1805321, rs4796033,
+                                                              p.G998E                     rs1042522, rs861539,
+                                                              (rs45551636)                rs13125836
+                                                              PALB2 NM_024675:
+                                                              c.2014G > C,
+                                                              p.E672Q
+                                                              (rs45532440)
+3308               NBN NM_002485:                             BARD1N M_000465:            rs459552, rs659243,          24
+                   c.1720 T > A, p.L574I                      c.1075_1095del,             rs11528010, rs144848,
+                   (rs142334798)POLE                          p.L359-P365delLPECSSP       rs169547, rs4986764,
+                   NM_006231:                                 (rs28997575)                rs1805107, rs506504,
+                   c.4523G > A,                                                           rs702689, rs832582,
+                   p.R1508H                                                               rs5868032, rs1799977,
+                   (rs142508245)                                                          rs1042821, rs3219484,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs5744934,
+                                                                                          rs5744751, rs4796033,
+                                                                                          rs1042522
+3387               na                                         CDKN2A                      rs459552, rs659243,          23
+                                                              N M_000077:                 rs1801516, rs2240308
+                                                              c.442G > A,                 rs2070094, rs2229571,
+                                                              p.A148T                     rs11528010, rs144848,
+                                                              (rs3731249)                 rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs3219489, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs5744934, rs1042522
+3426               na                                         na                          rs459552, rs659243,          23
+                                                                                          rs1801516, rs2240308,
+                                                                                          rs2070094, rs2229571,
+                                                                                          rs1048108, rs11528010,
+                                                                                          rs144848, rs169547,
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs1042522,
+                                                                                          rs13125836
+4932               NOTCH3                                     na                          rs459552, rs659243,          26
+                   NM_000435:                                                             rs1801516, rs2240308,
+                   c.5854G >A,                                                            rs2229571, rs11528010,
+                   p.V1952 M                                                              rs1799966, rs16942,
+                   (rs115582213)a                                                         rs16941, rs799917,
+                   STK11                                                                  rs144848, rs169547,
+                   NM_00045:c.841C >                                                      rs1805107, rs506504,
+                   A, p.P281T                                                             rs12642536, rs702689,
+                   (rs377208033)                                                          rs832582, rs5868032,
+                                                                                          rs3219489, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs861539
+5324               na                                         na                                                       19
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 6 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_           VUS                                        Benign or                   Polymorphisms                Total
+ID                 (Class 3)                                  Likely Benign                                            variants/
+                                                              variants (Class 1 or 2)                                  patient
+                                                                                          rs459552, rs659243,
+                                                                                          rs2240308, rs2070094,
+                                                                                          rs2229571, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs832582, rs1799977,
+                                                                                          rs3219489, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs5744934
+6174               na                                         PMS2 NM_000535:             rs459552, rs659243,          29
+                                                              c.1454C > A, p.T485         rs2240308, rs2070094,
+                                                              K (rs1805323)               rs2229571, rs1048108,
+                                                                                          rs1799966, rs16942,
+                                                                                          rs16941, rs799917,
+                                                                                          rs4986850, rs169547,
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs12642536, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs3219484,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs1042522, rs861539
+6977               na                                         BARD1 NM_000465:            rs459552, rs659243,          27
+                                                              c.1075_1095del, p.L359-     rs1801516, rs2240308,
+                                                              P365delLPECSSP              rs1799966, rs16942,
+                                                              (rs28997575) BARD1          rs16941, rs799917,
+                                                              NM_000465: c.1972C >        rs144848, rs169547,
+                                                              T, p.R658C                  rs4986764, rs1805107,
+                                                              (rs3738888)                 rs506504, rs1126497,
+                                                              BRCA2 NM_000059:            rs12642536, rs702689,
+                                                              c.9976A > T, p.K3326X       rs832582, rs3219489,
+                                                              (rs11571833)                rs1044009, rs2228006,
+                                                                                          rs5744934, rs1042522,
+                                                                                          rs861539, rs28908468
+9876               PSMC3IP NM_016556:                         RAD51D NM_002878:           rs459552, rs659243,          21
+                   c.136G > A, p.V46 M                        c.698A > G, p.E233G         rs2240308, rs2070094,
+                   (rs757057684) RAD51B                       (rs28363284)                rs2229571, rs169547,
+                   NM_133509: c.1063G > A,                                                rs4986764, rs1805107,
+                   p.A355T (rs61758785)                                                   rs506504, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs1042821,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1726801
+9998               na                                         MSH6 NM_000179:             rs459552, rs659243,          24
+                                                              c.2633 T > C,               rs1801516, rs2240308,
+                                                              p.V878A                     rs2070094, rs2229571,
+                                                              (rs2020912)                 rs1048108, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs5744751,
+                                                                                          rs1042522
+10,675             na                                         PMS2 NM_000535:             rs459552, rs659243,          26
+                                                              c.1531A > G,                rs1801516, rs2070094,
+                                                              p.T511A                     rs2229571, rs11528010,
+                                                              (rs2228007)                 rs1799966, rs16942,
+                                                                                          rs16941rs799917,
+                                                                                          rs144848, rs169547,
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 7 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_           VUS                                        Benign or                   Polymorphisms                Total
+ID                 (Class 3)                                  Likely Benign                                            variants/
+                                                              variants (Class 1 or 2)                                  patient
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs10254120,
+                                                                                          rs1042522
+12,954             MUTYH NM_012222:                           PMS2 NM_000535:             rs459552, rs659243,          22
+                   c.812G > A,                                c.1789A > T, p.T597S        rs2240308, rs2229571,
+                   p.R271Q                                    (rs1805318)                 rs144848, rs169547,
+                   (rs149866955)                                                          rs4986764, rs1805107,
+                   RAD51C NM_058216:                                                      rs506504, rs12642536,
+                   c.790G > A, p.G264S                                                    rs702689, rs832582,
+                   (rs147241704)                                                          rs5868032, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs1726801, rs4796033,
+                                                                                          rs1042522
+13,072             BRCA1 NM_007300:                           PMS2 NM_000535:             rs459552, rs659243,          29
+                   c.4315C > T, p.L1439F                      c.1531A > G, p.T511A        rs1801516, rs2240308,
+                   (rs781260818)                              (rs2228007)                 rs2070094, rs2229571,
+                                                                                          rs11528010, rs1799966,
+                                                                                          rs16942, rs16941,
+                                                                                          rs799917, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs5744751,
+                                                                                          rs1042522
+14,930             na                                         PALB2 NM_024675:            rs459552, rs659243,          30
+                                                              c.925A > G, p.I309V         rs2240308, rs2070094,
+                                                              (rs3809683)                 rs2229571, rs1048108,
+                                                                                          rs1799966, rs16942,
+                                                                                          rs16941, rs799917,
+                                                                                          rs4986850, rs169547,
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs12642536, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs3219489,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs152451, rs2228006,
+                                                                                          rs1805321, rs5744934,
+                                                                                          rs1042522
+18,843             MSH6 NM_000179.2:                          BRCA1 NM_007300:            rs459552, rs659243,          26
+                   c.2195G > A, p.R732Q                       c.3119G > A,                rs2240308, rs2070094,
+                   (rs749746725)                              p.S1040 N                   rs2229571, rs11528010,
+                                                              (rs4986852)                 rs144848, rs169547,
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs12642536, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs3219489, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs5744934, rs5744751,
+                                                                                          rs1042522, rs861539
+19,411             na                                         BARD1 NM_000465:            rs459552, rs659243,          28
+                                                              c.1972C > T, p.R658C        rs2240308, rs2070094,
+                                                              (rs3738888) PALB2           rs2229571, rs1799966,
+                                                              NM_024675: c.1010 T >       rs16942, rs16941,
+                                                                                          rs799917, rs4986850,
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 8 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_           VUS                                        Benign or                   Polymorphisms                Total
+ID                 (Class 3)                                  Likely Benign                                            variants/
+                                                              variants (Class 1 or 2)                                  patient
+                                                              C, p.L337S                  rs144848, rs169547,
+                                                              (rs45494092)                rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1805794,
+                                                                                          1,044,009, rs2228006,
+                                                                                          rs1805321, rs5744751,
+                                                                                          rs1042522, rs861539
+19,673             AXIN2 NM_004655:                           APC NM_001127510:           rs459552, rs659243,          29
+                   c.344A > G, p.N115S                        c.7504G > A, p.G2502S       rs2240308, rs2070094,
+                   (rs370257532)                              (rs2229995) PMS2            rs2229571, rs1799966,
+                                                              NM_000535: c.1454C >        rs16942, rs16941,
+                                                              A, p.T485 K                 rs799917, rs144848,
+                                                              (rs1805323)                 rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1042821,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs4796033, rs1042522,
+                                                                                          rs861539, rs3218536
+20,612             na                                         CDKN2A NM_000077:           rs459552, rs659243,          28
+                                                              c.442G > A, p.A148T         rs2240308, rs2070094,
+                                                              (rs3731249)                 rs2229571, rs11528010,
+                                                                                          rs1799966, rs16942,
+                                                                                          rs16941, rs799917,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs12642536, rs702689,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs10254120, rs5744934,
+                                                                                          rs4796033, rs1042522,
+                                                                                          rs861539
+21,368             MAP3K1 NM_005921:                          ATM NM_000051:              rs459552, rs659243,          22
+                   c.764A > G, p.N255S                        c.2572 T > C, p.F858        rs2240308, rs2229571,
+                   (rs56069227)                               L (rs1800056)               rs11528010, rs1799950,
+                                                                                          rs169547, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs5744934,
+                                                                                          rs4796033, rs1042522
+22,295             na                                         BRCA1 NM_007300:            rs459552, rs659243,          30
+                                                              c.5019G > A, p.M1673I       rs2240308, rs2070094,
+                                                              (rs1799967) BRIP1           rs2229571, rs1048108,
+                                                              NM_032043: c.890A >         rs1799966, rs16942,
+                                                              G, p.K297R                  rs16941, rs799917,
+                                                              (rs28997570)                rs144848, rs169547,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs12642536, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs1042821,
+                                                                                          rs3219489, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs5744934,
+                                                                                          rs1042522, rs861539
+23,761             na                                         na                          rs459552, rs659243,          26
+                                                                                          rs2240308, rs2070094,
+                                                                                          rs2229571, rs11528010,
+                                                                                          rs1799966, rs16942,
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 9 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_           VUS                                        Benign or                   Polymorphisms                Total
+ID                 (Class 3)                                  Likely Benign                                            variants/
+                                                              variants (Class 1 or 2)                                  patient
+                                                                                          rs16941, rs799917,
+                                                                                          rs1799950, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs1802683, rs1042522
+23,910             na                                         BRCA2 NM_000059:            rs459552, rs659243,          28
+                                                              c.6100C > T, p.R2034C       rs2240308, rs2070094,
+                                                              (rs1799954) MSH2            rs2229571, rs11528010,
+                                                              NM_000251: c.965G >         rs169547, rs4986764,
+                                                              A, p.G322D (rs4987188)      rs1805107, rs506504,
+                                                              MSH6 NM_000179:             rs1126497, rs702689,
+                                                              c.2633 T > C, p.V878A       rs832582, rs5868032,
+                                                              (rs2020912) PALB2           rs1799977, rs1042821,
+                                                              NM_024675: c.2794G >        rs1805794, rs2228006,
+                                                              A, p.V932 M (rs45624036)    rs10254120, rs1042522,
+                                                              PMS2 NM_000535:             rs13125836, rs3218536
+                                                              c.1454C > A, p.T485 K
+                                                              (rs1805323) BARD1
+                                                              NM_000465: c.1670G >
+                                                              C, p.C557S (rs28997576)
+24,140             na                                         BRCA1 NM_007300:            rs459552, rs659243,          29
+                                                              c.5019G > A, p.M1673I       rs2240308, rs2070094,
+                                                              (rs1799967) PMS2            rs2229571, rs1048108,
+                                                              NM_000535: c.1531A >        rs1799966, rs16942,
+                                                              G, p.T511A (rs2228007)      rs16941, rs799917,
+                                                                                          rs144848, rs169547,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs1042821,
+                                                                                          rs3219489, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs10254120, rs5744751,
+                                                                                          rs1042522
+24,447             CHEK2 NM_007194:                           NOTCH3 NM_000435:           rs459552, rs659243,          24
+                   c.74 T > C, p.V25A                         c.3399C > A, p.H1133Q       rs1801516, rs2240308,
+                   (rs587780188)                              (rs112197217)               rs2070094, rs2229571,
+                                                                                          rs1799966, rs16942,
+                                                                                          rs16941, rs799917,
+                                                                                          rs169547, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs1042522
+11,705             ATM NM_000051:                             MSH2 NM_000251:             rs459552, rs659243,          27
+                   c.4375G > A, p.G1459R                      c.965G > A,                 rs1801516, rs2229571,
+                   (rs145667735) MSH2 NM_000251:              p.G322D (rs4987188)         rs11528010, rs169547,
+                   c.1284C > G, p.H428Q                       PMS2 NM_000535:             rs4986764, rs1805107,
+                   (rs776034412)                              c.1454C > A, p.T485         rs506504, rs1126497,
+                                                              K (rs1805323)               rs702689, rs832582
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs3219489, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs5744751,
+                                                                                          rs1042522, rs861539,
+                                                                                          rs13125836
+12,673             na                                         ATM NM_000051:              rs459552, rs659243,          26
+                                                              c.2572 T > C,               rs2240308, rs2070094,
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 10 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_           VUS                                        Benign or                   Polymorphisms                 Total
+ID                 (Class 3)                                  Likely Benign                                             variants/
+                                                              variants (Class 1 or 2)                                   patient
+                                                              p.F858 L (rs1800056)        rs2229571, rs1048108,
+                                                              PMS2 NM_000535:             rs1799950, rs169547,
+                                                              c.1454C > A, p.T485 K       rs4986764, rs1805107,
+                                                              (rs1805323)                 rs506504, rs1126497,
+                                                                                          rs12642536, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs1802683, rs4796033,
+                                                                                          rs1042522, rs861539
+13,393             NBN NM_002485.4:                           BARD1 NM_000465:            rs459552, rs659243,           28
+                   c.643C > T, p.R215W                        c.1972C > T, p.R658C        rs2240308, rs2070094,
+                   (rs34767364)                               (rs3738888) BRIP1           rs2229571, rs1799966,
+                                                              NM_032043: c.577G >         rs16942, rs16941,
+                                                              A, p.V193I (rs4988346)      rs799917, rs169547,
+                                                              PMS2 NM_000535:             rs4986764, rs1805107,
+                                                              c.1531A > G, p.T511A        rs506504, rs702689,
+                                                              (rs2228007) ATM             rs832582, rs5868032,
+                                                              NM_000051: c.4258C >        rs1805794, rs1044009,
+                                                              T, p.L1420F (rs1800058)     rs2228006, rs1805321,
+                                                              NOTCH3 NM_000435.2:         rs1042522
+                                                              c.3058G > C, p.A1020P
+                                                              (rs35769976) NOTCH3
+                                                              NM_000435: c.3547G >
+                                                              A, p.V1183 M
+                                                              (rs10408676)
+14,963             PALB2 NM_024675:                           PALB2 NM_024675:            rs659243, rs1801516,          33
+                   c.232G > A, p.V78I                         c.2590C > T,                rs2240308, rs2070094,
+                   (rs515726085)                              p.P864S (rs45568339)        rs2229571, rs11528010,
+                                                              STK11 NM_000455:            rs1799966, rs16942,
+                                                              c.1062C > G, p.F354 L       rs16941, rs799917,
+                                                              (rs59912467)                rs1799950, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs702689, rs5868032,
+                                                                                          rs1799977, rs3219489,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs5744751, rs1042522,
+                                                                                          rs861539, rs3218536
+19,609a            na                                         BRCA2 NM_000059:            rs459552, rs659243,           28
+                                                              c.4258G > T, p.D1420Y       rs2240308, rs2229571,
+                                                              (rs28897727) POLE           rs1799966, rs16942,
+                                                              NM_006231: c.2083           rs16941, rs799917,
+                                                              T > A, p.F695I              rs144848, rs169547,
+                                                              (rs5744799)                 rs4986764, rs1805107,
+                                                                                          rs506504, rs702689,
+                                                                                          rs832582, rs5868032,
+                                                                                          rs1799977, rs3219484,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs5744934, rs1042522,
+                                                                                          rs13125836
+22,953             NOTCH3 NM_000435:                          BRCA2 NM_000059:            rs459552, rs659243,           29
+                   c.5208G > C, p.E1736D                      c.2971A > G,                rs2240308, rs2229571,
+                   (rs200331646)                              p.N991D (rs1799944)         rs11528010, rs1799966,
+                   MSH2 NM_000251:                            CDH1                        rs16942, rs16941,
+                   c.128A > G, p.Y43C                         NM_004360: c.1774G >        rs799917, rs169547,
+                   (rs17217723) RAD51B                        A, p.A592T (rs35187787)     rs4986764, rs1805107,
+                   NM_133510: c.515 T >                                                   rs506504, rs12642536,
+                   G, p.L172 W (rs34094401)                                               rs702689, rs832582,
+                                                                                          rs5868032, rs1042821,
+                                                                                          rs3219489, rs1805794,
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                        Page 11 of 19
+
+
+
+
+Table 2 Characterization of germline variants found among Norwegian familial CRC individuals (Continued)
+Patient_                VUS                                   Benign or                   Polymorphisms                 Total
+ID                      (Class 3)                             Likely Benign                                             variants/
+                                                              variants (Class 1 or 2)                                   patient
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs1805321, rs1726801
+24,789                  APC NM_001127510:                     BARD1 NM_000465:            rs459552, rs659243,           30
+                        c.4334C > T, p.T1445I                 c.1972C > T,                rs2240308, rs2229571,
+                        (rs760686348) PALB2                   p.R658C                     rs1799966, rs16942,
+                        NM_024675: c.1250                     (rs3738888) PALB2           rs16941, rs799917,
+                        C > A, p.S417Y                        NM_024675:                  rs169547, rs4986764,
+                        (rs45510998)                          c.2993G > A,                rs1805107, rs506504,
+                                                              p.G998E (rs45551636)        rs1126497, rs12642536,
+                                                              PALB2 NM_024675:            rs702689, rs832582,
+                                                              c.2014G > C,                rs5868032, rs1799977,
+                                                              p.E672Q (rs45532440)        rs3219489, rs1044009,
+                                                              POLE NM_006231:             rs152451, rs2228006,
+                                                              c.776G > A, p.R259H         rs1042522
+                                                              (rs61732929)
+                                                              NOTCH3 NM_000435:
+                                                              c.3399C >
+                                                              A, p.H1133Q
+                                                              (rs112197217)
+25,167                  NBN NM_                               ATM NM_000051:              rs459552, rs659243,           22
+                        002485.4:                             c.2119 T > C,               rs2240308, rs2229571,
+                        c.643C > T,                           p.S707P                     rs11528010, rs169547,
+                        p.R215W                               (rs4986761)                 rs4986764, rs1805107,
+                        (rs34767364)                                                      rs506504, rs12642536,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1799977,
+                                                                                          rs1805794, rs2228006,
+                                                                                          rs1805321, rs1726801,
+                                                                                          rs4796033, rs1042522
+5597                    MAP3K1 NM_005921:                     ATM NM_                     rs459552, rs659243,           29
+                        c.2816C > G, p.S939C                  000051:                     rs1801516, rs2070094,
+                        (rs45556841)                          c.5071A >                   rs2229571, rs11528010,
+                                                              C, p.S1691R                 rs1799966, rs16942,
+                                                              (rs1800059)                 rs16941, rs799917,
+                                                                                          rs4986850, rs144848,
+                                                                                          rs169547, rs4986764,
+                                                                                          rs1805107, rs506504,
+                                                                                          rs1126497, rs12642536,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1042821,
+                                                                                          rs1805794, rs1044009,
+                                                                                          rs2228006, rs1805321,
+                                                                                          rs1042522
+8913                    RAD51B NM_133509:                     PMS2 NM_000535:             rs459552, rs659243,           30
+                        c.1063G > A, p.A355T                  c.1454C > A, p.T485         rs2240308, rs2070094,
+                        (rs61758785) EPCAM                    K (rs1805323)               rs2229571, rs1048108,
+                        NM_002354:                                                        rs11528010, rs1799966,
+                        c.267G > C, p.Q89H                                                rs16942, rs16941,
+                        (rs146480420)                                                     rs799917,
+                                                                                          rs144848, rs169547,
+                                                                                          rs4986764, rs1805107,
+                                                                                          rs506504, rs1126497,
+                                                                                          rs702689, rs832582,
+                                                                                          rs5868032, rs1805794,
+                                                                                          rs1044009, rs2228006,
+                                                                                          rs5744751, rs1042522,
+                                                                                          rs861539, rs13125836
+a
+    Recently classified as Benign by ACMG Guidelines, 2015
+b
+    Patient ID carrying CHEK2 c.470 T > C, p.I157T
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                 Page 12 of 19
+
+
+
+
+is reported in ClinVar as “conflicting interpretations of     Bethesda guidelines and AMS criteria, respectively while
+pathogenicity, risk factor” (Variation ID: 5591). When        the MAP3K1 c.764A > G (Patient 21,368) in a patient
+the revised Bethesda guidelines were considered, the          which family fulfilled the revised Bethesda guidelines
+mutation detection rate was thus 4.8% (1/21).                 (Table 1).
+  Overall, 25 unique VUS were found in 18 out of the
+34 patients (Table 2). The detected VUS were distributed      Minigene splicing assays
+among 17 different genes: MAP3K1 (in 2 patients), NBN         Because patient RNA was not available, we decided to
+(in 3 patients), NOTCH3 (in 3 patients), RAD51B (in 3         experimentally assess the impact of these 2 variants
+patients), MSH2 (in 2 patients), PALB2 (in 2 patients),       (NOTCH3 c.5854G >A and MAP3K1 c.764A > G) might
+POLE (in 2 patients) and the remaining were found in          have on RNA splicing by performing cell-based mini-
+APC, ATM, AXIN2, BRCA1, CHEK2, EPCAM, MSH6,                   gene splicing assays.
+MUTYH, RAD51C and STK11 (Table 2). The minor al-                As shown in Fig. 1 we found that NOTCH3
+lele frequency (MAF) values of these variants were very       c.5854G >A and MAP3K1 c.764A > G did not modify the
+low or no frequency data have been reported.                  splicing pattern of the minigenes’ transcripts. These data
+                                                              thus disagree with the in silico predictions and suggest
+Protein and splicing-dedicated in silico analyses             that either the exon 32 of NOTCH3 and the exon 3 of
+The 25 unique VUS were analyzed by using five in silico       MAP3K1 are refractory to splicing mutations (the pre-
+prediction tools with different underlying algorithms to      dictions thus being incorrect) or that the minigenes used
+estimate the impact of the variants on the structure and      in our study do not fully reproduce the splicing pattern
+function of the corresponding proteins.                       of the mutant exons in NOTCH3 and MAP3K1 bona
+  Concordances between the 5 prediction tools were            fide transcripts (the predictions being eventually cor-
+found for 2 out of the 25 VUS, suggesting a potentially       rect). Complementary studies using RNA from NOTCH3
+damaging effect on protein level for the variants:            c.5854G >A and MAP3K1 c.764A > G carriers need to be
+MUTYH c.812G > A (p.R271Q) and MSH2 c.128A > G                performed to verify the pertinence of these results.
+(p.Y43C) (Table 3). In the other hand, 6 out of 25 VUS
+were consistently predicted as benign: NBN c.1720 T > A       Discussion
+(p.L574I),                                                    The major unexpected finding in our Norwegian high-
+  BRCA1 c.4315C > T (p.L1439F), MAP3K1 c.764A > G             risk CRC cohort was the detection of a likely pathogenic
+(p.N255S), CHEK2 c.74 T > C (p.V25A), PALB2                   variant in CHEK2 (c.470 T > C, p.I157T), a moderate-
+c.232G > A (p.V78I) and APC c.4334C > T (p.T1445I).           penetrance gene not traditionally associated with CRC,
+Discrepancies were pronounced for the variants in the         in an individual with a LS-evocative personal/family his-
+POLE (n = 2), STK11, MAP3K1, PSMC3IP, RAD51C,                 tory and a high number of Class 3 variants in BC- and
+MSH6, AXIN2, MSH2, NBN, NOTCH3, RAD51B, PALB2                 CRC- associated genes. Interestingly, the CHEK2
+and EPCAM genes (Table 3).                                    (c.470 T > C, p.I157T) has an allele frequency of
+  Two out of the 25 VUS were bioinformatically pre-           1.89*10–3 in the Norwegian population (http://norgen-
+dicted to affect RNA maturation by potentially modify-        e.no/vcf-miner/), and is reported in ClinVar as having
+ing splicing signals (Table 3). More specifically,            conflicting interpretations of pathogenicity/being a risk
+according to our in silico results, NOTCH3 c.5854G >A         factor (Variation ID: 5591). Importantly, there is no sys-
+(identified in Patients 3222 and 4932) was predicted to       tematic classification for most of the genetic variants
+potentially induce exon 32 skipping by alteration of ex-      found by NGS, and, in more general terms, the impact
+onic splicing regulatory elements, whereas MAP3K1             of low- to moderate-penetrance pathogenic variants with
+c.764A > G (detected in Patient 21,368) was predicted to      respect to clinical management is not fully understood
+introduce a deletion of the first 131 nucleotides of exon     [52]. Co-segregation or case-control studies for further
+3 (r.634_764del) due to the creation of a putative new        evaluation will be key in understanding whether such
+acceptor splice site. Skipping of NOTCH3 exon 32              germline variant may have a modifying effect, since we
+would produce a transcript with a frameshift deletion of      do not yet have evidence-based guidelines for the major-
+98 nucleotides (NOTCH3 r.5816_5913del), potentially           ity of these genes.
+leading to the production of a carboxy-terminally trun-          On the other hand, CHEK2 germline variants have
+cated NOTCH3 protein p.(Lys1940Glyfs*14). The                 been described to confer an elevated risk of BC (relative
+MAP3K1 r.634_764del transcript would be expected to           risk = 3.0) [53]. However, the presence of pathogenic var-
+be degraded by nonsense mediated decay and/or result          iants in CHEK2 is not frequently associated with cancer
+in a very short MAP3K1 protein p.(Val212Leufs*45).            in high-risk BC families, prompting speculation that
+The NOTCH3 c.5854G >A was identified in two patients          there may be several low-penetrance or moderate-
+(Patients 3222 and 4932) that fulfilled the revised           penetrance BC risk genes segregating independently
+Table 3 In silico data obtained for the variants of unknown significance (VUS) identified in our study of familial CRC individuals
+Selected                                               Reference splice                                                       Cryptic splice site-         ESR-dedicated              Protein-dedicated
+variants (VAR)                                         site-dedicated analyses                                                dedicated analyses           analyses                   analyses
+Patient_ Genomic Gene       Exon Nucleotide Predicted Nearest                    MES                  SSFL                    Potential    Local           ΔtESRseq ΔHzei ΔΨ
+ID       position                change     protein   reference                  scores               scores                  local        MES
+         (GRCh37)                (cNomen) change                                                                              splice       scores
+                                            (pNomen)                                                                          effect
+                                                      splice                     WT       Var   VAR   WT       Var    VAR                  WT        Var
+                                                      site                                      vs WT                 vs WT
+                                                       Distance Type                                                  Δ
+                                                                                                                      (%)
+                                                       (nt)       (3’ or 5’ss)                  Δ                                                                                     AGVGD SIFT           MAPP PolyPhen-2 Mutation
+                                                                                                (%)                                                                                                                        Taster
+3222       chr      NOT     32    c.585     p.V1       39         3’             11.5 11.5 0          89.2     89.2   0       -            -         -     -1.78     -11.     -0.89 C15        Deleterious bad    probably   disease
+& 49       19:1     CH3           4G>A      952M                                                                                                           501       15                                           damaging   causing
+32         5273
+           335
+           C>T
+3222                POLE    25    c.304     p.V10      -15        5’             9.1      9.1   0     82.5     82.5   0       -            -         -     -0.74     1        -0.43   C0       Deleterious bad    benign     disease
+                                  6G>A      16M                                                                                                            478                                                               causing
+3308       chr      NBN     11    c.172     p.L5       -126       5’             8.0      8.0   0     82.4     82.4   0       -            -         -     1.97      33.      0.18    C0       Tolerated   good   benign     polymorphism
+           8:909                  0T>A      74I                                                                                                            427       38
+           65597
+           A>T
+                                                                                                                                                                                                                                            Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26
+
+
+
+
+           chr1     POLE    35    c.452     p.R1       -29        5’             7.9      7.9   0     73.8     73.8   0       -            -         -     -0.600    -3.17    -0.08   C0       Tolerated   good   benign     disease
+           2:133                  3G>A      508H                                                                                                           279                                                               causing
+           219838
+           C>T
+4932       chr1     STK11   6     c.841     p.P2       -22        5’             6.0      6.0   0     79.9     79.9   0       -            -         -     -0.17     7.7      -0.72   C0       Tolerated   good   benign     disease
+           9:12                   C>A       81T                                                                                                            437                                                               causing
+           21318
+           C>A
+5597       chr      MAP3K1 14     c.281     p.S9       447        3’             12.0 12.0 0          100.0 100.0 0           -            -         -     -0.4      -16.1    0       C0       Deleterious good   benign     polymorphism
+           5:561                  6C>G      39C                                                                                                            86
+           77843                                                                                                                                           881
+           C>G
+9876       chr      PSM     3     c.136     p.V4       1          3’             12.5 11.7 -6         87.5     83.6   -4      -            -         -     2.04      74.      -0.3    C0       Deleterious -      possibly   disease
+           17: 40   C3IP          G>A       6M                                                                                                             13        24                                           damaging   causing
+           729
+           320
+           C>T
+9876       chr      RAD     11*   c.106     p.A3       27         3’             11.8 11.8 0          80.2     80.2   0       -            -         -     -1.24     -50.     -       C0       Deleterious -      benign     polymorphism
+& 89       14:69    51B           3G>A      55T                                                                                                            035       64
+13         061228
+           G>A
+129        chr      MUTYH   10    c.812     p.R2       33         3’             9.5      9.5   0     86.8     86.8   0       -            -         -     -2.31     0.88     0.09    C35      Deleterious bad    possibly   disease
+54         1: 45                  G>A       71Q                                                                                                            042                                                    damaging   causing
+           7979
+           50_C>T
+           chr      RAD     5     c.790     p.G2       -48        5’             8.6      8.6   0     75.4     75.4   0       New          0         2.5   -1.71     -59.31   -0.21   C0       Tolerated   good   benign     disease
+           17:56    51C           G>A       64S                                                                               Acceptor                     397                                                               causing
+           787304                                                                                                             Site?
+           G>A
+130        chr      BRCA1   12    c.431     p.L1       -43        5’             6.6      6.6   0     85.2     85.2   0       -            -         -     -0.26     8.       -2.     C0       Tolerated   good   benign     polymorphism
+72         17:41                  5C>T      439F                                                                                                           1141      83       67                                                              Page 13 of 19
+Table 3 In silico data obtained for the variants of unknown significance (VUS) identified in our study of familial CRC individuals (Continued)
+Selected                                                Reference splice                                                       Cryptic splice site-         ESR-dedicated            Protein-dedicated
+variants (VAR)                                          site-dedicated analyses                                                dedicated analyses           analyses                 analyses
+Patient_ Genomic Gene        Exon Nucleotide Predicted Nearest                    MES                  SSFL                    Potential    Local           ΔtESRseq ΔHzei ΔΨ
+ID       position                 change     protein   reference                  scores               scores                  local        MES
+         (GRCh37)                 (cNomen) change                                                                              splice       scores
+                                             (pNomen)                                                                          effect
+                                                       splice                     WT       Var   VAR   WT       Var    VAR                  WT        Var
+                                                       site                                      vs WT                 vs WT
+                                                        Distance Type                                                  Δ
+                                                                                                                       (%)
+                                                        (nt)       (3’ or 5’ss)                  Δ                                                                                   AGVGD SIFT           MAPP PolyPhen-2 Mutation
+                                                                                                 (%)                                                                                                                      Taster
+           234463
+           G>A
+188        chr       MSH6    4**   c.219     p.R7       -978       5’             8.9      8.9   0     81.6     81.6   0       -            -         -     -0.80     -13.   0       C0       Tolerated   good   benign     disease
+43         2:48                    5G>A      32Q                                                                                                            5417      15                                                    causing
+           027317
+           G>A
+19         chr       AXIN2   2     c.344     p.N1       460        3’             11.1 11.1 0          93.3     93.3   0       New          11.1      7.2   -0.16     -2.    -0.05   C0       Tolerated   good   benign     disease
+673        17:6                    A>G       15S                                                                               Acceptor                     2849      19                                                    causing
+           3554395                                                                                                             Site?
+           T>C
+                                                                                                                                                                                                                                           Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26
+
+
+
+
+21         chr       MAP     3     c.764     p.N2       -71        5’             7.5      7.5   0     78.5     78.5   0       New          4.7       8.8   -1.       6.7    -0.04   C0       Tolerated   good   benign     polymorphism
+368        5:561     3K1           A>G       55S                                                                               Acceptor                     18
+           55672                                                                                                               Site?                        661
+           A>G
+24         chr       CHEK2   2     c.74      p.V2       80         3’             1.7      1.7   0     85.5     85.5   0       -            -               -0.1      36.    -0.07   C0       Tolerated   good   benign     polymorphism
+447        22:2                    T>C       5A                                                                                                             66        67
+           9130                                                                                                                                             788
+           636
+           A>G
+11         chr       ATM     29    c.437     p.G14      -62        5’             8.9      8.9   0     87.5     87.5   0       -            -               0.5       -27.   -0.09   C15      Deleterious bad    probably   disease
+705        11:10                   5G>A      59R                                                                                                            52        26                                         damaging   causing
+           8160                                                                                                                                             026
+           467
+           G>A
+           chr       MSH2    8     c.128     p.H4       8          3’             10.1 10.1 0          87.3     87.3   0       -            -               0.7       22.    0.05    C0       Tolerated   good   possibly   disease
+           2:47                    4C>G      28Q                                                                                                            03        05                                         damaging   causing
+           672694                                                                                                                                           136
+           C>G
+133        chr:      NBN     6     c.64      p.R2       59         3’             6.2      6.2   0     86.8     86.8   0       -            -               -1.00     -16.   -0.09   C0       Tolerated   good   probably   polymorphism
+93         8_90                    3C>T      15W                                                                                                            071       87                                         damaging
+& 25       983
+167        460
+           G>A
+149        chr       PALB2   4**   c.232     p.V78I     21         3’             10.0 10.0 0          90.3     90.3   0       -            -               -0.7      -29.   0.8     C0       Tolerated   good   benign     polymorphism
+63         16:2                    G>A                                                                                                                      83        17
+           364                                                                                                                                              039
+           7635
+           C>T
+229        chr       NOT     29    c.5208    p.E17      9          3’             7.8      7.8   0     84.2     84.2   0       -            -               0.0       -10.   0.22    C35      Deleterious bad    benign     disease
+53         19:1      CH3           G>C       36D                                                                                                            50        44                                                    causing
+           527                                                                                                                                              1789
+           8214
+           C>G                                                                                                                                                                                                                               Page 14 of 19
+Table 3 In silico data obtained for the variants of unknown significance (VUS) identified in our study of familial CRC individuals (Continued)
+Selected                                                            Reference splice                                                       Cryptic splice site-         ESR-dedicated                Protein-dedicated
+variants (VAR)                                                      site-dedicated analyses                                                dedicated analyses           analyses                     analyses
+Patient_ Genomic Gene            Exon Nucleotide Predicted Nearest                            MES                  SSFL                    Potential    Local           ΔtESRseq ΔHzei ΔΨ
+ID       position                     change     protein   reference                          scores               scores                  local        MES
+         (GRCh37)                     (cNomen) change                                                                                      splice       scores
+                                                 (pNomen)                                                                                  effect
+                                                           splice                             WT       Var   VAR   WT       Var    VAR                  WT        Var
+                                                           site                                              vs WT                 vs WT
+                                                                    Distance Type                                                  Δ
+                                                                                                                                   (%)
+                                                                    (nt)       (3’ or 5’ss)                  Δ                                                                                       AGVGD SIFT               MAPP PolyPhen-2 Mutation
+                                                                                                             (%)                                                                                                                              Taster
+           chr         MSH2      1*      c.128         p.Y43C       -84        5’             10.1 10.1 0          90.6     90.6   0       New          0         1.2   1.50425     4.7      2.11    C55        Deleterious bad         probably       disease
+           2:47                          A>G                                                                                               Donor                                                                                        damaging       causing
+           630                                                                                                                             Site?
+           458
+           A>G
+           chr1        RAD       6       c.515         p.L1         -58        5’             9.5      9.5   0     83.7     83.7   0       -            -               1.6         67.      1.31    C0         Deleterious bad         possibly       polymorphism
+           4:6         51B               T>G           72W                                                                                                              27          77                                                  damaging
+           835                                                                                                                                                          72
+           2648
+           T>G
+247        chr         APC       15*     c.4334        p.T1         2376       3’             7.5      7.5   0     93.6     93.6   0       -            -               -1.61       -90.     -       C0         Tolerated     good      benign         polymorphism
+                                                                                                                                                                                                                                                                          Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26
+
+
+
+
+89         5:11                          C>T           445I                                                                                                             023         13
+           217
+           5625
+           C>T
+           chr1        PALB2     4**     c.1250        p.S4         -435       5’             8.9      8.9   0     87.5     87.5   0       -            -               -0.5        -22.     0.05    C0         Deleterious bad         probably       disease
+           6:23                          C>A           17Y                                                                                                              51          83                                                  damaging       causing
+           646                                                                                                                                                          724
+           617
+           G>T
+8913       chr         EPCAM     3       c.267         p.Q          83         3’             7.0      7.0   0     90.1     90.1   0       -            -               -0.40       -28.     0       C0         Tolerated     bad       possibly       disease
+           2:47                          G>C           89H                                                                                                              237         93                                                  damaging       causing
+           601
+           029
+           G>C
+In order to predict the biological impact of the 25 VUS, RNA splicing- and protein-dedicated bioinformatics analyses were performed as described under Materials and Methods. The stars indicate exons that could not be tested in our minigene assay,
+either because of their terminal position (*, 1st or last exons) or because of their large size (**). Results shown in bold were considered as predictive of a potential variant-induced negative biological effect. MES, MaxEntScan; SSFL, Splice Site Finder-
+Like; nt, nucleotide; 3’ or 5’ss, 3’ splice site or 5’ splice site; ESR, exonic splicing regulators; AGVGD, align-GVGD (C0, C15, C25, C35, C.45, C55, or C65 with C65 most likely to interfere with function and C0 least likely), SIFT, Sorting Intolerant From Toler-
+ant (tolerated or deleterious), MAPP, Multivariate Analysis of Protein Polymorphism (good or bad), PolyPhen-2, Polymorphism Phenotyping v2 (benign, possibly damaging or probably damaging), MutationTaster (polymorphism or disease causing),
+CRC: colorectal cancer.
+In order to predict the biological impact of the 25 VUS, RNA splicing- and protein-dedicated bioinformatics analyses were performed as described under Materials and Methods. The stars indicate exons that could not be tested in our minigene
+assay, either because of their terminal position (*, 1st or last exons) or because of their large size (**). Results shown in bold were considered as predictive of a potential variant-induced negative biological effect. MES, MaxEntScan; SSFL, Splice
+Site Finder-Like; nt, nucleotide; 3′ or 5’ss, 3′ splice site or 5′ splice site; ESR, exonic splicing regulators; AGVGD, align-GVGD (C0, C15, C25, C35, C.45, C55, or C65 with C65 most likely to interfere with function and C0 least likely), SIFT, Sorting Intoler-
+ant From Tolerant (tolerated or deleterious), MAPP, Multivariate Analysis of Protein Polymorphism (good or bad), PolyPhen-2, Polymorphism Phenotyping v2 (benign, possibly damaging or probably damaging), MutationTaster (polymorphism or
+disease causing), CRC: colorectal cancer
+In order to predict their biological impact, RNA splicing- and protein-dedicated bioinformatics analyses were performed as described under Materials and Methods. Results shown in bold were considered as predictive of a potential
+variant-induced negative biological effect. MES, MaxEntScan; SSFL, Splice Site Finder-Like; nt, nucleotide; 3′ or 5’ss, 3′ splice site or 5′ splice site; ESR, exonic splicing regulators; AGVGD, align-GVGD (C0, C15, C25, C35, C.45, C55, or C65
+with C65 most likely to interfere with function and C0 least likely), SIFT, Sorting Intolerant From Tolerant (tolerated or deleterious), MAPP, Multivariate Analysis of Protein Polymorphism (good or bad), PolyPhen-2, Polymorphism Pheno-
+typing v2 (benign, possibly damaging or probably damaging), MutationTaster (polymorphism or disease causing)
+
+
+
+
+                                                                                                                                                                                                                                                                            Page 15 of 19
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                                                    Page 16 of 19
+
+
+
+
+  a                                                           d
+
+
+
+
+  b
+
+
+
+
+  c
+
+
+
+ Fig. 1 Evaluation of variant-induced splicing alterations by using a cell-based minigene assay. a Structure of pCAS2 minigenes used in the splicing reporter
+ assay. The bent arrow indicates the CMV promoter, boxes represent exons, lines in between the boxes indicate introns, and arrows below the exons
+ represent primers used in RT-PCR reactions. The minigenes were generated by inserting a genomic fragment containing the exon of interest together with
+ its flanking intronic sequences into the intron of pCAS2, as described under Materials and Methods. b Analysis of the splicing pattern of pCAS2 minigenes
+ carrying variants identified in this study. Wild-type (WT) and mutant constructs, as indicated, were introduced into HeLa cells and the transcripts of the
+ minigenes were analyzed by RT-PCR 24 h post-transfection. The image shows the results of a representative experiment in which the RT-PCR products
+ were separated on a 2.5% agarose gel stained with EtBr and visualized by exposure to ultraviolet light. M, 100 bp DNA ladder (New England Biolabs). c
+ Quantification of splicing events observed in the minigene splicing assay. The relative levels of exon inclusion indicated under the gel are based on RT-
+ PCR experiments equivalent to those shown in B but performed with a fluorescent forward primer and then separated on an automated sequencer.
+ Quantification results were obtained by using the GeneMapper v5.0 software (Applied Biosystems) and correspond to the average of two independent
+ fluorescent-RT-PCR experiments. d Representative fluorescent RT-PCR experiment. The panel shows superposed peaks corresponding to the WT and
+ mutant products (in blue and red, respectively), as indicated
+
+
+
+within these families [23, 54, 55]. Co-segregation ana-                          suppressor genes, compared to cases of sporadic CRC
+lyses may add clues in our understanding whether this                            [58]. These genomic variations, which were not investi-
+germline variant is implicated in CRC predisposition. Fi-                        gated in this study, may provide an additional explan-
+nally, we did not find pathogenic variants in POLE in                            ation for high-risk CRC phenotypes without MMR or
+our cohort, which is in contrast to what has been de-                            EPCAM pathogenic variants.
+scribed in families with high burden of CRC adenomas                               Recent NGS studies described the presence of hetero-
+and carcinomas in addition to extra-colonic cancers                              zygous pathogenic BRCA1/2 or APC variants as well as
+[56].                                                                            biallelic MUTYH alterations in individuals with clinical
+  According to the Prospective LS Database (PLSDB), a                            features resembling those of LS [5, 22]. More precisely,
+total of 125 Norwegian families had a demonstrated                               those studies reported that 7% of patients with CRC car-
+pathogenic variant in either MLH1 (n = 21), MSH2 (n =                            ried pathogenic variants in non-LS genes, including 1.0%
+52), MSH6 (n = 36), or PMS2 (n = 16) [25]. On the other                          with BRCA1/2 mutations, and nearly two thirds of pro-
+hand, a large portion of high-risk CRC families without                          bands with high-penetrance non-LS mutations lacked
+pathogenic variant in MMR or EPCAM genes may be                                  clinical histories suggestive of their respective syndromes
+explained by a polygenic model involving a combination                           [5].
+of multiple genomic risk factors, including the effect of                          From 34 high-risk CRC individuals, our NGS panel
+either low-penetrance susceptibility alleles [57], high-                         testing identified one patient that carried a pathogenic
+penetrance genes which have not been tested, or the ef-                          variant in a gene with reportedly moderate penetrance.
+fect of environmental factors. In addition, emerging data                        Our finding is in line with the mutation frequency (6%)
+suggest that CRC cases negative for pathogenic MMR                               in non-LS cancer susceptibility genes for individuals
+variants may contain a significantly higher number of                            undergoing LS genetic testing [21] and 4% of patients
+copy-neutral loss of heterozygosity (cnLOH) regions,                             with BC tested negative for BRCA1/2 genes [23]. Our re-
+some located within well-known oncogenes and tumor                               sults may have implications for an appropriate genetic
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                                  Page 17 of 19
+
+
+
+
+counseling and follow-up of the patients and family           to more intensive surveillance and improved prevention
+members.                                                      [23].
+   Besides the likely pathogenic CHEK2 variant, we iden-
+tified a total of 25 variants in our cohort for which there   Conclusions
+were not so much data as to their clinical significance.      Our study provides information on genetic locus that
+We thus undertook bioinformatics analyses in an at-           might possibly be related to cancer susceptibility, dem-
+tempt to predict the biological impact of these Class 3       onstrating that genes presently not routinely tested may
+variants, both at the RNA and protein level, the ultimate     be important for capturing cancer predisposition in
+goals being: (i) to discriminate pathogenic from non-         these patients. In addition, we stratified 25 VUS by the
+pathogenic alterations in this set of variants and (ii) to    use of RNA splicing- and protein-dedicated in silico ana-
+further pinpoint the genetic determinants of high risk        lyses. Further studies are necessary for making reliable
+CRC in our cohort. On one hand, our RNA splicing-             estimates of cancer risk for the VUS found in this study
+dedicated bioinformatics evaluation predicted that 2 out      and allowing appropriate genetic counseling for the pa-
+of the 25 VUS identified in this study (NOTCH3                tients and their relatives.
+c.5854G >A, p.V1952 M and MAP3K1 c.764A > G,                     Surveillance for early cancer detection is essential to
+p.N255S) could potentially affect RNA splicing. These         ensure optimal survival for patients afflicted with famil-
+two variants were then experimentally analyzed by per-        ial cancers. Our findings pinpoint the need of more
+forming minigene splicing assay. Our results revealed         studies to unravel the mechanisms underlying the devel-
+that neither variant altered the splicing pattern of the      opment of CRC in high-risk patients and the identifying
+representative minigenes, suggesting that they do not         for new cancer predisposition genes.
+affect the splicing of NOTCH3 or MAP3K1 transcripts.
+Additional experiments based on the analysis of RNA           Additional file
+from carriers of these variants will be important to verify
+our minigene results. On the other hand, our protein-          Additional file 1: Table S1. Primers used in the pCAS2 minigene
+dedicated bioinformatics analysis yielded 8 consistent         splicing assay. (DOCX 15 kb)
+predictions (2 VUS predicted as deleterious and 6 as be-
+nign) and several conflicting results that were not ex-       Abbreviations
+plored further.                                               ACMG: American college of medical genetics and genomics;
+                                                              AMS: Amsterdam criteria; BC: Breast cancer; CRC: Colorectal cancer;
+   In this scenario, not only functional tests, but also      IHC: Immunohistochemistry; LS: Lynch syndrome; MAF: Minor allele
+co-segregation studies will be key to understanding           frequency; MMR: Mismatch repair genes; MSI: Microsatellite instability;
+whether the VUS detected in this work are non-                NGS: Next generation sequencing; PLSDB: Prospective lynch syndrome
+                                                              database; SNV: Single nucleotide variant; VUS: Variants of unclassified
+pathogenic or otherwise have a causal or a modifying          significance
+effect. Importantly, we do not yet have evidence-
+based guidelines for the majority of the genes carry-         Acknowledgements
+                                                              We thank the families for their participation and contribution to this study.
+ing the VUS identified in this study and, in more gen-
+eral terms, the impact of low- to moderate-                   Funding
+penetrance pathogenic variants with respect to clinical       This work was supported by the Radium Hospital Foundation (Oslo, Norway),
+management is not fully understood. Most of these             Helse Sør-Øst (Norway), the French Association Recherche contre le Cancer
+                                                              (ARC), the Groupement des Entreprises Françaises dans la Lutte contre le
+variants may in the future be reclassified as deleteri-       Cancer (Gefluc), the Association Nationale de la Recherche et de la
+ous or benign, but in the meantime, they cannot be            Technologie (ANRT, CIFRE PhD fellowship to H.T.) and by the OpenHealth
+used to make clinical decisions [59]. Informed (re)-          Institute.
+classification of VUS in cancer-associated genes may
+                                                              Availability of data and materials
+cater to more appropriate risk-management, and may            All data generated or analyzed during this study are included in the
+provide significant clues for the identification of add-      manuscript.
+itional patients carrying such uncommon variants.
+                                                              Authors’ contributions
+   NGS panel testing may benefit patients with a personal     All authors have taken part in the different steps of the study: MDV, PM and
+or family history compatible with more than one recog-        EH designed the study, AM, HT performed in silico splicing predictions and
+nized CRC inherited syndrome. The CRC risk manage-            the minigene assays, POE performed validation experiments, MM, AN and
+                                                              EHF performed in silico protein predictions, SN, DV performed the sequence
+ment strategy for these individuals is not yet available      analysis. MDV drafted the manuscript and all have read, revised and
+and there is a need to identify new high-, moderate-,         approved the manuscript.
+and low- penetrance gene variants that may affect the
+risk of CRC or LS-associated tumors in non-MMR                Ethics approval and consent to participate
+                                                              Ethical approval for the study was granted by the Norwegian Data
+pathogenic carriers. The identification of such gene vari-    Inspectorate and Ethical Review Board (ref 2015/2382). All examined patients
+ants in combination with family history may contribute        signed an informed consent for their participation in the study.
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                                                          Page 18 of 19
+
+
+
+
+Consent for publication                                                             13. Rodriguez-Soler M, Perez-Carbonell L, Guarinos C, Zapater P, Castillejo
+Not Applicable.                                                                         A, Barbera VM, Juarez M, Bessa X, Xicola RM, Clofent J, et al. Risk of
+                                                                                        cancer in cases of suspected lynch syndrome without Germline
+Competing interests                                                                     mutation. Gastroenterology. 2013;144(5):926.
+The authors declare that they have no competing interests                           14. Dominguez-Valentin M, Therkildsen C, Da Silva S, Nilbert M. Familial
+                                                                                        colorectal cancer type X: genetic profiles and phenotypic features.
+                                                                                        Mod Pathol. 2015;28(1):30–6.
+Publisher’s Note                                                                    15. da Silva FC, Ferreira JRD, Torrezan GT, Figueiredo MCP, Santos EMM,
+Springer Nature remains neutral with regard to jurisdictional claims in                 Nakagawa WT, Brianese RC, de Oliveira LP, Begnani MD, Aguiar S, et al.
+published maps and institutional affiliations.                                          Clinical and molecular characterization of Brazilian patients suspected to
+                                                                                        have lynch syndrome. PLoS One. 2015;10(10):e0139753.
+Author details                                                                      16. Amendola LM, Jarvik GP, Leo MC, McLaughlin HM, Akkari Y, Amaral MD,
+1
+ Department of Tumor Biology, Institute for Cancer Research, Oslo University            Berg JS, Biswas S, Bowling KM, Conlin LK, et al. Performance of ACMG-
+Hospital, Oslo, Norway. 2Inserm-U1245, UNIROUEN, Normandie Univ,                        AMP variant-interpretation guidelines among nine Laboratories in the
+Normandy Centre for Genomic and Personalized Medicine, Rouen, France.                   Clinical Sequencing Exploratory Research Consortium (vol 98, pg 1067,
+3
+ Interactive Biosoftware, Rouen, France. 4Medizinische Klinik und Poliklinik IV,        2016). Am J Hum Genet. 2016;99(1):247.
+Campus Innenstadt, Klinikum der Universität München, Ziemssenstr. 1,                17. Pearlman R, Frankel WL, Swanson B, Zhao W, Yilmaz A, Miller K, Bacher J,
+Munich, Germany. 5MGZ—Medizinisch Genetisches Zentrum, Munich,                          Bigley C, Nelsen L, Goodfellow PJ, et al. Prevalence and Spectrum of
+Germany. 6Department of Human Medicine, Universität Witten, Herdecke,                   Germline cancer susceptibility gene mutations among patients with early-
+Germany. 7Department of Medical Genetics, Oslo University Hospital, Oslo,               onset colorectal cancer. JAMA Oncol. 2016;3(4):464–71. https://doi.org/10.
+Norway. 8Department of Informatics, University of Oslo, Oslo, Norway.                   1001/jamaoncol.2016.5194.
+9                                                                                   18. Picelli S, Lorenzo Bermejo J, Chang-Claude J, Hoffmeister M, Fernandez-
+ Institute of Cancer Genetics and Informatics, Oslo University Hospital, Oslo,
+Norway.                                                                                 Rozadilla C, Carracedo A, Castells A, Castellvi-Bel S, Memebers of EC-
+                                                                                        GOGotSGA, Naccarati A, et al. Meta-analysis of mismatch repair
+Received: 30 June 2017 Accepted: 24 January 2018                                        polymorphisms within the cogent consortium for colorectal cancer
+                                                                                        susceptibility. PLoS One. 2013;8(9):e72091.
+                                                                                    19. Ballester V, Boardman L. Next generation multigene panel testing: the
+                                                                                        next step for identification of hereditary colorectal cancer syndromes?
+References
+                                                                                        Gastroenterology. 2015;149(3):526–8.
+1. Llor X, Pons E, Xicola RM, Castells A, Alenda C, Pinol V, Andreu M, Castellvi-
+                                                                                    20. Kurian AW, Hare EE, Mills MA, Kingham KE, McPherson L, Whittemore
+    Bel S, Paya A, Jover R, et al. Differential features of colorectal cancers
+                                                                                        AS, McGuire V, Ladabaum U, Kobayashi Y, Lincoln SE, et al. Clinical
+    fulfilling Amsterdam criteria without involvement of the mutator pathway.
+                                                                                        evaluation of a multiple-gene sequencing panel for hereditary cancer
+    Clin Cancer Res. 2005;11(20):7304–10.
+                                                                                        risk assessment. J Clin Oncol. 2014;32(19):2001–9.
+2. Balmana J, Castells A, Cervantes A, Group EGW. Familial colorectal cancer
+    risk: ESMO Clinical Practice Guidelines. Ann Oncol. 2010;21(Suppl 5):v78–81.    21. Yurgelun MB, Masciari S, Joshi VA, Mercado RC, Lindor NM, Gallinger S,
+3. Buchanan DD, Tan YY, Walsh MD, Clendenning M, Metcalf AM, Ferguson K,                Hopper JL, Jenkins MA, Buchanan DD, Newcomb PA, et al. Germline
+    Arnold ST, Thompson BA, Lose FA, Parsons MT, et al. Tumor mismatch                  TP53 mutations in patients with early-onset colorectal cancer in the
+    repair Immunohistochemistry and DNA MLH1 Methylation testing of                     colon cancer family registry. JAMA Oncol. 2015;1(2):214–21.
+    patients with endometrial cancer diagnosed at age younger than 60 years         22. Yurgelun MB, Allen B, Kaldate RR, Bowles KR, Judkins T, Kaushik P, Roa BB,
+    optimizes triage for population-level Germline mismatch repair gene                 Wenstrup RJ, Hartman AR, Syngal S. Identification of a variety of mutations
+    mutation testing. J Clin Oncol. 2014;32(2):90.                                      in cancer predisposition genes in patients with suspected lynch syndrome.
+4. Patel SG, Ahnen DJ. Familial colon cancer syndromes: an update of a rapidly          Gastroenterology. 2015;149(3):604–13. e620
+    evolving field. Curr Gastroenterol Rep. 2012;14(5):428–38.                      23. Tung N, Lin NU, Kidd J, Allen BA, Singh N, Wenstrup RJ, Hartman AR, Winer
+5. Yurgelun MB, Kulke MH, Fuchs CS, Allen BA, Uno H, Hornick JL, Ukaegbu CI,            EP, Garber JE. Frequency of Germline mutations in 25 cancer susceptibility
+    Brais LK, McNamara PG, Mayer RJ, et al. Cancer susceptibility gene                  genes in a sequential series of patients with breast cancer. J Clin Oncol.
+    mutations in individuals with colorectal cancer. J Clin Oncol. 2017;35(10):         2016;34(13):1460–8.
+    JCO2016710012.                                                                  24. Moller P, Seppala T, Bernstein I, Holinski-Feder E, Sala P, Evans DG, Lindblom
+6. Kuiper RP, Vissers LE, Venkatachalam R, Bodmer D, Hoenselaar E, Goossens             A, Macrae F, Blanco I, Sijmons R, et al. Cancer incidence and survival in
+    M, Haufe A, Kamping E, Niessen RC, Hogervorst FB, et al. Recurrence and             lynch syndrome patients receiving colonoscopic and gynaecological
+    variability of germline EPCAM deletions in lynch syndrome. Hum Mutat.               surveillance: first report from the prospective lynch syndrome database. Gut.
+    2011;32(4):407–14.                                                                  2015;66(3):464–72.
+7. Vasen HF, Mecklin JP, Khan PM, Lynch HT. The international collaborative         25. Moller P, Seppala T, Bernstein I, Holinski-Feder E, Sala P, Evans DG, Lindblom
+    group on hereditary non-polyposis colorectal cancer (ICG-HNPCC). Dis Colon          A, Macrae F, Blanco I, Sijmons R, et al. Incidence of and survival after
+    Rectum. 1991;34(5):424–5.                                                           subsequent cancers in carriers of pathogenic MMR variants with previous
+8. Moller P, Evans G, Haites N, Vasen H, Reis MM, Anderson E, Apold J,                  cancer: a report from the prospective lynch syndrome database. Gut. 2017;
+    Hodgson S, Eccles D, Olsson H, et al. Guidelines for follow-up of women at          66(9):1657–64. https://doi.org/10.1136/gutjnl-2016-311403.
+    high risk for inherited breast cancer: consensus statement from the biomed      26. Moller P, Seppala TT, Bernstein I, Holinski-Feder E, Sala P, Gareth Evans
+    2 demonstration Programme on inherited breast cancer. Dis Markers. 1999;            D, Lindblom A, Macrae F, Blanco I, Sijmons RH, et al. Cancer risk and
+    15(1–3):207–11.                                                                     survival in path_MMR carriers by gene and gender up to 75 years of
+9. RodriguezBigas MA, Boland CR, Hamilton SR, Henson DE, Jass JR, Khan PM,              age: a report from the prospective lynch syndrome database. Gut.
+    Lynch H, Perucho M, Smyrk T, Sobin L, et al. A National Cancer Institute            2017; https://doi.org/10.1136/gutjnl-2017-314057. [Epub ahead of print]
+    workshop on hereditary nonpolyposis colorectal cancer syndrome: meeting         27. Lynch HT, Riley BD, Weissman SM, Coronel SM, Kinarsky Y, Lynch JF,
+    highlights and Bethesda guidelines. J Natl Cancer I. 1997;89(23):1758–62.           Shaw TG, Rubinstein WS. Hereditary nonpolyposis colorectal carcinoma
+10. Umar A, Boland CR, Terdiman JP, Syngal S, de la Chapelle A, Ruschoff J,             (HNPCC) and HNPCC-like families: problems in diagnosis, surveillance,
+    Fishel R, Lindor NM, Burgart LJ, Hamelin R, et al. Revised Bethesda                 and management. Cancer Am Cancer Soc. 2004;100(1):53–64.
+    guidelines for hereditary nonpolyposis colorectal cancer (lynch syndrome)       28. Dominguez-Valentin M, Nakken S, Tubeuf H, Vodak D, Ekstrom PO, Nissen AM,
+    and microsatellite instability. J Natl Cancer I. 2004;96(4):261–8.                  Morak M, Holinski-Feder E, Martins A, Moller P, et al. Potentially pathogenic
+11. Kobayashi H, Ohno S, Sasaki Y, Matsuura M. Hereditary breast and ovarian            germline CHEK2 c.319+2T>a among multiple early-onset cancer families.
+    cancer susceptibility genes (review). Oncol Rep. 2013;30(3):1019–29.                Familial Cancer. 2018;17(1):141–53. https://doi.org/10.1007/s10689-017-0011-0.
+12. Lindor NM. Familial colorectal cancer type X: the other half of                 29. Dominguez-Valentin M, Evans DGR, Nakken S, Tubeuf H, Vodak D, Ekstrøm
+    hereditary nonpolyposis colon cancer syndrome. Surg Oncol Clin N Am.                PO, Nissen AM, Morak M, Holinski-Feder E, Martins A, Møller P, Hovig E.
+    2009;18(4):637.                                                                     Genetic variants of prospectively demonstrated phenocopies in BRCA1/2
+Dominguez-Valentin et al. BMC Medical Genetics (2018) 19:26                                                                                                    Page 19 of 19
+
+
+
+
+      kindreds. Hered Cancer Clin Pract. 2018;15(16):4. https://doi.org/10.1186/              52. Yadav S, Fulbright J, Dreyfuss H, Reeves A, Campian S, Thomas V, Zakalik D.
+      s13053-018-0086-0.                                                                          Outcomes of retesting BRCA-negative patients using multigene panels. J
+30.   Li L, Chen HC, Liu LX. Sequence alignment algorithm in similarity                           Clin Oncol. 2015;33(28):319–28.
+      measurement. 2009 International Forum on Information Technology and                     53. Easton DF, Pharoah PD, Antoniou AC, Tischkowitz M, Tavtigian SV,
+      Applications. PRO. 2009;1:453–6.                                                            Nathanson KL, Devilee P, Meindl A, Couch FJ, Southey M, et al. Gene-panel
+31.   Auclair J, Vaissiere T, Desseigne F, Lasset C, Bonadona V, Giraud S, Saurin JC,             sequencing and the prediction of breast-cancer risk. N Engl J Med. 2015;
+      Joly MO, Leroux D, Faivre L, et al. Intensity-dependent constitutional MLH1                 372(23):2243–57.
+      promoter methylation leads to early onset of colorectal cancer by affecting             54. Meijers-Heijboer H, van den Ouweland A, Klijn J, Wasielewski M, de Snoo A,
+      both alleles. Genes Chromosomes Cancer. 2011;50(3):178–85.                                  Oldenburg R, Hollestelle A, Houben M, Crepin E, van Veghel-Plandsoen M,
+32.   Sherry ST, Ward MH, Kholodov M, Baker J, Phan L, Smigielski EM. Sirotkin K: dbSNP:          et al. Low-penetrance susceptibility to breast cancer due to
+      the NCBI database of genetic variation. Nucleic Acids Res. 2001;29(1):308–11.               CHEK2(*)1100delC in noncarriers of BRCA1 or BRCA2 mutations. Nat Genet.
+33.   Genomes Project C, Auton A, Brooks LD, Durbin RM, Garrison EP, Kang HM,                     2002;31(1):55–9.
+      Korbel JO, Marchini JL, McCarthy S, McVean GA, et al. A global reference for            55. Consortium CBCC-C. CHEK2*1100delC and susceptibility to breast cancer: a
+      human genetic variation. Nature. 2015;526(7571):68–74.                                      collaborative analysis involving 10,860 breast cancer cases and 9,065
+34.   Lek M, Karczewski KJ, Minikel EV, Samocha KE, Banks E, Fennell T, O'Donnell-                controls from 10 studies. Am J Hum Genet. 2004;74(6):1175–82.
+      Luria AH, Ware JS, Hill AJ, Cummings BB, et al. Analysis of protein-coding              56. Hansen MF, Johansen J, Bjornevoll I, Sylvander AE, Steinsbekk KS, Saetrom P,
+      genetic variation in 60,706 humans. Nature. 2016;536(7616):285–91.                          Sandvik AK, Drablos F, Sjursen W. A novel POLE mutation associated with
+35.   Landrum MJ, Lee JM, Riley GR, Jang W, Rubinstein WS, Church DM, Maglott                     cancers of colon, pancreas, ovaries and small intestine. Familial Cancer.
+      DR. ClinVar: public archive of relationships among sequence variation and                   2015;14(3):437–48.
+      human phenotype. Nucleic Acids Res. 2014;42(D1):D980–5.                                 57. Obermeier K, Sachsenweger J, Friedl TW, Pospiech H, Winqvist R, Wiesmuller
+36.   Apweiler R, Bairoch A, Wu CH, Barker WC, Boeckmann B, Ferro S, Gasteiger                    L. Heterozygous PALB2 c.1592delT mutation channels DNA double-strand
+      E, Huang HZ, Lopez R, Magrane M, et al. UniProt: the universal protein                      break repair into error-prone pathways in breast cancer patients. Oncogene.
+      knowledgebase. Nucleic Acids Res. 2004;32:D115–9.                                           2016;35(29):3796–806. https://doi.org/10.1038/onc.2015.448.
+37.   Finn RD, Bateman A, Clements J, Coggill P, Eberhardt RY, Eddy SR, Heger A,              58. Villacis RA, Basso TR, Canto LM, Pinheiro M, Santiago KM, Giacomazzi J, de
+      Hetherington K, Holm L, Mistry J, et al. Pfam: the protein families database.               Paula CA, Carraro DM, Ashton-Prolla P, Achatz MI, et al. Rare germline
+      Nucleic Acids Res. 2014;42(D1):D222–30.                                                     alterations in cancer-related genes associated with the risk of multiple
+38.   den Dunnen JT, Antonarakis SE. Mutation nomenclature extensions and suggestions             primary tumor development. J Mol Med (Berl). 2017;
+      to describe complex mutations: a discussion. Hum Mutat. 2000;15(1):7–12.                59. Pinto P, Paulo P, Santos C, Rocha P, Pinto C, Veiga I, Pinheiro M, Peixoto A,
+39.   Antoniou AC, Kuchenbaecker KB, Soucy P, Beesley J, Chen XQ, McGuffog L, Lee                 Teixeira MR. Implementation of next-generation sequencing for molecular
+      A, Barrowdale D, Healey S, Sinilnikova OM, et al. Common variants at 12p11,                 diagnosis of hereditary breast and ovarian cancer highlights its genetic
+      12q24, 9p21, 9q31.2 and in ZNF365 are associated with breast cancer risk for                heterogeneity. Breast Cancer Res Treat. 2016;159(2):245–56.
+      BRCA1 and/or BRCA2 mutation carriers. Breast Cancer Res. 2012;14(1):1–18.
+40.   Di Giacomo D, Gaildrat P, Abuli A, Abdat J, Frebourg T, Tosi M, Martins A.
+      Functional analysis of a large set of BRCA2 exon 7 variants highlights the
+      predictive value of hexamer scores in detecting alterations of exonic
+      splicing regulatory elements. Hum Mutat. 2013;34(11):1547–57.
+41.   Erkelenz S, Hillebrand F, Widera M, Theiss S, Fayyaz A, Degrandi D, Pfeffer K,
+      Schaal H. Balanced splicing at the tat-specific HIV-1 3’ss A3 is critical for HIV-
+      1 replication. Retrovirology. 2015;12:29.
+42.   Susswein LR, Marshall ML, Nusbaum R, Vogel Postula KJ, Weissman SM,
+      Yackowski L, Vaccari EM, Bissonnette J, Booker JK, Cremona ML, et al. Pathogenic
+      and likely pathogenic variant prevalence among the first 10,000 patients
+      referred for next-generation cancer panel testing. Genet Med. 2016;18(8):823–32.
+43.   Soukarieh O, Gaildrat P, Hamieh M, Drouet A, Baert-Desurmont S, Frebourg T, Tosi
+      M, Martins A. Exonic splicing mutations are more prevalent than currently estimated
+      and can be predicted by using in Silico tools. PLoS Genet. 2016;12(I):1–26.
+44.   Tavtigian SV, Deffenbaugh AM, Yin L, Judkins T, Scholl T, Samollow PB, de
+      Silva D, Zharkikh A, Thomas A. Comprehensive statistical study of 452
+      BRCA1 missense substitutions with classification of eight recurrent
+      substitutions as neutral. J Med Genet. 2006;43(4):295–305.
+45.   Kumar P, Henikoff S, Ng PC. Predicting the effects of coding non-synonymous
+      variants on protein function using the SIFT algorithm. Nat Protoc. 2009;4(7):1073–82.
+46.   Stone EA, Sidow A. Physicochemical constraint violation by missense
+      substitutions mediates impairment of protein function and disease severity.
+      Genome Res. 2005;15(7):978–86.
+47.   Adzhubei IA, Schmidt S, Peshkin L, Ramensky VE, Gerasimova A, Bork P,
+      Kondrashov AS, Sunyaev SR. A method and server for predicting damaging
+      missense mutations. Nat Methods. 2010;7(4):248–9.                                           Submit your next manuscript to BioMed Central
+48.   Schwarz JM, Cooper DN, Schuelke M, Seelow D. MutationTaster2: mutation                      and we will help you at every step:
+      prediction for the deep-sequencing age. Nat Methods. 2014;11(4):361–2.
+49.   Gaildrat P, Killian A, Martins A, Tournier I, Frebourg T, Tosi M. Use of splicing             • We accept pre-submission inquiries
+      reporter minigene assay to evaluate the effect on splicing of unclassified                    • Our selector tool helps you to find the most relevant journal
+      genetic variants. Methods Mol Biol. 2010;653:249–57.
+                                                                                                    • We provide round the clock customer support
+50.   Landrum MJ, Lee JM, Benson M, Brown G, Chao C, Chitipiralla S, Gu B, Hart
+      J, Hoffman D, Hoover J, et al. ClinVar: public archive of interpretations of                  • Convenient online submission
+      clinically relevant variants. Nucleic Acids Res. 2016;44(D1):D862–8.                          • Thorough peer review
+51.   Richards S, Aziz N, Bale S, Bick D, Das S, Gastier-Foster J, Grody WW, Hegde
+                                                                                                    • Inclusion in PubMed and all major indexing services
+      M, Lyon E, Spector E, et al. Standards and guidelines for the interpretation
+      of sequence variants: a joint consensus recommendation of the American                        • Maximum visibility for your research
+      College of Medical Genetics and Genomics and the Association for
+      Molecular Pathology. Genet Med. 2015;17(5):405–24.                                            Submit your manuscript at
+                                                                                                    www.biomedcentral.com/submit
+

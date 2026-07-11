@@ -1,0 +1,598 @@
+Original Study
+
+              Optimizing Fecal Occult Blood Test (FOBT)
+                Colorectal Cancer Screening Using Gut
+                      Bacteriome as a Biomarker
+      Moumita Roy Chowdhury,1,# Karina Gisèle Mac Si Hone,1,2,# Karine Prévost,1
+         Philippe Balthazar,1 Mariano Avino,1 Mélina Arguin,1 Jude Beaudoin,1
+     Mandy Malick,1 Michael Desgagné,1 Gabriel Robert,1 Michelle Scott,1 Jean Dubé,1
+                        Isabelle Laforest-Lapointe,2 Eric Massé1
+                                                                               Abstract
+         Colorectal cancer screening requires iFOBT, which has a high rate of false positive discovery. To improve
+         the screening test, we examined the composition of gut bacteria using iFOBT leftover samples from over 800
+         patients. Our study used 5 different machine learning algorithms to differentiate healthy patients from those
+         with lesions, thus reducing the possibility of false positive results.
+         Background: Colorectal cancer (CRC) is a major cause of cancer mortality in the world. One of the most widely used
+         screening tests for CRC is the immunochemical fecal occult blood test (iFOBT), which detects human hemoglobin from
+         patient’s stool sample. Although it is highly efﬁcient in detecting blood from patients with gastro-intestinal lesions, such
+         as polyps and cancers, the iFOBT has a high rate of false positive discovery. Recent studies suggested gut bacteria
+         as a promising noninvasive biomarker for improving the diagnosis of CRC. In this study, we examined the composition
+         of gut bacteria using iFOBT leftover from patients undergoing screening test along with a colonoscopy. Methods: After
+         collecting data from more than 800 patients, we considered 4 groups for this study. The ﬁrst and second groups were
+         respectively “healthy” in which the patients had either no blood in their stool or had blood but no lesions. The third and
+         fourth groups of patients had both blood in their stools with precancerous and cancerous lesions and considered either
+         as low-grade and high-grade lesion groups, respectively. An ampliﬁcation of 16S rRNA (V4 region) gene was performed,
+         followed by sequencing along with various statistical and bioinformatic analysis. Results: We analyzed the composition
+         of the gut bacteriome at phylum, class, genus, and species levels. Although members of the Firmicute phylum increased
+         in the 3 groups compared to healthy patients, the phylum Actinobacteriota was found to decrease. Moreover, Blautia
+         obeum and Anaerostipes hadrus from the phylum Firmicutes were increased and Collinsella aerofaciens from phylum
+         Actinobacteriota was found decreased when healthy group is compared to the patients with high-grade lesions. Finally,
+         among the 5 machine learning algorithms used to perform our analysis, both elastic net (AUC > 0.7) and random forest
+         (AUC > 0.8) performs well in differentiating healthy patients from 3 other patient groups having blood in their stool.
+         Conclusion: Our study integrates the iFOBT screening tool with gut bacterial composition to improve the prediction of
+         CRC lesions.
+
+                            Clinical Colorectal Cancer, Vol. 23, No. 1, 22–34 © 2023 Elsevier Inc. All rights reserved.
+                                     Keywords: 16S rRNA gene sequencing, iFOBT screening, Lesion grade
+
+
+                                                                                           Introduction
+     1
+       Department of Biochemistry and Functional Genomics, University of Sherbrooke,          Colorectal cancer (CRC) is a pervasive form of cancer, ranking
+     Sherbrooke, Canada
+     2
+                                                                                           third most common, and the second highest cause of global cancer
+       Department of Biology, University of Sherbrooke, Sherbrooke, Canada
+                                                                                           deaths.1 In 2020, CRC was responsible for 10% of all cancer occur-
+     Submitted: Jun 21, 2023; Revised: Oct 3, 2023; Accepted: Oct 5, 2023; Epub: 13
+     October 2023                                                                          rence and 9.4% of cancer related deaths.2 Unfortunately, the preva-
+     Address for correspondence: Isabelle Laforest-Lapointe, PhD, Department of Biology,   lence of CRC is anticipated to rise 60% by 2030 worldwide as a
+     Faculty of Sciences (Pavilion D8) - University of Sherbrooke, 2500 Boulevard de       consequence of the increased adoption of western lifestyle and diet.2
+     l’Université Sherbrooke (QC), J1K2R1 Canada
+     E-mail contact: isabelle.laforest-lapointe@usherbrooke.ca
+     Address for correspondence: Eric Massé, PhD, Department of Biochemistry and           E-mail contact: eric.masse@usherbrooke.ca
+     Functional Genomics, Faculty of Medicine and Health Sciences - University of            #
+                                                                                                 Co-first authors.
+     Sherbrooke, 3201, Jean Mignault Sherbrooke, Québec, J1E 4K8, Canada
+
+
+                                                                                                                     1533-0028/$ - see front matter © 2023 Elsevier Inc. All rights reserved.
+22       Clinical Colorectal Cancer March 2024                                                                                               https://doi.org/10.1016/j.clcc.2023.10.004
+                                                                                           Moumita Roy Chowdhury et al
+Compared to previous record of worldwide cancer status (6.1%              build a prediction model for CRC. At least 2 models could perform
+incidence and 9.2% mortality rate) (Bray et al. 2018), this progres-      well in terms of predicting the diseases, whether the patient had
+sion is alarming.3                                                        blood in their stool or not.
+   CRC develops gradually from nondysplastic mucosa to low-
+grade dysplasia, finally advancing to high-grade dysplasia.4 Early        Materials and Methods
+detection of precancerous lesions development is very important           Sample Collection and Dataset Preparation
+to increase the survival rate. Although colonoscopy is the primary           Fecal samples were self-collected with the iFOBT (OC-Auto FIT
+screening test available, it is a challenging and invasive method with    test Kit from Polymedco) by every volunteer and collected at the
+risks of bowel perforation and bleeding.5 Along with colonoscopy,         CIUSSS-CHUS (Centre Intégré de Santé et de Services Sociaux
+additional screening tests are also available like guaiac-based fecal     - Centre Hospitalier Universitaire de Sherbrooke). When used
+occult blood tests (gFOBTs), flexible sigmoidoscopy, multi-target         according to the manufacturer’s instructions, this iFOBT device is
+stool DNA (mt-sDNA) test, computed tomography colonogra-                  standardized to extract 10 ug of stool, diluted in 2 mL of buffer. All
+phy (CTC), and the immunochemical fecal occult blood test                 samples were immediately stored at -80°C prior to analysis. A total
+(iFOBT).6 , 7 iFOBT is a cost-effective CRC screening test that           of 813 samples were analyzed in this study. Samples that received a
+detects the presence of blood in the bowel of patients. This approach     negative test with a blood concentration below 175 ng/mL (thresh-
+uses a specific antibody targeting the human hemoglobin in feces          old determined by the Institut National de Santé Publique du
+from bleeding precancerous lesions or colon cancer.8 The Québec           Québec (INSPQ)) were considered as healthy (n = 199). Samples
+province in Canada mandates the iFOBT screening for helping               from patients who tested positive (a fecal blood concentration
+early detection of CRC for patients aged over 50 years with               greater than or equal to 175 ng/mL) but colonoscopy did not detect
+higher risks of developing CRC. However, the false-positive rate          cancerous lesions are considered as healthy with blood (n = 212).
+of iFOBT reaches around 40%, which further leads to unneces-              Samples from patients who tested positive and were detected a lesion
+sary colonoscopy for patients without any pre-cancerous lesions.          by colonoscopy are divided into low grade (n = 279) and high grade
+Improvements in the iFOBT screening test are therefore required,          (n = 123). Low grade samples were from less severe lesions or adeno-
+notably by adding other biomarkers specific to CRC like the gut           mas (polyp size <1.5 cm). High grade samples were consisting of
+microbiota.9-15 The gut microbiota, and microbial metabolites are         adenomas (polyp size 1.5 cm-2.5 cm) and adenocarcinomas (polyp
+potential targets for the prognosis, diagnosis, and treatment of          size 2 cm-10 cm). Among the 123 high-grade lesions, 47 patients
+CRC.16 Various external environmental aspects like stress, radiation,     had adenocarcinoma (28 male and 19 female patients). Additional
+infection, medication, antibiotics, alcohol, smoking, and obesity,        information on patients’ sex and age are available in Table 1.
+or internal factors like oxidative stress, hormones, and inflamma-
+tion can cause dysbiosis in the intestinal microbiota, which may          DNA Extraction and Sequencing
+lead to CRC.17 Compared to healthy control groups, CRC patients              Microbial DNA was extracted from leftover iFOBT samples by
+showed substantial variations in colonic microbiota affecting the         using QIAGEN QIAmp Fast DNA stool mini kit with some modifi-
+mucosal immune response.18 Gut bacteria such as Fusobacterium             cations. Samples were transferred into a fresh 2-mL screw-cap tube
+nucleatum, Escherichia coli, Enterococcus faecalis, Peptostreptococcus    and centrifuged for 15 minutes at 1300 rpm. The pellet was resus-
+anaerobius, Bacteroides fragilis, and Streptococcus bovis are candidate   pended in 500 µL of lysis buffer (500 mM NaCl, 50 mM Tris-
+CRC pathogens that foster CRC development.19 Few commensal                HCl, pH 8.0, 50 mM EDTA, and 4% SDS) and transferred in
+gut bacterial species from Lachnospiraceae family can suppress CRC        1.5 mL conic tube with screw cap, containing 250 µl of glass
+progression by modulating immune surveillance activity of CD8+            bead 0.1 mm. Samples were homogenized twice for 3 minutes at
+T cells in colon tissues.20 Changes in microbiota composition have        6500 rpm (Precellys homogenizer) with an incubation at 95°C for
+been observed between patients with advanced adenoma and defini-          15 minutes in thermomixer at 1000 rpm between homogeniza-
+tive CRC, supporting the role of the gut microbiota in tumor              tion steps. Samples were spun for 10 minutes at 13,000 rpm and
+progression.21                                                            the supernatant was transferred to a new tube and 40 µL of 3M
+   Hence, complementing the established iFOBT with analysis of            sodium acetate and 1 mL 100% EtOH were added. Afterwards, the
+gut bacterial communities could improve early detection of CRC. In        samples were stored at -80°C and then centrifuged for 20 minutes
+this study, we have considered 4 groups of patients: healthy patients     at 13,000 rpm and the nucleic acid pellets were resuspended in
+without fecal blood or intestinal lesions, healthy patients with          200 µL of TE buffer + 2 µL of DNase-free RNase A (10 mg/mL)
+blood, patients with fecal blood and low-grade intestinal lesions,        followed by 15 minutes of incubation at 37°C. Subsequently, 15 µL
+and patients with fecal blood and high-grade intestinal lesions. We       of proteinase K and 200 µL of Buffer AL (from the QIAamp DNA
+conducted comparative analysis of the bacterial community compo-          Stool Mini Kit) were added and incubated at 70°C for 10 minutes.
+sition and diversity among these 4 groups. We performed 16S rRNA          200 µl of ethanol was added and the samples were transferred to
+sequencing from the fecal samples remaining after iFOBT test from         a QIAamp column, and the DNA was then purified according to
+patients in Québec’s provincial CRC screening program. Through-           the manufacturer’s instructions. DNA concentration was measured
+out this study we analyzed the relative and differential abundance of     by spectrophotometer (Denovix) and stored at -80°C for further
+gut bacterial communities among the healthy, healthy with blood,          processing. An amplification of the V4 region of the 16S rRNA
+low-grade lesions, and high-grade lesions groups. In combination          gene using the 515F and 806R universal primers was performed,
+with machine learning algorithms, our new data was then used to           and the fragments were sequenced on the MiSeq platform (https:
+
+
+
+                                                                                                            Clinical Colorectal Cancer March 2024   23
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+     Table 1      Summary of Patient Information After Screening
+
+                                                     Healthy           Healthy With            Low Grade           High Grade            Total
+                                                    (N = 199)        Blood (N = 212)           (N = 279)           (N = 123)           (N = 813)
+       Sex                      Female              104 (52.3%)          104 (49.1%)            105 (37.6%)          45 (36.6%)        358 (44%)
+                                 Male               95 (47.7%)           108 (50.9%)            174 (62.4%)          78 (63.4%)        455 (56%)
+       Age             Mean (standard deviation)    61.13 (10.8)         62.56 (13.8)             65.4 (9)          65.89 (10.4)       63.69 (11.2)
+                          Median (Min, Max)          61 [13,87]              64 [0,90]           65 [38,89]          65 [45, 90]        64 [0,90]
+
+
+     //rnomics.med.usherbrooke.ca/) using the MiSeq Reagent Kit v2                (AUC) and estimate of the error rate of the training procedure
+     (24-30 million reads) at the Pavillon de Recherche Appliquée sur             (called model). Pairwise comparison of the AUC for each model was
+     le Cancer (Faculté de Médecine et des Sciences de la santé).                 performed using a nonparametric approach. The R package pRoc
+                                                                                  v1.18.4 implementing the method described by DeLong et al.36 was
+     Bioinformatic and Statistical Analysis                                       used to compare ROC curves.36 Relative abundance of the genera
+        After 16S rRNA gene sequencing, low-quality reads and chimeras            scaled between 0 and 1, sex and age were used as input cofactors.
+     were removed using DADA2 software v.1.24.0.22 Remaining high
+     quality sequences were aligned to Silva (v.138.1) ribosomal RNA              Quantitative PCR
+     gene database23 to assign taxonomy to each Amplicon Sequence                     Quantification of total and specific bacteria was performed
+     Variants (ASVs). To minimize the influence of potential PCR                  by qPCR using Roche Light Cycler system with SYBR
+     and bioinformatic artefacts, ASVs were then filtered to retain taxa          green Premix. For quantifying total bacterial DNA, inter-
+     containing more than 10 sequences and to remove samples contain-             nal reference primers for 16s rRNA were used where the
+     ing less than 100 sequences from the dataset. DADA2 package                  primers specifically target V3-V4 hypervariable regions (16s
+     provides a native implementation of the naive Bayesian classifier            rRNA Forward primer: 5 -GTTGTCGTCAGCTCGTGTCG-3 ,
+     method for assigning taxonomy. The “assignTaxonomy” function                 16s rRNA Reverse primer: 5 -GCAGTCTCGCTAGAGTGCCC-
+     takes input as a set of sequences to be classified and a train-              3 ). For quantifying P. copri DNA, FimB gene was selected
+     ing set of reference sequences with known taxonomy, and outputs              (Forward primer: 5 -CCGGACTCCTGCCCCTGCAA-3 and
+     taxonomic assignments with at least a “minBoot” parameter (left              Reverse primer: 5 - GTTGCGCCAGGCACTGCGAT-3 ). qPCR
+     at default=50) bootstrap confidence. Sample alpha-diversity was              amplifications were carried out in 10 µl reaction mixture contain-
+     measured by Chao1, Simpson, and Shannon indexes. Differences                 ing 5 µl of 2X SYBR green Premix, 1 µl of each forward and
+     in beta-diversity between different patient groups were calculated           reverse primers, and 3 µl of extracted DNA. Reaction condition is
+     by using permutational analysis of variance (PERMANOVA)24                    as follows: incubation at 95°C for 1 min, following amplification of
+     and visualized with principal coordinates analysis (PCoA) ordina-            DNA for 50 cycles of denaturation at 95°C for 10 s, annealing at
+     tions based on the Bray-Curtis dissimilarity index.25 Moreover,              57°C for 10 s, and extension at 72°C for 15 s followed by melting
+     ANCOM-BC was used to identify differentially abundant bacterial              curve. Each reaction was performed in triplicates and corroborated
+     taxa. To determine if a core bacterial community was shared by the           by the presence of single peak of the melting curve. Abundance of
+     different grades of lesions, we used the R packages Eulerr v.7.0.0,26        the microbial DNAs in each sample was calculated by 2−Ct where
+     phyloseq v.1.44.0,27 and microbiomeutilities v.2.1.28.28                     Ct = Ct target – Ct standard .
+        A prediction analysis with machine learning is performed to test
+     the predictive power of different algorithms to detect CRC. To               Results
+     do this, we generated Receiver Operating Characteristic (ROC)                Sample Set Analysis
+     curves based on the 5 algorithms namely elastic net (enet, function             In this study, we analyzed self-collected fecal samples from
+     “glmnet,” with default values),29 Least Absolute Shrinkage and               813 patients to characterize bacterial communities present in the
+     Selection Operator (LASSO, function “glmnet,” the amount of                  samples. Of these, 358 were from female patients, and 455 samples
+     shrinkage parameter called alpha=1, the tuning parameter that                were from male patients with the mean age of ∼64 years. We gener-
+     controls the bias-variance tradeoff called lambda varies from 0.1            ated amplicon libraries targeting the V4 region of bacterial 16S,
+     to 1.0 with steps of 0.1),30 Ridge regression method (function               resulting in Fastq files that underwent filtering with DADA2 to
+     “glmnet,” alpha=0, lambda varies from 0.1 to 1.0 with steps of               remove low-quality reads and chimeras. After assigning taxa to the
+     0.1),31 random forest (RF, function “randomForest” with default              ASVs and filtering, we obtained a total number of 5855 ASVs along
+     parameters),32 and k-nearest neighbors (knn, function “knn3” with            with 16 phyla, 25 classes, 54 orders, 91 families, and 280 genera
+     default parameters) algorithm.33 Each predictive model was built             (Figure 1).
+     using the R packages Caret v.6.0-8634 (for enet, lasso, ridge and
+     knn) and randomForest v.4.7-1.1 (for RF),35 with a 5-fold 100                Bacterial Composition
+     times repeated cross-validation approach to improve the estimate               Taxonomic profiles were generated at phylum, class, genus,
+     performance and reduce overfitting. All fold results were reported           and species levels for the 4 groups: healthy, healthy with blood,
+     and averaged to obtain an average Area under the ROC Curve                   low-grade lesions, and high-grade lesions (Supplemental Figure
+
+
+
+24   Clinical Colorectal Cancer March 2024
+                                                                                           Moumita Roy Chowdhury et al
+Figure 1     Flowchart predicting differentially abundant taxa from the 4 sample groups of iFOBT.
+
+
+
+
+S1). Firmicutes, Bacteroidota, Actinobacteriota, Verrucomicrobiota,       age, sex, grade of lesions, and presence of blood explains 0.36%,
+and Proteobacteria were the most abundant phyla present in all            0.60%, 0.88%, and 0.44% of the variation in beta-diversity data
+the samples. Most prevalent classes were Clostridia, Bacteroidia,         respectively. The multivariate regression model of age (0.36%),
+Negativicutes, Verrucomicrobiae, and Bacilli. Finally, the following      sex (0.61%), and lesion grades (0.86%) indicated a significant
+bacteria were the most widespread in all the 4 groups: Blautia obeum,     explanatory effect of each variable, but not all interactions between
+Prevotella copri, Faecalibacterium prausnitzii, Prevotella sp., Blautia   them were significant. The only significant interaction observed was
+sp., and Phascolarctobacterium faecium including 18 other bacteria        between the variables of age and lesions grades (P = 0.010) and
+(Figure 2).                                                               the variables of age and sex (P = 0.017). The multivariate regres-
+                                                                          sion model explains a total of 3.12% of the variation in bacterial
+                                                                          community data (Table 2).
+Alpha and Beta Diversity
+   We assessed alpha-diversity at ASV level to determine the differ-      Differential Abundance
+ences in gut bacterial richness among the 4 groups based on Chao1,           We identified differentially abundant taxa in this study at
+Shannon, and Simpson indexes (Figure 3). We found a significant           phylum, class, and genus levels (Supplemental Figure S2) using
+difference between healthy and healthy with blood considering all 3       ANCOM-BC. For differential abundance, we compared healthy
+indexes. However, the difference was not always present when data         with blood, low-grade, and high-grade lesion groups individually
+from male and female patients was considered separately. A signif-        with healthy group, and the differentially abundant bacteria are
+icant difference was observed between healthy and healthy with            depicted in Figure 5. At least 22 bacterial species including Copro-
+blood male patients only when considering the Chao1 index, based          coccus comes, Agathobacter sp., Anaerostipes hadrus, Romboutsia ilealis,
+on the number of taxa. For female patients, differences between           F. prausnitzii, and B. obeum were abundant in the healthy group,
+the same 2 groups were noted for Shannon and Simpson indexes.             whereas Negativibacillus sp., and Escherichia coli (Shigella) were
+For all patients, a significant difference has been observed between      abundant in the healthy with blood group. When compared to low-
+healthy and low-grade lesion groups when considering Shannon and          grade lesion group, Blautia sp., A. hadrus were more abundant in the
+Simpson indexes. For female patients, a significant difference has        healthy group and Collinsella aerofaciens, Actinomyces sp., and Adler-
+been observed between healthy and low-grade lesion patients when          creutzia sp. were more abundant in the second group. B. obeum and
+considering Shannon and Simpson indexes. Overall, differentiating         A. hadrus were more abundant in healthy patients while C. aerofa-
+patients with lesions and healthy patients was not possible based on      ciens was more abundant in the high-grade lesion group. This result
+alpha-diversity indices.                                                  is in concordance with the higher taxa level analysis (phylum and
+   Beta-diversity was visualized at ASV level using a PCoA based          class) as well.
+on Bray-Curtis dissimilarities (Figure 4) and tested statistically with
+PERMANOVA. Although we observed differences between the 4                 Predictions With Machine Learning
+patient groups (P ≤ 0.05), the explanatory power (R2 ) of the                We visualized the distribution of AUC at each iteration through a
+study’s variables were low. Based on the results of univariate models,    violin plot in Figure 6. For testing, we divided samples into 5 groups
+
+
+
+                                                                                                             Clinical Colorectal Cancer March 2024   25
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+     Figure 2     Relative abundance of bacteria in our 4 sample groups (Healthy, Healthy with blood, Low-grade lesions, and
+                  High-grade lesions). Firmicutes, Bacteroidota, and Actinobacteriota are the most relatively abundant phylum and B.
+                  obeum, P. copri, F. prausnitzii are the most relatively abundant species found in this study.
+
+
+
+
+     with 100 iterations for a total n = 500 repeats. The red line showed   tiating healthy and healthy with blood group whereas rf performs
+     in the figure represents the threshold at 0.50. Value of AUC ranges    well in differentiating both healthy with blood and high-grade group
+     from [0, 1] and the nearer the AUC value is to 1, the better the       from healthy patients. When all the sample groups with blood were
+     prediction performance. Among all the prediction methods, enet         compared with each other, the algorithms did not find any signifi-
+     and RF algorithms perform better in differentiating healthy groups     cant difference. However, the performance of enet, lasso, and rf in
+     from samples containing blood in the stool (healthy with blood,        differentiating between healthy with blood and high-grade group is
+     low-grade, and high-grade lesions). Enet performs best in differen-    noticeable. AUC for these 3 algorithms is above 0.6 and this may
+
+
+
+
+26   Clinical Colorectal Cancer March 2024
+                                                                                      Moumita Roy Chowdhury et al
+Figure 3    Alpha-diversity analysis based on Chao1, Simpson, and Shannon s-index. The line in the middle of the whisker boxes
+            represents the median, the low and high ends of the boxes represent the 25th and 75th percentiles, respectively, and
+            the whiskers represent the most extreme data. The letters (a, b) represent nonparametric Kruskal-Wallis tests followed
+            by Dunn’s post hoc tests of comparison of means. In a box, when the sample groups (Healthy, Healthy With Blood, Low
+            Grade, and High Grade) have the same letter (a or b) on top, it means that these groups are not significantly different,
+            when the letters are different then the groups are significantly different, and when a group has both letters together (ab)
+            it means that it is neither different from “a” nor “b.”
+
+
+
+
+provide a better understanding of the CRC detection concerning all    samples from each group and compared the ASV numbers associ-
+the sample groups with blood.                                         ated with the taxa with the amount of DNA found by qPCR.
+                                                                      Among the twelve samples, a total of 3 samples were detected to
+Validation by Quantitative PCR                                        have P. copri: MIC511 (no. of ASVs = 12467), MIC2205 (no.
+  P. copri, one of the most prevalent bacteria found in this study    of ASVs = 4327), MIC827 (no. of ASVs = 10832). Ct value for
+have been chosen for further validation. We randomly selected 3       these 3 samples were found low indicating the presence of higher
+
+
+
+
+                                                                                                       Clinical Colorectal Cancer March 2024   27
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+
+     Figure 4         PCoA on beta diversity of iFOBT samples, based on Bray-Curtis dissimilarity. Ellipses representing 95% confidence
+                      intervals for each of the patient status. The color of the dots represents the status of the patients, and each dot
+                      represent one (1) sample.
+
+
+
+
+     Table 2          PERMANOVA Regression Models Illustrating the Effect of Predictors on Microbial Community Structure (Beta Diversity)
+
+        Regression Model                            Terms                               Df                            F-Value                           R2 (%)                           Pr (>F)
+        Age (A)                                         A                                1                             2.9065                             0.36                            0.001a
+                                                    Residual                            811                                                               99.65
+                                                     Total                             812                                                              10 0.0 0
+        Sex (S)                                         S                                1                              5.151                             0.63                            0.001a
+                                                    Residual                            811                                                               99.37
+                                                     Total                             812                                                              10 0.0 0
+        Lesion Grade (L)                                L                                3                             2.3124                             0.85                            0.001a
+                                                    Residual                            809                                                               99.15
+                                                     Total                             812                                                              10 0.0 0
+        Blood                                         Sang                               1                             3.0633                             0.38                            0.001a
+                                                    Residual                            811                                                               99.62
+                                                     Total                             812                                                              10 0.0 0
+        A∗S∗L                                           A                                1                             2.9408                             0.36                            0.001a
+                                                        S                                1                             5.2864                             0.64                            0.001a
+                                                        L                                3                             2.2708                             0.83                            0.001a
+                                                      AcS                                1                             1.5388                             0.19                            0.023c
+                                                      AcL                                3                             1.3953                             0.51                            0.008b
+                                                      ScL                                3                             0.8469                             0.31                               NS
+                                                    AcScL                                3                             1.0751                             0.39                               NS
+                                                    Residual                            797                                                               96.78
+                                                     Total                             812                                                              10 0.0 0
+
+      The ﬁrst 4 models shown are the univariate models while the last model shows the full model. In the full model, the Blood factor was not considered since values of that factor were not all numerical. Df:
+      degree of freedom; F-value: signiﬁcant difference between groups, the higher the value, the greater the difference between groups; R2 : indicator of the strength of the correlation between variables and
+      groups, it is the ratio between the variance explained by the model, a high value shows a strong model and larger group difference; Pr (>F): P-value associated with the F-value; NS: Not signiﬁcant;
+      a
+        : P ≤ . 001;
+      b
+        : P ≤ .01;
+      c
+        : P ≤ .05; NS: P > .05.
+
+
+
+
+28   Clinical Colorectal Cancer March 2024
+                                                                                 Moumita Roy Chowdhury et al
+Figure 5   A/B/C) Differential analysis at the species level using ANCOM-BC using the chi-square hypothesis test expressed as
+           logarithmic variation, with graph A comparing Healthy and Healthy with Blood groups, graph B comparing Healthy and
+           Low-Grade groups and graph C comparing Healthy and High-Grade groups. The “species level” was performed by
+           grouping all the taxonomic levels (Kingdom, Phylum, Class, Order, Family, Genus, and Species) together to aggregate
+           them. The figure below shows the same figure but with the full taxon names.
+
+
+
+
+                                                                                                Clinical Colorectal Cancer March 2024   29
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+
+
+     Figure 6     Violin distribution of AUC for the presentation of the different grades of lesions. This figure gathers the results of the
+                  predictions of 5 algorithms enet, knn, lasso, rf, and ridge to compare the different statuses (Healthy, Healthy with
+                  Blood, Low Grade, High Grade) between them. Graph A compares Healthy and High-Grade groups, Graph B compares
+                  Healthy and Low-Grade groups, Graph C compares Healthy and Healthy with Blood groups, Graph D compares Healthy
+                  with Blood and High-Grade groups, Graph E compares Healthy with Blood and Low-Grade groups, and Graph F
+                  compares Low-Grade and High-Grade groups. The prediction per subset is iterated 100 times for each algorithm
+                  (n = 5 × 100 = 500). The AUC value gives the value of the area under the ROC curve. The model value is the value of
+                  the prediction model of the algorithms. Predictions were made at the “species level,” which was performed by
+                  grouping all taxonomic levels (Kingdom, Phylum, Class, Order, Family, Genus, and Species) together to aggregate
+                  them. knn: k-nearest neighbors; RF: random forest; auc: Area Under the Curve; roc: Receiver Operating Characteristic.
+
+
+
+
+30   Clinical Colorectal Cancer March 2024
+                                                                                          Moumita Roy Chowdhury et al
+Figure 7    Expression profile of P. copri from qRT-PCR analysis. The error bars represent the standard error. All the samples are
+            normalized with 16S rRNA.
+
+
+
+
+amount of P. copri DNA in the samples: MIC511 (Ct = 17.3),               et al. used a combination of mRMR algorithm and RF,15 and Yuan
+MIC2205 (Ct = 19.73), MIC827 (Ct = 15.01) where the other                et al.44 used SVM.
+samples showed higher Ct values (Figure 7A). The amount of P.               Unlike any other studies, we have incorporated 5 different
+copri DNA detected by qPCR in the 3 sample is in correlation with        machine learning based algorithms and compared the output with
+the ASV numbers obtained.                                                each other to improve our predictions of CRC progression beyond
+                                                                         blood detection. Rf and enet perform best in differentiating the
+Discussion                                                               patients having blood (healthy with blood, high-grade and low-
+   In this study, we collected samples from a total of 813 individu-     grade lesion groups) from the healthy patients than the other 3
+als, including samples from 4 groups: healthy, healthy with blood,       machine learning algorithms used. Along with that enet and rf
+low-grade lesion, and high-grade lesion groups. We analyzed gut          perform quite well in differentiating healthy with blood group
+bacterial diversity, relative, and differential abundance in these 4     from high-grade lesion group. Our result suggests that combin-
+groups. Our analyses showed that alpha-diversity analyses were able      ing gut bacteriome analysis with iFOBT may have a potential to
+to differentiate between patients with low-grade lesion and the          rapidly distinguish the patients with high-grade lesion from the
+healthy group. A decreasing trend for the phylum Firmicutes and an       other groups. A substantial amount of data containing patient infor-
+increasing trend for phylum Actinobacteriota is observed in other 3      mation like their dietary habits, medication, BMI, age coupled with
+groups compared to the healthy group. B. obeum, A. hadrus, and F.        both iFOBT and gut bacteriome analysis will be able to improve the
+prausnitzii from phylum Firmicutes and C. aerofaciens from phylum        diagnosis of CRC.
+Actinobacteriota demonstrated the same trend. We observed differ-           Through ANCOM-BC, we found few gut microbes to be differ-
+ences among the 4 groups through beta-diversity dissimilarities, but     entially abundant. Our study found that Blautia sp. and A. hadrus
+the difference was not very strong between phenotypes.                   were increased abundance in healthy patients, which is in concor-
+   In recent years many machine-learning-based approaches are            dance with the recent studies.44-47 Blautia sp. produces butyric
+being used for the diagnosis of various diseases like heart              acid,48 which induces apoptosis in colorectal cancer cells.49 , 50 A.
+and kidney disorders, breast cancer, multiple myeloma, oral              hadrus can produce propionate and acetate like short-chain fatty
+cancer, colon cancer, neurological disorders like Parkinson’s and        acids (SCFAs) from dietary inositol.51 SCFAs play a significant role
+Alzheimer’s disease, diabetes, and COVID-19.37 , 38 Both supervised      in the maintenance of intestinal homeostasis and strengthening the
+and unsupervised machine learning algorithms including artificial        gut barrier integrity.52 SCFAs possess anti-inflammatory proper-
+neural network, decision tree, RF, logistic regression, support vector   ties, immunomodulatory effects, and antitumor effects which may
+machine (SVM), knn, naive Bayes along with deep learning-assistive       reduce the risk of CRC.53 In our study, relative abundance of B.
+algorithm have been previously used for the detection of CRC.39-44       obeum is higher in healthy group compared to low and high-grade
+Zackular et al. used logit models,12 Baxter et al. used RF,13 Yang       lesion groups. A recent study described the presence of B. obeum in
+
+
+
+                                                                                                          Clinical Colorectal Cancer March 2024   31
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+     increased relative abundance in healthy donors compared to CRC            samples left after detection of hemoglobin. This stands out from
+     patients.54 The same study also demonstrated that B. obeum might          previously published studies where fecal occult blood and micro-
+     regulate biotransformation of dietary heterocyclic amines (HCA)           biome has been taken into consideration. In those studies, the
+     following a reduction in the risk of HCA-induced CRC.54 Blautia           FIT/gFOBT kit has exclusively been used to detect blood. Indeed,
+     sp. has also been found to suppress inflammation and reduce adeno-        for microbiome analysis, DNA was extracted directly from the stool
+     mas, suggesting its role in chronic inflammation and adenoma devel-       samples and not from the leftover samples from the kit.10 , 12 , 13 In
+     opment, important factors in CRC pathogenesis.55                          another one of those studies, no FIT/iFOBT/gFOBT kit was used
+        F. prausnitzii, found in higher abundance in healthy patient in our    to detect blood, instead the fresh stools collected from the patients
+     study, produces butyrate which has substantial anti-inflammatory          have been used as the single tool for screening.15 , 44 , 68 Since we
+     effects in rodents with colorectal colitis.56 Recent study has            extracted the DNA from the leftover samples our study did not
+     suggested that anti-tumorigenic property of F. prausnitzii can be         require the collection of samples twice and eliminate the chance of
+     used to prevent the formation and progression of CRC.57 Deple-            getting any sampling error. Among the other related studies, metage-
+     tion of F. prausnitzii in various gut diseases, along with its involve-   nomic sequencing was performed in 2 studies10 , 15 whereas all other
+     ment in the maintaining gut physiology, has suggested this gut            studies used the 16S rRNA sequencing.12 , 13 , 44 , 68
+     microbe to be considered as new generation probiotic.58 Along with           There are several limitations in our study. We were unable to
+     B. obeum, P. copri was found relatively abundant across all 4 groups,     find any specific gut bacteria associated with the development and
+     although no differential abundance has been found for this microbe        advancement of CRC. This might be because all the samples were
+     among the 4 groups. While recent studies suggest P. copri promotes        collected from a diverse cohort. The samples were not compared
+     better metabolic function, P. copri has been found to be associated       between specific patients having lesions with their other family
+     with various chronic inflammatory diseases.59 Additional studies are      members having similar dietary habits. Since diet and medication
+     needed to find out the role of P. copri in the development of CRC.        have strong impact on the gut microbiota, it is crucial to study
+        C. aerofaciens from phylum Actinobacteria is found in increased        patients with similar dietary habits and living a similar lifestyle. In
+     abundance in low-grade and high-grade group compared to the               addition, since gut microbial profiles are known to show very high
+     healthy group. It was previously shown that C. aerofaciens increases      interindividual variation,69 it would improve our capacity to detect
+     the gut permeability along with induction in the expression of a          a bacterial trajectory related to CRC progression if we could follow
+     cytokine named IL-17A, involved in RA pathogenesis.60 Enrich-             patients over time.
+     ment of C. aerofaciens has been observed by Masoodi et al. in
+     patients with irritable bowel syndrome (IBS).61 However, few              Conclusion
+     studies have described C. aerofaciens as a beneficial commensal and          CRC is a complex disease involving several risk factors, includ-
+     a subspecies of this microbe is found to produce butyric acid.62 , 63     ing various genetic and environmental factors, with gut microbiota
+     Depletion of C. aerofaciens is observed in mice during appendec-          playing an important role. As the human colon harbors the largest
+     tomy, which promotes colorectal tumorigenesis by creating intesti-        number of microbes in the body, the gut microbiota is anticipated
+     nal microbial dysbiosis and impaired gut barrier integrity.64 Overall,    to have a role in CRC. Both the gut microbial consortia along
+     the differentially abundant species found in our study is in accor-       with microbial metabolites resulting from food consumption can be
+     dance with already published findings.                                    potentially inducing or reducing CRC risk and can also be a power-
+        We aimed to validate the presence of 1 relatively abundant             ful tool for disease prognosis, diagnosis, and therapy. In this study we
+     species, namely P. copri, through the selection of its biomarker gene.    aimed to improve the result of iFOBT by combining the presence of
+     FimB/Mfa2 family fimbrial subunit has been used to predict the            gut bacteria along with the presence of blood and lesions. Machine
+     presence of P. copri. The number of ASVs associated with P. copri         learning tools certainly helped us to discriminate between the groups
+     was found to corroborate the result. However, although qPCR was           of healthy with blood and high-grade lesion, which could be useful
+     able to detect the presence of FimB in all twelve samples, the Ct         to prioritize patients waiting for colonoscopy. Although we have
+     value was high for the 9 samples. For samples MIC511, MIC827,             found few taxa to be differentially abundant in the samples with
+     and MIC2205, relative quantification was in accordance with the           lesions, our results suggest the need for more information about the
+     ASV numbers.                                                              diets and lifestyle of patients, as well as a longer timeline to improve
+        Dysbiosis in gut microbial composition can lead to various             our understanding of host-microbe-CRC interactions.
+     diseases.65 A dysfunctional gut microbiota has been associated with
+     diseases like Rheumatoid arthritis (RA), type I and type II diabetes,     Clinical Practice Points
+     atopic eczema, asthma, irritable bowel syndrome (IBS), inflamma-          • In this study we integrated the gut bacteriome from patients using
+     tory bowel disease, cardiovascular diseases, and Non-alcoholic fatty        the iFOBT screening test in order to improve the detection of
+     liver disease.66 Several gut microbes in association with host physi-       colorectal cancer (CRC).
+     ology, diet, medication, lifestyle, and diverse genetic and environ-      • We analyzed the composition of gut bacteria from healthy patients
+     mental factors, can be the primary or secondary contributors in             and compared these data with patients exhibiting different degrees
+     the development of CRC.67 In this study we attempted to find                of CRC.
+     out which gut bacteria are associated with CRC through various            • Together with various statistical, bioinformatic, and machine
+     bioinformatic, statistical and experimental approaches. In our study        learning approaches, we were able to differentiate high-grade
+     we extracted the DNA for sequencing directly from the same fecal            lesion patients with better specificity.
+
+
+
+32   Clinical Colorectal Cancer March 2024
+                                                                                                                 Moumita Roy Chowdhury et al
+Disclosure                                                                                  23. Quast C, Pruesse E, Yilmaz P, et al. The SILVA ribosomal RNA gene database
+                                                                                                project: improved data processing and web-based tools. Nucleic Acids Res.
+   The authors have stated that they have no conflicts of interest.                             2013;41(Database issue):D590–D596. doi:10.1093/nar/gks1219.
+                                                                                            24. Tang ZZ, Chen G, Alekseyenko AV. PERMANOVA-S: association test for
+                                                                                                microbial community composition that accommodates confounders and multiple
+Acknowledgments                                                                                 distances. Bioinformatics. 2016;32(17):2618–2625. doi:10.1093/bioinformatics/
+                                                                                                btw311.
+  Work in the Massé Lab has been supported by grants from                                   25. Bray JR, Curtis JT. An ordination of the upland forest communities of southern
+the Canadian Institutes of Health Research (CIHR) MOP69005,                                     Wisconsin. Ecol Monogr. 1957;27(4):325–349. doi:10.2307/1942268.
+                                                                                            26. Larsson J, Gustafsson P. A case study in fitting area-proportional Euler diagrams
+MERCK, and the Centre de Recherche du Centre Hospitalier                                        with ellipses using Euler: 6th international workshop on set visualization and
+Universitaire de Sherbrooke (CRCHUS).                                                           reasoning, SetVR 2018. CEUR Workshop Proc. 2018;2116:84–91.
+                                                                                            27. McMurdie PJ, Holmes S. phyloseq: an R package for reproducible interactive
+                                                                                                analysis and graphics of microbiome census data. PLoS One. 2013;8(4):e61217.
+References                                                                                      doi:10.1371/journal.pone.0061217.
+                                                                                            28. Shetty SA, Lahti L. Microbiome data science. J Biosci. 2019;44(5):115.
+ 1. Sung H, Ferlay J, Siegel RL, et al. Global cancer statistics 2020: GLOBOCAN             29. Zou H, Hastie T. Regularization and variable selection via the elastic net. J R Stat
+    estimates of incidence and mortality worldwide for 36 cancers in 185 countries.             Soc Ser B Stat Methodol. 2005;67(2):301–320. doi:10.1111/j.1467-9868.2005.
+    CA Cancer J Clin. 2021;71(3):209–249. doi:10.3322/caac.21660.                               00503.x.
+ 2. Arnold M, Sierra MS, Laversanne M, Soerjomataram I, Jemal A, Bray F.                    30. Tibshirani R. Regression shrinkage and selection via the lasso. J R Stat Soc Ser B
+    Global patterns and trends in colorectal cancer incidence and mortality. Gut.               Methodol. 1996;58(1):267–288. doi:10.1111/j.2517-6161.1996.tb02080.x.
+    2017;66(4):683–691. doi:10.1136/gutjnl- 2015- 310912.                                   31. Hoerl AE, Kennard RW. Ridge regression: biased estimation for nonorthogonal
+ 3. Bray F, Ferlay J, Soerjomataram I, Siegel RL, Torre LA, Jemal A. Global cancer              problems. Technometrics. 1970;12(1):55–67. doi:10.2307/1267351.
+    statistics 2018: GLOBOCAN Estimates of incidence and mortality worldwide for            32. Ho TK. Random decision forests. Proceedings of 3rd International Conference on
+    36 cancers in 185 countries. CA Cancer J Clin. 2018;68(6):394–424. doi:10.3322/             Document Analysis and Recognition; 1995:278–282. doi:10.1109/ICDAR.1995.
+    caac.21492.                                                                                 598994.
+ 4. Fumery M, Dulai PS, Gupta S, et al. Incidence, risk factors, and outcomes of            33. Mucherino A, Papajorgji PJ, Pardalos PM. k-Nearest Neighbor Classification.
+    colorectal cancer in patients with ulcerative colitis with low-grade dysplasia: a           In: Mucherino A, Papajorgji PJ, Pardalos PM, eds. Data Mining in Agriculture.
+    systematic review and meta-analysis. Clin Gastroenterol Hepatol. 2017;15(5):665–            Springer Optimization and Its Applications Springer; 2009:83–106. doi:10.1007/
+    674.e5. doi:10.1016/j.cgh.2016.11.025.                                                      978- 0- 387- 88615- 2_4.
+ 5. Wang L, Mannalithara A, Singh G, Ladabaum U. Low rates of gastrointestinal and          34. Kuhn M. Building predictive models in R using the caret package. J Stat Softw.
+    non-gastrointestinal complications for screening or surveillance colonoscopies in a         2008;28:1–26. doi:10.18637/jss.v028.i05.
+    population-based study. Gastroenterology. 2018;154(3):540–555.e8. doi:10.1053/          35. Breiman L. Random forests. Mach Learn. 2001;45(1):5–32. doi:10.1023/A:
+    j.gastro.2017.10.006.                                                                       1010933404324.
+ 6. Meklin J, Syrjänen K, Eskelinen M. Fecal occult blood tests in colorectal               36. DeLong ER, DeLong DM, Clarke-Pearson DL. Comparing the areas under two or
+    cancer screening: systematic review and meta-analysis of traditional and new-               more correlated receiver operating characteristic curves: a nonparametric approach.
+    generation fecal immunochemical tests. Anticancer Res. 2020;40(7):3591–3604.                Biometrics. 1988;44(3):837–845.
+    doi:10.21873/anticanres.14349.                                                          37. Kourou K, Exarchos TP, Exarchos KP, Karamouzis MV, Fotiadis DI. Machine
+ 7. Ladabaum U, Dominitz JA, Kahi C, Schoen RE. Strategies for colorectal cancer                learning applications in cancer prognosis and prediction. Comput Struct Biotechnol
+    screening. Gastroenterology. 2020;158(2):418–432. doi:10.1053/j.gastro.2019.06.             J. 2015;13:8–17. doi:10.1016/j.csbj.2014.11.005.
+    043.                                                                                    38. Ahsan MM, Luna SA, Siddique Z. Machine-learning-based disease diagno-
+ 8. Bruns-Toepler M, Hardt P. Evaluation of a new technique for iFOBT utilis-                   sis: a comprehensive review. Healthcare. 2022;10(3):541. doi:10.3390/
+    ing a new sample collection device with increased buffer stability. Anticancer Res.         healthcare10030541.
+    2017;37(7):3735–3740.                                                                   39. Kennion O, Maitland S, Brady R. Machine learning as a new horizon for colorectal
+ 9. Krigul KL, Aasmets O, Lüll K, Org T, Org E. Using fecal immunochemical tubes                cancer risk prediction? A systematic review. Health Sci Rev. 2022;4:100041. doi:10.
+    for the analysis of the gut microbiome has the potential to improve colorectal cancer       1016/j.hsr.2022.100041.
+    screening. Sci Rep. 2021;11(1):19603. doi:10.1038/s41598- 021- 99046- w.                40. Abdul Rahman H, Ottom MA, Dinov ID. Machine learning-based colorec-
+10. Kværner AS, Birkeland E, Bucher-Johannessen C, et al. The CRCbiome study: a                 tal cancer prediction using global dietary data. BMC Cancer. 2023;23(1):144.
+    large prospective cohort study examining the role of lifestyle and the gut micro-           doi:10.1186/s12885- 023- 10587- x.
+    biome in colorectal cancer screening participants. BMC Cancer. 2021;21(1):930.          41. Li H, Lin J, Xiao Y, et al. Colorectal cancer detected by machine learn-
+    doi:10.1186/s12885- 021- 08640- 8.                                                          ing models using conventional laboratory test data. Technol Cancer Res Treat.
+11. Rounge TB, Meisal R, Nordby JI, Ambur OH, de Lange T, Hoff G. Evalu-                        2021;20:15330338211058352. doi:10.1177/15330338211058352.
+    ating gut microbiota profiles from archived fecal samples. BMC Gastroenterol.           42. Nartowt BJ, Hart GR, Muhammad W, Liang Y, Stark GF, Deng J. Robust
+    2018;18(1):171. doi:10.1186/s12876- 018- 0896- 6.                                           machine learning for colorectal cancer risk prediction and stratification. Front Big
+12. Zackular JP, Rogers MAM, Ruffin MT, Schloss PD. The human gut micro-                        Data. 2020;3. Accessed: May 27, 2023Available at:. https://www.frontiersin.org/
+    biome as a screening tool for colorectal cancer. Cancer Prev Res Phila Pa.                  articles/10.3389/fdata.2020.00006 .
+    2014;7(11):1112–1121. doi:10.1158/1940- 6207.CAPR- 14- 0129.                            43. Ho C, Zhao Z, Chen XF, et al. A promising deep learning-assistive algorithm for
+13. Baxter NT, Ruffin MT, Rogers MAM, Schloss PD. Microbiota-based model                        histopathological screening of colorectal cancer. Sci Rep. 2022;12(1):2222. doi:10.
+    improves the sensitivity of fecal immunochemical test for detecting colonic lesions.        1038/s41598- 022- 06264- x.
+    Genome Med. 2016;8(1):37. doi:10.1186/s13073- 016- 0290- 3.                             44. Wu Y, Jiao N, Zhu R, et al. Identification of microbial markers across populations
+14. Gudra D, Shoaie S, Fridmanis D, et al. A widely used sampling device in colorec-            in early detection of colorectal cancer. Nat Commun. 2021;12(1):3063. doi:10.
+    tal cancer screening programmes allows for large-scale microbiome studies. Gut.             1038/s41467- 021- 23265- y.
+    2019;68(9):1723–1725. doi:10.1136/gutjnl- 2018- 316225.                                 45. Chen W, Liu F, Ling Z, Tong X, Xiang C. Human intestinal lumen and
+15. Yang J, Li D, Yang Z, et al. Establishing high-accuracy biomarkers for colorec-             mucosa-associated microbiota in patients with colorectal cancer. PLoS One.
+    tal cancer by comparing fecal microbiomes in patients with healthy families. Gut            2012;7(6):e39743. doi:10.1371/journal.pone.0039743.
+    Microbes. 2020;11(4):918–929. doi:10.1080/19490976.2020.1712986.                        46. Gao R, Gao Z, Huang L, Qin H. Gut microbiota and colorectal cancer. Eur J Clin
+16. Sears CL, Garrett WS. Microbes, microbiota and colon cancer. Cell Host Microbe.             Microbiol Infect Dis. 2017;36(5):757–769. doi:10.1007/s10096- 016- 2881- 8.
+    2014;15(3):317–328. doi:10.1016/j.chom.2014.02.007.                                     47. Ai D, Pan H, Li X, Gao Y, Liu G, Xia LC. Identifying gut microbiota associ-
+17. Rebersek M. Gut microbiome and its role in colorectal cancer. BMC Cancer.                   ated with colorectal cancer using a zero-inflated lognormal model. Front Micro-
+    2021;21(1):1325. doi:10.1186/s12885- 021- 09054- 2.                                         biol. 2019;10. Accessed: January 12, 2023Available at:. https://www.frontiersin.
+18. Saffarian A, Mulet C, Regnault B, et al. Crypt- and mucosa-associated core                  org/articles/10.3389/fmicb.2019.00826 .
+    microbiotas in humans and their alteration in colon cancer patients. mBio.              48. Ozato N, Saito S, Yamaguchi T, et al. Blautia genus associated with visceral fat
+    2019;10(4):e01315–e01319. doi:10.1128/mBio.01315-19.                                        accumulation in adults 20–76 years of age. NPJ Biofilms Microbiomes. 2019;5(1):1–
+19. Cheng Y, Ling Z, Li L. The intestinal microbiota and colorectal cancer.                     9. doi:10.1038/s41522- 019- 0101- x.
+    Front Immunol. 2020;11. Accessed: January 15, 2023Available at:. https://www.           49. Mandal M, Olson DJ, Sharma T, Vadlamudi RK, Kumar R. Butyric acid induces
+    frontiersin.org/articles/10.3389/fimmu.2020.615056 .                                        apoptosis by up-regulating Bax expression via stimulation of the c-Jun N-terminal
+20. Taglialegna A. Commensal bacteria fight colorectal cancer. Nat Rev Micro.                   kinase/activation protein-1 pathway in human colon cancer cells. Gastroenterology.
+    2023;21(5):276. doi:10.1038/s41579- 023- 00887- 1.                                          2001;120(1):71–78. doi:10.1053/gast.2001.20897.
+21. Sánchez-Alcoholado L, Ramos-Molina B, Otero A, et al. The role of the gut               50. Pattayil L, Balakrishnan-Saraswathi HT. In vitro evaluation of apoptotic induc-
+    microbiome in colorectal cancer development and therapy response. Cancers.                  tion of butyric acid derivatives in colorectal carcinoma cells. Anticancer Res.
+    2020;12(6):1406. doi:10.3390/cancers12061406.                                               2019;39(7):3795–3801. doi:10.21873/anticanres.13528.
+22. Callahan BJ, McMurdie PJ, Rosen MJ, Han AW, Johnson AJA, Holmes SP.                     51. Bui TPN, Mannerås-Holm L, Puschmann R, et al. Conversion of dietary inositol
+    DADA2: high resolution sample inference from Illumina amplicon data. Nat                    into propionate and acetate by commensal Anaerostipes associates with host health.
+    Methods. 2016;13(7):581–583. doi:10.1038/nmeth.3869.                                        Nat Commun. 2021;12(1):4798. doi:10.1038/s41467- 021- 25081- w.
+
+
+
+
+                                                                                                                                       Clinical Colorectal Cancer March 2024           33
+     Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+     52. Parada Venegas D, De la Fuente MK, Landskron G, et al. Short chain fatty                60. Chen J, Wright K, Davis JM, et al. An expansion of rare lineage intestinal
+         acids (SCFAs)-mediated gut epithelial and immune regulation and its relevance               microbes characterizes rheumatoid arthritis. Genome Med. 2016;8(1):43. doi:10.
+         for inflammatory bowel diseases. Front Immunol. 2019;10. Accessed January                   1186/s13073- 016- 0299- 7.
+         25, 2023Available at:. https://www.frontiersin.org/articles/10.3389/fimmu.2019.         61. Masoodi I, Alshanqeeti AS, Alyamani EJ, et al. Microbial dysbiosis in irritable
+         00277 .                                                                                     bowel syndrome: a single-center metagenomic study in Saudi Arabia. JGH Open.
+     53. Carretta MD, Quiroga J, López R, Hidalgo MA, Burgos RA. Participation of short-             2020;4(4):649–655. doi:10.1002/jgh3.12313.
+         chain fatty acids and their receptors in gut inflammation and colon cancer. Front       62. Qin P, Zou Y, Dai Y, Luo G, Zhang X, Xiao L. characterization a novel butyric
+         Physiol. 2021;12. Accessed January 25, 2023Available at:. https://www.frontiersin.          acid-producing bacterium Collinsella aerofaciens Subsp. Shenzhenensis Subsp. Nov.
+         org/articles/10.3389/fphys.2021.662739 .                                                    Microorganisms. 2019;7(3):78. doi:10.3390/microorganisms7030078.
+     54. Zhang J, Lacroix C, Wortmann E, et al. Gut microbial beta-glucuronidase and             63. Liu Q, Mak JWY, Su Q, et al. Gut microbiota dynamics in a prospective cohort of
+         glycerol/diol dehydratase activity contribute to dietary heterocyclic amine biotrans-       patients with post-acute COVID-19 syndrome. Gut. 2022;71(3):544–552. doi:10.
+         formation. BMC Microbiol. 2019;19(1):99. doi:10.1186/s12866- 019- 1483- x.                  1136/gutjnl- 2021- 325989.
+     55. Ni JJ, Li XS, Zhang H, et al. Mendelian randomization study of causal link from         64. Shi F, Liu G, Lin Y, et al. Altered gut microbiome composition by appendec-
+         gut microbiota to colorectal cancer. BMC Cancer. 2022;22(1):1371. doi:10.1186/              tomy contributes to colorectal cancer. Oncogene. 2023;42:530–540. doi:10.1038/
+         s12885- 022- 10483- w.                                                                      s41388- 022- 02569- 3.
+     56. Zhou L, Zhang M, Wang Y, et al. Faecalibacterium prausnitzii Produces Butyrate          65. Chen Y, Zhou J, Wang L. Role and mechanism of gut microbiota in human
+         to Maintain Th17/Treg Balance and to Ameliorate Colorectal Colitis by Inhibiting            disease. Front Cell Infect Microbiol. 2021;11. Accessed: March 28, 2023. https:
+         Histone Deacetylase 1. Inflamm Bowel Dis. 2018;24(9):1926–1940. doi:10.1093/                //www.frontiersin.org/articles/10.3389/fcimb.2021.625913 .
+         ibd/izy182.                                                                             66. Vijay A, Valdes AM. Role of the gut microbiome in chronic diseases: a narrative
+     57. Dikeocha IJ, Al-Kabsi AM, Chiu HT, Alshawsh MA. Faecalibacterium praus-                     review. Eur J Clin Nutr. 2022;76(4):489–501. doi:10.1038/s41430- 021- 00991- 6.
+         nitzii ameliorates colorectal tumorigenesis and suppresses proliferation of             67. Mahdavi M, Laforest-Lapointe I, Massé E. Preventing colorectal cancer
+         HCT116 colorectal cancer cells. Biomedicines. 2022;10(5):1128. doi:10.3390/                 through      prebiotics.    Microorganisms.      2021;9(6):1325.     doi:10.3390/
+         biomedicines10051128.                                                                       microorganisms9061325.
+     58. Lopez-Siles M, Duncan SH, Garcia-Gil LJ, Martinez-Medina M. Faecalibac-                 68. Yuan B, Ma B, Yu J, et al. Fecal bacteria as non-invasive biomarkers for colorectal
+         terium prausnitzii: from microbiology to diagnostics and prognostics. ISME J.               adenocarcinoma. Front Oncol. 2021;11:664321. doi:10.3389/fonc.2021.664321.
+         2017;11(4):841–852. doi:10.1038/ismej.2016.176.                                         69. Rinninella E, Raoul P, Cintoni M, et al. What is the healthy gut microbiota
+     59. Janket SJ, Conte HA, Diamandis EP. Do Prevotella copri and blastocys-                       composition? A changing ecosystem across age, environment, diet, and diseases.
+         tis promote euglycaemia? Lancet Microbe. 2021;2(11):e565–e566. doi:10.1016/                 Microorganisms. 2019;7(1):14. doi:10.3390/microorganisms7010014.
+         S2666- 5247(21)00215- 9.
+
+
+
+
+34   Clinical Colorectal Cancer March 2024
+                                                                                Moumita Roy Chowdhury et al
+Supplementary materials
+
+
+Supplemental Figure S1   A: Relative abundance of bacteria in our 4 sample groups: Healthy, Healthy with blood, Low-grade
+                         lesions, and High-grade lesions at Phyla level. B: Relative abundance of bacteria in our 4 sample
+                         groups: Healthy, Healthy with blood, Low-grade lesions, and High-grade lesions at Class level.
+
+
+
+
+                                                                                           Clinical Colorectal Cancer March 2024   34.e1
+        Optimizing Fecal Occult Blood Test (FOBT) Colorectal Cancer Screening
+
+
+
+
+        Supplemental Figure S2        A: Differential analysis at the phylum level using ANCOM-BC using the Chi-square hypothesis test
+                                      expressed as logarithmic variation. B: Differential analysis at the class level using ANCOM-BC using
+                                      the Chi-square hypothesis test expressed as logarithmic variation.
+
+
+
+
+34.e2      Clinical Colorectal Cancer March 2024
+

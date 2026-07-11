@@ -1,0 +1,484 @@
+                                                      E U R O P E A N U R O L O GY 74 ( 2 0 18 ) 5 7 5 – 5 8 2
+
+
+
+available at www.sciencedirect.com
+journal homepage: www.europeanurology.com
+
+
+
+
+Platinum Priority – Prostate Cancer
+          Editorial by Ilaria Cavarretta, Nicasio Mancini and Andrea Salonia on pp. 583–584 of this issue
+
+
+Metabolic Biosynthesis Pathways Identified from Fecal
+Microbiome Associated with Prostate Cancer
+
+Michael A. Liss a,b,*, James Robert White c, Martin Goros d, Jonathan Gelfond d, Robin Leach a,
+Teresa Johnson-Pais a, Zhao Lai e, Elizabeth Rourke a, Joseph Basler a, Donna Ankerst a,
+Dimpy P. Shah d
+a
+    Department of Urology, University of Texas Health Science Center, San Antonio, TX, USA; b South Texas Veterans Healthcare System, San Antonio, TX, USA;
+c
+    Resphera Biosciences, Baltimore, MD, USA; d Department of Epidemiology and Biostatistics, University of Texas Health Science Center, San Antonio, TX, USA;
+e
+    Greehey Children's Cancer Research Institute, San Antonio, TX, USA
+
+
+
+Article info                                          Abstract
+
+Article history:                                      Background: The fecal microbiome is associated with prostate cancer risk factors (obesity,
+Accepted June 21, 2018                                inflammation) and can metabolize and produce various products that may influence cancer
+                                                      but have yet to be defined in prostate cancer.
+                                                      Objective: To investigate gut bacterial diversity, identify speciﬁc metabolic pathways associ-
+Associate Editor:
+                                                      ated with disease, and develop a microbiome risk proﬁle for prostate cancer.
+Matthew Cooperberg                                    Design, setting, and participants: After prospective collection of 133 rectal swab samples 2 wk
+                                                      before the transrectal prostate biopsy, we perform 16S rRNA amplicon sequencing on
+Statistical Editor:                                   105 samples (64 with cancer, 41 without cancer). Phylogenetic Investigation of Communities
+Andrew Vickers                                        by Reconstruction of Unobserved States (PICRUSt) was applied to infer functional categories
+                                                      associated with taxonomic composition. The p values were adjusted using the false discovery
+                                                      rate. The a- and b-diversity analyses were performed using QIIME. The Mann-Whitney U test
+Keywords:                                             was employed to evaluate the statistical signiﬁcance of b-diversity distances within and
+Microbiome                                            between groups of interest, and least absolute shrinkage and selection operator (LASSO)
+                                                      regression analysis was used to determine pathway signiﬁcance.
+Biomarker
+                                                      Outcome measurements and statistical analysis: The detection of prostate cancer on trans-
+Prostate cancer                                       rectal prostate needle biopsy and 16s microbiome proﬁle.
+Folate                                                Results and limitations: We identiﬁed signiﬁcant associations between total community
+Biotin                                                composition and cancer/non-cancer status (Bray-Curtis distance metric, p < 0.01). We identi-
+                                                      ﬁed signiﬁcant differences in enrichments of Bacteroides and Streptococcus species in cancer
+B vitamins                                            (all p < 0.04). Folate (LDA 3.8) and arginine (LDA 4.1) were the most signiﬁcantly altered
+                                                      pathways. We formed a novel microbiome–derived risk factor for prostate cancer based on
+                                                      10 aberrant metabolic pathways (area under curve = 0.64, p = 0.02).
+                                                      Conclusions: Microbiome analyses on men undergoing prostate biopsy noted mostly similar
+                                                      bacterial species diversity among men diagnosed with and without prostate cancer. The
+                                                      microbiome may have subtle inﬂuences on prostate cancer but are likely patient-speciﬁc and
+                                                      would require paired analysis and precise manipulation, such as improvement of natural
+                                                      bacterial folate production.
+                                                      Patient summary: Microbiome evaluation may provide patients with personalized data
+                                                      regarding the presence or absence of particular bacteria that have metabolic functions and
+                                                      implications regarding prostate cancer risk. The study provides a basis to investigate the
+                                                      manipulation of aberrant microbiomes to reduce prostate cancer risk.
+                                                                           Published by Elsevier B.V. on behalf of European Association of Urology.
+
+                                                     * Corresponding author. Department of Urology, University of Texas Health Science Center,
+                                                     7703 Floyd Curl Drive, San Antonio, TX 78229, USA.
+                                                     E-mail address: liss@uthscsa.edu (M.A. Liss).
+
+
+
+
+https://doi.org/10.1016/j.eururo.2018.06.033
+0302-2838/Published by Elsevier B.V. on behalf of European Association of Urology.
+576                                               E U R O P E A N U R O L O GY 74 ( 2 0 18 ) 5 7 5 – 5 8 2
+
+
+
+
+1.         Introduction                                                          2.3.     Microbiome analysis
+
+
+Each year, there are approximately 1 million prostate cancer                     Raw paired-end 16S rRNA reads (V1V2 region) were merged into
+                                                                                 consensus fragments by FLASH [9] and subsequently ﬁltered for quality
+diagnoses worldwide and attributed to genetics, race, age,
+                                                                                 (target error rate <0.5%) and length (minimum 200 bp) using Trimmo-
+and lifestyle factors (diet/obesity) [1]. The intestinal micro-
+                                                                                 matic [10] and QIIME [11,12]. Spurious hits to the PhiX control genome
+biome has been implicated in lifestyle factors and may
+                                                                                 were identiﬁed using BLASTN and removed. Passing sequences were
+impact the availability of various micronutrients on cancer                      trimmed of primers, evaluated for chimeras with UCLUST (de novo
+risk [2]. Although some publications report on the urinary                       mode) [13], and screened for human–associated contaminant using
+microbiome, we focus on the systemic effects from the fecal                      Bowtie2 [14], followed by a more sensitive BLASTN search against the
+microbiome to provide insight regarding metabolic path-                          GreenGenes 16S rRNA database [15]. Chloroplast and mitochondrial
+ways to manipulate in the diet for prostate cancer [3–5].                        contaminants were detected and ﬁltered using the Ribosomal Database
+    Intestinal bacteria contain a wealth of information due to                   Project classiﬁer [16] with a conﬁdence threshold of 80%. High-quality
+their diverse properties, including the ability to produce                       16S rRNA sequences were assigned to a high-resolution taxonomic
+                                                                                 lineage using Resphera Insight [17–21]. Phylogenetic Investigation of
+influential products on cancer development and progression.
+                                                                                 Communities by Reconstruction of Unobserved States (PICRUSt) analysis
+A reduced diversity profile in the intestinal microbiome can
+                                                                                 was performed to identify Kyoto Encyclopedia of Genes and Genomes
+lead to overgrowth of bacteria causing mild systemic
+                                                                                 (KEGG) metabolic pathways potentially affected by groups of bacteria.
+inflammation called endotoxemia, contributing to an overall                      PICRUSt is a bioinformatics software package designed to predict
+inflammatory state promoting neoplasia in many organ sites                       metagenome functional content from marker gene (eg, 16S rRNA)
+[6,7]. A recent case-control study (n = 20) did suggest                          surveys and full genomes. PICRUSt was applied to infer functional
+differences in fecal microbiome in those men with cancer                         categories associated with taxonomic composition [22]. Differential
+compared with benign prostate hypertrophy. They found a                          abundance analysis utilized the nonparametric permutation difference
+higher abundance of Bacteroides massiliensis in prostate cancer                  test for a diversity and PICRUSt values or the negative binomial test
+and higher Faecalibacterium prausnitzii and Eubacterium                          (DESeq [23]) for taxonomic count data. Then, p values were adjusted
+rectalie in controls and suggested an influence on micronu-                      using the false discovery rate [24]. The a- and b-diversity analyses were
+                                                                                 performed using QIIME. The Mann-Whitney U test was employed to
+trients [8]. Groups of other bacteria could also play a role in
+                                                                                 evaluate the statistical signiﬁcance of b-diversity distances within and
+prostate cancer development by producing and manipulating
+                                                                                 between groups of interest.
+various proteins, vitamins, minerals, and other substances.
+    We anticipate differences in those men diagnosed with
+                                                                                 2.4.     Statistical analysis
+cancer compared with those without cancer and hypothe-
+size that there could be a particular set of bacteria to target                  We utilized t tests for continuous variables and chi-square tests for
+in probiotics for future studies regarding prostate cancer                       categorical variables. Using the PICRUSt data, we compared continuous
+prevention. Herein, we investigate bacterial diversity in                        variables for microbial metabolic function sets in cancer versus non-
+patients with or without prostate cancer. Additionally, we                       cancer groups. Univariate and binary logistic regression analyses were
+examine particular bacterial species differences in the fecal                    performed on standard predictor variables of cancer to include in the
+microbiome and their related metabolic pathways associ-                          microbiome metabolic proﬁle. An area under the receiver operator curve
+ated with prostate cancer.                                                       (AUC) was used to compare the predictive ability of the microbiome
+                                                                                 compared with other risk factors. An AUC of 1.0 is a perfect prediction,
+                                                                                 and an AUC of 0.5 is equivalent to a random, uncorrelated predictor.
+2.         Patients and methods
+                                                                                 2.5.     Development of the microbiome profile
+2.1.       Patients
+                                                                                 Due to a large number of possible individual patterns from this analysis,
+We prospectively collected rectal swab samples at least 2 wk prior to a          we identiﬁed a list of KEGG biologic pathways to use in our overall
+transrectal prostate biopsy. We excluded patients who had any antibiotic         microbiome proﬁle targeting speciﬁc biological pathways. We utilized
+therapy in the last 6 mo. All samples were analyzed to identify cancer
+                                                                                 least absolute shrinkage and selection operator (LASSO) analysis as a
+versus no cancer; however, for the association of future risk of prostate
+                                                                                 form of linear regression modeling to limit (shrink) the absolute value
+cancer, we excluded men with prostate-speciﬁc antigen (PSA) higher               toward the mean and to perform variable selection when there is a high
+than 20.
+                                                                                 likelihood of multicollinearity. We used a LASSO regression analysis to
+                                                                                 identify the pathways most likely to differentiate between prostate
+2.2.       Rectal swab collection                                                cancer and no cancer disease using a cross-validated model-ﬁtting
+                                                                                 procedure. Once we identiﬁed the microbiome metabolic pathways, we
+The rectal swab technique involved the urology provider by using sterile         calculated quintiles for each metabolic process derived from PICRUSt
+Medline E-Z lubricating jelly and placing the swab approximately                 values. If the value was positively (or negatively) correlated to cancer,
+5.08 cm into the rectum and turning the swab 360 degrees. Once the               then values in the top (or lowest) quintile (20th percentile) were coded
+collection was complete, the rectal swab was removed and examined for            as 1.0, indicating positive, and all other values were coded as 0, indicating
+stool. The physician re-inserted the swab if there was no material               null. We compared utilizing only the LASSO regression–derived variables
+collected. Next, the physician placed the swab in a 15-ml sterile                (“LASSO microbiome proﬁle”) to the secondary proﬁle by including the B
+centrifuge tube containing 1 ml of phosphate-buffered saline (PBS). We           vitamins and carbohydrate proﬁles. Additional proﬁles were identiﬁed
+stored the swab specimen at 4  C during transport to the laboratory             by LDA effect size (LefSe) analysis (Fig. 3A and 3B) in a biased approach to
+within 4 h of collection. We saved the swab and PBS material at –20  C          give preference to those pathways that are modiﬁable and not human–
+and then performed DNA isolation.                                                associated functional categories (such as “cardiac muscle contraction” or
+                                              E U R O P E A N U R O L O G Y 74 ( 2 0 18 ) 5 7 5 – 5 8 2                               577
+[(Fig._1)TD$IG]
+
+
+
+
+                                                           Fig. 1 – Consort diagram.
+
+
+
+
+“pathways in cancer” identiﬁed in univariate analysis). After the            differentially abundant between cancer and non-cancer
+selection of functional pathways, we also coded them by quintile to          groups (adj p = 0.68). At the species level, we found
+provide the 10 pathway–based overall “microbiome score.”                     significant differences between cancer and non-cancer
+                                                                             groups for some well-represented members including
+3.                Results                                                    enrichments of Bacteroides and Streptococcus species in
+                                                                             cancer compared with non-cancer (all p < 0.04). When we
+3.1.              Demographic data                                           examined differentially abundant microbial gene content
+                                                                             using PICRUSt analysis, we identified significant differences
+We prospectively collected 133 rectal swab samples at least                  between cancer group and non-cancer group microbiome
+2 wk prior to a transrectal prostate biopsy. After excluding                 profiles (Table 2) and associated LefSe analysis (Fig. 3A and
+patients with any antibiotic therapy in the last 6 mo and                    3B). We performed a correlation plot of the functional
+low-quality samples, we analyzed 105 samples. To identify                    PICRUSt variables to include age and PSA and noted that the
+the specific target population that could be utilized to alter               B vitamins (folate, biotin, and riboflavin) were correlated
+the microbiome, we were left with 64 men with prostate                       (Supplementary Fig. 2).
+cancer and 41 without cancer (Fig. 1). Demographics are
+displayed in Table 1.                                                        3.3.      Microbiome score
+
+
+3.2.              Microbiome results                                         We generated the associated KEGG metabolic pathways as
+                                                                             part of the PICRUSt bioinformatics platform. We then
+We computed a variety of a-diversity estimators to measure                   performed an unbiased selection using LASSO linear
+within-sample diversity and compared our two groups                          regression analysis and subsequent biased selection using
+using the nonparametric difference test. We did not identify                 LefSe analysis based on the ability to target the pathway. In
+any significant associations between cancer status and a                     LASSO regression analysis, the four pathways identified
+diversity. We computed Bray-Curtis and unweighted Uni-                       were not individually significant in logistic regression, but
+Frac distances to assess b diversity (shared/unique diversi-                 they were predictive in AUC curve analysis (AUC = 0.63; 95%
+ty) across samples and by group membership. We also                          confidence interval [CI] = 0.52–0.75), p = 0.03]. While
+identified significant associations between total communi-                   disease–based pathways such as Alzheimer's and Hunting-
+ty composition and cancer/non-cancer status, which led to                    ton's disease may perform well for predictive markers, they
+associations between total community composition and                         do not provide the ability for modification of the micro-
+cancer/non-cancer status (Bray-Curtis distance metric,                       biome. Therefore, using LefSe, we identified six additional
+p < 0.01, Fig. 2). We identified a significant overlap between               metabolic profiles that could be added to the already
+cancer and non-cancer microbiome profiles using principal                    defined LASSO regression analysis to develop a microbiome
+component analysis. Additionally, the overall differential                   score. After identifying 10 microbiome metabolic pathways
+abundance analysis indicated that the vast majority of taxa                  of interest, we computed the microbiome score (0–10;
+were statistically similar between cancer and non-cancer                     Fig. 4). A number of aberrant microbiome–associated gut
+groups (Supplementary Fig. 1). Bifidobacterium, usually                      metabolic pathways are associated with cancer compared
+associated with a healthy flora, was infrequent and was not                  with no cancer on biopsy (Fig. 4; Kendell's Tau for ordinal
+578                                                                 E U R O P E A N U R O L O GY 74 ( 2 0 18 ) 5 7 5 – 5 8 2
+
+
+
+                  Table 1 – Univariate and multivariate analyses based on demographics obtained prior to transrectal prostate needle biopsy
+
+                  Univariate analysis                                           Prostate cancer                                 No prostate cancer         p value
+                                                                                     n = 64                                            n = 41
+                                                                             n (%) or median (IQR)                             n (%) or median (IQR)
+
+                  Age                                                            66.5 (62–70)                                     65 (60–68.5)              0.1
+                  Body mass index                                                29.7 (27.5–34.9)                                 28.7 (25.9–31.8)          0.7
+                  Diabetes mellitus                                              19 (18.1)                                        14 (13.3)                 0.6
+                  Race                                                                                                                                      0.4
+                    White                                                        35 (35)                                          28 (28)
+                    African-American                                             18 (18.2)                                        8 (8.1)
+                    Latino/other                                                 5 (5.1)                                          5 (5.1)
+                  PSA                                                            6.1 (4.3–8.3)                                    6.1 (4.6–8.2)             0.7
+                  Abnormal prostate examination                                  18 (18.4)                                        8 (8.4)                   0.2
+                  Family history                                                 13 (13.4)                                        12 (12.4)                 0.4
+                  Lower urinary tract symptoms a                                 26 (24.8)                                        15 (14.3)                 0.7
+                  Number of negative prostate biopsies
+                  Active surveillance                                            29 (29)                                          0
+                  Gleason score                                                                                                                             NA
+                    Group 1 (3 + 3)                                              28 (48.3)
+                    Group 2 (3 + 4)                                              20 (34.5)
+                    Group 3 (4 + 3)                                              6 (10.3)
+                    Group 4 (4 + 4)                                              2 (3.4)
+                    Group 5 > (4 + 5)                                            2 (3.4)
+                  Number of aberrant microbiome proﬁles                          2 (0–4)                                          1 (0–2)                   0.03
+                  Multivariate analysis b                                        OR (95% CI)
+                  PSA                                                            0.99 (0.89–1.11)                                 0.9
+                  Age                                                            1.04 (0.98–1.11)                                 0.2
+                  Number of aberrant microbiome proﬁles                          1.25 (1.01–1.55)                                 0.04
+
+                  CI = conﬁdence interval; IQR = interquartile range; OR = odds ratio; PSA = prostate-speciﬁc antigen.
+                  a
+                    Lower urinary tract symptoms are indicated by the medication report stating five a reductase inhibitors or a blocker use.
+                  b
+                    We chose age and PSA as the strongest predictors of prostate cancer and forced into the model. This model excludes PSA >20 (n = 99).
+
+
+[(Fig._2)TD$IG]
+
+
+
+
+Fig. 2 – Microbial diversity. Beta-diversity analysis reveals an altered intestinal microbiome composition associated with prostate cancer. Left: Mean
+beta-diversity distances (Bray-Curtis/Unweighted UniFrac) within and between groups by cancer status shows significant associations. Patients with
+prostate cancer are significantly more similar in taxonomic composition compared with the non-cancer group. Right: Principal coordinates analysis
+plot showing patients with and without cancer (based on Bray-Curtis distances).
+PCoA = principal coordinate analysis.
+
+
+
+
+assessment, p = 0.01). We test the microbiome score to                                              factor in a univariate analysis; therefore, we selected PSA
+predict future risk of prostate cancer; therefore, we                                               and age in the logistic regression model as the most
+excluded six men with a high likelihood of prostate cancer                                          historically influential factors for prostate cancer. Control-
+(eg, PSA >20) for the final multivariate statistical analysis                                       ling for age and PSA, the microbiome score remained
+because their risk would outweigh most other factors.                                               significant (odds ratio [OR] = 1.25 [1.01–1.55]; p = 0.04;
+Additionally, the microbiome score was the only significant                                         Table 1]. The microbiome score also had a higher AUC over
+                                                                    E U R O P E A N U R O L O G Y 74 ( 2 0 18 ) 5 7 5 – 5 8 2                               579
+
+
+                  Table 2 – Significant mean PICRUSt values comparing prostate                     the LASSO approach (AUC = 0.64; 95% CI = 0.53–0.75);
+                  cancer to no prostate cancer
+                                                                                                   p = 0.02; Fig. 5).
+                                              Prostate cancerNo prostate cancer
+
+                                                 Mean (SD)         Mean (SD)       p value         4.         Discussion
+                                               PICRUSt value     PICRUSt value
+                                                                                                   We have identified several factors in which the intestinal
+                  Negative association
+                    Biotin                     1.595 (0.149)      1.689 (0.209)      0.01          microbiome could be involved in men diagnosed with
+                    Folate                     4.138 (0.393)      4.455 (0.643)      0.007         prostate cancer:
+                    Riboﬂavin                  2.660 (0.252)      2.827 (0.402)      0.02
+                    Arginine                   0.021 (0.014)      0.040 (0.040)      0.005
+                    Glycan                     0.006 (0.010)      0.021 (0.041)      0.03
+                                                                                                   1. Microbiome analysis on men undergoing prostate biopsy
+                    Alzheimer's disease        0.491 (0.081)      0.571 (0.156)      0.004
+                    Huntington's disease       0.364 (0.128)      0.460 (0.209)      0.01             noted mostly overlapping bacterial communities be-
+                  Positive association                                                                tween those with and without prostate cancer.
+                    Carbohydrate (unclassiﬁed) 1.958 (0.322)      1.756 (0.373)      0.005         2. Bacteria associated with carbohydrate metabolism path-
+                    C5 Branched dibasic acid   3.004 (0.212)      2.856 (0.364)      0.02
+                                                                                                      ways were in abundance, and natural B-vitamin produc-
+                    Starch/sucrose             12.054 (1.386)     9.470 (1.765)      0.03
+                                                                                                      tion was lacking in patients with prostate cancer.
+                  PICRUSt = Phylogenetic Investigation of Communities by Reconstruction of         3. The identification of a new 10-microbiome metabolic
+                  Unobserved States; SD = standard deviation.
+                                                                                                      pathway score may provide an additional risk factor for
+                                                                                                      prostate cancer, which is potentially modifiable. We noted
+[(Fig._3)TD$IG]
+
+
+
+
+Fig. 3 – LefSe analyses including the top differentially abundant PICRUSt categories. Predicted KEGG functional pathway differences between cancer
+(dark orange) and no cancer (orange) participants. PICRUSt was used to predict functional potential of microbiomes using 16s rRNA gene sequence
+data. (A) Indicates all PICRUSt variables and (B) indicates those specifically modifiable factors after removal of all human-associated functional
+categories. Differentially enriched bacterial functions among groups were identified using LefSe. Pathway differences plot as LDA score (log 10). Bars to
+the right of zero represent bacterial functions enriched in the microbiome of patients without prostate cancer, and bars to the left of zero represent
+bacterial functions in those diagnosed with prostate cancer with prostate needle biopsy.
+KEGG = Kyoto Encyclopedia of Genes and Genomes; LDA = linear discriminant analysis; LefSe = LDA effect size; PICRUSt = Phylogenetic Investigation of
+Communities by Reconstruction of Unobserved States.
+580                                              E U R O P E A N U R O L O GY 74 ( 2 0 18 ) 5 7 5 – 5 8 2
+[(Fig._4)TD$IG]
+
+
+
+
+Fig. 4 – Pyramid plot of microbiome-associated gut metabolic pathways (KEGG). Pyramid plot displaying the number of microbiome-associated gut
+metabolic pathways (KEGG) associated with cancer compared with no cancer on biopsy (Kendell's Tau for ordinal assessment, p = 0.01). Pyramid plot in
+which the X axis is the number of cases (individual patients) and the Y axis is the number of aberrant microbiome metabolic profiles. The
+10 important microbiome PICRUSt pathways are represented, and the asterisk (*) indicates those important on the LASSO regression analysis.
+KEGG = Kyoto Encyclopedia of Genes and Genomes; LASSO = least absolute shrinkage and selection operator; PICRUSt = Phylogenetic Investigation of
+Communities by Reconstruction of Unobserved States.
+
+
+
+
+[(Fig._5)TD$IG]
+
+
+
+
+Fig. 5 – Microbiome score. Receiver operating curve for the presence of prostate cancer on prostate biopsy. We utilized PSA as there were no other
+known markers that are predictive in this cohort for prostate cancer. We excluded men with a PSA >20 for prediction purposes in this particular
+analysis. The two microbiome-associated lines are comparing two techniques to identify the most important microbiome KEGG metabolic pathways.
+The LASSO regression analysis identified four metabolic pathways with a point given for each association (score 0–4). The microbiome profile is a
+larger number of KEGG pathways associated with prostate cancer (n = 10) including vitamin B pathway and other pathways that could be targeted with
+probiotics or dietary interventions.
+AUC = area under the curve; CI = confidence interval; KEGG = Kyoto Encyclopedia of Genes and Genomes; LASSO = least absolute shrinkage and selection
+operator; PSA = prostate-specific antigen; ROC = receiver operating curve.
+                                             E U R O P E A N U R O L O G Y 74 ( 2 0 18 ) 5 7 5 – 5 8 2                                                     581
+
+
+
+   overlap in bacterial community analysis in principal                     be one of the most robust indicators associated with prostate
+   component analysis between cancer and non-cancer                         cancer in LASSO analysis. As with high levels of other B
+   patients. We found subtle differences within groups of                   vitamins, biotin could be harmful if taken in highly
+   bacteria regarding specific metabolism pathways, which                   concentrated supplements [34].
+   may be informative to individual patients at high risk.                     Our study has limitations. We collected specimens by
+   Unfortunately, as a microbiome score, the AUC for prostate               rectal swab rather than stool collection techniques. Stool
+   cancer prediction is suboptimal (AUC = 0.64) despite being               provides superior DNA yield at the expense of collection
+   statistically significant; therefore, while the findings are of          compliance. The rectal swabs were very easy to obtain in
+   biological interest, the microbiome score or individual                  our clinic because all men undergo a rectal culture
+   bacterial analysis is unlikely to lead to biomarkers of risk.            screening protocol for the presence of fluoroquinolone–
+                                                                            resistant bacteria. We then use the extra swab for
+    The intestinal microbiome assists in digestion and provides             microbiome research. This methodology has a practical
+a source of various bioactive substances such as folate,                    advantage of increasing compliance and, thus, can become
+riboflavin, biotin, arginine, and butyrate [25]. Folate is the              part of a routine clinic visit at the time of biopsy. We did not
+most intriguing metabolic pathway according to the research                 use magnetic resonance imaging-targeted biopsy, which
+regarding folate and the risk of prostate cancer [26,27]. In the            may have helped with the location of tumors in patients
+aspirin and folate polyp prevention trial, a secondary analysis             where we discovered “no cancer.” The no-cancer group did
+revealed that moderate folic acid supplementation resulted in               have larger prostates and could lead to sampling error. We
+an age-adjusted hazard ratio = 2.63 (95% CI = 1.23–5.65, Wald               could not evaluate a causal inference between folate and
+test p = 0.01) for developing prostate cancer [28]. Interestingly,          prostate cancer as we did not collect plasma B vitamin levels
+baseline dietary folate intake and plasma folate in non-                    or food frequency questionnaires. Several publications
+supplement users are protective of prostate cancer, which                   associated inflammation with a benign or malignant
+may implicate that supplements may equate to an increased                   disease. Based on a retrospective review of the pathology
+risk of cancer and natural sources of folate may be                         reports, we documented that prostate inflammation was
+preventative. Our study noted a higher prevalence of                        more common in non-cancer cases (10/41, 24%) compared
+microbiota involved in natural folate production in men                     with prostate cancer cases (5/64, 7.8%; p = 0.018). To provide
+without prostate cancer. Therefore, one could potentially                   an appropriate inflammatory assessment, pathologists need
+encourage increased natural folate production in high-risk                  to examine each slide for inflammation irrespective of the
+men by using probiotics and reducing supplementation                        diagnosis, which was beyond the scope of this project.
+[29]. An interaction exists between folate and riboflavin
+(vitamin B2) because riboflavin is a co-factor of methylenete-
+trahydrofolate reductase [30]. In the Melbourne Collaborative               5.         Conclusions
+Cohort Study with more than 40 000 participants, dietary
+intake of riboflavin and folate seemed to have a U-shaped                   The fecal microbiome of men undergoing prostate biopsy is
+curve concerning the incidence of prostate cancer [31].                     similar between cancer and non-cancer groups. The micro-
+    Other exciting pathways include biotin and arginine.                    biome metabolic pathways provide interesting biological
+Mammalian cells cannot produce the vitamin biotin                           insights; however, it is unlikely to produce a “cancer”
+(vitamin B7) and, therefore, depend on the intestinal                       microbiome predictive risk profile. The most interesting
+microbiota to maintain healthy levels. Again, this protein                  bacterial metabolic pathways are ones that create natural
+is not enriched (is missing) in men diagnosed with prostate                 folate, and other B-vitamins that are more common among
+cancer. Prostate cancer cells deficient in argininosuccinate                those without prostate cancer warrant further investigation.
+synthetase are sensitive to arginine deprivation by arginine
+deiminase in pre-clinical models [32].
+                                                                            Author contributions: Michael A. Liss had full access to all the data in the
+    The microbiome score is an addition of aberrant
+                                                                            study and takes responsibility for the integrity of the data and the
+microbiome functional profiles associated with prostate
+                                                                            accuracy of the data analysis.
+cancer. In the LASSO regression analysis, two neurodegener-
+ative pathways (Alzheimer's and Huntington's) were noted                    Study concept and design: Liss.
+to be abnormal in cancer patients. Usually PICRUSt disease–                 Acquisition of data: Liss, Rourke, Basler, Johnson-Pais[1_TD$IF], Zhao.
+based pathways are not reported; however, in this case, a risk              Analysis and interpretation of data: Liss, Leach, White, Goros, Gelfond,
+                                                                            Ankerst, Shah, Johnson-Pais[1_TD$IF], Zhao.
+of neurodegenerative diseases has been shown to be
+                                                                            Drafting of the manuscript: Liss, White, Gelfond, Shah.
+inversely related to all cancers including prostate [33]. The
+                                                                            Critical revision of the manuscript for important intellectual content: Liss,
+pathways are used for their predictive ability as a prostate
+                                                                            Leach, White, Goros, Gelfond, Ankerst, Shah, Johnson-Pais.
+cancer risk factor rather than their ability to be modified.                Statistical analysis: White, Goros, Gelfond, Ankerst[2_TD$IF], Zhao.
+Therefore, we added the B vitamins that were significant in                 Obtaining funding: Liss.
+our analysis that also have a modifiable potential to slightly              Administrative, technical, or material support: White, Leach, Johnson-Pais[1_TD$IF],
+improve the AUC. We specifically note that folate and                       Zhao.
+riboflavin may have implications for modifiable risk factors.               Supervision: Liss, Leach, Shah.
+The lack of a biotin–associated microbiome was observed to                  Other: None
+582                                                   E U R O P E A N U R O L O GY 74 ( 2 0 18 ) 5 7 5 – 5 8 2
+
+
+
+
+Financial disclosures: Michael A. Liss certiﬁes that all conﬂicts of interest,       [15] McDonald D, Price MN, Goodrich J, et al. An improved Greengenes
+including speciﬁc ﬁnancial interests and relationships and afﬁliations                    taxonomy with explicit ranks for ecological and evolutionary anal-
+relevant to the subject matter or materials discussed in the manuscript                   yses of bacteria and archaea. ISME J 2012;6:610–8.
+(eg, employment/afﬁliation, grants or funding, consultancies, honoraria,             [16] Wang Q, Garrity GM, Tiedje JM, Cole JR. Naive Bayesian classiﬁer for
+stock ownership or options, expert testimony, royalties, or patents ﬁled,                 rapid assignment of rRNA sequences into the new bacterial taxon-
+received, or pending), are the following: James Robert White is the                       omy. Appl Environ Microbiol 2007;73:5261–7.
+founder of Resphera Biosciences that performed the microbiome                        [17] Grim CJ, Daquigan N, Lusk Pfefer TS, Ottesen AR, White JR, Jarvis KG.
+analysis but did not inform the statistical analysis of the biomarker                     High-resolution microbiome proﬁling for detection and tracking of
+component of the manuscript. Dr. White was paid as a consultant on the                    Salmonella enterica. Front Microbiol 2017;8:1587.
+microbiome analysis.                                                                 [18] Ottesen A, Ramachandran P, Reed E, et al. Enrichment dynamics of
+                                                                                          Listeria monocytogenes and the associated microbiome from natu-
+Funding/Support and role of the sponsor: Roger L. and Laura D. Zeller
+                                                                                          rally contaminated ice cream linked to a listeriosis outbreak. BMC
+Charitable Foundation and Los Padres, a San Antonio–based prostate
+                                                                                          Microbiol 2016;16:275.
+cancer foundation.
+                                                                                     [19] Abernethy MG, Rosenfeld A, White JR, Mueller MG, Lewicky-Gaupp
+
+Acknowledgments: We thank all the patients, physicians, residents, and                    C, Kenton K. Urinary microbiome and cytokine levels in women
+
+research coordinators who worked together to accomplish this project.                     with interstitial cystitis. Obstet Gynecol 2017;129:500–6.
+                                                                                     [20] Drewes JL, White JR, Dejea CM, et al. High-resolution bacterial 16S
+                                                                                          rRNA gene proﬁle meta-analysis and bioﬁlm status reveal common
+                                                                                          colorectal cancer consortia. NPJ Bioﬁlms Microbiomes 2017;3:34.
+Appendix A. Supplementary data                                                       [21] Daquigan N, Seekatz AM, Greathouse KL, Young VB, White JR. High-
+                                                                                          resolution proﬁling of the gut microbiome reveals the extent of
+   Supplementary material related to this article can be                                  Clostridium difﬁcile burden. NPJ Bioﬁlms Microbiomes 2017;3:35.
+found, in the online version, at https://doi.org/10.1016/j.                          [22] Langille MG, Zaneveld J, Caporaso JG, et al. Predictive functional
+eururo.2018.06.033.                                                                       proﬁling of microbial communities using 16S rRNA marker gene
+                                                                                          sequences. Nat Biotechnol 2013;31:814–21.
+                                                                                     [23] Anders S, Huber W. Differential expression analysis for sequence
+References
+                                                                                          count data. Genome Biol 2010;11:R106.
+ [1] Wong MC, Goggins WB, Wang HH, et al. Global incidence and                       [24] Benjamini Y, Drai D, Elmer G, Kafkaﬁ N, Golani I. Controlling the
+      mortality for prostate cancer: analysis of temporal patterns and                    false discovery rate in behavior genetics research. Behav Brain Res
+      trends in 36 countries. Eur Urol 2016;70:862–74.                                    2001;125:279–84.
+ [2] Amirian ES, Petrosino JF, Ajami NJ, Liu Y, Mims MP, Scheurer ME.                [25] Paul B, Barnes S, Demark-Wahnefried W, et al. Inﬂuences of diet and
+      Potential role of gastrointestinal microbiota composition in pros-                  the gut microbiome on epigenetic modulation in cancer and other
+      tate cancer risk. Infect Agent Cancer 2013;8:42.                                    diseases. Clin Epigenetics 2015;7:112.
+ [3] Cavarretta I, Ferrarese R, Cazzaniga W, et al. The microbiome of the            [26] Price AJ, Travis RC, Appleby PN, et al. Circulating folate and vitamin
+      prostate tumor microenvironment. Eur Urol 2017;72:625–31.                           B12 and risk of prostate cancer: a collaborative analysis of individ-
+ [4] Sfanos KS, Yegnasubramanian S, Nelson WG, De Marzo AM. The                           ual participant data from six cohorts including 6875 cases and
+      inﬂammatory microenvironment and microbiome in prostate can-                        8104 controls. Eur Urol 2016;70:941–51.
+      cer development. Nat Rev Urol 2018;15:11–24.                                   [27] Wang R, Zheng Y, Huang JY, Zhang AQ, Zhou YH, Wang JN. Folate
+ [5] Shrestha E, White JR, Yu SH, et al. Proﬁling the urinary microbiome                  intake, serum folate levels, and prostate cancer risk: a meta-analy-
+      in men with positive versus negative biopsies for prostate cancer. J                sis of prospective studies. BMC Public Health 2014;14:1326.
+      Urol 2018;199:161–71.                                                          [28] Figueiredo JC, Grau MV, Haile RW, et al. Folic acid and risk of
+ [6] Hullar MA, Burnett-Hartman AN, Lampe JW. Gut microbes, diet, and                     prostate cancer: results from a randomized clinical trial. J Natl
+      cancer. Cancer Treat Res 2014;159:377–99.                                           Cancer Inst 2009;101:432–5.
+ [7] Schwabe RF, Jobin C. The microbiome and cancer. Nat Rev Cancer                  [29] Pompei A, Cordisco L, Amaretti A, Zanoni S, Matteuzzi D, Rossi M.
+      2013;13:800–12.                                                                     Folate production by biﬁdobacteria as a potential probiotic proper-
+ [8] Golombos DM, Ayangbesan A, O’Malley P, et al. The role of gut                        ty. Appl Environ Microbiol 2007;73:179–85.
+      microbiome in the pathogenesis of prostate cancer: a prospective,              [30] Powers HJ. Interaction among folate, riboﬂavin, genotype, and
+      pilot study. Urology 2018;111:122–8.                                                cancer, with reference to colorectal and cervical cancer. J Nutr
+ [9] Magoc T, Salzberg SL. FLASH: fast length adjustment of short reads                   2005;135:2960S–6S.
+      to improve genome assemblies. Bioinformatics 2011;27:2957–63.                  [31] Bassett JK, Severi G, Hodge AM, et al. Dietary intake of B vitamins
+[10] Bolger AM, Lohse M, Usadel B. Trimmomatic: a ﬂexible trimmer for                     and methionine and prostate cancer incidence and mortality. Can-
+      Illumina sequence data. Bioinformatics 2014;30:2114–20.                             cer Causes Control 2012;23:855–63.
+[11] Kuczynski J, Stombaugh J, Walters WA, Gonzalez A, Caporaso JG,                  [32] Hsueh EC, Knebel SM, Lo WH, Leung YC, Cheng PN, Hsueh CT.
+      Knight R. Using QIIME to analyze 16S rRNA gene sequences from                       Deprivation of arginine by recombinant human arginase in prostate
+      microbial communities. Curr Protoc Bioinformatics 2012, 1E–5.                       cancer cells. J Hematol Oncol 2012;5:17.
+[12] Caporaso JG, Bittinger K, Bushman FD, DeSantis TZ, Andersen GL,                 [33] Plun-Favreau H, Lewis PA, Hardy J, Martins LM, Wood NW. Cancer
+      Knight R. PyNAST: a ﬂexible tool for aligning sequences to a tem-                   and neurodegeneration: between the devil and the deep blue sea.
+      plate alignment. Bioinformatics 2010;26:266–7.                                      PLoS Genet 2010;6:e1001257.
+[13] Edgar RC, Haas BJ, Clemente JC, Quince C, Knight R. UCHIME                      [34] Rodriguez-Melendez R, Grifﬁn JB, Zempleni J. Biotin supplementa-
+      improves sensitivity and speed of chimera detection. Bioinformat-                   tion increases expression of the cytochrome P450 1B1 gene in
+      ics 2011;27:2194–200.                                                               Jurkat cells, increasing the occurrence of single-stranded DNA
+[14] Langmead B, Salzberg SL. Fast gapped-read alignment with Bowtie                      breaks. J Nutr 2004;134:2222–8.
+      2. Nat Methods 2012;9:357–9.
+

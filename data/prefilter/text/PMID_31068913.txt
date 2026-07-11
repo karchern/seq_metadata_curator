@@ -1,0 +1,462 @@
+                                                                                                                                              ORIGINAL RESEARCH
+                                                                                                                                               published: 24 April 2019
+                                                                                                                                       doi: 10.3389/fmicb.2019.00826
+
+
+
+
+                                             Identifying Gut Microbiota
+                                             Associated With Colorectal Cancer
+                                             Using a Zero-Inflated Lognormal
+                                             Model
+                                             Dongmei Ai 1,2*, Hongfei Pan 2 , Xiaoxin Li 2 , Yingxin Gao 2 , Gang Liu 2 and Li C. Xia 3*
+                                             1
+                                              Basic Experimental of Natural Science, University of Science and Technology Beijing, Beijing, China, 2 School of
+                                             Mathematics and Physics, University of Science and Technology Beijing, Beijing, China, 3 Department of Medicine, Stanford
+                                             University School of Medicine, Stanford, CA, United States
+
+
+
+                                             Colorectal cancer (CRC) is the third most common cancer worldwide. Its incidence is still
+                                             increasing, and the mortality rate is high. New therapeutic and prognostic strategies are
+                                             urgently needed. It became increasingly recognized that the gut microbiota composition
+                                             differs significantly between healthy people and CRC patients. Thus, identifying the
+                                             difference between gut microbiota of the healthy people and CRC patients is fundamental
+                                             to understand these microbes’ functional roles in the development of CRC. We studied
+                           Edited by:        the microbial community structure of a CRC metagenomic dataset of 156 patients
+                              Qi Zhao,
+                                             and healthy controls, and analyzed the diversity, differentially abundant bacteria, and
+             Liaoning University, China
+                                             co-occurrence networks. We applied a modified zero-inflated lognormal (ZIL) model
+                         Reviewed by:
+                            Quan Chen,       for estimating the relative abundance. We found that the abundance of genera:
+   Icahn School of Medicine at Mount         Anaerostipes, Bilophila, Catenibacterium, Coprococcus, Desulfovibrio, Flavonifractor,
+                    Sinai, United States
+                            Lingling An,     Porphyromonas, Pseudoflavonifractor, and Weissella was significantly different between
+   University of Arizona, United States      the healthy and CRC groups. We also found that bacteria such as Streptococcus,
+                  *Correspondence:           Parvimonas, Collinsella, and Citrobacter were uniquely co-occurring within the CRC
+                           Dongmei Ai
+                                             patients. In addition, we found that the microbial diversity of healthy controls is
+              aidongmei@ustb.edu.cn
+                              Li C. Xia      significantly higher than that of the CRC patients, which indicated a significant negative
+                  l.c.xia@stanford.edu       correlation between gut microbiota diversity and the stage of CRC. Collectively, our
+                                             results strengthened the view that individual microbes as well as the overall structure
+                    Specialty section:
+          This article was submitted to      of gut microbiota were co-evolving with CRC.
+                Systems Microbiology,
+                                             Keywords: gut microbiota,         colorectal   cancer,    zero-inflated   lognormal     model,   association     network,
+                a section of the journal
+                                             microbial diversity
+              Frontiers in Microbiology
+
+          Received: 15 January 2019
+            Accepted: 01 April 2019
+            Published: 24 April 2019
+                                             INTRODUCTION
+                             Citation:       A large number of microbes colonize the human body. They form a complex microbial community,
+   Ai D, Pan H, Li X, Gao Y, Liu G and       or microbiota (Tringe et al., 2005; Zhao et al., 2013; Liao et al., 2015). Among them, the gut
+          Xia LC (2019) Identifying Gut
+                                             microbiota is the most diverse, with more than 1,000 species (Kostic et al., 2012; Li et al., 2012;
+Microbiota Associated With Colorectal
+         Cancer Using a Zero-Inflated
+                                             Ahn et al., 2013). Those microbes are involved in maintaining intestinal homeostasis, through
+                     Lognormal Model.        physiological processes such as metabolism, immune responses, and inflammation, all of which are
+              Front. Microbiol. 10:826.      essential for human health. Previous studies revealed a deliciated and dynamic balance between the
+      doi: 10.3389/fmicb.2019.00826          microbial community and the host, which is likely the result of long term co-evolution. However,
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    1                                                April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                           Gut Microbiota Associated With Colorectal Cancer
+
+
+
+studies also observed that pathogenic changes in the structure,            identified differentially abundant taxa between two or more
+composition, and function of gut microbiota can lead                       populations by using a ZINB regression method and estimated
+to various diseases, often by causing the production of                    the model parameters by Expectation Maximization algorithm.
+abnormal metabolites (Chen et al., 2016a; Huang et al.,                    Chen et al. proposed a zero-inflated Beta regression model
+2017a,b). Those diseases and conditions include irritable                  which included two parts: a logistic regression component and a
+bowel syndrome (Kipanyula et al., 2013), Crohn’s disease                   Beta regression component, for testing the association between
+(Sommer and Bäckhed, 2013), and colorectal cancer                          microbial abundance and clinical covariates for longitudinal
+(CRC) (Zackular et al., 2014; Rea et al., 2018).                           microbiome data (Chen and Li, 2016). Chen Jun et al. in
+   The mechanisms by which gut microbes influence the                      2017, proposed a robust and powerful framework of differential
+CRC tumorigenesis (Iacob et al., 2017) were actively under                 analysis of microbiome data based on a zero-inflated negative
+study. For examples, researchers have recently learned that                binomial (ZINB) regression model (Chen et al., 2017). They also
+the gut microbiota plays a regulatory role in the tumor                    proposed an omnibus test of all the parameters. Omnibus test
+microenvironment and thus in tissue carcinogenesis (Sohn et al.,           was compared with previous methods [edgeR (Robinson et al.,
+2015; Nagy-Szakal et al., 2017; Morgillo et al., 2018). Guo                2010), RAIDA (Sohn et al., 2015), DESeq2 (Love et al., 2014), and
+et al. also found that the microbiota structure and microbial              metagenomeSeq (Paulson et al., 2013)] by using simulated data.
+metabolites can affect the body’s susceptibility to CRC by directly        RAIDA had slightly worse FDR control at a high nominal level
+inducing pathological conditions, such as adenoma (Guo et al.,             than omnibus test, but better FDR control than other methods.
+2015). However, to further understand such interactions, it                The performance of RAIDA was close to that of the omnibus
+is essential to characterize and compare the gut microbiota                test, and were higher than one of other methods. RAIDA is more
+structure of healthy controls and cancer patients. And based               effective at controlling FPR than other method including the
+on that, specific microbiota patterns or strain types need to              omnibus test.
+be identified to provide new targets and strategies for cancer                 In this study, we identified the differentially abundant
+prevention and treatment (Hu et al., 2017, 2018; Zhao et al.,              gut microbes between CRC and healthy samples using the
+2018a,b,c). Therefore, in this paper, we aim to determine the              Ratio Approach for Identifying Differential Abundance (RAIDA)
+microbes that are associated with CRC using a large-scale                  algorithm (Sohn et al., 2015). The algorithm fitted the
+metagenomic data set.                                                      distribution of observed data with a modified zero-inflated
+   While the metagenomics research has provided enormous                   lognormal (ZIL) model and estimated the statistical significance
+scientific data for investigating the role of the gut microbiota in        of abundance difference by the T-test. Furthermore, we used the
+the context of cancer development and progression (Zhang et al.,           GRAMMy algorithm (Xia et al., 2011) to estimate and analyze the
+2014), appropriate bioinformatics and statistical analyses are             relative abundance of gut microbes and diversity of the microbial
+also required to accurately identifying the differential microbes.         communities. Finally, we constructed and analyzed a microbial
+Several algorithms using either parametric or non-parametric               association network based on all healthy, small adenoma, large
+tests have been proposed to determine such species. For                    adenoma, and CRC samples.
+examples, Abusleme et al. (2013) combined the Kruskal-Wallis
+test with the Wilcoxon rank-sum test to analyze periodontitis              MATERIALS AND METHODS
+data and used linear discriminant analysis to identify the species
+with significant differences between periodontitis patients and            Two Metagenomics Datasets
+healthy controls. Nagy-Szakal et al. used the non-parametric               Our first gut metagenomics dataset was downloaded from
+Mann-Whitney U test with Benjamini-Hochberg correction to                  the European Nucleotide Archive (ENA) database (accession
+show that the microbial composition in the intestines of patients          number ERP005534) (Table 1). The dataset (Zeller et al., 2014)
+with chronic fatigue syndrome differed significantly from that of          consists of 156 samples from France (61 healthy, 27 small
+healthy individuals (Nagy-Szakal et al., 2017). And Peng et al.            adenoma, 15 large adenoma, and 53 CRC samples). Samples with
+conducted beta regression on the abundance of microbes to                  an adenoma diameter smaller than 10 mm were classified as small
+obtain regression coefficients (Peng et al., 2016).                        adenoma while those with larger than 10 mm ones were classified
+   One particular difficulty associated with the statistical testing       as large adenoma.
+of differential abundance is the under-sampling or dropout                     Our second gut metagenomics dataset was also downloaded
+(Hughes et al., 2001) of less abundant microbes caused by                  from the ENA database (accession number ERP008729) (Zeller
+an insufficient sequencing depth. This fact creates many zeros             et al., 2014). The dataset included 156 samples from Austria,
+in the abundance values and leads to inaccurate differential               including 63 healthy samples, 47 adenoma patient samples, and
+analysis when only conventional normalization was applied.                 46 CRC patient samples.
+This issue might be mitigated with the Zero-inflated Negative
+Binomial modeling (ZINB) (Ridout et al., 1998). The method                 A Modified ZIL Model
+is now widely adopted. For examples, Paulson et al. analyzed               We estimated the relative abundance of gut microbes using
+the differential abundance in sparse high-throughput large-scale           the GRAMMy algorithm. We then identified differentially
+microbial marker gene survey data by using a zero-inflated                 abundant microbes by the RAIDA algorithm which uses
+Gaussian distribution mixture model with cumulative-sum                    a modified ZIL model to account for ratios with zeros.
+scaling normalization (Paulson et al., 2013). Zhang et al. (2016)          Metagenomic data are typically sparse because of undersampling
+
+
+Frontiers in Microbiology | www.frontiersin.org                        2                                          April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                                           Gut Microbiota Associated With Colorectal Cancer
+
+
+
+TABLE 1 | Number of experimental samples.                                                          following three stages: healthy, adenoma (small and large
+                                                                                                   combined), and cancer. We used the Shannon diversity index to
+Total         Healthy               Adenoma                      Colorectal cancer
+number        control
+                                                                                                   measure the alpha diversity of the gut community. The Shannon
+                              Small          Large            Early             Late               index is defined as
+of
+samples                       (<1 cm)       (>1 cm)           stage             stage
+                                                                                                                                          N
+                                                                                                                                          X
+                                                          I       II      III       IV                                          H=−              aj ln aj ,                            (4)
+                                                                                                                                           j=1
+156             61              27             15        15       7       10        21
+
+                                                                                                   where H represents the Shannon Index, N indicates the total
+                                                                                                   number of microbial species detected, and aj indicates the relative
+of the microbial community or insufficient sequencing depth.                                       abundance of the j th microorganism.
+The resulting abundance table is over-presented with zeros
+assumed that most of those zeros is a result of insufficient                                       RESULTS AND DISCUSSION
+sequencing depth, i.e., the under-sampling of the microbial
+community. Based on the assumption that most microbes are not
+                                                                                                   Alpha Diversity of Gut Microbiota Predicts
+differentially abundant, the RAIDA algorithm was systematically                                    Colorectal Cancer Status
+demonstrated to consistently identify differentially abundant                                      We computed the alpha diversity of gut microbes of the
+microbes. We adapted the RAIDA model for our statistical                                           healthy samples, adenoma samples and CRC samples using the
+analysis as follows.                                                                               Shannon index and compared them with the rank-sum Dunn test
+    Let γij denote the observed count for microbes i and sample                                    (Figure 1). We found that the alpha diversity was significantly
+j, and let rij denote the ratio of γij to γkj , where k represents the                             lower in the CRC samples as compared to the healthy samples
+microbe (or a set of microbes) used as a divisor and γkj > 0 for                                   (two tailed, Dunn test, P < 0.0001) and adenoma samples (two
+all j. Here, i = 1, 2, ..., n and j = 1, 2, ..., m. The abundance ratio                            tailed, Dunn test, P = 0.0021). However, the alpha diversity of
+computed this way is denoted as Rεij such that:                                                    the healthy and adenoma samples was not significantly different
+                                                                                                   (two tailed, Dunn test, P = 0.0571). To study the relationship
+                     
+                         Unif (0, ε) with probability pi                                           between the probability of cancer occurrence and the alpha
+            Rεij ∼                                                                       (1)       diversity, we performed logit regression to associate CRC status
+                         LN(µi , σi2 ) with probability 1 − pi
+                                                                                                   with the Shannon index. The regression results showed that the
+In this study, we used ε = min(rij rij > 0) for all i and j.                                       Shannon index is a significant predictor of CRC status (univariate
+The parameters θi = (αi , µi , σi ) were estimated by the following
+expectation-maximization (EM) algorithm. Given that a ratio R
+follows a lognormal distribution, thus:
+                                       "                #
+                 2         1               (log r − µ)2
+        LN(r µ, σ ) = √             exp −                 ,     (2)
+                        σ 2πr                  2σ 2
+
+in which, by definition, Y = log R is normally distributed with
+mean µ and variance σ 2 . Let yij = log rijε , zij is an unobservable
+latent variable that accounts for the probability of zero coming
+from the false state. Thus, the maximum-likelihood estimate of
+θi for the modified ZIL model, i.e., Equation (1), can be obtained
+by solving
+                              m
+                                  zij log ηi + (1 − pi )φ(yij ; µi , σi2 )
+                              P                                           
+       ℓ(θi yij , zij ) =
+                            j=1
+                             m
+                             P
+                          +         (1 − zij ) log(1 − pi )                              (3)
+                              j=1
+                               m
+                                    (1 − zij ) log φ(yij ; µi , σi2 ),
+                              P
+                          +
+                              j=1
+                                                                                                    FIGURE 1 | Analysis of intestinal microbial diversity in different environments.
+where φ is the                      probability       density          function    of     a         The three colors in the figure indicate the microbial diversity in different states:
+normal distribution.                                                                                green represents the healthy samples, yellow represents adenoma
+                                                                                                    (precancerous lesion) growth in the intestine, and red represents a sample of
+Diversity Analysis                                                                                  colorectal cancer patients. The average value of Alpha diversity of healthy
+                                                                                                    samples was 4.0456, whereas the counterpart in the adenoma sample was
+To analyze microbial diversity, alpha diversity was used to                                         3.8957, and that in the cancer sample was 3.7161.
+measure the differences in gut microbial structure in the
+
+
+Frontiers in Microbiology | www.frontiersin.org                                                3                                                     April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                                Gut Microbiota Associated With Colorectal Cancer
+
+
+
+
+  FIGURE 2 | Differences in intestinal microbiome at the genus and species level among samples of different states. Green represents a healthy sample, and red
+  represents a colorectal cancer sample. (A) The top nine microbial genera with significant differences in abundance. (B) The top five microbial strains with significant
+  differences in abundance.
+
+
+
+
+logistic model, P < 0.05). The fitted logistic regression model was                       health by mediating anti-inflammatory and antitumor
+as follows:                                                                               effects, as well as providing energy for colonocytes
+                                                                                          (Singh et al., 2014).
+                           exp(−4.563d + 17.546)                                              Also notable in our result were the genera Fusobacterium
+                  P=                               ,                            (5)
+                         1 + exp(−4.563d + 17.546)                                        (Fusobacteriaceae) and Porphyromonas (Porphyromonadaceae),
+                                                                                          which were shown highly enriched in the CRC patients. So
+    i.e., logit(P) = −4.563d + 17.546, where P is the                                     was the species Bibliophile wadsworthia. Those sulfidogenic
+probability of being CRC, and d is the Shannon diversity                                  bacteria, including Desulfovibrio, Fusobacterium, and Bilophila
+index. We provided the plot of the relationship of probability                            wadsworthia, likely participate in the development of CRC by
+of cancer occurrence and Shannon index of adenoma patients                                producing hydrogen sulfide (Ridlon et al., 2016; Dahmus et al.,
+as show in Figure S1. Our result suggested that the diversity                             2018). Bilophila wadsworthia was additionally reported to cause
+of the microbial species in the human intestines decreases                                systemic inflammatory response in a preclinical mice study
+as colorectal malignancies grow, which was supported by                                   (Zhou et al., 2017).
+literature (Ahn et al., 2013).                                                                Interestingly, we also observed that the abundance of
+                                                                                          Eubacterium hallii, Anaerostipes hadrus, and Eubacterium
+                                                                                          ventriosum (Figure 2B) were significantly higher in the healthy
+Nine Genera Were Differentially Abundant                                                  samples than in the CRC samples. E. hallii and A. hadrus can
+in the Colorectal Cancer Gut Environment                                                  utilize the glucose and fermentation intermediates acetate and
+Using the RAIDA algorithm, we identified nine microbial                                   lactate to form butyrate and hydrogen, which were considered
+genera that were significantly different in abundance between                             important microbes in maintaining intestinal metabolic balance
+the CRC and the controls, which included Anaerostipes,                                    (Christina et al., 2016).
+Coprococcus, Pseudoflavonifractor, Bilophila, Flavonifractor,                                 We also found that Flavonifractor was higher in the
+Desulfovibrio, Catenibacterium, Porphyromonas, and Weissella                              healthy samples than that in the CRC samples, which was
+(Figure 2A). We first observed that the abundance of                                      in agreement with Anand et al. (2016). We also observed
+Coprococcus was higher in the healthy samples as compared                                 that Anaerostipes had a significantly lower abundance in
+to the CRC patients. As a validation, Shen et al. showed                                  the CRC samples, which agreed with previous studies
+that colorectal adenomas had lower relative abundance                                     (Peters et al., 2016; Mori et al., 2018). We found that no
+of Bacteroides spp. and Coprococcus spp. than controls                                    Catenibacterium and Gardnerella (Bifidobacteriaceae) were
+(Shen et al., 2010). The metabolic activity of butyrate-                                  present in CRC patient samples, which was supported by
+producing bacteria is the major source of butyrate in                                     Chen et al. (2012).
+human body. Coprococcus is among the essential butyrate-                                      We tested if the nine differentially abundant genera are viable
+producing genera in human body, which promote colonic                                     biomarkers to distinguish healthy individuals from CRC patients.
+
+
+Frontiers in Microbiology | www.frontiersin.org                                       4                                                  April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                               Gut Microbiota Associated With Colorectal Cancer
+
+
+
+
+  FIGURE 3 | The association network of intestinal microbiome in different states. Each circle represents the average relative abundance of a microbial species in that
+  state. The higher the average relative abundance, the larger the area of the circle. The solid gray line between the circles indicates a positive Spearman correlation
+  between the two groups, and the solid red line indicates a negative Spearman correlation between the two groups. (A–D) The association network of intestinal
+  microbiome in healthy, small adenoma, large adenoma and cancer samples.
+
+
+
+
+We trained a random forest classifier using a 5-fold cross-                              50% sparse. So we calculated the correlation between species
+validation (rotative using 80% data as the training set the rest                         by Pearson correlation coefficient (Pearson, 1909). We further
+20% as the testing set) using the first metagenomic dataset. The                         conducted an association network analysis to identify the co-
+classifier achieved an Area Under Curve (AUC) of 0.9333.                                 occurring intestinal microbes under different CRC states. All
+                                                                                         significant co-occurrences (PCC > 0.5) were found to be within
+Microbial Co-occurrence Network Evolves                                                  the same genera, such as Bifidobacterium, Bacteroides, and
+With CRC Development                                                                     Bilophila (Figure 3). Furthermore, both Bifidobacterium and
+Sophie Weiss et al. compared 8 methods of establishing                                   Bacteroides were previously identified by us to have significant
+association networks, they recommend filtering out extremely                             differences in abundance between healthy controls and CRC
+rare OTUs prior to network construction (Weiss et al., 2016).                            patients (Figure 3A). It is thus reasonable to assess that these
+According to Figure 7 in this paper, SparCC should be used when                          bacteria were pathogenic as a group because the change of
+the inverse simpson neff of microbes < 13, SparCC maintain                               abundance in one them can result in changes of abundance in
+high precision compared with predictions on abundance tables                             the entire clique. Our observation supported the theory that CRC
+with low neff . But the inverse simpson neff of microbes is                              ensues an interrupted balance between these bacteria (Brennan
+27.9 (>13) in our paper, abundance of OTUs are more than                                 and Garrett, 2016; Yazici et al., 2017).
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                      5                                                  April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                                    Gut Microbiota Associated With Colorectal Cancer
+
+
+
+   Co-occurrence was also found among species of the genus                                   bring in novel strategies for preventing and curing CRC in the
+Prevotella in the healthy, small adenoma, and large adenoma                                  near future.
+environments (Figures 3A–C), however, such co-occurrence
+was missing in the CRC environment (Figure 3D). Conversely,                                  AUTHOR CONTRIBUTIONS
+several species of the genera Streptococcus, Parvimonas,
+Collinsella, and Citrobacter were only co-occurring in the                                   DA and YG conducted the analysis, summarized the result
+cancer environment. Overall, we observed fewer microbial                                     and drafted the manuscript. HP, XL, and GL assisted in the
+co-occurrences the healthy environment. While, in the adenoma                                data analysis and contributed to the manuscript. DA and LX
+environments, we found an increase of co-occurring pathogenic                                conceived the study. LX supervised the manuscript writing. All
+microbes. The number of co-occurring microbes was then                                       authors have read and approved the final manuscript.
+reduced in the CRC environment. The total number of co-
+occurrence is relatively close between the healthy and the CRC                               FUNDING
+environment, however, the microbes involved were distinct.
+The number of total co-occurrence might have peaked at                                       This work was supported by grants from the National Natural
+the adenoma environments because of the co-existence of                                      Science Foundation of China (61873027, 61370131). LX is
+competing homeostatic and pathogenic microbial interactions in                               supported by the Innovation in Cancer Informatics Fund,
+the intermediacy stage.                                                                      American Cancer Society (132922-PF-18-184-31301-TBG), the
+                                                                                             National Institutes of Health (HG006137-07), and funds from the
+CONCLUSIONS                                                                                  Intermountain Healthcare.
+
+We analyzed the alpha diversity of the gut microbial community                               ACKNOWLEDGMENTS
+of 156 healthy, adenoma and CRC samples. We found the alpha
+diversity was significantly higher in healthy samples as compared                            Both DA and LX thank Professor Fengzhu Sun at the University
+to the CRC samples. We applied a modified ZIL model and                                      of Southern California and LX thanks Dr. Nancy Zhang at
+identified nine significantly different genera between the healthy                           the University of Pennsylvania and Dr. Hanlee Ji at Stanford
+and CRC groups, i.e., Anaerostipes, Bilophila, Catenibacterium,                              University for their support and helpful discussions.
+Coprococcus, Desulfovibrio, Flavonifractor, Porphyromonas,
+Pseudoflavonifractor, and Weissella. We used these nine genera                               SUPPLEMENTARY MATERIAL
+as input features for a random forest classifier and successfully
+predicted the CRC status with a high AUC score of 0.9333. Our                                The Supplementary Material for this article can be found
+results suggested that the community member and the overall                                  online at: https://www.frontiersin.org/articles/10.3389/fmicb.
+structure of the gut microbiota are potential effective biomarkers                           2019.00826/full#supplementary-material
+of CRC stages. This avenue is being actively pursued by us and                               Figure S1 | Logit regression prediction results of the Shannon diversity index. The
+other computational researchers (Chen and Yan, 2013; Chen                                    blue circle in the figure represents a large adenoma sample, and the red triangle
+et al., 2016b,c, 2018a,b,c; Chen and Huang, 2017), who may                                   represents a small adenoma sample.
+
+
+
+
+REFERENCES                                                                                   Chen, W., Liu, F., Ling, Z., Tong, X., and Xiang, C. (2012). Human intestinal
+                                                                                               lumen and mucosa-associated microbiota in patients with colorectal cancer.
+Abusleme, L., Dupuy, A. K., Dutzan, N., Silva, N., Burleson, J. A.,                            PLoS ONE 7:e39743. doi: 10.1371/journal.pone.0039743
+   Strausbaugh, L. D., et al. (2013). The subgingival microbiome                             Chen, X., and Huang, L. (2017). LRSSLMDA: Laplacian regularized sparse
+   in health and periodontitis and its relationship with community                             subspace learning for MiRNA-disease association prediction. PLoS Comput.
+   biomass and inflammation. ISME J. 7, 1016–1025. doi: 10.1038/ismej.                         Biol. 13:e1005912. doi: 10.1371/journal.pcbi.1005912
+   2012.174                                                                                  Chen, X., Huang, Y. A., You, Z. H., Yan, G. Y., and Wang, X. S. (2016a).
+Ahn, J., Sinha, R., Pei, Z., Dominianni, C., Wu, J., Shi, J., et al. (2013). Human gut         A novel approach based on KATZ measure to predict associations of
+   microbiome and risk for colorectal cancer. J. Natl. Cancer Inst. 105, 1907–1911.            human microbiota with non-infectious diseases. Bioinformatics 33, 733–739.
+   doi: 10.1093/jnci/djt300                                                                    doi: 10.1093/bioinformatics/btw715
+Anand, S., Kaur, H., and Mande, S. S. (2016). Comparative in silico analysis                 Chen, X., Ren, B., Chen, M., Wang, Q., Zhang, L., and Yan, G. (2016b). NLLSS:
+   of butyrate production pathways in gut commensals and pathogens. Front.                     predicting synergistic drug combinations based on semi-supervised learning.
+   Microbiol. 7:1945. doi: 10.3389/fmicb.2016.01945                                            PLoS Comput. Biol. 12:e1004975. doi: 10.1371/journal.pcbi.1004975
+Brennan, C. A., and Garrett, W. S. (2016). Gut microbiota, inflammation,                     Chen, X., Wang, L., Qu, J., Guan, N.-N., and Li, J.-Q. (2018a). Predicting miRNA–
+   and colorectal cancer. Annu. Rev. Microbiol. 70, 395–411.                                   disease association based on inductive matrix completion. Bioinformatics 34,
+   doi: 10.1146/annurev-micro-102215-095513                                                    4256–4265. doi: 10.1093/bioinformatics/bty503
+Chen, E. Z., and Li, H. (2016). A two-part mixed-effects model for analyzing                 Chen, X., Xie, D., Wang, L., Zhao, Q., You, Z.-H., and Liu, H. (2018b). BNPMDA:
+   longitudinal microbiome compositional data. Bioinformatics 32, 2611–2617.                   bipartite network projection for MiRNA–disease association prediction.
+   doi: 10.1093/bioinformatics/btw308                                                          Bioinformatics 34, 3178–3186. doi: 10.1093/bioinformatics/bty333
+Chen, J., King, E., Deek, R., Wei, Z., Yu, Y., Grill, D., et al. (2017). An omnibus          Chen, X., Yan, C. C., Zhang, X., and You, Z.-H. (2016c). Long non-coding RNAs
+   test for differential distribution analysis of microbiome sequencing data.                  and complex diseases: from experimental results to computational models.
+   Bioinformatics 34, 643–651. doi: 10.1093/bioinformatics/btx650                              Brief. Bioinformatics 18, 558–576. doi: 10.1093/bib/bbw060
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                          6                                                  April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                                      Gut Microbiota Associated With Colorectal Cancer
+
+
+
+Chen, X., and Yan, G.-Y. (2013). Novel human lncRNA–disease association                      Peng, X., Li, G., and Liu, Z. (2016). Zero-inflated beta regression for differential
+    inference based on lncRNA expression profiles. Bioinformatics 29, 2617–2624.                abundance analysis with metagenomics data. J. Comput. Biol. 23, 102–110.
+    doi: 10.1093/bioinformatics/btt426                                                          doi: 10.1089/cmb.2015.0157
+Chen, X., Yin, J., Qu, J., and Huang, L. (2018c). MDHGI: Matrix Decomposition                Peters, B. A., Dominianni, C., Shapiro, J. A., Church, T. R., Wu, J.,
+    and Heterogeneous Graph Inference for miRNA-disease association prediction.                 Miller, G., et al. (2016). The gut microbiota in conventional and serrated
+    PLoS Comput. Biol. 14:e1006418. doi: 10.1371/journal.pcbi.1006418                           precursors of colorectal cancer. Microbiome 4:69. doi: 10.1186/s40168-016-
+Christina, E., Hans-Joachim, R., Niko, B., Christophe, L., and Clarissa, S. (2016).             0218-6
+    The common gut microbe Eubacterium halliialso contributes to intestinal                  Rea, D., Coppola, G., Palma, G., Barbieri, A., Luciano, A., Del Prete, P., et al. (2018).
+    propionate formation. Front. Microbiol. 7:713. doi: 10.3389/fmicb.2016.00713                Microbiota effects on cancer: from risks to therapies. Oncotarget 9:17915.
+Dahmus, J. D., Kotler, D. L., Kastenberg, D. M., and Kistler, C. A. (2018). The                 doi: 10.18632/oncotarget.24681
+    gut microbiome and colorectal cancer: a review of bacterial pathogenesis. J.             Ridlon, J. M., Wolf, P. G., and Gaskins, H. R. (2016). Taurocholic acid
+    Gastrointest. Oncol. 9, 769–777. doi: 10.21037/jgo.2018.04.07                               metabolism by gut microbes and colon cancer. Gut Microbes 7, 201–215.
+Guo, H., Shao, Y., Menghe, B., and Zhang, H. (2015). Research on the relation                   doi: 10.1080/19490976.2016.1150414
+    between gastrointestinal microbiota and disease. Microbiol. China 42, 400–410.           Ridout, M., Demétrio, C. G., and Hinde, J. (1998). “Models for count data with
+    doi: 10.13344/j.microbiol.china.140474                                                      many zeros,” in Proceedings of the XIXth International Biometric Conference:
+Hu, H., Zhang, L., Ai, H., Zhang, H., Fan, Y., Zhao, Q., et al. (2018).                         International Biometric Society Invited Papers (Cape Town), 179–192.
+    HLPI-ensemble: prediction of human lncRNA-protein interactions based on                  Robinson, M. D., McCarthy, D. J., and Smyth, G. K. (2010). edgeR: a bioconductor
+    ensemble strategy. RNA Biol. 15, 797–806. doi: 10.1080/15476286.2018.1457935                package for differential expression analysis of digital gene expression data.
+Hu, H., Zhu, C., Ai, H., Zhang, L., Zhao, J., Zhao, Q., et al. (2017). LPI-ETSLP:               Bioinformatics 26, 139–140. doi: 10.1093/bioinformatics/btp616
+    lncRNA–protein interaction prediction using eigenvalue transformation-                   Shen, X. J., Rawls, J. F., Randall, T., Burcal, L., Mpande, C. N., Jenkins,
+    based semi-supervised link prediction. Mol. Biosyst. 13, 1781–1787.                         N., et al. (2010). Molecular characterization of mucosal adherent bacteria
+    doi: 10.1039/C7MB00290D                                                                     and associations with colorectal adenomas. Gut Microbes 1, 138–147.
+Huang, Y. A., You, Z. H., Chen, X., Huang, Z. A., Zhang, S., and Yan, G. Y. (2017a).            doi: 10.4161/gmic.1.3.12360
+    Prediction of microbe–disease association from the integration of neighbor               Singh, N., Gurav, A., Sivaprakasam, S., Brady, E., Padia, R., Shi, H.,
+    and graph with collaborative recommendation model. J. Transl. Med. 15:209.                  et al. (2014). Activation of Gpr109a, receptor for niacin and the
+    doi: 10.1186/s12967-017-1304-7                                                              commensal metabolite butyrate, suppresses colonic inflammation and
+Huang, Z. A., Chen, X., Zhu, Z., Liu, H., Yan, G. Y., You, Z. H., et al. (2017b).               carcinogenesis. Immunity 40, 128–139. doi: 10.1016/j.immuni.2013.
+    PBHMDA: path-based human microbe-disease association prediction. Front.                     12.007
+    Microbiol. 8:233. doi: 10.3389/fmicb.2017.00233                                          Sohn, M. B., Du, R., and An, L. (2015). A robust approach for identifying
+Hughes, J. B., Hellmann, J. J., Ricketts, T. H., and Bohannan, B. J. (2001). Counting           differentially abundant features in metagenomic samples. Bioinformatics 31,
+    the uncountable: statistical approaches to estimating microbial diversity. Appl.            2269–2275. doi: 10.1093/bioinformatics/btv165
+    Environ. Microbiol. 67, 4399–4406. doi: 10.1128/AEM.67.10.4399-4406.2001                 Sommer, F., and Bäckhed, F. (2013). The gut microbiota—masters of
+Iacob, T., Tătulescu, D. F., and Dumitraşcu, D. (2017). Therapy of the                        host development and physiology. Nat. Rev. Microbiol. 11, 227–238.
+    postinfectious irritable bowel syndrome: an update. Clujul Med. 90, 133–138.                doi: 10.1038/nrmicro2974
+    doi: 10.15386/cjmed-752                                                                  Tringe, S. G., Von Mering, C., Kobayashi, A., Salamov, A. A., Chen, K., Chang,
+Kipanyula, M. J., Etet, P. F. S., Vecchio, L., Farahna, M., Nukenine,                           H. W., et al. (2005). Comparative metagenomics of microbial communities.
+    E. N., and Kamdje, A. H. N. (2013). Signaling pathways bridging                             Science 308, 554–557. doi: 10.1126/science.1107851
+    microbial-triggered inflammation and cancer. Cell. Signal. 25, 403–416.                  Weiss, S., Van Treuren, W., Lozupone, C., Faust, K., Friedman, J., Deng, Y., et al.
+    doi: 10.1016/j.cellsig.2012.10.014                                                          (2016). Correlation detection strategies in microbial data sets vary widely in
+Kostic, A. D., Gevers, D., Pedamallu, C. S., Michaud, M., Duke, F., Earl, A. M.,                sensitivity and precision. ISME J. 10, 1669–1681. doi: 10.1038/ismej.2015.235
+    et al. (2012). Genomic analysis identifies association of Fusobacterium with             Xia, L. C., Cram, J. A., Chen, T., Fuhrman, J. A., and Sun, F. (2011).
+    colorectal carcinoma. Genome Res. 22, 292–298. doi: 10.1101/gr.126573.111                   Accurate genome relative abundance estimation based on shotgun
+Li, Q., Wang, C., Tang, C., Li, N., and Li, J. (2012). Molecular-phylogenetic                   metagenomic reads. PLoS ONE 6:e27992. doi: 10.1371/journal.pone.00
+    characterization of the microbiota in ulcerated and non-ulcerated                           27992
+    regions in the patients with Crohn’s disease. PLoS ONE 7:e34939.                         Yazici, C., Wolf, P. G., Kim, H., Cross, T.-W. L., Vermillion, K., Carroll, T., et al.
+    doi: 10.1371/journal.pone.0034939                                                           (2017). Race-dependent association of sulfidogenic bacteria with colorectal
+Liao, B., Wang, S., Zhang, J., and Hongjing, Y. U. (2015). Role of                              cancer. Gut 66, 1983–1994. doi: 10.1136/gutjnl-2016-313321
+    gut microbiota in human diseases. Chin. J. Gastroenterol. 20, 126–128.                   Zackular, J. P., Rogers, M. A., Ruffin, M. T., and Schloss, P. D. (2014). The human
+    doi: 10.3969/j.issn.1008-7125.2015.02.015                                                   gut microbiome as a screening tool for colorectal cancer. Cancer Prev. Res. 7,
+Love, M. I., Huber, W., and Anders, S. (2014). Moderated estimation of fold                     1112–1121. doi: 10.1158/1940-6207.CAPR-14-0129
+    change and dispersion for RNA-seq data with DESeq2. Genome Biol. 15:550.                 Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P.
+    doi: 10.1186/s13059-014-0550-8                                                              I., et al. (2014). Potential of fecal microbiota for early-stage detection
+Morgillo, F., Dallio, M., Della Corte, C. M., Gravina, A. G., Viscardi, G., Loguercio,          of colorectal cancer. Mol. Syst. Biol. 10:766. doi: 10.15252/msb.20
+    C., et al. (2018). Carcinogenesis as a result of multiple inflammatory and                  145645
+    oxidative hits: a comprehensive review from tumor microenvironment to gut                Zhang, X., Mallick, H., and Yi, N. (2016). Zero-inflated negative binomial
+    microbiota. Neoplasia 20, 721–733. doi: 10.1016/j.neo.2018.05.002                           regression for differential abundance testing in microbiome studies. J.
+Mori, G., Rampelli, S., Orena, B. S., Rengucci, C., De Maio, G., Barbieri, G., et al.           Bioinform. Genom. 2, 1–9. doi: 10.18454/jbg.2016.2.2.1
+    (2018). Shifts of faecal microbiota during sporadic colorectal carcinogenesis.           Zhang, Z., Liu, C. H., and Zhao, X. H. (2014). Research advance of human
+    Sci. Rep. 8:10329. doi: 10.1038/s41598-018-28671-9                                          gut microbiome and related diseases. Chin. Bull. Life Sci. 26, 768–772.
+Nagy-Szakal, D., Williams, B. L., Mishra, N., Che, X., Lee, B., Bateman,                        doi: 10.13376/j.cbls/2014108
+    L., et al. (2017). Fecal metagenomic profiles in subgroups of patients                   Zhao, Q., Liang, D., Hu, H., Ren, G., and Liu, H. (2018a). RWLPAP:
+    with myalgic encephalomyelitis/chronic fatigue syndrome. Microbiome 5:44.                   random walk for lncRNA-protein associations prediction. Protein
+    doi: 10.1186/s40168-017-0261-y                                                              Pept.      Lett.    25,    830–837.      doi:     10.2174/0929866525666180905
+Paulson, J. N., Stine, O. C., Bravo, H. C., and Pop, M. (2013). Differential                    104904
+    abundance analysis for microbial marker-gene surveys. Nat. Methods 10:1200.              Zhao, Q., Yu, H., Ming, Z., Hu, H., Ren, G., and Liu, H. (2018b). The Bipartite
+    doi: 10.1038/nmeth.2658                                                                     network projection-recommended algorithm for predicting long non-coding
+Pearson, K. (1909). Determination of the coefficient of correlation. Science 30,                RNA-protein interactions. Mol. Ther. 13, 464–471. doi: 10.1016/j.omtn.2018.
+    23–25. doi: 10.1126/science.30.757.23                                                       09.020
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                          7                                                     April 2019 | Volume 10 | Article 826
+Ai et al.                                                                                                             Gut Microbiota Associated With Colorectal Cancer
+
+
+
+Zhao, Q., Yue, Z., Hu, H., Ren, G., Wen, Z., and Liu, H. (2018c). IRWNRLPI:           Conflict of Interest Statement: The authors declare that the research was
+  integrating random walk and neighborhood regularized logistic matrix                conducted in the absence of any commercial or financial relationships that could
+  factorization for lncRNA-protein interaction prediction. Front. Genet. 9:239.       be construed as a potential conflict of interest.
+  doi: 10.3389/fgene.2018.00239
+Zhao, Y., Wu, J., Li, J. V., Zhou, N.-Y., Tang, H., and Wang, Y. (2013). Gut          Copyright © 2019 Ai, Pan, Li, Gao, Liu and Xia. This is an open-access article
+  microbiota composition modifies fecal metabolic profiles in mice. J. Proteome       distributed under the terms of the Creative Commons Attribution License (CC BY).
+  Res. 12, 2987–2999. doi: 10.1021/pr400263n                                          The use, distribution or reproduction in other forums is permitted, provided the
+Zhou, F., Long, W., Hao, B., Ding, D., Ma, X., Zhao, L., et al. (2017). A human       original author(s) and the copyright owner(s) are credited and that the original
+  stool-derived Bilophila wadsworthia strain caused systemic inflammation             publication in this journal is cited, in accordance with accepted academic practice.
+  in specific-pathogen-free mice. Gut Pathog. 9:59. doi: 10.1186/s13099-017-          No use, distribution or reproduction is permitted which does not comply with these
+  0208-7                                                                              terms.
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                   8                                                  April 2019 | Volume 10 | Article 826
+

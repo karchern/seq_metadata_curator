@@ -1,0 +1,577 @@
+Choi et al. Journal of Translational Medicine
+https://doi.org/10.1186/s12967-021-03154-0
+                                              (2021) 19:485
+                                                                                                                                        Journal of
+                                                                                                                           Translational Medicine
+
+ RESEARCH                                                                                                                                                   Open Access
+
+Analysis of changes in microbiome
+compositions related to the prognosis
+of colorectal cancer patients based
+on tissue‑derived 16S rRNA sequences
+Sukjung Choi1, Jongsuk Chung2, Mi-La Cho3, Donghyun Park2 and Sun Shim Choi1*
+
+
+
+  Abstract
+  Background: Comparing the microbiome compositions obtained under different physiological conditions has
+  frequently been attempted in recent years to understand the functional influence of microbiomes in the occurrence
+  of various human diseases.
+  Methods: In the present work, we analyzed 102 microbiome datasets containing tumor- and normal tissue-derived
+  microbiomes obtained from a total of 51 Korean colorectal cancer (CRC) patients using 16S rRNA amplicon sequenc-
+  ing. Two types of comparisons were used: ‘normal versus (vs.) tumor’ comparison and ‘recurrent vs. nonrecurrent’
+  comparison, for which the prognosis of patients was retrospectively determined.
+  Results: As a result, we observed that in the ‘normal vs. tumor’ comparison, three phyla, Firmicutes, Actinobacteria,
+  and Bacteroidetes, were more abundant in normal tissues, whereas some pathogenic bacteria, including Fusobac-
+  terium nucleatum and Bacteroides fragilis, were more abundant in tumor tissues. We also found that bacteria with
+  metabolic pathways related to the production of bacterial motility proteins or bile acid secretion were more enriched
+  in tumor tissues. In addition, the amount of these two pathogenic bacteria was positively correlated with the expres-
+  sion levels of host genes involved in the cell cycle and cell proliferation, confirming the association of microbiomes
+  with tumorigenic pathway genes in the host. Surprisingly, in the ‘recurrent vs. nonrecurrent’ comparison, we observed
+  that these two pathogenic bacteria were more abundant in the patients without recurrence than in the patients with
+  recurrence. The same conclusion was drawn in the analysis of both normal and tumor-derived microbiomes.
+  Conclusions: Taken together, it seems that understanding the composition of tissue microbiomes is useful for pre-
+  dicting the prognosis of CRC patients.
+  Keywords: Colorectal cancer, Microbiome, 16S rRNA, F. nucleatum, B. fragilis
+
+
+                                                                                           Introduction
+                                                                                           Colorectal cancer (CRC), like many other cancers, is
+                                                                                           a malignant disease that occurs as a result of the accu-
+                                                                                           mulation of complex genetic and epigenetic changes.
+                                                                                           Although it has been reported that the majority of
+*Correspondence: schoi@kangwon.ac.kr
+1
+  Division of Biomedical Convergence, College of Biomedical Science,
+                                                                                           CRC cases (~ 80%) are due to nongenetic or epigenetic
+Institute of Bioscience & Biotechnology, Kangwon National University,                      changes and less than 20% of CRC cases are caused by
+Chuncheon 24341, Republic of Korea                                                         genetic mutations [1], these two types of risks are actually
+Full list of author information is available at the end of the article
+
+
+                                         © The Author(s) 2021. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which
+                                         permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+                                         original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or
+                                         other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+                                         to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory
+                                         regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this
+                                         licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+                                         mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                   Page 2 of 12
+
+
+
+
+entangled in a very complicated way that makes it almost        leading to the initiation of tumorigenesis. Damaged
+impossible to differentiate between the upstream driver         epithelial cells in turn change the surrounding tumor
+risk and the downstream passenger risk in causing CRC.          microenvironment such that opportunistic bacteria (i.e.,
+Genetically, alterations in Wnt signaling pathways initi-       passenger bacteria) with a competitive advantage in this
+ated by APC mutation are known as one of the common             altered tumor microenvironment defeat and replace
+causes of familial types of CRC [2, 3]. On the other hand,      healthy gut bacteria, eventually worsening inflammation
+smoking cigarettes, diets rich in red meats and processed       and accelerating cell proliferation, promoting tumorigen-
+foods, and drinking alcohol have frequently been linked         esis. It is, however, worth noting that thus far, no single
+to nongenetic environmental risk factors for CRC [4, 5],        bacterial species has universally been associated with all
+and the microbiota has recently been added to that list.        CRC patients because substantial variations are present
+The microbiome has been proven in several studies to be         in the compositions of microbiota associated with CRC
+a mediator between genetic mutations and harmful diets          [22, 23]. It seems that changes in both pathogenic and
+in the onset and progression of CRC.                            nonpathogenic microbiomes are responsible for the ini-
+   It is known that abnormal changes in the composition         tiation and/or progression of CRC.
+of the gut microbiome can lead to disruption of epithe-           In the present work, using the microbiome informa-
+lial barrier function, which increases inflammation and in      tion estimated from 16S rRNA amplicon sequencing
+turn leads to various gastrointestinal diseases, including      data generated from matched samples of CRC patients,
+CRC [6, 7]. In fact, it has been reported that the distri-      including tumors and adjacent normal tissues derived
+bution of the microbiome differs significantly between          from the same patient, we investigated compositional
+normal and tumor tissues or between normal and cancer           changes in microbiomes related to the tumorigenesis of
+fecal samples, mainly due to dysbiosis of the microbiome        CRC. We also investigated the compositions of microbi-
+under tumorigenic conditions. For instance, pathogenic          omes between nonrecurrent CRC (named ‘crc_nRC’) and
+bacteria such as Bacteroides (B.) fragilis and Fusobacte-       recurrent CRC (named ‘crc_RC’), revealing the bacterial
+rium (F.) nucleatum were significantly more enriched            population associated with the relapse of CRC.
+in the tumor tissue than in the normal tissue, and con-
+versely, nonpathogenic members of the Bacteroidetes             Materials and methods
+and Firmicutes phyla were more abundant under normal            Sample collection and generation of 16S rRNA sequences
+conditions than tumorigenic conditions for both tissue          A total of 51 matched normal and tumor samples
+samples and fecal samples [8, 9].                               obtained from the same individuals with CRC (mostly
+   Pathogenic bacteria are known to directly or indirectly      at TNM stage 2 and 3, see Additional file 1: Table S1,
+cause enhanced inflammation and oxidative DNA dam-              aged 43–86, 51 males collected from the cecum to
+age and even stimulate cancer-causing signaling path-           the rectum at the Samsung Medical Center in Seoul,
+ways inside the cell [10–13]. Particularly, according to        Republic of Korea) who underwent resection surgery
+Strauss et al. [13], Fusobacteria can invade colonic epi-       were used for producing the host RNA-seq data and
+thelial cells, destroying the epithelial barrier that allows    16S rRNA data to investigate gene expression pat-
+CRC cells to survive or be maintained. In addition, some        terns and the composition of microbiomes that the
+studies have shown that F. nucleatum can activate Wnt/          CRC tissues carry. The RNA-seq data and the V3–V4
+β-catenin signaling, promoting cell proliferation and           amplicon sequencing data of 16S rRNAs were obtained
+inflammation, through binding of its FadA adhesion pro-         with an Illumina MiSeq reagent kit v3 (2 × 300 bp, Illu-
+tein to E-cadherin on the surface of colon cells [14–16],       mina, USA). The PCR primers, i.e., forward (CCT​ACG​
+or through activating TLR4 signaling to NF-kB [17]. Like-       GGNGGC ​WGC​AG) and reverse (GAC​TAC​HVGGG​
+wise, another pathogenic bacterium abundant in CRC,             TAT​C TA​ATC​C ), were designed from the hypervariable
+B. fragilis, also known as an enterotoxin-producing bac-        regions (V3–V4) of 16S rRNAs. PCR was conducted
+terium, can take part in multistep tumorigenesis by pro-        using 2× KAPA HiFi HotStart ReadyMix (Roche)
+ducing toxins. Toxins are known to induce E-cadherin            under the following conditions: 95 °C solution chain
+degradation, causing downstream β-catenin signaling,            for 3 min, 25 cycles of 95 °C for 30 s, 55 °C for 30 s,
+and to stimulate the release of reactive oxygen species         and 72 °C for 45 s, followed by a 72 °C extension for
+
+                                                                using a ­TruSeq® DNA PCR-Free Sample Preparation
+and the expression of inflammatory cytokines that cause         5 min. Sequencing libraries were then constructed
+
+                                                                Kit (Illumina, USA) and ­TruSeq® Nextera XT index
+DNA damage [18–20].
+   Tjalsma et al. [21] proposed a ‘driver-passenger’ model
+to explain how the microbiome can facilitate CRC tum-           primer (Illumina, USA), and 2× KAPA HiFi HotStart
+origenesis. According to the model, driver pathogenic           ReadyMix (Roche) using the PCR products after puri-
+bacteria induce DNA damage in colon epithelial cells,           fication. Subsequently, paired-end reads were generated
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                                    Page 3 of 12
+
+
+
+
+by sequencing on the MiSeq platform after determin-             (v3.6.2). All statistical significance tests were performed
+ing the quality of the library with the Tapestation 4200        with the ‘Wilcoxon rank-sum’ test using the R package.
+platform (Agilent Technologies) and a Qubit Fluorom-
+eter (Thermo Fisher Scientific).                                Prediction of metabolic pathways based
+                                                                on the composition of microbiomes
+                                                                To predict the functions of bacteria, software called
+Analysis of the microbiomes using bioinformatics tools          ‘PICRUSt’, i.e., an acronym for ‘phylogenetic investiga-
+The sequencing reads were selected by filtering out             tion of communities by reconstructing of unobserved
+low-quality sequences, including primer sequences,              states’, was used, the main procedures for which were
+truncated sequences, and sequences that were classified         well described previously [31]. The metabolic functions
+into Eukarya and Archaea lineages, following a previ-           were estimated by mapping the composition of the
+ously reported QIIME (v1.9.1) quality control process           identified bacteria into the KEGG database. Statistical
+[24]. After finishing quality control procedures, an aver-      Analysis for Metagenomic Profiles (STAMP) [32] was
+age of 188,342 high-quality reads per sample (median            used to identify different metabolic functional abun-
+190,643; range 128,130–256,314) were obtained, where            dances between groups. A corrected P-value < 0.05 was
+the average length and quality score were 268.1 bp and          considered to be significant.
+33.01, respectively. Then, the paired-end reads were
+assembled using the Fast Length Adjustment of SHort             Estimation of differentially expressed genes
+reads (FLASH) [25] tool, and chimeric sequences were            After the quality of sequencing reads was determined
+also excluded by matching the clean tag sequences to            by FastQC (https://​w ww.​bioin​forma​tics.​babra​ham.​ac.​
+the reference database using the Usearch software v6.1          uk/​proje​cts/​fastqc/), the low-quality (Phred score < 33)
+algorithm [26]. Eventually, an average of 139,572 clean         and adaptor sequences were removed by Trimmomatic
+reads per sample (range 93,441–208,822) were obtained           (v0.39) [33]. The reference genome (GRCh38/hg38) was
+after filtering chimeric reads.                                 then indexed by STAR (v2.7.6a) [34]. Subsequently, the
+  All the cleaned sequences were used for clustering            cleaned reads were mapped to the indexed reference
+analysis that led to the identification of operational tax-     genome using STAR, following previously reported
+onomic units (OTUs) after removing singleton OTUs.              procedures [35, 36]. The count value for each gene
+The taxonomic rank (i.e., phylum, class, order, family,         was then estimated using ‘htseq-count’ [37] after gene
+genus, and species) of each sample was determined               names were assigned for the mapped reads by the ‘GTF’
+using the Ribosomal Database Project (RDP) classifier           file of the ‘GENCODE Gene Set’ (release 30) (https://​
+[27] by aligning the sequence to the GreenGene refer-           www. ​ g enco ​ d egen ​ e s. ​ o rg/ ​ h uman/ ​ r elea ​ s e_ ​ 3 0. ​ h tml).
+ence database (release 13.8) [28] at a 97% minimum              Finally, differentially expressed genes (DEGs) estimated
+similarity level. The final OTU table was used to gen-          by comparing gene expression between normal and
+erate a taxonomic profile graph by including only taxa          tumor conditions were identified using ‘DESeq2’ [38]
+with at least 0.1% relative abundance in each group. See        after the read counts were normalized. Two thresh-
+Additional file 2: Table S2: the OTU table used in this         olds, an adjusted P-value (i.e., Q-value) < 0.01 and |log-
+study. The compositional characteristics of the micro-          2fold change (fc)|> 1 (i.e., abs(log2fc)), were applied to
+biomes differentially enriched in normal and tumor tis-         estimate DEGs by comparing gene expression levels
+sues were investigated by linear discriminant analysis          between tumors and normal tissues. Principal compo-
+effect size (LEfSe) [29].                                       nent analysis (PCA) revealed that tumor and normal
+                                                                samples were clearly distinguished. However, one non-
+                                                                recurrent sample (10003704) was revealed to be an out-
+Estimation of α‑ and β‑diversity                                lier and was removed from later analysis.
+The α-diversity was evaluated by the Shannon index and
+observed OTUs with QIIME software, while β-diversity
+                                                                Gene set enrichment analysis and cellular heterogeneity
+was estimated by principal coordinate analysis (PCoA)
+                                                                of host genes
+based on the Bray–Curtis distance [30]. Permutational
+multivariate analysis of variance (PERMANOVA) as                Two annotation methods were used for the analysis of
+implemented by the ‘adonis’ function in the R package           DEGs. (i) The single-sample GSEA (ssGSEA) method,
+‘Vegan’ was applied to test the microbial composition           an extension of gene set enrichment analysis (GSEA),
+between groups. The box plots and diagrams for these            was used to calculate separate enrichment scores for
+analyses were constructed with the ‘ggplot2’ package in R       each pairing of a sample and gene set. (ii) A cell type
+                                                                deconvolution tool, xCell, was used to analyze cellular
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                                              Page 4 of 12
+
+
+
+
+heterogeneity between tumors and normal tissues. Sub-                         healthy bacteria. The β-diversity estimated using PCoA
+sequently, the specific gene set enrichment score and                         plots also indicated that the bacterial population struc-
+deconvoluted cell composition information were used                           ture in tumor tissues was distinct from that in normal tis-
+for correlation analyses with microbial compositions.                         sues, with a significant Bray–Curtis distance ­(R2 = 0.039,
+                                                                              p = 0.001) (Fig. 1b). Relatedly, using unsupervised hierar-
+Results                                                                       chical clustering, we examined whether the population
+Tumors had a lower bacterial diversity than normal tissues                    structure of the microbiome was similar between normal
+From the 16S rRNA amplicon sequencing data obtained                           tissues and tumors in the same patient or between nor-
+from a total of 51 CRC patients with matched normal                           mal tissues or tumors in different patients (Additional
+and tumor tissues, we attempted to identify microbial                         file 1: Fig. S1). Although the clustering pattern was com-
+communities and to estimate their diversity and abun-                         plex in that the clusters in the dendrogram were mixed
+dance. We found that α-diversity in tumor tissues was                         patterns supporting the former or the latter scenario, the
+significantly lower than that in normal tissues (Fig. 1a),                    similarity of microbial population structures seemed to
+indicating that the number of inhabiting bacterial species                    be higher between normal or tumor tissues in different
+is significantly reduced in the location where tumor for-                     patients than between normal and tumor tissues in the
+mation and progression occur. A possible explanation for                      same patient.
+this observation is that the tissue environment affected                         Subsequently, LEfSe, i.e., linear discriminant analy-
+by dysbiosis of the microbiota can be detrimental to some                     sis (LDA) effect size, was performed to investigate
+
+
+
+
+  Fig. 1 Bacterial diversity of normal and tumor tissues in CRC patients. a The α-diversity estimated by the Shannon index and observed OTUs. b (left)
+  The β-diversity estimated using PCoA of OTUs. (right) Distribution of Bray–Curtis distances of OTUs in normal samples (N–N), tumor samples (T-T),
+  and normal and tumor samples (N-T). c LEfSe plot illustrating microbial taxa enriched in normal compared with CRC tumor tissues. N: normal, T:
+  tumor
+Choi et al. Journal of Translational Medicine      (2021) 19:485                                                                                   Page 5 of 12
+
+
+
+
+differentially abundant microbiome features (clades,                              bacteria with similar characteristics coevolved and cooc-
+OTUs, etc.) in normal and tumor tissues, and it was                               curred under the influence of an altered environment
+confirmed that normal-enriched microbiome features                                (Additional file 1: Fig. S3). It is notable that LEfSe-based
+were distinct from tumor-enriched microbiome features                             analysis also adheres to the idea that tumor tissues har-
+(Fig. 1c, Additional file 1: Fig. S2). Namely, in the dif-                        bor fewer bacterial features than normal tissues.
+ferential microbiome features ranked by effect size, four
+genera, Fusobacterium (g_Fusobacterium), Treponema                                Identification of pathogenic bacteria associated
+(g_Treponema), Selenomonas (g_Selenomonas), and                                   with tumor progression
+Campylobacter (g_Camplylobacter), were enriched in                                Using the taxonomic level information for each sam-
+tumor tissues, whereas three phyla, Bacteroidetes (p_                             ple obtained by QIIME analysis, we constructed stacked
+Bacteroidetes), Actinobacteria (p_Actinobacteria) and                             graphs of the microbiome proportions for three selected
+Firmicutes (p_Firmicutes) (including Clostridia at its                            levels, phylum, genus, and species. As shown in Fig. 2a–
+lower class level (c_Clostridia)), were abundant in normal                        c, at the phylum level, a majority of the bacterial popu-
+tissues (Fig. 1c). Similarly, hierarchical clustering analy-                      lation (> 75%) in normal tissues consisted of two OTUs,
+sis of bacterial proportions accompanied by a heatmap                             Bacteroidetes and Firmicutes, consistent with what was
+confirmed that pathogenic bacteria and healthy bacteria                           previously reported [39]. In tumor tissues, these two
+were separately grouped into subclusters, indicating that                         abundant bacterial OTUs were also highly abundant but
+
+
+
+
+  Fig. 2 Colorectal cancer-associated bacterial composition. Average relative composition of the bacterial community at the phylum (a), genus
+  (b) and species levels (c). d Box plot analysis of the relative abundance of four bacterial phyla, Bacteroidetes, Firmicutes, Actinobacteria and
+  Fusobacteria. e Box plot analysis of the relative abundance of four species, B. vulgatus and F. prausnitzii, F. nucleatum and B. fragilis. Statistical
+  significance was estimated by T-test
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                                        Page 6 of 12
+
+
+
+
+in significantly decreased proportions (~ 60%). In con-                    fragilis, in tumor tissues than in normal tissues because
+trast, Fusobacterium showed a significantly increased                      these bacterial species have been repeatedly identified as
+proportion in tumor tissues (~ 23%) compared to that                       pathogenic bacteria associated with intestinal inflamma-
+in normal tissues (~ 12%) (Fig. 2b). Actinobacteria was                    tory diseases and even with CRC [13–15, 18, 20]. Addi-
+found to be more abundant in normal tissue than in                         tional taxa with significant differences in OTUs between
+tumor tissues, while Spirochaetes was the opposite,                        tumor and normal conditions are shown in Additional
+although the proportions of these two bacteria were very                   file 1: Fig. S4.
+low under each condition (Fig. 2a).
+  Most OTUs were similarly proportionated between                          Prediction of metabolic pathways exerted by microbiomes
+normal and tumor tissues at the genus and species levels,                  in normal and tumor tissues
+but a few bacterial compositions were significantly dif-                   It has been suggested that the cross-talk between the
+ferent between the two tissue conditions (Fig. 2b, c). For                 microbiota and the host tissue may be mediated by
+instance, at the genus level, Bacteroides, Clostridiales and               short-chain fatty acids (SCFAs) produced by the micro-
+Prevotella were more abundant in normal tissues; in con-                   biomes. Therefore, to predict microbiome-driven meta-
+trast, Fusobacterium and Treponema were more enriched                      bolic functions, we used a tool named ‘PICRUSt, i.e., a
+in tumor tissues (Fig. 2b). At the species level, B. vulgatus              tool for making inferences by mapping marker genes
+and Faecalibacterium (F.) prausnitzii were more abun-                      to known sequenced genomes with information about
+dant in normal tissues, whereas F. nucleatum and B. fra-                   the identified bacteria and their compositions. In par-
+gilis were significantly increased in tumor tissue (Fig. 2c).              ticular, we found that the pathways of production and
+Statistical analysis of differences in bacterial composi-                  assembly of bacterial motility proteins (such as flagella)
+tions in normal and tumor tissues was performed for                        and of lipopolysaccharide biosynthesis were significantly
+some selected bacteria at the phylum and species levels                    enriched in tumors compared to normal tissues (Fig. 3)
+(Fig. 2d, e). Of particular interest are significantly higher              (P < 0.05), which is consistent with a previous report
+amounts of two bacterial species, i.e., F. nucleatum and B.                based on the gut microbiome of Moroccan CRCs [40].
+
+
+
+
+  Fig. 3 Functional pathways predicted with tumor- and normal tissue-enriched bacteria. KEGG pathways of OTUs enriched differentially between
+  normal and tumor tissues were analyzed using PICRUSt (see “Materials and methods”). P-values were estimated by Welch’s t-test
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                   Page 7 of 12
+
+
+
+
+In relation to this observation, it has been reported that      described above. Interestingly, we found that lymphoid
+overexpression of flhDC, a bacterial motility regulator,        cells, including both B and T cells, were positively cor-
+produced from Salmonella is associated with increased           related with normal tissue enriched bacteria, whereas
+tumor cell mass [41]. Another notable compositional dif-        myeloid cells, including monocytes and pericytes were
+ference enriched in tumor tissue was bile acid secretion        positively associated with tumor-enriched bacteria
+(Fig. 3) (P < 0.01) because it was reported that some of the    (Fig. 4b).
+gut microbiome secretes bile acid, by which the microbi-
+ome can provoke a proinflammatory response in hepatic           Enrichment of pathogenic bacteria can be a biomarker
+stellate cells [42].                                            for better CRC prognosis
+  In contrast, the pathways associated with sporulation,        We next wondered whether the microbial composition
+RNA transport, and chloroalkane and chloroalkene deg-           could predict the prognosis of CRC patients. The pro-
+radation were more significantly enriched in normal tis-        portions of tumor-enriched bacteria and normal tissue-
+sues than in tumor tissues (Fig. 3) (P < 0.0001), although      enriched bacteria were compared between the ‘crc_RC’
+no good explanation for the cause and effect of this            (patients with recurrence) and ‘crc_nRC’ groups (patients
+enrichment has yet been provided. Sporulation, i.e., a          without recurrence). Since normal and tumor tissues
+metabolic event that is expected to occur in gram-posi-         were collected from the same individuals, comparisons
+tive bacteria such as Clostridia [43], which was relatively     (‘crc_RC’ vs. ‘crc_nRC’) were performed separately for
+more enriched in normal tissues, as shown in Fig. 1c, may       the normal tissue-derived microbiome (i.e., ‘N_crc_RC’
+partially explain this observation.                             vs. ‘N_crc_nRC’) and for the tumor-derived microbi-
+                                                                ome (i.e., ‘T_crc_RC’ vs. ‘T_crc_nRC’). Surprisingly, we
+Correlation analysis between mRNA expression levels             found that tumor-enriched bacteria, including B. fragilis
+and proportions of bacteria                                     and F. nucleatum, were significantly more abundant in
+We then attempted to investigate the functional classes         ‘crc_nRC’ than in ‘crc_RC’, indicating that the enrichment
+of genes that are differentially expressed in tumor tissues     of these well-known pathogenic bacteria was associated
+compared to normal tissues, which were conjectured to           with better prognosis of CRC patients (Fig. 5), which is
+have been affected by changes in the composition of the         contradictory with what has been previously reported
+microbiota. Briefly, DEGs were estimated by comparing           [8, 18, 45–47]. To exclude the possibility that these unex-
+mRNA gene expression in tumor tissues to that in nor-           pected observations were due to the nonrandom dis-
+mal tissues, in which functional classes thought to have        tribution of patients with early or late TNM stages into
+altered expression together were identified by ssGSEA.          ‘crc_RC’ and ‘crc_nRC’, the comparison was conducted
+Second, a correlation analysis was performed between            again after the TNM stages were controlled; comparison
+each of the functional classes in ssGSEA and the propor-        of ‘crc_RC’ vs. ‘crc_nRC’ was performed only for patients
+tions of the five bacterial features we selected in Fig. 2      with TNM stage 2 (Fig. 6) and similarly only for patients
+(1 genus; Fustobacterium, 4 species; B. fragilis, F. nucle-     with TNM stage 3. The samples from TNM stages 1 and
+atum, F. prausnitzii, B. vulgatus). As a result, we found       4 were removed because the number of samples was too
+that the expression levels of host genes had a significant      small (< 9) (Additional file 1: Table S1). Nevertheless,
+positive or negative correlation with the proportions of        even in the stage-fixed sets, the conclusion was consist-
+tumor-enriched bacteria or normal tissue-enriched bac-          ent, in that enrichment of pathogenic bacteria was asso-
+teria (Fig. 4a), as expected. Interestingly, genes involved     ciated with better prognosis of CRC patients.
+in tumor formation, including the cell cycle, cell adhe-
+sion, and the Wnt signaling pathway, were positively cor-       Discussion
+related with pathogenic bacteria, including F. nucleatum        In the present work, we showed that alterations in the
+and B. fragilis, whereas normal tissue-enriched bacteria        compositions of the microbiome were significantly asso-
+including F. prausnitzii and B. vulgatus were positively        ciated with changes in the host tissue states from normal
+correlated with genes involved in starch and sucrose            tissue to tumors, coupled with changes in the levels of
+metabolism, the intestinal immune network and ABC               some genes expressed in host tissues.
+transporters.                                                      The method of comparing the microbiome com-
+  We also tried to investigate which cell types are likely      positions obtained under two different physiological
+to interact with microbial communities during tumor             conditions is basically similar to many other genomic,
+formation. After the cell types expected to contribute          transcriptomic, and proteomic data analyses performed
+to bulk RNA-sequencing data were deconvoluted using             in the control-case design. However, finding biologi-
+a program called xCell [44], a correlation analysis was         cally meaningful associations between the composition
+performed in the same way as was done for the DEGs              of the microbiome and human disease is not easy for
+Choi et al. Journal of Translational Medicine    (2021) 19:485                                                                                Page 8 of 12
+
+
+
+
+  Fig. 4 Correlations between the expression levels of host genes and the microbiome composition. a The relationship between the abundance of
+  some selected bacteria enriched differently between normal and tumor tissues and the pathways of genes expressed in CRC tissues estimated by
+  ssGSEA. b Correlation between the composition of cell types deconvoluted by xCell and the bacteria used in a. The color of the squares indicates
+  the magnitude of the correlation according to the scales indicated in the bar on the right side, and asterisks indicate the significance of the
+  correlation (***P < 0.001, **P < 0.01, *P < 0.05)
+
+
+
+several reasons. First, microbiomes are highly hetero-                          individuals have different microbial compositions in
+geneous, to the extent to which even the same individ-                          the same tissue type. Second, various sample sources,
+ual can carry varied microbiomes depending on diets                             such as fecal samples, mucus samples or tissue sam-
+or physiological states, not to mention that different                          ples of patients, are used to isolate the microbiome.
+
+
+
+  (See figure on next page.)
+  Fig. 5 Comparison of the microbiome composition in four different tissue types. a Patients were divided into four subgroups by adding prognostic
+  information that was retrospectively determined (RC: recurrence; nRC: nonrecurrence), accompanied by normal tissue- and tumor-derived
+  microbiomes, i.e., ‘N_crc_RC’, ‘N_crc_nRC’, ‘T_crc_RC’, and ‘T_crc_nRC’, as described in the main text. Differences in microbial composition are
+  displayed at the phylum (left) and species levels (right). b Box plot analysis of the relative abundance of selected OTUs at the phylum level (top) and
+  the species level (bottom) between ‘N_crc_RC’ and ‘N_crc_nRC’. c Box plot analysis of the relative abundance of selected OTUs at the phylum level
+  (top) and the species level (bottom) between ‘T_crc_RC’ and ‘T_crc_nRC’. a, b The samples used were derived from a total of 33 ‘crc_nRC’ and 18
+  ‘crc_RC’ samples for both normal and tumor samples (Additional file 1: Table S1)
+Choi et al. Journal of Translational Medicine   (2021) 19:485   Page 9 of 12
+
+
+
+
+ Fig. 5 (See legend on previous page.)
+Choi et al. Journal of Translational Medicine   (2021) 19:485                                                                           Page 10 of 12
+
+
+
+
+  Fig. 6 Difference in bacterial abundance between ‘crc_RC’ and ‘crc_nRC’ when the TNM stages were controlled. a Comparison of the abundances
+  of selected OTUs for patients with TNM stage II (from 12 ‘crc_nRC’ and 3 ‘crc_RC’ samples) and b Comparison of the abundances of selected OTUs for
+  patients with TNM stage III (from 17 ‘crc_nRC’ and 6 ‘crc_RC’ samples). a, b Refer to Additional file 1: Table S1 for the numbers of samples used
+
+
+
+Third, various sequencing methodologies, either whole                        levels of pathogenic bacteria in their tissues had a con-
+genome shotgun sequencing or 16S rRNA amplicon                               sistently better prognosis, regardless of the sources of
+sequencing methods, are chosen to generate source                            microbiomes (i.e., tumor- or normal tissue-derived
+sequencing data to identify microbiome components.                           microbiomes).
+Therefore, conclusions are often inconsistent regard-                          Interestingly, some studies have reported a good
+ing the increase or decrease in certain bacterial spe-                       prognostic association of F. nucleatum in CRC. For
+cies associated with a given human disease, and the                          instance, according to Oh et al. [52], the survival of F.
+microbiome related to CRC is no exception. However,                          nucleatum-high CRC patients was better than that of
+two bacterial species, F. nucleatum and B. fragilis, are                     F. nucleatum-low CRC patients, when only a subgroup
+consistently reported to increase in feces or mucus                          of microsatellite-stable CRC patients with nonsigmoid
+from CRC patients compared to healthy individuals or                         colon cancers treated with oxaliplatin-based chemo-
+at increased levels in tumor tissue compared to nor-                         therapy were separately investigated. Notably, both Oh
+mal tissue of the same CRC patient [8, 48, 49]. It seems                     et al.’s samples and ours are based on microbiome data
+that F. nucleatum is the most studied bacterial species                      generated by the 16S rRNA amplicon sequencing method
+related to the onset or progression of CRC. Our present                      for tissue samples of homogenous Korean-only CRC
+study also drew the same conclusion. Taken together,                         patients. Saito et al. [53] showed that F. nucleatum could
+the two bacteria, F. nucleatum and B. fragilis, may have                     be associated with a good prognosis in a subgroup of
+a causal relationship in provoking inflammatory dis-                         CRC patients with FOXP3lo non-Treg cell infiltration.
+eases and cancers.                                                             Unfortunately, no good explanation has yet been pro-
+   As expected, these pathogenic bacteria have been                          posed for this unexpected link between pathogenic
+reported to be associated with poor prognosis in CRC                         bacteria and a good prognosis, unlike the case for the
+patients. For instance, patients with a high amount of                       association with a poor prognosis. It is possible that
+F. nucleatum tended to have shorter survival times than                      there are strain-to-strain differences in the bacterial spe-
+patients with a low amount of F. nucleatum [45–47]. Yu                       cies present in different ethnic populations or that dif-
+et al. [50] showed that F. nucleatum was more enriched                       ferences in the genetic makeup or local diet can cause
+in chemoresistant recurrent CRC patients than in che-                        the same pathogenic bacteria to have a different effect
+mosensitive nonrecurrent patients by triggering the                          in the individuals tested. In addition, another possibil-
+autophagy pathway via the TLR4/MYD88 pathway,                                ity can be clued from the relationship between the den-
+which is consistent with the results of Zhang et al. [51].                   sity of F. nucleatum and the density of tumor-infiltrating
+However, we observed otherwise in the present work,                          lymphocytes (TILs); the density of F. nucleatum was
+showing that these two pathogenic bacteria were more                         reported to be positively correlated with the density of
+enriched in CRC patients without recurrence (i.e., ‘crc_                     TILs in some CRCs [54], and the high density of TILs was
+nRC’) than in CRC patients with recurrence (i.e., ‘crc_                      shown to be associated with a better prognosis in CRC
+RC’). As shown in Figs. 5 and 6, patients with higher                        [55]. Therefore, it will be a great opportunity to develop a
+Choi et al. Journal of Translational Medicine        (2021) 19:485                                                                                 Page 11 of 12
+
+
+
+
+microbiome-based prognostic marker in the future if we                           Author details
+                                                                                 1
+                                                                                   Division of Biomedical Convergence, College of Biomedical Science,
+can determine how these pathogenic bacteria can inhibit                          Institute of Bioscience & Biotechnology, Kangwon National University,
+the recurrence of cancer after surgical treatment and                            Chuncheon 24341, Republic of Korea. 2 GENINUS Inc., Seoul 05836, Republic
+chemotherapy.                                                                    of Korea. 3 Department of Medical Life Science, College of Medicine, Catholic
+                                                                                 University of Korea, Seoul 06591, Republic of Korea.
+
+                                                                                 Received: 24 September 2021 Accepted: 18 November 2021
+Conclusions
+We investigated whether alterations in the composi-
+tions of the microbiome were significantly associated
+with changes in the host tissue states from normal tis-                          References
+sue to tumors, coupled with changes in the levels of                             1. Nguyen HT, Duong H. The molecular characteristics of colorectal cancer:
+                                                                                     implications for diagnosis and therapy. Oncol Lett. 2018;16(1):9–18.
+some genes expressed in host tissues. We showed that                             2. Schatoff EM, Leach BI, Dow LE. Wnt signaling and colorectal cancer. Curr
+the two pathogenic bacteria, F. nucleatum and B. fragilis,                           Colorectal Cancer Rep. 2017;13(2):101–10.
+that were more abundant in tumor tissues than normal                             3. Armaghany T, Wilson JD, Chu Q, Mills G. Genetic alterations in colorectal
+                                                                                     cancer. Gastrointest Cancer Res. 2012;5(1):19–27.
+tissues were surprisingly more abundant in the patients                          4. Macrae FA. Colorectal cancer: epidemiology, risk factors, and protective
+without recurrence than in the patients with recurrence.                             factors. Uptodate com [ažurirano 9.lipnja 2017]. 2016.
+We believe that our study will contribute to exploring the                       5. Sandler RS. Epidemiology and risk factors for colorectal cancer. Gastroen-
+                                                                                     terol Clin N Am. 1996;25(4):717–35.
+composition of tissue microbiomes that is critical in pre-
+                                                                                 6. Francescone R, Hou V, Grivennikov SI. Microbiome, inflammation, and
+dicting the prognosis of CRC patients.                                               cancer. Cancer J. 2014;20(3):181–9.
+                                                                                 7. Kho ZY, Lal SK. The human gut microbiome—a potential controller of
+                                                                                     wellness and disease. Front Microbiol. 2018;9:1835.
+Supplementary Information                                                        8. Dahmus JD, Kotler DL, Kastenberg DM, Kistler CA. The gut microbiome
+The online version contains supplementary material available at https://​doi.​       and colorectal cancer: a review of bacterial pathogenesis. J Gastrointest
+org/​10.​1186/​s12967-​021-​03154-0.                                                 Oncol. 2018;9(4):769–77.
+                                                                                 9. Coker OO, Dai Z, Nie Y, Zhao G, Cao L, Nakatsu G, et al. Mucosal microbi-
+                                                                                     ome dysbiosis in gastric carcinogenesis. Gut. 2018;67(6):1024–32.
+  Additional file 1. Additional figures and table.
+                                                                                 10. De Martel C, Franceschi S. Infections and cancer: established associations
+  Additional file 2. Taxa at species level.                                          and new hypotheses. Crit Rev Oncol. 2009;70(3):183–94.
+                                                                                 11. Grivennikov SI, Wang K, Mucida D, Stewart CA, Schnabl B, Jauch D, et al.
+                                                                                     Adenoma-linked barrier defects and microbial products drive IL-23/IL-
+Acknowledgements                                                                     17-mediated tumour growth. Nature. 2012;491(7423):254–8.
+Not applicable.                                                                  12. Gagnaire A, Nadel B, Raoult D, Neefjes J, Gorvel J. Collateral damage:
+                                                                                     insights into bacterial mechanisms that predispose host cells to cancer.
+Authors’ contributions                                                               Nat Rev Microbiol. 2017;15(2):109–28.
+SSC and DP conceived and designed the experiments; SJC performed the             13. Strauss J, Kaplan GG, Beck PL, Rioux K, Panaccione R, DeVinney R, et al.
+data analyses; DP, JC and MRJ contributed reagents and materials; SSC and SJC        Invasive potential of gut mucosa-derived Fusobacterium nucleatum
+wrote the paper. All authors read and approved the manuscript.                       positively correlates with IBD status of the host. Inflamm Bowel Dis.
+                                                                                     2011;17(9):1971–8.
+Funding                                                                          14. Kostic AD, Chun E, Robertson L, Glickman JN, Gallini CA, Michaud M,
+This research was supported by National Research Foundation of Korea                 et al. Fusobacterium nucleatum potentiates intestinal tumorigenesis and
+(NRF) grants funded by the Ministry of Education, Science, and Technology            modulates the tumor-immune microenvironment. Cell Host Microbe.
+(MEST, 2019R1A2C1002350) and by the Ministry of Science and ICT (MSIT,               2013;14(2):207–15.
+2018M3C9A6017315).                                                               15. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. Fusobacterium
+                                                                                     nucleatum promotes colorectal carcinogenesis by modulating
+Availability of data and materials                                                   E-cadherin/β-catenin signaling via its FadA adhesin. Cell Host Microbe.
+The raw data is publicly available on NCBI portal at Sequence Read Archive           2013;14(2):195–206.
+(SRA) BioProject ID: PRJNA743150. 16S rRNA microbiome data—Submission            16. Wu Y, Wu J, Chen T, Li Q, Peng W, Li H, et al. Fusobacterium nucleatum
+ID: SUB9930275 and RNA-Seq data—Submission ID: SUB9954281.                           potentiates intestinal tumorigenesis in mice via a Toll-like receptor 4/
+                                                                                     p21-activated kinase 1 cascade. Dig Dis Sci. 2018;63(5):1210–8.
+                                                                                 17. Yang Y, Weng W, Peng J, Hong L, Yang L, Toiyama Y, et al. Fusobacterium
+Declarations                                                                         nucleatum increases proliferation of colorectal cancer cells and tumor
+                                                                                     development in mice by activating Toll-like receptor 4 signaling to
+Ethics approval and consent to participate
+                                                                                     nuclear factor-κB, and up-regulating expression of microRNA-21. Gastro-
+This study was performed under the principles of the Declaration of Helsinki
+                                                                                     enterology. 2017;152(4):851-866.e24.
+and was approved by the ethics committee of Samsung Medical Center
+                                                                                 18. Ulger Toprak N, Yagci A, Gulluoglu B, Akin M, Demirkalem P, Celenk T,
+in South Korea (No. SMC 2018-04-074-004). Informed written consent was
+                                                                                     et al. A possible role of Bacteroides fragilis enterotoxin in the aetiology of
+obtained from all participants.
+                                                                                     colorectal cancer. Clin Microbiol Infect. 2006;12(8):782–6.
+                                                                                 19. Viljoen KS, Dakshinamurthy A, Goldberg P, Blackburn JM. Quantita-
+Consent for publication
+                                                                                     tive profiling of colorectal cancer-associated bacteria reveals associa-
+Not applicable.
+                                                                                     tions between Fusobacterium spp., enterotoxigenic Bacteroides fragilis
+                                                                                     (ETBF) and clinicopathological features of colorectal cancer. PLoS ONE.
+Competing interests
+                                                                                     2015;10(3):e0119462.
+The authors declare that they have no competing interests.
+                                                                                 20. Haghi F, Goli E, Mirzaei B, Zeighami H. The association between
+                                                                                     fecal enterotoxigenic B. fragilis with colorectal cancer. BMC Cancer.
+                                                                                     2019;19(1):1–4.
+Choi et al. Journal of Translational Medicine      (2021) 19:485                                                                                      Page 12 of 12
+
+
+
+
+21. Tjalsma H, Boleij A, Marchesi JR, Dutilh BE. A bacterial driver–passenger     42. Nguyen PT, Kanno K, Pham QT, Kikuchi Y, Kakimoto M, Kobayashi T, et al.
+    model for colorectal cancer: beyond the usual suspects. Nat Rev Micro-            Senescent hepatic stellate cells caused by deoxycholic acid modulates
+    biol. 2012;10(8):575–82.                                                          malignant behavior of hepatocellular carcinoma. J Cancer Res Clin Oncol.
+22. Saus E, Iraola-Guzmán S, Willis JR, Brunet-Vega A, Gabaldón T. Microbiome         2020;146(12):3255–68.
+    and colorectal cancer: roles in carcinogenesis and clinical potential. Mol    43. Dürre P. Physiology and sporulation in Clostridium. The bacterial spore:
+    Aspects Med. 2019;69:93–106.                                                      from molecules to systems. 2016. p. 313–329.
+23. Gagniere J, Raisch J, Veziant J, Barnich N, Bonnet R, Buc E, et al. Gut       44. Aran D, Hu Z, Butte AJ. xCell: digitally portraying the tissue cellular hetero-
+    microbiota imbalance and colorectal cancer. World J Gastroenterol.                geneity landscape. Genome Biol. 2017;18(1):1–14.
+    2016;22(2):501–18.                                                            45. Mima K, Nishihara R, Qian ZR, Cao Y, Sukawa Y, Nowak JA, et al. Fusobacte-
+24. Caporaso JG, Kuczynski J, Stombaugh J, Bittinger K, Bushman FD, Costello          rium nucleatum in colorectal carcinoma tissue and patient prognosis. Gut.
+    EK, et al. QIIME allows analysis of high-throughput community sequenc-            2016;65(12):1973–80.
+    ing data. Nat Methods. 2010;7(5):335–6.                                       46. Chen Y, Lu Y, Ke Y, Li Y. Prognostic impact of the Fusobacterium nucleatum
+25. Magoč T, Salzberg SL. FLASH: fast length adjustment of short reads to             status in colorectal cancers. Medicine. 2019;98(39):e17221.
+    improve genome assemblies. Bioinformatics. 2011;27(21):2957–63.               47. Kunzmann AT, Proença MA, Jordao HW, Jiraskova K, Schneiderova M,
+26. Edgar RC. Search and clustering orders of magnitude faster than BLAST.            Levy M, et al. Fusobacterium nucleatum tumor DNA levels are associated
+    Bioinformatics. 2010;26(19):2460–1.                                               with survival in colorectal cancer patients. Eur J Clin Microbiol Infect Dis.
+27. Wang Q, Garrity GM, Tiedje JM, Cole JR. Naive Bayesian classifier for rapid       2019;38(10):1891–9.
+    assignment of rRNA sequences into the new bacterial taxonomy. Appl            48. Flanagan L, Schmid J, Ebert M, Soucek P, Kunicka T, Liska V, et al. Fusobac-
+    Environ Microbiol. 2007;73(16):5261–7.                                            terium nucleatum associates with stages of colorectal neoplasia develop-
+28. DeSantis TZ, Hugenholtz P, Larsen N, Rojas M, Brodie EL, Keller K, et al.         ment, colorectal cancer and disease outcome. Eur J Clin Microbiol Infect
+    Greengenes, a chimera-checked 16S rRNA gene database and work-                    Dis. 2014;33(8):1381–90.
+    bench compatible with ARB. Appl Environ Microbiol. 2006;72(7):5069–72.        49. Shariati A, Razavi S, Ghaznavi-Rad E, Jahanbin B, Akbari A, Norzaee S, et al.
+29. Segata N, Izard J, Waldron L, Gevers D, Miropolsky L, Garrett WS, et al.          Association between colorectal cancer and Fusobacterium nucleatum and
+    Metagenomic biomarker discovery and explanation. Genome Biol.                     Bacteroides fragilis bacteria in Iranian patients: a preliminary study. Infect
+    2011;12(6):1–18.                                                                  Agents Cancer. 2021;16(1):1–10.
+30. Bray JR, Curtis JT. An ordination of the upland forest communities of         50. Yu T, Guo F, Yu Y, Sun T, Ma D, Han J, et al. Fusobacterium nucleatum pro-
+    southern Wisconsin. Ecol Monogr. 1957;27(4):325–49.                               motes chemoresistance to colorectal cancer by modulating autophagy.
+31. Langille MG, Zaneveld J, Caporaso JG, McDonald D, Knights D, Reyes JA,            Cell. 2017;170(3):548-563.e16.
+    et al. Predictive functional profiling of microbial communities using 16S     51. Zhang S, Yang Y, Weng W, Guo B, Cai G, Ma Y, et al. Fusobacterium
+    rRNA marker gene sequences. Nat Biotechnol. 2013;31(9):814–21.                    nucleatum promotes chemoresistance to 5-fluorouracil by upregula-
+32. Parks DH, Tyson GW, Hugenholtz P, Beiko RG. STAMP: statistical analysis of        tion of BIRC3 expression in colorectal cancer. J Exp Clin Cancer Res.
+    taxonomic and functional profiles. Bioinformatics. 2014;30(21):3123–4.            2019;38(1):1–13.
+33. Bolger AM, Lohse M, Usadel B. Trimmomatic: a flexible trimmer for Illu-       52. Oh HJ, Kim JH, Bae JM, Kim HJ, Cho NY, Kang GH. Prognostic impact of
+    mina sequence data. Bioinformatics. 2014;30(15):2114–20.                          Fusobacterium nucleatum depends on combined tumor location and
+34. Dobin A, Davis CA, Schlesinger F, Drenkow J, Zaleski C, Jha S, et al. STAR:       microsatellite instability status in stage II/III Colorectal cancers treated
+    ultrafast universal RNA-seq aligner. Bioinformatics. 2013;29(1):15–21.            with adjuvant chemotherapy. J Pathol Transl Med. 2019;53(1):40–9.
+35. Lee S, Choi N, Koh I, Kim B, Lee S, Kim S, et al. Putative positive role of   53. Saito T, Nishikawa H, Wada H, Nagano Y, Sugiyama D, Atarashi K, et al.
+    inflammatory genes in fat deposition supported by altered gene expres-            Two FOXP3 CD4 T cell subpopulations distinctly control the prognosis of
+    sion in purified human adipocytes and preadipocytes from lean and                 colorectal cancers. Nat Med. 2016;22(6):679–84.
+    obese adipose tissues. J Transl Med. 2020;18(1):1–14.                         54. Hamada T, Zhang X, Mima K, Bullman S, Sukawa Y, Nowak JA, et al. Fuso-
+36. Choi H, Lee S, Lee M, Park D, Choi SS. Investigation of the putative role         bacterium nucleatum in colorectal cancer relates to immune response
+    of antisense transcripts as regulators of sense transcripts by correla-           differentially by tumor microsatellite instability status. Cancer Immunol
+    tion analysis of sense-antisense pairs in colorectal cancers. FASEB J.            Res. 2018;6(11):1327–36.
+    2021;35(4):e21482.                                                            55. Pagès F, Mlecnik B, Marliot F, Bindea G, Ou F, Bifulco C, et al. Inter-
+37. Anders S, Pyl PT, Huber W. HTSeq—a Python framework to work with                  national validation of the consensus immunoscore for the clas-
+    high-throughput sequencing data. Bioinformatics. 2015;31(2):166–9.                sification of colon cancer: a prognostic and accuracy study. Lancet.
+38. Love MI, Huber W, Anders S. Moderated estimation of fold change and               2018;391(10135):2128–39.
+    dispersion for RNA-seq data with DESeq2. Genome Biol. 2014;15(12):1–21.
+39. Liu W, Zhang R, Shu R, Yu J, Li H, Long H, et al. Study of the relationship
+    between microbiome and colorectal cancer susceptibility using 16SrRNA         Publisher’s Note
+    sequencing. BioMed Res Int. 2020;2020:1–17.                                   Springer Nature remains neutral with regard to jurisdictional claims in pub-
+40. Allali I, Boukhatem N, Bouguenouch L, Hardi H, Boudouaya HA, Cadenas          lished maps and institutional affiliations.
+    MB, et al. Gut microbiome of Moroccan colorectal cancer patients. Med
+    Microbiol Immunol. 2018;207(3):211–25.
+41. Raman V, Van Dessel N, O’Connor OM, Forbes NS. The motility regulator
+    flhDC drives intracellular accumulation and tumor colonization of Salmo-
+    nella. J Immunother Cancer. 2019;7(1):1–16.
+                                                                                      Ready to submit your research ? Choose BMC and benefit from:
+
+                                                                                        • fast, convenient online submission
+                                                                                        • thorough peer review by experienced researchers in your field
+                                                                                        • rapid publication on acceptance
+                                                                                        • support for research data, including large and complex data types
+                                                                                        • gold Open Access which fosters wider collaboration and increased citations
+                                                                                        • maximum visibility for your research: over 100M website views per year
+
+                                                                                      At BMC, research is always in progress.
+
+                                                                                      Learn more biomedcentral.com/submissions
+

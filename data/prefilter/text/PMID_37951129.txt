@@ -1,0 +1,590 @@
+    ORIGINAL RESEARCH
+
+Sequencing paired tumor DNA and white blood cells improves circulating
+tumor DNA tracking and detects pathogenic germline variants in localized
+colon cancer5
+F. Gimeno-Valiente1y , J. Martín-Arana2,3y , R. Tébar-Martínez2 , V. Gambardella2 , C. Martínez-Ciarpaglini3,4 ,
+B. García-Micó2,3 , B. Martínez-Castedo2,3 , B. Palomar4, M. García-Bartolomé2 , V. Seguí2 , M. Huerta2 , D. Moro-Valdezate5 ,
+V. Pla-Martí5 , L. Pérez-Santiago5 , S. Roselló2,3 , D. Roda2,3 , A. Cervantes2,3z & N. Tarazona2,3z
+1
+ Cancer Evolution and Genome Instability Laboratory, University College London Cancer Institute, London, UK; 2Department of Medical Oncology, INCLIVA Biomedical
+Research Institute, University of Valencia, Valencia; 3CIBERONC, Instituto de Salud Carlos III, Madrid; 4Department of Pathology, INCLIVA Biomedical Research Institute,
+University of Valencia, Valencia; 5Colorectal Surgery Unit, INCLIVA Biomedical Research Institute, Hospital Clínico Universitario de Valencia, Department of Surgery,
+University of Valencia, Valencia, Spain
+
+
+           Available online 10 November 2023
+
+
+
+
+    Background: In the setting of localized colon cancer (CC), circulating tumor DNA (ctDNA) monitoring in plasma has
+    shown potential for detecting minimal residual disease (MRD) and predicting a higher risk of recurrence. With the
+    tumor-only sequencing approach, however, germline variants may be misidentiﬁed as somatic variations, precluding
+    the possibility of tracking in up to 11% of patients due to a lack of known somatic mutations. In this study, we
+    assess the potential value of adding white blood cells (WBCs) to tumor tissue sequencing to enhance the accuracy
+    of sequencing results.
+    Patients and Methods: A total of 148 patients diagnosed with localized CC were prospectively recruited at the Hospital
+    Clínico Universitario in Valencia (Spain). Employing a custom 29-gene panel, sequencing was conducted on tumor
+    tissue, plasma and corresponding WBCs. Droplet digital PCR and amplicon-based NGS were performed on plasma
+    samples post-surgery to track MRD. Oncogenic somatic variants were identiﬁed by annotating with COSMIC,
+    OncoKB and an internal repository of pathogenic mutations database. A variant prioritization analysis, mainly
+    characterized by the match of oncogenic mutations with the evidence levels deﬁned in OncoKB, was carried out to
+    select speciﬁc targeted therapies.
+    Results: Utilizing paired tumor and WBCs sequencing, we identiﬁed somatic mutations in all patients (100%) within our
+    cohort, compared to 89% using only tumor tissue. Consequently, the top 10 most frequently mutated genes for plasma
+    monitoring were altered. The sequencing of WBCs identiﬁed 9% of patients with pathogenic mutations in the germline,
+    with APC and TP53 being the most frequently mutated genes. Additionally, mutations in genes related to clonal
+    hematopoiesis of indeterminate potential were detected in 27% of the cohort, with TP53, KRAS, and KMT2C being the
+    most frequently altered genes. There were no observed differences in the sensitivity of monitoring MRD using ddPCR
+    or amplicon-based NGS (p ¼ 1). Ultimately, 41% of the patients harbored potentially targetable alterations at diagnosis.
+    Conclusion: The germline testing method not only enhanced sequencing results and raised the proportion of patients
+    eligible for plasma monitoring, but also uncovered the existence of pathogenic germline variations, thereby aiding in
+    the identiﬁcation of patients at a higher risk of hereditary cancer syndromes.
+    Key words: colon cancer, circulating tumor DNA, precision medicine, germline variants, minimal residual disease
+
+
+  *Correspondence to: Prof. Andrés Cervantes, Avenida Blasco Ibañez, 17,
+46010, Valencia, Spain. Tel: (þ34)961973531                                           INTRODUCTION
+  E-mail: andres.cervantes@uv.es (A. Cervantes).
+  *Dr Noelia Tarazona, Avenida Blasco Ibañez, 17, 46010, Valencia, Spain. Tel:        Colon cancer (CC) is a heterogeneous disease representing
+þ(34)961973531                                                                        the second leading cause of cancer-related death world-
+  E-mail: noetalla@incliva.es (N. Tarazona).
+                                                                                      wide.1 In localized CC, surgical pathology analysis of the
+    y
+   These authors contributed equally as ﬁrst authors.                                 surgical specimen provides the best estimation of the risk of
+    z
+   These authors contributed equally as senior/corresponding author.
+  5
+    Note: Part of the content presented orally at the virtual ESMO Congress in
+                                                                                      relapse and guides adjuvant chemotherapy treatment (ACT)
+2020.                                                                                 decision making. However, some patients might be mis-
+  2059-7029/© 2023 The Author(s). Published by Elsevier Ltd on behalf of              treated with ACT if only TNM staging is considered, sug-
+European Society for Medical Oncology. This is an open access article under the
+CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+                                                                                      gesting a need for more accurate prognostic and predictive
+
+Volume 8 - Issue 6 - 2023                                                                                 https://doi.org/10.1016/j.esmoop.2023.102051                1
+ESMO Open                                                                                              F. Gimeno-Valiente et al.
+
+biomarkers.2 In recent years, several studies have shown           DNA concentration was measured using the Qubit ﬂuo-
+that circulating tumor DNA (ctDNA) detection immediately         rometer. DNA fragment lengths were assessed using the
+after surgery in patients diagnosed with localized CC pro-       Agilent 4200 TapeStation System.
+vides direct evidence of minimal residual disease (MRD) and        Samples and data from patients included in this study
+identiﬁes those at high risk of recurrence.3-12 Findings from    were provided by the INCLIVA Biobank (PT20/00029;
+the phase II randomized DYNAMIC study suggest that               B.0000768 ISCIII), part of the Valencian Biobanking Network
+ctDNA-guided management could help improve clinician             and the Spanish National Biobanks Network and they were
+selection of patients with stage II CC who may beneﬁt from       processed following standard operating procedures with the
+ACT, as well as avoid overtreatment in those who do not          appropriate approval of the research and ethics commit-
+present ctDNA.13                                                 tees. All participants provided written informed consent.
+   However, one of the most important issues in monitoring
+MRD is identifying genomic aberrations to be serially tracked    Library generation and sequencing
+in plasma. In our previous study,6,10 up to 11% of patients
+with localized CC could not be monitored in plasma due to the    Libraries for gDNA, tumor DNA and cfDNA were prepared
+lack of pathological somatic mutations in tumor samples.         using the QIAseq Targeted DNA Panel kit from Qiagen, using a
+Several studies showed that sequencing artifacts, germline       previously described customized CRC gene panel.10 The
+variants, and clonal hematopoiesis may confound the inter-       manufacturer’s protocol was followed, starting with an input
+pretation of sequencing results and complicate subsequent        of 40 ng for gDNA, 100 ng for tumor DNA and variable for
+disease monitoring.14 Accurately detecting tumor-derived         cfDNA. Notably, the Universal PCR step comprised 18 cycles
+mutations in ctDNA requires a combination of integrated          for gDNA, 20 cycles for tumor DNA and 17 cycles for cfDNA.
+digital error suppression approaches such as unique molec-       The resulting libraries were assessed using the High Sensi-
+ular identiﬁers, appropriate variant calling, multigene anal-    tivity D1000 DNA ScreenTape from Agilent on the TapeSta-
+ysis, and high-depth sequencing.15 In addition, the ctDNA        tion 4200 System. Equimolar volumes of libraries from the
+fraction is extremely low in many tumors,16 which may lead to    same DNA type (gDNA, tumor DNA or cfDNA) were multi-
+false negatives in w18% of cases.8 ctDNA detection methods       plexed and diluted for loading and sequencing on the NextSeq
+should be highly sensitive and speciﬁc. Sequencing tumor         instrument from Illumina, following the loading instructions
+DNA and matched white blood cells (WBCs) may improve             provided by Qiagen. As a quality control measure for the
+sequencing analysis interpretation by ﬁltering alterations and   entire variant determination process, samples NA12877 and
+distinguishing ctDNA alterations from cell-free DNA (cfDNA)      NA12878 from the Coriell Institute were selected.
+variants related to clonal hematopoiesis of indeterminate
+potential (CHIP). In this study, we aimed to track not only      FASTQ preprocessing, quality control, and read mapping
+pathogenic variants but also any somatic mutations present,      Supplementary Figure S2, available at https://doi.org/10.1016/
+to increase the number of candidates for monitoring in           j.esmoop.2023.102051 illustrates the bioinformatics pipeline
+plasma and therefore improve sensitivity in detecting MRD.       used in this study. The quality control of raw samples in FASTQ
+Moreover, this new germline approach would enable us to          format was conducted using FastQC1 v0.11.8.17 Adapter
+identify not only CHIP-related mutations but also inherited      removal was carried out using Cutadapt2 v2.10,18 and reads
+genetic variations with clinical relevance for patients.         with a mean quality below Q30 were discarded using PRINSEQ
+                                                                 v0.20.4.19 Sequencing reads were aligned to the GRCh38.p12
+                                                                 human reference genome using BWA-mem v0.7.17.20 The
+METHODS                                                          fgbio consensus pipeline (v1.1.0) was implemented for UMI
+Study population and sample collection                           extraction, grouping, and deduplication of reads from the same
+                                                                 UMI family. Subsequently, BAM postprocessing was carried out
+We recruited 148 patients diagnosed with localized CC at         using PICARD v2.18.621 and GATK v4.2.0.0.22
+the Hospital Clínico Universitario in Valencia, Spain, be-
+tween October 2015 and October 2019.10 Tumor tissue,
+plasma, and WBCs were collected at diagnosis (pretreat-          Variant calling and somatic variant prioritization
+ment) for deep targeted sequencing (Supplementary                Variant calling of the primary tumor, plasma, and normal
+Figure S1, available at https://doi.org/10.1016/j.esmoop.        samples was conducted by combining the outputs from
+2023.102051). Tissue DNA was extracted from the primary          smCounter (v2),23 LoFreq v2.1.5,24 and Mutect2 (GATK
+tumor surgical specimen using the AllPrep DNA/RNA FFPE           v4.2.0.0) speciﬁcally for INDELs. For primary tumor variants,
+Kit (Qiagen) and sequenced with the QIAseq Targeted DNA          a minimum variant allele frequency (VAF) threshold of 5%
+Panel for Illumina Instruments protocol (May 2017; Qiagen)       was applied, while for plasma samples it was set at 0.01%.
+to identify speciﬁc mutations for each tumor. Germline DNA       The resulting variants were then annotated using Variant
+(gDNA) from 1 ml of the buffy coat was processed with            Effect Predictor (Ensembl v102).25 To avoid false positives,
+chemagic DNA Blood 1 ml (Perkin-Elmer) for the chemagic          variants associated with CHIP were removed from the
+instrument. cfDNA was extracted from 4 ml plasma samples         plasma samples and analyzed separately. We also carried
+using the QIAamp Circulating Nucleic Acid Kit (Qiagen). All      out a manual review and curation of the candidate somatic
+procedures followed the manufacturer’s instructions.             mutations detected in each sample.
+
+2    https://doi.org/10.1016/j.esmoop.2023.102051                                                  Volume 8 - Issue 6 - 2023
+F. Gimeno-Valiente et al.                                                                                                                                ESMO Open
+
+
+   A                                                                                                                             B
+
+                                                                                                                                            Pathogenic          Somatic
+                                                                                                                                             mutation           mutation
+                                                                                                                                  Top 10
+                                                                                                                                rank gene
+                                                                                                                                              TP53             APC (1      )
+
+                                                                                                                                               APC             TP53 (1     )
+
+                                                                                                                                              KRAS               ARID1A
+
+                                                                                                                                             PIK3CA           KRAS (2          )
+
+                                                                                                                                              BRAF                  FAT4
+
+                                                                                                                                             FBXW7           PIK3CA (2             )
+
+                                                                                                                                              NRAS                  FLNA
+
+                                                                                                                                             CTNNB1               SOX9
+
+                                                                                                                                             SMAD4            BRAF (2      )
+
+                                                                                                                                              PTEN               KMT2C
+
+
+
+
+                                                                                                                                              New genes in top 10
+
+                                                                                                                                              Position changes in top 10
+
+
+
+
+Figure 1. Somatic mutational landscape of 148 patients with localized colon cancer using the germline approach.
+(A) Waterfall plot of somatic mutations detected in the cohort using a customized 29-gene panel in tumor samples. Synonymous and intronic variants are not included in
+the plot. (B) Top 10 mutated genes, segregated into two categories: pathogenic mutations10 (left) and somatic mutations (right).
+
+
+Droplet digital PCR analysis of cfDNA                                                controls in at least two of the selected variants were clas-
+Droplet digital PCR (ddPCR) was carried out on a QX200                               siﬁed as with MRD.
+ddPCR system (Bio-Rad) using TaqMan chemistry according
+to the instructions provided by the manufacturer. In sum-
+                                                                                     Statistical analysis
+mary, the mixture was prepared by combining up to 20 ng
+of cfDNA, 10 ml of a Supermix without dUTP (Bio-Rad), and                            All analyses were carried out using R software version 4.3.0
+2 ml of FAM/HEX probes speciﬁc to the desired genetic                                (R Foundation, Vienna, Austria). Genomic variables and
+changes. Emulsions were analyzed with the default settings                           MRD are presented as frequencies and percentages. Dif-
+for rare event detection and appropriate ﬂuorophore                                  ferences in tumor-only versus germline testing were
+detection. Probes for detecting speciﬁc alterations or                               analyzed using the Wilcoxon signed-rank test. The associa-
+simultaneous changes within a 25-pb range were designed                              tion between quantitative variables was calculated by
+using Bio-Rad platforms. A total of 95 ddPCR probes were                             Pearson correlation. The median disease-free survival was
+required, with 59 probes used for pathogenic analysis and                            estimated using the KaplaneMeier method. Univariable
+75 probes for somatic analysis. All probes underwent vali-                           analysis was carried out with Cox regression modeling. Plots
+dation using patient tissue samples.                                                 were carried out using the ggplot2 and ComplexHeatmap
+                                                                                     packages in R. ShapiroeWilk tests were carried out to
+Amplicon-based NGS for detection of ctDNA                                            evaluate normal distribution. P values were considered
+                                                                                     signiﬁcant if P < 0.05 based on two-sided testing.
+For each patient under evaluation, we selected the four
+most common variants to design primer multiplexes. Library
+preparation followed a two-step PCR process consisting of                            RESULTS
+25 cycles for gene-speciﬁc PCR and 30 cycles for indexing
+PCR. The QIAGEN Multiplex PCR kit was used, and the li-                              Genomic proﬁling of localized CC by sequencing primary
+braries were puriﬁed using the MagSi-NGS PREP (magtivio)                             tumor and matched WBCs
+system. To ensure the primers were effective in detecting                            DNA extracted from tumor tissue and WBCs from a
+the chosen mutations, each multiplex was tested in the                               consecutive series of 148 patients with localized CC (stage I-
+patient’s tissue of origin. Libraries were quantiﬁed using the                       III) was sequenced on a NextSeq platform at a median
+QuantiFluor dsDNA Assay Kit, and the size of the libraries                           depth of 769 and 837, respectively (Supplementary
+was determined using the QIAxcel DNA Screening Gel                                   Materials, available at https://doi.org/10.1016/j.esmoop.
+(QIAGEN). Separate sequencing runs were conducted on a                               2023.102051).10 We examined somatic mutations in tu-
+NextSeq instrument, using libraries from healthy controls as                         mor tissue using an in-house designed panel of 29
+well as the corresponding cfDNA sample obtained at the                               frequently mutated genes in CC.10 The mutations detected
+postoperative timepoint, and using each primer multiplex.                            in tumor tissue were categorized as either germinal or so-
+Patients showing higher measurements than healthy                                    matic according to their presence in peripheral blood.
+
+Volume 8 - Issue 6 - 2023                                                                               https://doi.org/10.1016/j.esmoop.2023.102051                                   3
+ESMO Open                                                                                                                            F. Gimeno-Valiente et al.
+
+
+
+    A
+                                                                                                                                         Stop gained
+                                                                                                                                         Missense variant
+                                                                                                                                         Inframe insertion
+                                                                                                                                         Frameshift variant
+                                                                                                                                         Splice donor variant
+                                                                                                                                         Splice acceptor variant
+                                                                                                                                         Start lost
+                                                                                                                                         Protein altering variant
+                                                                                                                                         Inframe deletion
+
+
+
+
+    B                                                                              C
+
+
+
+
+                       Tumor-only testing                                                             Tumor-only testing
+
+
+
+
+Figure 2. Somatic mutational landscape using the tumor-only testing versus germline testing approach.
+(A) Waterfall plot of somatic mutations by the tumor-only approach classiﬁed by public databases. Synonymous and intronic variants are not included in the plot. (B)
+Violin plot comparing the number of somatic mutations obtained using the tumor-only approach (left) and the germline testing (right) approach. (C) Violin plot
+comparing the number of germline mutations obtained using the tumor-only approach (left) and the germline testing (right) approach.
+
+
+
+   We detected somatic mutations in all patients (n ¼ 148;                          the time of diagnosis and the high frequency of false-
+Figure 1A) using an optimized in-house bioinformatics                               positive DNA results.8 Therefore we evaluated whether
+pipeline to reduce background noise in variant calling. As                          incorporating WBC sequencing data for classifying muta-
+expected, driver genes such as APC (86.45%), TP53                                   tions as somatic or germinal variants would yield greater
+(66.22%), KRAS (45.27%), PIK3CA (31.76%), and BRAF                                  precision than relying on public genomic databases (which
+(23.65%) were detected among the top 10 mutated genes.                              use only tumor data) and would also thus help lower the
+In contrast to our previous analysis,10 in which pathogenic                         false-positive rate. The mutational landscape from both
+mutations were only found in 132 patients (89.2%; median                            germline testing and tumor-only sequencing approaches is
+2; range: 0-6), by adding WBC testing we could detect so-                           shown in Figures 1A and 2A, respectively. Our study cohort
+matic mutations in all patients (median 11; range 1-234).                           showed that the top 10 mutated genes varied depending on
+This resulted in changes to the top 10 mutated genes with                           whether germline testing or tumor-only testing was
+the highest allele mutation frequency (VAF; Figure 1B).                             analyzed. According to the tumor-only data, the most
+                                                                                    commonly mutated gene was KMT2C (146/148, 98.65%),
+                                                                                    whereas when germline testing was conducted, KMT2C was
+Added value of sequencing tumor tissue and paired WBCs                              only present in 23% (34/148) of cases. A similar result was
+Among the major constraints in monitoring MRD are iden-                             observed when analyzing TGFBR2 mutations. It is note-
+tifying molecular abnormalities to be followed in plasma at                         worthy that well-established CC drivers such as APC
+
+4       https://doi.org/10.1016/j.esmoop.2023.102051                                                                            Volume 8 - Issue 6 - 2023
+F. Gimeno-Valiente et al.                                                                                                                      ESMO Open
+
+  A
+
+
+
+
+  B                                                                           C
+                                                                                                                                                        CHIP Mutation
+                                                                                                                                                        Somatic Mutation
+
+
+
+
+Figure 3. Mutations identiﬁed from white blood cell (WBC) sequencing.
+(A) Waterfall plot of germline mutations detected in the cohort. (B) Number of clonal hematopoiesis of indeterminate potential (CHIP) mutations detected. (C) Cor-
+relation of variant allele frequency for CHIP mutations detected in cell-free DNA and WBCs.
+UTR, untranslated region; VAF, variant allele frequency.
+
+
+(86.49%), TP53 (68.92%), KRAS (45.95%), and PIK3CA                                 of germline variants, which has important clinical implica-
+(31.76%) were less commonly found mutated when                                     tions for both patients and their relatives.27 In our study,
+analyzing tumor-only data. Furthermore, a signiﬁcantly                             sequencing tumor tissue and paired WBCs enabled us to
+higher number of somatic mutations were identiﬁed by                               differentiate between somatic and germline mutations. Of
+analyzing tumor-only data compared with germline testing                           148 patients, nonsilent germline mutations were discovered
+(Wilcoxon test, P value ¼ 2.2  10e16; Figure 2B). As ex-                          in 65 individuals (43.92%; Figure 3A), with FAT4 (11.49%),
+pected, the use of tumor-only data signiﬁcantly decreased                          APC (9.46%), and KMT2C (6.08%) being the most commonly
+the germinal mutation count (Wilcoxon test, P value ¼                              altered genes. We observed ﬁve distinct pathogenic variants
+2.2  10e16; Figure 2C). These ﬁndings imply that carrying                         in APC, with a prevalence rate ranging from 0.67% to 2.68%,
+out germline sequencing could help prevent the possibility                         and only one TP53 variant, with a prevalence rate of 1.34%.
+of misidentifying signiﬁcant mutations, resulting in more                          In all cases, the VAF remained consistent in both WBC and
+accurate monitoring.26                                                             tumor (Table 1). These ﬁndings are noteworthy for patients
+                                                                                   due to their potential association with hereditary cancer
+                                                                                   syndromes.28
+Detection of germline alterations and clonal                                          Most APC alterations detected across our cohort
+hematopoiesis                                                                      (including p.Ser2621Cys, p.Ala2274Val, and Glu1317Gln) are
+Although its primary purpose is to assist in treatment de-                         listed as benign in public databases and are categorized as
+cision making, tumor testing can also uncover the existence                        rare germline pathogenic variants.29,30 Nevertheless,
+
+Volume 8 - Issue 6 - 2023                                                                             https://doi.org/10.1016/j.esmoop.2023.102051                         5
+ESMO Open                                                                                                                                    F. Gimeno-Valiente et al.
+
+
+    Table 1. Pathogenic germline variants
+
+    Involved genes     Variant          Patients (%)      Median VAF in WBCs         Median VAF in tumor         Syndrome
+    APC                p.Ser2621Cys     1.34              0.49                       0.50                        Familial adenomatous polyposis
+    APC                p.Ser1400Leu     0.67              0.53                       0.58                        Attenuated familial adenomatous polyposis
+    APC                p.Ala2274Val     0.67              0.50                       0.42                        Gastric adenocarcinoma and proximal polyposis of the
+    APC                p.Glu1317Gln     2.68              0.49                       0.44                        stomach
+    APC                p.Ile1307Lys     1.34              0.49                       0.56
+    TP53               p.Val157Ile      1.34              0.48                       0.61                        LieFraumeni syndrome
+Number of pathogenic germline mutations detected in the cohort. The number and percentage of patients affected by these mutations are also shown. The relationship of these
+mutations with hereditary cancers is shown on the right side of the table.
+VAF, variant allele frequency; WBC, white blood cell.
+
+
+
+variants such as p.Ser1400Leu and p.Ile1307Lys (observed                                 (3.38%) alterations were smaller in the study population
+in three of our patients) have been identiﬁed as leading                                 and compatible with previously published reports.41 This
+factors for CC.31-33 The p.Val157Ile TP53 variant (found in                              highlights the signiﬁcance of the KRASG12C mutation (2.7%)
+two patients within the cohort) has been observed in pa-                                 as both a driver and a target for novel compounds.
+tients with several tumor types, including sarcoma and
+breast cancer,34,35 and has been linked to hereditary cancer
+in databases such as ClinVar.36                                                          ctDNA monitoring using tumor-only alterations compared
+   By contrast, germline testing reduced the false-positive                              with the addition of WBCs
+rate of CHIP-associated mutations.37 Our analysis of 118                                 After ﬁltering alterations from WBCs, all individuals had at
+plasma and matched WBC samples at the time of diagnosis                                  least one somatic mutation to be tracked in plasma, in
+revealed CHIP-related mutations in 27% of patients, with                                 contrast to only 89% of patients who underwent tumor-only
+TP53 (11.02%), KRAS (5.08%), and KMT2C (2.54%) exhibiting                                sequencing (Supplementary Figure S1A, available at https://
+the highest VAF (Figure 3B). Consistent with previous                                    doi.org/10.1016/j.esmoop.2023.102051).
+studies,38 the median mutant allele fraction among the 27                                   Postoperative ctDNA was analyzed in 68 patients using
+variants derived from WBCs was 0.62% (range 0.26%-                                       ddPCR based on patient-speciﬁc mutations to compare the
+1.83%), which was comparable to the median mutant allele                                 monitoring performance between the tumor-only approach
+fraction of the CHIP variants identiﬁed in cfDNA (median                                 and the germline approach, in which the two most frequent
+0.44; range 0.14%-2.35%, P ¼ 0.07, Wilcoxon’s rank-sum                                   somatic mutations were selected. Although the germline
+test). The correlation between CHIP-related mutation                                     approach enabled the follow-up of more patients, there
+levels in WBCs and in cfDNA (Pearson’s correlation                                       were no notable variations in the performance of the two
+coefﬁcient ¼ 0.63) is shown in Figure 3C.                                                techniques (proportion test, P value ¼ 0.43; Supplementary
+                                                                                         Figure S1B, available at https://doi.org/10.1016/j.esmoop.
+Identiﬁcation of potentially actionable mutations                                        2023.102051). To determine whether monitoring a greater
+                                                                                         number of mutations (beyond the two somatic mutations
+We analyzed the sequencing results of tumor tissue and
+                                                                                         with the highest VAF) could enhance the accuracy of MRD
+paired WBCs which showed potentially actionable muta-
+                                                                                         detection, all somatic mutations with an available ddPCR
+tions, subsequently consulting OncoKB39,40 to determine
+                                                                                         probe were assessed. This latter approach improved accu-
+the level of evidence for a molecular-matched approach for
+                                                                                         racy, but again no signiﬁcant differences in postoperative
+each mutation detected (Table 2).40 Of a total of 148 pa-
+                                                                                         MRD detection were observed (proportion test, P value ¼
+tients, 60 (40.54%) had one or more actionable targets,
+                                                                                         0.56).
+among which KRAS was the most frequently mutated gene
+                                                                                            NGS-based amplicons were also analyzed to enhance the
+(39.19%), followed by PIK3CA (21.62%). The percentages of
+                                                                                         sensitivity of MRD detection.42,43 However, no signiﬁcant
+ARID1A (9.46%), NRAS (6.08%), BRAF (5.41%), and PTEN
+                                                                                         differences were observed compared with the ddPCR
+                                                                                         technique (proportion test, P ¼ 1; Supplementary
+    Table 2. Potentially actionable mutations detected in tumor samples
+                                                                                         Figure S1B, available at https://doi.org/10.1016/j.esmoop.
+                                                                                         2023.102051).
+    Genes      Druggable     Patients Treatment                                             NGS and ddPCR analysis were in good agreement in
+               mutations (n) (%)
+                                                                                         postoperative ctDNA in the mutational proﬁle
+    PIK3CA     37            21.62      Alpelisib
+                                                                                         (Supplementary Figure S3A, available at https://doi.org/10.
+    ARID1A     18            9.46       PLX2853, Tazemetostat
+    NRAS       9             6.08       Binimetinib                                      1016/j.esmoop.2023.102051) and the VAF (P < 0.0001,
+    BRAF       8             5.41       Selumetinib, Trametinib, Encorafenib,            Supplementary Figure S3B, available at https://doi.org/10.
+                                        Dabrafenib, Vemurafenib                          1016/j.esmoop.2023.102051). MRD detection in post-
+    PTEN     6               3.38       GSK2636771, AZD8186
+    KRASG12C 4               2.70       Sotorasib, Adagrasib                             operative plasma using ddPCR showed an HR of 4.59 (P ¼
+Number of targetable mutations identiﬁed in the cohort. The table shows the              0.0005; Supplementary Figure S4A, available at https://doi.
+treatment recommendations provided by the OncoKb database for each speciﬁc               org/10.1016/j.esmoop.2023.102051),         whereas       the
+alteration.
+                                                                                         amplicon-based NGS technique had an HR of 5.12 (P ¼
+
+6          https://doi.org/10.1016/j.esmoop.2023.102051                                                                                Volume 8 - Issue 6 - 2023
+F. Gimeno-Valiente et al.                                                                                        ESMO Open
+
+0.0037; Supplementary Figure S4B, available at https://doi.      Genome Atlas database46 with alterations in one or more of
+org/10.1016/j.esmoop.2023.102051)      for    disease-free       the 29 analyzed genes. These analyses showed that our
+survival.                                                        targeted panel would have a sensitivity of w82.4%, given
+                                                                 that 435 of 528 CC cases had at least one alteration in these
+                                                                 genes (Supplementary Figure S5, available at https://doi.
+DISCUSSION                                                       org/10.1016/j.esmoop.2023.102051). In addition, we
+Colorectal cancer is a signiﬁcant public health problem and      detected at least one mutation at diagnosis in all patients in
+the second leading cause of cancer-related deaths world-         our cohort, which contrasts with other tumors such as
+wide.1 The most dramatic statistics concern the younger          breast cancer where the lower molecular alteration detec-
+population; the incidence of this cancer is estimated to         tion rate reduces the number of patients eligible to be
+double among under 50-year old by 2030.44 This highlights        monitored in plasma and thus the MRD detection rate.47 In
+a need to more precisely identify patients at a higher risk of   addition, the sensitivity to detect ctDNA immediately after
+relapse and to develop better adjuvant treatment. Patho-         surgery using our CC driver gene panel is 53%, slightly lower
+logic staging has so far served to help clinicians identify      than has been reported in commercial assays.11 This
+patients at risk of recurrence.2 However, w15%-30% of            sensitivity increases throughout mutation tracking due to
+patients experience relapse despite receiving optimal initial    the increase in tumor burden over time.10
+treatment.                                                          Recently, the recommendations of two groups of experts
+   ctDNA has emerged as a promising prognostic and               in the ﬁeld of ESMO and ASCO have pointed to next-
+possibly predictive biomarker in the management of pa-           generation sequencing-based multigene assays as the
+tients with localized CRC. ctDNA has shown various poten-        preferred method for detecting MRD, as opposed to ddPCR-
+tial applications, including MRD detection, early recurrence     based assays.42,43 For this reason, we compared ddPCR and
+monitoring, molecular proﬁling, and prediction of thera-         amplicon-based NGS for sensitivity to MRD. Unfortunately,
+peutic response.45 Nonetheless, liquid biopsy has certain        no improvement in MRD accuracy was observed using
+limitations, such as false-positive and false-negative results   amplicon-based NGS, probably due to the small number of
+in ctDNA, which pose challenges in detecting MRD.3-12            patients analyzed.48
+   The aims of this study were to reduce the false-positive         The prevalence of CHIP mutations increases as individuals
+rate in MRD detection and to identify new variants               age, and these mutations have been found at low levels in
+through paired tumor tissue and WBC sequencing. In our           up to 95% of noncancer patients aged 50-60 years.49 Initial
+previous study, in which only tissue from the primary tumor      studies have focused primarily on CHIP mutations in genes
+was sequenced, only 89% of patients had at least one             known to be associated with hematological malignancies,
+mutation that could be tracked in plasma during follow-          such as TET2, DNMT3, JAK2, and ASXL1, which have limited
+up.10 Because of the absence of WBCs to ensure a reliable        relevance in solid tumors such as CC. However, subsequent
+NGS result, only pathogenic variants were selected. As a         studies have also identiﬁed mutations in other genes,
+result, 11% of patients lacked mutations that could be           including TP53 and KRAS, which could contribute to false-
+monitored in plasma, thus precluding MRD evaluation. By          positive results when detecting MRD in patients with
+contrast, matched tumor tissue and WBCs sequencing               CC.50 To decrease the false-positive rate, we sequenced
+(hereafter referred to as germline testing) not only permits     cfDNA paired with WBCs and identiﬁed mutations in CHIP-
+the detection of any somatic mutations, whether patho-           associated genes in 27% of our cohort, with TP53, KRAS, and
+genic or otherwise, but can also distinguish them from           KMT2C being the most frequently mutated genes according
+germline mutations. This approach enabled the detection of       to the literature.51 Use of WBCs therefore ensures precise
+at least one somatic mutation for monitoring in plasma in        interpretation of genetic variations to accurately detect
+all (100%) patients in our sample, thereby increasing the        MRD.
+number of patients eligible for MRD tracking.                       Germline sequencing may also have certain ethical im-
+   In concurrence with the literature, the top 10 most           plications.27 In our cohort, 9.2% of individuals presented
+frequently mutated genes occur in driver genes in CC such        pathogenic or likely pathogenic mutations in genes such as
+as TP53, APC, KRAS, PIK3CA, and BRAF, regardless of              TP53 or APC, which are associated with hereditary cancer
+whether only pathogenic variants or any somatic mutations        syndromes such as LieFraumeni, familial adenomatous
+are considered.39 Taking the latter data into account,           polyposis, attenuated familial adenomatous polyposis and
+however, resulted in changes to the top 10 mutated genes,        gastric adenocarcinoma, and proximal polyposis of the
+with the emergence of ﬁve new genes (ARID1A, FAT4, FLNA,         stomach.52
+SOX9, and KMT2C) not initially identiﬁed. This points to the        Likewise, using germline sequencing we could identify
+importance of germline testing to detect further somatic         actionable mutations that could potentially improve MRD
+mutations.                                                       management, coinciding with interventional targeted ther-
+   It should be noted that in this study, we used a custom       apy trials in the advanced setting.53 We observed that 40%
+panel of 29 genes frequently mutated in CRC,10 acknowl-          of the cohort had targetable alterations at diagnosis,
+edging the limitations inherent to this method. To assess the    including oncogenic mutations in the RAS/RAF, PI3K, and
+theoretical detection sensitivity of the sequencing approach     WNT pathways and tumor suppressor pathways. Patients
+in CC, we determined the proportion of CC in The Cancer          with actionable molecular aberrations may derive greater
+
+Volume 8 - Issue 6 - 2023                                                      https://doi.org/10.1016/j.esmoop.2023.102051   7
+ESMO Open                                                                                                       F. Gimeno-Valiente et al.
+
+beneﬁt from targeted therapies tailored to their speciﬁc         board fees from Boehringer Ingelheim and institutional
+alterations than from standard treatments. Accurate selec-       research funding from Bayer, Boehringer, Roche, Gen-
+tion of targeted agents based on molecular alterations can       entech, Merck Serono, BeiGene, Servier, Lilly, Novartis,
+signiﬁcantly enhance treatment decisions and overall             Takeda, Astellas, Fibrogen, amcure, Natera, Sierra Oncology,
+management, particularly in patients with advanced               Astra Zeneca, Medimmune, BMS, and MSD. SR declares
+cancer.41                                                        personal fees as an invited speaker from Amgen, MSD, and
+   The assay used in this study is based on a tumor-             Servier; advisory board fees from Amgen, Servier, and Sir-
+informed approach. The two techniques currently used for         tex; and institutional funding from Ability Pharmaceuticals,
+MRD assessment are the tumor-informed approach and the           Astellas, G1 Therapeutics, Hutchinson, Menarini, Mirati,
+tumor-agnostic approach. To date, no comparative data are        Novartis, Pﬁzer, Pierre Fabre, Roche, and Seagen. All other
+available on these two assays in terms of MRD detection          authors have declared no conﬂicts of interest.
+sensitivity, but ongoing prospective trials will provide more
+information in this regard.54,55                                 DATA SHARING
+
+CONCLUSIONS                                                      All sequencing data supporting the ﬁndings in this study are
+                                                                 currently being submitted to the European Genome-
+Our ﬁndings demonstrate that utilizing both tumor DNA and        phenome Archive (EGA). The accession number will be
+paired WBCs for sequencing not only expands the pool of          provided once the deposition process is completed.
+patients eligible for monitoring MRD in plasma, but also
+reduces the frequency of false-positive results.
+                                                                 CODE AVAILABILITY
+ACKNOWLEDGEMENTS                                                 The code for analyses is available at https://github.com/
+We gratefully acknowledge the support of the INCLIVA             jmartinarana/INCLIVA-CC-panel. The datasets used and/or
+Biobank (PT20/00029; B.0000768 ISCIII) as part of the            analyzed to generate the ﬁgures in the current study are
+Valencian Biobanking Network and the Spanish National            also accessible in the repository.
+Biobanks Network, the Precision Medicine Unit of the
+INCLIVA Biomedical Research Institute, and especially all the    REFERENCES
+patients and their families for their participation in this       1. Sung H, Ferlay J, Siegel RL, et al. Global cancer statistics 2020: GLO-
+study.                                                               BOCAN estimates of incidence and mortality worldwide for 36 cancers
+                                                                     in 185 countries. CA Cancer J Clin. 2021;71(3):209-249.
+FUNDING                                                           2. Argilés G, Tabernero J, Labianca R, et al. Localised colon cancer: ESMO
+                                                                     Clinical Practice Guidelines for diagnosis, treatment and follow-up. Ann
+This work was supported by the Instituto de Salud Carlos III         Oncol. 2020;31(10):1291-1305.
+[grant number PI21/00689], the Spanish Society of Medical         3. Tie J, Wang Y, Tomasetti C, et al. Circulating tumor DNA analysis detects
+Oncology (SEOM) [no grant number], The Spanish Cooper-               minimal residual disease and predicts recurrence in patients with stage
+ative Group for Digestive Tumor Therapy (TTD Group), the             II colon cancer. Sci Transl Med. 2016;8(346):346ra92.
+                                                                  4. Reinert T, Henriksen TV, Christensen E, et al. Analysis of plasma cell-
+Spanish Association Against Cancer (AECC) [grant number
+                                                                     free DNA by ultradeep sequencing in patients with stages I to III
+GCAEC20030CERV], and Mutua Madrileña Foundation. Joan                colorectal cancer. JAMA Oncol. 2019;5(8):1124-1131.
+Rodés contract [grant number JR20/00005 to NT and grant           5. Tie J, Cohen JD, Wang Y, et al. Circulating tumor DNA analyses as
+number JR21/00042 to VG]. A Generalitat Valenciana                   markers of recurrence risk and beneﬁt of adjuvant therapy for stage III
+fellowship program [grant number APOSTD/2021/168 to                  colon cancer. JAMA Oncol. 2019;5(12):1710-1717.
+FGV]. Generalitat Valenciana [grant number ACIF2020/381           6. Tarazona N, Gimeno-Valiente F, Gambardella V, et al. Targeted next-
+                                                                     generation sequencing of circulating-tumor DNA for tracking minimal
+to JMA]. A PFIS contract from ISCIII [grant number FI22/             residual disease in localized colon cancer. Ann Oncol. 2019;30(11):
+00267 to BGM]. Ministerio de Universidades [grant number             1804-1812.
+FPU21/00373 to BMC]. Part of the equipment used in this           7. Taieb J, Taly V, Henriques J, et al. Prognostic value and relation with
+study has been funded by Generalitat Valenciana and co-              adjuvant treatment duration of ctDNA in stage III colon cancer: a post
+ﬁnanced with ERDF funds [grant number OP ERDF of                     hoc analysis of the PRODIGE-GERCOR IDEA-France trial. Clin Cancer
+                                                                     Res. 2021;27(20):5638-5646.
+Comunitat Valenciana 2014-2020]. The funders had no role          8. Henriksen TV, Tarazona N, Frydendahl A, et al. Circulating tumor DNA
+in study design, data collection and analysis, decision to           in stage III colorectal cancer, beyond minimal residual disease detec-
+publish, or preparation of the manuscript.                           tion, toward assessment of adjuvant therapy efﬁcacy and clinical
+                                                                     behavior of recurrences. Clin Cancer Res. 2022;28(3):507-517.
+DISCLOSURE                                                        9. Taniguchi H, Nakamura Y, Kotani D, et al. CIRCULATE-Japan: circulating
+                                                                     tumor DNA-guided adaptive platform trials to reﬁne adjuvant therapy
+AC declares institutional research funding from Genentech,           for colorectal cancer. Cancer Sci. 2021;112(7):2915-2920.
+Merck Serono, Bristol Myers Squibb, MSD, Roche, BeiGene,         10. Tarazona N, Gimeno-Valiente F, Gambardella V, et al. Detection of
+Bayer, Servier, Lilly, Natera, Novartis, Takeda, Astellas, and       postoperative plasma circulating tumour DNA and lack of CDX2
+Fibrogen; and advisory board or speaker fees from Merck              expression as markers of recurrence in patients with localised colon
+                                                                     cancer. ESMO Open. 2020;5(5):e000847.
+Serono, Roche, Servier, Takeda, and Astellas. NT declares        11. Kotani D, Oki E, Nakamura Y, et al. Molecular residual disease and
+advisory board or speaker fees from Merck Serono, Servier,           efﬁcacy of adjuvant chemotherapy in patients with colorectal cancer.
+Pﬁzer, Natera, and Guardant Health. VG declares advisory             Nat Med. 2023;29(1):127-134.
+
+8    https://doi.org/10.1016/j.esmoop.2023.102051                                                          Volume 8 - Issue 6 - 2023
+F. Gimeno-Valiente et al.                                                                                                                   ESMO Open
+
+12. Mo S, Ye L, Wang D, et al. Early detection of molecular residual disease      35. Jalkh N, Chouery E, Haidar Z, et al. Next-generation sequencing in fa-
+    and risk stratiﬁcation for stage I to III colorectal cancer via circulating       milial breast cancer patients from Lebanon. BMC Med Genomics.
+    tumor DNA methylation. JAMA Oncol. 2023;9(6):770-778.                             2017;10(1):8.
+13. Tie J, Cohen JD, Lahouel K, et al. Circulating tumor DNA analysis guiding     36. Landrum MJ, Lee JM, Benson M, et al. ClinVar: public archive of in-
+    adjuvant therapy in stage II colon cancer. N Engl J Med. 2022;386(24):            terpretations of clinically relevant variants. Nucleic Acids Res.
+    2261-2272.                                                                        2016;44(D1):D862-D868.
+14. van der Leest P, Schuuring E. The potential of combined mutation              37. Leal A, van Grieken NCT, Palsgrove DN, et al. White blood cell and cell-
+    sequencing of plasma circulating cell-free DNA and matched white                  free DNA analyses for detection of residual disease in gastric cancer.
+    blood cells for treatment response prediction. Mol Oncol. 2020;14(3):             Nat Commun. 2020;11(1):525.
+    487-489.                                                                      38. Li BT, Janku F, Jung B, et al. Ultra-deep next-generation sequencing of
+15. Newman AM, Lovejoy AF, Klass DM, et al. Integrated digital error                  plasma cell-free DNA in patients with advanced lung cancers: results
+    suppression for improved detection of circulating tumor DNA. Nat                  from the Actionable Genome Consortium. Ann Oncol. 2019;30(4):597-
+    Biotechnol. 2016;34(5):547-555.                                                   603.
+16. Bettegowda C, Sausen M, Leary RJ, et al. Detection of circulating tumor       39. Chakravarty D, Gao J, Phillips SM, et al. OncoKB: a precision oncology
+    DNA in early- and late-stage human malignancies. Sci Transl Med.                  knowledge base. JCO Precis Oncol. 2017;2017:PO.17.00011.
+    2014;6(224):224ra24.                                                          40. Mateo J, Chakravarty D, Dienstmann R, et al. A framework to rank
+17. Andrews S. FastQC: a quality control tool for high throughput sequence            genomic alterations as targets for cancer precision medicine: the ESMO
+    data. Babraham Bioinform. 2010. Available at https://www.bioinfor                 Scale for Clinical Actionability of molecular Targets (ESCAT). Ann Oncol.
+    matics.babraham.ac.uk/projects/fastqc/. Accessed October 20, 2023.                2018;29(9):1895-1902.
+18. Martin M. Cutadapt removes adapter sequences from high-throughput             41. Gambardella V, Lombardi P, Carbonell-Asins JA, et al. Molecular
+    sequencing reads. EMBnet J. 2011;17.                                              proﬁling of advanced solid tumours. The impact of experimental
+19. Schmieder R, Edwards R. Quality control and preprocessing of meta-                molecular-matched therapies on cancer patient outcomes in early-
+    genomic datasets. Bioinformatics. 2011;27(6):863-864.                             phase trials: the MAST study. Br J Cancer. 2021;125(9):1261-1269.
+20. Li H, Durbin R. Fast and accurate short read alignment with Burrows-          42. Dasari A, Morris VK, Allegra CJ, et al. ctDNA applications and inte-
+    Wheeler transform. Bioinformatics. 2009;25(14):1754-1760.                         gration in colorectal cancer: an NCI Colon and Rectal-Anal Task Forces
+21. FGBIO’s Best Practice Consensus Pipeline, version 1.1.0. Available at             whitepaper. Nat Rev Clin Oncol. 2020;17(12):757-770.
+    https://github.com/fulcrumgenomics/fgbio/. Accessed October 20, 2023.         43. Pascual J, Attard G, Bidard FC, et al. ESMO recommendations on the
+22. McKenna A, Hanna M, Banks E, et al. The genome analysis toolkit: a                use of circulating tumour DNA assays for patients with cancer: a report
+    MapReduce framework for analyzing next-generation DNA sequencing                  from the ESMO Precision Medicine Working Group. Ann Oncol.
+    data. Genome Res. 2010;20(9):1297-1303.                                           2022;33(8):750-768.
+23. Xu C, Gu X, Padmanabhan R, et al. smCounter2: an accurate low fre-            44. Mauri G, Sartore-Bianchi A, Russo AG, Marsoni S, Bardelli A, Siena S.
+    quency variant caller for targeted sequencing data with unique mo-                Early-onset colorectal cancer in young individuals. Mol Oncol.
+    lecular identiﬁers. Bioinformatics. 2019;35(8):1299-1309.                         2019;13(2):109-131.
+24. Wilm A, Aw PP, Bertrand D, et al. LoFreq: a sequence-quality aware,           45. Malla M, Loree JM, Kasi PM, Parikh AR. Using circulating tumor DNA in
+    ultra-sensitive variant caller for uncovering cell-population heteroge-           colorectal cancer: current and evolving practices. J Clin Oncol.
+    neity from high-throughput sequencing datasets. Nucleic Acids Res.                2022;40(24):2846-2857.
+    2012;40(22):11189-11201.                                                      46. Cancer Genome Atlas Network. Comprehensive molecular character-
+25. McLaren W, Gil L, Hunt SE, et al. The ensembl variant effect predictor.           ization of human colon and rectal cancer. Nature. 2012;487(7407):330-
+    Genome Biol. 2016;17(1):122.                                                      337.
+26. Berchuck JE, Boiarsky D, Silver R, et al. Addition of germline testing to     47. Garcia-Murillas I, Chopra N, Comino-Méndez I, et al. Assessment of
+    tumor-only sequencing improves detection of pathogenic germline                   molecular relapse detection in early-stage breast cancer. JAMA Oncol.
+    variants in men with advanced prostate cancer. JCO Precis Oncol.                  2019;5(10):1473-1478.
+    2022;6:e2200329.                                                              48. Roberto TM, Jorge MA, Francisco GV, Noelia T, Pilar RG, Andrés C.
+27. Borno HT, Rider JR, Gunn CM. The ethics of delivering precision                   Strategies for improving detection of circulating tumor DNA using next
+    medicine-pretest counseling and somatic genomic testing. JAMA                     generation sequencing. Cancer Treat Rev. 2023;119:102595.
+    Oncol. 2020;6(6):815-816.                                                     49. Young AL, Challen GA, Birmann BM, Druley TE. Clonal haematopoiesis
+28. Stenson PD, Ball EV, Mort M, et al. Human gene mutation database                  harbouring AML-associated mutations is ubiquitous in healthy adults.
+    (HGMD): 2003 update. Hum Mutat. 2003;21(6):577-581.                               Nat Commun. 2016;7:12484.
+29. Bodian DL, McCutcheon JN, Kothiyal P, et al. Germline variation in cancer-    50. Gibson CJ, Steensma DP. New insights from studies of clonal hema-
+    susceptibility genes in a healthy, ancestrally diverse cohort: implications       topoiesis. Clin Cancer Res. 2018;24(19):4633-4642.
+    for individual genome sequencing. PLoS One. 2014;9(4):e94554.                 51. Severson EA, Riedlinger GM, Connelly CF, et al. Detection of clonal
+30. Minde DP, Anvarian Z, Rüdiger SG, Maurice MM. Messing up disorder:                hematopoiesis of indeterminate potential in clinical sequencing of
+    how do missense mutations in the tumor suppressor protein APC lead                solid tumor specimens. Blood. 2018;131(22):2501-2505.
+    to cancer? Mol Cancer. 2011;10:101.                                           52. Garutti M, Foffano L, Mazzeo R, et al. Hereditary cancer syndromes: a
+31. White S, Bubb VJ, Wyllie AH. Germline APC mutation (Gln1317) in a                 comprehensive review with a visual tool. Genes (Basel). 2023;14(5):
+    cancer-prone family that does not result in familial adenomatous                  1025.
+    polyposis. Genes Chromosomes Cancer. 1996;15(2):122-128.                      53. Nakamura Y, Taniguchi H, Ikeda M, et al. Clinical utility of circulating
+32. Chang YS, Lee CC, Ke TW, et al. Molecular characterization of colorectal          tumor DNA sequencing in advanced gastrointestinal cancer: SCRUM-
+    cancer using whole-exome sequencing in a Taiwanese population.                    Japan GI-SCREEN and GOZILA studies. Nat Med. 2020;26(12):1859-
+    Cancer Med. 2019;8(8):3738-3747.                                                  1864.
+33. Gryfe R, Di Nicola N, Gallinger S, Redston M. Somatic instability of the      54. Tarazona N, Gimeno-Valiente F, Cervantes A. Minimal residual disease
+    APC I1307K allele in colorectal neoplasia. Cancer Res. 1998;58(18):               in gastroesophageal adenocarcinoma: the search for the invisible.
+    4040-4043.                                                                        ESMO Open. 2022;7(4):100547.
+34. Mitchell G, Ballinger ML, Wong S, et al. High frequency of germline           55. Kasi PM. Tumor-informed versus plasma-only liquid biopsy assay in a
+    TP53 mutations in a prospective adult-onset sarcoma cohort. PLoS                  patient with multiple primary malignancies. JCO Precis Oncol. 2022;6:
+    One. 2013;8(7):e69026.                                                            e2100298.
+
+
+
+
+Volume 8 - Issue 6 - 2023                                                                           https://doi.org/10.1016/j.esmoop.2023.102051             9
+

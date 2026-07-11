@@ -1,0 +1,1414 @@
+                                                                                                                                    RESEARCH ARTICLE
+                                                                                                                                    Host-Microbe Biology
+
+
+                                                                                                                                                      crossm
+
+Functional Changes in the Gut
+Microbiome Contribute to Transforming
+Growth Factor ␤-Deﬁcient Colon Cancer
+   Scott G. Daniel,a Corbie L. Ball,b David G. Besselsen,c Tom Doetschman,b,d,e
+   Bonnie L. Hurwitze,f
+Department of Molecular and Cellular Biology, University of Arizona, Tucson, Arizona, USAa; The University
+of Arizona Cancer Center, University of Arizona, Tucson, Arizona, USAb; University Animal Care, University of
+Arizona, Tucson, Arizona, USAc; Department of Cellular and Molecular Medicine, University of Arizona, Tucson,
+Arizona, USAd; BIO5 Institute, University of Arizona, Tucson, Arizona, USAe; Department of Agricultural and
+Biosystems Engineering, University of Arizona, Tucson, Arizona, USAf
+
+ABSTRACT      Colorectal cancer (CRC) is one of the most treatable cancers, with a 5-year
+                                                                                                                Received 11 June 2017 Accepted 17 August
+survival rate of ~64%, yet over 50,000 deaths occur yearly in the United States. In 15%
+                                                                                                                2017 Published 26 September 2017
+of cases, deﬁciency in mismatch repair leads to null mutations in transforming growth                           Citation Daniel SG, Ball CL, Besselsen DG,
+factor ␤ (TGF-␤) type II receptor, yet genotype alone is not responsible for tumorigene-                        Doetschman T, Hurwitz BL. 2017. Functional
+sis. Previous work in mice shows that disruptions in TGF-␤ signaling combined with                              changes in the gut microbiome contribute to
+                                                                                                                transforming growth factor β-deﬁcient colon
+Helicobacter hepaticus cause tumorigenesis, indicating a synergistic effect between                             cancer. mSystems 2:e00065-17. https://doi.org/
+genotype and microbial environment. Here, we examine functional shifts in the gut                               10.1128/mSystems.00065-17.
+microbiome in CRC using integrated -omics approaches to untangle the role of host                               Editor Nicholas Chia, Mayo Clinic
+
+genotype, inﬂammation, and microbial ecology. We proﬁle the gut microbiome of                                   Copyright © 2017 Daniel et al. This is an open-
+                                                                                                                access article distributed under the terms of
+40 mice with/without deﬁciency in TGF-␤ signaling from a Smad3 (mothers against                                 the Creative Commons Attribution 4.0
+decapentaplegic homolog-3) knockout and with/without inoculation with H. hepati-                                International license.
+cus. Clear functional differences in the microbiome tied to speciﬁc bacterial species                           Address correspondence to Bonnie L. Hurwitz,
+                                                                                                                bhurwitz@email.arizona.edu.
+emerge from four pathways related to human colon cancer: lipopolysaccharide (LPS)
+                                                                                                                     Synergistic effects of genotype and the
+production, polyamine synthesis, butyrate metabolism, and oxidative phosphoryla-
+                                                                                                                gut #microbiome in TGF-beta #ColonCancer
+tion (OXPHOS). Speciﬁcally, an increase in Mucispirillum schaedleri drives LPS produc-                          @Msystems @hurwitzlab
+tion, which is associated with an inﬂammatory response. We observe a commensu-
+rate decrease in butyrate production from Lachnospiraceae bacterium A4, which
+could promote tumor formation. H. hepaticus causes an increase in OXPHOS that
+may increase DNA-damaging free radicals. Finally, multiple bacterial species increase
+polyamines that are associated with colon cancer, implicating not just diet but also
+the microbiome in polyamine levels. These insights into cross talk between the mi-
+crobiome, host genotype, and inﬂammation could promote the development of di-
+agnostics and therapies for CRC.
+IMPORTANCE Most research on the gut microbiome in colon cancer focuses on tax-
+onomic changes at the genus level using 16S rRNA gene sequencing. Here, we de-
+velop a new methodology to integrate DNA and RNA data sets to examine func-
+tional shifts at the species level that are important to tumor development. We
+uncover several metabolic pathways in the microbiome that, when perturbed by
+host genetics and H. hepaticus inoculation, contribute to colon cancer. The work pre-
+sented here lays a foundation for improved bioinformatics methodologies to closely
+examine the cross talk between speciﬁc organisms and the host, important for the
+development of diagnostics and pre/probiotic treatment.
+
+
+KEYWORDS Helicobacter hepaticus, Smad3, bioinformatics, butyrate, colon cancer,
+gut inﬂammation, gut microbiome, host-pathogen interactions, metagenomics,
+metatranscriptomics, polyamines
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                           msystems.asm.org 1
+Daniel et al.
+
+
+
+
+I n recent years, colorectal cancer (CRC) ranks as the third most deadly cancer with
+  approximately ~50,000 deaths in the United States alone (1). Chronic intestinal
+inﬂammation plays a key role in CRC development, given that patients with inﬂamma-
+tory bowel disease (IBD), ulcerative colitis (UC), or Crohn’s disease (CD) have an
+increased risk of CRC (2–5). IBD-associated colorectal carcinogenesis is characterized by
+a sequence of inﬂammation ⬎ dysplasia ⬎ carcinoma (reviewed in reference 3).
+Transforming growth factor ␤ (TGF-␤) signaling is one of the key pathways altered in
+IBD-associated CRC (6–8). TGF-␤s are multifunctional cytokines important in diverse
+biological processes, including development, differentiation, and immune regulation
+(reviewed in reference 9), yet it is unclear how these processes are involved in colon
+tumor suppression.
+    The human TGF-␤ type II receptor gene (TGFBR2) is one of the most frequently
+mutated genes in IBD-CRCs (10, 11). Previous studies in human CRC cell lines and
+tumors show that frameshift mutations in the poly(A)10 microsatellite region of TGFBR2
+(10–13) result in the loss of TGF␤R2 protein production and functional TGF-␤ signaling
+(14, 15). Like sporadic and hereditary nonpolyposis colorectal cancer (Lynch syndrome),
+IBD-CRCs with microsatellite instability have a higher frequency (57 to 76%) of muta-
+tions in TGFBR2. Consequently, mutations in TGFBR2 in dysplastic tissues that result in
+loss of TGF-␤ signaling play a role in the development of CRC (11).
+    Mutations in mothers against decapentaplegic (SMAD) genes at rates of 3.4%
+(SMAD2), 4.3% (SMAD3), and 8.6% (SMAD4) in sporadic CRC tumors also disrupt TGF-␤
+signaling (16). SMAD2/3 are receptor activated and bind to SMAD4 (co-SMAD) to form
+a transcriptional complex. Mutations in SMAD3 can downregulate SMAD3 transcription.
+In inﬂamed intestinal mucosa samples from patients with active CD and UC, elevated
+production of SMAD7 (17) inhibits TGF␤R1 kinase-mediated phosphorylation of SMAD3
+protein and disrupts TGF-␤ signaling (18). Taken together, mutations in TGFBR2 or
+SMAD2/3/4 or elevated SMAD7 levels disrupt TGF-␤ signaling and accelerate CRC
+pathogenesis. Understanding how signaling pathways are perturbed in the absence of
+TGF-␤ signaling can offer novel strategies to decrease the incidence of CRC in IBD
+patients with TGF-␤ signaling deﬁciency. To investigate TGF-␤ signaling as it relates to
+colon cancer, several mouse models have been developed (8, 19–23).
+    Of the TGF-␤-signaling-deﬁcient colon cancer mouse models, the immunocompe-
+tent Smad3 knockout (Smad3⫺/⫺) mouse is the model of choice (23) because the
+Tgfb1⫺/⫺ Rag2⫺/⫺ model is immunodeﬁcient (20), the TGF␤R2-deﬁcient mouse is
+embryonic lethal (24), and the intestine-speciﬁc Tgfbr2 knockout mouse must be
+combined with another colon tumor suppressor (8). In both the Tgfb1⫺/⫺ Rag2⫺/⫺ and
+Smad3⫺/⫺ models, colon cancer develops only in conjunction with the presence of gut
+microbial Helicobacter species (21, 22). Interestingly, the potent inﬂammation-inducing
+agent dextran sodium sulfate (DSS) in the absence of Helicobacter does not induce
+colon cancer in the Tgfb1⫺/⫺ Rag2⫺/⫺ model (21) and induces only a few late-onset
+tumors in the Smad3⫺/⫺ model (19). This suggests that inﬂammation alone in the
+absence of SMAD3 is not sufﬁcient for tumor development. Consequently, the contri-
+bution of Helicobacter to tumor development in this model consists of more than just
+adding inﬂammatory stress to the colon. Aside from Helicobacter, there have been
+several species identiﬁed that are shown to be causative or correlative in the devel-
+opment of colon cancer (Table 1) (25–38). However, no study to date has investigated
+the functions affected by microbial ecology as a whole.
+    Additionally, most metagenomic studies of gut bacteria in colon cancer use 16S
+rRNA sequencing, which provides only an estimation of taxonomic composition to the
+genus level. As shown in Table 1, there are certain species that combine with genetic
+backgrounds to produce colon cancer. Because of this complexity, it is necessary to
+study gut microbial ecology at the species level and to identify functions causing or
+preventing CRC.
+    We hypothesize that a deﬁciency in TGF-␤ signaling through loss of SMAD3,
+combined with the presence of Helicobacter hepaticus, alters microbial ecology, leading
+to functional dysbiosis and colon cancer. To address this, we analyze the mouse gut
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                           msystems.asm.org 2
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+TABLE 1 Bacterial species associated with colon cancera
+Name(s)                                                Relationship                                                                         Reference(s)
+Citrobacter rodentium                                  Min mice inoculated with this species had a 4-fold increase in colonic tumors.       25
+                                                         Found only in mice.
+Enterococcus faecalis                                  Produces superoxide and hydrogen peroxide, both of which can damage DNA in           26, 27
+                                                         epithelial cells
+Clostridium cluster XVIa (Clostridium scindens,        Can produce secondary bile acids, such as deoxycholic acid (DOC), that increase      28, 29
+  C. hiranonis, and C. hylemonae) and                    tumor burden in wild-type male B6.129PF2/J mice
+  Clostridium cluster XI (C. sordellii)
+Acidovorax species                                     Associated with increased risk for colon cancer and may act as a pathogen by         30
+                                                         increased metabolism of nitroaromatic compounds
+Enterotoxigenic Bacteroides fragilis                   Produces a toxin that caused colitis and tumors in multiple intestinal neoplasia     31
+                                                         (MinApc716⫹/⫺) mice through an IL-17-dependent pathway
+Streptococcus gallolyticus                             Present in approximately 20 to 50% of colon tumors compared to less than 5% of       32
+                                                         normal tissue in CRC patients. Patients with high counts of S. gallolyticus have
+                                                         increased expression of proinﬂammatory cytokines, including interleukin-1 (IL-1)
+                                                         and cyclooxygenase-2 (COX-2).
+Escherichia coli NC101                                 Produces genotoxic colibactin that led to increased tumor burden in AOM/Il10⫺/⫺      33
+                                                         mice
+Fusobacterium nucleatum                                Induces hyperproliferation of human colon cancer cell lines through binding of its   34, 35, 37, 38
+                                                         FadA adhesin to E-cadherin. Also, promotes immune evasion of tumors through
+                                                         binding of its Fap2 adhesin to TIGIT receptors on immune cells.
+Akkermansia muciniphila                                Mucin-degrading species were found in 4-fold-larger amounts in CRC colons than       36
+                                                         in normal colons
+aSpecies names, details of association, and references are listed in chronological order.
+
+
+
+
+microbiome in Smad3⫹/⫹ and Smad3⫺/⫺ mice in the presence and absence of H. he-
+paticus using a novel approach of integrating metagenomics and metatranscriptomics.
+   Here, we report several novel ﬁndings related to the microbiome. First, we have
+identiﬁed the species, Lachnospiraceae bacterium A4, which has decreased RNA counts
+of butyrate kinase. The family Lachnospiraceae has previously been associated with a
+possible anti-inﬂammatory role (39–41), but the modality of that role has yet to be
+elucidated. Our results suggest that this species could be modulating inﬂammation via
+butyrate production. The second novelty is the change in RNA counts of polyamine
+genes arising from several bacterial species. Previous research shows changes in levels
+of polyamines to be associated with colon cancer (42, 43), but changes to prokaryotic
+polyamine genes in colon cancer have never been reported. Third, we observe in-
+creased RNA counts of lipopolysaccharide (LPS) genes in Mucispirillum schaedleri.
+Although it was previously just associated with inﬂammation (44–47), our results
+suggest that M. schaedleri is increasing inﬂammation through increased LPS produc-
+tion. Finally, H. hepaticus itself has increased RNA counts of genes involved in oxidative
+phosphorylation (OXPHOS). This suggests that besides its production of known inﬂam-
+matory toxins, H. hepaticus exerts an oncogenic effect through oxidative damage.
+
+RESULTS
+    Study overview. Cecal samples from 40 mice were pooled into four comparison
+groups: (i) Smad3⫹/⫹/H. hepaticus negative (wild type; S⫹H⫺), (ii) Smad3⫺/⫺/H. hepati-
+cus negative (Smad3⫺/⫺ only; S⫺H⫺), (iii) Smad3⫹/⫹/H. hepaticus positive (H. hepaticus
+only; S⫹H⫹), and (iv) Smad3⫺/⫺/H. hepaticus positive (combined; S⫺H⫹). Figure 1A
+summarizes each comparison group where cecal samples from 10 mice were pooled
+per group (1:1 male/female ratio). Wild-type (S⫹H⫺), H. hepaticus-only (S⫹H⫹), and
+Smad3⫺/⫺-only (S⫺H⫺) mice show little histologically evident inﬂammation and no
+cancer or precancerous hyperplastic lesions. However, mice with the combined
+Smad3⫺/⫺ and H. hepaticus inoculation (S⫺H⫹) show signiﬁcant inﬂammation, and
+40% of mice (2 males and 2 females) develop tumors in the cecum and proximal colon
+by 6 months of age. One animal had a large cecal tumor and was 9 months of age. The
+literature shows that, in animals with various combinations of Helicobacter species,
+Smad3⫺/⫺ mice developed tumors with 22 to 66% penetrance over a 30-week period
+(22). Figure 1B shows a ﬂow chart of bioinformatics methods. After quality control (QC)
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                     msystems.asm.org 3
+Daniel et al.
+
+
+
+
+                                     Experimental Setup                              Metagenomic Sequencing
+                                                       -/-
+                                              Smad3 Effect
+                                A1         S+                S-                 B1                                           B2
+                                                                                            DNA                                         RNA
+                                                                                         Raw
+                                                                                          Raw Illumina  Reads
+                                                                                              Illumina Reads                         Raw Illumina Reads
+                                                                                 778M                                        660M
+
+
+
+
+          H. hepaticus Effect
+                                                                                         (100 bp paired-end
+                                                                                                   paired-end                        (100 bp paired-end
+                                H-                                               Reads
+                                                                                          (100 bp
+                                                                                                  DNA)
+                                                                                                  DNA)
+                                                                                                                             Reads
+                                                                                                                                             RNA)
+
+                                                                                          Quality Control                            Quality Control
+                                                                                            QC’d and Trimmed                           QC’d and Trimmed
+
+
+
+
+                                                                  Hyperplasia
+                                                                                 345M       Reads of Bacteria,               106M      Reads of Bacteria,
+                                                                                 Reads      Mouse and Mouse                  Reads     Mouse and Mouse
+                                                                                                  Chow                                       Chow
+                                H+                                                             Filtering
+                                                                                                                                     Alignment
+                                                                                 316M                                       to ~2K species from DNA pipeline
+                                                                                 Reads      QC’d and Trimmed
+                                                                                            Reads of Bacteria
+                                                                                                                             63M      Reads aligned to ~2K
+ A2
+
+                                                                  Adenoma
+                                                                                                                             Reads          species
+
+Cecum                    Proximal Colon Distal Colon
+                                                                                         Alignment
+                                                                                     to PATRIC ~30K species
+                                 Tumors                                                                                        Reads counted and normalized by
+                                                                                                                                   cuffquant and cuffnorm
+                                                                                 120M     Reads aligned to ~20K
+  Cecal Matter                        DNA/RNA                                    Reads           species
+
+                                                                                                                                     Estimated abundance
+                                                                                 Filtered by H. hepaticus alignment score                   counts
+
+                                                                  Mucinous
+                                                                                          and M. pulmonis count
+
+
+                                                                                                                                     Mapped gene changes
+
+                                                                  Carcinoma
+                                                                                 20M      Reads aligned to ~2K                       to pathways in KEGG
+                                                                                 Reads          species
+
+
+
+
+FIG 1 Materials and methods ﬂow chart. (A1) Four groups of mice were used for DNA/RNA extraction: a mouse that was Smad3⫹/⫹ and
+H. hepaticus negative (S⫹H⫺) (top left), a mouse that was Smad3⫺/⫺ and H. hepaticus negative (S⫺H⫺) (top right), a mouse that was Smad3⫹/⫹
+and H. hepaticus positive (S⫹H⫹) (bottom left), and a mouse that was Smad3⫺/⫺ and H. hepaticus positive (S⫺H⫹) (bottom right, three panels
+from one histological section). These three panels display the types of lesions found in the S⫺H⫹ mice: hyperplasia, adenoma, and mucinous
+carcinoma. Inﬂammatory inﬁltrates are indicated by arrowheads. Four out of 10 mice in the S⫺H⫹ group had tumors at the time of sacriﬁce. The
+three double-headed red arrows indicate the Smad3⫺/⫺, H. hepaticus, and combined effects. (A2) Dissection of mouse large intestine from the
+S⫺H⫹ group showing tumor locations in dotted red lines and site of cecal matter removal. (B1) Flow chart showing number of reads at each
+step of DNA analysis. Reads were aligned to PATRIC (48) with Taxoner64 (95). The last step of the DNA analysis feeds into the second step of the
+RNA analysis. (B2) Flow chart showing number of reads at each step of RNA analysis. Reads were aligned with Bowtie2 (97) and quantiﬁed/
+normalized with cuffquant/cuffnorm, part of the Cufﬂinks suite of tools (99).
+
+
+
+and ﬁltering for host, 316 million reads remain, of which 120 million align to known
+bacterial genomes in the PATRIC database (48). After ﬁltering based on positive and
+negative controls, 20 million reads align to 1,944 bacteria with high conﬁdence,
+representing our “gold standard” genomes (details in Materials and Methods). Overall,
+~60% of RNA reads (63 million of 106 million RNA reads) map to these gold standard
+genomes. Thus, although the DNA mapping to the gold standard genomes represents
+only ~7% of the total data set (20 million DNA reads of 316 million map to gold
+standard genomes), these species are functionally dominant based on RNA read
+recruitment.
+   Functional shifts in the microbiome. To guide our functional analysis, we examine
+the top 37 pathways (Fig. 2) ranked by overall estimated RNA counts, where each
+pathway contains total RNA counts above the pathway mean count (all 140 pathway
+counts are available at https://doi.org/10.6084/m9.ﬁgshare.5328700). Then, we examine
+pathways that either have previous links to CRC or have the greatest changes in RNA
+counts among groups. Previous literature shows that butyrate, polyamine, and OXPHOS
+pathways are important in colorectal cancer and/or inﬂammation (49–51), and they
+rank 8th, 9th, and 18th, respectively, in these 37 pathways (LPS is 73rd but is included
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                            msystems.asm.org 4
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+
+                                                                                                     s)
+                                                                                                   cu d)
+                                                                               l)    -/- )     ati    e
+                                                                            tro d3         hep bin
+                                                                           n      a H.          m
+                                                                       (C o (Sm       (      (Co
+                                                                 H H-- H H+        +
+                                                               S+ S- S+ S-
+                      00190|Oxidative phosphorylation
+                           00910|Nitrogen metabolism
+                                 00195|Photosynthesis
+                       00020|Citrate cycle (TCA cycle)
+   00250|Alanine, aspartate and glutamate metabolism
+       00630|Glyoxylate and dicarboxylate metabolism
+                           00680|Methane metabolism
+                 00531|Glycosaminoglycan degradation
+                   00970|Aminoacyl-tRNA biosynthesis
+            00270|Cysteine and methionine metabolism
+     00720|Reductive carboxylate cycle (CO2 fixation)
+                        00640|Propanoate metabolism
+                00330|Arginine and proline metabolism
+                                                                                             Log2 FC vs Control
+                        00380|Tryptophan metabolism
+                   00010|Glycolysis / Gluconeogenesis                                          3.1
+                       00600|Sphingolipid metabolism
+              00051|Fructose and mannose metabolism
+                         00240|Pyrimidine metabolism
+                          00052|Galactose metabolism
+                                                                                                   0
+                             00230|Purine metabolism
+  00604|Glycosphingolipid biosynthesis - ganglio series
+                           00620|Pyruvate metabolism                                           -1.2
+    00710|Carbon fixation in photosynthetic organisms
+  00520|Amino sugar and nucleotide sugar metabolism
+               00900|Terpenoid backbone biosynthesis
+                    00030|Pentose phosphate pathway
+                      00360|Phenylalanine metabolism
+                 00500|Starch and sucrose metabolism
+           00860|Porphyrin and chlorophyll metabolism
+      00280|Valine, leucine and isoleucine degradation
+                         00650|Butanoate metabolism
+         00362|Benzoate degradation via hydroxylation
+                             00310|Lysine degradation
+       00260|Glycine, serine and threonine metabolism
+                          00071|Fatty acid metabolism
+      00290|Valine, leucine and isoleucine biosynthesis
+                     00550|Peptidoglycan biosynthesis
+                                                Scale:
+                                                                 6
+                                                                1e       2e6    4e6
+                                                           6
+                                                          1e    2.      4.     8.
+
+FIG 2 Sum of estimated expression by KEGG pathway. Bubble chart of RNA count differences between
+sample groups among various KEGG pathways (102). The scale at bottom shows estimated RNA counts
+as outputted by cuffquant and cuffnorm (part of the Bowtie2/Cufﬂinks suite of tools). Labels at top show
+the sample groups. The heat map behind the bubbles shows log2 fold changes (log2 FC) of pathways for
+each of the effects. Fold changes are mapped to a blue-yellow color spectrum with bright yellow having
+the greatest increase in RNA counts and bright blue having the greatest decrease in RNA counts under
+the given condition versus control. Color behind the control bubbles represents no change and is
+provided for reference.
+
+
+
+
+because of its known role in inﬂammation [reviewed in reference 52]). In each case, we
+examine pathways gene by gene to highlight the greatest changes in RNA counts and
+potential points of enzymatic ﬂux changes. Additionally, we focus on signiﬁcant
+changes to RNA counts in genes by sample type using the following comparisons:
+S⫺H⫺ versus S⫹H⫺, S⫹H⫹ versus S⫹H⫺, and S⫺H⫹ versus S⫹H⫺ (here referred to
+as Smad3⫺/⫺ effect, H. hepaticus effect, and combined effect, respectively). The com-
+bined effect represents the contributions of both the loss of SMAD3 and H. hepaticus
+inoculation. Results are split into two sections: ﬁrst, pathways that are changed by the
+Smad3⫺/⫺ and combined but not H. hepaticus effects, and second, pathways that are
+changed by the H. hepaticus and combined but not Smad3⫺/⫺ effects.
+   Smad3ⴚ/ⴚ and combined effects on bacterial pathways. (i) Lachnospiraceae
+bacterium A4 is responsible for decreased RNA counts of butyrate kinase. In the
+normal colon, butyrate is a primary energy source for colon mucosal epithelial cell
+growth through oxidative rather than glucose metabolism (53, 54). In colon tumors,
+however, aerobic glycolysis of glucose is the primary source of energy, causing butyrate
+to accumulate in the nucleus, where it becomes a histone deacetylase (HDAC) inhibitor
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                 msystems.asm.org 5
+Daniel et al.
+
+
+
+
+       buk, Butyrate Kinase [EC:2.7.2.7]
+                                                                                                    Species / Strain
+                                                                                                      Alistipes shahii WAL 8301                             Clostridium cellulovorans 743B (Prj:52819)
+                                                                                                      Alkaliphilus oremlandii OhILAs                        Clostridium clostridioforme 90A7
+                                                                                                      Bacillus niacini DSM 2923                             Clostridium sp. 7_2_43FAA
+                                                                                                      Bacillus sp. SJS                                      Clostridium sp. KLE 1755
+                                                                                                      Bacteroides massiliensis B84634                       Geobacillus sp. C56−T3
+                                                                                                      Bacteroides uniformis str. 3978 T3 i                  Halanaerobium praevalens DSM 2228
+             1e+05                                                                                    Bacteroides xylanisolvens SD CC 1b                  2 Lachnospiraceae bacterium 10−1
+                                                                                                      Clostridiales bacterium oral taxon 876 str. F0540   3 Lachnospiraceae bacterium 28−4
+                                                                                                      Clostridium acetobutylicum EA 2018                    Lachnospiraceae bacterium 3_1_57FAA_CT1
+
+
+
+
+RNA Counts
+                                                                                                      Clostridium butyricum 60E.3                         1 Lachnospiraceae bacterium A4
+                                                                                                      Clostridium butyricum DKU−01                          Lachnospiraceae bacterium COE1
+                                                                           1                          Clostridium carboxidivorans P7                        Odoribacter splanchnicus DSM 220712
+                                                                                                      Clostridium celatum DSM 1785                          Staphylococcus pettenkoferi VCU012
+                                                                                                      Clostridium cellulovorans 743B
+
+
+             5e+04            1                                                                     Pathway Snapshot (Kanehisha Laboratories, 2015)
+                                                     1                      3                1         Butyrate                         2.7.2.7
+                                                                                                                                                                  Butanoyl-P
+                                                                            2                                                       butyrate kinase
+                                                     3                                       3
+                                                                                                     2.8.3.8             6.2.1.2
+                                                     2
+
+             0e+00                                                                                                                           2.3.1.19
+
+                             tro
+                                 l)                  -/-   )              t ic
+                                                                              us
+                                                                                 )
+                                                                                              ed
+                                                                                                )      Butanoyl
+                           on                    d   3                  pa                bin
+
+                S+
+                   H   -(
+                         C
+                                    H-
+                                         (S
+                                              ma
+                                                               +
+                                                                   (H
+                                                                     .h
+                                                                       e
+                                                                              H  +
+                                                                                   (C
+                                                                                      o m
+                                                                                                         -CoA
+                                  S-                    H                   S-
+                                                     S+
+
+                                                           Sample
+FIG 3 Species contribution to genes in butanoate (butyrate) metabolism. RNA count changes for buk (butyrate kinase) (EC 2.7.2.7), categorized by species/strain
+contribution. The y axis shows RNA counts, and the x axis shows sample groups. Species with majority contributions to count bars are numbered for clarity.
+Bottom right shows partial pathway with a red box to highlight gene. Partial pathway adapted from KEGG pathway database (102).
+
+
+
+
+(55–58) under Warburg conditions (59). HDAC inhibition promotes cell cycle arrest and
+apoptosis through p21 expression (60) and inhibits NF-␬B activation by decreasing the
+proteasome activity responsible for I␬B degradation (61). In addition, butyrate also
+increases T-cell regulation (62). Butyrate, therefore, has both antitumor and anti-
+inﬂammatory activities, making it an effective anti-UC therapy (63). It seems reasonable,
+then, that in the context of colon cancer decreased colonic levels of butyrate would
+promote cancer cell growth and stimulate inﬂammation.
+    In the butyrate metabolism pathway, we see a decrease in RNA counts for butyrate
+kinase (buk) with a log2 fold chance (FC) of ⫺1.1 in the combined effect (Fig. 3; also see
+https://doi.org/10.6084/m9.ﬁgshare.5047477 and https://doi.org/10.6084/m9.ﬁgshare
+.5325136). This enzyme is important because it is the last step in the production of
+butyrate. This decrease in buk may be a genotypic effect, given that the Smad3⫺/⫺
+effect shows a similar decrease. In contrast, the H. hepaticus effect shows a slight
+increase. Interestingly, the main bacterial species whose decrease in abundance con-
+tributes to changes in butyrate kinase is Lachnospiraceae bacterium A4, a relatively
+understudied species in the realm of bacterial butyrate producers. Other contributors
+include members of the Lachnospiraceae family, Lachnospiraceae bacterium 10-1 and
+Lachnospiraceae bacterium 28-4. Along with decreased RNA counts of buk, we see a
+decrease in the abundance of the Lachnospiraceae family and the Firmicutes phylum
+(Fig. 4; see also https://doi.org/10.6084/m9.ﬁgshare.5051722) but a surprising increase
+in the population of Lachnospiraceae bacterium A4 (2.92-fold) in the combined effect.
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                             msystems.asm.org 6
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+
+                                                                                                                                                             A - Phylum Changes
+
+
+
+
+                                                                                                                                  Fraction of Total Bacterial Counts
+                                                                                                                                                                       0.8
+
+
+
+                                                                                                                                                                       0.6
+
+                                          S+H- (Control)
+                                                                                                                                                                       0.4
+                                          S-H- (Smad3-/-)
+                                          S+H+ H. hepaticus)                                                                                                           0.2
+
+                                          S-H+ (Combined)
+                                                                                                                                                                       0.0
+                                                                                                                                                                                         s
+                                                                                                                                                                                        te                 res                 es              ia
+                                                                                                                                                                                                                                              er
+                                                                                                                                                                                    de                  te                 ut                ct
+                                                                                                                                                                                   oi                 ac                  ic             ba
+                                                                                                                                                                                   er             rib                 rm
+                                                                                                                                                                               ct                                    Fi                 eo
+                                                                                                                                                                              Ba             efer                                   ot
+                                                                                                                                                                                             D                                  Pr
+
+
+                              B - Family Changes                                                                                          C - Species Changes
+                                                                                                                                                                       0.25
+                                         0.6
+
+
+
+
+    Fraction of Total Bacterial Counts                                                                                         Fraction of Total Bacterial Counts
+                                         0.5                                                                                                                           0.20
+
+
+                                         0.4
+                                                                                                                                                                       0.15
+
+                                         0.3
+                                                                                                                                                                       0.10
+                                         0.2
+
+                                                                                                                                                                       0.05
+                                         0.1
+
+
+                                         0.0                                                                                                                           0.00
+                                                         ae               e              ae               ae               e                                                            is            eri             4             m         in            us
+                                                     ce              ea             ce               ce               ea                                                            on            dl                 -A         ru              us          ic
+                                                    da             ra c            ira             illa             ra c                                                           as            ae              m             ta        m                at
+                                                oi              te             sp                               te                                                             st            ch              er
+                                                                                                                                                                                                                iu         an             ur           ep
+                                               er             ac                               ac              ac                                                             di                                          pl            L.           .h
+                                                                              no              ob                                                                          P.             .s                ct             L.                       H
+                                               ct         rib             ch              ct               ob                                                                           M               ba
+                                         Ba          ef                                  La               ic                                                                                          L.
+                                                       er             La                                  el
+                                                     D                                                H
+
+FIG 4 Taxonomic changes at phylum, family, and species levels. Changes in fractions of total bacterial counts at different taxonomic levels
+for the S⫹H⫺ (Control), S⫺H⫺ (Smad3⫺/⫺), S⫹H⫹ (H. hepaticus only), and S⫺H⫹ (Combined) groups. (A) Changes for the phyla of
+Bacteroidetes, Deferribacteres, Firmicutes, and Proteobacteria. (B) Changes for the families of Bacteroidaceae, Deferribacteraceae, Lachno-
+spiraceae, Lactobacillaceae, and Helicobacteraceae. (C) Changes for the species of Mucispirillum schaedleri, Lachnospiraceae bacterium A4,
+Lactobacillus plantarum, Lactobacillus murinus, Parabacteroides distasonis, and Helicobacter hepaticus.
+
+
+
+However, despite the increase in population of Lachnospiraceae bacterium A4, the RNA
+counts show a decrease in buk expression by this bacterium, suggesting a downregu-
+lation of buk. Changes to the abundance of bacteria in the Lachnospiraceae family and
+Firmicutes phylum represent an avenue where host genotype may contribute more to
+microbial ecology than inoculation with H. hepaticus.
+    (ii) Multiple species have increased RNA counts for genes producing putrescine
+and spermidine. Putrescine is known to be required for early development, as a lack
+of it causes cell apoptosis and prenatal death in mice (64). Spermidine was shown to be
+required for posttranslational modiﬁcation of eukaryotic initiation factor 5A (eIF5A),
+which is required for growth in a range of species (65, 66). Large amounts of poly-
+amines, thought to be derived from diets high in red meat (67), are associated with
+severity of colorectal cancer (43). Also, when patients are in remission, their polyamine
+levels decrease (43). While there have been numerous studies on the link between
+polyamines and colorectal cancer in eukaryotic cells, no study to date has shown a
+prokaryotic contribution.
+    Two genes that have higher RNA counts in the arginine and proline pathway are
+N-carbamoylputrescine amidase (aguB) and carboxynorspermidine decarboxylase
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                                                                                                                msystems.asm.org 7
+Daniel et al.
+
+
+
+                                      aguB,                                         nspC,
+                     N-carbamoylputrescine amidase [EC:3.5.1.53] Carboxynorspermidine decarboxylase [EC:4.1.1.96]
+             40000                                                                                                                                                                                                Species / Strain
+                                                                                                                                                                                                           1         Advenella kashmirensis W13003        11 Marinomonas mediterranea MMB−1
+                                                                                                                                                                                                                   8 Alistipes shahii WAL 8301            10 Parabacteroides distasonis ATCC 8503
+                                                                                                                                                                                                           2         Bacteroides helcogenes P 36−108      4 Parabacteroides distasonis str. 3776 D15 i
+                                                                                                                                                                                                                     Bacteroides massiliensis B84634      9 Parabacteroides goldsteinii dnLKV18
+             30000
+                                                                                                                                                                                                           3         Bacteroides sp. 2_1_33B                 Parabacteroides sp. ASF519
+                                                                                                                                                                                                                   7 Bacteroides sp. 20_3                    Parabacteroides sp. D13
+
+
+
+
+RNA Counts
+                                                                                                                                                                                                           4       6 Bacteroides uniformis CL03T12C37        Porphyromonas sp. 31_2
+                                                                                                                                                                                                                  13 Bacteroides uniformis dnLKV2         3 Ruminococcus bicirculans strain 80/3
+             20000                                                                                                                                                                                         5         Campylobacter hominis ATCC BAA−381   2 Ruminococcus gnavus CC55_001C
+                                                                                                                                                              9                                                      Clostridium papyrosolvens C7            Ruminococcus sp. 5_1_39BFAA
+                                                                                                           11                                                                                              6       5 Clostridium sp. D5                   14 Sphingobacterium sp. 21
+                                                                                                                                                                                                                  12 Desulfotomaculum ruminis DSM 2154    1 Syntrophobotulus glycolicus DSM 8271
+                                                                                                                                                                                                                     Lachnospiraceae bacterium A4
+                                                                                                           12                                             10
+             10000                                        14
+                                                                                                                                                                                                           7
+                                                                                                                                                                                                                  Pathway Snapshots (Kanehisa Laboratories, 2015)
+                                                          11
+                                                                                                           13
+                                                                                                                                                              6                                                          N-carbamoyl
+                                                                                                                                                                                                           8
+                                                                                                                                                                                                                          putrescine                                                                 Spermidine
+                 0
+
+
+                                      l)                                                    s)                  )                      l)                                                    )                )
+                                   ro                           )                      cu                   ed                      ro                              )                      us               ed
+
+                   H   -(
+                            Co
+                                 nt
+                                            (   Sm
+                                                     ad
+                                                          -/-
+                                                          3
+                                                                             .h
+                                                                               ep
+                                                                                 ati
+                                                                                                 (C
+                                                                                                      om
+                                                                                                        bin
+                                                                                                                       H   -(
+                                                                                                                                Co
+                                                                                                                                  nt
+                                                                                                                                                (   Sm
+                                                                                                                                                         ad
+                                                                                                                                                              -/-
+                                                                                                                                                              3
+                                                                                                                                                                               .   he
+                                                                                                                                                                                     pa
+                                                                                                                                                                                       t ic
+                                                                                                                                                                                                 (C
+                                                                                                                                                                                                      om
+                                                                                                                                                                                                        b in                                                         4.1.1.96
+                                                                        (H                                                                                                  (H
+                S+                       H-                         +                   H+                          S+                       H-                         +                 H+
+                                       S-
+                                                          S+
+                                                             H                     S-                                                   S-
+                                                                                                                                                              S+
+                                                                                                                                                                 H                      S-
+                                                                                                                                                                                                                           3.5.1.53                                   nspC
+                                                                                                                Sample
+                                                                                                                                                                                                                            aguB                                                Carboxy
+                                                                                                                                                                                                                                                                               spermidine
+
+                                                                                                                                                                                                                                                                     1.5.1.43
+                                                                                                                                                                                                                         Putrescine
+
+FIG 5 Species contribution to genes in arginine and proline metabolism. RNA count changes for aguB (N-carbamoylputrescine amidase) (EC 3.5.1.53) and nspC
+(carboxynorspermidine decarboxylase) (EC 4.1.1.96), categorized by species/strain contribution. The y axis shows RNA counts, and the x axis shows sample
+groups. Species with majority contributions to count bars are numbered for clarity. Bottom right shows partial pathway with a red box to highlight genes. Partial
+pathway adapted from KEGG pathway database (102).
+
+
+
+
+(nspC), by a log2 FC of 2.07 and 2.24, respectively, in the combined effect (Fig. 5; see also
+https://doi.org/10.6084/m9.ﬁgshare.5051728 and https://doi.org/10.6084/m9.ﬁgshare
+.5325151). aguB and nspC are genes for enzymes responsible for one of the reactions
+that produce the polyamines putrescine and spermidine, respectively. Similarly to buk,
+these genes have different RNA counts in the Smad3⫺/⫺ and combined effects but little
+difference in the H. hepaticus effect.
+    For aguB, in the combined group (S⫺H⫹), the species Marinomonas mediterranea
+MMB-1, Desulfotomaculum ruminis DSM 2154, and Bacteroides uniformis dnLKV2 are
+responsible for the majority of the expression. For nspC, in the combined group, a
+majority of the RNA counts are represented by a diverse group of species from the
+genera Bacteroides, Clostridium, Ruminococcus, and Alistipes. Parabacteroides distasonis
+has a small contribution to the RNA counts but has a dramatic change in abundance.
+An interesting point is that there is no single dominant species that is responsible for
+the upregulation of these genes.
+    In terms of taxonomic shifts, P. distasonis has nearly a 10-fold increase in the
+combined effect. P. distasonis has been previously associated with inﬂammation in a
+DSS mouse model of colitis (68). The family Bacteroidaceae, of which Bacteroides
+uniformis is a member, is increased by 1.89-fold in the Smad3⫺/⫺ effect and 1.20-fold
+in the H. hepaticus effect (Fig. 4; see also https://doi.org/10.6084/m9.ﬁgshare.5051722).
+In the combined effect, we see a synergistic effect in Bacteroidaceae with a 2.26-fold
+increase. We see similar fold changes at the phylum level of Bacteroidetes.
+    H. hepaticus and combined effects on bacterial pathways. (i) M. schaedleri, a
+core member of the mouse gut bacteria, is a major contributor to increased RNA
+counts for LPS genes in H. hepaticus-only mice. Gram-negative bacteria use LPSs as
+structural molecules to make up their outer membrane, and they are released when-
+ever the bacteria divide or die. In addition to lipopeptides and ﬂagellins, LPSs are
+known to be signaling molecules for inﬂammatory pathways. In particular, LPSs have
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                                                                                                                                            msystems.asm.org 8
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+
+                                                         lpxC,                                                                                  lpxD,                                                               Species / Strain
+                                               UhmN-agd                                                                                 UhmgN-a                                                                       Bacteroides clarus YIT 12056                     Fusobacterium necrophorum subsp. funduliforme Fnf 1007
+
+                                              [EC:3.5.1.108]                                                                          [EC:2.3.1.191]                                                                  Bacteroides fluxus YIT 12057                     Fusobacterium nucleatum subsp. nucleatum ATCC 23726
+                                                                                                                                                                                                                      Bacteroides fragilis HMW 610                     Fusobacterium varium ATCC 27725
+                                                                                                                                                                                                                      Bacteroides massiliensis B84634                  Helicobacter hepaticus ATCC 51449
+                                                                                                                                                                                                                      Bacteroides massiliensis dnLKV3                  Leptotrichia sp. oral taxon 215 str. W9775
+                                                                                                                                                                                                                      Bacteroides oleiciplenus YIT 12058               Leptotrichia sp. oral taxon 879 str. F0557
+                                                                                                                                                                                                                      Bacteroides sp. 2_1_22                           Megasphaera sp. UPII 135−E
+                                                                                                                                                                                                                      Bacteroides sp. 2_1_33B                        1 Mucispirillum schaedleri ASF457
+                                                                                                                                                                                                                      Bacteroides sp. 20_3                             Odoribacter laneus YIT 12061
+             2e+05                                                                                                                                                                                                    Bacteroides sp. 3_1_19                           Parabacteroides distasonis ATCC 8503
+
+
+
+
+RNA Counts
+                                                                                                                                                                                                                      Bacteroides uniformis CL03T12C37                 Parabacteroides distasonis CL09T03C24
+                                                                                                                                                                                                                      Bacteroides uniformis dnLKV2                     Parabacteroides distasonis str. 3776 D15 i
+                                                                                                                                                                                                                      Bacteroides xylanisolvens CL03T12C04             Parabacteroides sp. D13
+                                                                                                                                                                                                                      Capnocytophaga sp. oral taxon 329 str. F0087     Paraprevotella xylaniphila YIT 11841
+                                                                                                                                                                                                          1           Deferribacter desulfuricans SSM1                 Porphyromonas sp. 31_2
+                                                                                                                                                                                                                      Dorea sp. 5−2                                    Unknown
+                                                                                                                                                                                                                      Flavobacteria bacterium BAL38
+                                                                                                                                                                                   1
+             1e+05
+
+
+
+                                                                                                                                                                                                                    Pathway Snapshots (Kanehisa Laboratories, 2015)
+                                                                                                           1
+                                                                                                                                     1                                                                                                                   UDP-3-O-(3-hydroxy-
+                                                                                    1
+                                  1
+                                                         1
+                                                                                                                                                                   1                                                                                     tetradecanoyl)-N-acetyl-
+                                                                                                                                                                                                                                                         D-glucosamine
+             0e+00                                                                                                                                                                                                                                                                                                               Lipid A
+                                      l)                                                   )                 )                         l)                                                  s)               )
+                                  tro                                                   us                 ed                                                                          icu                ed
+                                                             -/-   )                t ic                bin                        tro                         -/-   )
+                                on                           3                    pa                                             on                            3                  at                   bin                                                                                     UDP-2,3-bis-
+                   H   -(
+                            C
+                                              -(
+                                                   Sm
+                                                        ad
+                                                                       (H
+                                                                            .   he
+                                                                                             +
+                                                                                                 (C
+                                                                                                      om
+                                                                                                                    H   -(
+                                                                                                                             C
+                                                                                                                                                -(
+                                                                                                                                                     Sm
+                                                                                                                                                          ad
+                                                                                                                                                                         (H
+                                                                                                                                                                              .h
+                                                                                                                                                                                ep
+                                                                                                                                                                                                (C
+                                                                                                                                                                                                     om                                 3.5.1.108
+                S+                        H                     H+                       H                       S+                         H                     H+                  H     +
+                                                                                                                                                                                                                                                                                               (3-hydroxytetradecanoyl)-
+                                       S-                                             S-                                                 S-                                        S-
+                                                             S+                                                                                                S+                                                                          lpxC                                                glucosamine
+                                                                                                               Sample
+
+
+                                                                                                                                                                                                                UDP-3-O-(3-hydroxy-                                         2.3.1.191
+                                                                                                                                                                                                                tetradecanoyl)-                                               lpxD
+                                                                                                                                                                                                                D-glucosamine
+
+FIG 6 Species contribution to lpxC and lpxD in LPS biosynthesis. RNA count changes for lpxC [UDP-3-O-(3-hydroxymyristoyl) N-acetylglucosamine deacetylase]
+(EC 3.5.1.108) and lpxD [UDP-3-O-(3-hydroxymyristoyl) glucosamine N-acyltransferase] (EC 2.3.1.191), categorized by species/strain contribution. The y axis shows
+RNA counts, and the x axis shows sample groups. Species with majority contributions to count bars are numbered for clarity. Bottom right shows partial pathway
+with a red box to highlight genes. Partial pathway adapted from KEGG pathway database (102).
+
+
+
+
+been shown to activate the cluster of differentiation 14/myeloid differentiation 2/Toll-
+like receptor 4 (CD14/MD2/TLR4) receptor pathway (69). This ultimately leads to
+increased transcription of proinﬂammatory cytokines such as tumor necrosis factor
+alpha (TNF-␣) and interleukin-6 (IL-6). As already discussed, there are strong correla-
+tions between the presence of inﬂammatory conditions and the progression of colo-
+rectal cancer; thus, we examined LPS gene signatures in our data set.
+    Several LPS genes have increased RNA counts in the H. hepaticus and combined effects:
+3-deoxy-D-manno-octulosonic-acid transferase (kdtA), UDP-3-O-(3-hydroxymyristoyl)
+N-acetylglucosamine deacetylase (lpxD), and UDP-3-O-(3-hydroxymyristoyl) gluco-
+samine N-acyltransferase (lpxC). In this same order, these genes have log2 FCs of 2.1, 1.8,
+and 1 in the combined effect (Fig. 6; see also https://doi.org/10.6084/m9.ﬁgshare
+.5051734 and https://doi.org/10.6084/m9.ﬁgshare.5325154). There is little change or a
+decrease in the Smad3⫺/⫺ effect for these genes.
+    In terms of species contribution, a surprising ﬁnding is that M. schaedleri ASF457 is
+responsible for a majority of the RNA counts of lpxC and lpxD. This is interesting
+because M. schaedleri is associated with inﬂammatory pathways (44–47), but studies
+have not shown which genes may be involved. Mirroring the RNA count changes,
+M. schaedleri abundance is increased in the H. hepaticus-only and combined effects by
+1.89-fold and 1.31-fold, respectively, while there is a decrease in the Smad3⫺/⫺ effect
+(Fig. 4; see also https://doi.org/10.6084/m9.ﬁgshare.5051722).
+    (ii) Increased RNA counts of LPS genes in bacteria correlate signiﬁcantly with
+host TLR gene expression. As mentioned above, LPSs activate inﬂammation via the
+CD14/MD2/TLR4 receptor pathway. To determine whether TLR receptor activity of
+Smad3⫺/⫺/H. hepaticus-positive mice could correlate with increases in bacterial LPS
+production, we measured the mucosal epithelial expression of these genes using
+real-time quantitative reverse transcription PCR (qRT-PCR). We ﬁnd that Tlr2 and Tlr4
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                                                                                                                                                                      msystems.asm.org 9
+Daniel et al.
+
+
+
+
+                         Relative expression of lpxD                                                                 Relative expression of lpxD
+                                                       2.5e+05                                                                                     2.5e+05
+
+                                                                                            **                                                                                           *
+
+
+
+
+       Bacterial Genes
+                                                       1e+05                                                                                       1e+05
+                                                                             2    4     6       8   10     12   14                                                       2           3          4          5
+                                                                                 Relative expression of TLR4                                                                 Relative expression of TLR2
+
+
+
+
+                         Relative expression of lpxC                                                                 Relative expression of lpxC
+                                                       5e+04 8e+04 1.1e+05                                                                         5e+04 8e+04 1.1e+05
+                                                                                            *                                                                                            *
+
+
+                                                                             2    4     6       8   10     12   14                                                       2           3          4          5
+                                                                                 Relative expression of TLR4                                                                 Relative expression of TLR2
+
+                                                                                                          Mouse Genes
+FIG 7 Correlation of mouse gene expression with bacterial gene expression. RNA expression correlation
+between mouse TLR genes and bacterial genes in the LPS pathway. Expression in arbitrary units due to
+normalization. Mouse gene expression based on qRT-PCR data; bacterial gene expression based on
+transcriptome sequencing from this study. P values: *, P ⬍ 0.05; **, P ⬍ 0.01; ***, P ⬍ 0.001.
+
+
+
+expression both signiﬁcantly correlate with the increased counts of bacterial lpxC and
+lpxD (Fig. 7).
+   (iii) H. hepaticus has increased RNA counts of key genes in the OXPHOS
+pathway. It has been established that cancer cells prefer aerobic glycolysis, but it has
+also been shown that they still contain active mitochondria to produce a portion of
+their ATP (70, 71). However, although oxidative phosphorylation (OXPHOS) may be
+taking place in the epithelial cells, less is known about the microbiome’s metabolic
+activities. It seems plausible that, as in cancer cells, a preference for aerobic glycolysis
+or OXPHOS in microbial cells will have an effect on the tumor microenvironment.
+OXPHOS, aside from being indicative of proliferating bacterial cells, increases the
+amount of reactive oxygen and nitrogen species (RONS), which are known to damage
+DNA, RNA, and proteins (72–74).
+   In our study, we see a log2 FC of 1 and 1.5 for nuo (NADH ubiquinone oxidoreduc-
+tase [NADHuo]) in the combined and H. hepaticus effects, respectively (Fig. 8; see also
+https://doi.org/10.6084/m9.ﬁgshare.5051737 and https://doi.org/10.6084/m9.ﬁgshare
+.5325157). NADHuo is part of the ﬁrst electron transport complex for the production of
+ATP. Likewise, in these same effects, we see a log2 FC of 1.3 and 1 for ppk (polyphos-
+phate kinase), respectively. Polyphosphate kinase prepares inorganic triphosphate for
+feeding into ATP synthase. It is true that there are other genes in the pathway that are
+lowered in RNA counts, but the pathway overall has increased counts in the combined
+effect (Fig. 2 and https://doi.org/10.6084/m9.ﬁgshare.5328700).
+   The species primarily responsible for the increase in oxidative phosphorylation is
+H. hepaticus. Not surprisingly, given that the S⫹H⫹ and S⫺H⫹ mice were inoculated
+with the species, we see the contribution of H. hepaticus to OXPHOS genes in those
+groups. There is a small contribution in the S⫺H⫺ group for nuo, but this could be due
+to sequencing/alignment error of a closely related species.
+
+DISCUSSION
+   Colon cancer is a multifactorial disease affected by host genetics, resident gut
+bacterial species, diet, and inﬂammation. In terms of host genetics, 10 to 15% of colon
+cancer patients have mutations in TGF-␤ signaling genes, but their function as tumor
+suppressors and interaction with gut bacteria is unclear. In mouse colon cancer models
+in which growth has been measured, no loss of growth control was attributable to the
+loss of TGF-␤ signaling under pretumor conditions (8, 20). However, a role for TGF-␤
+signaling in both the differentiation and inﬂammatory states of colon tumors was
+revealed in a comparative microarray study of several mouse colon tumor models (75).
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                                                              msystems.asm.org 10
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+                                  nuoA to nuoN,                                                                                               ppk,                                                Species / Strain
+                       NADH ubiquinone oxidoreductase A to N                                                                          polyphosphate kinase                                          Acetivibrio cellulolyticus CD2                       Ehrlichia ruminantium str. Welgevonden   Paenibacillus sp. JDR−2
+                                    [EC:1.6.5.3]                                                                                           [EC:2.7.4.1]                                             Arcticibacter svalbardensis MN12−7                   Eubacterium acidaminophilum DSM 3953     Paludibacter propionicigenes WB4
+                                                                                                                                                                                                    Bacteroides helcogenes P 36−108                      Eubacterium siraeum 70/3                 Parabacteroides distasonis ATCC 8503
+                                                                                                                                                                                                    Bacteroides uniformis str. 3978 T3 i                 Eubacterium siraeum V10Sc8a              Pedobacter heparinus DSM 2366
+                                                                                                                                                                                                    Bacteroides xylanisolvens SD CC 2a                   Faecalibacterium prausnitzii L2−6        Rivularia sp. PCC 7116
+                                                                                                                                                                                                    Bacteroides xylanisolvens XB1A                       Flavobacteriaceae bacterium 3519−10      Roseburia hominis A2−183
+                                                                                                                                                                                                    butyrate−producing bacterium SS3/4                   Flavobacterium sp. EM1308                Ruegeria sp. TM1040
+                                                                                                                                                                                                    Campylobacter hominis ATCC BAA−381                   Flavobacterium sp. EM1321                Ruminococcus bicirculans strain 80/3
+                                                                                                                                                                                                    Campylobacter jejuni subsp. jejuni 2008−894          Flexibacter litoralis DSM 6794           Ruminococcus bromii L2−63
+                                                                                                                                                                                                    Capnocytophaga cynodegmi Ccy74                     1 Helicobacter hepaticus ATCC 51449        Ruminococcus champanellensis 18P13
+             1e+05                                                                                                                                                                                  Cellulophaga algicola DSM 14237                      Jeotgalibacillus alimentarius YKJ−13     Ruminococcus obeum A2−162
+                                                                             1                                                                                                                      Clostridium saccharolyticum WM1                      Ktedonobacter racemifer DSM 44963        Ruminococcus sp. SR1/5
+                                                                                                                                                                                                    Clostridium saccharoperbutylacetonicum N1−4(HMT)     Lactobacillus amylovorus GRL1118         Ruminococcus torques L2−14
+
+
+
+
+RNA Counts
+                                                                                                                                                                                                    Clostridium sp. ASBs410                              Lentisphaera araneosa HTCC2155           Solitalea canadensis DSM 3403
+                                                                             1                                                                                                                      Clostridium termitidis CT1112                        Lyngbya sp. PCC 8106                     Taylorella asinigenitalis MCE3
+                                                                                                   1                                                                                                Clostridium ultunense Esp                            Megasphaera sp. UPII 135−E               Treponema azotonutricium ZAS−9
+                                                                             1                                                                                                                      Coprococcus catus GD/7                               Methanospirillum hungatei JF−1           Turicibacter sanguinis PC909
+                                                                                                   1
+                                                                                                                                                                                                    Desulfitobacterium hafniense Y51                     Niastella koreensis GR20−10              Xenorhabdus bovienii str. oregonense
+                                                                                                                                                                                                    Desulfotignum phosphitoxidans DSM 13687              Nonlabens ulvanivorans strain JCM19296
+             5e+04                                                           1
+                                                                                                   1
+                                                                             1
+                                                                                                                                                                         1                  1     Pathway Snapshots (Kanehisa Laboratories, 2015)
+                                                   1                                                                                                                                              Ubiquinol                                              Ubiquinone                                             Triphosphate
+                                                                                                                                                                                                                                 Electron
+                                                                                                                                                                                                                                 transport                                                           2.7.4.1
+             0e+00                                                                                                                                                                                                               complex I                                                            ppk
+                            ro
+                               l)                  -/-   )                   ti   cu
+                                                                                    s)
+                                                                                                   ed
+                                                                                                     )
+                                                                                                                      nt
+                                                                                                                         ro
+                                                                                                                              l)                  -/-   )                 tic
+                                                                                                                                                                             us
+                                                                                                                                                                                )
+                                                                                                                                                                                           ed
+                                                                                                                                                                                              )                                       1.6.5.3
+                          nt                       3                       pa                   bin                                               3                     pa             bin
+                        Co                    ad                         he                   om                 Co                          ad                       he             om
+                     H-
+                        (
+                                       (S
+                                          m
+                                                                  (   H.                 (C                   H-
+                                                                                                                 (
+                                                                                                                                      (S
+                                                                                                                                         m
+                                                                                                                                                                 (H
+                                                                                                                                                                    .             (C                                                 NADH uo
+               S+                 H-                         H+                    H+                    S+                      H-                         H+              H+                                                                                                                                  Diphosphate
+                                S-                                            S-                                               S-                                         S-
+                                                   S+                                                                                             S+
+
+                                                                                                                                                                                                     NADH                                         NAD+                       H+
+                                                                                                       Sample
+                                                                                                                                                                                                                                                                                                                 Feeds into
+                                                                                                                                                                                                                                                                                                                ATP synthase
+FIG 8 Species contribution to genes in oxidative phosphorylation. RNA count changes for nuoA to nuoN (NADH ubiquinone oxidoreductase A to N) (EC 1.6.5.3)
+and ppk (polyphosphate kinase) (EC 2.7.4.1), categorized by species/strain contribution. The y axis shows RNA counts, and the x axis shows sample groups.
+Species with majority contributions to count bars are numbered for clarity. Dividing lines within species represent multiple subunits for that gene. Bottom right
+shows partial pathway with a red box to highlight genes. Partial pathway adapted from KEGG pathway database (102).
+
+
+
+Since TGF-␤ signaling is known to be an important regulator in immune tolerance and
+T-cell homeostasis (reviewed in reference 76), it is likely that its absence could function,
+at least in part, to exacerbate an inﬂammatory response in the mouse colon.
+    The propensity of colorectal cancer having an inﬂammatory component suggests
+that microbial dysbiosis may result from tumor-suppressing activities of TGF-␤. Here,
+we report changes to microbial functions in a TGF-␤ signaling-deﬁcient colon cancer
+model.
+    First, a key butyrate gene, buk, is found to have reduced RNA counts in the
+Smad3⫺/⫺ and combined effects. This agrees with multiple studies that show butyrate
+to be crucial for proper maintenance of the colonic epithelium (54). It is well known that
+butyrate is the primary energy source of colonocytes; moreover, several studies have
+shown that in high concentrations (~5 mM), butyrate is a potent HDAC inhibitor,
+resulting in expression of several genes involved in cancer or inﬂammation: cyclin-
+dependent kinase inhibitor 1A (p21WAF1/Cip1), mucin 2 (MUC-2), testin LIM domain
+protein (TES), and hypoxia-inducible factor 1 (HIF-1) (55, 56, 58, 59). Additionally, it has
+been shown that it can stimulate histone acetyltransferase (HAT) activity at lower
+concentrations (~0.5 mM) (59). This happens when butyrate is converted to citrate in
+the tricarboxylic acid (TCA) cycle which combines with ATP citrate lyase (ACL) to
+produce acetyl coenzyme A (acetyl-CoA). This important coenzyme then acts as an
+acetyl group donor for various HATs. While we cannot conclude that the reduction in
+RNA counts of butyrate genes is a cause or effect of the proinﬂammatory, cancerous
+environment, the correlation is consistent with the literature.
+    In our study, Lachnospiraceae bacterium A4, a member of the Firmicutes phylum,
+decreases in abundance in the combined and Smad3⫺/⫺ effects. This species, which has
+been little studied, belongs to the Lachnospiraceae family of bacteria, of which some
+literature suggests that it may play an anti-inﬂammatory role. For example, one study
+shows that inoculation with an isolate of Lachnospiraceae decreases disease severity of
+chronic Clostridium difﬁcile infection in mice (39). Additionally, 16S rRNA studies of
+human fecal samples from IBD patients have revealed smaller amounts of Lachno-
+spiraceae at the genus level (40, 41). One could easily hypothesize that butyrate
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                                                                                                                                                                                 msystems.asm.org 11
+Daniel et al.
+
+
+
+supplements or probiotic Lachnospiraceae would slow cancer growth and reduce
+inﬂammation in our cancer model.
+    Second, we observe an upshift in RNA counts for genes involved in the production
+of putrescine and spermidine. Like the butyrate gene changes, this occurs in the
+SMAD3 and combined effects. Changes to polyamine genes are interesting because it
+has been known since the 1960s that polyamines are increased in rapidly proliferating
+tissues (77). More recently, it has been discovered that polyamines can also affect
+protein translation. Speciﬁcally, spermidine can be modiﬁed to the unique amino acid
+hypusine, which is the only known amino acid to modify the eukaryotic initiation factor
+EIF5A (66). This translation factor is not strictly required for translation in general, but
+it seems to prefer transcripts with polyproline motifs (78, 79). Additionally, it has been
+shown that blocking the production of hypusine or the modiﬁcation of EIF5A by
+hypusine leads to reduced gene translation of growth promoters RhoA/ROCK1 (80).
+Also, increased polyamine levels in colon cancer patients correlate with severity of
+disease (42, 43). The novel ﬁnding here is that gut bacteria are at least possibly
+responsible for increased polyamines. It is plausible that the polyamines are being
+actively exported to the epithelial cells, as such transporters exist for both prokaryotes
+and eukaryotes (81–83). Further studies will need to be done to measure changes to
+polyamine levels as well as RNA counts of eukaryotic polyamine genes. Consequently,
+not just diet but also dysbiosis in the gut microbiome may result in increased poly-
+amine uptake by colon mucosal epithelial cells.
+    Although not in the list of top pathways, our third focus was LPS biosynthesis
+because it has been known to produce an inﬂammatory response for more than a
+century (although LPSs were termed “endotoxins” before discovery of their structure)
+(84). Indeed, we ﬁnd an increase in bacterial genes in the LPS pathway for both the
+H. hepaticus-only and combined effects. Intriguingly, it is not H. hepaticus itself that is
+responsible for the increased RNA counts, it is M. schaedleri. Though M. schaedleri has
+been associated with inﬂammation, its contribution is not known. It should be noted
+that this species is in the set of core bacteria given to mice in gnotobiotic models (85,
+86). Our data show that inoculation with H. hepaticus correlates with an increased
+abundance of M. schaedleri that may result in a shift to a proinﬂammatory state.
+    In our fourth focus, we ﬁnd a colon epithelial cell response consistent with increased
+bacterial LPS production. By qRT-PCR on colon mucosal epithelial mRNA, Tlr4 and Tlr2
+are shown to be upregulated in all effects compared to control, and this signiﬁcantly
+correlates with increased RNA counts of bacterial lpxC and lpxD. Accordingly, LPS has
+been shown to activate the proinﬂammatory NF-␬B pathway through the CD14/MD2/
+TLR4 complex (69, 87). On the other hand, Helicobacter spp. have been shown to
+activate the TLR2 receptor, possibly explaining its upregulation in the mice (88).
+    Our ﬁfth focus, OXPHOS, shows the most change in RNA counts. This is surprising
+given the normally anaerobic environment of the colon; increased rates of OXPHOS
+would imply an aerobic environment. Nevertheless, there are increased counts of nuo
+and ppk for the H. hepaticus and combined effects. Importantly, the species mainly
+responsible for this increase is H. hepaticus, which may be rapidly growing and
+depleting the environment of available oxygen. More importantly, an increase in
+OXPHOS points to an increase in RONS. It could be that the RONS produced by
+H. hepaticus and other species are causing oxidative damage to DNA, RNA, or proteins
+that leads to a cancerous state. Even though both SMAD3 deﬁciency and H. hepaticus
+inoculation are required for colon cancer in this model, the OXPHOS pathway is
+changed more by H. hepaticus than by SMAD3 deﬁciency.
+    It is important to note that Lactobacillus plantarum does not appear to be involved
+in altering butyrate, polyamine, LPS, or OXPHOS levels, yet it is undetectable in the mice
+with H. hepaticus (Fig. 4; see also https://doi.org/10.6084/m9.ﬁgshare.5051722). The
+dysbiotic environment produced by H. hepaticus is incompatible with L. plantarum
+through unknown mechanisms that may involve nutrient competition, susceptibility to
+toxins, or other environmental factors. Other studies have shown that adding L. plan-
+tarum reduces tumor size and burden in rats and inhibits survival of cancer stem cells
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                              msystems.asm.org 12
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+(89, 90). On the other hand, Lactobacillus murinus increases in all effects compared to
+control. This is the ﬁrst report that links L. murinus to inﬂammation or colon cancer.
+   In summary, loss of SMAD3 is associated with changes in bacterial RNA counts in the
+butyrate and polyamine synthesis pathways. And, with the addition of H. hepaticus, we
+see an increase in LPS and OXPHOS pathways’ RNA counts, suggesting an increase in
+the proinﬂammatory and free radical status of the colonic epithelium but without
+histological evidence of inﬂammation (Fig. 1A). Either of these changes alone is not
+sufﬁcient to promote carcinogenesis. Rather, it takes their combination and possibly a
+reduction of probiotic species to reach the “tipping point” for tumorigenesis. The
+results of this study emphasize the multifactorial nature of colon cancer and how the
+microbiome may have a profound impact on the cancer microenvironment. This lends
+credence to the idea that changes in microbial ecology as well as in host genotype
+must be taken into consideration when examining the causes of colon cancer.
+
+MATERIALS AND METHODS
+     Animal husbandry. Smad3⫺/⫺ mice (129/Sv) generated previously (23) were obtained from Jackson
+Laboratories and maintained in a speciﬁc-pathogen-free (SPF) facility under a University of Arizona IACUC
+protocol. Sentinel mice were routinely screened for pathogens. Homozygous Smad3⫺/⫺ and Smad3⫹/⫹
+mice were generated by breeding heterozygous animals.
+     PCR genotyping. The genotype of newborn pups from double heterozygous mating was deter-
+mined by PCR ampliﬁcation of tail DNA and size fractionation on agarose gels (20).
+     Helicobacter culture, infection, and detection. A pure culture of H. hepaticus was received from
+Craig Franklin (University of Missouri) and was suspended in brucella broth on tryptic soy agar
+supplemented with 5% sheep blood (Hardy Diagnostics) and incubated in a microaerophilic chamber at
+37°C for 48 h. Later, the culture was resuspended in brucella broth and allowed to grow for another 48 h.
+Five breeding pairs of 1- to 3-month-old heterozygous Smad3⫹/⫺ mice were inoculated with ~108
+H. hepaticus organisms by direct introduction using a 1.5-in. feeding needle. Control animals of ﬁve
+breeding pairs, 1- to 3-month-old heterozygous Smad3⫹/⫺ mice, were inoculated with equal amounts of
+brucella broth. A total of 3 inoculations for each mouse was completed at 24-h intervals. Animals were
+then checked for H. hepaticus infection by PCR analysis of fecal matter with H. hepaticus-speciﬁc primers
+as described earlier (91). Infected animals then were bred together. All animals in subsequent genera-
+tions developed chronic infection by spontaneous parental/fecal contact without additional inoculation.
+To minimize cross contamination, uninfected and infected animals were housed in different buildings.
+     Tissue collection and staining. Mice were euthanized by IACUC-approved cervical dislocation. The
+cecum and colon were dissected free from the mesenchyme. All tissue sections shown in the ﬁgure(s)
+were from the cecum, and staining was done with hematoxylin and eosin. The cecum and colon were
+opened longitudinally, and contents were collected according to location. Cecal content, proximal colon
+content, and distal colon content were placed in individual tubes and ﬂash frozen in liquid nitrogen. All
+samples were stored at ⫺80°C. Only cecal content was sent for sequencing.
+     DNA/RNA sequencing and quality control (including ﬁltering). Sequencing was done at the
+University of Arizona Genomics Core (UAGC). DNA was extracted using an in-house lysozyme extraction
+protocol. The libraries were built with Illumina TruSeq DNA kits (Illumina, San Diego, CA). RNA was
+ribodepleted using both eukaryotic and prokaryotic RiboMinus kits (Thermo Fisher, Waltham, MA). The
+RNA libraries were built with the Illumina TruSeq RNA kits. Ten mice from each group were pooled and
+run on two lanes using an Illumina HiSeq 2000/2500 machine. DNA/RNA reads were 2 ⫻ 100-bp
+paired-end reads, and the average insert size was ~325 bp for DNA and ~225 bp for RNA. After
+sequencing, adapter sequences were trimmed from raw data before being downloaded to the University
+of Arizona High-Performance Computing (UA HPC) center. Quality control (QC) was done using a custom
+pipeline using the programs SolexaQA⫹⫹ (92) and fastx_clipper from the FASTX suite of tools (93)
+(https://github.com/hurwitzlab/ﬁzkin). After QC, DNA reads were ﬁltered for mouse and mouse chow
+(including yeast, barley, soy, wheat, and corn) using jellyﬁsh (94), a kmer frequency counting tool.
+Filtering was done based on the assumption that reads coming from mouse or mouse chow will have
+similar kmer frequencies as the source genomes. Therefore, reads that had kmer modes of 2 or greater
+in comparison to the mouse or mouse chow were considered “rejected” and ﬁltered from downstream
+analysis. Since quality control and ﬁltering may have eliminated mate pairs, reads were reconstituted into
+new fastq ﬁles: two ﬁles for forward and reverse paired-end reads and two ﬁles for single-ended reads
+(those that lost their mates, either forward or reverse).
+     DNA alignment. Alignment was done with Taxoner64 version 0.1.3 (95) against the ~30,000 bacterial
+and archaeal genomes in PATRIC (48) (genomes downloaded on 5 September 2015 from https://www
+.patricbrc.org/) using the parameters “-A --very-sensitive-local” (https://github.com/hurwitzlab/taxoner
+-patric). Results were then ﬁltered with a minimum alignment score of 131 (the average alignment score
+for H. hepaticus, our positive control) and a minimum count of ~138 (the average count of Myco-
+plasma pulmonis, a pathogen that is a negative control since the facility is speciﬁc pathogen free [SPF]).
+A hierarchical pie chart of species composition (https://doi.org/10.6084/m9.ﬁgshare.5051722) was con-
+structed using KronaTools (96).
+     RNA alignment. Alignment was done with Bowtie2 version 2.2.6 (97) for aligning against bacterial
+genomes and TopHat version 2.1.1 (98) for aligning against the mouse genome (Mus_musculus GRCm38
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                            msystems.asm.org 13
+Daniel et al.
+
+
+
+dna_rm primary_assembly fa from Ensembl) (https://github.com/hurwitzlab/bacteria-bowtie). RNA cov-
+erage of mouse genome was ~3-fold on average (data not shown). Given this, we excluded mouse results
+from further analysis. Bacterial genomes were composed of the ~2,000 genomes that passed ﬁltering
+criteria in the “DNA alignment” step. Additional ﬁltering of RNA for mouse and mouse chow was not
+necessary due to the use of the selected bacterial genomes.
+     Differential gene expression. To calculate bacterial gene expression, cuffquant was used with the
+parameters “-M rRNAGFF—no-length-correction,” and cuffnorm (99) was used with default parameters.
+No length correction was used in our study because we were interested in comparing genes across
+samples and not within samples (where gene length correction would be necessary [100]). Postprocess-
+ing of abundance counts and plotting/heat map generation was done with R version 3.2.2 (101) and
+Excel version 14.4.0 for Mac (Microsoft Corp., Redmond, WA).
+     Pathway mapping and species contribution. To assign gene products to pathways, annotation
+information was downloaded from PATRIC (RefSeq.cds.tab ﬁles). Once each gene was annotated
+with pathways, sums were calculated for each gene and each pathway among species and samples.
+See the ﬁgure legends for more details. The bubble chart (Fig. 2) was created using custom R and
+perl scripts.
+     Isolation of RNA from tissue and cDNA synthesis (for qRT-PCR). Total RNA from individual frozen
+tissue samples was isolated using TRI reagent (Molecular Research Center, Cincinnati, OH). RNA was
+treated with RNase-free DNase I (Qiagen, Valencia, CA) and puriﬁed using a Qiagen RNeasy minikit. RNA
+was reverse transcribed using an iScript cDNA synthesis kit (Bio-Rad, Hercules, CA).
+     Primer design and SYBR green qRT-PCR. qRT-PCRs were performed using a Light Cycler 480
+(Roche, Basel, Switzerland) with 50 to 100 ng of cDNA template. At least one primer per pair was
+designed across exon-intron boundaries to prevent coampliﬁcation of genomic DNA; the sizes of the
+products range from 50 to 150 bp. For each gene, threshold cycle (CT) values were normalized to
+corresponding ␤-actin or glyceraldehyde-3-phosphate dehydrogenase (GAPDH), and relative expression
+was determined by the 2⫺ΔΔCT method.
+     Correlation of bacterial RNA count with mouse RNA count. Since the bacterial RNA count had
+only a single data point for each group, median expression values were used from the mouse qRT-PCR
+data. Using these values, Pearson’s product-moment correlation tests were run using default parameters.
+The lm() command in R was used to construct linear models and plot regression lines in Fig. 7.
+     Data availability. All raw DNA/RNA reads are available under BioProject number PRJNA379709.
+
+ACKNOWLEDGMENTS
+   C.L.B. and T.D. designed and conducted molecular experiments. Bioinformatics and
+in silico experiments were conducted by B.L.H. and S.G.D. S.G.D., B.L.H., and T.D.
+analyzed data and wrote the manuscript.
+   This work was supported by the Gordon and Betty Moore Foundation (GBMF4491)
+to B.L.H.; a Cancer Biology training grant (CA09213) to C.L.B.; and HD026471, AI067903,
+and CA084291 to T.D.
+   We thank Kenneth Youens-Clark, Xiang Liu, James Eric Thornton, Jana U’Ren, and
+other members of the Hurwitz Lab for comments and suggestions on the manuscript;
+Constance Gard for managing the mouse colonies; the Vice President for Research of
+the University of Arizona for pilot funds for deep sequencing; and Ryan Sprissler of the
+University of Arizona Genetics Core for assistance with sequencing.
+
+
+REFERENCES
+  1. Siegel RL, Miller KD, Jemal A. 2016. Cancer statistics, 2016. CA Cancer J       cancer cells. World J Surg 29:306 –311. https://doi.org/10.1007/s00268
+     Clin 66:7–30. https://doi.org/10.3322/caac.21332.                               -004-7813-6.
+  2. Eaden JA, Abrams KR, Mayberry JF. 2001. The risk of colorectal cancer        8. Muñoz NM, Upton M, Rojas A, Washington MK, Lin L, Chytil A, Sozmen EG,
+     in ulcerative colitis: a meta-analysis. Gut 48:526 –535. https://doi.org/       Madison BB, Pozzi A, Moon RT, Moses HL, Grady WM. 2006. Transforming
+     10.1136/gut.48.4.526.                                                           growth factor beta receptor type II inactivation induces the malignant
+  3. Itzkowitz SH, Yio X. 2004. Inﬂammation and cancer IV. Colorectal cancer         transformation of intestinal neoplasms initiated by Apc mutation. Cancer
+     in inﬂammatory bowel disease: the role of inﬂammation. Am J Physiol             Res 66:9837–9844. https://doi.org/10.1158/0008-5472.CAN-06-0890.
+     Gastrointest Liver Physiol 287:G7–G17. https://doi.org/10.1152/ajpgi         9. Massagué J. 2012. TGF␤ signalling in context. Nat Rev Mol Cell Biol
+     .00079.2004.                                                                    13:616 – 630. https://doi.org/10.1038/nrm3434.
+  4. Lutgens MWMD, Vleggaar FP, Schipper MEI, Stokkers PCF, van der              10. Svrcek M, El-Bchiri J, Chalastanis A, Capel E, Dumont S, Buhard O,
+     Woude CJ, Hommes DW, de Jong DJ, Dijkstra G, van Bodegraven AA,                 Oliveira C, Seruca R, Bossard C, Mosnier JF, Berger F, Leteurtre E,
+     Oldenburg B, Samsom M. 2008. High frequency of early colorectal                 Lavergne-Slove A, Chenard MP, Hamelin R, Cosnes J, Beaugerie L, Tiret
+     cancer in inﬂammatory bowel disease. Gut 57:1246 –1251. https://doi             E, Duval A, Fléjou JF. 2007. Speciﬁc clinical and biological features
+     .org/10.1136/gut.2007.143453.                                                   characterize inﬂammatory bowel disease–associated colorectal cancers
+  5. Rogler G. 2014. Chronic ulcerative colitis and colorectal cancer. Cancer        showing microsatellite instability. J Clin Oncol 25:4231– 4238. https://
+     Lett 345:235–241. https://doi.org/10.1016/j.canlet.2013.07.032.                 doi.org/10.1200/JCO.2007.10.9744.
+  6. Rhodes JM, Campbell BJ. 2002. Inﬂammation and colorectal cancer:            11. Fujiwara I, Yashiro M, Kubo N, Maeda K, Hirakawa K. 2008. Ulcerative
+     IBD-associated and sporadic cancer compared. Trends Mol Med                     colitis-associated colorectal cancer is frequently associated with the
+     8:10 –16. https://doi.org/10.1016/S1471-4914(01)02194-3.                        microsatellite instability pathway. Dis Colon Rectum 51:1387–1394.
+  7. Li F, Cao Y, Townsend CM, Jr, Ko TC. 2005. TGF-beta signaling in colon          https://doi.org/10.1007/s10350-008-9212-9.
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                       msystems.asm.org 14
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+ 12. Schulmann K, Mori Y, Croog V, Yin J, Olaru A, Sterian A, Sato F, Wang             acid. Arch Toxicol 85:863– 871. https://doi.org/10.1007/s00204-011
+     S, Xu Y, Deacu E, Berki AT, Hamilton JP, Kan T, Abraham JM, Schmiegel             -0648-7.
+     W, Harpaz N, Meltzer SJ. 2005. Molecular phenotype of inﬂammatory             30. Sanapareddy N, Legge RM, Jovov B, McCoy A, Burcal L, Araujo-Perez F,
+     bowel disease-associated neoplasms with microsatellite instability.               Randall TA, Galanko J, Benson A, Sandler RS, Rawls JF, Abdo Z, Fodor
+     Gastroenterology 129:74 – 85. https://doi.org/10.1053/j.gastro.2005.04            AA, Keku TO. 2012. Increased rectal microbial richness is associated
+     .011.                                                                             with the presence of colorectal adenomas in humans. ISME J
+ 13. Svrcek M, Cosnes J, Beaugerie L, Parc R, Bennis M, Tiret E, Fléjou JF.            6:1858 –1868. https://doi.org/10.1038/ismej.2012.43.
+     2007. Colorectal neoplasia in Crohn’s colitis: a retrospective compara-       31. Wu S, Rhee KJ, Albesiano E, Rabizadeh S, Wu X, Yen HR, Huso DL,
+     tive study with ulcerative colitis. Histopathology 50:574 –583. https://          Brancati FL, Wick E, McAllister F, Housseau F, Pardoll DM, Sears CL.
+     doi.org/10.1111/j.1365-2559.2007.02663.x.                                         2009. A human colonic commensal promotes colon tumorigenesis via
+ 14. Markowitz S, Wang J, Myeroff L, Parsons R, Sun L, Lutterbaugh J, Fan RS,          activation of T helper type 17 T cell responses. Nat Med 15:1016 –1022.
+     Zborowska E, Kinzler KW, Vogelstein B. 1995. Inactivation of the type II          https://doi.org/10.1038/nm.2015.
+     TGF-beta receptor in colon cancer cells with microsatellite instability.      32. Abdulamir AS, Haﬁdh RR, Bakar FA. 2010. Molecular detection, quanti-
+     Science 268:1336 –1338. https://doi.org/10.1126/science.7761852.                  ﬁcation, and isolation of Streptococcus gallolyticus bacteria colonizing
+ 15. Souza RF, Garrigue-Antar L, Lei J, Yin J, Appel R, Vellucci VF, Zou TT,           colorectal tumors: inﬂammation-driven potential of carcinogenesis via
+     Zhou X, Wang S, Rhyu MG, Cymes K, Chan O, Park WS, Krasna MJ,                     IL-1, COX-2, and IL-8. Mol Cancer 9:249. https://doi.org/10.1186/1476
+     Greenwald BD, Cottrell J, Abraham JM, Simms L, Leggett B, Young J,                -4598-9-249.
+     Harpaz N, Reiss M, Meltzer SJ. 1996. Alterations of transforming growth       33. Arthur JC, Perez-Chanona E, Mühlbauer M, Tomkovich S, Uronis JM, Fan
+     factor-beta 1 receptor type II occur in ulcerative colitis-associated             TJ, Campbell BJ, Abujamel T, Dogan B, Rogers AB, Rhodes JM, Stintzi A,
+     carcinomas, sporadic colorectal neoplasms, and esophageal carcino-                Simpson KW, Hansen JJ, Keku TO, Fodor AA, Jobin C. 2012. Intestinal
+     mas, but not in gastric neoplasms. Hum Cell 9:229 –236.                           inﬂammation targets cancer-inducing activity of the microbiota. Sci-
+ 16. Fleming NI, Jorissen RN, Mouradov D, Christie M, Sakthianandeswaren               ence 338:120 –123. https://doi.org/10.1126/science.1224820.
+     A, Palmieri M, Day F, Li S, Tsui C, Lipton L, Desai J, Jones IT, McLaughlin   34. Kostic AD, Chun E, Robertson L, Glickman JN, Gallini CA, Michaud M,
+     S, Ward RL, Hawkins NJ, Ruszkiewicz AR, Moore J, Zhu HJ, Mariadason               Clancy TE, Chung DC, Lochhead P, Hold GL, El-Omar EM, Brenner D,
+     JM, Burgess AW, Busam D, Zhao Q, Strausberg RL, Gibbs P, Sieber OM.               Fuchs CS, Meyerson M, Garrett WS. 2013. Fusobacterium nucleatum
+     2013. SMAD2, SMAD3 and SMAD4 mutations in colorectal cancer.                      potentiates intestinal tumorigenesis and modulates the tumor-immune
+     Cancer Res 73:725–735. https://doi.org/10.1158/0008-5472.CAN-12                   microenvironment. Cell Host Microbe 14:207–215. https://doi.org/10
+     -2706.                                                                            .1016/j.chom.2013.07.007.
+ 17. Monteleone G, Kumberova A, Croft NM, McKenzie C, Steer HW, Mac-               35. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. 2013. Fusobac-
+     Donald TT. 2001. Blocking Smad7 restores TGF-␤1 signaling in chronic              terium nucleatum promotes colorectal carcinogenesis by modulating
+     inﬂammatory bowel disease. J Clin Invest 108:601– 609. https://doi.org/           E-cadherin/␤-catenin signaling via its FadA adhesin. Cell Host Microbe
+     10.1172/JCI12821.                                                                 14:195–206. https://doi.org/10.1016/j.chom.2013.07.012.
+ 18. Hayashi H, Abdollah S, Qiu Y, Cai J, Xu YY, Grinnell BW, Richardson MA,       36. Weir TL, Manter DK, Sheﬂin AM, Barnett BA, Heuberger AL, Ryan EP.
+     Topper JN, Gimbrone MA, Jr, Wrana JL, Falb D. 1997. The MAD-related               2013. Stool microbiome and metabolome differences between colo-
+     protein Smad7 associates with the TGF␤ receptor and functions as an               rectal cancer patients and healthy adults. PLoS One 8:e70803. https://
+     antagonist of TGF␤ signaling. Cell 89:1165–1173. https://doi.org/10               doi.org/10.1371/journal.pone.0070803.
+     .1016/S0092-8674(00)80303-7.                                                  37. Gur C, Ibrahim Y, Isaacson B, Yamin R, Abed J, Gamliel M, Enk J, Bar-On
+ 19. Seamons A, Treuting PM, Brabb T, Maggio-Price L. 2013. Characteriza-              Y, Stanietsky-Kaynan N, Coppenhagen-Glazer S, Shussman N, Almogy
+     tion of dextran sodium sulfate-induced inﬂammation and colonic tu-                G, Cuapio A, Hofer E, Mevorach D, Tabib A, Ortenberg R, Markel G,
+     morigenesis in Smad3(⫺/⫺) mice with dysregulated TGF␤. PLoS One                   Miklić K, Jonjic S, Brennan CA, Garrett WS, Bachrach G, Mandelboim O.
+     8:e79182. https://doi.org/10.1371/journal.pone.0079182.                           2015. Binding of the Fap2 protein of Fusobacterium nucleatum to
+ 20. Engle SJ, Hoying JB, Boivin GP, Ormsby I, Gartside PS, Doetschman                 human inhibitory receptor TIGIT protects tumors from immune cell
+     T. 1999. Transforming growth factor beta1 suppresses nonmeta-                     attack. Immunity 42:344 –355. https://doi.org/10.1016/j.immuni.2015
+     static colon cancer at an early stage of tumorigenesis. Cancer Res                .01.010.
+     59:3379 –3386.                                                                38. Abed J, Emgård JEM, Zamir G, Faroja M, Almogy G, Grenov A, Sol A,
+ 21. Engle SJ, Ormsby I, Pawlowski S, Boivin GP, Croft J, Balish E, Doet-              Naor R, Pikarsky E, Atlan KA, Mellul A, Chaushu S, Manson AL, Earl AM,
+     schman T. 2002. Elimination of colon cancer in germ-free transforming             Ou N, Brennan CA, Garrett WS, Bachrach G. 2016. Fap2 mediates
+     growth factor beta 1-deﬁcient mice. Cancer Res 62:6362– 6366.                     Fusobacterium nucleatum colorectal adenocarcinoma enrichment by
+ 22. Maggio-Price L, Treuting P, Zeng W, Tsang M, Bielefeldt-Ohmann H,                 binding to tumor-expressed Gal-GalNAc. Cell Host Microbe 20:215–225.
+     Iritani BM. 2006. Helicobacter infection is required for inﬂammation and          https://doi.org/10.1016/j.chom.2016.07.006.
+     colon cancer in SMAD3-deﬁcient mice. Cancer Res 66:828 – 838. https://        39. Reeves AE, Koenigsknecht MJ, Bergin IL, Young VB. 2012. Suppression
+     doi.org/10.1158/0008-5472.CAN-05-2448.                                            of Clostridium difﬁcile in the gastrointestinal tracts of germfree mice
+ 23. Zhu Y, Richardson JA, Parada LF, Graff JM. 1998. Smad3 mutant mice                inoculated with a murine isolate from the family Lachnospiraceae.
+     develop metastatic colorectal cancer. Cell 94:703–714. https://doi.org/           Infect Immun 80:3786 –3794. https://doi.org/10.1128/IAI.00647-12.
+     10.1016/S0092-8674(00)81730-4.                                                40. Frank DN, St Amand AL, Feldman RA, Boedeker EC, Harpaz N, Pace NR.
+ 24. Oshima M, Oshima H, Taketo MM. 1996. TGF-beta receptor type II                    2007. Molecular-phylogenetic characterization of microbial community
+     deﬁciency results in defects of yolk sac hematopoiesis and vasculogen-            imbalances in human inﬂammatory bowel diseases. Proc Natl Acad Sci
+     esis. Dev Biol 179:297–302. https://doi.org/10.1006/dbio.1996.0259.               U S A 104:13780 –13785. https://doi.org/10.1073/pnas.0706625104.
+ 25. Newman JV, Kosaka T, Sheppard BJ, Fox JG, Schauer DB. 2001. Bacterial         41. Manichanh C, Rigottier-Gois L, Bonnaud E, Gloux K, Pelletier E, Frangeul
+     infection promotes colon tumorigenesis in Apc Min/⫹ mice. J Infect Dis            L, Nalin R, Jarrin C, Chardon P, Marteau P, Roca J, Dore J. 2006. Reduced
+     184:227–230. https://doi.org/10.1086/321998.                                      diversity of faecal microbiota in Crohn’s disease revealed by a metag-
+ 26. Huycke MM, Abrams V, Moore DR. 2002. Enterococcus faecalis pro-                   enomic approach. Gut 55:205–211. https://doi.org/10.1136/gut.2005
+     duces extracellular superoxide and hydrogen peroxide that damages                 .073817.
+     colonic epithelial cell DNA. Carcinogenesis 23:529 –536. https://doi.org/     42. Dreyfuss F, Chayen R, Dreyfuss G, Dvir R, Ratan J. 1975. Polyamine
+     10.1093/carcin/23.3.529.                                                          excretion in the urine of cancer patients. Isr J Med Sci 11:785–795.
+ 27. Wang X, Huycke MM. 2007. Extracellular superoxide production by               43. Löser C, Fölsch UR, Paprotny C, Creutzfeldt W. 1990. Polyamines in
+     Enterococcus faecalis promotes chromosomal instability in mammalian               colorectal cancer. Evaluation of polyamine concentrations in the colon
+     cells. Gastroenterology 132:551–561. https://doi.org/10.1053/j.gastro             tissue, serum, and urine of 50 patients with colorectal cancer. Cancer
+     .2006.11.040.                                                                     65:958 –966. https://doi.org/10.1002/1097-0142(19900215)65:4
+ 28. Ridlon JM, Kang DJ, Hylemon PB. 2006. Bile salt biotransformations by             ⬍958::AID-CNCR2820650423⬎3.0.CO;2-Z.
+     human intestinal bacteria. J Lipid Res 47:241–259. https://doi.org/10         44. Hoffmann C, Hill DA, Minkah N, Kirn T, Troy A, Artis D, Bushman F. 2009.
+     .1194/jlr.R500013-JLR200.                                                         Community-wide response of the gut microbiota to enteropathogenic
+ 29. Bernstein C, Holubec H, Bhattacharyya AK, Nguyen H, Payne CM, Zaitlin             Citrobacter rodentium infection revealed by deep sequencing. Infect
+     B, Bernstein H. 2011. Carcinogenicity of deoxycholate, a secondary bile           Immun 77:4668 – 4678. https://doi.org/10.1128/IAI.00493-09.
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                         msystems.asm.org 15
+Daniel et al.
+
+
+
+ 45. Berry D, Schwab C, Milinovich G, Reichert J, Ben Mahfoudh K, Decker T,           Natl Acad Sci U S A 95:6791– 6796. https://doi.org/10.1073/pnas.95.12
+     Engel M, Hai B, Hainzl E, Heider S, Kenner L, Müller M, Rauch I, Strobl B,       .6791.
+     Wagner M, Schleper C, Urich T, Loy A. 2012. Phylotype-level 16S rRNA         61. Place RF, Noonan EJ, Giardina C. 2005. HDAC inhibition prevents NF-␬B
+     analysis reveals new bacterial indicators of health state in acute murine        activation by suppressing proteasome activity: down-regulation of pro-
+     colitis. ISME J 6:2091–2106. https://doi.org/10.1038/ismej.2012.39.              teasome subunit expression stabilizes I␬B␣. Biochem Pharmacol 70:
+ 46. El Aidy S, Derrien M, Aardema R, Hooiveld G, Richards SE, Dane A,                394 – 406. https://doi.org/10.1016/j.bcp.2005.04.030.
+     Dekker J, Vreeken R, Levenez F, Doré J, Zoetendal EG, van Baarlen P,         62. Arpaia N, Campbell C, Fan X, Dikiy S, van der Veeken J, deRoos P, Liu H,
+     Kleerebezem M. 2014. Transient inﬂammatory-like state and microbial              Cross JR, Pfeffer K, Coffer PJ, Rudensky AY. 2013. Metabolites produced
+     dysbiosis are pivotal in establishment of mucosal homeostasis during             by commensal bacteria promote peripheral regulatory T-cell genera-
+     colonisation of germ-free mice. Benef Microbes 5:67–77. https://doi              tion. Nature 504:451– 455. https://doi.org/10.1038/nature12726.
+     .org/10.3920/BM2013.0018.                                                    63. Scheppach W, Sommer H, Kirchner T, Paganelli GM, Bartram P, Christl
+ 47. Rooks MG, Veiga P, Wardwell-Scott LH, Tickle T, Segata N, Michaud M,             S, Richter F, Dusel G, Kasper H. 1992. Effect of butyrate enemas on the
+     Gallini CA, Beal C, van Hylckama-Vlieg JET, Ballal SA, Morgan XC,                colonic mucosa in distal ulcerative colitis. Gastroenterology 103:51–56.
+     Glickman JN, Gevers D, Huttenhower C, Garrett WS. 2014. Gut micro-               https://doi.org/10.1016/0016-5085(92)91094-K.
+     biome composition and function in experimental colitis during active         64. Pendeville H, Carpino N, Marine JC, Takahashi Y, Muller M, Martial JA,
+     disease and treatment-induced remission. ISME J 8:1403–1417. https://            Cleveland JL. 2001. The ornithine decarboxylase gene is essential for
+     doi.org/10.1038/ismej.2014.3.                                                    cell survival during early murine development. Mol Cell Biol 21:
+ 48. Wattam AR, Abraham D, Dalay O, Disz TL, Driscoll T, Gabbard JL,                  6549 – 6558. https://doi.org/10.1128/MCB.21.19.6549-6558.2001.
+     Gillespie JJ, Gough R, Hix D, Kenyon R, Machi D, Mao C, Nordberg EK,         65. Childs AC, Mehta DJ, Gerner EW. 2003. Polyamine-dependent gene
+     Olson R, Overbeek R, Pusch GD, Shukla M, Schulman J, Stevens RL,                 expression. Cell Mol Life Sci 60:1394 –1406. https://doi.org/10.1007/
+     Sullivan DE, Vonstein V, Warren A, Will R, Wilson MJC, Yoo HS, Zhang C,          s00018-003-2332-4.
+     Zhang Y, Sobral BW. 2014. PATRIC, the bacterial bioinformatics data-         66. Park MH, Nishimura K, Zanelli CF, Valentini SR. 2010. Functional signif-
+     base and analysis resource. Nucleic Acids Res 42:D581–D591. https://             icance of eIF5A and its hypusine modiﬁcation in eukaryotes. Amino
+     doi.org/10.1093/nar/gkt1099.                                                     Acids 38:491–500. https://doi.org/10.1007/s00726-009-0408-7.
+ 49. Donohoe DR, Holley D, Collins LB, Montgomery SA, Whitmore AC,                67. Kalač P. 2006. Biologically active polyamines in beef, pork and meat
+     Hillhouse A, Curry KP, Renner SW, Greenwalt A, Ryan EP, Godfrey V,               products: a review. Meat Sci 73:1–11. https://doi.org/10.1016/j.meatsci
+     Heise MT, Threadgill DS, Han A, Swenberg JA, Threadgill DW, Bultman              .2005.11.001.
+     SJ. 2014. A gnotobiotic mouse model demonstrates that dietary ﬁber           68. Kverka M, Zakostelska Z, Klimesova K, Sokol D, Hudcovic T, Hrncir T,
+     protects against colorectal tumorigenesis in a microbiota- and                   Rossmann P, Mrazek J, Kopecny J, Verdu EF, Tlaskalova-Hogenova H.
+     butyrate-dependent manner. Cancer Discov 4:1387–1397. https://doi                2011. Oral administration of Parabacteroides distasonis antigens atten-
+     .org/10.1158/2159-8290.CD-14-0501.                                               uates experimental murine colitis through modulation of immunity
+ 50. Gerner EW, Meyskens FL, Jr, Goldschmid S, Lance P, Pelot D. 2007.                and microbiota composition. Clin Exp Immunol 163:250 –259. https://
+     Rationale for, and design of, a clinical trial targeting polyamine metab-        doi.org/10.1111/j.1365-2249.2010.04286.x.
+     olism for colon cancer chemoprevention. Amino Acids 33:189 –195.             69. Mancuso G, Midiri A, Biondo C, Beninati C, Gambuzza M, Macrì D,
+     https://doi.org/10.1007/s00726-007-0515-2.                                       Bellantoni A, Weintraub A, Espevik T, Teti G. 2005. Bacteroides fragilis-
+ 51. Wiseman H, Halliwell B. 1996. Damage to DNA by reactive oxygen and               derived lipopolysaccharide produces cell activation and lethal toxicity
+     nitrogen species: role in inﬂammatory disease and progression to                 via toll-like receptor 4. Infect Immun 73:5620 –5627. https://doi.org/10
+     cancer. Biochem J 313:17–29. https://doi.org/10.1042/bj3130017.                  .1128/IAI.73.9.5620-5627.2005.
+ 52. Miller SI, Ernst RK, Bader MW. 2005. LPS, TLR4 and infectious disease        70. Ward PS, Thompson CB. 2012. Metabolic reprogramming: a cancer
+     diversity. Nat Rev Microbiol 3:36 – 46. https://doi.org/10.1038/                 hallmark even Warburg did not anticipate. Cancer Cell 21:297–308.
+     nrmicro1068.                                                                     https://doi.org/10.1016/j.ccr.2012.02.014.
+ 53. Ahmad MS, Krishnan S, Ramakrishna BS, Mathan M, Pulimood AB,                 71. LeBleu VS, O’Connell JT, Gonzalez Herrera KN, Wikman H, Pantel K,
+     Murthy SN. 2000. Butyrate and glucose metabolism by colonocytes in               Haigis MC, de Carvalho FM, Damascena A, Domingos Chinen LT, Rocha
+     experimental colitis in mice. Gut 46:493– 499. https://doi.org/10.1136/          RM, Asara JM, Kalluri R. 2014. PGC-1␣ mediates mitochondrial biogen-
+     gut.46.4.493.                                                                    esis and oxidative phosphorylation in cancer cells to promote metas-
+ 54. Hamer HM, Jonkers D, Venema K, Vanhoutvin S, Troost FJ, Brummer RJ.              tasis. Nat Cell Biol 16:992–1003. https://doi.org/10.1038/ncb3039.
+     2008. Review article: the role of butyrate on colonic function. Aliment      72. Newcomb TG, Loeb LA. 1998. Oxidative DNA damage and mutagenesis,
+     Pharmacol Ther 27:104 –119. https://doi.org/10.1111/j.1365-2036.2007             p 65– 84. In Nickoloff JA, Hoekstra MF (ed), DNA damage and repair.
+     .03562.x.                                                                        Humana Press, Totowa, NJ.
+ 55. Nakano K, Mizuno T, Sowa Y, Orita T, Yoshino T, Okuyama Y, Fujita T,         73. Cabiscol E, Tamarit J, Ros J. 2000. Oxidative stress in bacteria and
+     Ohtani-Fujita N, Matsukawa Y, Tokino T, Yamagishi H, Oka T, Nomura H,            protein damage by reactive oxygen species. Int Microbiol 3:3– 8.
+     Sakai T. 1997. Butyrate activates the WAF1/Cip1 gene promoter                74. Liu M, Gong X, Alluri RK, Wu J, Sablo T, Li Z. 2012. Characterization of
+     through Sp1 sites in a p53-negative human colon cancer cell line. J Biol         RNA damage under oxidative stress in Escherichia coli. Biol Chem
+     Chem 272:22199 –22206. https://doi.org/10.1074/jbc.272.35.22199.                 393:123–132. https://doi.org/10.1515/hsz-2011-0247.
+ 56. Augenlicht L, Shi L, Mariadason J, Laboisse C, Velcich A. 2003. Repres-      75. Kaiser S, Park YK, Franklin JL, Halberg RB, Yu M, Jessen WJ, Freudenberg
+     sion of MUC2 gene expression by butyrate, a physiological regulator of           J, Chen X, Haigis K, Jegga AG, Kong S, Sakthivel B, Xu H, Reichling T,
+     intestinal cell maturation. Oncogene 22:4983– 4992. https://doi.org/10           Azhar M, Boivin GP, Roberts RB, Bissahoyo AC, Gonzales F, Bloom GC,
+     .1038/sj.onc.1206521.                                                            Eschrich S, Carter SL, Aronow JE, Kleimeyer J, Kleimeyer M, Ramaswamy
+ 57. Takai N, Desmond JC, Kumagai T, Gui D, Said JW, Whittaker S, Miyakawa            V, Settle SH, Boone B, Levy S, Graff JM, Doetschman T, Groden J, Dove
+     I, Koefﬂer HP. 2004. Histone deacetylase inhibitors have a profound              WF, Threadgill DW, Yeatman TJ, Coffey RJ, Jr, Aronow BJ. 2007. Tran-
+     antigrowth activity in endometrial cancer cells. Clin Cancer Res 10:             scriptional recapitulation and subversion of embryonic colon develop-
+     1141–1149. https://doi.org/10.1158/1078-0432.CCR-03-0100.                        ment by mouse colon tumor models and human colon cancer. Genome
+ 58. Kelly CJ, Zheng L, Campbell EL, Saeedi B, Scholz CC, Bayless AJ, Wilson          Biol 8:R131. https://doi.org/10.1186/gb-2007-8-7-r131.
+     KE, Glover LE, Kominsky DJ, Magnuson A, Weir TL, Ehrentraut SF, Pickel       76. Bommireddy R, Doetschman T. 2007. TGF␤1 and T reg cells: alliance for
+     C, Kuhn KA, Lanis JM, Nguyen V, Taylor CT, Colgan SP. 2015. Crosstalk            tolerance. Trends Mol Med 13:492–501. https://doi.org/10.1016/j
+     between microbiota-derived short-chain fatty acids and intestinal ep-            .molmed.2007.08.005.
+     ithelial HIF augments tissue barrier function. Cell Host Microbe 17:         77. Russell DH, Snyder SH. 1969. Amine synthesis in regenerating rat liver:
+     662– 671. https://doi.org/10.1016/j.chom.2015.03.005.                            extremely rapid turnover of ornithine decarboxylase. Mol Pharmacol
+ 59. Donohoe DR, Collins LB, Wali A, Bigler R, Sun W, Bultman SJ. 2012. The           5:253–262.
+     Warburg effect dictates the mechanism of butyrate-mediated histone           78. Gutierrez E, Shin BS, Woolstenhulme CJ, Kim JR, Saini P, Buskirk AR,
+     acetylation and cell proliferation. Mol Cell 48:612– 626. https://doi.org/       Dever TE. 2013. eIF5A promotes translation of polyproline motifs. Mol
+     10.1016/j.molcel.2012.08.033.                                                    Cell 51:35– 45. https://doi.org/10.1016/j.molcel.2013.04.021.
+ 60. Archer SY, Meng S, Shei A, Hodin RA. 1998. P21WAF1 is required for           79. Doerfel LK, Wohlgemuth I, Kothe C, Peske F, Urlaub H, Rodnina MV.
+     butyrate-mediated growth inhibition of human colon cancer cells. Proc            2013. EF-P is essential for rapid synthesis of proteins containing con-
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                        msystems.asm.org 16
+Microbiome Changes in TGF-␤-Deﬁcient Colon Cancer
+
+
+
+     secutive proline residues. Science 339:85– 88. https://doi.org/10.1126/     90. An J, Ha EM. 2016. Combination therapy of Lactobacillus plantarum
+     science.1229017.                                                                supernatant and 5-ﬂuouracil increases chemosensitivity in colorectal
+ 80. Fujimura K, Choi S, Wyse M, Strnadel J, Wright T, Klemke R. 2015.               cancer cells. J Microbiol Biotechnol 26:1490 –1503. https://doi.org/10
+     Eukaryotic translation initiation factor 5A (EIF5A) regulates pancreatic        .4014/jmb.1605.05024.
+     cancer metastasis by modulating RhoA and Rho-associated kinase              91. Drazenovich NL, Franklin CL, Livingston RS, Besselsen DG. 2002. Detec-
+     (ROCK) protein expression levels. J Biol Chem 290:29907–29919.                  tion of rodent Helicobacter spp. by use of ﬂuorogenic nuclease poly-
+     https://doi.org/10.1074/jbc.M115.687418.                                        merase chain reaction assays. Comp Med 52:347–353.
+ 81. Sakata K, Kashiwagi K, Igarashi K. 2000. Properties of a polyamine          92. Cox MP, Peterson DA, Biggs PJ. 2010. SolexaQA: at-a-glance quality
+     transporter regulated by antizyme. Biochem J 347:297–303.                       assessment of Illumina second-generation sequencing data. BMC Bioin-
+ 82. Uemura T, Tachihara K, Tomitori H, Kashiwagi K, Igarashi K. 2005.               formatics 11:485. https://doi.org/10.1186/1471-2105-11-485.
+     Characteristics of the polyamine transporter TPO1 and regulation of its     93. Gordon A. 2010. FASTX toolkit.
+     activity and cellular localization by phosphorylation. J Biol Chem 280:     94. Marçais G, Kingsford C. 2011. A fast, lock-free approach for efﬁcient
+     9646 –9652. https://doi.org/10.1074/jbc.M410274200.                             parallel counting of occurrences of k-mers. Bioinformatics 27:764 –770.
+ 83. Rai AN, Thornton JA, Stokes J, Sunesara I, Swiatlo E, Nanduri B. 2016.          https://doi.org/10.1093/bioinformatics/btr011.
+     Polyamine transporter in Streptococcus pneumoniae is essential for          95. Pongor LS, Vera R, Ligeti B. 2014. Fast and sensitive alignment of
+     evading early innate immune responses in pneumococcal pneumonia.                microbial whole genome sequencing reads to large sequence datasets
+     Sci Rep 6:26964. https://doi.org/10.1038/srep26964.                             on a desktop PC: application to metagenomic datasets and pathogen
+ 84. Howard JG, Rowley D, Wardlaw AC. 1958. Investigations on the mech-              identiﬁcation. PLoS One 9:e103441. https://doi.org/10.1371/journal
+     anism of stimulation of non-speciﬁc immunity by bacterial lipopolysac-          .pone.0103441.
+     charides. Immunology 1:181–203.                                             96. Ondov BD, Bergman NH, Phillippy AM. 2011. Interactive metagenomic
+ 85. Orcutt RP, Gianni FJ, Judge RJ. 1987. Development of an ‘altered                visualization in a Web browser. BMC Bioinformatics 12:385. https://doi
+     Schaedler ﬂora’ for NCI gnotobiotic rodents. Microecol Ther 17:59.              .org/10.1186/1471-2105-12-385.
+ 86. Wymore Brand M, Wannemuehler MJ, Phillips GJ, Proctor A, Overstreet         97. Langmead B, Salzberg SL. 2012. Fast gapped-read alignment with
+     AM, Jergens AE, Orcutt RP, Fox JG. 2015. The altered Schaedler ﬂora:            Bowtie 2. Nat Methods 9:357–359. https://doi.org/10.1038/nmeth.1923.
+     continued applications of a deﬁned murine microbial community. ILAR         98. Trapnell C, Pachter L, Salzberg SL. 2009. TopHat: discovering splice
+     J 56:169 –178. https://doi.org/10.1093/ilar/ilv012.                             junctions with RNA-Seq. Bioinformatics 25:1105–1111. https://doi.org/
+ 87. Hoshino K, Takeuchi O, Kawai T, Sanjo H, Ogawa T, Takeda Y, Takeda K,           10.1093/bioinformatics/btp120.
+     Akira S. 1999. Cutting edge: toll-like receptor 4 (TLR4)-deﬁcient mice      99. Trapnell C, Roberts A, Goff L, Pertea G, Kim D, Kelley DR, Pimentel H,
+     are hyporesponsive to lipopolysaccharide: evidence for TLR4 as the Lps          Salzberg SL, Rinn JL, Pachter L. 2012. Differential gene and transcript
+     gene product. J Immunol 162:3749 –3752.                                         expression analysis of RNA-seq experiments with TopHat and Cufﬂinks.
+ 88. Mandell L, Moran AP, Cocchiarella A, Houghton J, Taylor N, Fox JG,              Nat Protoc 7:562–578. https://doi.org/10.1038/nprot.2012.016.
+     Wang TC, Kurt-Jones EA. 2004. Intact Gram-negative Helicobacter py-        100. Conesa A, Madrigal P, Tarazona S, Gomez-Cabrero D, Cervera A,
+     lori, Helicobacter felis, and Helicobacter hepaticus bacteria activate          McPherson A, Szcześniak MW, Gaffney DJ, Elo LL, Zhang X, Mortazavi A.
+     innate immunity via toll-like receptor 2 but not toll-like receptor 4.          2016. A survey of best practices for RNA-seq data analysis. Genome Biol
+     Infect Immun 72:6446 – 6454. https://doi.org/10.1128/IAI.72.11.6446             17:13. https://doi.org/10.1186/s13059-016-0881-8.
+     -6454.2004.                                                                101. Team RC. 2015. R: a language and environment for statistical comput-
+ 89. Walia S, Kamal R, Kanwar SS, Dhawan DK. 2015. Cyclooxygenase as a               ing. R Foundation for Statistical Computing, Vienna, Austria.
+     target in chemoprevention by probiotics during 1,2-dimethylhydrazine       102. Kanehisa M, Furumichi M, Tanabe M, Sato Y, Morishima K. 2017. KEGG:
+     induced colon carcinogenesis in rats. Nutr Cancer 67:603– 611. https://         new perspectives on genomes, pathways, diseases and drugs. Nucleic
+     doi.org/10.1080/01635581.2015.1011788.                                          Acids Res 45:D353–D361. https://doi.org/10.1093/nar/gkw1092.
+
+
+
+
+September/October 2017 Volume 2 Issue 5 e00065-17                                                                                      msystems.asm.org 17
+

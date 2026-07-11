@@ -1,0 +1,592 @@
+                                                                                                                           TYPE Original Research
+                                                                                                                           PUBLISHED 12 October 2023
+                                                                                                                           DOI 10.3389/fmicb.2023.1229888
+
+
+
+
+                                                    Interaction between intratumoral
+OPEN ACCESS                                         microbiota and tumor mediates
+                                                    the response of neoadjuvant
+EDITED BY
+Daorong Wang,
+Yangzhou University, China
+
+REVIEWED BY
+Emma Berta Gutiérrez Cirlos,
+                                                    therapy for rectal cancer
+National Autonomous University of Mexico,
+Mexico
+Rohimah Mohamud,
+                                                    Lejia Sun 1,2,3†, Jiangming Qu 4†, Xindi Ke 4†, Yue Zhang 1,2,3,
+University of Science Malaysia (USM), Malaysia      Hengyi Xu 4, Ning Lv 4, Jingze Leng 5, Yanbin Zhang 6, Ai Guan 4*,
+*CORRESPONDENCE                                     Yifei Feng 1,2,3* and Yueming Sun 1,2,3*
+Yueming Sun
+   sunyueming@njmu.edu.cn                           1
+                                                     Department of General Surgery, The First Affiliated Hospital of Nanjing Medical University, Nanjing,
+Yifei Feng                                          China, 2 The First School of Clinical Medicine, Nanjing Medical University, Nanjing, China, 3 Colorectal
+   fengyifei1982@163.com                            Institute of Nanjing Medical University, Nanjing, China, 4 Chinese Academy of Medical Sciences & Peking
+Ai Guan                                             Union Medical College, Beijing, China, 5 School of Medicine, Tsinghua University, Beijing, China,
+   jullie971105@sina.com                            6
+                                                      Department of Spine Surgery, Beijing Jishuitan Hospital, Beijing, China
+These authors have contributed equally to this
+†
+
+work
+
+RECEIVED 27 May 2023
+ACCEPTED 29 September 2023                          Background: Previous observations have demonstrated that the response to
+PUBLISHED 12 October 2023                           neoadjuvant chemoradiotherapy (nCRT) is highly variable in patients with locally
+CITATION                                            advanced rectal cancer (LARC). Recent studies focusing on the intratumoral
+Sun L, Qu J, Ke X, Zhang Y, Xu H, Lv N, Leng J,     microbiota of colorectal cancer have revealed its role in oncogenesis and
+Zhang Y, Guan A, Feng Y and Sun Y (2023)
+Interaction between intratumoral microbiota
+                                                    tumor progression. However, limited research has focused on the influence of
+and tumor mediates the response of                  intratumoral microbiota on the nCRT of LARC.
+neoadjuvant therapy for rectal cancer.
+Front. Microbiol. 14:1229888.
+                                                    Methods: We explored the microbial profiles in the tumor microenvironment of LARC
+doi: 10.3389/fmicb.2023.1229888                     using RNA-seq data from a published European cohort. Microbial signatures were
+COPYRIGHT                                           characterized in pathological complete response (pCR) and non-pCR groups. Multi-
+© 2023 Sun, Qu, Ke, Zhang, Xu, Lv, Leng,            omics analysis was performed between intratumor microbiomes and transcriptomes.
+Zhang, Guan, Feng and Sun. This is an open-
+access article distributed under the terms of       Results: Microbial α and β diversity were significantly different in pCR and non-
+the Creative Commons Attribution License            pCR groups. Twelve differential microbes were discovered between the pCR and
+(CC BY). The use, distribution or reproduction      non-pCR groups, six of which were related to subclusters of cancer-associated
+in other forums is permitted, provided the
+original author(s) and the copyright owner(s)       fibroblasts (CAFs) associated with extracellular matrix formation. A microbial
+are credited and that the original publication in   risk score based on the relative abundance of seven differential microbes had
+this journal is cited, in accordance with           predictive value for the nCRT response (AUC = 0.820, p < 0.001).
+accepted academic practice. No use,
+distribution or reproduction is permitted which     Conclusion: Our study presents intratumoral microbes as potential independent
+does not comply with these terms.
+                                                    predictive markers for the response of nCRT to LARC and demonstrates the
+                                                    underlying mechanism by which the interaction between intratumoral microbes
+                                                    and CAFs mediates the response to nCRT.
+
+                                                    KEYWORDS
+
+                                                    locally advanced rectal cancer, neoadjuvant chemoradiotherapy, intratumoral
+                                                    microbiota, cancer-associated fibroblasts, biomarker
+
+
+
+
+                                                    Introduction
+                                                        Colorectal cancer (CRC) is the third most commonly diagnosed cancer in males and
+                                                    second in females (Bray et al., 2018). Approximately two-thirds of CRC arise in the rectum.
+                                                    At least 25% of cases are at an advanced stage at initial diagnosis (Aklilu and Eng, 2011;
+                                                    Glynne-Jones et al., 2017). Neoadjuvant chemoradiotherapy (nCRT) has been established as
+
+Frontiers in Microbiology                                                   01                                                               frontiersin.org
+Sun et al.                                                                                                             10.3389/fmicb.2023.1229888
+
+
+
+
+a standard treatment for patients with locally advanced rectal                perirectal fat infiltration (cT3–4) or lymph node involvement (cN+)
+cancer (LARC) to achieve higher sphincter preservation rates and              were treated with standard nCRT followed by surgical resection
+lower locoregional recurrence rates (Sauer et al., 2004). Good                (Lee et al., 2020).
+responses to nCRT improve local control and can shift clinical
+strategies from radical surgery to “watch and wait.” However,
+observations from many clinical studies have demonstrated that the            Transcriptomic analysis
+response to nCRT is highly variable in LARC (Loos et al., 2013;
+Petrelli et al., 2020). Approximately 20–30% of patients with rectal               Differential gene expression analysis was conducted using the
+cancer achieve a complete response to conventional nCRT (Cercek               R package limma, with significant differences required to fulfill the
+et al., 2018; Buckley et al., 2020; van der Sluis et al., 2020). Since        criteria |log2 Fold Change| > 1 and false discovery rate (FDR) < 0.05.
+nCRT could also cause treatment-associated toxicities (Pucciarelli            cancer-associated fibroblasts (CAFs) derived from a single-cell
+et al., 2011; West et al., 2014), and a good response to nCRT may             analysis of rectal cancer tissue (GSE132465) were clustered into 18
+lead to “watch and wait” instead of surgery, it is essential to               subpopulations using the Leiden algorithm (Traag et al., 2019).
+determine whether patients can potentially benefit from nCRT                  CIBERSORTx calculated and estimated the immune infiltration of
+based on pre-treatment biomarkers.                                            22 types of common immune cells and 18 subpopulations of CAFs
+    Recent studies have detected the presence of microbiota in                (Newman et al., 2019). Spearman’s correlation coefficient was
+tumor tissues (Nejman et al., 2020; Poore et al., 2020). Most cancer          calculated to measure the connections between the microbial and
+microbes are present in cells. The cancer microbiota can influence            cellular abundance of immune cells and CAFs. Weighted gene
+biological behavior by modulating tumorigenesis and chemotherapy              co-expression network analysis (WGCNA) was used to generate a
+resistance. Previous studies focusing on the intratumoral microbes            co-occurrence network based on the relative abundances of each
+of CRC have revealed the role of the intratumoral microbiota in               core genera performed by ImageGP with default parameters (Chen
+oncogenesis and tumor progression (Dejea et al., 2018; Rubinstein             et al., 2022). Pathway and process enrichment analysis of hub genes
+et al., 2019; Liu et al., 2021). Intratumoral bacteria can affect the         derived from WGCNA and the marker genes of each subpopulation
+therapeutic response by metabolizing drugs into inactive forms and            of CAFs were performed using the Metascape tool (Han et al.,
+influencing antitumor immunity (Da Cunha et al., 2022; Wang                   2018). The protein–protein interaction network of the signature
+et al., 2022). Therefore, it is rational to speculate that the                genes of each subpopulation of CAFs was constructed based on
+intratumoral microbiome may affect nCRT responses. Recent                     protein–protein physical interactions according to the database of
+studies have investigated the predictive value of the gut microbiome          BioGrid and STRING (physical score > 0.132) performed by
+in response to nCRT in patients with LARC (Jang et al., 2020; Shi             Metascape. The Molecular Complex Detection (MCODE) algorithm
+et al., 2020; Yi et al., 2021). However, Zhang et al. (2021)                  (Bader and Hogue, 2003) has been applied to identify densely
+demonstrated different patterns of intratumoral microbial profiles            connected network components and the enrichment analysis of
+from either the gut microbiome or the mucosal microbiome. To our              transcription factors using the transcriptional regulatory network
+knowledge, no research has focused on the influence of intratumoral           (TRRUST) module of Metascape.
+microbial profiles on chemoradiation therapy.
+    In this study, we analyzed the intratumoral microbiota of rectal
+cancer and the correlation between microbes and the tumor                     Microbial data processing and analysis
+microenvironment (TME) based on RNA-seq data of a large LARC
+cohort. We profiled the microbiome composition in LARC                             Raw RNA sequencing data from preoperative endoscopic biopsies
+according to nCRT response and demonstrated significantly                     underwent quality control with FastQC and then were trimmed to
+different microbial signatures in the pathologically complete                 remove adapter sequences using the Cutadapt tool (version 4.1).
+response (pCR) and non-pCR groups. We also established an                     Subsequently, the reads underwent taxonomic identification and were
+intratumoral microbiome signature to identify patients likely to              assigned to humans, bacteria, archaea, viruses, protozoa, and fungi by
+benefit from preoperative nCRT for clinical application. Interactions         Kracken2 based on the Standard Kraken2 reference database plus
+between intratumoral microbes and cancer-associated fibroblasts               protozoa and fungi (Wood et al., 2019). Reestimation of reads was
+were also detected, revealing the potential mechanisms underlying             performed by Bayesian Reestimation of Abundance with Kraken
+the relationship between microbiota and therapeutic responses.                (Bracken) to compute a highly accurate genus-level abundance (Lu
+                                                                              et al., 2017). Only the sequences assigned to bacteria were preserved,
+                                                                              with sequences assigned to humans, archaea, viruses, and fungi
+Materials and methods                                                         removed. Raw abundance data for bacteria were decontaminated
+                                                                              using the decontam algorithm and rarefied (Davis et al., 2018).
+Patients and datasets                                                              Α diversity was calculated using the R package “vegan” and was
+                                                                              displayed as the Shannon index. β-diversity was analyzed using
+    The pre-treatment raw RNA sequences, gene expression data,                principal coordinate analysis (PCoA) based on Jaccard’s distance and
+and clinicopathologic data of a published cohort (n = 105 rectal              partial least squares discrimination analysis (PLS-DA). Linear
+cancer patients) were obtained from the Gene Expression Omnibus               discriminant analysis effect size (LEfSe) was used to evaluate
+(GEO) repository (GSE 190826) (Nicolas et al., 2022). In this                 differential taxa between the pCR and non-pCR groups (Segata et al.,
+cohort, patients with histologically confirmed rectal carcinoma with          2011). Differences in relative abundance at the genus level were also
+an inferior margin of no more than 12 cm above the anal verge with            analyzed and visualized using STAMP software (Welch’s t-test with
+
+
+Frontiers in Microbiology                                                02                                                           frontiersin.org
+Sun et al.                                                                                                                 10.3389/fmicb.2023.1229888
+
+
+
+
+Benjamini–Hochberg FDR < 0.05) (Parks et al., 2014). Microbial                  Different microbial profiles in patients with
+network analysis was conducted using the R package “ggClusterNet”               distinct therapeutic responses
+(Wen et al., 2022). The microbial and CAF network was generated by
+Spearman’s correlation with a threshold of correlation coefficient > 0.3             After taxonomic classification and the removal of human reads,
+and p < 0.05. Receiver operating characteristic (ROC) curves were               we assessed the landscape of the intratumoral microbiome abundance
+plotted, and the area under ROC curves (AUC) was calculated to                  profiles in all available pre-treatment samples in patients with rectal
+evaluate the ability of intratumoral microbes to predict the therapeutic        cancer. Figure 1A shows the evolutionary structure of the microbial
+effect of nCRT, which was also analyzed using logistic                          profiles in the cohort. Proteobacteria, Firmicutes, Bacteroidetes,
+regression analysis.                                                            Actinobacteria, and Fusobacteria were the top five abundant microbes
+                                                                                at the phylum level (Figure 1B). Further analysis at the genus level also
+                                                                                revealed the most abundant microbes (Figure 1C). There were 18
+Results                                                                         genera and 103 genera specific to the pCR group and the non-pCR
+                                                                                group, respectively, with 293 genera shared by both groups
+Population characteristics                                                      (Supplementary Figure S1A). The top 10 abundant genera along with
+                                                                                their taxonomic information at different levels, were summarized in
+     The clinical characteristics of the patients are summarized in             Supplementary Figure S1B.
+Table 1. A total of 105 patients who met the inclusion/exclusion                     We observed higher α diversity in the non-pCR group than in the
+criteria were included in the study. Among them, 68.8% were male                pCR group (Shannon index, p = 0.033) (Figure 1D). PCoA analysis by
+and 31.2% were female. The median age of the cohort was 65 (range               Jaccard’s distance also revealed significant differences in β diversity
+34–86). LARC was graded as grade 0 in two patients (1.9%), grade 2 in           between the two groups (p = 0.042) (Figure 1E). PLS-DA also indicated
+95 patients (92.2%), and grade 3 in six patients (5.8%) by biopsy. The          significant differences between the microbial communities in pCR and
+number of patients with cTNM stages I, II, III, and IV was 2 (2.0%),            non-pCR (Figure 1F). We also observed different network patterns in
+12 (11.8%), 87 (85.3%), and 1 (1.0%), respectively. Seventy-six patients        the intratumoral microbes of the pCR and non-pCR groups
+(72.4%) received treatment of 50.4 Gy + 5-FU, 26 patients (24.8%)               (Figure 1G). Multiple correlations between Firmicutes and
+received 50.4 Gy + 5-FU/Ox, and three patients (2.8%) received                  Proteobacteria were observed in the non-pCR group, which differed
+50.4 Gy + Capecitabine. After subsequent surgery, 26 patients (24.8%)           from the pCR group.
+achieved pCR, and 79 (75.2%) did not. The median disease-free                        LEfSe analysis was conducted to assess the differences in
+survival (DFS) of the cohort was 50 (range 2–132) months.                       microbial signatures between the pCR and non-pCR groups.
+                                                                                Fourteen differential taxa were observed between pCR and
+                                                                                non-pCR groups, including genera Faecalibacterium, Alistipes, and
+TABLE 1 Clinical characteristics of patients with LARC.
+                                                                                Akkermansia, etc. (Figure 1H). Further analysis using the STAMP
+ Patients                                             n = 105                   software presented the presence of differential microbes at the
+ Sex                                                                            genus level (Figure 1I). We observed that the abundances of
+                                                                                Christensenella, Ruminococcus, Collinsella, Faecalibacterium,
+    Male                                              64 (68.8%)
+                                                                                Akkermansia,           Faecalitalea,      Alistipes,      Anaerostipes,
+    Female                                            41 (31.2%)
+                                                                                Anaerobutyricum, Pavimonas, Blautia, and Bifidobacterium were
+ Age (years)                                          65 (34–86)                significantly enriched in the non-pCR group. When summarizing
+ Grading                                                  n = 103               the abundance of these 12 microbes, we observed distinct microbial
+    0                                                     2 (1.9%)              patterns between the non-pCR and pCR groups, as shown in the
+                                                                                heatmap (Figure 1J).
+    2                                                 95 (92.2%)
+
+    3                                                     6 (5.8%)
+
+ cTNM                                                     n = 102               Interaction between intratumoral microbes
+    I                                                     2 (2.0%)              and tumor
+    II                                                12 (11.8%)
+                                                                                     We performed further multi-omics analysis, combining
+    III                                               87 (85.3%)
+                                                                                microbiota, gene expression, and immune and stromal cell
+    IV                                                    1 (1.0%)              infiltration, to better understand the interaction between
+ Treatment                                                                      intratumoral microbes and the tumor. Based on WGCNA,
+    50.4 Gy + 5-FU                                    76 (72.4%)                Faecalitalea and Clollinsella were significantly correlated with
+                                                                                co-expression modules associated with adaptive immune response,
+    50.4 Gy + 5-FU/Ox                                 26 (24.8%)
+                                                                                phagocytosis, recognition, and inflammatory response
+    50.4 Gy + Capecetabine                                3 (2.8%)
+                                                                                (Figures 2A–C). Correlation analysis revealed several significant but
+ Therapeutic response                                                           not robust associations between intratumoral bacteria and previously
+    non-pCR                                           79 (75.2%)                reported resistant gene expression (Figure 2D; Li et al., 2022). It also
+    pCR                                               26 (24.8%)
+                                                                                indicated a significant association between specific intratumoral
+                                                                                microbiomes and eosinophils, neutrophils, macrophages M2 and
+ DFS (months)                                         50 (2–132)
+                                                                                naïve B cell infiltration (Supplementary Figure S2). These findings
+
+
+Frontiers in Microbiology                                                  03                                                             frontiersin.org
+Sun et al.                                                                                                                        10.3389/fmicb.2023.1229888
+
+
+
+
+    FIGURE 1
+    Characterization of the microbiome in the pCR and non-pCR groups. (A) Phylogenetic tree of the intratumoral microbiome in rectal adenocarcinoma.
+    Each node represents a specific taxon. Different colors denote different phyla. The size of the nodes is related to the abundance of each taxon.
+    (B) Stack plots of microbial composition at the phylum level. (C) Stack plots of microbial composition at the genus level. (D) The α diversity of samples
+    belonging to the pCR and non-pCR groups. (E) Principal coordinates analysis (PCoA) based on the Jaccard distance of the pCR and non-pCR groups.
+    (F) Partial least squares discriminant analysis (PLS-DA) of the pCR and non-pCR groups. (G) Microbial networks in the pCR and non-pCR groups. Each
+    dot represents one genus. Only 150 genera with top abundance are shown. The size of each dot represents the igraph degree, which reflects the
+    number of significant correlations between the corresponding genus with the others. The orange and blue lines indicate positive and negative
+    correlations, respectively. (H) Histogram of linear discriminant analysis (LDA) scores computed from features differentially abundant between the pCR
+    and non-pCR groups. Features with LDA score (log10) > 3.0 and p < 0.05 are shown. (I) Bar plot of relative abundance of genera with significant
+    differences between pCR and non-pCR groups. Comparison is conducted via Welch’s t-test, and only genera with Benjamini–Hochberg false
+    discovery rate < 0.05 are shown. (J) Heatmap indicates the correlation between the therapeutic response and microbial profiles.
+
+
+
+
+Frontiers in Microbiology                                                      04                                                                 frontiersin.org
+Sun et al.                                                                                                                     10.3389/fmicb.2023.1229888
+
+
+
+
+    FIGURE 2
+    Correlation between intratumoral microbes and tumor microenvironment. (A) Heatmap indicates the correlation between identified modules and
+    differential microbes. (B) Bar graph of enriched pathways of the brown module in (A). (C) Bar graph of enriched pathways of the green module in (A).
+    (D) Correlations between the expression profile of treatment-resistant gene and differential microbes. The correlation coefficient is displayed if
+    p < 0.05.
+
+
+
+
+indicated that interactions may occur between the intratumoral                    Establishment of a predictive classifier for
+microbiome and TME through multifaceted mechanisms.                               response to nCRT
+    After the CAFs of rectal cancer were clustered into 18
+subpopulations (Figure 3A), we assessed the relationship between the                   To translate our findings into clinical applications, we established
+abundance of 12 characteristic microbes and the infiltrating CAF                  a predictive classifier for response to nCRT. Thus, we conducted ROC
+clusters within our cohort. We observed clusters 7, 10, 13, 14, and 16            analysis and calculated the area under ROC curves (AUC) of the 12
+correlated with six genera in the network (Figure 3B). Enrichment                 differential microbes, among which, Collinsella (AUC = 0.629,
+Analysis demonstrated that CAF clusters 7 and 10 were associated                  p = 0.049), Alistipes (AUC = 0.685, p = 0.005), Christensenella
+with collagen biosynthesis, modification, and ECM organization and                (AUC = 0.672, p = 0.009), Faecalibacterium (AUC = 0.647, p = 0.025),
+modulation (Figures 4A,B and Supplementary Figure S3). Moreover,                  Ruminococcus (AUC = 0.645, p = 0.027), Pavimonas (AUC = 0.682,
+the presumed upstream regulatory factors of both clusters 7 and 10                p = 0.005), and Akkermansia (AUC = 0.693, p = 0.003) appeared
+include NF-κB (Figure 4C).                                                        significantly predictive of the therapeutic response (Figure 5A and
+
+
+
+
+Frontiers in Microbiology                                                    05                                                                frontiersin.org
+Sun et al.                                                                                                                    10.3389/fmicb.2023.1229888
+
+
+
+
+    FIGURE 3
+    Correlation between intratumoral microbes and cancer-associated fibroblasts (CAFs). (A) Heatmap for marker genes of 18 CAF clusters in the tumor
+    microenvironment (TME). (B) Network patterns between the 18 clusters of CAFs and the 12 differential microbes. The strings represent a correlation
+    coefficient > 0.3 with p < 0.05.
+
+
+
+
+Supplementary Table S1). Then, patients were classified into the high-            p = 0.004) were still significantly associated with the responses to
+level group or low-level group according to the relative abundance of             nCRT (Supplementary Figure S4 and Supplementary Table S2).
+these seven microbes. The optimal cutoff value for each of these seven            We assigned a score of 0 to the low-level group and a score of 1 to the
+microbes was set at the maximum Youden index. After the patients                  high-level group. Then, the microbial risk score of each individual was
+being stratified by the corresponding cutoff values, Collinsella                  defined by the sum value of the scores based on these seven predictive
+(AUC = 0.652, p = 0.021), Alistipes (AUC = 0.702, p = 0.002),                     microbes. The microbial risk score was significantly linked to the
+Christensenella (AUC = 0.702, p = 0.002), Faecalibacterium                        therapeutic outcomes, with the AUC of the microbial risk score for
+(AUC = 0.658, p = 0.016), Ruminococcus (AUC = 0.652, p = 0.021),                  predicting non-pCR being 0.820 (p < 0.001) (Figure 5B). As shown in
+Pavimonas (AUC = 0.669, p = 0.010), and Akkermansia (AUC = 0.689,                 Table 2, multiple logistic regression analysis revealed that the
+
+
+Frontiers in Microbiology                                                    06                                                               frontiersin.org
+Sun et al.                                                                                                                10.3389/fmicb.2023.1229888
+
+
+
+
+    FIGURE 4
+    Characterization of the cancer-associated fibroblasts (CAFs) that are related to intratumoral microbiomes. (A) Heatmap indicates the pathways/
+    processes enriched in each cluster of CAFs. (B) Protein–protein physical interactions and GO enrichment analysis of MCODE network components of
+    the marker genes of CAF cluster 10. (C) Heatmap indicates the upstream regulatory factors for each cluster of CAFs.
+
+
+
+
+Frontiers in Microbiology                                                 07                                                             frontiersin.org
+Sun et al.                                                                                                                          10.3389/fmicb.2023.1229888
+
+
+
+
+       FIGURE 5
+       Predictive value of differential microbes for nCRT response. (A) Receiver operator characteristic (ROC) analysis of 12 differential microbes between the
+       pCR and non-pCR groups predicting the nCRT response. (B) ROC analysis of the microbial risk score predicting the nCRT response.
+
+
+
+
+TABLE 2 Multiple logistic regression of clinical characteristics for predicting responses to neoadjuvant chemoradiotherapy.
+
+  Risk factors                                               OR (95% CI)                                                     Value of p
+  Gender                                                    0.777 (0.253–2.386)                                                   0.660
+
+  Age                                                       1.755 (0.606–5.084)                                                   0.300
+
+  Grading                                                    4.265 (0.5–36.345)                                                   0.185
+
+  cT                                                        1.014 (0.329–3.119)                                                   0.981
+
+  cN                                                        0.585 (0.205–1.671)                                                   0.317
+
+  Microbial risk score                                      2.253 (1.483–3.422)                                                  <0.001
+The bold value indicates statistical significance.
+
+
+
+microbial risk score was an independent predictive factor for                          microbial signature and revealed enriched microbiota, including
+therapeutic response to nCRT (HR = 2.253, 95% CI: 1.483–3.422,                         Acidocacteria, Bacteroidetes, Cyanobacteria, Proteobacteria,
+p < 0.001). For each one score increase in the microbial risk score, the               Actinobacteria, Chloroflexi, Firmicutes, and Fusobacteria (Liu et al.,
+risk of non-pCR was more than doubled.                                                 2021). Consistent with previous findings, the most abundant
+                                                                                       microbiomes detected at the phylum level in our work were
+                                                                                       Proteobacteria, Firmicutes, Bacteroidetes, Actinobacteria, and
+Discussion                                                                             Fusobacteria. In addition, Liu et al. pointed out the heterogeneity
+                                                                                       between the intratumoral microbiome and the microbiome extracted
+     Our study is the first to compare the intratumoral microbiome                     from adjacent tissues, revealing distinct patterns between the
+between pCR and non-pCR patients receiving nCRT. We observed                           intratumoral microbiome and gut microbiota. These results support
+significant differences in α and β diversities between the two groups.                 the necessity of microbial identification from the tumor samples in
+In addition, we identified the relative differences in the abundance of                our study and emphasize the importance of intratumoral microbiotas
+specific taxa between the pCR and non-pCR groups. The results                          inside LARC. Previous studies focusing on the intratumoral microbes
+revealed that the microbial profiles of non-pCR were characterized by                  of LARC have revealed the role of microbiota in oncogenesis and
+higher α diversity. Further examination identified 12 significantly                    tumor progression. However, limited investigations into the
+differential genera between the pCR and non-pCR groups:                                relationship between intratumoral microbiota and response to nCRT
+Christensenella, Ruminococcus, Collinsella, Faecalibacterium,                          could not directly elucidate the causal clinical value of host-
+Akkermansia, Faecalitalea, Alistipes, Anaerostipes, Anaerobutyricum,                   related microbes.
+Pavimonas, Blautia, and Bifidobacterium. These 12 microbes were                             Since intratumoral microbiomes have potential differences
+enriched in the non-pCR group, suggesting a negative correlation with                  from gut microbiomes, the predictive value of intratumoral
+the therapeutic response.                                                              microbiomes should be examined separately. Despite this, our
+     Based on RNA-seq data acquired from rectal cancer biopsy, our                     intratumoral microbiota results were partially consistent with prior
+study first identified the presence of intratumoral microbiota in                      gut microbiome studies analyzing responses to nCRT. In a gut
+patients with LARC. In 2021, Liu et al. demonstrated an intratumoral                   microbiome study (Yi et al., 2021), the family Coriobacteriaceae
+
+
+Frontiers in Microbiology                                                         08                                                                 frontiersin.org
+Sun et al.                                                                                                                10.3389/fmicb.2023.1229888
+
+
+
+
+emerged as a crucial biomarker for non-responders. In our research,            which clusters 7 and 10 were found to be responsible for ECM
+Coriobacteriaceae, composed predominantly of the genus                         formation, similar to another study reporting that microbiota inside
+Collinesella, likewise functioned as a biomarker for                           CRC was co-localized with CAFs, activated the TLR2/NF-κB
+non-pCR. Another gut microbiome study noted the family                         pathway in the CRC microenvironment (Xu et al., 2022). The above
+Rikenellaceae and genus Bacteroides as the most abundant order in              findings suggest a potential rationale that the intratumoral
+non-responders’ feces (Jang et al., 2020). Similarly, as the only genus        microbiota mediates the response to neoadjuvant therapy in LARC
+from the family Rikenellacea uncovered within the intratumoral                 through interaction with CAFs, which play an essential role in
+microbiome in our research, Alistipes had significant enrichment               ECM modulation.
+within the non-pCR group, and Bacteroides were also enriched in                    It is essential to note some limitations of our study. Host genetic
+the non-pCR group but not significantly. Another study (Shi et al.,            variation, ethnicity, geography, diet, lifestyle, and patterns of
+2020) reported the order Clostridiales, the genus Faecalibacterium,            medications all play a role in the structure of the human microbiome
+and the genus Rumminococcus as significantly enriched in                       (Yatsunenko et al., 2012; Goodrich et al., 2014; Brooks et al., 2018).
+non-responders, which is consistent with the results in our work.              Although our findings illustrated the microbial characteristics in the
+It’s important to highlight that among the 12 differential genera in           TME of LARC and the bacteria-associated signatures contributing to
+our research, six belonged to the order Clostridiales.                         nCRT response prediction, the study is limited by its retrospective
+      Evidence has indicated that Blautia is more abundant in the              nature. It is currently constrained to a specific group of individuals
+shorter progression-free survival group of CRC (Martini et al.,                from a developed country in Western Europe, given the currently
+2022). A study has also suggested that Blautia promotes the                    limited RNA-seq data in patients with LARC who received
+oncogenesis of LARC, possibly through its interaction with                     nCRT. Besides, the predictive performance of the microbial risk score
+cholesteryl ester (Bisht et al., 2021). Similar to Blautia, Parvimonas         was not compared with that of the models or biomarkers proposed
+has also been found to be involved in tumorigenesis (Liu et al.,               in previous studies (Kuo et al., 2012; Lim et al., 2015; Dayde et al.,
+2021). However, previous findings have suggested that                          2017) due to a lack of sufficient clinical and molecular data. Therefore,
+Faecalibacterium (Dikeocha et al., 2022), Akkermansia (Fan et al.,             further research is warranted to verify the predictive value of the
+2021), Alistipes (Dai et al., 2018), Anaerostipes (Yuan et al., 2021),         intratumoral microbiome of LARC for the responses to nCRT,
+and Bifidobacterium (Lin et al., 2019) have anti-tumor patterns.               especially in populations with different geological and ethnic
+These microbes are defined as beneficial commensal bacteria and                backgrounds and complex medical histories. In addition, the analysis
+are used as probiotic supplements in clinical practice. However,               and collection of tumor samples in a time series would show the
+limited studies have revealed Faecalibacterium as a signature                  dynamic interaction between TME and intratumoral bacteria during
+microbiota in CRC. In addition, network analysis revealed a                    the long process of nCRT. Future laboratory examinations could also
+positive relationship between anti-tumor microbes (including                   focus on validating our conclusions on the relationship between the
+Firmicutes and Verrucomicrobia) and tumor-promoting microbes                   intratumoral microbiota and CAFs. Exploration of the complex
+(Fusobacteria) in the non-pCR group (Figure 1F). These findings                crosstalk among intratumoral microbiota, tumor cells, and TME of
+suggest that these “beneficial” microbes in the microbial dysbiosis            patients with LARC may lead to the discovery of novel prognostic
+mode of non-pCR patients could enhance the enrichment of tumor-                biomarkers, nutritious practices, and probiotic agents to improve the
+promoting microbiotas and cause a general suppressor influence on              treatment effect for nCRT.
+the nCRT outcome. In conclusion, our study revealed that these                     In conclusion, with considerable sample size, we performed
+‘beneficial’ microbiotas might play an “evil role” for nCRT.                   systematic and comprehensive research on the intratumoral
+      Combining multiple microbial signatures may increase the                 microbiome to predict the response to nCRT. The underlying
+prognostic value of microbial profiles when considering the                    mechanism of this finding could be related to the interactions
+potential network among microbiomes. Thus, we defined a                        between the intratumoral microbiota and CAFs. These results shed
+microbial risk score for LARC according to the abundance of the                light on a new perspective of pre-treatment biomarkers for nCRT
+seven differential microbes at the genus level, namely Collinsella,            and could lead to better treatment strategies for LARC.
+Alistipes, Christensenella, Faecalibacterium, Ruminococcus,
+Pavimonas, and Akkermansia. The results revealed that the
+microbial risk score had an independent predictive value for nCRT              Data availability statement
+response, indicating the clinical value of the intratumoral
+microbiome. To further understand the mechanism underlying the                     The datasets presented in this study can be found in online
+relationship between intratumoral microbiomes and the response                 repositories. The names of the repository/repositories and accession
+to nCRT, we explored the correlation between microbiota and other              number(s) can be found at: https://www.ncbi.nlm.nih.gov/,
+essential factors in the TME, including tumor cells, infiltrating              GSE190826; https://www.ncbi.nlm.nih.gov/, GSE132465.
+immune cells, and ECM. Previously, the correlation between CAFs
+and ECM was established in a study that observed the signature of
+CAF in the TME and defined the function of CAF based on gene                   Ethics statement
+expression and immunostaining (Lee et al., 2020). Moreover, ECM
+remodeling has also been linked to tumor treatment resistance in                   Ethical approval was not required for the study involving humans
+several studies (Drain et al., 2021; Pietilä et al., 2021; Fang et al.,        in accordance with the local legislation and institutional requirements.
+2022). In our work, we explored five clusters of CAF subpopulations            Written informed consent to participate in this study was not required
+that presented potential interactions with important microbes, in              from the participants or the participants’ legal guardians/next of
+
+
+Frontiers in Microbiology                                                 09                                                             frontiersin.org
+Sun et al.                                                                                                                                                     10.3389/fmicb.2023.1229888
+
+
+
+
+kin in accordance with the national legislation and the                                              Conflict of interest
+institutional requirements.
+                                                                                                         The authors declare that the research was conducted in the
+                                                                                                     absence of any commercial or financial relationships that could
+Author contributions                                                                                 be construed as a potential conflict of interest.
+
+     YF and YS: study concept and design. LS, JQ, XK, YF, and YS:
+acquisition of data and obtained funding. LS, JQ, XK, and AG: analysis                               Publisher’s note
+and interpretation of data. LS, JQ, XK, and AG: drafting of the
+manuscript. LS, JQ, XK, YuZ, HX, NL, JL, YaZ, AG, YF, and YS: critical                                   All claims expressed in this article are solely those of the authors
+revision of the manuscript for important intellectual content. LS, JQ,                               and do not necessarily represent those of their affiliated
+XK, HX, NL, and JL: statistical analysis. All authors contributed to the                             organizations, or those of the publisher, the editors and the
+article and approved the submitted version.                                                          reviewers. Any product that may be evaluated in this article, or
+                                                                                                     claim that may be made by its manufacturer, is not guaranteed or
+                                                                                                     endorsed by the publisher.
+Funding
+    This research was sponsored by China Postdoctoral Science                                        Supplementary material
+Foundation (Grant Nos. 2023T160328 and 2023M731765), the
+National Natural Science Foundation of China (Grant No. 82300754),                                        The Supplementary material for this article can be found online
+and the University Science Research Project of Jiangsu Province                                      at: https://www.frontiersin.org/articles/10.3389/fmicb.2023.1229888/
+(Natural Science) (Grant No. 23KJB320002).                                                           full#supplementary-material
+
+
+
+References
+  Aklilu, M., and Eng, C. (2011). The current landscape of locally advanced rectal                     Dikeocha, I. J., Al-Kabsi, A. M., Chiu, H. T., and Alshawsh, M. A. (2022).
+cancer. Nat. Rev. Clin. Oncol. 8, 649–659. doi: 10.1038/nrclinonc.2011.118                           Faecalibacterium prausnitzii ameliorates colorectal tumorigenesis and suppresses
+                                                                                                     proliferation of HCT116 colorectal Cancer cells. Biomedicine 10:1128. doi: 10.3390/
+  Bader, G. D., and Hogue, C. W. (2003). An automated method for finding molecular                   biomedicines10051128
+complexes in large protein interaction networks. BMC Bioinform. 4:2. doi:
+10.1186/1471-2105-4-2                                                                                   Drain, A. P., Zahir, N., Northey, J. J., Zhang, H., Huang, P. J., Maller, O., et al. (2021).
+                                                                                                     Matrix compliance permits NF-κB activation to drive therapy resistance in breast cancer.
+  Bisht, V., Nash, K., Xu, Y., Agarwal, P., Bosch, S., Gkoutos, G. V., et al. (2021).                J. Exp. Med. 218:e20191360. doi: 10.1084/jem.20191360
+Integration of the microbiome, metabolome and transcriptomics data identified novel
+metabolic pathway regulation in colorectal Cancer. Int. J. Mol. Sci. 22:5763. doi: 10.3390/            Fan, L., Xu, C., Ge, Q., Lin, Y., Wong, C. C., Qi, Y., et al. (2021). A. muciniphila
+ijms22115763                                                                                         suppresses colorectal tumorigenesis by inducing TLR2/NLRP3-mediated M1-like
+                                                                                                     TAMs. Cancer Immunol. Res. 9, 1111–1124. doi: 10.1158/2326-6066.CIR-20-1019
+  Bray, F., Ferlay, J., Soerjomataram, I., Siegel, R. L., Torre, L. A., and Jemal, A. (2018).
+Global cancer statistics 2018: GLOBOCAN estimates of incidence and mortality                            Fang, Y., Liang, S., Gao, J., Wang, Z., Li, C., Wang, R., et al. (2022). Extracellular matrix
+worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 68, 394–424. doi: 10.3322/             stiffness mediates radiosensitivity in a 3D nasopharyngeal carcinoma model. Cancer Cell
+caac.21492                                                                                           Int. 22:364. doi: 10.1186/s12935-022-02787-5
+  Brooks, A. W., Priya, S., Blekhman, R., and Bordenstein, S. R. (2018). Gut microbiota                Glynne-Jones, R., Wyrwicz, L., Tiret, E., Brown, G., Rödel, C., Cervantes, A., et al.
+diversity across ethnicities in the United States. PLoS Biol. 16:e2006842. doi: 10.1371/             (2017). Rectal cancer: ESMO clinical practice guidelines for diagnosis, treatment and
+journal.pbio.2006842                                                                                 follow-up. Ann. Oncol. 28, iv22–iv40. doi: 10.1093/annonc/mdx224
+  Buckley, A. M., Lynam-Lennon, N., O’Neill, H., and O’Sullivan, J. (2020). Targeting                  Goodrich, J. K., Waters, J. L., Poole, A. C., Sutter, J. L., Koren, O., Blekhman, R., et al.
+hallmarks of cancer to enhance radiosensitivity in gastrointestinal cancers. Nat. Rev.               (2014). Human genetics shape the gut microbiome. Cells 159, 789–799. doi: 10.1016/j.
+Gastroenterol. Hepatol. 17, 298–313. doi: 10.1038/s41575-019-0247-2                                  cell.2014.09.053
+
+   Cercek, A., Roxburgh, C. S. D., Strombom, P., Smith, J. J., Temple, L. K. F., Nash, G. M.,          Han, H., Cho, J. W., Lee, S., Yun, A., Kim, H., Bae, D., et al. (2018). TRRUST v2: an
+et al. (2018). Adoption of Total neoadjuvant therapy for locally advanced rectal Cancer.             expanded reference database of human and mouse transcriptional regulatory
+JAMA Oncol. 4:e180071. doi: 10.1001/jamaoncol.2018.0071                                              interactions. Nucleic Acids Res. 46, D380–D386. doi: 10.1093/nar/gkx1013
+
+ Chen, T., Liu, Y. X., and Huang, L. (2022). ImageGP: An easy-to-use data visualization                Jang, B. S., Chang, J. H., Chie, E. K., Kim, K., Park, J. W., Kim, M. J., et al. (2020). Gut
+web server for scientific r esearchers. iMeta 1:e5.                                                  microbiome composition is associated with a pathologic response after preoperative
+                                                                                                     chemoradiation in patients with rectal Cancer. Int. J. Radiat. Oncol. Biol. Phys. 107,
+  Da Cunha, T., Vaziri, H., and Wu, G. Y. (2022). Primary Sclerosing cholangitis and                 736–746. doi: 10.1016/j.ijrobp.2020.04.015
+inflammatory bowel disease: a review. J. Clin. Transl. Hepatol. 10, 531–542. doi:
+10.14218/JCTH.2021.00344                                                                               Kuo, L. J., Chiou, J. F., Tai, C. J., Chang, C. C., Kung, C. H., Lin, S. E., et al. (2012). Can
+                                                                                                     we predict pathologic complete response before surgery for locally advanced rectal
+  Dai, Z., Coker, O. O., Nakatsu, G., Wu, W. K. K., Zhao, L., Chen, Z., et al. (2018).               cancer treated with preoperative chemoradiation therapy? Int. J. Color. Dis. 27, 613–621.
+Multi-cohort analysis of colorectal cancer metagenome identified altered bacteria across             doi: 10.1007/s00384-011-1348-8
+populations and universal bacterial markers. Microbiome 6:70. doi: 10.1186/
+s40168-018-0451-2                                                                                      Lee, H. O., Hong, Y., Etlioglu, H. E., Cho, Y. B., Pomella, V., Van Den Bosch, B., et al.
+                                                                                                     (2020). Lineage-dependent gene expression programs influence the immune landscape
+  Davis, N. M., Proctor, D. M., Holmes, S. P., Relman, D. A., and Callahan, B. J. (2018).            of colorectal cancer. Nat. Genet. 52, 594–603. doi: 10.1038/s41588-020-0636-z
+Simple statistical identification and removal of contaminant sequences in marker-gene
+and metagenomics data. Microbiome 6:226. doi: 10.1186/s40168-018-0605-2                                Li, M., Xiao, Q., Venkatachalam, N., Hofheinz, R. D., Veldwijk, M. R.,
+                                                                                                     Herskind, C., et al. (2022). Predicting response to neoadjuvant chemoradiotherapy
+  Dayde, D., Tanaka, I., Jain, R., Tai, M. C., and Taguchi, A. (2017). Predictive and                in rectal cancer: from biomarkers to tumor models. Ther Adv Med Oncol
+prognostic molecular biomarkers for response to neoadjuvant Chemoradiation in rectal                 14:17588359221077972. doi: 10.1177/17588359221077972
+Cancer. Int. J. Mol. Sci. 18:573. doi: 10.3390/ijms18030573
+                                                                                                       Lim, S. H., Chua, W., Henderson, C., Ng, W., Shin, J. S., Chantrill, L., et al. (2015).
+  Dejea, C. M., Fathi, P., Craig, J. M., Boleij, A., Taddese, R., Geis, A. L., et al. (2018).        Predictive and prognostic biomarkers for neoadjuvant chemoradiotherapy in locally
+Patients with familial adenomatous polyposis harbor colonic biofilms containing                      advanced rectal cancer. Crit. Rev. Oncol. Hematol. 96, 67–80. doi: 10.1016/j.
+tumorigenic bacteria. Science 359, 592–597. doi: 10.1126/science.aah3648                             critrevonc.2015.05.003
+
+
+
+
+Frontiers in Microbiology                                                                       10                                                                                 frontiersin.org
+Sun et al.                                                                                                                                                      10.3389/fmicb.2023.1229888
+
+
+
+
+  Lin, P. Y., Li, S. C., Lin, H. P., and Shih, C. K. (2019). Germinated brown rice                       Sauer, R., Becker, H., Hohenberger, W., Rödel, C., Wittekind, C., Fietkau, R., et al. (2004).
+combined with Lactobacillus acidophilus and Bifidobacterium animalis subsp. lactis                     Preoperative versus postoperative chemoradiotherapy for rectal cancer. N. Engl. J. Med. 351,
+inhibits colorectal carcinogenesis in rats. Food Sci. Nutr. 7, 216–224. doi: 10.1002/                  1731–1740. doi: 10.1056/NEJMoa040694
+fsn3.864
+                                                                                                         Segata, N., Izard, J., Waldron, L., Gevers, D., Miropolsky, L., Garrett, W. S., et al.
+  Liu, W., Zhang, X., Xu, H., Li, S., Lau, H. C., Chen, Q., et al. (2021). Microbial                   (2011). Metagenomic biomarker discovery and explanation. Genome Biol. 12:R60. doi:
+community heterogeneity within colorectal neoplasia and its correlation with                           10.1186/gb-2011-12-6-r60
+colorectal carcinogenesis. Gastroenterology 160, 2395–2408. doi: 10.1053/j.
+gastro.2021.02.020                                                                                       Shi, W., Shen, L., Zou, W., Wang, J., Yang, J., Wang, Y., et al. (2020). The gut
+                                                                                                       microbiome is associated with therapeutic responses and toxicities of neoadjuvant
+  Loos, M., Quentmeier, P., Schuster, T., Nitsche, U., Gertler, R., Keerl, A., et al. (2013).          Chemoradiotherapy in rectal cancer patients-a pilot study. Front. Cell. Infect. Microbiol.
+Effect of preoperative radio(chemo)therapy on long-term functional outcome in rectal                   10:562463. doi: 10.3389/fcimb.2020.562463
+cancer patients: a systematic review and meta-analysis. Ann. Surg. Oncol. 20,
+1816–1828. doi: 10.1245/s10434-012-2827-z                                                                Traag, V. A., Waltman, L., and Van Eck, N. J. (2019). From Louvain to Leiden:
+                                                                                                       guaranteeing well-connected communities. Sci. Rep. 9:5233. doi: 10.1038/
+  Lu, J., Breitwieser, F. P., Thielen, P., and Salzberg, S. L. (2017). Bracken: Estimating             s41598-019-41695-z
+species abundance in metagenomics data. Peerj Comput. Sci. 2017:e104. doi: 10.7717/
+peerj-cs.104                                                                                             Van Der Sluis, F. J., Couwenberg, A. M., De Bock, G. H., Intven, M. P. W., Reerink, O.,
+                                                                                                       Van Leeuwen, B. L., et al. (2020). Population-based study of morbidity risk associated
+   Martini, G., Ciardiello, D., Dallio, M., Famiglietti, V., Esposito, L., Corte, C. M. D.,            with pathological complete response after chemoradiotherapy for rectal cancer. Br. J.
+et al. (2022). Gut microbiota correlates with antitumor activity in patients with mCRC                 Surg. 107, 131–139. doi: 10.1002/bjs.11324
+and NSCLC treated with cetuximab plus avelumab. Int. J. Cancer 151, 473–480. doi:
+10.1002/ijc.34033                                                                                        Wang, Y., Yang, H., and Xu, H. (2022). Age-specific microbiota in altering host
+                                                                                                       inflammatory and metabolic signaling and metabolome based on sex. Hepatobiliary Surg
+  Nejman, D., Livyatan, I., Fuks, G., Gavert, N., Zwang, Y., Geller, L. T., et al. (2020).             Nutr 11, 305–307. doi: 10.21037/hbsn-2022-04
+The human tumor microbiome is composed of tumor type-specific intracellular
+bacteria. Science 368, 973–980. doi: 10.1126/science.aay9189                                             Wen, T., Xie, P., Yang, S., Niu, G., Liu, X., Ding, Z., et al. (2022). ggClusterNet: An R
+                                                                                                       package for microbiome network analysis and modularity-based multiple network
+  Newman, A. M., Steen, C. B., Liu, C. L., Gentles, A. J., Chaudhuri, A. A., Scherer, F.,              layouts. iMeta 1:e32. doi: 10.1002/imt2.32
+et al. (2019). Determining cell type abundance and expression from bulk tissues with
+digital cytometry. Nat. Biotechnol. 37, 773–782. doi: 10.1038/s41587-019-0114-2                          West, M. A., Loughney, L., Barben, C. P., Sripadam, R., Kemp, G. J., Grocott, M. P.,
+                                                                                                       et al. (2014). The effects of neoadjuvant chemoradiotherapy on physical fitness and
+  Nicolas, A. M., Pesic, M., Engel, E., Ziegler, P. K., Diefenhardt, M., Kennel, K. B.,
+                                                                                                       morbidity in rectal cancer surgery patients. Eur. J. Surg. Oncol. 40, 1421–1428. doi:
+et al. (2022). Inflammatory fibroblasts mediate resistance to neoadjuvant therapy in
+                                                                                                       10.1016/j.ejso.2014.03.021
+rectal cancer. Cancer Cell 40, 168–184.e13. doi: 10.1016/j.ccell.2022.01.004
+  Parks, D. H., Tyson, G. W., Hugenholtz, P., and Beiko, R. G. (2014). STAMP:                            Wood, D. E., Lu, J., and Langmead, B. (2019). Improved metagenomic analysis with
+statistical analysis of taxonomic and functional profiles. Bioinformatics 30, 3123–3124.               kraken 2. Genome Biol. 20:257. doi: 10.1186/s13059-019-1891-0
+doi: 10.1093/bioinformatics/btu494                                                                        Xu, Z., Lv, Z., Chen, F., Zhang, Y., Xu, Z., Huo, J., et al. (2022). Dysbiosis of human
+  Petrelli, F., Trevisan, F., Cabiddu, M., Sgroi, G., Bruschieri, L., Rausa, E., et al. (2020).        tumor microbiome and aberrant residence of Actinomyces in tumor-associated
+Total neoadjuvant therapy in rectal Cancer: a systematic review and Meta-analysis of                   fibroblasts in young-onset colorectal cancer. Front. Immunol. 13:1008975. doi: 10.3389/
+treatment outcomes. Ann. Surg. 271, 440–448. doi: 10.1097/SLA.0000000000003471                         fimmu.2022.1008975
+
+  Pietilä, E. A., Gonzalez-Molina, J., Moyano-Galceran, L., Jamalzadeh, S., Zhang, K.,                  Yatsunenko, T., Rey, F. E., Manary, M. J., Trehan, I., Dominguez-Bello, M. G.,
+Lehtinen, L., et al. (2021). Co-evolution of matrisome and adaptive adhesion dynamics                  Contreras, M., et al. (2012). Human gut microbiome viewed across age and geography.
+drives ovarian cancer chemoresistance. Nat. Commun. 12:3904. doi: 10.1038/                             Nature 486, 222–227. doi: 10.1038/nature11053
+s41467-021-24009-8                                                                                       Yi, Y., Shen, L., Shi, W., Xia, F., Zhang, H., Wang, Y., et al. (2021). Gut microbiome
+  Poore, G. D., Kopylova, E., Zhu, Q., Carpenter, C., Fraraccio, S., Wandro, S., et al.                components predict response to neoadjuvant chemoradiotherapy in patients with locally
+(2020). Microbiome analyses of blood and tissues suggest cancer diagnostic approach.                   advanced rectal cancer: a prospective, longitudinal study. Clin. Cancer Res. 27,
+Nature 579, 567–574. doi: 10.1038/s41586-020-2095-1                                                    1329–1340. doi: 10.1158/1078-0432.CCR-20-3445
+  Pucciarelli, S., Del Bianco, P., Efficace, F., Serpentini, S., Capirci, C., De Paoli, A.,              Yuan, X., Xue, J., Tan, Y., Yang, Q., Qin, Z., Bao, X., et al. (2021). Albuca Bracteate
+et al. (2011). Patient-reported outcomes after neoadjuvant chemoradiotherapy for                       polysaccharides synergistically enhance the anti-tumor efficacy of 5-fluorouracil against
+rectal cancer: a multicenter prospective observational study. Ann. Surg. 253, 71–77.                   colorectal Cancer by modulating β-catenin signaling and intestinal Flora. Front.
+doi: 10.1097/SLA.0b013e3181fcb856                                                                      Pharmacol. 12:736627. doi: 10.3389/fphar.2021.736627
+  Rubinstein, M. R., Baik, J. E., Lagana, S. M., Han, R. P., Raab, W. J., Sahoo, D., et al.              Zhang, M., Lv, Y., Hou, S., Liu, Y., Wang, Y., and Wan, X. (2021). Differential mucosal
+(2019). Fusobacterium nucleatum promotes colorectal cancer by inducing Wnt/β-                          microbiome profiles across stages of human colorectal cancer. Life (Basel) 11:831. doi:
+catenin modulator Annexin A1. EMBO Rep. 20:e47638. doi: 10.15252/embr.201847638                        10.3390/life11080831
+
+
+
+
+Frontiers in Microbiology                                                                         11                                                                               frontiersin.org
+

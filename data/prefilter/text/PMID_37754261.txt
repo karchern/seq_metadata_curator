@@ -1,0 +1,552 @@
+Article
+Colorectal Cancer Archaeome: A Metagenomic
+Exploration, Tunisia
+Nour El Houda Mathlouthi 1 , Hamadou Oumarou Hama 2 , Imen Belguith 3 , Slim Charfi 4 , Tahya Boudawara 4 ,
+Jean-Christophe Lagier 2 , Leila Ammar Keskes 3 , Ghiles Grine 2,5 and Radhouane Gdoura 1, *
+
+                                          1   Laboratoire de Recherche Toxicologie Microbiologie Environnementale et Santé (LR17ES06),
+                                              Faculté des Sciences de Sfax, Université de Sfax, Sfax 3000, Tunisia
+                                          2   IHU Méditerranée Infection, UMR MEPHI, 19-21, Bd. Jean Moulin, 13005 Marseille, France
+                                          3   Laboratoire de Recherche de Génétique Moléculaire Humaine, Faculté de Médecine de Sfax,
+                                              Université de Sfax, Avenue Majida BOULILA, Sfax 3029, Tunisia
+                                          4   Department of Pathology, CHU Habib Bourguiba, Sfax 3029, Tunisia
+                                          5   Institut de Recherche pour le Développement (IRD), Aix-Marseille University, Microbes Evolution Phylogeny
+                                              and Infections (MEPHI), 13005 Marseille, France
+                                          *   Correspondence: radhouane.gdoura@fss.usf.tn
+
+
+                                          Abstract: Colorectal cancer (CRC) is a serious public health problem known to have a multifacto-
+                                          rial etiology. The association between gut microbiota and CRC has been widely studied; how-
+                                          ever, the link between archaea and CRC has not been sufficiently studied. To investigate the
+                                          involvement of archaea in colorectal carcinogenesis, we performed a metagenomic analysis of
+                                          68 formalin-embedded paraffin fixed tissues from tumoral (n = 33) and healthy mucosa (n = 35)
+                                          collected from 35 CRC Tunisian patients. We used two DNA extraction methods: Generead DNA
+                                          FFPE kit (Qiagen, Germantown, MD, USA) and Chelex. We then sequenced the samples using
+                                          Illumina Miseq. Interestingly, DNA extraction exclusively using Chelex generated enough DNA for
+                                          sequencing of all samples. After data filtering and processing, we reported the presence of archaeal
+Citation: Mathlouthi, N.E.H.;             sequences, which represented 0.33% of all the reads generated. In terms of abundance, we high-
+Oumarou Hama, H.; Belguith, I.;           lighted a depletion in methanogens and an enrichment in Halobacteria in the tumor tissues, while the
+Charfi, S.; Boudawara, T.; Lagier,        correlation analysis revealed a significant association between the Halobacteria and the tumor mucosa
+J.-C.; Ammar Keskes, L.; Grine, G.;       (p < 0.05). We reported a strong correlation between Natrialba magadii, Sulfolobus acidocaldarius, and tu-
+Gdoura, R. Colorectal Cancer
+                                          mor tissues, and a weak correlation between Methanococcus voltae and healthy adjacent mucosa. Here,
+Archaeome: A Metagenomic
+                                          we demonstrated the feasibility of archaeome analysis from formol fixed paraffin-embedded (FFPE)
+Exploration, Tunisia. Curr. Issues Mol.
+                                          tissues using simple protocols ranging from sampling to data analysis, and reported a significant asso-
+Biol. 2023, 45, 7572–7581. https://
+                                          ciation between Halobacteria and tumor tissues in Tunisian patients with CRC. The importance of our
+doi.org/10.3390/cimb45090477
+                                          study is that it represents the first metagenomic analysis of Tunisian CRC patients’ gut microbiome,
+Academic Editors: Irina V.                which consists of sequencing DNA extracted from paired tumor-adjacent FFPE tissues collected from
+Kondakova, Liudmila V. Spirina
+                                          CRC patients. The detection of archaeal sequences in our samples confirms the feasibility of carrying
+and Natalya V. Yunusova
+                                          out an archaeome analysis from FFPE tissues using a simple DNA extraction protocol. Our analysis
+Received: 10 April 2023                   revealed the enrichment of Halobacteria, especially Natrialba magadii, in tumor mucosa compared to
+Revised: 27 May 2023                      the normal mucosa in CRC Tunisian patients. Other species were also associated with CRC, including
+Accepted: 30 May 2023                     Sulfolobus acidocaldarius and Methanococcus voltae, which is a methanogenic archaea; both species were
+Published: 19 September 2023              found to be correlated with adjacent healthy tissues.
+
+                                          Keywords: archaeome; metagenomic; gut microbiome; formalin-fixed paraffin embedded tissues;
+                                          colorectal cancer; Halobacteria; Natrialba magadii; prognosis
+Copyright: © 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+                                          1. Introduction
+Attribution (CC BY) license (https://          Colorectal cancer (CRC) poses a serious public health problem. Several studies linked
+creativecommons.org/licenses/by/          the alteration of the intestinal microbiota to colorectal carcinogenesis [1–3]. The link be-
+4.0/).                                    tween bacteriome and CRC was widely investigated. Bacteria can be pro-carcinogenic
+
+
+
+Curr. Issues Mol. Biol. 2023, 45, 7572–7581. https://doi.org/10.3390/cimb45090477                               https://www.mdpi.com/journal/cimb
+Curr. Issues Mol. Biol. 2023, 45                                                                                            7573
+
+
+
+
+                                   directly (via driver bacteria, such as Fusobacterium nucleatum) or indirectly (via passenger
+                                   bacteria, such as Bacteroides fragilis) [4]. They may promote intestinal inflammation, leading
+                                   to a tumor-permissive microenvironment, while inhibiting tumor defense and activat-
+                                   ing pro-carcinogenic signaling pathways that lead to molecular changes and, therefore,
+                                   CRC progression via their production of toxins and carcinogenic metabolites [5]. The
+                                   link between virome and CRC was also investigated. Previous studies highlighted the
+                                   association between Epstein–Barr virus (EBV), John Cunningham virus (JCV), and human
+                                   papillomavirus (HPV) and CRC [6,7], and reported their possible involvement in cell cycle
+                                   disruption and modification of several pathways known to be associated with CRC, such
+                                   as the Wnt/β-catenin [8]. In addition, increased diversity in the intestinal bacteriophage
+                                   community in CRC patients was revealed, which can reshape the microbiome, while these
+                                   viruses can also transit in the epithelial cells of the colon and directly affect tumor growth
+                                   and its invasiveness [9]. For mycobiome, it was previously found that Basidiomycetes,
+                                   Ascomycetes, and Malassezia were enriched in the faecal microbiome of CRC patients,
+                                   whereas Saccharomycetes, such as Saccharomyces cerevisiae, were depleted [10]. As for
+                                   archaea, not many studies were realized.
+                                        Archaea are unicellular extremophile or mesophile micro-organisms [11] that present
+                                   unique characteristics, such as the lack of peptidoglycan in the cell wall, and a mem-
+                                   brane formed by L-glycerol ethers/isoprenoids chains instead of D-glycerol esters/fatty
+                                   acids [12,13]. They are associated with several pathologies, such as chronic inflammatory
+                                   bowel diseases, urinary tract infections, and vaginosis [14–16]. To investigate its role in
+                                   CRC, previous metagenomic analyses were performed, which detected archaeal DNA but
+                                   with a very reduced amount of abundance (0.01 to 17.8% of the total gut microbiome [17]).
+                                   The composition of gut archaeomes was only revealed in 2020 in a study on the Chinese
+                                   population using stool from CRC patients [18]. A second paper was published in 2021,
+                                   presenting the results of the archaeome [19].
+                                        Other than feces and fresh/frozen tissues, gut microbiome analysis was also performed
+                                   on formol-fixed paraffin-embedded tissues [20]. This type of specimen is consistently
+                                   archived and cared for due to its ability to be stored longer at room temperature, which
+                                   means lower storage costs than frozen tissue [21]. Therefore, they constitute an extensive
+                                   repository of tissue material usable for long-term clinical diagnostics [22]. However, the use
+                                   of FFPE tissues had several technical challenges, such as high content of human genomic
+                                   DNA, low bacterial DNA [22], and sequence artifacts in the DNA extracted [23].
+                                        Here, we aim to exclusively study the composition of gut archaeomes in Tunisian CRC
+                                   patients by sequencing and comparing 35 pairs of FFPE tissue samples from tumors and
+                                   adjacent healthy mucosa to identify archaeal biomarkers of CRC for prognostic interest.
+
+                                   2. Materials and Methods
+                                   2.1. Human CRC Tissue Specimens
+                                        Tissues were obtained from the biobank of the Department of Pathology, Habib Bour-
+                                   guiba Hospital, Sfax, Tunisia, and tissue sampling was approved by the ethics committee
+                                   of the Ministry of Health in Tunisia. All samples were handled exclusively under strictly
+                                   anonymized conditions. The study population consisted of 35 cases of colorectal carci-
+                                   noma retrospectively selected over 3 years from 2020 to 2022. The inclusion criteria for
+                                   patient selection were as follows: (1) histologically proven adenocarcinoma of CRC, and
+                                   (2) surgically treated for the first time for CRC. The exclusion criteria were as follows:
+                                   (1) prior history of other cancers, and (2) prior radiotherapy or chemotherapy treatment.
+                                   The study design included two samples per patient, consisting of paired tumor tissue
+                                   (n = 35) and normal colorectal mucosa (n = 35), which was taken from a distance of at least
+                                   10 cm from the tumor, fixed in 10% neutral buffered formalin, and embedded in paraffin.
+                                   The CRC stages were assigned according to TNM classification (Supplementary Data S1).
+                                   The localizations of CRC taken for histology fixing are provided in Supplementary Data S1.
+Curr. Issues Mol. Biol. 2023, 45                                                                                            7574
+
+
+
+
+                                        A total of 5 serial cuts of 10 microns per sample trimmed of excess paraffin were
+                                   obtained from paraffin blocks using a microtome, placed in sterile screw-cap microtubes,
+                                   and stored at room temperature until use.
+
+                                   2.2. DNA Extraction and Library Preparation
+                                         We realized two protocols for DNA extraction. The first protocol consisted of using a
+                                   commercial kit: Generead DNA FFPE kit (Qiagen, Germantown, MD, USA). The extraction
+                                   of DNA from 70 FFPE tissues was performed according to the manufacturer’s instructions.
+                                   For the second method, two specimens were excluded due to a lack of material (i.e., no
+                                   more tissues in the blocks). Here, we introduced some modifications to a simple protocol
+                                   described previously [24]. Briefly, two sections (2 × 10 µm) were stirred and heated at
+                                   90 ◦ C for 10 min on a thermocycler with 100 µL of 0.5% Tween-20, before being cooled to
+                                   55 ◦ C. Next, we added 2 µL of 10 mg/mL of proteinase K (Sigma, Poole, Dorset, UK) to
+                                   each tube and set up the thermocycler to 55 ◦ C for 3 h, with gentle shaking every hour. In
+                                   total, 100 µL of 5% Chelex-100 (Bio-Rad Laboratories, Hercules, CA, USA) in Tris—EDTA
+                                   was added and heated at 99 ◦ C for 10 min. The tubes were gently shaken and spun at
+                                   10,500× g while hot for 15 min. To make sure that there were no paraffin residue in the tubes,
+                                   the samples were spinned at 10,500× g with the temperature set up at −8 ◦ C, meaning that
+                                   any remaining paraffin would be solidified and need to be removed. The samples were
+                                   heated to 45 ◦ C and 100 µL of chloroform was added. After gentle shaking and additional
+                                   centrifugation at 10,500× g for 15 min, the upper phase (100–150 µL) was retained and
+                                   stored at −80 ◦ C until use.
+                                         DNA was quantified using a Qubit 3.0 fluorometer (Thermo-Fischer, Waltham, MA,
+                                   USA). Paired-end libraries were prepared on DNA extracted via the Chelex method using
+                                   an Illumina Nextera XT library preparation kit (Illumina, San Diego, CA, USA) following
+                                   the standard protocol.
+
+                                   2.3. Sequence Technology and Processing
+                                         Sequencing was performed using an Illumina Miseq (Illumina, San Diego, CA) for
+                                   2 × 250 paired-end reads. The analysis of reads generated via the sequencer was performed
+                                   using Galaxy Europe “https://usegalaxy.eu/” (accessed from 4–28 November 2022). The
+                                   initial quality assessment of the 112,056,964 reads generated was performed using FastQC
+                                   (Galaxy Version 0.71). Low-quality reads were removed using the Cutadapt tool following
+                                   the instructions of the tutorial provided by the Galaxy Training Network [25]. Briefly,
+                                   adapter sequences were trimmed from the 30 ends of paired-end reads, and reads shorter
+                                   than 20 bp were discarded. The quality cutoff was set to 20, which allowed for the cutting
+                                   of low-quality reads from the 50 and/or 30 ends of each read before removing the adapter.
+
+                                   2.4. Taxonomic and Statistical Analysis
+                                        Taxonomic classification of NGS data was performed using Kraken Pipeline, which
+                                   is highly accurate software designed to assign taxonomic labels to metagenomic DNA
+                                   sequences using a k-mer based approach to classify sequences, in which short sequences of
+                                   fixed length (k-mers) are compared to those in the reference database to identify the most
+                                   likely source organism [26]. Reads were mapped against the partial database “Archaea 2020”
+                                   using Galaxy Europe “https://usegalaxy.eu/”(accessed from 4–28 November 2022). Before
+                                   analyzing the output of Kraken, the second step of filtering was performed using Micro-
+                                   biomeanalysist “https://www.microbiomeanalyst.ca/” (accessed from 1–5 December 2022).
+                                   This method consisted of setting the minimum number of counts at four and the prevalence
+                                   at 20% of samples to eliminate taxonomic features that were likely caused by sequencing
+                                   errors or low-level contamination (false positives). The percentage of removed features
+                                   with low variance was settled at 10% based on the inter-quantile range (IQR) used to
+                                   remove features that are constant across all conditions of the experiment and are unlikely
+                                   to be associated with the conditions under study. The filtered data were then normalized
+                                   via the cumulative sum scaling (CSS) method to correct the differences in sampling depth
+Curr. Issues Mol. Biol. 2023, 45                                                                                             7575
+
+
+
+
+                                   (library size). A correlation analysis was performed to determine the association between
+                                   the different archaeal taxa and CRC tissues. A p-value of less than 0.05 was considered
+                                   statistically significant. Statistical analyses were performed using the statistical software
+                                   package SPSS 20.0. (SPSS 20.0 for Windows; SPSS Inc., Chicago, IL, USA).
+
+                                   3. Results
+                                   3.1. Cohort Description
+                                        A total of 68 samples from 35 CRC patients surgically treated between 2020 and 2022
+                                   were collected and sequenced. Supplementary Data S1 lists the patients with sample
+                                   identification, tissue type (tumor or normal mucosa), patient gender and age, tumor
+                                   location, and TNM classification. Patients in the study included 20 females (57%) and
+                                   15 males (43%), with an average age of 63.79 ± 12.7 years, whose ages ranged from 28 to
+                                   86 years. The majority of biopsies were taken from the sigmoid colon (n = 11 representing
+                                   31.4%) and left colon (n = 8 representing 22.9%), compared to the remaining locations:
+                                   caecum (n = 6 representing 17%), rectum (n = 5 representing 14.3%), colon transverse
+                                   (n = 3 representing 8.6%), and right colon (n = 2 representing 5.7%). Histologically, all the
+                                   samples were described as adenocarcinomas.
+
+                                   3.2. Extraction and Sequencing Outcome
+                                        Using the Chelex approach, the mean quantity of DNA extracted from each sample
+                                   was 19.37 ± 11.4 ng/µL, with a maximum and minimum amount of DNA obtained around
+                                   47 ng/µL and 3.14 ng/µL, respectively. The DNA extracted using the Generead kit was much
+                                   lower than that obtained using the Chelex protocol, with an average of 9.3 ± 11.2 ng/µL; the
+                                   maximum amount of DNA extracted was 46.2 ng/µL (Supplementary Data S2). However,
+                                   the DNA extracted from three specimens was undetectable (<0.50 ng/µL), and five other
+                                   samples showed a DNA quantity lower than 0.2 ng/µL. Due to the insufficient amount of
+                                   DNA extracted using the Generead kit, we only used DNA obtained with the Chelex method
+                                   for sequencing. The sequencing of this DNA generated 20.6 Gb of data, with more than
+                                   112 million reads and an average of 1,647,896,529 reads per sample. After trimming and
+                                   mapping against a partial archaeal database, 372,385 archaeal reads were found, represent-
+                                   ing 0.33% of all the reads generated, and then trimmed with an average of 5776.23 archaeal
+                                   reads per sample. One specimen—Mic115—was lost due to the low number and variability
+                                   in taxonomic features detected.
+
+                                   3.3. Taxonomic Analysis of Archaeome in CRC Patients
+                                        The taxonomic data generated via Kraken (Supplementary Data S3) were normalized
+                                   and filtered based on a low count and low variance filter (Supplementary Data S4). Our
+                                   analysis revealed the presence of three main archaeal phyla in adjacent and tumoral tissues:
+                                   Euryarchaeota, with an abundance percentage of 82.5% in adjacent tissues and 81.02% in
+                                   tumor tissues; Crenarchaeota, presenting 13.19% of archaeal sequences in adjacent tissues
+                                   and 14% in tumor tissues; and Thaumarchaeota, showing an abundance rate equal to 4.25%
+                                   in adjacent tissues and 4.9% in CRC tissues (Supplementary Data S4).
+                                        For the archaeal class analysis, three taxonomic features were removed based on preva-
+                                   lence and IQR during the filtering step. The abundance percentage was almost the same
+                                   in the adjacent tissue and tumor tissues for Thermococci (0.78% and 0.71%), Methanococci
+                                   (0.59% and 0.52%), Methanomicrobia (10.86% and 10.91%), Thermoprotei (14.74% and 14.60),
+                                   and Nitrososphaeria (4.51% and 4.95%). However, we noticed a decrease in the abundance
+                                   of Methanobacteria in tumor tissues (33.85%) compared to adjacent healthy tissues (37.12%),
+                                   as well as an increase in the abundance of Halobacteria (from 31.37% in adjacent tissues
+                                   to 34.41% in tumor tissues) (Supplementary Data S4). Spearman’s analysis revealed a
+                                   significant correlation between Halobacteria and tumoral tissues (Table 1). At the order level,
+                                   we noticed a decrease in the abundance of methanobacteriales from 39.32% in adjacent
+                                   tissues to 33.33% in tumor tissues. In contrast, natrialbales were more enriched in tumor
+                                   tissues (33.27% vs. 28.7% in adjacent tissues) (Supplementary Data S4). Correlation analysis
+Curr. Issues Mol. Biol. 2023, 45                                                                                                7576
+
+
+
+
+                                   revealed a significant association between thermococcales and adjacent healthy tissues
+                                   (Supplementary Data S5).
+
+                                   Table 1. Correlation analysis of archaeal classes and CRC tissues.
+
+                                                                          p Value              Spearman Correlation Coefficient r
+                                          Halobacteria                   0.049426                           0.24103
+                                          Methanococci                    0.14671                          −0.17923
+                                         Nitrososphaeria                 0.16139                            0.17305
+                                          Thermococci                    0.48629                           −0.086525
+                                         Methanobacteria                 0.60186                           0.064894
+                                         Methanomicrobia                  0.65482                          −0.055623
+                                          Thermoprotei                    0.84259                          −0.024722
+
+
+                                        We analyzed the archaeal families in the gut microbiome of CRC patients and observed
+                                   a depletion of Methanobacteriaceae with an abundance rate of 35.2% in healthy mucosa vs.
+                                   32.5% in CRC tissues, as well as enrichment of Natrialbaceae in tumor tissues (30.4% in
+                                   adjacent tissue vs. 33.6 in CRC tissues) (Supplementary Data S4). Several methanogens
+                                   and halophile genera were detected in CRC and adjacent tissues. The most abundant was
+                                   Methanothermobacter, which showed a decrease in its abundance rate from 31.12% in adjacent
+                                   tissues to 28.63% in tumoral tissue, unlike Halovivax, which was enriched in CRC tumoral
+                                   tissues (27.27% in CRC tissues vs. 24.5 in healthy mucosa) (Supplementary Data S4). We
+                                   reported a significant correlation between Thermococcus and Methanobacterium and non-
+                                   tumoral tissues (Supplementary Data S5). The majority of species had similar abundance
+                                   percentages, except Methanothermobacter wolfeii, which was detected in 31.08% of the totality
+                                   of archaeal reads in adjacent tissues before dropping to 28.29% in the tumor tissues. We
+                                   also noticed an association between Methanococcus voltae and healthy mucosa. For the
+                                   halophiles, we noticed an increase in the abundance of Halovivax ruber from 24.57% in
+                                   healthy mucosa to 26.9% in CRC tissues (Supplementary Data S4); a significant correlation
+                                   was highlighted between Natrialba magadii and CRC tissues. Moreover, Sulfolobus acidocal-
+                                   darius and Methanobacterium formicicum were significantly correlated with tumoral mucosa
+                                   (p < 0.05) (Supplementary Data S5).
+
+                                   4. Discussion
+                                         In Tunisia, 1657 new cases were registered in 2018, presenting the fourth most common
+                                   cancer in terms of incidence (Age-standardized incidence rate (ASR) per 100,000 = 11.9)
+                                   and the third in terms of mortality (ASR per 100,000 = 6.6) [27]. ASR increased significantly
+                                   from 6.4/100,000 in 1994 to 12.4/100,000 in 2009 [28]. This increase can be explained by
+                                   the adoption of negative elements of a Westernized lifestyle, such as obesity, physical
+                                   inactivity, and poor dietary habits [29,30]. Previous studies established a link between this
+                                   lifestyle and the alteration of the microbiota, thus promoting colorectal carcinogenesis [2,3].
+                                   Although metagenomic data on CRC patients’ microbiomes were widely generated and
+                                   compared to healthy subjects, no metagenomic data were available on gut microbiomes
+                                   from Tunisian CRC patients. This problem occurs because the new generation sequencing
+                                   (NGS) techniques are expensive, while the resources available to fund them remain limited
+                                   in several low- and middle-income countries [31]. The collection of stool samples and
+                                   fresh tissues may be difficult and expensive; in response, other types of samples were
+                                   previously proposed for the generation of metagenomic data that do not require a high
+                                   cost of sampling and storage, such as formalin-fixed paraffin-embedded tissue (FFPE) [20].
+                                   In the present study, we propose a simple, inexpensive, and effective methodology to
+                                   analyze, for the first time, the gut microbiota of Tunisian CRC patients, in particular, the
+                                   gut archaeome from FFPE tissues, revealing its association with colorectal carcinogenesis.
+                                   We extracted DNA from collected samples using two protocols: Chelex and a commercial
+                                   kit (Generead, Qiagen). By comparing the amount of DNA extracted with these two
+                                   methods, we were able to extract a sufficient amount of DNA to perform Miseq sequencing
+Curr. Issues Mol. Biol. 2023, 45                                                                                             7577
+
+
+
+
+                                   for all specimens (68 tissues) only when using the Chelex approach, since the extraction
+                                   using Generead failed to extract 0.2 ng/µL of DNA from eight samples. The use of
+                                   Chelex for DNA extraction from FFPE tissues was proposed previously and shown to be
+                                   sufficient to perform PCR [24]. A previous study, using the commercial kit (Generead)
+                                   for DNA extraction, successfully sequenced all their specimens; however, no amount of
+                                   extracted DNA was mentioned in this article [16]. Since we followed the kit manufacturer’s
+                                   instructions for removing excess paraffin from the sections until the final elution step, the
+                                   kit manual suggests that the presence of little or no DNA in the eluate may be explained
+                                   by a tissue fixation time that exceeds 20 h. Taking into consideration the reduced amount
+                                   of DNA extracted, we used Miseq technology for sequencing since it only exaggerates
+                                   a final DNA concentration equal to 0.2 ng/µL. The generated reads were categorized
+                                   into high- and low-quality reads; therefore, we performed a “trim and filter” step to
+                                   improve their qualities. Bioinformatic and statistical analyzes were performed using user-
+                                   friendly methods, such as Galaxy, Microbiomeanalysist, and SPSS. In addition to being
+                                   a user-friendly tool, Galaxy allows for the creation and sharing of reproducible analysis
+                                   workflows; has a diverse set of bioinformatics tools, including those specifically designed
+                                   for metagenomic analysis; is scalable; and provides built-in support for collaboration. It
+                                   also allows users to perform complex analysis pipelines without requiring programming
+                                   or command-line experience [32,33]. As for MicrobiomeAnalyst, it makes it possible to
+                                   perform complex analyzes without requiring expertise in programming or bioinformatics. It
+                                   also offers a wide range of analysis pipelines, including taxonomic and functional profiling,
+                                   differential abundance analysis, network analysis, and machine learning, enabling in-
+                                   depth analysis of metagenomic data. It provides powerful visualization tools, including
+                                   heatmaps, bar charts, and network graphs, to explore and interpret data [34,35]. Overall,
+                                   Galaxy and MicrobiomeAnalyst present a complementary duo for performing an in-depth
+                                   and comprehensive analysis of metagenomic data and are suitable for both novice and
+                                   advanced users.
+                                        While the link between bacteriome and CRC was first investigated in 2011 [36];
+                                   virome [9], mycobiome [10], and archaeome [18] were only studied separately in 2019,
+                                   2018, and 2020, respectively. Since 2020, and up to the time of writing this article, only two
+                                   articles investigated gut archaeomes in CRC patients [18,19]; this problem can be traced
+                                   back to its difficulties in culture, detection, and identification [37,38]. To overcome these
+                                   issues, metagenomic analyses were performed to identify the composition of the human
+                                   gut archaeome.
+                                        Here, our taxonomic analysis revealed the presence of three major archaeal phyla
+                                   in our specimens: Euryarchaeota, Crenarchaeota, and Thaumarchaeota; these results
+                                   confirmed the previous findings of a study performed on the stool of CRC and healthy
+                                   subjects [18]. At the class level, we reported a decrease in methanogens and a significant
+                                   increase in Halobacteria (p = 0.049) in tumor tissues. Our results are in agreement with a
+                                   study carried out on the stool of Chinese CRC patients [18]. While Halobacteria are extremely
+                                   halophilic archaea that can adapt to a wide range of salt concentrations, increased salt intake
+                                   could explain their detection in the human gut. In Tunisia, a recent study carried out on
+                                   194 Tunisian adults showed that their exposure to high doses of salt consumption was
+                                   equal to 8.1 ± 2.7 g/d [39]; the quantity recommended by the WHO does not exceed
+                                   5 g/d [40]. We also highlighted an enrichment of the Thermococcales order, especially the
+                                   Thermococcus genus in healthy mucosa, compared to tumoral tissues, whereas the Natrialba
+                                   genus, which is a haloarchaea, was associated with tumoral tissues. S. acidocaldarius and
+                                   N. magadii were correlated with CRC tissues. These associations were not previously
+                                   reported, unlike the depletion of M. voltae in the CRC mucosa, which was highlighted in a
+                                   previous study [18]. As for M. formicicum, its association with gastrointestinal diseases in
+                                   animals and humans was previously revealed [41,42].
+                                        Archaea were not detected in FFPE before, only being found in fresh frozen tissues
+                                   with an abundance amount equal to 0.2% [16]. The present study encourages analysis of
+Curr. Issues Mol. Biol. 2023, 45                                                                                                   7578
+
+
+
+
+                                   the intestinal archaeome using formalin-fixed paraffin-embedded tissues with a simpler
+                                   DNA extraction method (using the Chelex method instead of a commercial kit).
+                                        Since we still do not understand the link between the archaeome and colorectal cancer,
+                                   archaea could affect the rest of the microbiome, contributing indirectly to the initiation of
+                                   colorectal carcinogenesis. A previous study revealed that archaea enriched in CRC showed
+                                   both mutualistic and antagonistic interactions with bacteria enriched and depleted in CRC,
+                                   respectively, suggesting that they may collaborate to promote colon carcinogenesis [18];
+                                   therefore, other studies are recommended to understand the interactions between archaea
+                                   and the totality of the microbiome and its relation to colorectal carcinogenesis. While sev-
+                                   eral previous studies discussed the progress made in creating treatment techniques for CRC,
+                                   such as the dose personalization of regorafenib and its impact on maximizing patient out-
+                                   comes [43], the prevention of early death by applying immune checkpoint inhibitors (ICI) in
+                                   combination with other agents [44], and the combination of cetuximab and chemotherapy
+                                   and its role in improving overall survival and progression-free survival in patients with
+                                   metastatic colorectal cancer [45], gut microbiome was recognized as having the potential
+                                   to impact treatment response in multiple ways: drug metabolism, immunomodulation,
+                                   inflammation, and tumor microenvironment [46–48]. Therefore, the taxonomic analysis of
+                                   the gut microbiome remains a key factor not only to understand its role in the initiation of
+                                   colorectal carcinogenesis, but also to provide adequate, personalized, and efficient treat-
+                                   ment. The field of archaeome composition in colorectal cancer (CRC) is expected to expand
+                                   significantly, with an increased focus on research, advances in sequencing technologies,
+                                   functional characterization of archaea, integration of multi-omics and potential clinical
+                                   implications, and emerging therapeutic interventions. These developments will deepen our
+                                   understanding of the role of archaea in CRC and pave the way for personalized diagnostic
+                                   and therapeutic strategies.
+                                        The main limitations of the study are the small number of samples (n = 68) and the
+                                   absence of comparison between fresh and FFPE tissues. Another limitation is the staining of
+                                   Halobacteria in the tissue sections due to the lack of material. To compensate for this shortage,
+                                   we worked with FFPE archived and already used in the clinical anatomopathological
+                                   examination.
+
+                                   5. Conclusions
+                                         Our study demonstrates that metagenomic analyzes could be performed on FFPE
+                                   tissues using the Chelex approach for DNA extraction. Our method generated, for the
+                                   first time, archaeal sequences from FFPE tissues, the bioinformatics analyses performed on
+                                   which revealed enrichment in Halobacteria in tumor tissues compared to healthy mucosa in
+                                   Tunisian patients with CRC.
+
+                                   Supplementary Materials: The following supporting information can be downloaded at:
+                                   https://www.mdpi.com/article/10.3390/cimb45090477/s1.
+                                   Author Contributions: Conceptualization, N.E.H.M., H.O.H., I.B., J.-C.L., L.A.K., G.G. and R.G.; Data
+                                   curation, N.E.H.M., S.C., T.B., J.-C.L., L.A.K. and R.G.; Formal analysis, N.E.H.M., H.O.H. and G.G.;
+                                   Investigation, N.E.H.M. and S.C.; Methodology, N.E.H.M., S.C. and G.G.; Resources, R.G.; Software,
+                                   N.E.H.M. and G.G.; Validation, G.G.; Writing—original draft, N.E.H.M., H.O.H., I.B., T.B., J.-C.L.,
+                                   L.A.K., G.G. and R.G. All authors have read and agreed to the published version of the manuscript.
+                                   Funding: This work received funding from the Twinning European project MICAfrica GE: 952583.
+                                   Institutional Review Board Statement: The samples were gathered under the approval of the Ethical
+                                   Committee for the Protection of Southern Persons “CPP SUD N◦ 0203/2019”.
+                                   Informed Consent Statement: Informed consent was obtained from all subjects involved in
+                                   the study.
+                                   Data Availability Statement: The sequence data were deposited in the NCBI Sequence Read Archive
+                                   (SRA) under BioProject number of PRJNA905672.
+Curr. Issues Mol. Biol. 2023, 45                                                                                                         7579
+
+
+
+
+                                   Acknowledgments: The authors gratefully thank Michel Drancourt for his invaluable support and
+                                   his insightful comments and suggestions.
+                                   Conflicts of Interest: The authors declare no conflict of interest. The funders had no role in the
+                                   design of the study, in the analysis or interpretation of data, in the writing of the manuscript, or in
+                                   the decision to publish the results.
+
+References
+1.    Foegeding, N.J.; Jones, Z.S.; Byndloss, M.X. Western lifestyle as a driver of dysbiosis in colorectal cancer. Dis. Model. Mech. 2021,
+      14, dmm049051. [CrossRef]
+2.    Vipperla, K.; O’Keefe, S.J. Diet, microbiota, and dysbiosis: A ‘recipe’ for colorectal cancer. Food Funct. 2016, 7, 1731–1740.
+      [CrossRef] [PubMed]
+3.    Genua, F.; Raghunathan, V.; Jenab, M.; Gallagher, W.M.; Hughes, D.J. The role of gut barrier dysfunction and microbiome
+      dysbiosis in colorectal cancer development. Front. Oncol. 2021, 11, 626349. [CrossRef] [PubMed]
+4.    Rebersek, M. Gut microbiome and its role in colorectal cancer. BMC Cancer 2021, 21, 1325. [CrossRef] [PubMed]
+5.    Song, M.; Chan, A.T.; Sun, J. Influence of the gut microbiome, diet, and environment on risk of colorectal cancer. Gastroenterology
+      2020, 158, 322–340. [CrossRef]
+6.    Mirzaei, H.; Goudarzi, H.; Eslami, G.; Faghihloo, E. Role of viruses in gastrointestinal cancer. J. Cell. Physiol. 2018, 233, 4000–4014.
+      [CrossRef]
+7.    Selgrad, M.; Malfertheiner, P.; Fini, L.; Goel, A.; Boland, C.R.; Ricciardiello, L. The role of viral and bacterial pathogens in
+      gastrointestinal cancer. J. Cell. Physiol. 2008, 216, 378–388. [CrossRef]
+8.    Marongiu, L.; Allgayer, H. Viruses in colorectal cancer. Mol. Oncol. 2022, 16, 1423–1450. [CrossRef]
+9.    Nakatsu, G.; Zhou, H.; Wu, W.K.; Wong, S.H.; Coker, O.O.; Dai, Z.; Li, X.; Szeto, C.H.; Sugimura, N.; Lam, T.Y.; et al. Alterations
+      in enteric virome are associated with colorectal cancer and survival outcomes. Gastroenterology 2018, 155, 529–541. [CrossRef]
+10.   Coker, O.O.; Nakatsu, G.; Dai, R.Z.; Wu, W.K.; Wong, S.H.; Ng, S.C.; Chan, F.K.; Sung, J.J.; Yu, J. Enteric fungal microbiota
+      dysbiosis and ecological alterations in colorectal cancer. Gut 2019, 68, 654–662. [CrossRef]
+11.   Gaci, N.; Borrel, G.; Tottey, W.; O’Toole, P.W.; Brugère, J.F. Archaea and the human gut: New beginning of an old story. World J.
+      Gastroenterol. 2014, 20, 16062. [CrossRef]
+12.   Koga, Y.; Morii, H. Biosynthesis of ether-type polar lipids in archaea and evolutionary considerations. Microbiol. Mol. Biol. Rev.
+      2007, 71, 97–120. [CrossRef] [PubMed]
+13.   Pereira, S.L.; Reeve, J.N. Histones and nucleosomes in Archaea and Eukarya: A comparative analysis. Extremophiles 1998, 2,
+      141–148. [CrossRef] [PubMed]
+14.   Hockney, R.; Orr, C.H.; Waring, G.J.; Christiaens, I.; Taylor, G.; Cummings, S.P.; Robson, S.C.; Nelson, A. Formalin-Fixed
+      Paraffin-Embedded (FFPE) samples are not a beneficial replacement for frozen tissues in fetal membrane microbiota research.
+      PLoS ONE 2022, 17, e0265441. [CrossRef]
+15.   Pinto-Ribeiro, I.; Ferreira, R.M.; Pereira-Marques, J.; Pinto, V.; Macedo, G.; Carneiro, F.; Figueiredo, C. Evaluation of the use of
+      formalin-fixed and paraffin-embedded archive gastric tissues for microbiota characterization using next-generation sequencing.
+      Int. J. Mol. Sci. 2020, 21, 1096. [CrossRef]
+16.   Borgognone, A.; Serna, G.; Noguera-Julian, M.; Alonso, L.; Parera, M.; Català-Moll, F.; Sanchez, L.; Fasani, R.; Paredes, R.;
+      Nuciforo, P. Performance of 16S metagenomic profiling in formalin-fixed paraffin-embedded versus fresh-frozen colorectal cancer
+      tissues. Cancers 2021, 13, 5421. [CrossRef] [PubMed]
+17.   Tyakht, A.V.; Kostryukova, E.S.; Popenko, A.S.; Belenikin, M.S.; Pavlenko, A.V.; Larin, A.K.; Karpova, I.Y.; Selezneva, O.V.;
+      Semashko, T.A.; Ospanova, E.A.; et al. Human gut microbiota community structures in urban and rural populations in Russia.
+      Nat. Commun. 2013, 4, 2469. [CrossRef] [PubMed]
+18.   Coker, O.O.; Wu, W.K.; Wong, S.H.; Sung, J.J.; Yu, J. Altered gut archaea composition and interaction with bacteria are associated
+      with colorectal cancer. Gastroenterology 2020, 159, 1459–1470. [CrossRef]
+19.   Abdi, H.; Kordi-Tamandani, D.M.; Lagzian, M.; Bakhshipour, A. Archaeome in Colorectal Cancer: High Abundance of
+      Methanogenic Archaea in Colorectal Cancer Patients. Int. J. Cancer Manag. 2022, 15, e117843. [CrossRef]
+20.   Debesa-Tur, G.; Pérez-Brocal, V.; Ruiz-Ruiz, S.; Castillejo, A.; Latorre, A.; Soto, J.L.; Moya, A. Metagenomic analysis of formalin-
+      fixed paraffin-embedded tumor and normal mucosa reveals differences in the microbiome of colorectal cancer patients. Sci. Rep.
+      2021, 11, 391. [CrossRef]
+21.   Oba, U.; Kohashi, K.; Sangatsuda, Y.; Oda, Y.; Sonoda, K.H.; Ohga, S.; Yoshimoto, K.; Arai, Y.; Yachida, S.; Shibata, T.; et al. An
+      efficient procedure for the recovery of DNA from formalin-fixed paraffin-embedded tissue sections. Biol. Methods Protoc. 2022,
+      7, bpac014. [CrossRef] [PubMed]
+22.   Lam, S.Y.; Ioannou, A.; Konstanti, P.; Visseren, T.; Doukas, M.; Peppelenbosch, M.P.; Belzer, C.; Fuhler, G.M. Technical challenges
+      regarding the use of formalin-fixed paraffin embedded (FFPE) tissue specimens for the detection of bacterial alterations in
+      colorectal cancer. BMC Microbiol. 2021, 21, 297. [CrossRef] [PubMed]
+Curr. Issues Mol. Biol. 2023, 45                                                                                                         7580
+
+
+
+
+23.   Saunderson, E.A.; Baker, A.M.; Williams, M.; Curtius, K.; Jones, J.L.; Graham, T.A.; Ficz, G. A novel use of random priming-based
+      single-strand library preparation for whole genome sequencing of formalin-fixed paraffin-embedded tissue samples. NAR Genom.
+      Bioinform. 2020, 2, lqz017. [CrossRef] [PubMed]
+24.   Coombs, N.J.; Gough, A.C.; Primrose, J.N. Optimisation of DNA and RNA extraction from archival formalin-fixed tissue. Nucleic
+      Acids Res. 1999, 27, e12-i–e12-iii. [CrossRef]
+25.   Bérénice, B.; Maria, D. Quality Control (Galaxy Training Materials). 2021. Available online: https://training.galaxyproject.org/
+      archive/2021-11-01/topics/sequence-analysis/tutorials/quality-control/tutorial.html (accessed on 2 November 2022).
+26.   Wood, D.E.; Salzberg, S.L. Kraken: Ultrafast metagenomic sequence classification using exact alignments. Genome Biol. 2014,
+      15, R46. [CrossRef]
+27.   World Health Organization International Agency for Research on Cancer (IARC). GLOBOCAN 2020: Estimated Colorectal Cancer
+      Incidence, Mortality and Prevalence in Tunisia in 2020. Available online: https://gco.iarc.fr/today/data/factsheets/populations/
+      788-tunisia-fact-sheets.pdf (accessed on 10 January 2023).
+28.   Khiari, H.; Ayoub, H.W.; Khadhra, H.B.; Hsairi, M. Colorectal Cancer incidence trend and projections in Tunisia (1994–2024).
+      Asian Pac. J. Cancer Prev. 2017, 18, 2733.
+29.   Belfki, H.; Ben Ali, S.; Aounallah-Skhiri, H.; Traissac, P.; Bougatef, S.; Maire, B.; Delpeuch, F.; Achour, N.; Ben Romdhane, H.
+      Prevalence and determinants of the metabolic syndrome among Tunisian adults: Results of the Transition and Health Impact in
+      North Africa (TAHINA) project. Public Health Nutr. 2013, 16, 582–590. [CrossRef]
+30.   El Ati, J.; Traissac, P.; Delpeuch, F.; Aounallah-Skhiri, H.; Beji, C.; Eymard-Duvernay, S.; Bougatef, S.; Kolsteren, P.; Maire, B.; Ben
+      Romdhane, H. Gender obesity inequities are huge but differ greatly according to environment and socio-economics in a North
+      African setting: A national cross-sectional study in Tunisia. PLoS ONE 2012, 7, e48153. [CrossRef]
+31.   Fares, W.; Ghedira, K.; Gdoura, M.; Chouikha, A.; Haddad-Boubaker, S.; Khedhiri, M.; Ayouni, K.; Lamari, A.; Touzi, H.;
+      Hammemi, W.; et al. Sequencing using a two-step strategy reveals high genetic diversity in the S gene of SARS-CoV-2 after a
+      high-transmission period in Tunis, Tunisia. Microbiol. Spectr. 2021, 9, e00639-21. [CrossRef]
+32.   Afgan, E.; Baker, D.; Batut, B.; Van Den Beek, M.; Bouvier, D.; Čech, M.; Chilton, J.; Clements, D.; Coraor, N.; Grüning, B.A.; et al.
+      The Galaxy platform for accessible, reproducible and collaborative biomedical analyses: 2018 update. Nucleic Acids Res. 2018, 46,
+      W537–W544. [CrossRef]
+33.   Goecks, J.; Nekrutenko, A.; Taylor, J.; The Galaxy Team. Galaxy: A comprehensive approach for supporting accessible, repro-
+      ducible, and transparent computational research in the life sciences. Genome Biol. 2010, 11, R86. [CrossRef]
+34.   Chong, J.; Liu, P.; Zhou, G.; Xia, J. Using MicrobiomeAnalyst for comprehensive statistical, functional, and meta-analysis of
+      microbiome data. Nat. Protoc. 2020, 15, 799–821. [CrossRef]
+35.   Dhariwal, A.; Chong, J.; Habib, S.; King, I.L.; Agellon, L.B.; Xia, J. MicrobiomeAnalyst: A web-based tool for comprehensive
+      statistical, visual and meta-analysis of microbiome data. Nucleic Acids Res. 2017, 45, W180–W188. [CrossRef] [PubMed]
+36.   Marchesi, J.R.; Dutilh, B.E.; Hall, N.; Peters, W.H.; Roelofs, R.; Boleij, A.; Tjalsma, H. Towards the human colorectal cancer
+      microbiome. PLoS ONE 2011, 6, e20447. [CrossRef]
+37.   Bang, C.; Schmitz, R.A. Archaea: Forgotten players in the microbiome. Emerg. Top. Life Sci. 2018, 2, 459–468.
+38.   Guindo, C.O.; Drancourt, M.; Grine, G. Digestive tract methanodrome: Physiological roles of human microbiota-associated
+      methanogens. Microb. Pathog. 2020, 149, 104425. [CrossRef] [PubMed]
+39.   Doggui, R.; El Ati, J.; Sassi, S.; Ben Gharbia, H.; Al-Jawaldeh, A.; El Ati-Hellal, M. Unbalanced intakes of sodium and potassium
+      among Tunisian adults: A cross-sectional study. Food Sci. Nutr. 2021, 9, 2234–2246. [CrossRef]
+40.   The Global Health Observatory. Salt Intake. 2022. Available online: https://www.who.int/data/gho/indicator-metadata-
+      registry/imr-details/3082 (accessed on 10 January 2023).
+41.   Chellapandi, P.; Bharathi, M.; Sangavai, C.; Prathiviraj, R. Methanobacterium formicicum as a target rumen methanogen for the
+      development of new methane mitigation interventions: A review. Vet. Anim. Sci. 2018, 6, 86–94. [CrossRef] [PubMed]
+42.   Mitsumori, M.; Sun, W. Control of rumen microbial fermentation for mitigating methane emissions from the rumen. Asian
+      Australas. J. Anim. Sci. 2008, 21, 144–154. [CrossRef]
+43.   Rizzo, A.; Nannini, M.; Novelli, M.; Dalia Ricci, A.; Scioscio, V.D.; Pantaleo, M.A. Dose reduction and discontinuation of
+      standard-dose regorafenib associated with adverse drug events in cancer patients: A systematic review and meta-analysis. Ther.
+      Adv. Med. Oncol. 2020, 12, 1758835920936932. [CrossRef]
+44.   Viscardi, G.; Tralongo, A.C.; Massari, F.; Lambertini, M.; Mollica, V.; Rizzo, A.; Comito, F.; Di Liello, R.; Alfieri, S.; Imbimbo, M.;
+      et al. Comparative assessment of early mortality risk upon immune checkpoint inhibitors alone or in combination with other
+      agents across solid malignancies: A systematic review and meta-analysis. Eur. J. Cancer 2022, 177, 175–185. [CrossRef] [PubMed]
+45.   Brandi, G.; Ricci, A.D.; Rizzo, A.; Zanfi, C.; Tavolari, S.; Palloni, A.; De Lorenzo, S.; Ravaioli, M.; Cescon, M. Is post-transplant
+      chemotherapy feasible in liver transplantation for colorectal cancer liver metastases? Cancer Commun. 2020, 40, 461. [CrossRef]
+      [PubMed]
+46.   Gopalakrishnan, V.; Helmink, B.A.; Spencer, C.N.; Reuben, A.; Wargo, J.A. The influence of the gut microbiome on cancer,
+      immunity, and cancer immunotherapy. Cancer Cell 2018, 33, 570–580. [CrossRef]
+Curr. Issues Mol. Biol. 2023, 45                                                                                                  7581
+
+
+
+
+47.   Routy, B.; Gopalakrishnan, V.; Daillère, R.; Zitvogel, L.; Wargo, J.A.; Kroemer, G. The gut microbiota influences anticancer
+      immunosurveillance and general health. Nat. Rev. Clin. Oncol. 2018, 15, 382–396. [CrossRef] [PubMed]
+48.   Fessler, J.; Matson, V.; Gajewski, T.F. Exploring the emerging role of the microbiome in cancer immunotherapy. J. Immunother.
+      Cancer 2019, 7, 108. [CrossRef]
+
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

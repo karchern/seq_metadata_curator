@@ -1,0 +1,573 @@
+                                                                                                                                                  ORIGINAL RESEARCH
+                                                                                                                                                published: 10 August 2021
+                                                                                                                                           doi: 10.3389/fonc.2021.664321
+
+
+
+
+                                              Fecal Bacteria as Non-Invasive
+                                              Biomarkers for Colorectal
+                                              Adenocarcinoma
+                                              Biao Yuan 1†, Bin Ma 2†, Jing Yu 3,4†, Qingkai Meng 2, Tao Du 1, Hongyi Li 3, Yueyan Zhu 3,
+                                              Zikui Sun 3,4, Siping Ma 2* and Chun Song 1*
+                                              1 Department of Gastroenterological Surgery, Shanghai East Hospital, Tongji University of Medicine, Shanghai, China,
+
+                                              2 Department of Colorectal Surgery, Cancer Hospital of China Medical University, Liaoning Cancer Hospital and Institute,
+
+                                              Shenyang, China, 3 Research and Development Department, Shanghai Personal Biotechnology Co., Ltd, Shanghai, China,
+                                              4 ECNU-PERSONAL Joint Laboratory of Genetic Detection and Application, Shanghai Personal Biotechnology Co., Ltd,
+
+                                              Shanghai, China
+
+
+
+                                              Colorectal adenocarcinoma (CRC) ranks one of the ﬁve most lethal malignant tumors both
+                         Edited by:           in China and worldwide. Early diagnosis and treatment of CRC could substantially
+                    Simona Gurzu,
+   George Emil Palade University of
+                                              increase the survival rate. Emerging evidence has revealed the importance of gut
+  Medicine, Pharmacy, Sciences and            microbiome on CRC, thus fecal microbial community could be termed as a potential
+        Technology of Târgu Mureş,          screen for non-invasive diagnosis. Importantly, few numbers of bacteria genus as non-
+                           Romania
+                                              invasive biomarkers with high sensitivity and speciﬁcity causing less cost would be
+                     Reviewed by:
+                         Ying Yuan,           beneﬁtted more in clinical compared with the whole microbial community analysis. Here
+          Zhejiang University, China          we analyzed the gut microbiome between CRC patients and healthy people using 16s
+                       Fenghua Xu,
+Army Medical Center of PLA Afﬁliated
+                                              rRNA sequencing showing the divergence of microbial composition between case and
+ With Army Medical University, China          control. Furthermore, ExtraTrees classiﬁer was performed for the classiﬁcation of CRC gut
+                 *Correspondence:             microbiome and heathy control, and 13 bacteria were screened as biomarkers for CRC. In
+                         Siping Ma            addition, 13 biomarkers including 12 bacteria genera and FOBT showed an outstanding
+                brucema5@163.com
+                        Chun Song             sensitivity and speciﬁcity for discrimination of CRC patients from healthy controls. This
+             chunsong163@163.com              method could be used as a non-invasive method for CRC early diagnosis.
+     †
+      These authors have contributed
+                                              Keywords: colorectal adenocarcinoma, non-invasive diagnosis, biomarker, gut microbiome, 16s rRNA sequencing,
+                 equally to this work
+                                              machine learning
+
+                   Specialty section:
+         This article was submitted to
+             Gastrointestinal Cancers,        INTRODUCTION
+               a section of the journal
+                 Frontiers in Oncology        As one of the most common gastrointestinal tumors worldwide, colorectal cancer (CRC) ranks third
+         Received: 05 February 2021           in the world among men and second among women, affecting more than 1.36 million people every
+            Accepted: 07 June 2021            year (1). Most of the CRC patients display no symptoms at early stages; in addition, the majority of
+          Published: 10 August 2021           CRCs develop slowly from adenomatous precursors (2). It has been estimated that >95% of
+                            Citation:         colorectal cancer (CRC) would beneﬁt from curative surgery if diagnosed at earlier or intermediate
+       Yuan B, Ma B, Yu J, Meng Q,            stages (3–6). Thus, early detection is of vital importance for improving the survival of CRC patients.
+      Du T, Li H, Zhu Y, Sun Z, Ma S
+                                              Conventional screening methods including barium enema, colonoscopy, and sigmoidoscopy are
+   and Song C (2021) Fecal Bacteria
+      as Non-invasive Biomarkers for
+                                              uncomfortable, invasive, time consuming and expensive (7, 8). Fecal occult-blood testing (FOBT)
+         Colorectal Adenocarcinoma.           and serum carcinoembryonic antigen (CEA) test are non-invasive methods; however, they are
+            Front. Oncol. 11:664321.          compromised by its low speciﬁcity (9–13). More non-invasive screening methods with high
+     doi: 10.3389/fonc.2021.664321            speciﬁcity and high sensitivity should be established for early detection of CRC.
+
+
+Frontiers in Oncology | www.frontiersin.org                                           1                                        August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                         Non-Invasive Biomarkers for CRC
+
+
+
+    Massive efforts in whole-genome sequencing and genome-                  within the past 3 months; (3) had surgery or invasive procedure
+wide association studies show that genetic factors only explain a           within the past 3 months; and (4) had an inﬂammatory bowel
+small proportion of disease variance (14), and only about 5%                disease. All enrolled subjects were asked to keep a steady dietary
+cancers occur in the setting of a known genetic predisposition              schedule and lifestyle and leave fecal sample over 1.0 g in a
+syndrome (15). It has been established that epigenetic regulation           special containment before bowel preparation for any endoscopy
+altering gene expression alone or in combination with inherited             or surgery. After stool collection from the patients, samples were
+or somatic mutation plays important contribution to CRC (16).               stored at −80°C immediately for further analysis.
+As a result, an intensive effort has been undertaken on CRC early
+diagnosis, which largely focuses on the methylation detection of
+tumor DNA or combined with the mutation deletion on certain
+                                                                            16S rRNA Gene Sequencing
+                                                                            DNA from stool samples was extracted using Qiagen QIAamp
+genes (17–19). More importantly, the epigenetic alteration can be
+                                                                            DNA Stool Mini Kit (Qiagen) according to instructions of the
+strongly affected by some environmental aspect, including diet
+                                                                            manufacturer. Quality and quantity of extracted DNA were
+habits or chronic alcohol consumption, which also affect human
+                                                                            examined by electrophoretic separation in a 0.8% (wt/vol)
+gut microbiota (20).
+                                                                            agarose gel and NanoDrop 2000 spectrophotometer, respectively.
+    The gut microbiota maintains survival and metabolism
+                                                                                The hypervariable V3–V4 regions of the 16S rRNA gene were
+with nutrients in the human body and works with the human
+                                                                            ampliﬁed using the primer set of 338F (5′-ACTCCTACGGG
+body to respond to external environmental factors, carry out
+                                                                            AGGCAGCA-3′) and 806R (5′-GGACTACHVGGGTWT
+metabolic and immune activities, and maintain human health
+                                                                            CTAAT-3′). PCR ampliﬁcation uses Pfu high-ﬁdelity DNA
+(21). Studying the intestinal microbiome composition of
+                                                                            polymerase from TransGen Biotech and strictly controls the
+colorectal cancer patients can open new inspection methods
+                                                                            number of ampliﬁcation cycles to keep the number of cycles as
+for tumor screening. Recent studies, including ours, have
+                                                                            low as possible while ensuring the same ampliﬁcation conditions
+suggested that microbiota proﬁles determined by high-
+                                                                            for the same batch of samples. PCR ampliﬁcation, puriﬁcation of
+throughput sequencing may be effective in predicting CRCs
+                                                                            ampliﬁed product, sequencing library preparation, and
+(22). It has been reported that peptostreptococcus anaerobius,
+                                                                            pyrosequencing were performed at paired-end 250 bp on the
+an anaerobic bacterium enriched in the fecal and mucosal
+                                                                            Illumina MiSeq platform by Personal Biotechnology, Co., Ltd.
+microbiota from CRC patients, promotes CRC (23). In
+                                                                            (Shanghai, China).
+addition, a number of bacteria, including Bacteroides fragilis
+and a strain of Escherichia coli (24–29), Streptococcus bovis
+                                                                            Sequence Data Processing
+(30, 31), Clostridium septicumand (32), and Fusobacterium
+                                                                            Raw sequencing data were processed using Quantitative Insights
+nucleatum (33, 34) have been reported to be associated with
+                                                                            into Microbial Ecology (QIIME) v1.8.0 (37) and ﬁltered by
+CRC. Furthermore, metagenomic analysis of fecal microbiome
+                                                                            removing tags and primers. A quality cut-off was applied to
+has been performed and a couple of gene markers have been
+                                                                            discarding the reads (1) that are shorter than 150 bp, with (2) an
+identiﬁed and validated as biomarkers for early diagnosis of CRC
+                                                                            average Phred score lower than 20, (3) with ambiguous bases.
+(35). Difference in gut microbiota between colorectal cancer
+                                                                            After that, the ﬁltered reads were assembled using FLASH
+patients and healthy people combined with other methods
+                                                                            software v1.2.7 with overlapping between the paired-end reads
+such as fecal immunochemical test (FIT), CEA, or other risks
+                                                                            >10. Chimeric sequences were ﬁltered using USEARCH v5.2.236
+factors such as age and BMI index is required for improving
+                                                                            (http://www.drive5.com/usearch/). After quality ﬁltering and
+accuracy (22, 36).
+                                                                            chimera removal, clean reads were then clustered into
+    We evaluated differences in bacterial communities in stool
+                                                                            operational taxonomic units (OTUs) at 97% sequence identity
+samples of colorectal cancers and non-cancer controls through
+                                                                            using UCLUST. The taxonomic classiﬁcation was performed
+16S rRNA high-throughput sequencing. In addition, 12
+                                                                            with Greengenes database release 13.8. Alpha diversity indices of
+microbial biomarkers combined with FOBT have been
+                                                                            Chao1, ACE, Simpson and Shannon were estimated. Beta
+identiﬁed for non-invasive early diagnosis of CRC.
+                                                                            diversity analysis was performed with UniFrac in QIIME. Non-
+                                                                            metric multi-dimensional scaling (NMDS) was generated by R
+                                                                            language release package for analysis based on distance.
+MATERIALS AND METHODS
+                                                                            Fecal Occult Blood Test
+Study Participants and Stool Samples                                        All enrolled subjects were asked to offer a valid fecal occult blood
+Collection                                                                  test report from a community hospital or a general hospital in
+Stool samples were collected from 382 individuals undergoing                recent 6 months. Stool samples with blank FIT result would have
+colonoscopy at the endoscopy center of Liaoning Cancer                      to be examined using Fecal Occult Blood Diagnostic Kit
+Hospital and Dongfang Hospital Afﬁliated to Tongji                          (Colloidal Gold) (Chemtrue@) which had been approved by
+University, including 226 CRCs and 156 healthy controls. To                 the Chinese Food and Drug Administration Bureau. The cut-
+avoid potential alternation of the gut microbiota, the exclusion            off value for positive FOBT was 200 ng/ml according to the
+criteria were: (1) past history of any cancer; (2) use of antibiotics       instructions of the manufacturer.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                             2                                  August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                        Non-Invasive Biomarkers for CRC
+
+
+
+
+Statistical Analysis                                                                 samples, the length of which was about 468 bp. In this study, a
+Signiﬁcant differences among treatments were identiﬁed through                       total of 4,728 OTUs were obtained from the colon cancer group
+one-way analysis of variance (ANOVA) followed by Tukey’s test.                       and 4,331 OTUs from the healthy control group. A total of 3,906
+Typically, homogeneity of variance for the obtained data was                         OTUs were shared among the two groups. Compared with 423
+tested, and data of the test values >0.05 were adopted for the                       unique OTUs from the healthy group, CRC group contained 822
+ANOVA analysis. All statistical analyses were performed using                        unique OTUs (Supplemental Figure S1). Rarefaction curves of
+SPSS 19.0 (IBM, New York, USA), and signiﬁcant levels were                           CRC and control samples almost plateaued, suggesting the
+reported at p <0.05 and p <0.01.                                                     sequencing was sufﬁcient (Supplemental Figure S2).
+    FOBT test results were recorded as positive or negative.                            Based on the total OTU statistical sequence, fecal microbial
+                                                                                     richness, as estimated by ACE and Chao1 (P-values <0.001,
+Classiﬁer Construction                                                               respectively), was signiﬁcantly decreased in CRC (Figures 1A, B).
+We used an SVM (support vector machine) (R 3.6.1; the e1071 R                        The fecal microbial diversity, estimated by Shannon and Simpson,
+package) to build the classiﬁer for colorectal cancer with genera                    did not show signiﬁcance between control and CRCs
+abundances as features. All the genera were normalized, and rare                     (Supplemental Figure S3). When microbiota composition
+genera with less than 20% occurrences in all samples were                            between CRC and healthy gut was compared, beta-diversity
+removed. To ﬁlter out redundant features from the resulting 107                      exhibited difference between two groups (p = 0.001) (Figures 1C,
+genera, the mRMR algorithm (38) was performed to 10 data sets                        D). These results suggested dysbiosis in the gut microbiome of
+with 50 features, each using the R package “mRMRe”. Leave-one-                       CRC patients.
+out cross-validation LDA (linear discriminant analysis) was
+applied to determine how many features to be used. We tuned                          The Divergent Taxonomic Composition
+both radial basis function (RBF) kernel (Gaussian kernel) and a                      and Functional Performance of Microbiota
+linear kernel function of SVM with a tolerance of 0.001 to get a
+                                                                                     in CRC and Healthy Gut
+better performance using 10-fold cross-validation. For RBF kernel,
+                                                                                     After quality ﬁltering, sequences at a 97% sequence similarity
+the penalty parameter C was varied as {1e-4, 1e-3…, 1e4} and the
+                                                                                     were selected for taxonomic composition analysis; 21 bacterial
+gamma parameter G as {1e-5, 1e-3…, 1e3}. For linear kernel, the
+                                                                                     phyla, 34 microbial class, 56 microbial orders, 107 microbial
+penalty parameter C was varied as {1e-4, 1e-3…, 1e4}. FOBT test
+                                                                                     families, 209 microbial genera, and 268 microbial species have
+from stool sample has been widely used in diagnosis; genera data
+                                                                                     been identiﬁed (Supplemental Table S1).
+together with FOBT test result were selected as feature set as well.
+                                                                                        The LEfSe (linear discriminant analysis effect size) analysis
+Matthews correlation coefﬁcient (MCC) was chosen as indicator of
+                                                                                     was performed to determine differences in bacterial taxonomy.
+the performance. Receiver operating characteristic (ROC) ﬁgures
+                                                                                     The histogram with cladogram showed that overall phylum
+were drawn using R package “pROC”.
+                                                                                     Bacteroidetes was highly accumulated in CRC while overall
+                                                                                     phylum Actinobacteria was overall less accumulated in health
+                                                                                     samples. Divergent alteration was observed at lower taxonomic
+RESULTS                                                                              levels from phylum Firmicutes and Proteobacteria (Figure 2).
+                                                                                        We further compared the difference between control and
+The Gut Microbiome Is Dysbiotic in                                                   CRC microbiome at different levels. At the phylum level, four
+Colorectal Adenocarcinoma Patients                                                   phyla were detected with relatively high abundance. CRC
+After quality ﬁltering and primer trimming, a total of 5,153                         samples showed increased abundance of phylum Bacteroidetes
+usable high-quality sequence reads were generated from 382                           while healthy samples showed increased abundance of
+
+
+
+              A                    B                         C                                             D
+
+
+
+
+ FIGURE 1 | Comparison of gut microbiome between CRC and healthy gut. (A) Alpha diversity communities based on observed OTUs by richness (Chao1, ACE).
+ (B) Beta diversity measured by unweighted unifrac. (C) Beta diversity measured by unweighted unifrac. (D) Beta diversity measured by weighted unifrac. Overall
+ differences in the microbiome composition among groups were assessed by ANOSIM. *** means biological signiﬁcance.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                      3                                       August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                        Non-Invasive Biomarkers for CRC
+
+
+
+
+ FIGURE 2 | Linear discriminant analysis effect size (LEfSe) analysis of gut microbiota composition between two groups.
+
+
+
+Firmicutes, Proteobacteria, and Actinobacteria (Supplemental                         mannose metabolism, phosphonate and phosphinate metabolism,
+Figure S4A). At the family level, for the family with relatively                     pyruvate metabolism, phenylalanine metabolism, D-Glutamine
+high abundance, CRC samples had higher abundances of                                 and D-glutamate metabolism, sphingolipid metabolism, and
+Bacteroidaceae, Veillonellaceae and Prevotellaceae whereas                           nitrogen metabolism decreased in CRC gut, with the exception
+healthy samples had higher abundances of Ruminococcaceae,                            of glycerophospholipid metabolism. These results suggested the
+Lachnospiraceae, Enterobacteriaceae, and Biﬁdobacteriaceae                           disorder of metabolism in CRC patients (Figure 4).
+(Supplemental Figure S4B). At the genus level, the most
+abundant genera identiﬁed in healthy samples were                                    Fecal Microbial Biomarkers for Colorectal
+Faecalibacterium (10.49%), Biﬁdobacterium (7.65%), and                               Adenocarcinoma Non-Invasive Diagnosis
+Bacteroides (7.33%), while in CRC gut, the most abundant                             The changes in the bacterial community between the two groups
+genera were Faecalibacterium (6.37%), Bacteroides (21.79%),                          could be screened as biomarkers for colorectal cancer detection
+and Prevotella (5.14%) (Figure 3A). The most abundant gut                            to assist in its diagnosis. To select the most relevant feature which
+microbe, Fecalibacterium, termed as the marker of healthy gut                        could be term as biomarkers for CRC, the ExtraTrees classiﬁer
+(39), decreased by 60%. Beneﬁcial intestinal bacteria                                calculating feature importance score was performed. Forty
+Biﬁdobacterium (40) decreased by 35% in the CRC gut                                  signiﬁcantly different features showing different abundances
+(Figure 3B). Importantly, the role of several genera the role in                     were selected for further analysis (Supplemental Table S3).
+CRC, such as Peptostreptococcus (23), Fusobacterium (33, 34),
+Porphyromonas, Parvimonas, Gemella, and Prevotella (41) had                          Machine Learning Classiﬁcation for CRC
+been reported; they were extremely upregulated in the CRC gut                        to Identify Fecal Microbial Biomarkers for
+(Figure 3C and Supplemental Table S2). The abundance of all                          Non-Invasive Diagnosis
+gut microbes was listed as Supplemental Table S1. These results                      To illustrate the diagnostic value of the selected biomarkers in
+strongly suggested the dysbiosis in the CRC gut.                                     the gut microbiome for colorectal cancer and ﬁnd out a smaller
+   We further compared the functional capacity of the gut                            number of biomarkers for diagnosis, we constructed a classiﬁer
+microbiota between CRC and healthy subjects; the transporter                         established by SVM (Support Vector Machine) model to detect
+pathway, especially the ABC transporter pathway, is signiﬁcantly                     cancerous samples. We selected 267 samples as training set,
+increased in CRC gut, and a large number of metabolism related                       including 141 from Liaoning and 126 from Shanghai; in
+pathways, such as vitamin B6 metabolism, energy metabolism,                          addition, the rest 115 samples were selected as veriﬁcation set,
+amino sugar and nucleotide sugar metabolism, fructose and                            including 61 from Liaoning and 54 from Shanghai. The SVM
+
+
+Frontiers in Oncology | www.frontiersin.org                                      4                                        August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                      Non-Invasive Biomarkers for CRC
+
+
+
+
+                 A                                           B
+
+
+
+
+                 C
+
+
+
+
+ FIGURE 3 | Analysis of genus level and selected genus between CRC and control. (A) The distribution of two groups at genus level. (B) Abundance of beneﬁt
+ intestinal bacteria between two groups. (C) Abundance of CRC related intestinal bacteria between two groups.
+
+
+model used 13 genera (Supplemental Table S4) from bacteria as                       late survival rate and reducing the cost of late treatment.
+features to distinguish CRC patients from healthy controls with a                   Colonoscopy and FOBT are widely used in CRC screening;
+sensitivity of 82.6%, speciﬁcity of 78.3%, precision of 85.1%, and                  however, for their low compliance or sensitivity, more non-
+accuracy of 80.9% under the para1 conditions (‘C’: 1,000,                           invasive and painless methods with high sensitivity and speciﬁcity
+‘gamma’: 1e-5, ‘kernel’: ‘radial’) (Supplemental Table S5 and                       are required (7–13). Circulating tumor DNA (ctDNA) is an
+Supplemental Figure S5). We also constructed the classiﬁer                          extracellular DNA that originates from tumor cells and circulates
+from bacteria together with FOBT; 13 features including 12                          in several bodily ﬂuids, including blood, synovial ﬂuid, and
+bacteria genera and FOBT (Table 1) could distinguish CRC                            cerebrospinal ﬂuid (42). For the similarity of genetic and
+and healthy people. The sensitivity, speciﬁcity, precision, and                     epigenetic information provided by ctDNA to that of invasive
+accuracy increased into 91.3, 93.5, 95.4, and 92.2% under the                       tumor biopsies, ctDNA has been widely used to detect the gene
+para2 conditions (‘C’: 10, ‘kernel’: ‘linear’) (Table 2 and                         mutation and is termed as a non-invasive diagnostic tool for several
+Figure 5). The 12 fecal bacteria and FOBT could be termed as                        cancers (43). In many tumors, increased methylation of tumor
+non-invasive biomarkers for colorectal adenocarcinoma.                              suppressor genes occurs at an early stage, thus, ctDNA methylation
+                                                                                    proﬁling detection can be used as an alternative non-invasive
+                                                                                    diagnostic tool (44–46). Some speciﬁc DNA methylation sites,
+DISCUSSION                                                                          such as SEPT9, have been identiﬁed as biomarkers of CRC (47,
+                                                                                    48). However, the extremely low level in the blood and the non-
+CRC is a high risk cancer in China and all over the world. Early                    organ information of ctDNA present a great challenge to
+detection and treatment of CRC are important for improving the                      early diagnosis.
+
+
+Frontiers in Oncology | www.frontiersin.org                                     5                                      August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                           Non-Invasive Biomarkers for CRC
+
+
+
+
+ FIGURE 4 | Pathways altered in CRC and healthy guts.
+
+
+
+
+   The gut microbiome plays a major role in protecting the host                 beneﬁcial bacteria decreased, and the proportion of harmful
+against the overgrowth of pathogens and in sustaining the health                bacteria signiﬁcantly increased. A dozen of opportunistic
+of colon. There is intensive evidence revealing the close                       pathogens including Bacteroides and Prevotella were
+relationship between gut microbiome and colorectal cancer                       signiﬁcantly increased in patients with colorectal cancer
+(49–51). In clinical application, changes of gut microbiome can                 (Figure 3). A couple of pathogens, including Fusobacterium
+be regularly monitored, thus, revealing gut microbiome                          nucleatum (33, 34), Peptostreptococcus anaerobius, and
+divergence between CRC and healthy control would help to                        enterotoxigenic Bacteroides fragilis (52), whose roles have been
+ﬁnd out the weighted bacteria for distinguishing them, and the                  established in CRC induction, were highly accumulated in CRC
+bacteria can be termed biomarkers for CRC early diagnosis.                      patients (Figure 3 and Supplemental Table S1). The
+   We have performed high-throughput sequencing on the v3–                      identiﬁcation of dysbiosis characteristics could be facilitated,
+v4 regions of intestinal bacteria 16S rRNA gene in stool and                    and they can be considered as taxonomic biomarkers for
+described the patterns of gut microbiome relative to healthy                    CRC screening.
+control and CRC patients. Fecal richness from colorectal cancer                    We performed machine learning using SVM model between
+patients decreased; in addition, the proportion of various                      pairs of cohorts to conduct binary classiﬁcation for classifying
+                                                                                CRC patients and control. A variety of features including
+                                                                                taxonomic, functional (53), and k-mer-based (54) classiﬁcation
+TABLE 1 | The weight for CRC and healthy gut classiﬁcation of 12 bacteria       schemes have been used for machine learning approaches. Here,
+genus and FOBT.
+                                                                                we used 13 genera of the gut bacteria to show their great
+Parvimonas                                                                      contribution in differentiating the CRC state versus control for
+Parabacteroides                                                                 machine learning. In addition, FOBT test results were selected as
+Clostridium                                                                     a their importance on CRC diagnosis in clinical practice. Our
+Odoribacter
+SMB53
+                                                                                machine learning results showed high performances in CRC
+Dorea                                                                           versus control models (Table 1 and Figure 5). Parvimonas,
+Prevotella                                                                      Prevotella (41), Clostridium (32), Dorea (55), and Bacteroides
+Blautia                                                                         (56) have been reported to have higher accumulation in CRC gut.
+Lachnospira
+                                                                                On the other side, Blautia and Faecalibacterium have been
+Roseburia
+Bacteroides
+                                                                                reported to have lower accumulation in CRC gut (57). Notably,
+FOBT                                                                            Blautia, Lachnospira, and Roseburia belong to Lachnospiraceae,
+Faecalibacterium                                                                whose lower levels were associated with CRC (58). In our results,
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                 6                                August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                     Non-Invasive Biomarkers for CRC
+
+
+
+TABLE 2 | The performance of 13 biomarkers including bacteria genus and FOBT.
+
+                                    Sensitivity       Speciﬁcity           Precision              Accuracy            TP           FP           TN            FN
+
+Bacteria genus with FOBT              91.3%             93.5%                   95.4%               92.2%             63           3            43            6
+
+
+
+
+                                                                                    DATA AVAILABILITY STATEMENT
+                                                                                    The original contributions presented in the study are publicly
+                                                                                    available. This data can be found here: NCBI repository,
+                                                                                    accession number: PRJNA706061.
+
+
+
+                                                                                    ETHICS STATEMENT
+                                                                                    The studies involving human participants were reviewed and
+                                                                                    approved by Ethics Committee of Liaoning Cancer Hospital and
+                                                                                    Dongfang Hospital Afﬁliated to Tongji University. The patients/
+                                                                                    participants provided their written informed consent to
+                                                                                    participate in this study.
+
+
+
+                                                                                    AUTHOR CONTRIBUTIONS
+                                                                                    BY and BM prepared the samples, extracted the DNA for 16s
+                                                                                    rRNA sequencing and revised the manuscript. JY analyzed the
+ FIGURE 5 | ROC curve for 12 fecal microbial markers plus FOBT.                     16s rRNA sequencing data and wrote the manuscript. QM
+                                                                                    helped to prepare the samples. TD helped to perform the data
+                                                                                    analysis and organize the data. HL and YZ performed the
+the genera beneﬁcial for health were increased, and the genera                      machine learning analysis. ZS revised the manuscript. SM and
+harmful for health were reduced in the CRC gut. In addition,                        CS designed and leaded the project. All authors contributed to
+the association of Odoribacter and SMB53 with CRC was                               the article and approved the submitted version.
+reported for the ﬁrst time. The high performance of fecal
+bacteria and FOBT test from stool sample facilitates the
+establishment of a new non-invasive method for an examination                       FUNDING
+of colorectal cancer.
+    In addition to causing intestinal diseases, gut microbiome                      This study was supported by Innovation Fund of Science and
+also contributes to obesity, diabetes, allergic asthma, and                         Technology Committee in Shanghai Pudong New Area (Nos.
+neuropsychiatric diseases (59–61); thus, clinical monitoring of                     PKJ2016-Y60), National Natural Science Foundation of China
+fecal bacteria can assist in the diagnosis of other diseases related                (Nos. 81871953) and Jiangxi Youth Science Fund (Nos.
+to gut microbiome. Furthermore, gut status could be improved                        20171BAB215043) National Science Foundation of China,
+by artiﬁcially guiding the intervention of diet or the intake of                    Grant/Award Number: 81902383, Revitalizing Liaoning Talents
+beneﬁcial bacteria according to the changes of gut microbiome                       Program, Grant/Award Number: XLYC1907004
+(62), and the improvement could be easily detected from the
+fecal bacteria. Thus, gut microbiome has become a hot spot in
+clinical research.
+                                                                                    SUPPLEMENTARY MATERIAL
+    In summary, we monitored the gut microbiome and took
+12 bacteria genus and FOBT displaying high weight for                               The Supplementary Material for this article can be found online
+classiﬁcation between CRC and healthy gut as biomarkers for                         at: https://www.frontiersin.org/articles/10.3389/fonc.2021.
+CRC early diagnosis. The method beneﬁts those who cannot                            664321/full#supplementary-material
+receive colonoscopy in a short time and those who are not willing
+to use colonoscopy. Compared with the existing methods of CRC                       Supplementary Figure 1 | Venn diagram based on OTU. Each ellipse represents
+                                                                                    a group of samples. The overlapping area between the ellipses represents the
+diagnosis, our method is non-invasive and painless; not only
+                                                                                    shared OTU among the sample groups, and number of each block indicates the
+does it not require complex examination and preparation before                      number of common or unique OTU of the sample groups contained in the block.
+sampling, but also improves the sensitivity and speciﬁcity of the
+test compared with the FOBT alone.                                                  Supplementary Figure 2 | Rarefaction curves of CRC and control samples.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                     7                                      August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                             Non-Invasive Biomarkers for CRC
+
+
+
+Supplementary Figure 3 | Alpha diversity communities based on observed                  Supplementary Figure 4 | The distribution of two groups at phylum level (A) and
+OTUs by diversity (Simpson, Shannon).                                                   family level (B).
+
+
+
+                                                                                        21. Jie Z, Xia H, Zhong SL, Feng Q, Li S, Liang S, et al. The Gut Microbiome in
+REFERENCES                                                                                  Atherosclerotic Cardiovascular Disease. Nat Commun (2017) 8:845.
+ 1. Ferlay J, Soerjomataram I, Dikshit R, Eser S, Mathers C, Rebelo M, et al.               doi: 10.1038/s41467-017-00900-1
+    Cancer Incidence and Mortality Worldwide: Sources, Methods and Major                22. Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI, et al. Potential
+    Patterns in GLOBOCAN 2012. Int J Cancer (2015) 136(5):E359–86.                          of Fecal Microbiota for Early-Stage Detection of Colorectal Cancer. Mol Syst
+ 2. Lieberman DA, Weiss DG, Bond JH, Ahnen DJ, Garewal H, Chejfec G. Use of                 Biol (2014) 10:766. doi: 10.15252/msb.20145645
+    Colonoscopy to Screen Asymptomatic Adults for Colorectal Cancer. N Engl J           23. Long X, Wong CC, Tong L, Chu ESH, Ho Szeto C, Go MYY, et al.
+    Med (2000) 343:162–8. doi: 10.1056/NEJM200007203430301                                  Peptostreptococcus Anaerobius Promotes Colorectal Carcinogenesis and
+ 3. Gumaste VV. CT Colonography Can Be an Adjunct to Optical Colonoscopy                    Modulates Tumour Immunity. Nat Microbiol (2019) 4:2319–30.
+    in CRC Screening. Dig Dis Sci (2009) 54:212–7. doi: 10.1007/s10620-008-                 doi: 10.1038/s41564-019-0541-3
+    0360-5                                                                              24. Arthur JC, Perez-Chanona E, Muhlbauer M, Tomkovich S, Uronis JM, Fan TJ,
+ 4. Pawa N, Arulampalam T, Norton JD. Screening for Colorectal Cancer:                      et al. Intestinal Inﬂammation Targets Cancer-Inducing Activity of the
+    Established and Emerging Modalities. Nat Rev Gastroenterol Hepatol (2011)               Microbiota. Science (2012) 338:120–23. doi: 10.1126/science.1224820
+    8:711–22. doi: 10.1038/nrgastro.2011.205                                            25. Cuevas-Ramos G, Petit CR, Marcq I, Boury M, Oswald E, Nougayrede JP.
+ 5. Siegel RL, Miller KD, Fedewa SA, Ahnen DJ, Meester RGS, Barzi A. Colorectal             Escherichia Coli Induces DNA Damage In Vivo and Triggers Genomic
+    Cancer Statistics. CA Cancer J Clin (2017) 67:177–93. doi: 10.3322/caac.21395           Instability in Mammalian Cells. Proc Natl Acad Sci USA (2010) 107:11537–
+ 6. Feng RM, Zong YN, Cao SM, Xu RH. Current Cancer Situation in China:                     42. doi: 10.1073/pnas.1001261107
+    Good or Bad News from the 2018 Global Cancer Statistics? Cancer Commun              26. Grivennikov SI, Wang K, Mucida D, Stewart CA, Schnabl B, Jauch D, et al.
+    (Lond) (2019) 39:22. doi: 10.1186/s40880-019-0368-6                                     Adenoma-Linked Barrier Defects and Microbial Products Drive IL-23/IL-17-
+ 7. Sung JJ, Ng SC, Chan FK, Chiu HM, Kim HS, Matsuda T, et al. An Updated                  Mediated Tumour Growth. Nature (2012) 91:254–58. doi: 10.1038/
+    Asia Paciﬁc Consensus Recommendations on Colorectal Cancer Screening.                   nature11465
+    Gut (2015) 64:121–32. doi: 10.1136/gutjnl-2013-306503                               27. Toprak NU, Yagci A, Gulluoglu BM, Akin ML, Demirkalem P, Celenk T, et al.
+ 8. Rex DK, Johnson DA, Anderson JC, Schoenfeld PS, Burke CA, Inadomi JM,                   A Possible Role of Bacteroides Fragilis Enterotoxin in the Aetiology of
+    et al. American College of Gastroenterology Guidelines for Colorectal Cancer            Colorectal Cancer. Clin Microbio Infect (2006) 12:782–86. doi: 10.1111/
+    Screening. Am J Gastroenterol (2009) 104:739–50. doi: 10.1038/ajg.2009.104              j.1469-0691.2006
+ 9. Hewitson P, Glasziou P, Irwig L, Towler B, Watson E. Screening for Colorectal       28. Uronis JM, Muhlbauer M, Herfarth HH, Rubinas TC, Jones GS, Jobin C.
+    Cancer Using the Fecal Occult Blood Test, Hemoccult. Cochrane Database                  Modulation of the Intestinal Microbiota Alters Colitis-Associated Colorectal
+    Syst Rev (2007) 1:CD001216. doi: 10.1002/14651858.CD001216.pub2                         Cancer Susceptibility. PloS One (2009) 4:e6026. doi: 10.1371/journal.
+10. Raginel T, Puvinel J, Ferrand O, Bouvier V, Levillain R, Ruiz A, et al. A               pone.0006026
+    Population-Based Comparison of Immunochemical Fecal Occult Blood Tests              29. Wu S, Rhee KJ, Albesiano E, Rabizadeh S, Wu X, Yen HR, et al. A Human
+    for Colorectal Cancer Screening. Gastroenterology (2013) 144:918–25.                    Colonic Commensal Promotes Colon Tumorigenesis via Activation of T Helper
+    doi: 10.1053/j.gastro.2013.01.042                                                       Type 17 T Cell Responses. Nat Med (2009) 15:1016–22. doi: 10.1038/nm.2015
+11. Nicholson BD, Shinkins B, Pathiraja I, Roberts NW, James TJ, Mallett S,             30. Boleij A, Schaeps RM, Tjalsma H. Association Between Streptococcus Bovis
+    et al. Blood CEA Levels for Detecting Recurrent Colorectal Cancer.                      and Colon Cancer. J Clin Microbiol (2009) 47:516. doi: 10.1128/JCM.01755-08
+    Cochrane Database Syst Rev (2015) 12:CD011134. doi: 10.1002/14651858.               31. Burton JP, Wescombe PA, Moore CJ, Chilcott CN, Tagg JR. Safety Assessment
+    CD011134.pub2                                                                           of the Oral Cavity Probiotic Streptococcus Salivarius K12. Appl Environ
+12. Palmqvist R, Engarås B, Lindmark G, Hallmans G, Tavelin B, Nilsson O, et al.            Microb (2006) 72:3050–53. doi: 10.1128/AEM.72.4.3050-3053.2006
+    Prediagnostic Levels of Carcinoembryonic Antigen and CA 242 in Colorectal           32. Seder CW, Kramer M, Long G, Uzieblo MR, Shanley CJ, Bove P. Clostridium
+    Cancer: A Matched Case-Control Study. Dis Colon rectum (2003) 46:1538–44.               Septicum Aortitis: Report of Two Cases and Review of the Literature. J Vasc
+    doi: 10.1007/s10350-004-6810-z                                                          Surg (2009) 49:1304–09. doi: 10.1016/j.jvs.2008.11.058
+13. Macdonald JS. Carcinoembryonic Antigen Screening: Pros and Cons. Semin              33. Castellarin M, Warren RL, Freeman JD, Dreolini L, Krzywinski M, Strauss J,
+    Oncol (1999) 26:556–60.                                                                 et al. Fusobacterium Nucleatum Infection Is Prevalent in Human Colorectal
+14. Galvan A, Ioannidis JP, Dragani TA. Beyond Genome-Wide Association                      Carcinoma. Genome Res (2012) 22:299–306. doi: 10.1101/gr.126516.111
+    Studies: Genetic Heterogeneity and Individual Predisposition to Cancer.             34. Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM, et al.
+    Trends Genet (2010) 26:132–41. doi: 10.1016/j.tig.2009.12.008                           Genomic Analysis Identiﬁes Association of Fusobacterium with Colorectal
+15. Foulkes WD. Inherited Susceptibility to Common Cancers. N Engl J Med                    Carcinoma. Genome Res (2012) 22:292–98. doi: 10.1101/gr.126573.111
+    (2008) 359:2143–53. doi: 10.1056/NEJMra0802968                                      35. Yu J, Feng Q, Wong SH, Zhang D, Liang QY, Qin Y, et al. Metagenomic Analysis
+16. Yang T, Owen JL, Lightfoot YL, Kladde MP, Mohamadzadeh M. Microbiota                    of Fecal Microbiome as a Tool Towards Rargeted Non-Invasive Biomarkers for
+    Impact on the Epigenetic Regulation of Colorectal Cancer. Trends Mol Med                Colorectal Cancer. Gut (2017) 66:70–8. doi: 10.1136/gutjnl-2015-309800
+    (2013) 19:714–25. doi: 10.1016/j.molmed.2013.08.005                                 36. Zackular JP, Rogers MA, Rufﬁn MT, Schloss PD. The Human Gut
+17. Muller HM, Oberwalder M, Fiegl H, Morandell M, Goebel G, Zitt M, et al.                 Microbiome as a Screening Tool for Colorectal Cancer. Cancer Prev Res
+    Methylation Changes in Fecal DNA: A Marker for Colorectal Cancer                        (Phila) (2014) 7:1112–21. doi: 10.1158/1940-6207.CAPR-14-0129
+    Screening? Lancet (2004) 363:1283–5. doi: 10.1016/S0140-6736(04)16002-9             37. Caporaso JG, Kuczynski J, Stombaugh J, Bittinger K, Bushman FD, Costello EK,
+18. Mitchell SM, Ho T, Brown GS, Baker RT, Thomas ML, McEvoy A, et al.                      et al. QIIME Allows Analysis of High-Throughput Community Sequencing
+    Evaluation of Methylation Biomarkers for Detection of Circulating Tumor                 Data. Nat Methods (2010) 7:335–36. doi: 10.1038/nmeth.f.303
+    DNA and Application to Colorectal Cancer. Genes (Basel) (2016) 15:125.              38. De Jay N, Papillon-Cavanagh S, Olsen C, El-Hachem N, Bontempi G, Haibe-Kains
+    doi: 10.3390/genes7120125                                                               B. mRMRe: An R Package for Parallelized mRMR Ensemble Feature Selection.
+19. Carmona FJ, Azuara D, Berenguer-Llergo A, Fernandez AF, Biondo S, de Oca                Bioinformatics (2013) 29:2365–68. doi: 10.1093/bioinformatics/btt383
+    J, et al. DNA Methylation Biomarkers for Noninvasive Diagnosis of Colorectal        39. Qin J, Li R, Raes J, Arumugam M, Burgdorf KS, Manichanh C, et al. A Human
+    Cancer. Cancer Prev Res (Phila) (2013) 6:656–65. doi: 10.1158/1940-                     Gut Microbial Gene Catalogue Established by Metagenomic Sequencing.
+    6207.CAPR-12-0501                                                                       Nature (2010) 464:59–65. doi: 10.1038/nature08821
+20. Kim BC, Shin A, Hong CW, Sohn DK, Han KS, Ryu KH, et al. Association of             40. Gibson GR, Beatty ER, Wang X, Cummings JH. Selective Stimulation of
+    Colorectal Adenoma with Components of Metabolic Syndrome. Cancer                        Biﬁdobacteria in the Human Colon by Oligofructose and Inulin.
+    Causes Control (2012) 23:727–35. doi: 10.1007/s10552-012-9942-9                         Gastroenterology (1995) 108:975–82. doi: 10.1016/0016-5085(95)90192-2
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                         8                                        August 2021 | Volume 11 | Article 664321
+Yuan et al.                                                                                                                             Non-Invasive Biomarkers for CRC
+
+
+
+41. Baxter NT, Rufﬁn MT, Rogers MAM, Schloss PD. Microbiota-Based Model                   Gut Microbiome Analysis. Exp Mol Med (2019) 51:117. doi: 10.1038/s12276-019-
+    Improves the Sensitivity of Fecal Immunochemical Test for Detecting Colonic           0313-4
+    Lesions. Genome Med (2016) 8:37. doi: 10.1186/s13073-016-0290-3                   56. Chen WG, Liu FL, Ling ZX, Tong XJ, Xiang C. Human Intestinal Lumen and
+42. Cheng F, Su L, Qian C. Circulating Tumor DNA: A Promising Biomarker in                Mucosa-Associated Microbiota in Patients with Colorectal Cancer. PloS One
+    the Liquid Biopsy of Cancer. Oncotarget (2016) 7:4883248841. doi: 10.18632/           (2012) 7(6):e39743. doi: 10.1371/journal.pone.0039743
+    oncotarget.9453                                                                   57. Sinha R, Ahn JY, Sampson JN, Shi JX, Yu GQ, Xiong XQ, et al. Fecal
+43. Berger AW, Schwerdel D, Welz H, Marienfeld R, Schmidt SA, Kleger A.                   Microbiota, Fecal Metabolome, and Colorectal Cancer Interrelations. PloS
+    Treatment Monitoring in Metastatic Colorectal Cancer Patients by                      One (2016) 11:e0152126. doi: 10.1371/journal.pone.0152126
+    Quantiﬁcation and KRAS Genotyping of Circulating Cell-Free DNA. PloS              58. Wang TT, Cai GX, Qiu YP, Zhang MH, Pang XY, Jia W, et al. Structural
+    One (2017) 12:e0174308. doi: 10.1371/journal.pone.0174308                             Segregation of Gut Microbiota between Colorectal Cancer Patients and
+44. Baylin SB, Jones PAA. Decade of Exploring the Cancer Epigenome - Biological           Healthy Volunteers. ISME Journal (2011) 6:320–9. doi: 10.1038/ismej.
+    and Rranslational Implications. Nat Rev Cancer (2011) 11:726–34.                      2011.109
+    doi: 10.1038/nrc3130                                                              59. Nielsen DS, Krych L, Buschard K, Hansen CH, Hansen AK. Beyond Genetics.
+45. Baylin SB, Jones PA. Epigenetic Determinants of Cancer. Cold Spring Harb              Inﬂuence of Dietary Factors and Gut Microbiota on Type 1 Diabetes. FEBS
+    Perspect Biol (2016) 8:a019505. doi: 10.1101/cshperspect a019505.                     Lett (2014) 588:4234–43. doi: 10.1016/j.febslet.2014.04.010
+46. Irizarry RA, Ladd-Acosta C, Wen B, Wu Z, Montano C, Onyango P, et al. The         60. Serino M, Blasco-Baque V, Nicolas S, Burcelin R. Far From the Eyes, Close to
+    Human Colon Cancer Methylome Dhows Similar Hypo- and                                  the Heart: Dysbiosis of Gut Microbiota and Cardiovascular Consequences.
+    Hypermethylation at Conserved Tissue Speciﬁc CpG Island Shores. Nat                   Curr Cardiol Rep (2014) 16:540. doi: 10.1007/s11886-014-0540-1
+    Genet (2009) 41:178–86. doi: 10.1038/ng.298                                       61. Arrieta MC, Finlay B. The Intestinal Microbiota and Allergic Asthma. J Infect
+47. Warren JD, Xiong W, Bunker AM, Vaughn CP, Furtado LV, Roberts WL,                     (2014) 69:53–5. doi: 10.1016/j.jinf.2014.07.015
+    et al. Septin 9 Methylated DNA Is a Sensitive and Speciﬁc Blood Test for          62. Lee JY, Chu SH, Jeon JY, Lee MK, Park JH, Lee DC, et al. Effects of 12 Weeks
+    Colorectal Cancer. BMC Med (2011) 9:133. doi: 10.1186/1741-7015-9-133                 of Probiotic Supplementation on Quality of Life in Colorectal Cancer
+48. Church TR, Wandell M, Lofton-Day C, Mongin SJ, Burger M, Payne SR, et al.             Survivors: Adouble-Blind, Randomized, Placebo-Controlled Trial. Dig Liver
+    Prospective Evaluation of Methylated SEPT9 in Plasma for Detection of                 Dis (2014) 46:1126–32. doi: 10.1016/j.dld.2014.09.004
+    Asymptomatic Colorectal Cancer. Gut (2014) 63:317–25. doi: 10.1136/gutjnl-
+    2012-304149                                                                       Conﬂict of Interest: JY, YZ, ZS and SM were employed by Shanghai Personal
+49. Fong W, Li Q, Yu J. Gut Microbiota Modulation: A Novel Strategy for               Biotechnology Co., Ltd.
+    Prevention and Treatment of Colorectal Cancer. Oncogene (2020) 39:4925–43.
+    doi: 10.1038/s41388-020-1341-1                                                    The remaining authors declare that the research was conducted in the absence of
+50. Hold GL, Garrett WS. Gut Microbiota. Microbiota Organization–A Key to             any commercial or ﬁnancial relationships that could be construed as a potential
+    Understanding CRC Development. Nat Rev Gastroenterol Hepatol (2015)               conﬂict of interest.
+    12:128–29. doi: 10.1038/nrgastro.2015.25
+51. Ray K. Gut microbiota: Oral Microbiome Could Provide Clues to CRC. Nat            Publisher’s Note: All claims expressed in this article are solely those of the authors
+    Rev Gastroenterol Hepatol (2017) 14:690. doi: 10.1038/nrgastro.2017.158           and do not necessarily represent those of their afﬁliated organizations, or those of
+52. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. Fusobacterium                 the publisher, the editors and the reviewers. Any product that may be evaluated in
+    Nucleatum Promotes Colorectal Carcinogenesis by Modulating E-Cadherin/            this article, or claim that may be made by its manufacturer, is not guaranteed or
+    Beta-Catenin Signaling via Its FadA Adhesin. Cell Host Microbe (2013)             endorsed by the publisher.
+    14:195–206. doi: 10.1016/j.chom.2013.07.012
+53. Ning J, Beiko RG. Phylogenetic Approaches to Microbial Community                  Copyright © 2021 Yuan, Ma, Yu, Meng, Du, Li, Zhu, Sun, Ma and Song. This is an
+    Classiﬁcation. Microbiome (2015) 3:47. doi: 10.1186/s40168-015-0114-5             open-access article distributed under the terms of the Creative Commons Attribution
+54. Duvallet C, Gibbons SM, Gurry T, Irizarry RA, Alm EJ. Meta-Analysis of Gut        License (CC BY). The use, distribution or reproduction in other forums is permitted,
+    Microbiome Studies Identiﬁes Disease-Speciﬁc and Shared Responses. Nat            provided the original author(s) and the copyright owner(s) are credited and that the
+    Commun (2017) 8:1784. doi: 10.1038/s41467-017-01973-8                             original publication in this journal is cited, in accordance with accepted academic
+55. Yang J, Mcdowell A, Kim EK, Seo H, Lee WH, Moon C-M. Development of               practice. No use, distribution or reproduction is permitted which does not comply with
+    a Colorectal Cancer Diagnostic Model and Dietary Risk Assessment through          these terms.
+
+
+
+
+Frontiers in Oncology | www.frontiersin.org                                       9                                          August 2021 | Volume 11 | Article 664321
+

@@ -1,0 +1,920 @@
+Liu et al. Journal of Translational Medicine (2023) 21:373                                                                                                 Journal of
+https://doi.org/10.1186/s12967-023-04119-1
+                                                                                                                                              Translational Medicine
+
+
+    RESEARCH                                                                                                                                                    Open Access
+
+Identification of colorectal cancer
+progression‑associated intestinal microbiome
+and predictive signature construction
+Jungang Liu1†, Xiaoliang Huang1†, Chuanbin Chen1, Zhen Wang1, Zigui Huang1, Mingjian Qin1, Fuhai He1,
+Binzhe Tang1, Chenyan Long1, Hong Hu2, Shuibo Pan2, Junduan Wu2* and Weizhong Tang1*
+
+
+
+    Abstract
+    Objective The relationship between intestinal microbiome and colorectal cancer (CRC) progression is unclear. This
+    study aims to identify the intestinal microbiome associated with CRC progression and construct predictive labels to
+    support the accurate assessment and treatment of CRC.
+    Method The 192 patients included in the study were divided into stage I-II and stage III-IV CRC patients according
+    to the pathological stages, and preoperative stools were collected from both groups for 16S rDNA sequencing of the
+    intestinal microbiota. Pearson correlation and Spearman correlation coefficient analysis were used to analyze the dif-
+    ferential intestinal microbiome and the correlation with tumor microenvironment and to predict the functional path-
+    way. XGBoost model (XGB) and Random Forest model (RF) were used to construct the microbiome-based signature.
+    The total RNA extraction from 17 CRC tumor simples was used for transcriptome sequencing.
+    Result The Simpson index of intestinal microbiome in stage III-IV CRC were significantly lower than those in stage I-II
+    CRC. Proteus, Parabacteroides, Alistipes and Ruminococcus etc. are significantly enriched genus in feces of CRC patients
+    with stage III-IV. ko00514: Other types of O − glycan biosynthesis pathway is relevant with CRC progression. Alistipes
+    indistinctus was positively correlated with mast cells, immune activators IL-6 and IL6R, and GOBP_PROTEIN_FOLD-
+    ING_IN_ENDOPLASMIC_RETICULUM dominantly. The Random Forest (RF) model and eXtreme Gradient Boosting
+    (XGBoost) model constructed with 42 CRC progression-associated differential bacteria were effective in distinguishing
+    CRC patients between stage I-II and stage III-IV.
+    Conclusions The abundance and diversity of intestinal microbiome may increase gradually with the occurrence and
+    progression of CRC. Elevated fetal abundance of Proteus, Parabacteroides, Alistipes and Ruminococcus may contribute
+    to CRC progression. Enhanced synthesis of O − glycans may result in CRC progression. Alistipes indistinctus may play
+    a facilitated role in mast cell maturation by boosting IL-6 production. Alistipes indistinctus may work in the correct
+    folding of endoplasmic reticulum proteins in CRC, reducing ER stress and prompting the survival and deterioration of
+    CRC, which may owe to the enhanced PERK expression and activation of downstream UPR by Alistipes indistinctus. The
+
+
+
+†
+Jungang Liu and Xiaoliang Huang contributed equally to this work
+*Correspondence:
+Junduan Wu
+wujunduan@163.com
+Weizhong Tang
+tangweizhong@gxmu.edu.cn
+Full list of author information is available at the end of the article
+
+
+                                             © The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which
+                                             permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+                                             original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or
+                                             other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+                                             to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory
+                                             regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this
+                                             licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+                                             mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                    Page 2 of 19
+
+
+
+
+  CRC progression-associated differential intestinal microbiome identified in our study can be served as potential micro-
+  bial markers for CRC staging prediction.
+  Keywords Colorectal cancer, 16S rRNA, Intestinal microbiome, Immune infiltration, Staging prediction
+
+
+Introduction                                                   suggests that the human intestinal microbiome is one
+Colorectal cancer (CRC) is the third most common               of the important factors associated with CRC. A variety
+malignancy in men and the second most common in                of microorganisms can trigger intestinal inflammatory
+women, with the third highest mortality rate among all         responses and oncogenic signals to promote CRC devel-
+cancers, and is the leading cause of cancer-related mor-       opment, and when the intestinal microbiota is displaced
+tality worldwide, and the incidence is increasing sig-         or functionally abnormal, it can disrupt intestinal epi-
+nificantly in recent years [1, 2]. Studies have shown that     thelial cells and induce CRC development by participat-
+patients with early-stage CRC can obtain satisfactory          ing in inflammatory responses, host organism immunity,
+survival through surgery and adjuvant radiotherapy, and        and production of oncogenic substances [6]. Besides, it is
+their 5-year survival rates are higher compared to those       also demonstrated that enriched gut microbiome differs
+of patients with advanced CRC [3]. At present, early-          between older CRC patients and younger CRC patients
+stage CRC is mainly diagnosed by colonoscopy, which is         at different clinical stages and tumor locations, the pre-
+an invasive test that is not widely available in China, thus   dominance of DNA binding and RNA-dependent DNA
+reducing the detection rate of early-stage CRC to a cer-       biosynthesis processes in younger CRC patients has
+tain extent. In addition, due to the heterogeneity of CRC,     been demonstrated when studying metabolic alterations
+the lack of specific clinical manifestations and the low       in the intestinal microbiome system [7]. Those evidence
+sensitivity and specificity of tumor markers, patients are     indicated a significant interaction between the intesti-
+often in progressive or even advanced stages when first        nal microbiome and the clinicopathological features of
+diagnosed, and due to factors such as tumor drug resist-       CRC can enhance the CRC cells’ invasive and prolifera-
+ance and patient compliance, the best time for treat-          tion capacity via activating the transcriptional and trans-
+ment is missed, resulting in poor prognosis. Therefore, it     lational biosynthetic processes. What’s more, it has been
+is extremely important to find a non-invasive screening        shown that APC mutations in the host are closely asso-
+method for early detection of CRC.                             ciated with changes in intestinal microbiome and serum
+  The mechanisms of CRC are still undergoing, and it           metabolites for predicting CRC development in adeno-
+is generally accepted that the development of CRC is           matous polyps of the intestine [8]. Liu et al. have showed
+related to epigenetic, dietary, environmental and meta-        that a significant decrease in traditional beneficial bac-
+bolic factors. The human intestinal microbiota consists        teria such as Lactobacillus and Bifidobacterium and
+of more than 1000 microorganisms, including microbi-           a significant increase in oncogenic bacteria such as
+ome, fungal and viral groups, with more than 100 times         Enterobacteriaceae and Fusobacterium nucleatum in
+the number of genes than humans [4]. The stability of the      CRC patients, which tested that endotoxin (LPS), D- In
+number and species of normal human intestinal micro-           addition, elevated levels of endotoxin (LPS), D-lactate
+biome plays a crucial role in shaping the intestinal epi-      and diamine oxidase (DAO) were confirmed to be asso-
+thelium, maintaining immunity and defending against            ciated with dysregulated fecal microbiota and intestinal
+pathogenic bacteria. Evidence is accumulating that intes-      mucosal barrier dysfunction in early CRC patients [9].
+tinal microbiota is involved in the development of human       This kind of changes in the number and type of intestinal
+malignancy as a key factor. Metabolites of the intestinal      flora may work together to involve in CRC process and
+microbiota can induce oncogenic stress responses, such         provide a new non-invasive test and precise treatment for
+as the transition growth of Porphyromonas secretes             a specific flora in CRC patients. Hence, in order to clarify
+butyrate analogs that increase the expression of senes-        which of intestinal flora that are decreasing or increasing
+cence-inducing genes (p16INK4a and p21Cip1/Waf1)               in CRC patients to better understand the mechanism of
+and SASP factor genes (IL-1 and IL-6), accelerating cel-       CRC, the fecal of CRC patients was to collected to fur-
+lular senescence, leading to increased DNA damage              ther analyses. Interestingly, there are few relevant studies
+and p53 phosphorylation formation, which induces the           on the changes of intestinal microbiome in the stool of
+development of CRC [5]. It is shown that the microbi-          patients with early and advanced CRC.
+ome plays a pivotal role in the development of many               In the present study, in order to search for intestinal
+human diseases through its involvement in human meta-          microbiome associated with the development of CRC to
+bolic and immune processes. Previous research evidence         find new biomarkers for the diagnosis of early CRC and
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                    Page 3 of 19
+
+
+
+
+to provide new strategies for the prevention and treat-        were measured by Qubit 3.0 fluorometer DNA HS analy-
+ment of early CRC, a total of 192 samples with CRC             sis (Thermo Fisher Scientific) and specifically differenti-
+patients’ fecal are submitted to16S rDNA gene sequenc-         ated in Invitrogen Qubit3.0 lines. The number and size
+ing and are analyzed the differences between early and         of sequencing libraries were analyzed using an Agilent
+advanced CRC patients, which may shed light on the             BioAnalyzer 2100 (Agilent), and comparative analysis
+pathogenesis of CRC in the intestinal microbiome.              of colony richness was performed in patients with stage
+                                                               I-II and III-IV CRC. Subsequent raw data analysis of 16S
+Methods                                                        rDNA sequencing was performed with Quantitative In-
+Sample collection                                              sights Into Microbial Ecology version 2 (QIIME2).
+198 CRC patients’ fecal samples in Guangxi Medical Uni-          LEfSe and QIIME2 were used for analysis by R software
+versity Cancer Hospital were qualified during selected         with R package (heatmap, ggplot2).The LEfSe analysis
+236 fecal samples during 2021.01.01 to 2021.12.31.             was used to screen species for inter-group differences
+Among them, there were 192 samples with certain                through Lefse Software v1.0.0, firstly by using the non-
+TNM stage for our analysis. Inclusion criteria: (1) Sur-       parametric Kruskal–Wallis rank sum test in multiple
+gical treatment with clear pathological stage according        sample groups to screen for species with significant dif-
+to ACJJ CRC staging guidelines; (2) No combination or          ferences in abundance between subgroups; then, based
+no previous other malignancies; (3) Exclusion of other         on the significantly different species obtained, the Wil-
+intestinal diseases and no acute comorbidities such as         coxon rank sum test was used in pairs to perform an
+complete intestinal obstruction, intestinal perforation,       inter-subgroup difference analysis, and finally, linear
+or pelvic abscess; (4) Patients did not receive any Anti-      discriminant analysis (LDA) was used to assess the effect
+tumor treatment, such as surgery, chemotherapy, radio-         value of each significantly different species. Intra-group
+therapy, immunotherapy and Chinese herbal medicine,            microbiome diversity was analyzed by α diversity, and we
+etc.; (5) No antibiotics and intestinal microecological        used Chao1 and ACE indices to describe the abundance
+agents were used in the past 1 month; (6) No impair-           of intestinal microbiome and Shannon and Simpson
+ment of consciousness or other cognitive dysfunction.          indices to describe the abundance and homogeneity of
+Based on the postoperative pathological staging of CRC         intestinal microbiome. And for inter-group colony diver-
+patients included in the study, stages I-II were defined as    sity was analyzed by β diversity. The variability in species
+early colorectal cancer, while stages III-IV were defined      composition of the gut flora of each sample in the same
+as advanced colorectal cancer. Before treatment, the           ecology was measured by β diversity, and ADONIS anal-
+patients’ fecal samples were taken in sterile ice boxes,       ysis in beta diversity analysis was performed by vegan
+dispensed in 2 mL EP tubes and stored in a refrigerator        package v2.5.6. The Partial Least squares-discriminant
+at -80 ℃. The study was approved by the medical ethics         Analysis (PLS-DA) of fecal intestinal flora was per-
+committee of our hospital, and all study subjects signed       formed by the package mixOmics v6.6.2. Developed in
+an informed consent form.                                      2013 by Langille et al., PICRUSt (Phylogenetic Investiga-
+                                                               tion of Communities by Reconstruction of Unobserved
+16S rDNA gene‑sequencing and microbiome analysis               States) is a bioinformatics software which can be used
+Take 200 mg of fecal sample and add 2 mL of EX buffer.         to predicting the function of metagenomes based on 16S
+Take 1.2 mL of fecal lysate, heat at 70 ℃ for 5 min, centri-   sequencing data, especially for the functional prediction
+fuge at 1,500 r/min for 1 min, take 200 μL of supernatant      of human microbial community with high accuracy [10].
+in a microcentrifuge tube containing 1.5 mL of protein-        PICRUSt2, an updated version of PICRUSt, was imple-
+ase K; incubate at 70 ℃ for 10 min, add 200 μL of 75%          mented to predict the enriched KEGG pathways between
+ethanol and mix well; pass 600 μL of lysate through a          microbial community in patients with stage I-II and stage
+QIAamp centrifuge column and centrifuge; add 500 μL            III-IV CRC in this study.
+of LBuffer AW2 to the column to elute DNA. The DNA
+was eluted using primers (341F:5′-CCT​ACG​GGNGGC​              XGBoost model (XGB) and Random Forest (RF) models
+WGC ​ AG-3′;805R:5′-GAC​ TAC​ H VGGG​ TAT​ C TA​ ATC​          construction
+C-3′) targeted to the V3 and V4 high variant regions of        The XGBoost (eXtreme Gradient Boosting, XGB) model
+the 16S rDNA gene on an ABI 2720 Thermal Cycler for            and the Random Forest (RF) model, two kinds of exten-
+16S rDNA gene amplification. Normalized equimolar              sive machine learning methods, were applied to identify
+concentrations of each amplicon were then pooled and           the intestinal microbiome to predict stage I-II and stage
+sequenced on the Miseq PE250 (Illumina) platform using         III-IV in CRC patients, respectively. XGB can improve
+2 × 250 bp chemistry according to the manufacturer’s           the efficiency and scalability of the model by avoiding
+instructions. DNA concentrations of sequenced libraries        model over-fitting, reducing the complexity of the model,
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                         Page 4 of 19
+
+
+
+
+while RF is evaluated synthetically by combining multi-           rank-based method that calculates a score for the abso-
+ple decision trees, and the generalization error converges        lute enrichment of a specific gene set for each sample.
+continuously as the number of trees increases [11–13].            After downloading the gene set file in gmt format (c2.
+Python Scikit learning (https://​scikit-​learn.​org/​stable/;     cp.kegg. v2022.1. Hs. symbols. gmt, c5. go. v2022.1. Hs.
+v, 0.18) was applied to the toolkit used to construct and         symbols. gmt) from the official website of GSEA (https://​
+evaluate the models, and default parameters were used             www.​gsea-​msigdb.​org/​gsea/​index.​jsp), we used the
+for modeling. The subject operating curve (ROC) and               “ssgsea” algorithm to calculate the gene set score matrix
+area under the curve (AUC) were used to assess the accu-          for each sample with the GSVA package v1.46.0. Then,
+racy of the constructed models by applying cross-valida-          the functional pathways were analyzed by the limma
+tion tests to assess the stability of the models.                 algorithm with the TCGAbiolinks package v2.25.3. GO
+                                                                  analysis includes three levels: biological process (BP),
+Transcriptome sequencing                                          molecular function (MF), and cellular component (CC).
+
+the Trizol® Total RNA Extraction Kit according to the
+Total RNA was isolated from 17 CRC tumor samples by               The significance threshold for differentially expressed
+                                                                  genes is: p value < 0.05 and | log2FC |> 0.
+instructions. Then, we checked the purity of the RNA by
+micro UV spectrophotometer when the integrity of RNA              Statistical analysis
+was tested. Besides, cDNA libraries were constructed              T-Test and Pearson Chi-square for the data of clinical
+
+Preparation Kit (VAHTS™ Stranded mRNA-seq Library
+according to the instructions of the RNA-seq Sample               baseline table were performed by SPSS software v23.0.
+
+Prep Kit for Illumina®) after removing the rRNA. In
+                                                                  Pearson correlation analysis was performed between
+                                                                  intestinal flora, immune cell abundance, immune-related
+order to assessed the quality of sequenced raw data which         genes and among dominant flora in both CRC groups by
+was performed by Illumina NovaSeq 6000, FastQC was                Hmisc package v4.7-1. Spearman correlation analysis was
+applied for this purpose. All the samples valid data were         performed between intestinal flora and BP items and MF
+firstly matched to the reference genome (version: hg38)           items by ggcorrplot package v0.1.4, between intestinal
+using HISAT2 for valid data. The expression of genes was          flora and KEGG pathways by Hmisc package v4.7-1. R
+evaluated. The TPM (Transcripts Per Million) calculated           software (version 4.20) was applied for statistical analyses
+for each gene was used as the expression abundance of             package ggplot2 v3.4.0, pheatmap v1.0.8, Igraph package
+that gene after the expression of genes was assessed using        v1.3.5 and Cystoscope software Version 3.7.2 were used
+StringTie and known gene models, and the TPM (Tran-               for graph visualization [14, 15]. Differences were consid-
+scripts Per Million) calculated for each gene was used as         ered statistically significant at P < 0.05.
+the expression abundance of that gene.
+                                                                  Result
+Differential bacterial flora and the correlation with tumor       Basic information and clinical characteristics of recruited
+microenvironment                                                  colorectal cancer patients
+CIBERSORT, the most cited tool for the analysis of                After inclusion and exclusion, this study had completed
+immune cell infiltration estimation (http://​ciber​sort.​stanf​   the collection of stool samples from 236 patients with
+ord.​edu), is used for the analysis of tumor infiltration of      colorectal cancer (CRC)before treatment, and finally
+immune cells, immune targets, etc. The CIBERSORT                  198 qualified fecal samples were received for 16S rRNA
+algorithm, using microarray data to construct a feature           sequencing. Of these, 192 CRC patients had certain
+matrix, can transform the TPM matrix into a relative              information of TNM stage, including 62 CRC patients
+content matrix of 22 immune cells, including immune               with stage I-II and 130 CRC patients with stage III-IV.
+cells with different cell types and functional states such        As illustrated in the Table 1, there was no statistically
+as B cells, CD4 + T cells, CD8 + T cells, neutrophils,            significant difference in age between CRC patients with
+macrophages, dendritic cells, NK cells, immune targets            stage III-IV and those with stage I-II, the proportion of
+and chemokines. We transformed the transcriptome                  male CRC patients was significantly higher than that of
+sequencing data into the relative content matrix of 22            female CRC patients (Pearson Chi-square, P = 0.003). The
+immune cells using the CIBERSORT analysis tool and R              proportion of CRC patients with stage III-IV accom-
+software with ‘CIBERSORT R script v1.03’.                         panied with vascular invasion (Pearson Chi-square,
+                                                                  P = 0.033) and perineural invasion (Pearson Chi-square,
+Identification of differential pathway                            P = 0.003) were significantly higher than those of CRC
+The analysis of variance of The KEGG pathways and GO              patients with stage I-II, suggesting that stage III-IV CRC
+items were all performed using the Single Sample Gene             is more malignant than stage I-II.
+Set Enrichment Analysis (ssGSEA) algorithm, which a
+Liu et al. Journal of Translational Medicine           (2023) 21:373                                                                                                    Page 5 of 19
+
+
+
+
+Table 1 Demographic and clinical characteristics of CRC patients stratified by CRC progression-related condition
+                                                     CRC patients with advanced                  CRC patients with early stage P value                         Test
+                                                     stage (TMN 3–4) (n = 130)                   (TMN 0–2) (n = 62)
+
+Age (years, mean (SD))                               57.52 ± 11.96                               59.60 ± 10.16                           0.240                 T-Test
+Age (%)                             ≥ 60             57 (43.80)                                  27 (43.50)                              0.969                 Pearson Chi-square
+                                    < 60             73 (56.20)                                  35 (56.50)
+Gender (%)                          male             67 (51.50)                                  46 (74.20)                              0.003**               Pearson Chi-square
+                                    female           63 (48.50)                                  16 (25.80)
+LVI invasion (%)                    YES              32 (43.20)                                  15 (25.40)                              0.033*                Pearson Chi-square
+                                    NO               42 (56.80)                                  44 (74.60)
+perineural invasion (%)             YES              49 (67.10)                                  24 (41.40)                              0.003**               Pearson Chi-square
+                                    NO               24 (32.90)                                  34 (58.60)
+The "*" in the upper right corner of the P value indicates the size of the P value: none* for P value ≥ 0.05. * for 0.01 ≤ P < 0.05. ** for 0.001 ≤ P < 0.01
+
+
+
+
+Comparison of intestinal microbiome between colorectal                                      and filtered intestinal microbiota with significant differ-
+cancer patients at stage I‑II and stage III‑IV                                              ence in richness between stage I-II and stage III-IV CRC.
+Firstly, we compared the intestinal microbiome diversity                                    Through the analysis, we found a total of 41 bacteria with
+between CRC patients with stage I-II and stage III-IV                                       significant differences in abundance statistically. Among
+group based on α diversity and β diversity index. Fig. 1A                                   them, the abundance of a total of 19 bacteria in stage I-II
+showed six α diversity indices of intestinal microbiota                                     CRC group was significantly higher than that in stage
+samples of CRC patients with stage I-II in comparison to                                    III-IV group, and the abundance of 22 bacteria of stage
+that of CRC patients with stage III-IV, only the Simpson                                    III-IV CRC patients was significantly higher than that of
+index was significantly higher (Wilcoxon, P = 0.043). The                                   stage III-IV CRC patients (Wilcoxon, P < 0.05, as shown
+β diversity of CRC patient with stage I-II and stage III-                                   in Additional file 9: Table S3 and Fig. 2A, B). The Linear
+IV group was shown in Fig. 1B. There were no significant                                    Discriminant Analysis (LDA) bar plot of Fig. 2B exhibited
+differences statistically in Bray and Jaccard distance index                                the top ten bacteria with the highest LDA scores in each
+between the two groups. (Additional file 7: Tables S1,                                      group, where higher scores indicated greater influence of
+Additional file 8: Tables S2). Partial Least Squares Discri-                                the species (LDA scores were processed by log10).
+minant Analysis (PLS-DA) analysis suggested that CRC                                          In addition, in order to explore the interaction between
+patients with stage I-II and stage III-IV could be distin-                                  the different intestinal microbiome between the stage
+guished into distinct clusters (Fig. 1C). These results                                     I-II and stage III-IV CRC patients, we depicted the
+indicated that the richness and diversity of fecal micro-                                   correlation graph between the dominant microbiota of
+bial communities in stage III-IV CRC was significantly                                      the stage I-II groupa and stage III-IV group (Fig. 2C).
+higher than that of stage I-II CRC, and there was a clear                                   Herein, f__Ruminococcaceae.g__Sporobacter, g__Spor-
+between-group difference in the composition of intesti-                                     obacter.s__uncultured_bacterium, f__Ruminococcaceae.g__
+nal microbiome between them.                                                                Butyricicoccus, o__Clostridiales.f__Ruminococcaceae
+                                                                                            and g__Parabacteroides.s__Parabacteroides_merdae
+Identification of intestinal microbiome associated with CRC                                 were most connected to other nodes, which indi-
+progression                                                                                 cated that these five intestinal microbiome were most
+In order to seek out potential biomarkers of intestinal                                     closely related to other dominant bacteria. Moreover,
+microbiome associated with CRC progression, we per-                                         there was a significant negative correlation between
+formed LDA Effect Size (LEfSe) analysis on fecal microbi-                                   the Significantly enriched microbiota in stage III-IV
+ota of CRC patients with stage I-II and III-IV respectively,                                CRC and most of the dominant microbiota enriched
+
+  (See figure on next page.)
+  Fig. 1 Comparison of diversity index of intestinal microbiome in CRC patients with stage I-II and III-IV. A Comparison of α diversity index of
+  intestinal flora in CRC patients with stage I-II and III-IV. B Comparison of β diversity index of intestinal flora in CRC patients with stage I-II and III-IV.
+  The horizontal coordinates indicate the group, the vertical coordinates indicate the value of community diversity index of the samples in this group,
+  and the color indicates the group. C PLS-DA analysis of intestinal flora in the stage I-II group versus the stage III-IV group of CRC patients. The dots
+  represent each intestinal flora sample, the color indicates the group, the scale of horizontal and vertical axes indicates the relative distance of each
+  sample, and X-variate 2 and X-variate 1 represent the factors affecting the shift of intestinal flora composition in stage I-II group and stage III-IV
+  group of CRC patients, respectively
+Liu et al. Journal of Translational Medicine   (2023) 21:373   Page 6 of 19
+
+
+
+
+ Fig. 1 (See legend on previous page.)
+Liu et al. Journal of Translational Medicine    (2023) 21:373                                                                                   Page 7 of 19
+
+
+
+
+in stage I-II CRC. These results manifested that there                          between CRC progression-associated differential bac-
+might be a competitive relationship among these                                 teria and immune cells, we performed correlation
+dominant microbiota enriched in both groups.                                    analysis among these CRC progression-associated intes-
+                                                                                tinal microbiome and 22 immune cells. In stage I-II
+Function prediction of intestinal microbiome in CRC                             CRC group, there was a significant positive correlation
+patients with stage I‑II group and stage III‑IV                                 between f__Carnobacteriaceae.g__Dolosigranulum and B
+To explore the biological pathways enriched by intesti-                         cells naive, f__Dermatophilaceae.g__Dermatophilus and
+nal microbiome genes associated with CRC progression,                           o__Actinomycetales.f__Dermatophilaceae are negatively
+We used Phylogenetic Investigation of Communities by                            correlated with NK cell resting significantly (Fig. 4B, D).
+Reconstruction of Unobserved States 2 (PICRUSt2)—the                            In stage III-IV CRC group, g__Alistipes.s__uncultured_
+software applied to predict KEGG pathways between the                           organism, o__Rhodospirillales.f__Rhodospirillaceae and
+both groups for further analysis and a total of 180 KEGG                        c__Alphaproteobacteria.o__Rhodospirillales are positively
+pathways were identified (Additional file 10: Table S4),                        proportional to Mast cells resting and Mast cells acti-
+only two of them had significant statistical differences                        vated dominantly (Fig. 4C, D). f__Ruminococcaceae.g__
+(Wilcoxon, P < 0.05). The abundance of ko00514: Other                           Butyricicoccus was markedly negatively correlated with
+types of O − glycan biosynthesis in stage III-IV group                          Dendritic cells activated and T cells CD4 memory acti-
+was significantly higher than that in stage I-II group                          vated. In conclusion, the differential flora associated with
+(Wilcoxon, P = 0.018). Conversely, the ko00590: Arachi-                         CRC progression are significantly correlated with a vari-
+donic acid metabolism pathway abundance of stage I-II                           ety of immune cells, suggesting their potential role of reg-
+group was significantly higher than that in the stage III-                      ulating immune infiltration in CRC.
+IV group (Wilcoxon, P = 0.012) (see Fig. 3 and Additional
+file 10: Table S4 for details). What showed above revealed                      Correlation between CRC progression‑associated
+the different metabolic functions of intestinal microbi-                        differential microbiota and immune‑related genes
+ome associated with CRC progression.                                            Tumor occurrence and development are closely associ-
+                                                                                ated with host immunity. To investigate the relation-
+Relationship between CRC progression‑associated                                 ship between CRC progression -associated differential
+microbiota and tumor‑infiltrating immune cells                                  microbiota and host immunity, correlation analysis was
+Tumor-infiltrating immune cells are important con-                              performed among the differential bacteria and common
+stituents of tumor microenvironment and participates                            immune-related genes. Among the dominant bacteria
+in regulating anti-tumor immune response, which is a                            in stage I-II CRC group, g__Lachnospiracea_incertae_
+potential therapeutic target for tumor immunotherapy.                           sedis.s__uncultured_bacterium_adhufec37.25 had observ-
+To decipher the interplay between CRC progression-                              able positive correlation with multiple checkpoints
+associated differential microbiota and tumor-infiltrating                       (TNFSF18, BTNL2 and VTCN1 etc.) (see Additional
+immune cells, we analyzed the data of 17 CRC patients                           file 1: Fig. S1), immune-activating genes (TNFRSF17,
+with certain TNM stage and RNA sequencing and                                   ENTPD1 and CXCL12 etc.)(Fig. 5A), immunosuppres-
+depicted the band map of immune cell abundances                                 sive genes (LAG3, KDR and IL10, etc.) (as in Additional
+(Fig. 4A).From the band map, we observed different                              file 2: Fig. S2), chemokines (CXCL6, CCL8 and CCL14
+immune cell infiltration among different TNM stage of                           etc.) (as in Fig. 5C) and chemokine receptors (CCR2) (as
+CRC patients. Then, in order to explor the relationship                         in Additional file 3: Fig. S3). For the dominant bacteria
+
+
+ (See figure on next page.)
+ Fig. 2 Differential analysis of intestinal flora of CRC patients in stage I-II group and stage III-IV group. A cladogram by LEfSe analysis. Node size
+ represents species abundance size, which is proportional to species abundance size. Node color represents grouping, yellow nodes in the
+ tree branch indicate species with no significant abundance differences between groups; red nodes indicate species with significantly higher
+ abundance in stage III-IV groups, and green nodes indicate species with significantly higher abundance in stage I-II groups. Each layer of nodes
+ indicates phylum/class/order/family/genus/species from inside-out, and the annotation of each layer of species markers indicates phylum/class/
+ order/family/genus/species from outside-in. B LDA bar graph based on 16S rRNA gene sequencing. The color of the bar represents the group, the
+ horizontal coordinate is the LDA score (after log10 treatment), the vertical coordinate indicates the species with significantly higher abundance in
+ the group, and the length of the bar represents the size of the LDA score value. C Network diagram of the correlation of differential intestinal flora
+ associated with phase I-II groups and phase III-IV groups. Each node represents each species, node color represents grouping, node size represents
+ the number of edges connected to the node, the larger the node, the more the number of edges connected to the node, the connecting line
+ represents the existence of significant correlation between two nodes, Spearman correlation coefficient value below 0 (negative correlation)
+ indicates blue line, Spearman correlation coefficient value greater than 0 (positive correlation) indicates red line The thicker the line, the greater the
+ Spearman correlation coefficient between the two nodes
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                   Page 8 of 19
+
+
+
+
+ Fig. 2 (See legend on previous page.)
+
+
+
+in stage III-IV CRC,g__paraprevotelela.s__uncultured_          Additional file 5: Fig. S5), chemokines (CCL11, CXCL12
+organism was markedly relevant with multiple check-            and CCL25 etc.) (Fig. 5D) and chemokine receptors
+points (ADORA2A, VTCN1 and BTNL2 etc.) (as in                  (CCR2) (as in Additional file 6: Fig. S6 showed). Over all,
+Additional file 4: Fig. S4), immune-activating genes           the differential microbiota associated with CRC progres-
+(ENTPD1, TNFSF18 and TNFRSF17 etc.) (as in Fig. 5B),           sion may affect the expression of immune-related genes.
+immune-suppressive genes (KDR and LAG3 etc.) (as in
+Liu et al. Journal of Translational Medicine     (2023) 21:373                                                                                      Page 9 of 19
+
+
+
+
+ Fig. 3 Box plots of KEGG functional abundance in CRC patients in stage I-II group and stage III-IV group. Horizontal coordinates indicate groups,
+ vertical coordinates indicate predicted abundance values for that pathway in each sample, boxes indicate the 25th–75th percentiles, and the center
+ marker indicates the median; black bars are 1.5 times the interquartile range
+
+
+
+
+ Fig. 4 Correlation of CRC progression-related differential intestinal flora with tumor immune infiltrating cells. A Relative abundance strip chart
+ of immune cells in CRC patients grouped by tumor stage. Each bar is a sample, and the vertical coordinate is the predicted relative abundance
+ value of immune cells. The sum of the relative abundance of all immune cells in a single sample is 1, and each color in the graph corresponds to
+ one immune cell. B Heat map of correlation between dominant flora and immune cell abundance in stage I-II group. C Heat map of correlation
+ between dominant flora and immune cell abundance in stage III-IV group. The horizontal coordinates indicate immune cells. The vertical
+ coordinates indicate bacteria. The red color in the graph represents positive correlation. The blue color represents negative correlation. The color
+ depth represents the Pearson correlation coefficient size. The color from light to dark indicates the Pearson correlation coefficient value from
+ small to large. The "*" in the graph indicates the size of P-value: no * for P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001.
+ D Network diagram of correlation between associated differential intestinal flora and immune cells. Each node represents each gut bacteria or
+ immune cell. The node color represents the grouping. And the connecting line represents the existence of significant correlation between two
+ nodes. The Spearman correlation coefficient value less than 0 (negative correlation) indicates the blue line, and the Spearman correlation coefficient
+ value greater than 0 (positive correlation) indicates the red line
+Liu et al. Journal of Translational Medicine    (2023) 21:373                                                                                  Page 10 of 19
+
+
+
+
+ Fig. 5 Correlation of CRC progression-related differential intestinal flora with immune-related genes. A Heatmap of the correlation between
+ dominant flora and immune activation genes in stage I-II CRC. B Heatmap of the correlation between dominant flora in stage III-IV CRC and
+ immune activation genes. C Heatmap of the correlation between the dominant flora in stage I-II CRC and chemokines. D Heatmap of the
+ correlation between dominant flora in stage III-IV CRC and chemokines. The horizontal coordinates indicate genes. The vertical coordinates
+ indicate colonies. Red in the graph represents positive correlation. Blue represents negative correlation. Color depth represents Pearson correlation
+ coefficient size. Color from light to dark indicates Pearson correlation coefficient value from small to large. The "*" in the graph indicates the size of
+ P-value: no * for P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001
+
+
+
+
+Identification of differential functional pathways and their                     METABOLISM(logFC = − 0.021, P = 0.029)] were sig-
+correlation with CRC progression‑associated differential                         nificantly up-regulated in the stage I-II CRC group.
+microbiota                                                                       For group stage III-IV CRC, 19 GO items[GOBP_
+To identify the differential regulatory pathways associ-                         CELLULAR_TRIVALENT_INORGANIC_ANION_
+ated with CRC progression and the correlation among                              HOMEOSTASIS(logFC = – 0.050,P = 0.013) and GOBP
+CRC progression-associated differential intestinal                               _PROTEIN_FOLDING_IN_ENDOPLASMIC_RETIC-
+microbiome and these pathways, we transformed RNA                                ULUM (logFC = 0.031, P = 0.013) etc.], and 2 KEGG
+sequencing data of cancer tissue samples from 9 CRC                              pathways [KEGG_OTHER_GLYCAN_DEGRADATIO
+patients (their 16sRNA sequencing data of intesti-                               (logFC = 0.031, P = 0.007) and KEGG_STEROID_
+nal microbiome is also available) into the correspond-                           BIOSYNTHESIS(logFC = 0.089, P = 0.023)] were signifi-
+ing scoring matrix of Gene Ontology (GO) and Kyoto                               cantly up-regulated (Fig. 6A, B). Detailed enriched GO
+encyclopedia of Genes and Genomes (KEGG) path-                                   item and KEGG pathway lists are shown in Additional
+ways using ssGSEA method. GO items included three                                file 10: Table S4, Additional file 11: Table S5, Additional
+aspects: biological process (BP), cellular component                             file 12: Table S6 respectively. And the above results indi-
+(CC) and molecular function (MF). Next, through dif-                             cated that different biological functions are enriched in
+ferential analysis of the GO and KEGG pathway score                              CRC of different stages.
+matrices between the stage I-II and stage III-IV CRC                                Subsequently, in order to explore the relationship
+group, we found a total of 46 GO items [GOBP_POSI-                               between CRC progression-related genomic functions
+TIVE_REGULATION_OF_INTEGRIN_ACTIVATION                                           and the dominant intestinal microbiome associated
+(logFC = − 0.053, P = 0.003) and GOBP_NEGATIVE_                                  with CRC progression, we conducted the correlation
+REGUL ATION_OF_TOLL_LIKE_REC EPTOR_4_                                            analysis among 41 CRC progression-associated differen-
+SIGNALING_PATHWAY (logFC = – 0.053,P = 0.009)                                    tial intestinal microbiome and score matrices of BP, MF
+etc.], and one KEGG pathway[KEGG_GALACTOSE_                                      and KEGG pathway that are related to CRC progression
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                                                  Page 11 of 19
+
+
+
+
+from 9 CRC patients. Remarkable correlation among                               value of ROC curve was 0.994 in the training set and
+some differential intestinal microbiome and BP, MF and                          0.729 in the validation set respectively (Fig. 7C). The RF-
+KEGG pathways were found, such as GOBP_NEGA                                     based CRC staging prediction model had an AUC value
+TIVE_REGULA TION_OF_PROTEIN_EXIT_FROM_                                          of greater than 0.7 in both the training and validation
+ENDOPLASMIC_RETICULUM was strongly positively                                   sets. The number of samples predicted as TN and TP by
+proportional to g__Eubacterium.s__uncultured_Clostrid-                          the confusion matrix of the training set was significantly
+iales_bacterium (Pearson r = 0.89, P < 0.05)(Fig. 6C),                          more than that of FN and FP samples (Fig. 7D). For the
+and there was a significant negative correlation between                        XGBoost-based CRC staging prediction model, the con-
+KEGG_OTHER_GLYCAN_DEGRADATION                         and                       fusion matrix of validation set showed that the number of
+f__Corynebacteriaceae.g__Corynebacterium         (Pearson                       samples predicted as TP was more than that of FP sam-
+r = − 0.68, P < 0.05)(Fig. 6D).In summary, CRC progres-                         ples. However, the number of TN samples was signifi-
+sion-associated differential intestinal microbiome may                          cantly less than the number of FN samples (Fig. 7E). The
+affect the progression of CRC through some potential                            AUC value of ROC curve in the training set was 1.000,
+biological functions.                                                           whereas that in the validation set was 0.641 (Fig. 7F),
+                                                                                which was less than 0.7. Although the confusion matri-
+Intestinal microbiome signature construction                                    ces of both models presented a high false negative rate,
+for predicting the tumor stage of CRC based on RF and XGB                       both models had certain prediction accuracy, and the RF-
+prediction models                                                               based CRC staging prediction model had higher predic-
+For the sake of selecting potential intestinal microbiome                       tion efficiency than XGBoost-based model, which could
+biomarkers associated with CRC progression and pre-                             contribute to the practice of CRC staging prediction by
+dicting the CRC stage more accurately, we constructed                           intestinal microbiome detection.
+Random Forest (RF) and eXtreme Gradient Boosting
+(XGBoost) prediction models based on the 41 CRC pro-                            Discussion
+gression -associated intestinal microbiome obtained by                          Based on 16S rRNA gene sequencing of fecal samples,
+Linear discriminant analysis Effect Size (LEfSe) analysis.                      this study explored the differences of intestinal microbial
+  The training set confusion matrix of the RF-based CRC                         communities between patients with colorectal cancer
+staging prediction model showed that the number of pre-                         (CRC) at stages I-II and III-IV, identifying significantly
+dicted true positive (TP) samples was more than that of                         enriched microbiota in feces of CRC patients with stage
+false positive (FP) samples, but the number of predicted                        I-II and stage III-IV respectively. We compared the intes-
+true negative (TN) samples was significantly less than                          tinal microbiome richness and diversity between stage
+that of false negative (FN) samples (Fig. 7A). The confu-                       I-II CRC and stage III-IV CRC patients. Simpson index
+sion matrix of the validation set was similar to the train-                     was statistically remarkably lower in CRC patients with
+ing set, whose number of TP samples was more than that                          stage III-IV than those with stage I-II (Fig. 1A, Wil-
+of FP samples, but the number of TN samples was sig-                            coxon, P = 0.043), which indicated that the diversity and
+nificantly less than that of FN samples (Fig. 7B). The AUC                      evenness of intestinal microbiome in stage III-IV CRC
+
+ (See figure on next page.)
+ Fig. 6 Identification of CRC progression-associated differential pathway and its correlation with CRC progression-associated differential intestinal
+ flora. A GO volcano plot of the associated differential expression in the stage I-II CRC versus the stage III-IV CRC. B KEGG Volcano plot of the
+ associated differential expression in stage I-II CRC vs. stage III-IV CRC. The horizontal coordinate indicates log2 (fold change). The farther the dot
+ is from the center, the greater the fold of difference; the vertical coordinate indicates -log10 (p value). The closer to the top the point indicates,
+ the more significant the difference in expression. Each dot represents a detected differentially expressed gene. Red indicates up-regulated genes.
+ Blue indicates down-regulated genes. And gray indicates no differential genes. C Correlation graph of BP and MF of CRC progression-related
+ differences with CRC progression-related differential intestinal microbiome. The horizontal coordinates indicate bacteria. The vertical coordinates
+ indicate GO labels. The red color in the graph represents positive correlation. The blue color represents negative correlation. The color depth
+ represents Spearman correlation coefficient size. The color from light to dark indicates Spearman correlation coefficient value from small to
+ large. The " × " in the graph indicates the size of P-value: with × means P-value ≥ 0.05, without × means P < 0.05. D Correlation graph of CRC
+ progression-related differences in KEGG and CRC progression-related differential intestinal flora. The triangle graph represents the correlation graph
+ of CRC progression-related differential intestinal flora. The upper right corner is the KEGG label. Red font indicates the KEGG pathway upregulated
+ in the stage III-IV group. Blue font indicates the KEGG pathway upregulated in the stage I-II group. The depth of the connecting color represents
+ the magnitude of Spearman’s correlation coefficient “r”. The connecting line presented in dark orange indicates the correlation coefficient
+ r ≥ 0.05, representing a strong positive correlation. The connecting line presented in light orange indicates the correlation coefficient 0 < r < 0.05,
+ representing a weak positive correlation. A dark orange line indicates a strong positive correlation; a light orange line indicates a correlation
+ coefficient of 0 < r < 0.05, which represents a weak positive correlation. A dark green line indicates a correlation coefficient r ≥ 0.05, representing a
+ strong negative correlation; a light green line indicates a correlation coefficient 0 < r < 0.05, representing a weak negative correlation; the thickness
+ of the line represents the p-value, with a thick line representing 0.01 < P < 0.05 and a thin line representing P ≥ 0.05
+Liu et al. Journal of Translational Medicine   (2023) 21:373   Page 12 of 19
+
+
+
+
+ Fig. 6 (See legend on previous page.)
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                                               Page 13 of 19
+
+
+
+
+patients were significantly higher than that of stage I-II                    expression in gut had observably poorer prognosis than
+CRC patients. Although there was no significant differ-                       CRC patients with low Parabacteroides expression in gut
+ence in β diversity index between the two groups (Fig. 1B,                    [24]. As a CRC-related pathogenic bacterium, Alistipes
+C), the intestinal microbiome could be obviously divided                      is associated with depressive mental state [25], Multi-
+into two groups after Partial Least squares-discriminant                      ple studies have shown that compared to healthy con-
+Analysis (PLS-DA) (Fig. 1C), which pointed out that                           trols, Alistipes genus was dominantly enriched in CRC
+intestinal microbiome compositions of CRC patients                            mucosa [26–28], Jihye Park etc. found that the Alistipes
+with stage I-II and stage III-IV were different to distin-                    abundance of CRC patients with stage IV was remarkably
+guish. One study had shown that the observed OTUs and                         declined than that of CRC patients with stage I-III [26],
+Chao1 index of intestinal microbiome in CRC patients                          which was consistent with the variation trend of Alistipes
+was significantly higher than that of healthy controls [16].                  abundance in our study. Ruminococcus genus colonizes in
+And another research indicated that the Simpson index                         the large intestine of human body [29], capable of secret-
+of fecal flora in CRC patients was significantly lower than                   ing pro-inflammatory substances which could cause
+that of health volunteers [17]. Some researchers also                         inflammatory bowel disease [30, 31]. In recent years, it
+compared the diversity of intestinal microbiome in CRC                        is considered to be closely related to CRC [32]. Previ-
+with different TNM stages, suggesting that the Simpson                        ous researches had shown that, either in the fetes sam-
+index of CRC patients with stage IV was significantly                         ple [33–35] or on the CRC mucosa [36], in comparison
+lower than that of stage III [18]. Therefore, we reasoned                     with the normal control, the abundance of Ruminococcus
+that the abundance and diversity of intestinal microbi-                       was distinctly elevated. In conclusion, we speculated that
+ome may gradually increase with the development and                           Proteus, Parabacteroides, Alistipes and Ruminococcus
+progression of CRC.                                                           were strongly bound up with CRC progression, accom-
+  We selected differential intestinal microbiome associ-                      panying with increased abundance of which might boost
+ated with CRC progression based on Linear discriminant                        the development and progression of CRC.At the species
+analysis Effect Size (LEfSe). At the genus level, Proteus,                    level, Bacteroides plebeius is shown to be closely linked
+Parabacteroides, Alistipes and Ruminococcus were in sig-                      to colorectal cancer. Compared with healthy people, the
+nificant enrichment in the fecal microbiota of stage III-                     abundance of Bacteroides plebeius in the fecal micro-
+IV CRC patients. Proteus is a pathogenic Gram-negative                        bial community of patients with adenomatous polyps,
+bacterium widely distributed in soil and water sources                        CRC and Lynch syndrome was dominantly elevated
+[19], which has recently been found to be closely asso-                       [37, 38]. Combined with other bacteria, Bacteroides ple-
+ciated with CRC. L Wachsmannova etc. found Proteus                            beius can be used as a highly effective biomarker to dis-
+mirabilis presented inside the cells of colorectal adeno-                     tinguish colorectal adenoma from CRC [39]. It is worth
+mas and CRC, whereas its presence was not detected in                         noting that in our study, the fecal abundance of Bacte-
+normal colorectal mucosal cells [20]. After co-culture                        roides plebeius of stage III-IV CRC patients was signifi-
+with Proteus vulgaris and Proteus mirabilis, SNAI1 and                        cantly higher than that of stage I-II patients, exhibiting an
+VIM gene expressions had changed significantly in                             upward trend with the progress of CRC. Although Hanju
+human colon cancer cell line Caco2, which are related to                      Hua et c. observed a remarkable decline in Bacteroides
+epithelial mesenchymal transformation, thus it was sug-                       genus abundance of CRC patients compared to patients
+gested that Proteus may be correlated with the epithelial                     with adenomatous polyps, there was no clear evidence
+mesenchymal transformation of CRC [21]. Moreover,                             that the abundance of Bacteroides plebeius descended
+increased abundance of Proteus mirabilis played a key                         observably in the fecal microbiota of CRC patients [37].
+role in the liver metastasis of CRC, which may count on                       Therefore, we hypothesised that Bacteroides plebeius is
+the reduction of Kupffer cells in the liver [22]. Parabacte-                  relevant to the development of CRC, increased abun-
+roides was observed to be distinctly higher in abundance                      dance of which may be a biological landmark event along
+in CRC tissues than normal mucosa adjacent to cancer                          the adenoma-carcinoma sequence, but it remains to be
+[23], besides, CRC patients with high Parabacteroides                         further explored.
+
+ (See figure on next page.)
+ Fig. 7 Evaluation of the effect of RF and XGB prediction models. A Confusion matrix of RF model in the training set. B Confusion matrix of the
+ RF model for the validation set. C ROC curves of RF model in both training set and validation set. D Confusion matrix of the XGB model in the
+ training set. E Confusion matrix of the XGB model in the validation set. F ROC curves of XGB model in both training set and validation set. The x-axis
+ represents the predicted situation of the model. The y-axis represents the true situation. 1 represents correct prediction. 0 represents incorrect
+ prediction. And the value in the box is the sample size. The horizontal coordinate is the false positive rate predicted by the model, the vertical
+ coordinate indicates the true positive rate predicted by the model, and the area under the curve represents the AUC value; the higher the AUC
+ value, the higher the diagnostic efficacy of the model
+Liu et al. Journal of Translational Medicine   (2023) 21:373   Page 14 of 19
+
+
+
+
+ Fig. 7 (See legend on previous page.)
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                   Page 15 of 19
+
+
+
+
+  In Comparison with stage III-IV CRC patients, Anaero-            Subsequently, by exploring the relationship among
+vorax and Oscillibacter were dominantly abundant in             the CRC progression-associated differential intestinal
+fecal microbia of stage I-II CRC patients, both of which        microbiome, immune infiltrating cells and immune-
+were confirmed to be probiotics [40, 41]. Anaerovorax           related genes, we did find that Alistipes genus had a
+is an anaerobic Gram-positive bacterium, which partici-         remarkable positive correlation with mast cells (Fig. 4C),
+pates in short chain fatty acids (SCFA) such as acetate         amidst which, Alistipes indistinctus manifested observ-
+and butyrate production [42]. SCFA can not only be             able positive correlation with immune activators IL-6 and
+served as the main energy source of intestinal mucosal         IL-6R. several studies had shown that inflammation and
+cells, but also as an anti-inflammatory compound, reduc-       tumorigenesis in colon were accompanied by increased
+ing the production of intestinal pro-inflammatory factors      Alistipes abundance and elevated IL-6 level in the body
+[43]. Oscillibactera also takes a role in SCFA production      [55–57], which implied that there may be a positive cor-
+[44], by which Oscillibactera reduces Th17 cell polari-        relation between Alistipes and IL-6, which is consistent
+zation and boost the differentiation of intestinal anti-       with our analysis. IL-6 can be produced by a variety of
+inflammatory cells Treg and Trl cells [45]. Furthermore,       cells in different disease states [58], proved to be a key
+it was reported that Oscillibacter induced a decline in        cytokine in promoting mast cell proliferation and matu-
+blood triglycerides [46], and high levels of triglycerides     ration [59, 60]. In the presence of stem cell factor, IL-6
+are a risk factor for CRC [47, 48]. Oscillibacter abun-        directly boosted the differentiation and development of
+dance in gastrointestinal tract neoplasms was remarkably       ­CD34+ cells in cord blood into mast cells through the
+reduced compared to the healthy controls [49]. In addi-         IL-6R-gp130 system [61]. Studies have documented that
+tion, We observed that the fecal abundance of Atopobium         mast cells massively infiltrate in the tumor microenviron-
+minutum in CRC patients with stage I-II was signifi-            ment of CRC, releasing proangiogenic factors and metal-
+cantly higher than that in CRC patients with stage III to       loproteinases to promote the angiogenesis and invasion
+IV. Atopobium minutum was confirmed to be capable of            of CRC respectively [62]. Thus, we hypothesized that
+inducing apoptosis of CRC cells, presenting its potential       Alistipes indistinctus induced the proliferation and matu-
+probiotic role [50]. Although the previous researches and       ration of infiltrated mast cells by stimulating the produc-
+our results manifested that Anaerovorax, Oscillibacter          tion of IL-6, thus facilitating the progression of CRC, but
+and Atopobium minutum are all probiotics, the addi-             it still needs to be validated by further research.
+tion of a healthy control group will be more conducive             Furthermore, we observed Alistipes indistinctus was
+to exploring their relationship with the development and        strongly positively proportional to GOBP_PROTEIN_
+progression of CRC.                                             FOLDING_IN_ENDOPLASMIC_RETICULUM, which
+  In the next place, we operated the Phylogenetic Inves-        was dominantly upregulated in stage III-IV CRC (Fig. 6C,
+tigation of Communities by Reconstruction of Unob-              Spearman r = 0.71, P < 0.05). Endoplasmic reticulum (ER)
+served States 2 (PICRUSt2) software for predicting the         is the main organelle responsible for protein synthesis,
+differential KEGG pathways of intestinal microbiome            folding and secretion. Due to its limited ability to pro-
+between stage III-IV and stage I-II CRC. in contrast to         cess proteins, unfolded or misfolded proteins will accu-
+stage I-II CRC, ko00514: Other types of O − glycan bio-         mulate excessively in the ER lumen when in pathological
+synthesis were in significant enrichment in stage III-IV        state, leading to ER stress [63]. ER stress may trigger the
+CRC (Fig. 3). O − glycans are glycoproteins connecting          unfolded protein response (UPR), which is a signal net-
+carbohydrate chains in the form of O-glycosides. They           work that coordinating function of endoplasmic reticu-
+are widely distributed in cell membranes and secretions         lum for homeostasis restoration, and be able to reduce
+of cancer cells with complex structure and biological           the load of unfolded proteins and maintain the normal
+functions [51], which contribute to tumor progression           vitality and function [64]. ER stress and UPR had been
+and can be served as potential biomarkers for carcino-          shown to be closely associated with inflammatory bowel
+genesis and staging prediction [52]. Several studies have       disease and CRC [65], Yugang Wang etc. revealed that
+confirmed that O-glycan inhibitors can increase content         high expression of PERK contributed to increased tumor
+of intracellular aryl-glycans by blocking the activity of       vascular density and tumor growth by activating the
+glycosyltransferase inside the tumor cells, so as to induce     UPR, which promoted the production of pro-angiogenic
+tumor apoptosis and suppress tumor proliferation [53,           mediators and reduced the production of pro-angiogenic
+54]. Therefore, we speculated that CRC with stage III-IV        inhibitors [66]. It is noteworthy that a research observed
+might stimulate its invasion and proliferation by enhanc-       both elevated abundance of Alistipes in intestinal micro-
+ing the synthesis of O − glycans, thus achieving the pro-       biome and myocardial PERK expression in diabetic cardi-
+gression of CRC.                                                omyopathy models of mice, and after drug intervention,
+Liu et al. Journal of Translational Medicine   (2023) 21:373                                                      Page 16 of 19
+
+
+
+
+the expression levels of both declined [67], so it is highly     of metabolites of intestinal microbiome, which clearly
+likely that there is a positive correlation between Alis-        shows the metabolic state of intestinal microbiome in the
+tipes abundance and PERK expression. Therefore, our              host, so it can more intuitively explore the relationship
+speculation is that Alistipes indistinctus is conductive         between intestinal microbiome and CRC occurrence and
+to the correct folding of proteins in the ER of CRC cells,       development from the molecular level.
+thereby reducing ER stress and facilitating the survival           Secondly, this study is a single-center, cross-sectional
+and progression of CRC, which may be on account of               study, and the addition of multi-center data is helpful to
+high expression of PERK and activation of downstream             enhance the persuasive and popularization of the conclu-
+UPR boosted by Alistipes indistinctus. Intriguingly, IL-6        sion. In addition, the lack of healthy controls in this study
+is also known as a common proangiogenic factor [68],and          is not conducive to judge the relationship between stage
+it can also be produced by mast cell [59], Which raise a         I-II enriched bacteria and CRC progression. However,
+question: whether mast cells are involved in angiogen-           we aimed to analyze the differential intestinal microbi-
+esis through activated downstream UPR of PERK and                ome associated with CRC progression. By comparing
+whether Alistipes indistinctus plays a role in the biologi-      the difference of intestinal microbiome between patients
+cal process need to be studied further.                          with stage III-IV and stage I-II CRC, we can filter intes-
+   Last but not the least, in order to explore the potential     tinal microbiome with the same cancer background,
+gut bacteria as fecal biomarkers to distinguish patients         which is more conducive to screen out bacteria closely
+with stage I-II and stage III-IV CRC, this study included        related to CRC progression. It is worth mentioning that
+42 characteristic bacteria related to CRC progression and        the fecal microbiota only partially reflects the microbiota
+constructed a random forest (RF) model and eXtreme               of the mucus layer of the intestinal mucosa. Combining
+Gradient Boosting (XGBoost) model, and compared the              the microbial communities of oral mucosa and intesti-
+discrimination efficiency of the two models. Our results         nal mucosa will provide a deeper understanding of the
+showed that the AUC value of the RF model for predict-           composition and evolution of the entire gastrointestinal
+ing CRC progression was greater than 70% in both the             microbial system [71].
+training set and the validation set (Fig. 7C). The AUC             At last, this study only provides a superficial measure-
+value of the ROC curve of the XGB-based prediction               ment of the abundance of gut bacteria associated with
+model in the training set was as high as 1, but its AUC          CRC progression, and further experimental studies will
+value in the validation set was less than 0.7 (Fig. 7E), indi-   reveal the relationship between these characteristic flora
+cating that both models still had certain predictive abil-       and CRC progression.
+ity, and the model prediction ability of the RF model was
+better than that of the XGB model, although the false            Conclusion
+negative rates of the two models were both high (Fig. 7A,        Conclusively, the present study revealed that the abun-
+B, D, E). These results suggest that the construction of         dance and diversity of the intestinal microbiome of
+machine learning models can better reveal the asso-              CRC patients may increase progressively with the onset
+ciation between intestinal microbiome and CRC pro-               and progression of CRC. Elevated abundance of Pro-
+gression, and the CRC progression-associated bacteria            teus, Parabacteroides, Alistipes and Ruminococcus may
+identified in this study can be used as potential fecal bio-     contribute to CRC progression. The KEGG pathway of
+markers to distinguish patients with stage I-II CRC and          ko00514: Other types O-glycan biosynthesis may be asso-
+stage III-IV CRC.                                                ciated with CRC progression, and CRC progression may
+   However, this study has some limitations. First of            occur through enhanced synthesis of O-glycans. Alistipes
+all, compared to 16S rRNA gene sequencing, shotgun               indistinctus may facilitate mast cell development and
+metagenomic sequencing can be sequenced at greater               maturation by stimulation of IL-6 production. Alistipes
+depth, identify more species of bacteria, and provide            indistinctus may help in the correct folding of proteins in
+comprehensive microbial gene content data that directly          endoplasmic reticulum for the sake of CRC cells and pro-
+describes the biological function of specific genes rather       mote further progression by alleviating ER stress, which
+than using a whole population of genes for functional            may be correlated to the increased PERK expression and
+prediction [69]. In recent years, the application of shallow     activation of its downstream UPR by Alistipes indistinc-
+whole-metagenome shotgun sequencing has attracted                tus, but it still requires further experimental exploration.
+attention. Compared with traditional deep whole-                 Both the RF model and XGBoost model constructed
+metagenome shotgun sequencing (WMS), it is compara-              with 42 CRC progression-associated intestinal microbi-
+ble in accuracy and affordable. It can be widely used in         ome had discriminative efficacy in distinguishing stage
+future clinical metagenomics research [70, 71]. Secondly,        I-II between III-IV CRC patients. The CRC progression-
+metabolomics can be used to detect the dynamic changes           associated intestinal microbiome identified in this study
+Liu et al. Journal of Translational Medicine           (2023) 21:373                                                                                        Page 17 of 19
+
+
+
+
+could be used as promising microbial markers, which will                                 square to within-group mean square; R2: Ratio of between-group and
+be beneficial for the guidance of CRC staging diagnosis.                                 within-group’s sums of squares of deviations to the sums of squares of
+                                                                                         the total deviations, indicating the degree of explanation of the difference
+                                                                                         between samples, and a larger R2 indicates a higher degree of explana-
+Supplementary Information                                                                tion of the difference between samples; Pr(> F): the statistically significant
+The online version contains supplementary material available at https://​doi.​           P value obtained from the substitution test, and Pr < 0.05 is considered
+org/​10.​1186/​s12967-​023-​04119-1.                                                     statistically significant.
+                                                                                         Additional file 8: Table S2. ADONIS test for Jaccard Distance of intestinal
+  Additional file 1: Figure S1. Heatmap of correlation between dominant                  flora in patients with early and advanced CRC. Df: degrees of freedom,
+  flora and checkpoints in stage I-II CRC. The horizontal coordinates indicate           between-group degrees of freedom are the number of groups minus one,
+  genes. The vertical coordinates indicate colonies. Red in the graph                    within-group degrees of freedom are the total number of samples minus
+  represents positive correlation. Blue represents negative correlation. Color           the number of groups; Group row: between-group statistics; Residuals
+  depth represents Pearson correlation coefficient size. Color from light to             row: within-group statistics; Total row: between-group plus within-group
+  dark indicates Pearson correlation coefficient value from small to large.              statistics; Sums Of Sqs: sums of squares of deviations; Mean Sqs: mean
+  The "*" in the graph indicates the size of P-value: no * for P-value ≥ 0.05, *         square, ratio of sums of squares of deviations to degrees of freedom, i.e.,
+  for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001.                       Sums Of Sqs/Df; F.Model: F-test value, i.e., ratio of between-group mean
+  Additional file 2: Figure S2. Heatmap of the correlation between domi-                 square to within-group mean square; R2: Ratio of between-group and
+  nant flora and immunosuppressive genes in stage I-IICRC. The horizontal                within-group’s sums of squares of deviations to the sums of squares of
+  coordinates indicate genes. The vertical coordinates indicate colonies. Red            the total deviations, indicating the degree of explanation of the difference
+  in the graph represents positive correlation. Blue represents negative cor-            between samples, and a larger R2 indicates a higher degree of explana-
+  relation. Color depth represents Pearson correlation coefficient size. Color           tion of the difference between samples; Pr(> F): the statistically significant
+  from light to dark indicates Pearson correlation coefficient value from                P value obtained from the substitution test, and Pr < 0.05 is considered
+  small to large. The "*" in the graph indicates the size of P-value: no * for           statistically significants.
+  P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001.     Additional file 9: Table S3. Results of LEfSe analysis. Taxonomy: informa-
+  Additional file 3: Figure S3. Heatmap of the correlation between the                   tion of differential species; LDA (log10): effect value of differential species;
+  dominant flora and chemokine receptors in stage I-II CRC. The horizontal               Group: group with significant abundance of differential species; the table
+  coordinates indicate genes. The vertical coordinates indicate colonies. Red            shows species with LDA score (log10) P value less than 0.05 and greater
+  in the graph represents positive correlation. Blue represents negative cor-            than the present value (default is 2).
+  relation. Color depth represents Pearson correlation coefficient size. Color           Additional file 10: Table S4. KEGG functional pathways in the intestinal
+  from light to dark indicates Pearson correlation coefficient value from                microbiome of patients with early and advanced CRC. KEGG_Pathway:
+  small to large. The "*" in the graph indicates the size of P-value: no * for           KEGG pathway; Mean In advanced stage: predicted abundance value of
+  P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001.     this pathway in each sample in stage III-IV group; Mean In early stage: pre-
+  Additional file 4: Figure S4. Heatmap of correlation between dominant                  dicted abundance value of this pathway in each sample in stage I-II group.
+  flora and checkpoints in stage III-IV CRC. The horizontal coordinates indi-            P value < 0.05 is considered as statistically significant difference.
+  cate genes. The vertical coordinates indicate colonies. Red in the graph               Additional file 11: Table S5. List of differential GO items of CRC patients
+  represents positive correlation. Blue represents negative correlation. Color           stratified by CRC progression. GO items: Enriched GO entries. FC in logFC,
+  depth represents Pearson correlation coefficient size. Color from light to             i.e., fold change, indicates the ratio of expression in stage III-IV CRC group
+  dark indicates Pearson correlation coefficient value from small to large.              to that in stage I-II CRC group and is taken as logarithm with a base of 2.
+  The "*" in the graph indicates the size of P-value: no * for P-value ≥ 0.05, *         P.value < 0.05 is taken as statistically significant difference.
+  for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for P < 0.001.
+                                                                                         Additional file 12: Table S6. List of differential KEGG pathways of CRC
+  Additional file 5: Figure S5. Heatmap of the correlation between                       patients stratified by CRC progression. KEGG pathway: enriched KEGG
+  dominant flora and immunosuppressive genes in stage III-IV CRC. The                    pathway. FC in logFC, fold change, i.e., indicates the ratio of expression
+  horizontal coordinates indicate genes. The vertical coordinates indicate               in stage III-IV CRC group to that in stage I-II CRC group and is taken as
+  colonies. Red in the graph represents positive correlation. Blue represents            logarithm with a base of 2. P.value < 0.05 is taken as statistically significant
+  negative correlation. Color depth represents Pearson correlation coeffi-               difference.
+  cient size. Color from light to dark indicates Pearson correlation coefficient
+  value from small to large. The "*" in the graph indicates the size of P-value:
+  no * for P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for     Acknowledgements
+  P < 0.001.                                                                           None.
+  Additional file 6: Figure S6. Heatmap of the correlation between
+  the dominant flora and chemokine receptors in stage III-IV group. The                Author contributions
+  horizontal coordinates indicate genes. The vertical coordinates indicate             JL, XH, CC, CL, ZW, ZH, HH, XM, FH, SP, JW, WT: conceived and designed the
+  colonies. Red in the graph represents positive correlation. Blue represents          experiments; XH, JL, ZH, MQ, CL, FH, BT, HH, XM, SP, JW, WT: analyzed the data;
+  negative correlation. Color depth represents Pearson correlation coeffi-             XH, ZH, MQ, ZW, BT, SP, CC, XM, FH, JL, JW, WT: helped with reagents/materials/
+  cient size. Color from light to dark indicates Pearson correlation coefficient       analysis tools; BT, ZH, MQ, HH, ZW, XH, XM, CL, CC, JL: contributed to the writ-
+  value from small to large. The "*" in the graph indicates the size of P-value:       ing of the manuscript. All authors reviewed the manuscript. All authors read
+  no * for P-value ≥ 0.05, * for 0.01 ≤ P < 0.05, ** for 0.001 ≤ P < 0.01, *** for     and approved the final manuscript.
+  P < 0.001.
+                                                                                       Funding
+  Additional file 7: Table S1. ADONIS test for Bray Distance of intestinal             Guangxi Medical and Health Appropriate Technology Development and Pro-
+  flora in patients with early and advanced CRC. Df: degrees of freedom,               motion Application Project(S2021016); Guangxi Natural Science Foundation
+  between-group degrees of freedom are the number of groups minus one,                 (2021GXNSFAA196008); Basic Research Skills Enhancement Project for Young
+  within-group degrees of freedom are the total number of samples minus                and Middle-aged Teachers in Universities in Guangxi (2021KY0087); Guangxi
+  the number of groups; Group row: between-group statistics; Residuals                 Medical University Youth Science Foundation Project(GXMUYSF202357).
+  row: within-group statistics; Total row: between-group plus within-group
+  statistics; Sums Of Sqs: sums of squares of deviations; Mean Sqs: mean               Data availability
+  square, ratio of sums of squares of deviations to degrees of freedom, i.e.,          The original contributions presented in the study are included in the article
+  Sums Of Sqs/Df; F.Model: F-test value, i.e., ratio of between-group mean             material, further inquiries can be directed to the corresponding authors.
+Liu et al. Journal of Translational Medicine         (2023) 21:373                                                                                        Page 18 of 19
+
+
+
+
+Declarations                                                                           18. Wang Y, Zhang W, Zhang Y, et al. Exploring the differential abun-
+                                                                                           dance of Enterococcus between stage III and stage IV colon cancer
+Ethics approval and consent to participate                                                 patients based on high-throughput sequencing. Chin J Colorectal Dis.
+This study was approved by the Ethics and Human Subject Committee of                       2020;09:150–6.
+Guangxi Medical University Cancer Hospital.                                            19. Jamil RT, Foris LA, Snowden J. Proteus Mirabilis Infections. StatPearls.
+                                                                                           Treasure Island (FL): StatPearls Publishing Copyright © 2022, StatPearls
+Consent for publication                                                                    Publishing LLC.
+Not applicable.                                                                        20. Wachsmannova L, Majek J, Zajac V, Stevurkova V, Ciernikova S. The
+                                                                                           study of bacteria in biopsies from Slovak colorectal adenoma and
+Conflict of interests                                                                      carcinoma patients. Neoplasma. 2018;65:644–8.
+The author reports no conflicts of interest in this work.                              21. Wachsmannova L, Stevurkova V, Ciernikova S. Changes in SNAI1 and
+                                                                                           VIM gene expression in Caco2 cells after cocultivation with bacteria
+Author details                                                                             from colorectal cancer biopsies. Neoplasma. 2019;66:271–5.
+1
+  Division of Colorectal & Anal Surgery, Department of Gastrointestinal Surgery,       22. Yuan N, Li X, Wang M, et al. Gut microbiota alteration influences colo-
+Guangxi Medical University Cancer Hospital, Nanning, The People’s Republic                 rectal cancer metastasis to the liver by remodeling the liver immune
+of China. 2 School of Public Health, Guangxi Medical University, Nanning, The              microenvironment. Gut Liver. 2022;16:575–88.
+People’s Republic of China.                                                            23. Sheng QS, He KX, Li JJ, et al. Comparison of gut microbiome in human
+                                                                                           colorectal cancer in paired tumor and adjacent normal tissues. Onco
+Received: 20 December 2022 Accepted: 9 April 2023                                          Targets Ther. 2020;13:635–46.
+                                                                                       24. Du K, Wang X, Li S, et al. Construction of a gut microbiota-gene-path-
+                                                                                           way network to reveal the molecular mechanisms underlying right-
+                                                                                           and left-sided colorectal cancer. FEMS Microbiol Lett. 2021. https://​doi.​
+                                                                                           org/​10.​1093/​femsle/​fnab1​45.
+References                                                                             25. Parker BJ, Wearsch PA, Veloo ACM, Rodriguez-Palacios A. The genus
+1. Siegel RL, Miller KD, Jemal A. Cancer statistics, 2020. CA Cancer J Clin.               alistipes: gut bacteria with emerging implications to inflammation,
+    2020;70:7–30.                                                                          cancer, and mental health. Front Immunol. 2020;11:906.
+2. Chen WQ, Li H, Sun KX, et al. Report of cancer incidence and mortality in           26. Park J, Kim NE, Yoon H, et al. Fecal microbiota and gut microbe-derived
+    China, 014. Zhonghua Zhong Liu Za Zhi. 2018;40:5–13.                                   extracellular vesicles in colorectal cancer. Front Oncol. 2021;11: 650026.
+3. Arai H, Battaglin F, Wang J, et al. Molecular insight of regorafenib treat-         27. Dai Z, Coker OO, Nakatsu G, et al. Multi-cohort analysis of colorectal
+    ment for colorectal cancer. Cancer Treat Rev. 2019;81: 101912.                         cancer metagenome identified altered bacteria across populations and
+4. Cheng Y, Ling Z, Li L. The intestinal microbiota and colorectal cancer.                 universal bacterial markers. Microbiome. 2018;6:70.
+    Front Immunol. 2020;11: 615056.                                                    28. Li N, Bai C, Zhao L, Sun Z, Ge Y, Li X. The Relationship Between Gut
+5. Okumura S, Konishi Y, Narukawa M, et al. Gut bacteria identified in colo-               Microbiome Features and Chemotherapy Response in Gastrointestinal
+    rectal cancer patients promote tumourigenesis via butyrate secretion.                  Cancer. Front Oncol. 2021;11: 781697.
+    Nat Commun. 2021;12:5674.                                                          29. Abell GC, Cooke CM, Bennett CN, Conlon MA, McOrist AL. Phylotypes
+6. Wong SH, Yu J. Gut microbiota in colorectal cancer: mechanisms                          related to Ruminococcus bromii are abundant in the large bowel of
+    of action and clinical applications. Nat Rev Gastroenterol Hepatol.                    humans and increase in response to a diet high in resistant starch.
+    2019;16:690–704.                                                                       FEMS Microbiol Ecol. 2008;66:505–15.
+7. Yang Y, Du L, Shi D, et al. Dysbiosis of human gut microbiome in young-             30. Henke MT, Kenny DJ, Cassilly CD, Vlamakis H, Xavier RJ, Clardy J. Rumi-
+    onset colorectal cancer. Nat Commun. 2021;12:6757.                                     nococcus gnavus, a member of the human gut microbiome associated
+8. Liang S, Mao Y, Liao M, et al. Gut microbiome associated with APC gene                  with Crohn’s disease, produces an inflammatory polysaccharide. Proc
+    mutation in patients with intestinal adenomatous polyps. Int J Biol Sci.               Natl Acad Sci U S A. 2019;116:12672–7.
+    2020;16:135–46.                                                                    31. Hills RD Jr, Pontefract BA, Mishcon HR, Black CA, Sutton SC, Theberge
+9. Liu X, Cheng Y, Shao L, Ling Z. Alterations of the predominant fecal                    CR. Gut microbiome: profound implications for diet and disease. Nutri-
+    microbiota and disruption of the gut mucosal barrier in patients with                  ents. 2019;11:1613.
+    early-stage colorectal cancer. Biomed Res Int. 2020;2020:2948282.                  32. Zhang H, Yu Y, Li J, et al. Changes of gut microbiota in colorectal cancer
+10. Langille MG, Zaneveld J, Caporaso JG, et al. Predictive functional profiling           patients with Pentatrichomonas hominis infection. Front Cell Infect
+    of microbial communities using 16S rRNA marker gene sequences. Nat                     Microbiol. 2022;12: 961974.
+    Biotechnol. 2013;31:814–21.                                                        33. Sarhadi V, Lahti L, Saberi F, et al. Gut microbiota and host gene muta-
+11. Chang CA-O, Li YA-O, Wu HA-O, Tseng MA-O. Melanoma detection using                     tions in colorectal cancer patients and controls of iranian and finnish
+    XGB classifier combined with feature extraction and K-means SMOTE                      origin. Anticancer Res. 2020;40:1325–34.
+    techniques. LID. https://​doi.​org/​10.​3390/​diagn​ostic​s1207​1747.              34. Sheng Q, Du H, Cheng X, et al. Characteristics of fecal gut microbiota
+12. Yu JR, Chen CH, Huang TW, Lu JJ, Chung CR, Lin TW, Wu MH, Tseng YJ,                    in patients with colorectal cancer at different stages and different sites.
+    Wang HY. Energy efficiency of inference algorithms for clinical labora-                Oncol Lett. 2019;18:4834–44.
+    tory data sets: green artificial intelligence study. J Med Internet Res            35. Allali I, Boukhatem N, Bouguenouch L, et al. Gut microbiome of Moroccan
+    2022;24(1):e28036. https://​doi.​org/​10.​2196/​28036.                                 colorectal cancer patients. Med Microbiol Immunol. 2018;207:211–25.
+13. Sipper M, Moore JH. Conservation machine learning: a case study                    36. Niccolai E, Russo E, Baldi S, et al. Significant and conflicting correlation of
+    of random forests. Sci R 2021;11(1):3629. https://​doi.​org/​10.​1038/​                IL-9 with prevotella and bacteroides in human colorectal cancer. Front
+    s41598-​021-​83247-4.                                                                  Immunol. 2020;11: 573158.
+14. Ito K, Murphy D. Application of ggplot2 to pharmacometric graphics. CPT            37. Hua H, Sun Y, He X, Chen Y, Teng L, Lu C. Intestinal microbiota in colorectal
+    Pharmacometrics Syst Pharmacol. 2013;2: e79.                                           adenoma-carcinoma sequence. Front Med (Lausanne). 2022;9: 888340.
+15. Metsalu T, Vilo J. ClustVis: a web tool for visualizing clustering of multivari-   38. Senthakumaran T, Moen AEF, Tannæs TM, et al. Microbial dynamics with
+    ate data using Principal Component Analysis and heatmap. Nucleic Acids                 CRC progression: a study of the mucosal microbiota at multiple sites in
+    Res 2015;43(W1):W566–70. https://​doi.​org/​10.​1093/​nar/​gkv468.                     cancers, adenomatous polyps, and healthy controls. Eur J Clin Microbiol
+16. Changes of intestinal microflora in colorectal cancer patients after                   Infect Dis. 2023;42:305–22.
+    surgical resection and chemotherapy. Comput Math Methods Med.                      39. Lin C, Li B, Tu C, Chen X, Guo M. Correlations between intestinal micro-
+    2022;1–16. https://​doi.​org/​10.​1155/​2022/​19408​46.                                biota and clinical characteristics in colorectal adenoma/carcinoma.
+17. The gut microbial diversity of colon cancer patients and the clinical                  Biomed Res Int. 2022;2022:3140070.
+    significance. Bioengineered 2021;12(1)7046–60. https://​doi.​org/​10.​             40. Zhang H, Lan M, Cui G, Zhu W. The Influence of Caerulomycin A on the
+    1080/​21655​979.​2021.​19720​77.                                                       Intestinal Microbiota in SD Rats. Mar Drugs. 2020;18:277.
+Liu et al. Journal of Translational Medicine      (2023) 21:373                                                                                        Page 19 of 19
+
+
+
+
+41. Liu CZ, Chen W, Wang MX, et al. Dendrobium officinale Kimura et Migo           65. Coleman OI, Haller D. ER stress and the UPR in shaping intestinal tissue
+    and American ginseng mixture: A Chinese herbal formulation for gut                 homeostasis and immunity. Front Immunol. 2019;10:2825.
+    microbiota modulation. Chin J Nat Med. 2020;18:446–59.                         66. Wang Y, Alam GN, Ning Y, et al. The unfolded protein response induces
+42. Matthies C, Evers S, Ludwig W, Schink B. Anaerovorax odorimutans gen.              the angiogenic switch in human tumor cells through the PERK/ATF4
+    nov., sp. nov., a putrescine-fermenting, strictly anaerobic bacterium. Int J       pathway. Cancer Res. 2012;72:5396–406.
+    Syst Evol Microbiol. 2000;50: 1591–1594.                                       67. Zhang X, Hu F, Li G, et al. Human colorectal cancer-derived mesenchymal
+43. Parada Venegas D, De la Fuente MK, Landskron G, et al. short chain fatty           stem cells promote colorectal cancer progression through IL-6/JAK2/
+    acids (SCFAs)-Mediated gut epithelial and immune regulation and its                STAT3 signaling. Cell Death Dis. 2018;9:25.
+    relevance for inflammatory bowel diseases. Front Immunol. 2019;10:277.         68. Tas SW, Maracle CX, Balogh E, Szekanecz Z. Targeting of proangiogenic
+44. Chen H, Zhang F, Zhang J, Zhang X, Guo Y, Yao Q. A Holistic View of Ber-           signalling pathways in chronic inflammation. Nat Rev Rheumatol.
+    berine Inhibiting Intestinal Carcinogenesis in Conventional Mice Based             2016;12:111–22.
+    on Microbiome-Metabolomics Analysis. Front Immunol. 2020;11: 588079.           69. Durazzi F, Sala C, Castellani G, Manfreda G, Remondini D, De Cesare A.
+45. Li J, Sung CY, Lee N, et al. Probiotics modulated gut microbiota sup-              Comparison between 16S rRNA and shotgun sequencing data for the
+    presses hepatocellular carcinoma growth in mice. Proc Natl Acad Sci U S            taxonomic characterization of the gut microbiota. Sci Rep. 2021;11:3030.
+    A. 2016;113:E1306-1315.                                                        70. Xu W, Chen T, Pei Y, et al. Characterization of shallow whole-metagenome
+46. Liu X, Tong X, Zou Y, et al. Mendelian randomization analyses support              shotgun sequencing as a high-accuracy and low-cost method by compli-
+    causal relationships between blood metabolites and the gut microbi-                cated mock microbiomes. Front Microbiol. 2021;12: 678319.
+    ome. Nat Genet. 2022;54:52–61.                                                 71. Liu Y, Li X, Yang Y, et al. Exploring gut microbiota in patients with colorec-
+47. Hsu SH, Syu DK, Chen YC, Liu CK, Sun CA, Chen M. The Association                   tal disease based on 16s rrna gene amplicon and shallow metagenomic
+    between Hypertriglyceridemia and Colorectal Cancer: A Long-Term                    sequencing. Front Mol Biosci. 2021;8: 703638.
+    Community Cohort Study in Taiwan. Int J Environ Res Public Health. 2022.
+    https://​doi.​org/​10.​3390/​ijerp​h1913​7804.
+48. Yang Z, Tang H, Lu S, Sun X, Rao B. Relationship between serum lipid level     Publisher’s Note
+    and colorectal cancer: a systemic review and meta-analysis. BMJ Open.          Springer Nature remains neutral with regard to jurisdictional claims in pub-
+    2022;12: e052373.                                                              lished maps and institutional affiliations.
+49. Youssef O, Lahti L, Kokkola A, et al. Stool microbiota composition differs
+    in patients with stomach, colon, and rectal neoplasms. Dig Dis Sci.
+    2018;63:2950–8.
+50. Altonsy MO, Andrews SC, Tuohy KM. Differential induction of apoptosis in
+    human colonic carcinoma cells (Caco-2) by Atopobium, and commensal,
+    probiotic and enteropathogenic bacteria: mediation by the mitochon-
+    drial pathway. Int J Food Microbiol. 2010;137:190–203.
+51. Brockhausen I. Pathways of O-glycan biosynthesis in cancer cells. Biochim
+    Biophys Acta. 1999;1473:67–95.
+52. Cervoni GE, Cheng JJ, Stackhouse KA, Heimburg-Molinaro J, Cummings
+    RD. O-glycan recognition and function in mice and human cancers.
+    Biochem J. 2020;477:1541–64.
+53. Patsos G, Robbe-Masselot C, Klein A, et al. O-glycan regulation of apop-
+    tosis and proliferation in colorectal cancer cell lines. Biochem Soc Trans.
+    2007;35:1372–4.
+54. Patsos G, Hebbe-Viton V, Robbe-Masselot C, et al. O-glycan inhibitors
+    generate aryl-glycans, induce apoptosis and lead to growth inhibition in
+    colorectal cancer cell lines. Glycobiology. 2009;19:382–98.
+55. Xu J, Wang M, Liu Q, Lin X, Pu K, He Z. Gut microbiota mediated the toxic-
+    ity of high concentration of dietary nitrite in C57BL/6 mice. Ecotoxicol
+    Environ Saf. 2022;231: 113224.
+56. Moschen AR, Gerner RR, Wang J, et al. Lipocalin 2 Protects from Inflam-
+    mation and Tumorigenesis Associated with Gut Microbiota Alterations.
+    Cell Host Microbe. 2016;19:455–69.
+57. Zeng H, Safratowich BD, Cheng WH, Bukowski MR. Identification of
+    oncogenic signatures in the inflammatory colon of C57BL/6 mice fed a
+    high-fat diet. J Nutr Biochem. 2023;111: 109188.
+58. Mihara M, Hashizume M, Yoshida H, Suzuki M, Shiina M. IL-6/IL-6 receptor
+    system and its role in physiological and pathological conditions. Clin Sci
+    (Lond). 2012;122:143–59.
+59. Conti P, Kempuraj D, Di Gioacchino M, et al. Interleukin-6 and mast cells.
+    Allergy Asthma Proc. 2002;23:331–5.
+                                                                                       Ready to submit your research ? Choose BMC and benefit from:
+60. Desai A, Jung MY, Olivera A, et al. IL-6 promotes an increase in human
+    mast cell numbers and reactivity through suppression of suppressor of
+                                                                                         • fast, convenient online submission
+    cytokine signaling 3. J Allergy Clin Immunol. 2016;137:1863-1871.e1866.
+61. Kinoshita T, Sawai N, Hidaka E, Yamashita T, Koike K. Interleukin-6 directly         • thorough peer review by experienced researchers in your field
+    modulates stem cell factor-dependent development of human mast cells                 • rapid publication on acceptance
+    derived from CD34(+) cord blood cells. Blood. 1999;94:496–508.
+                                                                                         • support for research data, including large and complex data types
+62. Komi DEA, Redegeld FA. Role of mast cells in shaping the tumor microen-
+    vironment. Clin Rev Allergy Immunol. 2020;58:313–25.                                 • gold Open Access which fosters wider collaboration and increased citations
+63. Song I, Kang Y, Lee YK, Myung SC, Ko K. Endoplasmic reticulum retention              • maximum visibility for your research: over 100M website views per year
+    motif fused to recombinant anti-cancer monoclonal antibody (mAb)
+    CO17-1A affects mAb expression and plant stress response. PLoS ONE.                At BMC, research is always in progress.
+    2018;13: e0198978.
+64. Hetz C. The unfolded protein response: controlling cell fate decisions             Learn more biomedcentral.com/submissions
+    under ER stress and beyond. Nat Rev Mol Cell Biol. 2012;13:89–102.
+

@@ -1,0 +1,787 @@
+                                                                                                                                                ORIGINAL RESEARCH
+                                                                                                                                                published: 06 July 2021
+                                                                                                                                       doi: 10.3389/fcimb.2021.657867
+
+
+
+
+                                             Alterations, Interactions, and
+                                             Diagnostic Potential of Gut Bacteria
+                                             and Viruses in Colorectal Cancer
+                                             Renyuan Gao 1,2†, Yefei Zhu 2,3†, Cheng Kong 2,3†, Kai Xia 1,2†, Hao Li 2,3, Yin Zhu 2,3,
+                                             Xiaohui Zhang 2,3, Yongqiang Liu 2,3, Hui Zhong 4, Rong Yang 4, Chunqiu Chen 1,2,
+                                             Nan Qin 2,3 and Huanlong Qin 2,3*
+                                             1 Diagnostic and Treatment Center for Refractory Diseases of Abdomen Surgery, Shanghai Tenth People’s Hospital, Tongji
+
+                                             University School of Medicine, Shanghai, China, 2 Institute for Intestinal Diseases, Tongji University School of Medicine,
+                                             Shanghai, China, 3 Department of General Surgery, Shanghai Tenth People’s Hospital, Tongji University School of Medicine,
+                                             Shanghai, China, 4 Department of Pediatrics, Shanghai Tenth People’s Hospital, Tongji University School of Medicine,
+                                             Shanghai, China
+                           Edited by:
+                      Tadahide Izumi,
+ University of Kentucky, United States       Gut microbiome alteration was closely associated with colorectal cancer (CRC). Previous
+                         Reviewed by:        studies had demonstrated the bacteria composition changes but lacked virome proﬁles,
+                   Yiorgos Apidianakis,
+          University of Cyprus, Cyprus
+                                             trans-kindom interactions, and reliable diagnostic model explorations in CRC. Hence, we
+                         Albino Bacolla,     performed metagenomic sequencing to investigate the gut microbiome and microbial
+               University of Texas MD
+                                             interactions in adenoma and CRC patients. We found the decreased microbial diversity in
+            Anderson Cancer Center,
+                          United States      CRC and revealed the taxonomic alterations of bacteria and viruses were highly
+                  *Correspondence:           associated with CRC at the species level. The relative abundance of oral-derived
+                        Huanlong Qin         species, such as Fusobacterium nucleatum, Fusobacterium hwasookii, Porphyromonas
+            qinhuanlong@tongji.edu.cn
+     †
+                                             gingivalis, and Bacteroides fragilis, increased. At the same time, butyrate-producing and
+      These authors have contributed
+             equally to this work and
+                                             anti-inﬂammatory microbes decreased in adenoma and CRC by non-parametric Kruskal-
+                share ﬁrst authorship        Wallis test. Despite that, the relative abundance of Escherichia viruses and Salmonella
+                                             viruses increased, whereas some phages, including Enterobacteria phages and
+                  Specialty section:
+        This article was submitted to
+                                             Uncultured crAssphage, decreased along with CRC development. Gut bacteria was
+   Microbiome in Health and Disease,         negatively associated with viruses in CRC and healthy control by correlation analysis
+              a section of the journal       (P=0.017 and 0.002, respectively). Viruses were much more dynamic than the bacteria as
+             Frontiers in Cellular and
+               Infection Microbiology        the disease progressed, and the altered microbial interactions were distinctively stage-
+          Received: 24 January 2021          dependent. The degree centrality of microbial interactions decreased while closeness
+            Accepted: 18 May 2021            centrality increased along with the adenoma to cancer development. Uncultured
+            Published: 06 July 2021
+                                             crAssphage was the key bacteriophage that enriched in healthy controls and positively
+                                 Citation:
+   Gao R, Zhu Y, Kong C, Xia K, Li H,
+                                             associated with butyrate-producing bacteria. Diagnostic tests based on bacteria by
+      Zhu Y, Zhang X, Liu Y, Zhong H,        random forest conﬁrmed in independent cohorts showed better performance than
+    Yang R, Chen C, Qin N and Qin H          viruses for CRC. In conclusion, our study revealed the novel CRC-associated bacteria
+  (2021) Alterations, Interactions, and
+  Diagnostic Potential of Gut Bacteria       and viruses that exhibited speciﬁc differences and intensive microbial correlations, which
+     and Viruses in Colorectal Cancer.       provided a reliable diagnostic panel for CRC.
+Front. Cell. Infect. Microbiol. 11:657867.
+       doi: 10.3389/fcimb.2021.657867        Keywords: gut microbiome, bacteria, virus, bacteriophage, microbial network, diagnostic test
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org              1                                           July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                   Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+
+INTRODUCTION                                                                      microbiome traits of CRC have revealed multiple gut microbial
+                                                                                  features of cancer, they either focused on bacteria or analyzed
+Colorectal cancer (CRC) is a malignant tumor that occurs in the                   microbes in separate kingdoms (e.g., Bacteria, Virus, Fungus),
+colon and rectum and is a severe threat to public health worldwide                which overlook the intrinsic connections between members of
+(Luebeck and Moolgavkar, 2002; Chen et al., 2016; Siegel et al.,                  the major phylogenetic branches (Coker et al., 2019).
+2017). Development of CRC is a multi-step event that is inﬂuenced                     This study examined the taxonomic and functional
+by host genetics as well as various environmental factors, including              alterations of gut microbiota, microbial interactions within
+geography, diet, and gut microbiota (Park et al., 2009; Tjalsma                   bacteria and viruses in individuals with colonic adenoma and
+et al., 2012; Yatsunenko et al., 2012; Jiao et al., 2014; Gallego et al.,         CRC. Our results provided a comprehensive overview of
+2015; Hsu et al., 2015; Usher-Smith et al., 2016). Gut microbiota is              microbial compositional alteration, bacteria, and viruses
+a highly sophisticated community that comprises bacteria                          interactions in CRC development and CRC-associated
+overwhelmingly and viruses, fungi, and archaebacteria. This                       microbes for CRC diagnostic.
+relatively stable conglomerate is involved in various essential
+functions of the immune system and metabolism of the host
+(Lim et al., 2016). Alterations of the gut microbiome, on the other
+hand, are detrimental to the host and have been reported in many                  MATERIALS AND METHODS
+chronic diseases, including CRC (Huycke et al., 2002;
+                                                                                  Enrollment of CRC Patients, Adenoma
+O’Keefe, 2016).
+    Moreover, aberrant enteric microbial communities coincide
+                                                                                  Patients, and Healthy Controls
+                                                                                  We enrolled patients with CRC and colonic adenoma in
+with the disease progression of CRC (Thomas et al., 2019). The
+                                                                                  Shanghai Tenth People’s Hospital between 2015 and 2018.
+latest evidence has shed light on the biological roles of several
+                                                                                  Individuals suspected of colorectal cancer due to rectal
+prominent gut microbes in the development of this
+                                                                                  bleeding, abdominal pain, and change of defection habit or
+gastrointestinal (GI) cancer. For example, Fusobacterium
+                                                                                  asymptomatic individuals undergoing colonoscopy in the clinic
+nucleatum, enriched in CRC patients (Castellarin et al., 2012;
+                                                                                  were enrolled and asked to provide stool samples and then
+Yu et al., 2017a), invades the colon epithelial cells through the
+                                                                                  conﬁrmed by colonoscopy and pathology. The exclusion
+damaged gut barriers via FadA adhesion, Fap2, or an altered
+                                                                                  criteria included exposure to antibiotics within one month, a
+immune microenvironment (Kostic et al., 2013; Rubinstein et al.,
+                                                                                  history of gastrointestinal surgery, probiotics or prebiotic
+2013; Gur et al., 2015). Fusobacterium nucleatum interacts with
+                                                                                  consumption within 1 month, diagnosed with acute or chronic
+speciﬁc Toll-like receptors in the tumor cell, thereby triggering
+                                                                                  diarrhea and hepatitis. Correspondingly, a total of 71 CRC
+intracellular signaling, inducing gene mutation, and promoting
+                                                                                  patients and 63 adenoma patients were included in this study.
+tumorigenesis (Mima et al., 2015; Mima et al., 2016; Yang et al.,
+                                                                                  Also, 91 healthy individuals matched in age, BMI, and gender
+2017). Another CRC-enriched bacterium, Peptostreptococcus
+                                                                                  ratio were recruited as controls (Supplementary Table 1). The
+anaerobius, contributes to the carcinogenesis of CRC by
+                                                                                  Ethics Committee of Shanghai Tenth People’s Hospital had
+modulating cholesterol biosynthesis (Tsoi et al., 2017). Also,
+                                                                                  approved this study protocol. Informed consent was obtained
+the altered gut microbes correlate with gene mutations involved
+                                                                                  from all patients. All procedures were performed following the
+in the CRC. Fusobacterium nucleatum is conﬁrmed to be
+                                                                                  Declaration of Helsinki and its later amendments.
+associated with MSI-high status (Mima et al., 2015; Mima
+et al., 2016).
+    In comparison with gut bacteria, relatively little is known                   Sample Collection and DNA Extraction
+regarding the involvement of their viral counterparts in CRC                      Fresh fecal samples were collected from the recruited subjects
+(Hannigan et al., 2018; Nakatsu et al., 2018), which is, in part,                 and were transported to the laboratory with an ice pack within
+attributed to the latter’s relatively low abundance. Nevertheless,                two hours. All samples were then frozen immediately and stored
+human viruses are closely linked to the occurrence of many                        at - 80°C before analyses.
+cancers, such as hepatitis and hepatic carcinoma, nasopharynx                         According to the manufacturer’s instructions, QIAamp Fast
+cancer, cervical cancer, and GI cancers (Dahiya and Renuka,                       DNA Stool Mini Kit (Qiagen, Hilden, Germany) was used for
+2017; Tu et al., 2017; Chen et al., 2019; Cohen et al., 2019).                    DNA extraction. Brieﬂy, 20 ml proteinase K solution (20 mg/ml)
+Another major group of gut viruses is bacteriophages, which can                   and 100 mg zirconium beads (0.1 mm) were added to the fecal
+signiﬁcantly affect their prokaryotic hosts and inﬂuence disease                  samples before the mixture was fully homogenized on a Mini-
+development (Dahiya and Renuka, 2017). Current evidence has                       Beadbeater (FastPrep, Thermo Electron Corporation, USA) and
+unraveled that bacteria and viruses are closely associated with                   then supplemented with buffer AL. The resulting mixture was
+many diseases, especially cancers. Whereas studies so far on gut                  incubated at 70°C for 10 min and supplemented with 200 ml
+                                                                                  ethanol (96%). Then the mixture to the QIAamp spin column
+                                                                                  and centrifuged at 8000 g for 1 min. The column was washed
+Abbreviations: CRC, colorectal cancer; CRA, colorectal adenoma; AUROC, the        successively with 500 ml buffer AW1 and 500 ml buffer AW2.
+area under the receiver operating characteristic curves; ORFs, Open reading
+frames; WBC, White blood cell; RBC, Red blood cell; ALT, Alanine
+                                                                                  Finally, DNA was eluted with 100 ml buffer AE. The
+transaminase; AST, Aspartate aminotransferase; CEA, Carcinoembryonic              DNA concentration was measured using a NanoDrop
+antigen; AFP, Alpha-fetoprotein.                                                  (Thermoﬁsher, USA). The integrity and size of the extracted
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org        2                                   July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                               Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+DNA were examined with electrophoresis on 1% agarose gel                     Gene Mutation Detection
+containing 0.5 mg/ml ethidium bromide.                                       The method of KRAS gene mutation had been described before
+                                                                             (Gao et al., 2017). In brief, the common somatic mutations in
+Shotgun Metagenomic Sequencing                                               exons 2, 3, and 4 of the KRAS gene were determined in the tissue
+For Illumina library preparation, genomic DNA was sheared to                 samples using the AmoyDx KRAS Mutation.
+an average 500-bp fragment length using a Bioruptar                             Detection Kit (AmoyDx, Xiamen, China). All analyses were
+ultrasonicator. Following the Illumina TruSeq DNA Sample                     performed according to the manufacturer’s instructions.
+Prep v2 Guide (Illumina, Inc., San Diego, CA, USA), DNA                      Extracted DNA was diluted and then transferred to a
+paired-end libraries were constructed for the 225 fecal samples              polymerase chain reaction (PCR) tube, and a real-time PCR
+(71 from CRC patients, 63 from colorectal adenoma patients,                  (ABI 7500, Applied Biosystems, Foster City, CA, USA) was
+and 91 from normal controls). The quality of all libraries was               immediately performed. KRAS mutation status was determined
+evaluated using an Agilent bioanalyzer (Agilent Technologies,                according to the cut-off values deﬁned in the kit instructions.
+Wokingham, UK) and the DNA LabChip 1000 kit. All samples
+were subject to 150 bp paired-end sequencing on an Illumina                  Classiﬁer
+HiSeq platform (Illumina, Inc., San Diego, CA, USA).                         Random forest model (randomForest package in R) was used to
+   Raw reads were pre-processed for 3’ end trimming using a                  build the classiﬁer based on the abundance proﬁling of species
+quality threshold of 30 and ﬁltered to exclude adaptor                       abundance. The predictive performance (estimated by 10-fold
+contaminated reads and low-quality reads (e.g., reads                        cross-validation) was optimized by selecting species that
+containing more than 50% nucleotides below Q30, reads short                  displayed the best discriminatory power. The ROC curve was
+than 70 bp, and reads mapped to the human genome based on                    plotted using the pROC R package.
+alignment with SOAPaligner 2.21) (Li et al., 2008).
+Consequently, an average of 93.3% of high-quality reads                      Correlation Network
+(deﬁned as clean data) was obtained from all samples.                        SparCC was used to construct the association network of gut
+                                                                             microorganisms (Friedman and Alm, 2012). Brieﬂy,
+De Novo Assembly and Construction of                                         bootstrapping of 1000 repetitions was used to compute the P-
+the Gene Catalog                                                             value for each correlation. The resulting two-sided P values<0.05
+To construct the gut gene catalog, SOAPdenovo (version 2.04)                 were shown in the network, which was visualized with
+was used to assemble high-quality reads from each sample into                Cytoscape3.0.2. We used the degree centrality, betweenness
+contigs (Luo et al., 2012; Gao et al., 2020). MetaGeneMark                   centrality, and closeness centrality to describe each node’s
+(version 3.26) was used to predict open reading frames (ORFs)                importance (Sadria et al., 2019).
+in contigs (Noguchi et al., 2006). To obtain a non-redundant
+gene set, a pairwise comparison of predicted ORFs (ﬁltered with              Statistical Analysis
+a length of 100 bp) was performed using CD-HIT (version 4.5.7)               The non-parametric Wilcoxon test/Kruskal-Wallis test (Wilcox.
+at 95% identity and 90% coverage (Li and Godzik, 2006). The                  test/Kruskal.test in R) was employed to analyze the statistical
+resulting non-redundant gene catalog contained 4,071,018                     signiﬁcance of the gene, KO, enzyme, and different taxonomic
+microbial genes, which had an average length of 786 base                     levels (phylum, genus, and species). The relative abundance of
+pairs. Functional annotations were carried out by BLASTP                     these features was subjected to statistical analyses. The
+search against the KEGG database (e value ≤ 1e − 5 and high-                 Benjamini-Hochberg method was used for correction in
+scoring segment pair scoring > 60) (Kanehisa et al., 2004). For              multiple comparisons in which an FDR (false discovery rate)
+each functional feature (KO in the KEGG database), we                        value < 0.05 was considered signiﬁcant. Enriched features with
+estimated its abundance by accumulating the relative                         an adjusted FDR < 0.05 were identiﬁed, and the enrichment
+abundances of all afﬁliated genes. Samples were functionally                 group was then determined according to a higher rank-
+proﬁled using HUMAnN2, which uses the MetaCyc pathway                        sum value.
+database and MinPath to identify a parsimonious set of pathways
+explaining observed reactions in the community (Ye and Doak,                 Data Access
+2009; Abubucker et al., 2012; Caspi et al., 2018).                           The metagenomic sequence data sets have been deposited in the
+                                                                             NCBI Sequence Read Archive (SRA) with access numbers
+Taxonomic and Gene Proﬁling                                                  PRJNA706060 and PRJNA514108.
+Metagenomic reads were assigned to microbial taxa using the k-
+mer based algorithms as implemented in the Kraken taxonomic
+annotation pipeline (Wood and Salzberg, 2014).
+    For gene abundance proﬁling, SOAPalign2.21 was used to                   RESULTS
+align clean reads to gene sequences. The gene relative abundance
+proﬁle was generated following the procedure described by Qin                Altered Gut Microbiome Architectures in
+et al. (2014). Reads aligned to multiple genes were allocated                Adenoma and CRC
+proportionally to read counts uniquely mapped to these genes                 A total of 2,136 Gb clean data were generated, yielding an
+(normalized by gene length).                                                 average of 9.49 ± 3.74 Gb per sample (92.58%). Bacterial, viral,
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org   3                                    July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                                        Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+and fungal reads accounted for 97.2%, 2.16%, and 0.58% of the                                  Next, we examined the variations of bacterial and viral species
+total clean data and were mapped to 3,184 bacterial, 1,199 viral,                           among the three groups (Supplementary Figures 1A–C). The
+and 1,132 fungal species, respectively. The healthy controls,                               taxonomic alteration at the phylum level showed that only
+adenoma, and CRC groups shared approximately 99% of the                                     Fusobacteria was signiﬁcantly different in the three groups
+bacteria and 39.4% (473) of the viruses. The bacteria richness of                           (0.10% ± 0.26%, healthy controls vs. 0.99% ± 6.86%, adenoma
+the CRC group was lower than that of the control group                                      group vs. 0.39% ± 1.44%, CRC group, P=9.78*10-4, FDR=0.03).
+(P=0.024, Wilcoxon signed-rank test) (Figure 1A). No                                        The top ten bacteria that increased and decreased from adenoma
+differences were observed either in viral richness or Shannon                               to CRC were displayed (Figures 2A, B). Besides, the top ten
+or Simpson indexes among the three groups. As consistent with a                             viruses exhibiting increased and decreased relative abundance
+previous report (Nakatsu et al., 2018), there was a signiﬁcant                              from adenoma to CRC were also showed (Figures 2C, D).
+negative correlation between viruses and bacteria in the healthy                               Then we identiﬁed the potential microbes that enriched in
+control and CRC groups but not in the adenoma group                                         CRC when compared with healthy control by LEfSe. Similar to the
+(Figure 1B). Despite the overall comparable microbial                                       above results, nine bacteria, including Bacteroides fragilis,
+diversity, the three groups exhibited apparent differences in                               Escherichia coli, Porphyromonas asaccharolytica, Prevotella
+microbial structure (Anosim P=1*10-4 for CRC vs. healthy                                    intermedia, Fusobacterium varium, Porphyromonas gingivalis,
+control and P=0.0026 for adenoma vs. healthy control,                                       Fusobacterium nucleatum, Citrobacter freundii, and Parvimonas
+Figures 1C, D).                                                                             micra, dominated in the CRC group. In contrast, 28 beneﬁcial
+
+
+
+                       A                                                  C
+
+
+
+
+                                                                          D
+
+
+
+
+                       B
+
+
+
+
+ FIGURE 1 | Differences in gut microbiome structure among the control (colored in green), adenoma (colored in amber), and CRC (colored in dubonnet) groups.
+ (A) Comparison of bacterial or viral richness (*P < 0.05). (B) Association of bacteria and viruses. (C) Principal coordinate analysis of the bacteria. (D) Principal coordinate
+ analysis of the viruses. NS, Not signiﬁcant.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org                  4                                               July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                             Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+bacteria, such as Faecalibacterium prausnitzii, Eubacterium rectale,                     three signiﬁcant enriched viruses regardless of early-stage or
+Roseburia hominis, as well as some Biﬁdobacterium species,                               later stage in comparison with healthy control (all FDR<0.05).
+dominated the HC groups (Supplementary Figure 2A). In                                    Then we compared the early and later stages of CRC and found
+addition, we also found that Suid_alphaherpesvirus_1 dominated                           that bacteria Klebsiella species such as Klebsiella quasipneumoniae,
+in the CRC samples, Bacteroides_phage_B124_14, and                                       Klebsiella oxytoca, and Klebsiella variicola and virus
+Escherichia_virus_VR26 dominated in the adenoma group                                    Klebsiella_virus_PKP126 dominated at the early stage of CRC
+while uncultured_crAssphage and Enterobacteria_                                          while bacteria Faecalibacterium prausnitzii, Bacillus cereus, and
+phage_T4_sensu_lato dominated in the healthy control group                               Lactococcus species and virus Bacillus_phage_PfEFR_5 dominated
+(Supplementary Figure 2B).                                                               at the later stage of CRC (Supplementary Figures 2C, D).
+                                                                                             Then we also compared the gut microbiota of CRC patients
+Bacteria and Virus Associated With Tumor                                                 with or without KRAS gene mutation and the status of
+Stages and Gene Mutations                                                                microsatellite stability (MSI or MSS). We found that KRAS
+Since CRC development comprises multiple stages and involves                             gene mutation was associated with Parabacteroides_phage_
+dozen gene mutations, which affected the prognosis of CRC, it was                        YZ_2015a enrichment, while the wild type KRAS was
+essential to unravel the potential gut microbes associated with                          associated with Pseudomonas_phage_phiKZ enrichment
+tumor stages and gene mutations. We compared the gut bacteria                            (Supplementary Figure 3A). Bacteria Lachnoclostridium
+and viruses of CRC patients by early (TNM stage I and II) and                            phocaeense, Biﬁdobacterium breve, and several phages such as
+later (TNM stage III and IV) stages. By comparing the relative                           Bacillus_phage_PfEFR_5, Uncultured_phage_WW_nAnB_
+abundance of these viruses, we found that only BeAn_58058_virus,                         strain_2, Enterobacteria_phage_mEpX2 were found enriched in
+Escherichia_virus_K1G, and Escherichia_virus_K1H were the                                the CRC patients with MSI (Supplementary Figures 3B, C).
+
+
+
+             A                                                                       B
+
+
+
+
+             C                                                                       D
+
+
+
+
+ FIGURE 2 | Relative abundances of bacterial and viral species in control (colored in green), adenoma (colored in amber), and CRC (colored in dubonnet) groups.
+ (A) Top 10 bacteria showed increased or decreased relative abundance in the CRC group than in the control group. The vertical axis represents relative abundance.
+ (B) Heatmap of the top 10 bacteria that showed increased (top 10) or decreased (lower 10) relative abundance in the CRC group compared with that in the control
+ group. (C) The 15 viruses that were different in relative abundance between the control and CRC groups, including 11 enriched and top 4 depleted in the CRC
+ group. (D) Heatmap of the 15 viruses that were different in relative abundance between the control and CRC groups.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org           5                                          July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                              Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+
+Dynamic Microbial Networks Within and                                                networks (Figure 3). However, we also identiﬁed 4 and 10 species
+Between Bacteria and Virome in CRC                                                   that dominated in the CRC group showed up in healthy control and
+We further assessed the relationships within or between bacteriome                   adenoma groups. In addition, the Fusobacterium nucleatum only
+and virome in the CRC, adenoma, and HC groups                                        showed connections with other species in adenoma and CRC.
+(Supplementary Figures 4A, B). The astringent criterion was                          Bacteroides fragilis was involved in all three groups but only
+applied to study the most robust inter-microbial interactions.                       positively connected with Fusobacterium nucleatum in CRC. We
+The bacterial network showed that Fusobacteria species,                              also revealed that the number of viruses involved in the network
+Porphyromonas asaccharolytica, Parvimonas micra were the                             increased as the diseases progressed (5 in HC, 7 in adenoma, and 10
+signiﬁcant microbes of CRC that correlated with Porphyromonas                        in CRC). Among them, only the uncultured_crAssphage dominated
+gingivalis in the adenoma group and negatively associated with                       all three groups. Interestingly, at different disease stages,
+Biﬁdobacterium species in the healthy controls. Regarding the viral                  uncultured_crAssphage had various connections with certain
+network, nine viruses positively correlated with each other, while                   bacteria. In the healthy control group, uncultured_crAssphage was
+four were negatively associated with Bacillus_phage_PfEFR_5 in                       positively associated with Eubacterium rectale (r=0.058, P=0.046)
+adenoma. Several phages dominated the healthy control, including                     and Butyrivibrio proteoclasticus(r=0.068,P=0.015), but negatively
+uncultured_crAssphage and Enterobacteria_phage_phi80, which                          correlated to Biﬁdobacterium kashiwanohense (r=-0.078,P=0.019)
+were negatively associated with viruses in the CRC group.                            and Lactobacillus salivarius (r=-0.080,P=0.019) in adenoma. In the
+    Then we evaluated the network between bacteria and viruses in                    CRC, uncultured_crAssphage was positively associated with
+three different groups. Three centrality indicators were used to                     Eubacterium cellulosolvens (r=0.082, P=0.016). Finally, we
+describe the importance of gut microbes in the network (Jiao et al.,                 estimated the relationships of bacteria and viruses in all samples
+2017). Betweenness centrality indicated the potential inﬂuence of a                  (Supplementary Figure 6). Several CRC-related bacteria such as
+node on other nodes. Closeness centrality indicated a node closest to                Porphyromona species, Fusobacterium species, Streptococcus
+other nodes in the network, reﬂecting the information transmission                   constellatus, and Parvimonas micra were signiﬁcantly correlated
+speed between nodes. Degree centrality indicated a speciﬁc node had                  BeAn_58058_virus, Human_endogenous_retrovirus_K, and
+the highest number of communication with other nodes. The                            Bacillus_phage_PfEFR_5. We also observed that some species
+betweenness centrality of the gut microbiome was signiﬁcantly                        belong to phylum Firmicutes (Thermoanaerobacterium_
+higher in control than CRC (Supplementary Figure 5A). The                            sp_RBIITD, Staphylococcus_muscae, genus Caldicellulosiruptor,
+Closeness centrality increased while Degree centrality decreased                     etc.) and Proteobacteria (Acinetobacter soli, Shewanella
+signiﬁcantly from adenoma to CRC (Supplementary Figures 5B,                          frigidimarina, Campylobacter cuniculorum, etc.) were positively
+C). We found that bacteria and viruses showed a negative association                 associated with Enterobacteria phage phi80, Picorna like virus, and
+generally with signiﬁcant differences only in CRC and HC, not in                     Enterobacteria phage T4 sensu lato but negatively associated with
+adenoma (Figure 2B). Of all the three groups, species of Firmicutes                  Salmonella and Escherichia virus. Different and complicated
+dominated while those of Actinobacteria and Proteobacteria showed                    networks within bacteria, viruses, or between them were showed
+a comparable proportion. Several species, such as Faecalibacterium                   up at different stages (healthy control, adenoma, and CRC),
+prausnitzii, Eubacterium hallii, Porphyromonas gingivalis, and                       indicating that the microbial networks were dynamic and evolving
+Porphyromonas asaccharolytica, were all shared in the three                          from adenoma to CRC.
+
+
+
+
+    A                                                    B                                            C
+
+
+
+
+ FIGURE 3 | Co-occurrence networks of the marker species in the control (A), adenoma (B), and CRC (C) groups. Each microbial species is marked by its afﬁliating
+ phylum, which is shown in the top right. A microbial species and cooccurrence relationship are indicated by a node and an edge, respectively. A connection (line
+ between dots) indicates a signiﬁcant (FDR < 0.05) correlation. The size of each node is proportional to the relative abundance of the species. Lines between nodes
+ indicate positive correlations (green) or negative correlations (red).
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org           6                                           July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                            Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+
+Gut Microbes That Contributed to the                                                (Figure 5B). The viruses model showed that the AUROC
+Alteration of Microbial Functions in CRC                                            values for distinguishing CRC from controls were 0.757 (95%
+The functions of gut microbiota along the carcinogenesis sequence                   CI: 0.68-0.83), 0.587 (95% CI: 0.49-0.67), and 0.507 (95% CI:
+were also evaluated at various levels. No signiﬁcant difference was                 0.48-0.57) in the training, Hong Kong, and Japan cohort,
+observed at the pathway level among the three groups, nor                           respectively (Figure 5C). Five combined markers, including
+between adenoma and healthy control at KO level(Figure 4A                           four bacteria and one virus, showed that the values of AUROC
+and Supplementary Figure 5D). But we detected signiﬁcant                            were 0.868 (95% CI: 0.81-0.93), 0.778 (95% CI: 0.69-0.86), and
+differences in the functional structure of the community                            0.692 (95% CI: 0.64-0.74) in the training cohort, Hong Kong and
+between CRC and controls at the pathway level (Anosim                               Japan cohorts (Figure 5D). We then combined the three cohorts
+P=0.04; Supplementary Figure 5E). Relative abundances of                            from three different sites and chose the top 15 markers, including
+different pathways were also displayed. And genes related to                        bacteria and viruses (Figure 5E and Supplementary Figure 7B).
+valine, leucine, and isoleucine biosynthesis (FDR=0.016), sulfur                    The values of AUROC of bacteria, viruses and combined bacteria
+relay system (FDR=0.047), and mineral absorption (FDR=0.047)                        and viruses were 0.800 (95% CI:0.65-0.72) (Figure 5F), 0.687
+decreased along with the carcinogenesis (Figure 4B). Speciﬁcally,                   (95 %CI:0.77-0.83) (Figure 5G) and 0.801 (0.77-0.83)
+the top 10 decreased and increased microbial functions were                         (Figure 5H). The evidence in the present study indicated that
+showed at the KO level (Figure 4C).                                                 the bacteria model had better diagnostic efﬁcacy than viruses
+                                                                                    within a limited species number for clinical application.
+Diagnostic Ability of Bacteria and Virome
+in CRC
+To test the diagnostic ability of bacteria and virome in CRC, ﬁve                   DISCUSSION
+bacteria and ﬁve viruses, as well as ﬁve markers including four
+bacteria and one virus based on the random forest, were chosen                      To our knowledge, this study presented the most comprehensive
+respectively in our cohort and tested in the published Hong Kong                    exploration of the gut microbiome in adenoma and colorectal
+and Japanese cohorts of colorectal cancer patients (Yu et al.,                      cancer sequence so far. We revealed the bacteriome and virome
+2017a) (Figure 5A and Supplementary Figure 7A). The                                 proﬁles of CRC and their dynamic relationships at different
+AUROC values of the bacteria model in the training, Hong                            stages. We also established the diagnostic models based on gut
+Kong, and Japanese cohorts were 0.860 (95% CI: 0.80-0.92),                          bacteria and virome and validated the accuracy and application
+0.762 (95% CI: 0.68-0.85), and 0.671 (95% CI: 0.62-0.72)                            in independent cohorts for colorectal cancer detection.
+
+
+
+             A                                                           C
+
+
+
+
+             B
+
+
+
+
+ FIGURE 4 | Functional differences of gut microbiome among the control (colored in green), adenoma (colored in amber), and CRC (colored in dubonnet) groups.
+ (A) Principal coordinate analysis of the KEGG pathways. (B) The pathways that were different in relative abundance between the control and CRC groups. (C) The
+ top 10 KOs that showed increased (top 10) or decreased (lower 10) relative abundance in the CRC group compared with that in the control group.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org          7                                          July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                              Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+
+             A                                    B                                   C                                  D
+
+
+
+
+             E                                    F                                   G                                  H
+
+
+
+
+ FIGURE 5 | The prediction ability of bacterial and viral markers for colorectal cancer. (A) Importance ranking of the ﬁve bacterial or viral species based on
+ random forest analysis. (B) The prediction performance of the ﬁve bacterial markers for the validation cohort of Hong Kong (upper panel) or Japan (lower panel).
+ (C) The prediction performance of 5 viral markers for the validation cohort of Hong Kong (upper panel) or Japan (lower panel). (D) The prediction performance of
+ 5 bacterial and ﬁve viral markers for the validation cohort of (upper panel) or Japan (lower panel). (E) Importance ranking of 15 bacterial and viral species based
+ on random forest analysis across Hong Kong, Japan, and Shanghai cohorts. (F) The prediction performance of 15 bacterial markers for the three cohorts. (G)
+ The prediction performance of 15 viral markers for the three cohorts. (H) The prediction performance of a 15-component panel of bacteria and viruses for the
+ three cohorts.
+
+
+
+    The betweenness and degree centrality decreased while                                 2019). The mechanisms study of these bacteria provided a
+closeness centrality increased in colorectal cancer, indicating the                       causality relationship with CRC. Fusobacterium nucleatum
+loose microbial architecture and fewer interactions as the disease                        promoted CRC through the interactions between fusobacterial
+progressed. We also showed a signiﬁcant negative relationship                             lectin Fap2 and host polysaccharide and NK cells receptor TIGHT
+between bacterial and viral species abundance in healthy control                          or adhesion between FadA and E-cadherin, as well as modulations
+and CRC, but not in adenoma. This negative correlation was also                           of the tumor-associated immune cell and pro-inﬂammatory
+observed between bacteria and bacteriophage diversity in                                  microenvironment (Kostic et al., 2013; Rubinstein et al., 2013;
+CRC, which was in line with a previous study (Nakatsu et al.,                             Gur et al., 2015; Abed et al., 2016; Ye et al., 2017). Fusobacterium
+2018). However, the conclusions needed to be conﬁrmed in a                                nucleatum facilitated the carcinogenesis by modulating Wnt/b-
+larger cohort.                                                                            catenin and NF-kB signal pathways (Yang et al., 2017; Rubinstein
+    The present study identiﬁed several CRC associated                                    et al., 2019). Fusobacterium nucleatum was also found to induce
+bacteria, such as Fusobacterium nucleatum, Bacteroides fragilis,                          chemotherapy resistance by BIRC3 expression and autophagy and
+Porphyromonas gingivalis, and Parvimonas micra based on                                   promote CRC metastasis through long non-coding RNA Keratin7-
+metagenomic sequencing, which were in line with previous                                  antisense (KRT7-AS) and Keratin7 (Yu et al., 2017b; Zhang et al.,
+studies (Lopez-Siles et al., 2016; Quevrain et al., 2016; Munukka                         2019; Chen et al., 2020). Bacteroides fragilis was found to induce
+et al., 2017; Yang et al., 2017; Yu et al., 2017a; Brennan and Garrett,                   CRC by secretion of a 20 kDa metalloprotease toxin and activation
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org            8                                          July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                 Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+of c-Myc expression and production of pro-inﬂammatory                        cells, activating the carcinogenic pathway (Markou and
+cytokines such as IL-17 and IL-8, as well as the RHEB/mTOR                   Apidianakis, 2014). Bacteriophages could eliminate the
+pathway (Sears, 2001; Wu et al., 2003; Hwang et al., 2013; Geis              carcinogenetic functions of bacteria in developing colorectal
+et al., 2015; Chung et al., 2018; Bao et al., 2019). Porphyromonas           cancer via an enhanced immune system (Gogokhia et al., 2019;
+gingivalis promoted CRC by activating the MAPK/ERK signaling                 Stern et al., 2019). In addition, we also found Lachnoclostridium
+pathway (Mu et al., 2020). However, the potential role of                    phocaeense, Biﬁdobacterium breve, and several phages such as
+Parvimonas micra in CRC was still underestimated.                            Bacillus_phage_PfEFR_5, Uncultured_phage_WW_nAnB_strain_2,
+    To address the spatial-temporal change of gut microbes during            Enterobacteria_phage_mEpX2 were found enriched in the CRC
+the development of CRC, several models were proposed. One of the             patients with MSI. Studies revealed that CRC patients with wild-
+most arrestive hypotheses was the driver-passenger model in CRC,             type KRAS and MSI could beneﬁt from targeted chemotherapy,
+indicating that bacteria of driver role initiated the carcinogenesis         which might be mediated by gut bacteria and phages described
+and then disappeared accompanied by enrichment of bacteria with              above (Nakatsu et al., 2018; Kannen et al., 2019; Zheng et al., 2019;
+passenger role to continue the carcinogenetic process (Tjalsma               Phipps et al., 2020). However, the detailed mechanisms still needed
+et al., 2012). The present study showed the taxonomic alterations of         deeper investigation.
+speciﬁc microbes, such as Bacteroides fragilis, Porphyromonas                    We then investigated the dynamic networks between
+asaccharolytica, Fusobacterium nucleatum, Parvimonas micra,                  bacteria and viruses at different stages of CRC. The gross
+Fusobacterium hwasookii, and Streptococcus constellatus, that                relationship evaluation indicated that one microbe correlates
+increased along the stages of CRC. This was in line with our                 with more than one virus in the gut, implying that the bacteria
+previous study, which showed the dominant bacteria in colorectal             might be affected by several viruses, especially the bacteriophages.
+cancer tissues, indicating their role as passengers in CRC                   We found that some Firmicutes and Actinobacteria showed
+development (Sobhani et al., 2013; Gao et al., 2017). We also                negative associations with Salmonella and Escherichia viruses
+noticed that some bacteria, such as Porphyromonas gingivalis,                but positive associations with some phages like uncultured
+Escherichia coli, and Proteus mirabilis, were enriched in the                crAssphage and Enterobacteria phages. And we also displayed
+adenoma group compared to the CRC group, suggesting their                    that the CrAssphage was closely associated with butyrate-
+potential function as driver microbes. However, this hypothesis still        producing bacteria such as Eubacterium rectale, Eubacterium
+needed more evidence.                                                        cellulosolvens, and Butyrivibrio proteoclasticus at different stages
+    We demonstrated the explicit dysbiotic proﬁles of CRC,                   of CRC. This might indicate the co-expansion of bacteria and
+characterized by enrichment of bacteria, and unraveled the                   viruses and the prohibition roles of bacteriophages, suggesting the
+altered viral community in the gut. We identiﬁed that                        roles of bacteria-bacteriophage dynamic interactions in
+Escherichia and Salmonella viruses dominated in the CRC, while               maintaining the hemostasis of the gut. In addition, when
+uncultured_crAssphage and Enterobacteria phages dominated                    explored the bacteria-viruses interactions, we found that more
+healthy control. The relative abundance of CrAssphage also                   viruses were involved in the network in CRC than healthy control
+decreased from adenoma to CRC, indicating that this                          and adenoma, which was consistent with the increased closeness
+bacteriophage might play an essential role in inhibiting the                 centrality and decreased degree centrality in CRC. We also
+carcinogenesis progress. However, the LifeLines-DEEP cohort                  displayed that the anti-inﬂammatory Faecalibacterium
+data did not reveal any signiﬁcant associations between                      prausnitzii was only negatively associated with Parabacteroides_
+CrAssphage and human disease conditions (Edwards et al.,                     phage_YZ_2015a at the CRC stage, indicating the dramatic
+2019). CrAssphage was a double-stranded DNA virus, currently                 changes in the microbial structure and relationships. Besides,
+without more detailed classiﬁcation, had been identiﬁed as the               we found that the Escherichia virus had increased relative
+most prevalent but poorly understood phage in the human gut,                 abundance in adenoma and CRC and the essential connections
+comprising almost 90% of sequences in the gut virome (Yutin                  in the adenoma and CRC networks. Escherichia virus was
+et al., 2018). Recently, Shkoporov et al. conﬁrmed the isolation of          negatively associated with some butyrate-producing bacteria,
+CrAssphage and found that this bacteriophage infected the                    indicating its potential carcinogenesis role in CRC development.
+Bacteroides intestinalis, and its proliferation was independent of           We also found that the Salmonella virus LSPA1 was negatively
+bacteria (Shkoporov et al., 2018). Bacteriophage was an essential            associated with Biﬁdobacterium dentium but positively associated
+factor shaping the ecological homeostasis in the gut. Bacteriophage          with Fusobacterium nucleatum, a widely studied CRC promotion
+rarely encoded the antibiotic resistance genes and was also                  pathogen at the CRC stage. These relationships strongly suggested
+reported to be effective for some fatal infections (Enault et al.,           the candidate contributing role of Salmonella virus LSPA1 in the
+2017; Zuo et al., 2017). The present study showed that the                   development of CRC.
+CrAssphage was more abundant in the healthy control than                         Despite the bacteria-virus relationships, the bacteria and
+CRC, which indicated a promising potential treatment strategy                viruses themselves also had complicated interactions. Genus
+for CRC through fecal CrAssphage transplantation in the future.              Fusobacterium had been conﬁrmed the causality with CRC, as
+    We also found that some bacteriophages were associated with              well as Parvimonas and Porphyromonas. We revealed that these
+genetic mutations. Pseudomonas_phage_phiKZ was associated with               species also undertook essential roles in the network, as they
+wild-type KRAS. Pseudomonas species contributed to the                       showed close correlations with other microbes in adenoma and
+enterocyte’s apoptosis and the proliferation of intestinal stem              healthy control. Compared with bacteria, the network of viruses
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org   9                                      July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                          Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+themselves was less close-knit. Most of the dominant critical                 AUTHOR CONTRIBUTIONS
+members in the CRC were viruses, such as Salmonella viruses,
+Escherichia viruses, and endogenous retrovirus. Interestingly,                HQ and RG take responsibility for the integrity of the work as a
+recent evidence had demonstrated that endogenous retrovirus                   whole, from inception to published article. RG wrote this
+was associated with higher responding rates to cancer                         manuscript. RG, HL, and YZ performed the data check and
+immunology therapy in renal cell carcinoma (Panda et al.,                     analysis. YFZ, XZ, YL, HZ, KX, and RY helped collect all the
+2018). The mechanism might be due to the activation of the                    subject information and samples. YZ, YFZ, XZ, CK, and CC
+immune checkpoints by increased immune inﬁltration. Of                        performed the data visualization and interpretation of data. NQ
+course, some harmful viruses were found to be able to deprive                 performed the sample sequencing and analysis. RG and HQ
+the beneﬁcial functions of commensal bacteria (Kernbauer et al.,              designed and guided the whole study. All authors contributed to
+2014). Only one bacteriophage was identiﬁed as a critical                     the article and approved the submitted version.
+member in adenoma, while as expected, uncultured crAssphage
+dominated in the healthy control group, followed by
+Enterobacteria phages.                                                        FUNDING
+    The diagnostic test was performed based on bacteria and
+viruses and validated in independent cohorts in the present                   This work was supported by grants from the National Natural
+study. The AUROC of bacteria showed a better ability to                       Science Foundation of China (Nos. 81730102, 81230057, and
+detect CRC than viruses in an independent cohort, consistent                  81472262); Emerging Cutting-Edge Technology Joint Research
+with other studies (Nakatsu et al., 2018). We chose ﬁve microbes              projects of Shanghai (No. SHDC12017112); Training program of
+to establish the diagnostic panel and conﬁrmed its relatively good            the National Natural Science Foundation of China of Shanghai Tenth
+discernibility of CRC from healthy controls. To get a higher                  People’s Hospital (SYGZRPY2017024); “Climbing” plan of Shanghai
+possibility for detecting CRC, ﬁfteen microbes, including bacteria            Tenth People’s Hospital (2018SYPDRC030); the Fundamental
+and viruses, were determined and tested in the combined cohorts               Research Funds for the Central Universities (22120180575); and
+from Shanghai, Hong Kong, and Japan. The result showed a                      Special Project of Clinical Research on Health Care Industry of
+similar AUROC when compared with the ﬁve microbes panel.                      Shanghai Municipal Health Commission (20194Y0483).
+    In conclusion, we performed a metagenomics study of the
+three stages of CRC development. We conﬁrmed the
+carcinogenetic pathogens and novel candidate microbes and
+viruses involved in the development of CRC. The dynamic and                   ACKNOWLEDGMENTS
+complicated network between gut bacteria and viruses was also                 We want to thank Prof. Huanlong Qin and Nan Qin for their
+evaluated to show the unique proﬁle that changed at different                 valuable work on this study and strong support from Qian Xu,
+stages of CRC. In the end, we developed the diagnostic panel,                 Zhan Cao, and Chunyan Wu of Shanghai Realbio biotechnology
+including bacteria and viruses for the detection of CRC. We                   co.LTD. We thank all the members of the Institute of Intestinal
+validated it in independent cohorts, which enhance the reliability            Diseases, Tongji University School of Medicine. We also want to
+of gut microbiome-based studies. However, we did not have                     thank all the participants for providing their samples.
+complete clinical test data in three groups, such as liver and
+kidney function, which needed to be amended in the future
+study. Our study provided reliable evidence for manipulating the
+gut microbiome for the diagnosis and treatment strategy of CRC.               SUPPLEMENTARY MATERIAL
+                                                                              The Supplementary Material for this article can be found online
+                                                                              at: https://www.frontiersin.org/articles/10.3389/fcimb.2021.
+DATA AVAILABILITY STATEMENT                                                   657867/full#supplementary-material
+                                                                              Supplementary Figure 1 | The taxonomic alteration of the gut microbiome in
+The datasets presented in this study can be found in online
+                                                                              healthy control (HC), adenoma, and colorectal cancer (CRC). (A) Alterations of the
+repositories. The names of the repository/repositories and                    gut microbiome in HC, adenoma, and CRC groups at the phylum level. (B) The
+accession number(s) can be found below: NCBI BioProject,                      relative abundances of top 25 bacteria in HC, adenoma, and CRC groups at the
+PRJNA706060 and PRJNA514108.                                                  species level. (C) The relative abundances of top 20 viruses in HC, adenoma, and
+                                                                              CRC groups at the species level.
+
+                                                                              Supplementary Figure 2 | Different dominated bacteria (A) and viruses (B) in
+                                                                              colorectal cancer and healthy control, as well as bacteria (C) and viruses (D)
+ETHICS STATEMENT                                                              differences at early stages (stage I+II) and later stages (stage III+IV) of colorectal
+                                                                              cancer by LEfSe.
+The studies involving human participants were reviewed and
+approved by Ethics Committee of Shanghai Tenth People’s                       Supplementary Figure 3 | Dominated gut microbiomes associated with gene
+Hospital. The patients/participants provided their written                    mutations. (A) Gut bacteria dominated in the colorectal cancer samples with KRAS
+informed consent to participate in this study.                                mutations or wild. (B) Gut bacteria associated with microsatellite stabilization (MSS)
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org   10                                               July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                                               Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+and microsatellite instabilization (MSI) in colorectal cancer. (C) Gut viruses                    Supplementary Figure 7 | Bacteria and viruses selected for diagnostic models
+associated with MSS and MSI in colorectal cancer.                                                 for colorectal cancer. (A). The top 5 bacteria and viruses were chosen to diagnose
+                                                                                                  colorectal cancer in Hong Kong and Japanese cohorts. (B). Top 12 bacteria and
+Supplementary Figure 4 | The correlations of the gut bacteria (A) and viruses (B)                 viruses selected for the ROC of diagnosis of colorectal cancer in Hong Kong,
+in healthy control, adenoma, and colorectal cancer.                                               Japanese, and Shanghai cohorts.
+
+Supplementary Figure 5 | The indexes and function alteration in adenoma and
+colorectal cancer. The betweenness (A), closeness (B), and degrees (C) of the gut                 Supplementary Table 1 | The characteristics of enrolled subjects in this study
+microbiome among the control (colored in green), adenoma (colored in amber), and                  (Mean ± Standard Deviation). *One patient had two cancers in both ascending
+CRC (colored in dubonnet) groups. Principal coordinate analysis of the functions                  colon and rectum, which was counted in both ascending colon cancer and rectal
+change of gut microbiome at KO level (D) between adenoma and healthy control                      cancer. A, Ascending colon; T, Transversal colon; D, Descending colon; S,
+and that at pathway level between CRC and control (E). **P<0.01 ***P<0.001                        Sigmoid colon; R, Rectum. #Mean ± Standard error of the mean (SEM). WBC,
+                                                                                                  White blood cell; RBC, Red blood cell; ALT, Alanine transaminase; AST,
+Supplementary Figure 6 | The relationships of bacteria and viruses in all the                     Aspartate aminotransferase; CEA, Carcinoembryonic antigen; AFP, Alpha-
+samples. *P <0.05 + P <0.01.                                                                      fetoprotein.
+
+
+
+
+REFERENCES                                                                                        Friedman, J., and Alm, E. J. (2012). Inferring Correlation Networks From
+                                                                                                      Genomic Survey Data. PLoS Comput. Biol. 8 (9), e1002687. doi: 10.1371/
+Abed, J., Emgard, J. E., Zamir, G., Faroja, M., Almogy, G., Grenov, A., et al. (2016).                journal.pcbi.1002687
+   Fap2 Mediates Fusobacterium Nucleatum Colorectal Adenocarcinoma                                Gallego, C. J., Shirts, B. H., Bennette, C. S., Guzauskas, G., Amendola, L. M.,
+   Enrichment by Binding to Tumor-Expressed Gal-GalNAc. Cell Host Microbe                             Horike-Pyne, M., et al. (2015). Next-Generation Sequencing Panels for the
+   20 (2), 215–225. doi: 10.1016/j.chom.2016.07.006                                                   Diagnosis of Colorectal Cancer and Polyposis Syndromes: A Cost-
+Abubucker, S., Segata, N., Goll, J., Schubert, A. M., Izard, J., Cantarel, B. L., et al.              Effectiveness Analysis. J. Clin. Oncol. 33 (18), 2084–2091. doi: 10.1200/
+   (2012). Metabolic Reconstruction for Metagenomic Data and its Application to                       JCO.2014.59.3665
+   the Human Microbiome. PLoS Comput. Biol. 8 (6), e1002358. doi: 10.1371/                        Gao, R., Kong, C., Huang, L., Li, H., Qu, X., Liu, Z., et al. (2017). Mucosa-
+   journal.pcbi.1002358                                                                               Associated Microbiota Signature in Colorectal Cancer. Eur. J. Clin. Microbiol.
+Bao, Y., Tang, J., Qian, Y., Sun, T., Chen, H., Chen, Z., et al. (2019). Long                         Infect. Dis. 36 (11), 2073–2083. doi: 10.1007/s10096-017-3026-4
+   Noncoding RNA BFAL1 Mediates Enterotoxigenic Bacteroides Fragilis-                             Gao, R., Wang, Z., Li, H., Cao, Z., Gao, Z., Chen, H., et al. (2020). Gut Microbiota
+   Related Carcinogenesis in Colorectal Cancer via the RHEB/mTOR Pathway.                             Dysbiosis Signature is Associated With the Colorectal Carcinogenesis
+   Cell Death Dis. 10 (9), 675. doi: 10.1038/s41419-019-1925-2                                        Sequence and Improves the Diagnosis of Colorectal Lesions. J. Gastroenterol.
+Brennan, C. A., and Garrett, W. S. (2019). Fusobacterium Nucleatum - Symbiont,                        Hepatol. 35 (12), 2109–2121. doi: 10.1111/jgh.15077
+   Opportunist and Oncobacterium. Nat. Rev. Microbiol. 17 (3), 156–166.                           Geis, A. L., Fan, H., Wu, X., Wu, S., Huso, D. L., Wolfe, J. L., et al. (2015).
+   doi: 10.1038/s41579-018-0129-6                                                                     Regulatory T-Cell Response to Enterotoxigenic Bacteroides Fragilis
+Caspi, R., Billington, R., Fulcher, C. A., Keseler, I. M., Kothari, A., Krummenacker,                 Colonization Triggers IL17-Dependent Colon Carcinogenesis. Cancer Discov.
+   M., et al. (2018). The MetaCyc Database of Metabolic Pathways and Enzymes.                         5 (10), 1098–1109. doi: 10.1158/2159-8290.CD-15-0447
+   Nucleic Acids Res. 46 (D1), D633–D639. doi: 10.1093/nar/gkx935                                 Gogokhia, L., Buhrke, K., Bell, R., Hoffman, B., Brown, D. G., Hanke-Gogokhia, C.,
+Castellarin, M., Warren, R. L., Freeman, J. D., Dreolini, L., Krzywinski, M., Strauss, J.,            et al. (2019). Expansion of Bacteriophages Is Linked to Aggravated Intestinal
+   et al. (2012). Fusobacterium Nucleatum Infection is Prevalent in Human                             Inﬂammation and Colitis. Cell Host Microbe 25 (2), 285–299 e288.
+   Colorectal Carcinoma. Genome Res. 22 (2), 299–306. doi: 10.1101/gr.126516.111                      doi: 10.1016/j.chom.2019.01.008
+Chen, Y.-P., Chan, A. T. C., Le, Q.-T., Blanchard, P., Sun, Y., and Ma, J. (2019).                Gur, C., Ibrahim, Y., Isaacson, B., Yamin, R., Abed, J., Gamliel, M., et al. (2015).
+   Nasopharyngeal Carcinoma. Lancet 394 (10192), 64–80. doi: 10.1016/s0140-                           Binding of the Fap2 Protein of Fusobacterium Nucleatum to Human
+   6736(19)30956-0                                                                                    Inhibitory Receptor TIGIT Protects Tumors From Immune Cell Attack.
+Chen, S., Su, T., Zhang, Y., Lee, A., He, J., Ge, Q., et al. (2020). Fusobacterium                    Immunity 42 (2), 344–355. doi: 10.1016/j.immuni.2015.01.010
+   Nucleatum Promotes Colorectal Cancer Metastasis by Modulating KRT7-As/                         Hannigan, G. D., Duhaime, M. B., Rufﬁn, ,.M., Koumpouras, C. C., and Schloss,
+   Krt7. Gut Microbes 11 (3), 511–525. doi: 10.1080/19490976.2019.1695494                             P. D. (2018). Diagnostic Potential and Interactive Dynamics of the Colorectal
+Chen, W., Zheng, R., Baade, P. D., Zhang, S., Zeng, H., Bray, F., et al. (2016).                      Cancer Virome. MBio 9 (6), e02248–18. doi: 10.1128/mBio.02248-18
+   Cancer Statistics in China 2015. CA Cancer J. Clin. 66 (2), 115–132.                           Hsu, L., Jeon, J., Brenner, H., Gruber, S. B., Schoen, R. E., Berndt, S. I., et al. (2015).
+   doi: 10.3322/caac.21338                                                                            A Model to Determine Colorectal Cancer Risk Using Common Genetic
+Chung, L., Thiele Orberg, E., Geis, A. L., Chan, J. L., Fu, K., DeStefano Shields, C.                 Susceptibility Loci. Gastroenterology 148 (7), 1330–1339.e1314. doi: 10.1053/
+   E., et al. (2018). Bacteroides Fragilis Toxin Coordinates a Pro-Carcinogenic                       j.gastro.2015.02.010
+   Inﬂammatory Cascade via Targeting of Colonic Epithelial Cells. Cell Host                       Huycke, M. M., Abrams, V., and Moore, D. R. (2002). Enterococcus Faecalis
+   Microbe 23 (2), 203–214.e205. doi: 10.1016/j.chom.2018.01.007                                      Produces Extracellular Superoxide and Hydrogen Peroxide That Damages
+Cohen, P. A., Jhingran, A., Oaknin, A., and Denny, L. (2019). Cervical Cancer.                        Colonic Epithelial Cell DNA. Carcinogenesis 23 (3), 529–536. doi: 10.1093/
+   Lancet 393 (10167), 169–182. doi: 10.1016/s0140-6736(18)32470-x                                    carcin/23.3.529
+Coker, O. O., Nakatsu, G., Dai, R. Z., Wu, W. K. K., Wong, S. H., Ng, S. C., et al.               Hwang, S., Gwon, S. Y., Kim, M. S., Lee, S., and Rhee, K. J. (2013). Bacteroides
+   (2019). Enteric Fungal Microbiota Dysbiosis and Ecological Alterations in                          Fragilis Toxin Induces IL-8 Secretion in HT29/C1 Cells Through Disruption of
+   Colorectal Cancer. Gut 68 (4), 654–662. doi: 10.1136/gutjnl-2018-317178                            E-Cadherin Junctions. Immune Netw. 13 (5), 213–217. doi: 10.4110/
+Dahiya, D. K., and Renuka, (2017). The Gut Virome: A Neglected Actor in Colon                         in.2013.13.5.213
+   Cancer Pathogenesis. Future Microbiol. 12, 1345–1348. doi: 10.2217/fmb-                        Jiao, S., Chen, W., and Wei, G. (2017). Biogeography and Ecological Diversity
+   2017-0159                                                                                          Patterns of Rare and Abundant Bacteria in Oil-Contaminated Soils. Mol. Ecol.
+Edwards, R. A., Vega, A. A., Norman, H. M., Ohaeri, M., Levi, K., Dinsdale, E. A.,                    26 (19), 5305–5317. doi: 10.1111/mec.14218
+   et al. (2019). Global Phylogeography and Ancient Evolution of the Widespread                   Jiao, S., Peters, U., Berndt, S., Brenner, H., Butterbach, K., Caan, B. J., et al. (2014).
+   Human Gut Virus Crassphage. Nat. Microbiol. 4 (10), 1727–1736. doi: 10.1038/                       Estimating the Heritability of Colorectal Cancer. Hum. Mol. Genet. 23 (14),
+   s41564-019-0494-6                                                                                  3898–3905. doi: 10.1093/hmg/ddu087
+Enault, F., Briet, A., Bouteille, L., Roux, S., Sullivan, M. B., and Petit, M. A. (2017).         Kanehisa, M., Goto, S., Kawashima, S., Okuno, Y., and Hattori, M. (2004). The
+   Phages Rarely Encode Antibiotic Resistance Genes: A Cautionary Tale for                            KEGG Resource for Deciphering the Genome. Nucleic Acids Res. 32 (Database
+   Virome Analyses. ISME. J. 11 (1), 237–247. doi: 10.1038/ismej.2016.90                              issue), D277–D280. doi: 10.1093/nar/gkh063
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org                       11                                                July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                                               Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+Kannen, V., Parry, L., and Martin, F. L. (2019). Phages Enter the Fight Against                     and Patient Survival, Based on Pooled Analysis of 7 International Studies.
+    Colorectal Cancer. Trends Cancer 5 (10), 577–579. doi: 10.1016/j.trecan.                        Gastroenterology 158 (8), 2158–2168.e4. doi: 10.1053/j.gastro.2020.02.029
+    2019.08.002                                                                                  Qin, N., Yang, F., Li, A., Prifti, E., Chen, Y., Shao, L., et al. (2014). Alterations of the
+Kernbauer, E., Ding, Y., and Cadwell, K. (2014). An Enteric Virus can Replace the                   Human Gut Microbiome in Liver Cirrhosis. Nature 513 (7516), 59–64.
+    Beneﬁcial Function of Commensal Bacteria. Nature 516 (7529), 94–98.                             doi: 10.1038/nature13568
+    doi: 10.1038/nature13960                                                                     Quevrain, E., Maubert, M. A., Michon, C., Chain, F., Marquant, R., Tailhades, J.,
+Kostic, A. D., Chun, E., Robertson, L., Glickman, J. N., Gallini, C. A., Michaud, M.,               et al. (2016). Identiﬁcation of an Anti-Inﬂammatory Protein From
+    et al. (2013). Fusobacterium Nucleatum Potentiates Intestinal Tumorigenesis                     Faecalibacterium Prausnitzii, a Commensal Bacterium Deﬁcient in Crohn’s
+    and Modulates the Tumor-Immune Microenvironment. Cell Host Microbe 14                           Disease. Gut 65 (3), 415–425. doi: 10.1136/gutjnl-2014-307649
+    (2), 207–215. doi: 10.1016/j.chom.2013.07.007                                                Rubinstein, M. R., Baik, J. E., Lagana, S. M., Han, R. P., Raab, W. J., Sahoo, D., et al.
+Li, W., and Godzik, A. (2006). Cd-Hit: A Fast Program for Clustering and                            (2019). Fusobacterium Nucleatum Promotes Colorectal Cancer by Inducing
+    Comparing Large Sets of Protein or Nucleotide Sequences. Bioinformatics 22                      Wnt/beta-Catenin Modulator Annexin A1. EMBO Rep. 20 (4), e47638.
+    (13), 1658–1659. doi: 10.1093/bioinformatics/btl158                                             doi: 10.15252/embr.201847638
+Li, R., Li, Y., Kristiansen, K., and Wang, J. (2008). SOAP: Short Oligonucleotide                Rubinstein, M. R., Wang, X., Liu, W., Hao, Y., Cai, G., and Han, Y. W. (2013).
+    Alignment Program. Bioinformatics 24 (5), 713–714. doi: 10.1093/                                Fusobacterium Nucleatum Promotes Colorectal Carcinogenesis by Modulating
+    bioinformatics/btn025                                                                           E-Cadherin/Beta-Catenin Signaling via its FadA Adhesin. Cell Host Microbe 14
+Lim, E. S., Wang, D., and Holtz, L. R. (2016). The Bacterial Microbiome and                         (2), 195–206. doi: 10.1016/j.chom.2013.07.012
+    Virome Milestones of Infant Development. Trends Microbiol. 24 (10), 801–810.                 Sadria, M., Karimi, S., and Layton, A. T. (2019). Network Centrality Analysis of
+    doi: 10.1016/j.tim.2016.06.001                                                                  Eye-Gaze Data in Autism Spectrum Disorder. Comput. Biol. Med. 111, 103332.
+Lopez-Siles, M., Martinez-Medina, M., Suris-Valls, R., Aldeguer, X., Sabat-Mir,                     doi: 10.1016/j.compbiomed.2019.103332
+    M., Duncan, S. H., et al. (2016). Changes in the Abundance of Faecalibacterium               Sears, C. L. (2001). The Toxins of Bacteroides Fragilis. Toxicon 39 (11), 1737–1746.
+    Prausnitzii Phylogroups I and II in the Intestinal Mucosa of Inﬂammatory                        doi: 10.1016/s0041-0101(01)00160-x
+    Bowel Disease and Patients With Colorectal Cancer. Inﬂammation Bowel. Dis.                   Shkoporov, A. N., Khokhlova, E. V., Fitzgerald, C. B., Stockdale, S. R., Draper, L.
+    22 (1), 28–41. doi: 10.1097/MIB.0000000000000590                                                A., Ross, R. P., et al. (2018). PhiCrAss001 Represents the Most Abundant
+Luebeck, E. G., and Moolgavkar, S. H. (2002). Multistage Carcinogenesis and the                     Bacteriophage Family in the Human Gut and Infects Bacteroides Intestinalis.
+    Incidence of Colorectal Cancer. Proc. Natl. Acad. Sci. U. S. A. 99 (23), 15095–                 Nat. Commun. 9 (1), 4781. doi: 10.1038/s41467-018-07225-7
+    15100. doi: 10.1073/pnas.222118199                                                           Siegel, R. L., Miller, K. D., and Jemal, A. (2017). Cancer Statistic 2017. CA Cancer J.
+Luo, R., Liu, B., Xie, Y., Li, Z., Huang, W., Yuan, J., et al. (2012). SOAPdenovo2: An              Clin. 67 (1), 7–30. doi: 10.3322/caac.21387
+    Empirically Improved Memory-Efﬁcient Short-Read De Novo Assembler.                           Sobhani, I., Amiot, A., Le Baleur, Y., Levy, M., Auriault, M. L., Van Nhieu, J. T.,
+    Gigascience 1 (1):18. doi: 10.1186/2047-217x-1-18                                               et al. (2013). Microbial Dysbiosis and Colon Carcinogenesis: Could Colon
+Markou, P., and Apidianakis, Y. (2014). Pathogenesis of Intestinal Pseudomonas                      Cancer be Considered a Bacteria-Related Disease? Therap. Adv. Gastroenterol.
+    Aeruginosa Infection in Patients With Cancer. Front. Cell Infect. Microbiol.                    6 (3), 215–229. doi: 10.1177/1756283x12473674
+    3:115. doi: 10.3389/fcimb.2013.00115                                                         Stern, J., Miller, G., Li, X., and Saxena, D. (2019). Virome and Bacteriome: Two
+Mima, K., Nishihara, R., Qian, Z. R., Cao, Y., Sukawa, Y., Nowak, J. A., et al.                     Sides of the Same Coin. Curr. Opin. Virol. 37, 37–43. doi: 10.1016/
+    (2016). Fusobacterium Nucleatum in Colorectal Carcinoma Tissue and Patient                      j.coviro.2019.05.007
+    Prognosis. Gut 65 (12), 1973–1980. doi: 10.1136/gutjnl-2015-310101                           Thomas, A. M., Manghi, P., Asnicar, F., Pasolli, E., Armanini, F., Zolfo, M., et al.
+Mima, K., Sukawa, Y., Nishihara, R., Qian, Z. R., Yamauchi, M., Inamura, K., et al.                 (2019). Metagenomic Analysis of Colorectal Cancer Datasets Identiﬁes Cross-
+    (2015). Fusobacterium Nucleatum and T Cells in Colorectal Carcinoma. JAMA                       Cohort Microbial Diagnostic Signatures and a Link With Choline Degradation.
+    Oncol. 1 (5), 653–661. doi: 10.1001/jamaoncol.2015.1377                                         Nat. Med. 25 (4), 667–678. doi: 10.1038/s41591-019-0405-7
+Mu, W., Jia, Y., Chen, X., Li, H., Wang, Z., and Cheng, B. (2020). Intracellular                 Tjalsma, H., Boleij, A., Marchesi, J. R., and Dutilh, B. E. (2012). A Bacterial Driver-
+    Porphyromonas Gingivalis Promotes the Proliferation of Colorectal Cancer                        Passenger Model for Colorectal Cancer: Beyond the Usual Suspects. Nat. Rev.
+    Cells via the MAPK/ERK Signaling Pathway. Front. Cell Infect. Microbiol.                        Microbiol. 10 (8), 575–582. doi: 10.1038/nrmicro2819
+    10:584798. doi: 10.3389/fcimb.2020.584798                                                    Tsoi, H., Chu, E. S. H., Zhang, X., Sheng, J., Nakatsu, G., Ng, S. C., et al. (2017).
+Munukka, E., Rintala, A., Toivonen, R., Nylund, M., Yang, B., Takanen, A., et al.                   Peptostreptococcus Anaerobius Induces Intracellular Cholesterol
+    (2017). Faecalibacterium Prausnitzii Treatment Improves Hepatic Health and                      Biosynthesis in Colon Cells to Induce Proliferation and Causes Dysplasia
+    Reduces Adipose Tissue Inﬂammation in High-Fat Fed Mice. ISME. J. 11 (7),                       in Mice. Gastroenterology 1521419-1433 (6), e1415. doi: 10.1053/j.gastro.
+    1667–1679. doi: 10.1038/ismej.2017.24                                                           2017.01.009
+Nakatsu, G., Zhou, H., Wu, W. K. K., Wong, S. H., Coker, O. O., Dai, Z., et al.                  Tu, T., Buhler, S., and Bartenschlager, R. (2017). Chronic Viral Hepatitis and its
+    (2018). Alterations in Enteric Virome Are Associated With Colorectal Cancer                     Association With Liver Cancer. Biol. Chem. 398 (8), 817–837. doi: 10.1515/hsz-
+    and Survival Outcomes. Gastroenterology 155529-541 (2), e525. doi: 10.1053/                     2017-0118
+    j.gastro.2018.04.018                                                                         Usher-Smith, J. A., Walter, F. M., Emery, J. D., Win, A. K., and Grifﬁn, S. J. (2016).
+Noguchi, H., Park, J., and Takagi, T. (2006). MetaGene: Prokaryotic Gene Finding                    Risk Prediction Models for Colorectal Cancer: A Systematic Review. Cancer
+    From Environmental Genome Shotgun Sequences. Nucleic Acids Res. 34 (19),                        Prev. Res. (Phila). 9 (1), 13–26. doi: 10.1158/1940-6207.CAPR-15-0274
+    5623–5630. doi: 10.1093/nar/gkl723                                                           Wood, D. E., and Salzberg, S. L. (2014). Kraken: Ultrafast Metagenomic Sequence
+O’Keefe, S. J. (2016). Diet, Microorganisms and Their Metabolites, and Colon                        Classiﬁcation Using Exact Alignments. Genome Biol. 15 (3), R46. doi: 10.1186/
+    Cancer. Nat. Rev. Gastroenterol. Hepatol. 13 (12), 691–706. doi: 10.1038/                       gb-2014-15-3-r46
+    nrgastro.2016.165                                                                            Wu, S., Morin, P. J., Maouyo, D., and Sears, C. L. (2003). Bacteroides Fragilis
+Panda, A., de Cubas, A. A., Stein, M., Riedlinger, G., Kra, J., Mayer, T., et al. (2018).           Enterotoxin Induces C-Myc Expression and Cellular Proliferation.
+    Endogenous Retrovirus Expression is Associated With Response to Immune                          Gastroenterology 124 (2), 392–400. doi: 10.1053/gast.2003.50047
+    Checkpoint Blockade in Clear Cell Renal Cell Carcinoma. JCI Insight 3 (16),                  Yang, Y., Weng, W., Peng, J., Hong, L., Yang, L., Toiyama, Y., et al. (2017).
+    e121522. doi: 10.1172/jci.insight.121522                                                        Fusobacterium Nucleatum Increases Proliferation of Colorectal Cancer Cells
+Park, Y., Freedman, A. N., Gail, M. H., Pee, D., Hollenbeck, A., Schatzkin, A., et al.              and Tumor Development in Mice by Activating Toll-Like Receptor 4 Signaling
+    (2009). Validation of a Colorectal Cancer Risk Prediction Model Among White                     to Nuclear Factor-Kappab, and Up-Regulating Expression of MicroRNA-21.
+    Patients Age 50 Years and Older. J. Clin. Oncol. 27 (5), 694–698. doi: 10.1200/                 Gastroenterology 152851-866 (4), e824. doi: 10.1053/j.gastro.2016.11.018
+    JCO.2008.17.4813                                                                             Yatsunenko, T., Rey, F. E., Manary, M. J., Trehan, I., Dominguez-Bello, M. G.,
+Phipps, A. I., Alwers, E., Harrison, T., Banbury, B., Brenner, H., Campbell, P. T.,                 Contreras, M., et al. (2012). Human Gut Microbiome Viewed Across Age and
+    et al. (2020). Association Between Molecular Subtypes of Colorectal Tumors                      Geography. Nature 486 (7402), 222–227. doi: 10.1038/nature11053
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org                      12                                                July 2021 | Volume 11 | Article 657867
+Gao et al.                                                                                                                       Gut Bacteria and Viruses in Colorectal Cancer
+
+
+
+Ye, Y., and Doak, T. G. (2009). A Parsimony Approach to Biological Pathway                    Upregulation of BIRC3 Expression in Colorectal Cancer. J. Exp. Clin. Cancer
+   Reconstruction/Inference for Genomes and Metagenomes. PLoS Comput. Biol.                   Res. 38 (1), 14. doi: 10.1186/s13046-018-0985-y
+   5 (8), e1000465. doi: 10.1371/journal.pcbi.1000465                                       Zheng, D. W., Dong, X., Pan, P., Chen, K. W., Fan, J. X., Cheng, S. X., et al. (2019).
+Ye, X., Wang, R., Bhattacharya, R., Boulbes, D. R., Fan, F., Xia, L., et al. (2017).          Phage-Guided Modulation of the Gut Microbiota of Mouse Models of
+   Fusobacterium Nucleatum Subspecies Animalis Inﬂuences Proinﬂammatory                       Colorectal Cancer Augments Their Responses to Chemotherapy. Nat.
+   Cytokine Expression and Monocyte Activation in Human Colorectal Tumors.                    BioMed. Eng. 3 (9), 717–728. doi: 10.1038/s41551-019-0423-2
+   Cancer Prev. Res. (Phila). 10 (7), 398–409. doi: 10.1158/1940-6207.capr-16-              Zuo, T., Wong, S. H., Lam, K., Lui, R., Cheung, K., Tang, W., et al. (2017).
+   0178                                                                                       Bacteriophage Transfer During Faecal Microbiota Transplantation in
+Yu, J., Feng, Q., Wong, S. H., Zhang, D., Liang, Q. Y., Qin, Y., et al. (2017a).              Clostridium Difﬁcile Infection is Associated With Treatment Outcome. Gut
+   Metagenomic Analysis of Faecal Microbiome as a Tool Towards Targeted non-                  67 (4), 634–643. doi: 10.1136/gutjnl-2017-313952
+   Invasive Biomarkers for Colorectal Cancer. Gut 66 (1), 70–78. doi: 10.1136/
+   gutjnl-2015-309800                                                                       Conﬂict of Interest: The authors declare that the research was conducted in the
+Yu, T., Guo, F., Yu, Y., Sun, T., Ma, D., Han, J., et al. (2017b). Fusobacterium            absence of any commercial or ﬁnancial relationships that could be construed as a
+   Nucleatum Promotes Chemoresistance to Colorectal Cancer by                               potential conﬂict of interest.
+   Modulating Autophagy. Cell 170 (3), 548–563.e516. doi: 10.1016/j.cell.
+   2017.07.008                                                                              Copyright © 2021 Gao, Zhu, Kong, Xia, Li, Zhu, Zhang, Liu, Zhong, Yang, Chen, Qin
+Yutin, N., Makarova, K. S., Gussow, A. B., Krupovic, M., Segall, A., Edwards, R. A.,        and Qin. This is an open-access article distributed under the terms of the Creative
+   et al. (2018). Discovery of an Expansive Bacteriophage Family That Includes              Commons Attribution License (CC BY). The use, distribution or reproduction in other
+   the Most Abundant Viruses From the Human Gut. Nat. Microbiol. 3 (1), 38–                 forums is permitted, provided the original author(s) and the copyright owner(s) are
+   46. doi: 10.1038/s41564-017-0053-y                                                       credited and that the original publication in this journal is cited, in accordance with
+Zhang, S., Yang, Y., Weng, W., Guo, B., Cai, G., Ma, Y., et al. (2019).                     accepted academic practice. No use, distribution or reproduction is permitted which
+   Fusobacterium Nucleatum Promotes Chemoresistance to 5-Fluorouracil by                    does not comply with these terms.
+
+
+
+
+Frontiers in Cellular and Infection Microbiology | www.frontiersin.org                 13                                              July 2021 | Volume 11 | Article 657867
+

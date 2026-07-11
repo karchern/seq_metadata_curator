@@ -1,0 +1,980 @@
+Loftus et al. BMC Microbiology     (2021) 21:98
+https://doi.org/10.1186/s12866-021-02153-x
+
+
+
+
+ RESEARCH ARTICLE                                                                                                                                  Open Access
+
+Bacterial community structure alterations
+within the colorectal cancer gut
+microbiome
+Mark Loftus1, Sayf Al-Deen Hassouneh1 and Shibu Yooseph2*
+
+
+  Abstract
+  Background: Colorectal cancer is a leading cause of cancer-related deaths worldwide. The human gut microbiome
+  has become an active area of research for understanding the initiation, progression, and treatment of colorectal
+  cancer. Despite multiple studies having found significant alterations in the carriage of specific bacteria within the
+  gut microbiome of colorectal cancer patients, no single bacterium has been unequivocally connected to all cases.
+  Whether alterations in species carriages are the cause or outcome of cancer formation is still unclear, but what is
+  clear is that focus should be placed on understanding changes to the bacterial community structure within the
+  cancer-associated gut microbiome.
+  Results: By applying a novel set of analyses on 252 previously published whole-genome shotgun sequenced fecal
+  samples from healthy and late-stage colorectal cancer subjects, we identify taxonomic, functional, and structural
+  changes within the cancer-associated human gut microbiome. Bacterial association networks constructed from
+  these data exhibited widespread differences in the underlying bacterial community structure between healthy and
+  colorectal cancer associated gut microbiomes. Within the cancer-associated ecosystem, bacterial species were
+  found to form associations with other species that are taxonomically and functionally dissimilar to themselves, as
+  well as form modules functionally geared towards potential changes in the tumor-associated ecosystem. Bacterial
+  community profiling of these samples revealed a significant increase in species diversity within the cancer-
+  associated gut microbiome, and an elevated relative abundance of species classified as originating from the oral
+  microbiome including, but not limited to, Fusobacterium nucleatum, Peptostreptococcus stomatis, Gemella
+  morbillorum, and Parvimonas micra. Differential abundance analyses of community functional capabilities revealed
+  an elevation in functions linked to virulence factors and peptide degradation, and a reduction in functions involved
+  in amino-acid biosynthesis within the colorectal cancer gut microbiome.
+  Conclusions: We utilize whole-genome shotgun sequenced fecal samples provided from a large cohort of late-
+  stage colorectal cancer and healthy subjects to identify a number of potentially important taxonomic, functional,
+  and structural alterations occurring within the colorectal cancer associated gut microbiome. Our analyses indicate
+  that the cancer-associated ecosystem influences bacterial partner selection in the native microbiota, and we
+  highlight specific oral bacteria and their associations as potentially relevant towards aiding tumor progression.
+  Keywords: Colorectal, Cancer, Microbiome, Metagenomics, Networks, Oral, Pathogens, Associations
+
+
+
+* Correspondence: Shibu.Yooseph@ucf.edu
+2
+ Department of Computer Science, Genomics and Bioinformatics Cluster,
+University of Central Florida, Orlando, FL 32816, USA
+Full list of author information is available at the end of the article
+
+                                       © The Author(s). 2021 Open Access This article is licensed under a Creative Commons Attribution 4.0 International License,
+                                       which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give
+                                       appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if
+                                       changes were made. The images or other third party material in this article are included in the article's Creative Commons
+                                       licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons
+                                       licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain
+                                       permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+                                       The Creative Commons Public Domain Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the
+                                       data made available in this article, unless otherwise stated in a credit line to the data.
+Loftus et al. BMC Microbiology   (2021) 21:98                                                                   Page 2 of 18
+
+
+
+
+Background                                                      understanding of the full extent the microbiota plays in
+The human gastrointestinal tract harbors a highly               CRC. Nevertheless, the modulation of the bacterial com-
+diverse community of bacterial cells thought to be in           munity within the cancer-associated gut microbiome is the
+comparable abundance to those of its human host                 next logical step in possible CRC treatment and prevention
+making it the largest and most complex community of             strategies.
+bacteria found associating with the human body [1].               To one day utilize the bacterial community toward
+These bacteria are typically regarded as commensal, or          these purposes, it is important to know more than which
+symbiotic, in that they generally cause no harm and             species are present or absent in the community during
+provide fundamental services for their host’s nutrition         disease. We also need to understand how the associa-
+and continued health. The most important of these               tions between bacterial species have been affected. These
+services include the creation of metabolic by-products          associations are shaped by both direct and indirect inter-
+(short chain fatty acids, hormones, vitamins, etc.), aiding     actions taking place in the community (e.g., cooperation
+in proper intestinal tissue and immune system development       or competition), and are important as they are the
+and regulation, and protecting the gut from colonization by     bedrock upon which the community services, as well as
+pathogenic organisms [2, 3]. Many diseases have been asso-      the structure and function, are founded on [21, 22]. In
+ciated with the disruption of the gut microbiome’s bacterial    this study, we represent these associations using a
+community, one of which is colorectal cancer (CRC) [4–7].       weighted graph (network) in which a node denotes a
+  CRC is one of the leading causes of cancer-related            bacterial species and a weighted edge between two nodes
+deaths worldwide [8] and is characterized by the uncon-         represents the strength of the association between the
+trolled growth of epithelial cells within the colon or          corresponding species. By using this framework, we can
+rectum. The transformation of epithelial cells from non-        model the positive and negative associations between
+cancerous to cancerous growth commonly begins with              species, thereby shedding light on how cooperation and
+the formation of a polyp, which over a 10-to-20-year            competition shape the structure of the bacterial commu-
+period may or may not progress to become an invasive            nity. Bacterial association networks are constructed from
+cancer [9]. CRC initiation is understood as being the re-       sample-taxa count matrices. A sample-taxa count matrix
+sult of a combination of both genetic and environmental         is commonly generated by sequencing the collected bio-
+factors (diet, smoking, alcohol, etc.) [10–12], although        logical samples and determining the taxa (species)
+the majority (around 75%) of CRC cases are spontan-             counts in each sample. However, DNA sequencing does
+eous, with genetic risk factors being attributed to less        not provide the absolute counts of these taxa within a
+than 10% of cases [13, 14]. Recently, there has been a          sample, and instead provides only their relative abun-
+surge in evidence supporting the hypothesis that the            dances (i.e., compositional data) [23]. Due to this aspect,
+human gut microbiome plays a prominent role in                  inferring associations between species is challenging, and
+relation to cancer initiation, progression, and in the          using measures like correlation can produce misleading
+efficacy of its treatment [7, 15–20]. One of the leading        results when applied directly to compositional data [24].
+hypotheses is the “driver-passenger” model [17], which          With this limitation in mind, we applied a Gaussian
+postulates that a “driver” bacterium such as Fusobacter-        Graphical Model (GGM) framework on Centered Log-
+ium nucleatum, Bacteroides fragilis, or Escherichia coli        Ratio (CLR) transformed sequence count data to model
+promotes genomic instability (damage) to the DNA of             the conditional dependencies between species to
+epithelial cells, potentially through some virulence            construct association networks [25]. Prior studies that
+factor, which leads to cellular mutation and eventually         investigated the associations between bacteria within the
+tumor formation. Following tumor formation, the                 CRC-associated gut microbiome have either not dealt
+changes in micro-environmental conditions around the            appropriately with compositional data (for instance,
+tumor mass (tumor microenvironment; TME) would                  application of correlation directly to untransformed
+optimize the growth of “passenger” microbes who are             data), or have utilized low taxonomic resolution data
+better suited to this niche facilitating their colonization,    (16S rRNA data) which should be used cautiously to
+and eventual out-competing of the “driver” species as           assign taxonomic classifications beneath genus-level
+well as the native microbiota leading to a depletion in         [5, 26–30]. For the analysis presented here, we utilize
+protective commensal species. These “passenger” microbes        252 whole-genome shotgun (WGS) sequenced fecal
+could either be pathogens that exist normally in the healthy    samples provided by healthy and late-stage (stage III
+gut microbiome in low abundance, or simply commensal            and IV) CRC subjects from a previously published
+bacteria that have acquired pathogenic characteristics due      study [31] to investigate bacterial associations at the
+to the alteration in the local intestinal ecology. As of now,   species level [32]. The authors of that study originally
+there is no consistent cancer-associated community profile      performed metagenomic and metabolomic analyses to
+that has been observed leaving researchers with limited         assess any taxonomic and functional differences of
+Loftus et al. BMC Microbiology     (2021) 21:98                                                                                       Page 3 of 18
+
+
+
+
+the gut microbiota, and metabolites, as well as find                       matrix was then used to investigate the bacterial community
+diagnostic markers for CRC. For their analyses, these                      diversity in the two sample groups (Healthy and late-stage
+researchers only focused on finding alterations of the                     CRC) by measuring the bacterial richness and Shannon
+microbiota pertaining to species currently known to                        index of each sample. Samples originating from the CRC
+be culturable and constructed bacterial association                        group exhibited significantly greater diversity, both richness
+networks using correlation (Spearman’s) at the genus-level.                and Shannon index, (Mann-Whitney U test: MWU);
+Our analysis framework and goals are different. For our                    Richness: MWU pvalue = 0.0005 and Shannon Index:
+study, we used a comprehensive collection of nearly eleven                 MWU pvalue = 0.0009) compared to those of the Healthy
+thousand bacterial strain reference genomes from NCBI’s                    group (Fig. 1a,b). Considering that measures of species
+RefSeq database to calculate the genome relative abundance                 diversity differ in their sensitivity to species evenness and
+of bacterial species in each sample using an Expectation-                  richness [34], we additionally applied the Simpson index of
+Maximization (EM) algorithm. Subsequently, species were                    diversity to compute species diversity within sample groups
+selected based on their prevalence, relative abundance, and                (see supplemental file). These results were congruent with
+feature importance, and were used to construct bacterial                   our previous analyses showing a statistically significant
+association networks using the graphical lasso (glasso)                    (MWU: pvalue = 0.0238) higher species diversity in CRC
+approach [33]. These networks were then analyzed to assess                 samples compared to that found in Healthy samples (Sup-
+the differences in bacterial community structure between                   plemental 1). We next assessed the differences in bacterial
+the healthy and late-stage CRC-associated gut microbiome.                  community taxonomic profiles between the healthy and
+Taxonomic and functional analysis was performed to high-                   late-stage CRC-associated gut microbiomes. Prior to per-
+light differences in gut microbiome bacterial community                    forming further analyses we applied a CLR-transformation
+functional capabilities and species carriages. Our results not             to our sample-taxa matrix (see methods). Taxonomic
+only identify both individual and groups (modules) of                      profile-based sample ordination was carried out using Prin-
+species potentially capable of aiding tumor progression, but               cipal Components Analysis (PCA). The first two principal
+also shows how the bacterial community structure has dra-                  components explain only a small fraction of the total vari-
+matically altered in response to potential ecological changes              ance (PC1: 7.98%, PC2: 5.61%) (Supplemental 2), and the
+occurring within the CRC-associated gut microbiome.                        linear transformation based on PCA did not show evidence
+                                                                           for separation of Healthy samples from CRC samples. How-
+Results                                                                    ever, we were able to distinguish between the two sample
+Bacterial community taxonomic profiling                                    groups using a Random Forest Classifier (RFC) (AUC =
+Following sample pre-processing (see methods), we                          0.87) (Fig. 2a). While RFCs rank features (species) based on
+computed the relative abundance of species within each                     their importance, these default measures of importance are
+sample using an EM-based method in order to construct                      known to be biased and lead to the return of suboptimal
+a sample-taxa matrix (see methods). This sample-taxa                       predictor features [35]. To obtain statistical significance for
+
+
+
+
+ Fig. 1 Species Diversity Within Healthy and CRC Samples. a. Boxplot of sample species richness (total species) showing significantly greater
+ species richness within the CRC sample group. b. Boxplot of sample Shannon diversity shows significantly greater species diversity within CRC
+ sample group. Black dots represent individual samples and stars (***) denote statistical significance (MWU pvalue < 0.001)
+Loftus et al. BMC Microbiology      (2021) 21:98                                                                                       Page 4 of 18
+
+
+
+
+ Fig. 2 Healthy and CRC Taxonomic Profiling. a. Random Forest Classifier (RFC) ROC showing an AUC = 0.87. b. Seventeen statistically significant
+ (MWU-FDR qvalue< 0.05) ‘important’ species from 100 RFCs compared to a random feature. c. Classification accuracy of 100 RFCs using either all
+ species or the 17 significantly ‘important’ species. d. Distribution of total oral microbes within Healthy and CRC sample groups. A significantly
+ (MWU pvalue< 0.05) greater total population of oral microbes were found in the CRC-associated gut microbiome. Bacterial species were classified
+ as oral microbes by using the expanded Human Oral Microbe Database (eHOMD)
+
+
+species importances provided by the RFC we applied a                        These 174 bacterial species are from a diverse background
+technique where we included a “random” feature into our                     of 84 genera, although the largest fraction of species were
+feature set (see methods). By using an ensemble of 100 RFCs                 from the genera Enterobacter (6.8%), Klebsiella (6.3%),
+we uncovered 17 bacterial species that were statistically                   Streptococcus (5.2%), Lactobacillus (5.1%), Citrobacter
+(MWU and False Discovery Rate Multiple Testing                              (4.6%), Bifidobacterium (4%), Bacteroides (3.4%), and
+Correction; MWU-FDR: qvalue< 0.05) more ‘important’                         Clostridium (3.4%) (Supplemental 3). The 10 species
+(deemed significantly ‘important’) than the random                          significantly elevated in relative abundance within CRC
+feature for distinguishing groups (Fig. 2b). We found                       were: Parvimonas micra (qvalue = 3.09e-09), Peptostrepto-
+that the accuracy classification score of 100 RFCs                          coccus stomatis (qvalue = 4.51e-08), Gemella morbillorum
+trained on the 17 significantly ‘important’ species was                     (qvalue = 4.55e-08), Fusobacterium nucleatum (qvalue =
+on average greater than that of the 100 RFCs trained on                     1.08e-06), Streptococcus anginosus (qvalue = 1.13e-03), Dial-
+all species (All Species Mean Accuracy: 74%; 17                             ister pneumosintes (qvalue = 1.37e-03), Peptostreptococcus
+significantly ‘important’ Species Mean Accuracy: 80%)                       anaerobius (qvalue = 4.74e-03), Streptococcus sp. KCOM
+(Fig. 2c). We next performed species differential                           2412 (Streptococcus periodonticum) (qvalue = 7.18e-03),
+abundance analysis (see methods) which revealed 174                         Ruminococcus torques (qvalue = 1.55e-02), and Filifactor
+species significantly (MWU-FDR qvalue< 0.05) reduced                        alocis (qvalue = 2.85e-02) (Supplemental 4a-c). Interest-
+in relative abundance, and 10 species significantly ele-                    ingly, many of the species that were deemed both signifi-
+vated in relative abundance within the CRC-associated                       cantly ‘important’ and elevated in relative abundance within
+gut microbiome compared to the Healthy gut microbiome.                      CRC are also found in the oral microbiome and noted to
+Loftus et al. BMC Microbiology     (2021) 21:98                                                                                      Page 5 of 18
+
+
+
+
+be associated with oral diseases (periodontitis, periapical               Bacterial association networks
+lesions, root canal infections, oral cancers, etc.) which have            Species chosen for network construction were selected
+been associated with increased risks of CRC [36–45]. Sub-                 based on their prevalence, abundance, and ‘importance’.
+sequently, we utilized the expanded Human Oral Microbe                    First, the prevalence of each species was calculated
+Database (eHOMD) [46] to classify all oral species within                 across all samples within each group (Fig. 3a). The
+our samples and found a significant increase in the total                 distributions of bacterial species prevalence counts
+oral microbe population richness existing within the CRC-                 within groups were found to exhibit a bi-modal distribu-
+associated gut microbiome in comparison to that of the                    tion with one peak occurring at the 90% prevalence
+Healthy group (MWU: pvalue = 6.51e-05) (Fig. 2d).                         threshold. Going forward we refer to the species found
+                                                                          above 90% sample prevalence within groups as the
+                                                                          highly prevalent species (HPS). A large majority of spe-
+Bacterial community functional profiling                                  cies within each group’s HPS were found to be shared
+To analyze the differences in community functional cap-                   (Healthy: 97% and CRC: 95%) (Fig. 3b). The five unique
+abilities between the Healthy and CRC gut microbiomes                     HPS in the Healthy group were: Hespellia stercorisuis,
+we measured the relative abundance of protein families                    Clostridium saccharolyticum, Monoglobus pectinilyticus,
+(TIGRFAMs [47]) and protein domains (Pfams [48])                          Streptococcus sp. oral taxon 431, and Odoribacter laneus.
+within our WGS samples creating a sample-function                         The eight HPS unique to the CRC associated group
+matrix (see methods). A CLR-transformation was                            were: Intestinibacillus massiliensis, Prevotella copri, Hae-
+applied to this matrix and then PCA was performed.                        mophilus parainfluenzae, Ruminococcus bicirculans,
+PCA showed evidence of inter-group clustering of                          Streptococcus mitis, Neglecta timonensis, Bifidobacterium
+samples (Healthy and CRC) and ultimately only ex-                         catenulatum, and Anaerotignum neopropionicum. Inter-
+plained a moderate variance (PC1: 27.19%, PC2: 4.33%)                     estingly, Streptococcus mitis and Haemophilus parain-
+(Supplemental 5). Differential abundance analysis was                     fluenzae are both classified by the eHOMD as oral
+performed using the CLR-transformed sample-function                       microbes. The relative abundances of HPS were found
+matrix which showed 12 Pfams (7 elevated and 5 re-                        to account for the majority (Median = 82%) of a sample’s
+duced in CRC compared to Healthy) and two TIGR                            total relative abundance (Fig. 3c). Moving forward we
+FAMs (1 elevated and 1 reduced in CRC compared to                         utilized the union of HPS within groups for network
+Healthy) to be statistically significantly (MWU-FDR:                      construction. In addition to these highly prevalent and
+qvalue< 0.05) different in their relative abundance                       abundant species we wanted to incorporate the species
+(Supplemental Table 1). Pfams that were significantly                     who were both deemed significantly ‘important’ by our
+elevated within the CRC gut microbiome were linked to                     RFCs and found in differential abundance. This led to
+bacterial invasins and adhesins (ex: FadA), while those                   the addition of 8 species (Parvimonas micra, Peptostrep-
+that were significantly reduced were tied to antibiotic                   tococcus stomatis, Gemella morbillorum, Fusobacterium
+resistance, bacteriophage maturation, and threonine                       nucleatum, Streptococcus anginosus, Dialister pneumo-
+biosynthesis. The single TIGRFAM significantly elevated                   sintes, Peptostreptococcus anaerobius, and Ruminococcus
+in CRC was linked to proline iminopeptidase, while the                    torques) to our species group (165 species total) used in
+only TIGRFAM significantly reduced was again linked to                    network construction. Bacterial association networks
+threonine biosynthesis.                                                   were then constructed from the CLR-transformed
+
+
+
+
+ Fig. 3 Highly Prevalent and Abundant Species within Groups. a. Bi-modal distribution of species prevalence counts across samples within the
+ Healthy and CRC sample groups. b. Stacked-bar plot showing the total unique and shared species of the highly prevalent (> 90% prevalence)
+ species within the Healthy and CRC sample groups. c. Boxplot of the total sample relative abundance accounted for by the highly prevalent
+ species within groups. Black dots represent individual samples
+Loftus et al. BMC Microbiology          (2021) 21:98                                                                                                  Page 6 of 18
+
+
+
+
+relative abundance of these selected species (see                                   network also exhibited a larger abundance in taxonomically
+methods and supplemental information for additional                                 distant (outside phylum) relationships compared to the
+information). Following network construction, we first                              Healthy network (Healthy: 4%, CRC: 17%), although posi-
+checked our networks for non-randomness by compar-                                  tive associations between taxonomically distant microbes
+ing multiple network properties (average shortest path                              were still significantly less in Healthy (Within Phylum:
+length, transitivity, and modularity) to those displayed                            MCS pvalue = 0.00099, Outside Phylum: MCS pvalue =
+from random networks (see methods). Compared to ran-                                0.00099) and CRC (Within Phylum: MCS pvalue = 0.00099,
+dom networks, the Healthy and CRC networks both ex-                                 Outside Phylum: MCS pvalue = 0.00099) than random
+hibited statistically significant (Monte Carlo Simulation;                          networks. We next examined the dissimilarity between
+MCS) shorter average shortest path lengths (ASPL)                                   functional profiles of associating species within the Healthy
+(Healthy and CRC: MCS pvalue< 0.001), higher                                        and CRC networks (Supplemental 6a-c). Interestingly,
+transitivity (Healthy and CRC: MCS pvalue< 0.001), and                              many of the bacterial associations that are unique to the
+higher modularity (Healthy and CRC: MCS pvalue< 0.001)                              CRC network were shown to be occurring between species
+(Table 1). These results indicate that networks con-                                that were functionally dissimilar to one another.
+structed displayed properties that were significantly non-                             Considering that our networks exhibited high
+random, and that species within networks: are connected                             modularity, and that community functions in microbial
+to one another through short paths, have positive associa-                          environments are driven through polymicrobial synergy
+tions with the neighbors of their neighbors (friends of                             [49, 50], we applied a module detection algorithm to our
+friends), and form modules (i.e. a group or cluster of spe-                         networks, and proceeded to analyze the obtained species
+cies) that are characterized by the majority of associations                        modules within our networks (see methods). We first
+occurring between species within the same module, and                               started by comparing the potential functional capabilities
+few associations existing with species outside the module.                          of modules by constructing CLR-transformed module
+   Group networks contained similar distributions of                                functional profiles (see methods). PCA of module func-
+association weights with positive associations being in                             tional (protein domain) profiles exhibited large variance
+greater abundance than negative associations (Fig. 4a).                             (PC1: 33.73%, PC2: 14.53%), and modules appeared to
+Notably, the CRC network contained a greater total of                               form clusters which contained representation from both
+negative associations compared to that found in the                                 groups (Fig. 5a). To define clusters of modules, silhou-
+Healthy network. Interestingly, 29% of these negative                               ette analysis was performed which estimated five clusters
+associations involved a species deemed as an oral mi-                               as the optimal K to use for K-means clustering (Fig. 5b).
+crobe, whereas within the Healthy network zero negative                             After module clusters were defined by K-means cluster-
+associations were found to involve oral microbes.                                   ing (Fig. 5c), taxonomic analysis of these clusters was
+Surprisingly, the majority of associations found within                             carried out. Across networks, modules that fell within
+networks were unique to that network (Healthy: 69%,                                 the same cluster were found to be taxonomically similar,
+CRC: 72%) (Fig. 4b). We hypothesized that this dramatic                             excluding cluster 1 and cluster 5 which exhibited a shift
+difference in community structure could reflect changes                             in species occupancy where some species found within
+in the ecosystem and proceeded to analyze the taxonomic                             cluster 1 in the Healthy network were shown to be
+relationship between species within networks (see methods)                          within cluster 5 in the CRC network, and vice-versa
+(Fig. 4c). Both networks exhibited significantly (MCS pva-                          (Supplemental 7a,b,c,g). However, both networks had
+lue< 0.05) more positive relationships between species                              strong agreement on the species found within clusters 2,
+within the same genera (Healthy: MCS pvalue = 0.00099,                              3, and 4. Species within cluster 2 were only ‘pathobiont’
+CRC: MCS pvalue = 0.00099) and family (Healthy: MCS                                 (i.e., species that are generally not harmful but contain
+pvalue = 0.00099, CRC: MCS pvalue = 0.00099) compared                               the capacity to cause disease under particular environ-
+to those found in a random network (see methods). How-                              mental conditions [51, 52]) oral microbes (Supplemental
+ever, only within the Healthy network did species still have                        7d), whereas cluster 3 was mainly Streptococcus species
+significantly more positive associations with other species                         (Supplemental 7e), and cluster 4 predominantly Bacter-
+from the same order more so than random (Healthy: MCS                               oides species (Supplemental 7f). Subsequently, cluster
+pvalue = 0.00099, CRC: MCS pvalue = 0.44). The CRC                                  functional analysis was performed to find protein
+
+Table 1 Group Network Properties Compared to Random Networks
+Network                  Nodes                   Edges                  Density                  ASPL                     Transitivity                 Modularity
+CRC                      165                     324                    0.024                    *** 1.687                *** 0.379                    *** 0.689
+Healthy                  165                     292                    0.022                    *** 1.554                *** 0.453                    *** 0.742
+Network properties of Healthy and CRC networks. Both Healthy and CRC networks were found to exhibit significantly shorter Average Shortest Path Lengths
+(ASPL), higher Transitivity, and higher Modularity then 1000 random networks. Stars (***) denote statistical significance (Monte Carlo simulation pvalue < 0.001)
+Loftus et al. BMC Microbiology      (2021) 21:98                                                                                         Page 7 of 18
+
+
+
+
+ Fig. 4 Group Network Associations. a. Distribution of bacterial association weights within Healthy and CRC networks. b. Stacked-bar plot of the
+ proportion of associations (edges) that are unique and shared between Healthy and CRC networks. c. Bar-plots representing the proportion of
+ total associations within the lowest common taxonomic relationship between bacterial species. Stars (***) indicate statistical significance (Monte
+ Carlo simulation pvalue < 0.001), star color (green or red) indicate higher or lower than that found in random networks, respectively
+
+
+domains, as well as the main roles and sub roles of pro-                     acidic environment resistance), metallopeptidases, type V
+tein families, which made clusters functionally ‘distinct’                   secretion systems, ammonia production, and excretion of
+from one another (see methods) (Supplemental 8a-c).                          poisonous metal ions (copper efflux system), cell envelope,
+Functional capabilities (protein domains and protein                         DNA metabolism, fatty acid and phospholipid metabolism,
+family main/sub roles) distinguishing cluster 1 were                         biosynthesis and degradation of surface polysaccharides
+linked to: cell surface adhesion, counter-conflict strat-                    and lipopolysaccharides. Cluster 3’s distinguishing functions
+egies, tyrosine recombinases, degradation of polysaccha-                     were linked to: mucin binding, zinc scavenging/uptake,
+rides, glycosaminoglycan binding, tumor protease                             cell-surface adhesion, glucose binding/transport, and cop-
+inhibition, peroxidase functions, carbohydrate/cellulose                     per binding, protein and peptide fate/synthesis/secretion,
+binding activities, and amino acid biosynthesis. Cluster 2’s                 degradation of polysaccharides/carbohydrates, organic alco-
+distinguishing functions were linked to: adherence to host                   hols, and acids. Cluster 4’s distinguishing functions were
+cells and extracellular matrix, cellular infection, collagen                 linked to: metal binding, diguanylate cyclase/phospho-
+binding, complement resistance, ornithine/lysine/arginine                    diesterase, quorum sensing, carbohydrate-binding, and cyst-
+decarboxylase (tissue putrefaction/polyamine synthesis/                      eine/papain proteases, nucleosides and nucleotides,
+Loftus et al. BMC Microbiology      (2021) 21:98                                                                                         Page 8 of 18
+
+
+
+
+ Fig. 5 Species Module Functional Clusters Within Networks. a. Principal component analysis of module functional profiles. Gold and grey dots
+ represent individual modules from Healthy or CRC networks, respectively. b. Silhouette analysis showing K = 5 having the highest average
+ silhouette coefficient. c. K-means clustering of the module functional profile PCA using K = 5
+
+
+transport and binding proteins, TCA cycle, iron carrying,                    (2%), cluster 3 (5%), cluster 4 (26%), cluster 5 (7%), no clus-
+and the degradation and biosynthesis of surface polysaccha-                  ter (27%); CRC: cluster 1 (19%), cluster 2 (3%), cluster 3
+rides. Lastly, cluster 5’s distinguishing functions were linked              (3%), cluster 4 (12%), cluster 5 (30%), no cluster (33%))
+to: aminopeptidases, tripartite tricarboxylate receptors, eth-               (Fig. 6). Our findings showed that within the CRC network
+anolamine transportation, starch utilization, and xyloglu-                   there was an increase in the total species found within a
+can/polysaccharide binding, energy metabolism, amino                         module of cluster type 2 and 5 and a reduction of species
+acids and amines, cation and iron compounds, electron                        in cluster type 1, 3, and 4 compared to the Healthy. These
+transport, and the biosynthesis and degradation of surface                   results are also reflected in our findings of a statistically
+polysaccharides and lipopolysaccharides. The abundance of                    significant change in the total sample relative abundance
+species utilized for network construction found within each                  that species within clusters accounted for between groups
+cluster was examined (Healthy: cluster 1 (33%), cluster 2                    (Cluster 1: MWU pvalue = 4.29e-12; Cluster 2: MWU
+
+
+
+
+ Fig. 6 Healthy and CRC Bacterial Association Networks. Bacterial association networks presented in a circular layout. Edge color (green or red)
+ represent positive or negative associations, respectively. Far left network (Shared Associations Network) shows the associations (edges) found in
+ both the Healthy and CRC network. Node color within that network represents the phylum of the species. The two networks on the right are
+ displaying the associations unique only to the Healthy or CRC network. Node color within these networks represent the module cluster this
+ species was found within. Node size is a function of the node’s degree (total associations). For a list of species shown and not shown within
+ networks see supplemental
+Loftus et al. BMC Microbiology   (2021) 21:98                                                                  Page 9 of 18
+
+
+
+
+pvalue = 3.16e-16; Cluster 3: MWU pvalue = 0.0002; Clus-      Our study uncovered key distinctions in both the bacter-
+ter 4: MWU pvalue = 2.62e-13; Cluster 5: MWU pvalue =         ial species and genomic functional capabilities that were
+2.81e-29; No Cluster Species: MWU pvalue = 4.40e-17)          different between the two communities, suggesting an
+(Fig. 7). Moreover, the majority of negative associations     overgrowth of potentially pathogenic species classified as
+within networks (Healthy: 100%, CRC: 96%) were found          oral microbes. We also observed a dramatic difference in
+to occur between species that occupy modules within dif-      bacterial community structure which we believe to be
+ferent cluster types (Supplemental 9). Interestingly, only    due to an alteration in bacteria partner selection in
+within the CRC network did an intra-cluster negative as-      response to probable ecosystem changes occurring
+sociation arise between species of cluster 1 where a reduc-   within the CRC-associated gut microbiome.
+tion in species membership and abundance was also                Our study showed that the CRC gut microbiome
+exhibited.                                                    contained a significantly higher bacterial diversity. This
+                                                              higher diversity was somewhat unexpected since a high
+Influential bacterial species within networks                 bacterial diversity is regularly associated with the healthy
+Finally, we examined which species potentially have the       gut microbiome [55], and previous studies have de-
+greatest influence on the structure of our networks, and      scribed a lower diversity within the CRC gut microbiome
+therefore possibly within the ecosystem as well, by iden-     [4, 26], although, these findings are still in contention as
+tifying ‘Hub’ nodes. ‘Hub’ nodes are species with many        other studies have also found a higher bacterial richness
+associations that serve as a central point of connection      [56]. In either case, this discrepancy in species diversity
+between many other species [53, 54]. Most modules             estimations between studies could be due to differences
+within networks (Healthy: 84.6%; CRC: 87.5%) were             in the sequence data type (amplicon vs shotgun) used as
+found to be disassortative with respect to node degree        16S rRNA data is known to highly skew estimates of
+(Supplemental 10) suggesting that ‘Hub’ species existed       bacterial diversity [57]. We hypothesized that this higher
+within these modules [53]. We proceeded to identify           species diversity was due to the formation (or expansion)
+‘Hub’ species by selecting the species with the largest       of a bacterial niche in the cancer-associated ecosystem,
+degree centrality within all modules exhibiting a degree      most likely caused by the presence of the tumor mass.
+assortativity below zero (see methods). In total, 22          Any bacterial species existing closely to, or within, the
+unique ‘Hub’ species were identified, and of these ‘Hubs’     tumor microenvironment (TME) niche would be
+only two, Bacteroides fluxus and Bacteroides pectinophi-      exposed to a hostile environment characterized by low
+lus, were shared between Healthy and CRC networks.            oxygen, high acidity, and an abundance of oxidative
+We noted that Bacteroides fluxus and Bacteroides pecti-       stressors [58, 59]. These environmental conditions are in
+nophilus also maintained their position as ‘Hubs’ within      part created by the altered metabolism of tumor cells
+the same module cluster type (Cluster 4 and Cluster 1,        which would lead to the reduction in the typical pro-
+respectively) across networks (Supplementary 11a,b).          teins, carbohydrates, and lipids available (nutrient scar-
+Interestingly, only within the CRC network were oral          city) in the surrounding microenvironment [60–63].
+microbes, Peptostreptococcus stomatis and Streptococcus       Tumor cells will also scavenge for any additionally
+parasanguinis, designated as ‘Hub’ nodes. The module          needed resources by degrading the extracellular matrix
+Peptostreptococcus stomatis is a ‘Hub’ within is particu-     (ECM), and cannibalizing the surrounding necrotic
+larly fascinating as it is the only CRC cluster 2, ‘patho-    intestinal tissue to fuel their metabolism [64]. These
+biont’ cluster, module where all species are both oral        degradation products could provide certain microbiota
+microbes (Gemella morbillorum, Parvimonas micra, and          capable of utilizing them a rich assortment of free
+Dialister pneumosintes) and found to be significantly ele-    resources including amino acids, membrane proteins,
+vated in relative abundance. Moreover, Anaerotruncus          phospholipids, and some sugars. As our CRC samples
+colihominis, a ‘Hub’ species only within the Healthy          were obtained from late-stage cancer subjects, this TME
+network, was found to be negatively associated with           niche could be widespread across the colon having
+Gemella morbillorum within this module in the CRC             repercussions for even microbes not involved in the
+network (Supplementary 12).                                   colonization of this niche. Our findings from using
+                                                              machine learning, differential abundance testing, and
+Discussion                                                    network inference point towards species capable of
+In this study, WGS data available from healthy and late-      filling this niche, functions likely to promote its forma-
+stage colorectal cancer subjects were utilized in conjunc-    tion, and the potential impact that the creation of this
+tion with community profiling and network inference           niche has on the gut microbiota.
+techniques to better understand the alterations in               Species differential abundance testing between groups
+bacterial community ecology that have occurred within         found 174 species significantly reduced and 10 species
+the late-stage cancer-associated human gut microbiome.        significantly elevated in relative abundance within the
+Loftus et al. BMC Microbiology     (2021) 21:98                                                                                     Page 10 of 18
+
+
+
+
+ Fig. 7 Cluster Species Total Sample Relative Abundance. Boxplots of the total sample relative abundance that all species within each module
+ cluster account for within groups. The species within module clusters 1, 4, and 3 account for a significantly greater total sample relative
+ abundance within the Healthy network compared to the CRC network. The species within module clusters 2 and 5 and no cluster account for a
+ significantly greater total sample relative abundance within the CRC network compared to the Healthy network. Stars (***) indicate statistical
+ significance (MWU pvalue < 0.001)
+Loftus et al. BMC Microbiology   (2021) 21:98                                                                  Page 11 of 18
+
+
+
+
+CRC-associated gut microbiome compared to the                      Interestingly, of the few bacterial community functions
+Healthy gut microbiome. Of the 10 species, six (Parvimonas      (Pfams and TIGRFAMS) found in differential abundance
+micra, Peptostreptococcus stomatis, Gemella morbillorum,        between the CRC and Healthy gut microbiomes, many
+Fusobacterium nucleatum, Streptococcus anginosus, and Pep-      could precipitate cancer progression, or aid in the
+tostreptococcus anaerobius) were previously found elevated      colonization of the TME niche. Multiple protein func-
+in relative abundance by the research study that generated      tions found to be significantly reduced within the CRC
+the data analyzed here [31]. However, we additionally found     gut microbiome were tied to threonine biosynthesis.
+Dialister pneumosintes, Streptococcus sp. KCOM 2412             Threonine is an essential amino acid; therefore, it must
+(Streptococcus periodonticum), Ruminococcus torques, and        be provided exogenously from the gut microbiota’s me-
+Filifactor alocis as being significantly elevated in relative   tabolism [78]. It is also an important amino acid in the
+abundance within the CRC sample group. This discrepancy         production of short chain fatty acids (SCFAs) since it
+in findings is most likely due to differences in both read      can be utilized for the formation of acetate, butyrate, or
+mapping and species relative abundance calculations.            propionate [79]. Interestingly, of the 174 species found
+That study mapped reads to the All-Species Living Tree          significantly reduced in CRC many are from genera
+Project (LTP) of the SILVA database [65] assigning              (Lactobacillus, Bacteroides, Bifidobacteria, Clostridium,
+taxonomy to the species which provided the lowest E-            Eubacterium, etc.) shown to be linked to the production
+value, and calculated species relative abundances as the        of SCFAs [80–82]. The reduction in the enzymatic cap-
+number of reads assigned to the species divided by the          ability to synthesize threonine could drive tumor pro-
+total number of aligned reads within the sample. In             gression as SCFAs (e.g., butyrate) have been shown to
+contrast, we mapped reads to a comprehensive collec-            have anti-oncogenic and anti-inflammatory properties
+tion of bacterial reference strain genomes downloaded           [83]. Of the functions found significantly elevated in
+from RefSeq [66], and calculated species relative abun-         relative abundance in the CRC gut microbiome many
+dances utilizing an accurate probabilistic framework            were tied to adhesins and invasins. These protein func-
+[67]. To our knowledge, this is the first time Filifactor       tions would allow bacteria to adhere to epithelial cells,
+alocis has been shown to have elevated relative abun-           especially those that are being sloughed off the intestinal
+dance within CRC. Filifactor alocis, previously known           wall, to gather nutrients. They would also assist in the
+as Fusobacterium alocis, is a gram-positive obligate            invasion of the intestinal barrier which would drive in-
+anaerobe that has routinely been discovered in peri-            flammation and could cause DNA damage thereby indu-
+odontitis and endodontic infections and is described as         cing unwanted cellular mutation. For example, FadA, an
+an excellent marker organism for periodontal disease            adhesin found significantly elevated in relative abun-
+[40, 68, 69]. Interestingly, all 10 of the species found        dance, is unique to the oral lineage of Fusobacterium
+significantly elevated in relative abundance within CRC         nucleatum’s phylum (Fusobacteria) and has previously
+were classified as oral microbes, and despite normally          been shown to promote binding and invasion into host
+existing within the Healthy gut microbiome these                epithelial cells [84], as well as driving cancer initiation
+species are considered ‘pathobionts’ as they have               [85, 86]. Additionally, we found a significantly elevated
+numerous associations with infections [37, 70] and even         relative abundance of a protein function linked to pro-
+CRC [56, 71–75]. Many of these species also have been           line iminopeptidase (PIP), an enzyme that catalyzes the
+previously shown to exist in close association with co-         release of proline residues from peptides. Proline is an
+lonic tumor tissues [72] and possess the capability to          important stress substrate in cancer metabolism as it is
+colonize the TME niche as they are: anaerobic [76],             utilized in many critical functions related to apoptosis,
+regularly form biofilms together [39, 77], and exhibit          autophagy, and nutrient/oxygen deprivation [87]. Tumor
+asaccharolytic metabolism [76]. Since oral microbes             cells can harvest the proline they require by metaboliz-
+exhibit an asaccharolytic metabolism they target pep-           ing collagen contained within the extracellular matrix
+tides and amino acids for their digestion [76] and in           (ECM), as nearly 25% of the collagen is proline [88].
+doing so produce ammonia which would raise the local            Interestingly, in our study a few of the oral species found
+pH helping their colonization within the acidic TME.            significantly elevated in relative abundance (Peptostrep-
+In this way, these species would be optimized for               tococcus stomatis, Gemella morbillorum, Parvimonas
+growth in the hostile TME niche. Outside of just these          micra, and Dialister pneumosintes) were shown to form
+10 oral species, we also uncovered a significantly higher       a network module with the functionally distinct capabil-
+richness of bacteria classified as oral microbes within         ity to bind and degrade collagen.
+the CRC gut microbiome. This finding suggests that                 Only a few associations were shared between the
+oral microbes have become increasingly more capable             bacterial association networks for the two sample groups
+of colonizing the gut within the CRC-associated                 which suggested there was a large difference in the
+ecosystem.                                                      bacterial community structure within Healthy and CRC-
+Loftus et al. BMC Microbiology   (2021) 21:98                                                               Page 12 of 18
+
+
+
+
+associated gut microbiomes. Part of the difference in          As mentioned previously, one module cluster (clus-
+community structure occurring within the CRC-               ter 2) drew our attention as it was comprised solely
+associated gut microbiome is due to positive associations   of ‘pathobiont’ oral species and contained distinct
+forming less between species that were taxonomically        functions which would allow these species to not
+similar, and more between functionally dissimilar species   only flourish within the TME niche but aid in cancer
+compared to those found in the Healthy gut micro-           progression. These functions included: adherence to
+biome. Moreover, we found a greater number of nega-         host cells and extracellular matrix, collagen-binding,
+tive associations within the CRC network, and in many       complement resistance, ornithine/lysine/arginine de-
+of these negative associations an oral microbe was found    carboxylase (tissue putrefaction/ polyamine synthe-
+to be involved, whereas, in the healthy network no such     sis/acidic environment resistance), metallopeptidases,
+negative associations with oral microbes were occurring.    type V secretion systems, ammonia production, ex-
+This suggests that competitive exclusion between taxo-      cretion of poisonous metal ions (copper efflux sys-
+nomically and functionally similar species within the       tem), DNA metabolism, fatty acid and phospholipid
+CRC-associated gut microbiome has increased, and oral       metabolism, and biosynthesis and degradation of sur-
+microbes have become more competitive within this           face polysaccharides and lipopolysaccharides. Despite
+ecosystem. Additionally, as oral microbes are also found    a module of this cluster type existing within the
+to be present within the Healthy gut microbiome, but        Healthy network, all species existing within the CRC
+negative associations against oral microbes were not, we    module (Peptostreptococcus stomatis, Gemella morbil-
+hypothesized that the native microbiota has shifted         lorum, Parvimonas micra, and Dialister pneumo-
+towards utilizing similar resources to those targeted by    sintes) were found to be significantly elevated in
+oral microbes within the CRC gut microbiome. Our            relative abundance. It is also important to note that
+analysis of species modules within networks reflects this   this module in the CRC network grew with the addition of
+notion. Using PCA and K-means clustering, species           another oral species, Dialister pneumosintes. Which sug-
+modules within networks were found to fall into one of      gests these oral species are indeed thriving in the CRC-
+five distinct clusters depending on their functional        associated gut microbiome and through their metabolic
+capabilities. However, both Healthy and CRC networks        actions potentially driving tumor progression. It could be
+contained representation (at least one module) within all   prudent to preemptively target Peptostreptococcus stoma-
+clusters suggesting the niches that these clusters target   tis for elimination from the gut microbiome as it was the
+are maintained across Healthy and CRC-associated gut        ‘hub’ species within the module. By doing so this could
+microbiomes in some capacity. Yet, despite cluster          lead to the dissipation of the associations between these
+retention, there was a dramatic shift in both the propor-   species and potentially dampen tumor progression. In any
+tion of total species and the total sample relative abun-   case, future in vivo studies should be performed to eluci-
+dance certain clusters accounted for within networks.       date the extent that polymicrobial synergy between these
+For example, within the Healthy network we found            species contributes to tumorigenesis.
+clusters functionally geared towards amino acid bio-
+synthesis, carbohydrate degradation, protein binding/       Conclusion
+uptake, and tumor inhibition contained a greater            In summary, our analysis of whole-genome shotgun
+number of species and represented a larger total sam-       sequenced fecal samples provided from a large cohort of
+ple relative abundance. Whereas, in the CRC network         late-stage colorectal cancer and healthy subjects revealed
+we observed a species shift towards forming modules         key differences in the bacterial community within
+functionally equipped for protein degradation, amino        Healthy and CRC-associated gut microbiomes. We
+acid uptake, biosynthesis and degradation of surface        showed a higher species diversity exists within the CRC-
+polysaccharides and lipopolysaccharides, and ethanol-       associated gut microbiome that is potentially due to the
+amine utilization. Interestingly, Klebsiella species have   formation of a tumor-associated niche, and this niche is
+been tied to ethanolamine usage in the healthy gut          most likely occupied by species originating from the oral
+[89, 90] and were found in reduced relative abun-           cavity. Moreover, we highlighted Peptostreptococcus sto-
+dance in the CRC gut microbiome, suggesting that            matis as an influential ‘hub’ node within a ‘pathobiont’
+these species were potentially outcompeted. In any          oral species module where every species within the mod-
+case, this shift in species cluster membership and          ule were found in elevated relative abundance in CRC.
+cluster total sample relative abundance suggests that       Our results also indicated that tumor presence influ-
+the bacterial community structure has been reorga-          ences the reorganization of the native bacterial commu-
+nized to aid in the formation of modules of specific        nity structure to aid in the formation of modules that
+cluster types that contain functional capabilities better   contain functional capabilities better suited for life in the
+suited for life in the CRC-associated gut environment.      CRC-associated gut environment.
+Loftus et al. BMC Microbiology   (2021) 21:98                                                                   Page 13 of 18
+
+
+
+
+Methods                                                         dropped to 0. Bacterial strain-level assignments were rolled
+Data acquisition and cohort description                         back to species-level assignments (by using accession and
+For this study, 252 whole-genome shotgun sequenced              tax ids with NCBIs taxonomic assignments), and relative
+fecal samples were retrieved from DDBJ Sequence Read            abundances were summed to produce bacterial species gen-
+Archive (DRA) under the bioproject ID PRJDB4176 [31].           ome relative abundances. Principal components analysis
+The original study population of this cohort consisted of       was performed using Scikit-learn (version 0.23.2). Before
+healthy and early/advanced colorectal cancer stage              PCA, species relative abundances within the sample-taxa
+patients who were undergoing total colonoscopy at the           matrix were first Centered Log-Ratio (CLR) transformed
+National Cancer Center Hospital, Tokyo, Japan. Fecal            (all zero values were replaced with 1e-10 before transform-
+samples were collected immediately following the first          ation). CLR-transformation [24] is defined as:
+defecation after a bowel-cleansing agent was adminis-                                                         
+tered orally. Cancer patients who had or were thought                               x1        x2           xD
+                                                                     clrðxÞ ¼ ln        ; ln        …; ln
+to have hereditary disease, an inflammatory bowel dis-                             gðxÞ      gð x Þ       gðxÞ
+ease, an abdominal surgery history, or whose stool sam-
+                                                                where (x) is the vector of species abundances within
+ples were insufficient for data collection were excluded
+                                                                each sample and (D) is the total number of species. The
+from the original study. Samples chosen to be utilized
+                                                                geometric mean of vector (x) is defined as:
+within this study came from 178 healthy and 74 late-
+stage (52 stage III / 22 stage IV) colorectal cancer (CRC)                 pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+                                                                   g ðxÞ ¼ D x1  x2  …xD
+subjects. Sample groups had comparable male to female
+frequencies (Healthy: 56.18/43.82; CRC: 58.11/41.89)
+(Supplemental 13a) and subject ages (Healthy median             Random Forest analysis
+age: 62; CRC median age: 61) (Supplemental 13b). For            CLR-transformed species relative abundances were ana-
+additional information on all samples used in this study        lyzed using the Random Forest Classifier (RFC) package
+see supplemental file.                                          from Scikit-learn [96]. Random forests were trained and
+                                                                tested with a 70% training and 30% testing sample split
+Data pre-processing                                             and 100 trees per forest. One-hundred RFCs were
+Reads were trimmed with Trimmomatic [91] (version               constructed in order to deem a species as significantly
+0.36) utilizing a 4:15 sliding window approach where a          ‘important’. First, a ‘random’ feature was created from
+read is clipped once the average quality score within a         randomly selected CLR-transformed species sample rela-
+sliding window of 4 base pairs drops below a quality            tive abundances to assist in the selection of significantly
+score of 15. Afterwards, reads from human origin                ‘important’ species, as default importance measurements
+were filtered by utilizing Bowtie2 [92] (version 5.4.0,         from random forest classifiers are known to be biased
+−-very-sensitive setting) and the GRCh38.p12 human              [35]. Next, the importances (Gini importance) for each
+genome [93].                                                    species provided from all 100 RFCs was compared to
+                                                                those of the 100 ‘random’ feature importances. Only
+Species level community taxonomic profiling                     species with statistically significant higher ‘importance’
+For bacterial community taxonomic profiling of WGS              according to a Mann-Whitney U test and Benjamini-
+reads we elected to utilize a reference-based mapping           Hochberg (FDR) multiple testing correction (MWU-
+approach. Sample reads were mapped to a reference               FDR: qvalue< 0.05) were deemed significantly ‘import-
+database of 10,839 bacterial reference strain genomes           ant’. The AUC (Area Under the Receiver-Operator
+downloaded from RefSeq [66] utilizing Bowtie2 (version          Curve) and Classification Accuracy (Jaccard index)
+5.4.0, settings: --very-sensitive --reorder --mp 1,1 --rfg 1,   were both utilized to measure the accuracy of trained
+1 -k 1000 –score-min L,0,-0.1). In total over 3.5 billion       forests. The AUC is an estimator of true and false posi-
+(3,515,063,526) reads were mapped. Next, a probabilistic        tive prediction rates of our RFC, whereas the Classifica-
+framework based on a mixture model [67, 94] was used            tion Accuracy computes subset accuracy (where a
+to analyze the read mapping information to estimate the         prediction for a set of labels must exactly match those
+relative copy number of each reference genome in a              from the known true corresponding label set).
+sample. This framework used an Expectation-Maximization
+(EM) algorithm to optimize the log-likelihood function as-      Bacterial species diversity analysis
+sociated with the model. We have previously shown our           To measure the diversity of species found within each
+EM algorithm to be highly accurate in its species relative      sample, total bacterial richness (total species found in a
+abundance estimation capabilities [95]. Any bacterial strain    sample) and the Shannon index [97] were calculated.
+found within a sample in less than 1e-5 relative abundance      The Shannon index is calculated as:
+was considered to be noise and their abundance was
+Loftus et al. BMC Microbiology    (2021) 21:98                                                               Page 14 of 18
+
+
+
+
+                                 PD
+  Shannon Index (H) = −           i¼1 P i    ln P i         Species selection for association network construction
+                                                             Species selected for network inference were either highly
+  where (D) is the total number of species, and (Pi) is      prevalent/abundant species (the union of species exhibit-
+the proportion of that species within the sample.            ing > 90% sample prevalence within both groups), or
+                                                             species that were deemed as both significantly ‘important’
+                                                             by random forests and differentially abundant. In total
+Differential relative abundance of species                   there were 165 species selected for network construction.
+Species relative abundances within the sample-taxa
+matrix were first CLR-transformed (all zero values were      Bacterial association network inference
+replaced with 1e-10 before transformation). Mann-            For each sample group, a bacterial association network
+Whitney U test and FDR correction were utilized to test      was constructed from CLR-transformed sample-taxa
+for significant species relative abundance differences       matrix of that group using a Gaussian Graphical Model
+between groups. Only species with a qvalue < 0.05 and a      (GGM) framework. For each group, a sparse precision
+sample prevalence greater than 10% within at least one       matrix (Ω) was computed using the huge [101] package
+group were deemed truly differentially abundant.             in R, and this matrix formed the adjacency matrix of the
+                                                             association network. The stability approach to regularization
+                                                             (StARS) method [102] was utilized to choose the tuning
+Bacterial species functional profiles                        parameter (ρ) in the l1-penalty model for sparse precision
+Gene prediction was performed on all bacterial refer-        matrix estimation. The partial correlation matrix, P, was
+ence strain genomes utilizing Prodigal [98] (version         calculated as:
+2.6.3). All protein sequence translations for genes out-
+put by prodigal were provided to InterProScan [99]                             − Ω½i; j
+                                                                P½i; j ¼ pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+(version 5.39–77.0) to find matches for protein                            Ω½i;i  Ω½ j; j
+domains and protein families against the Pfam [48]
+(version 32.0) and TIGRFAM [47] (version 15.0) data-            Finally, any associations below a magnitude of 0.01
+bases, respectively. All Pfams and TIGRFAMS found            within the partial correlation matrix was treated as stat-
+within genomes were counted and then counts were             istical noise and removed.
+normalized (by total) producing relative abundances.
+Species functional profiles were created separately for      Network topology comparison
+Healthy and CRC groups. This was performed by                For each network, the following properties were com-
+weighing strain functional profiles by strain average        puted using NetworkX [103] (version 2.4): average short-
+abundance within a group and then summing the                est path length (ASPL), transitivity, and modularity. The
+strain functional profiles together, followed by re-         ASPL (α) was calculated as:
+normalization (by total).
+                                                                                 D½s; t 
+                                                                α ¼ Σ s;t∈L
+                                                                                nðn − 1Þ
+Sample functional profiling
+To explore the bacterial community functional capabilities   where (L) is the set of nodes in the graph (G), the short-
+contained within each sample, a simplified annotation        est path between the nodes (s) and (t) is D [s,t], and (n)
+format file (SAF) containing the bacterial chromosomal       is the total number of nodes in (G). The transitivity (T)
+coordinates of features (either Pfams or TIGRFAMs) for       of a network was calculated as:
+all strains was created. Next, the SAF was provided to
+FeatureCounts [100] (Subread package 2.0.0) to find all             Total triangles
+features contained within the sample reads. Lastly, the         T ¼3
+                                                                     Total triads
+counts of features were subsequently length normalized,
+summed, then re-normalized (by total) to create a sample     in which triangles are considered a subset of three nodes
+functional profile. Function (Pfams or TIGRFAMS) rela-       within a network where each node is adjacent to all
+tive abundances within the sample-function matrix were       other nodes within the subset, and triads are connected
+first CLR-transformed (all zero values were replaced with    triples (i.e. three nodes abc where edges (a,b) and (b,c)
+1e-10 before transformation). Mann-Whitney U test and        exist and the edge (a,c) can be present or absent). Tran-
+FDR correction were utilized to test for significant func-   sitivity is the fraction of all possible triangles present in
+tion relative abundance differences between groups. Only     the graph and is a measurement of node clustering. Fi-
+functions with a qvalue < 0.05 were deemed significantly     nally, the modularity (Q) [104] of a network was calcu-
+different.                                                   lated as:
+Loftus et al. BMC Microbiology   (2021) 21:98                                                                        Page 15 of 18
+
+
+
+
+            "          #
+                                                          profile (Pfam or TIGRFAM) of each species within a
+          X
+          n
+              Lc    kc 2
+    Q¼            −                                        module by that species mean relative abundance within
+          c¼1
+                m   2m                                     a group (Healthy or CRC), and then re-normalizing by
+                                                           total.
+where (n) is all modules of a graph partition, (c) is
+an individual module from the partition, (m) is the
+total number of edges of the graph (G), (L c ) is the      Module cluster functional analysis
+total intra-module edges, and (k c) is the sum of          Module functional profiles were CLR-transformed
+edges of all nodes within module (c). Networks             before PCA. To find clusters, modules were partitioned
+were first partitioned into modules before modular-        by performing K-means clustering, from Scikit-learn, on
+ity could be calculated (for module detection see          the PCA. Silhouette analysis, from Scikit-learn, was used
+Module Functional Profiles below). Monte Carlo             to find the optimal K for K-means clustering. Silhouette
+simulations were utilized to test networks for non-        coefficients (SC) range from [− 1,1] where a positive SC
+randomness where 1000 random (Gn,p) networks were          near 1 indicates that a module within our PCA is far
+created, using NetworkX, and network properties (ASPL,     away from neighboring clusters and a high average
+transitivity, and modularity) were measured and used to    silhouette score is indicative of well-defined clusters.
+produce pvalues for group network properties. For the      After clusters were defined, the distinct functionality of
+creation of random networks (n) was equal to the group     clusters was examined. First, PCA was run in a pairwise
+network of interest’s node total and (p) the network       fashion on the modules from each cluster to find the
+density.                                                   most important functional features (Pfams or TIGRFA
+                                                           MS), which made a cluster distinct from every other
+Taxonomic relationship analysis of species associations    cluster. Across all PCAs, the features which separated
+For each association, the lowest common taxonomic          each cluster along the first principal component exhibit-
+relationship between species was characterized by          ing an importance above a magnitude of 0.01 were noted
+using the NCBI taxonomic assignments. Monte Carlo          and summed. Afterwards the top 100 TIGRFAMS with
+simulations were utilized to test for significance and     the highest importance within each cluster were se-
+produce pvalues. First, 1000 random (G n,m) networks       lected, and the main and sub roles of each TIGRFAM
+were produced, using NetworkX, for comparison to           elucidated. TIGRFAM main and sub role abundance im-
+each group network. Within these networks (n) was          portances were created by summing the importances of
+equal to the group network node total, and (m) the         all TIGRFAMS that were assigned to that main and sub
+total edges (associations) within group networks.          role then normalizing by total. Lastly, the top 10 Pfams
+Next, species names and association weights from           with the highest total importance were utilized for a
+group networks were randomly assigned to nodes             more in-depth inspection into a cluster’s distinct
+and edges within each random network. Lastly, the          functionality.
+total of each lowest common taxonomic relationship
+between nodes in each random network were com-
+puted and compared to those found within group             Node centrality ‘hub’ analysis
+networks.                                                  Degree centrality was used to find bacterial ‘Hubs’
+                                                           within modules by choosing the species with the most
+Module functional profiles                                 associations (edges) within a module. Only ‘Hubs’ from
+Species modules were first detected within networks        module sub graphs that exhibited disassortative mixing
+utilizing an asynchronous label propagation algorithm      in respect to degree (degree assortativity < 0), as measured
+[105] for module detection. The module detection algo-     by NetworkX, were selected for examination.
+rithm was allowed to partition the graph into modules
+100 times. The modules produced from the partition         Statistical significance testing
+resulting in the highest ‘performance’ were kept for       A two-tailed nonparametric t-test (Mann-Whitney U
+subsequent analyses. Performance (p) is calculated as:     test) [106] was used to compare groups for statistical
+                                                           significance. Benjamini-Hochberg (False discovery rate;
+         aþb
+    p¼                                                     FDR) [107] was used for multiple testing correction.
+          t
+where (a) is the total intra-module edges, (b) the total   Abbreviations
+inter-module non-edges, and (t) is the total potential     CRC: Colorectal Cancer; TME: Tumor Microenvironment; RFC: Random Forest
+                                                           Classifier; eHOMD: expanded Human Oral Microbe Database; CLR: Centered
+edges. Following module detection, module functional       Log-Ratio; EM: Expectation-Maximization.; GGM: Gaussian Graphical Model;
+profiles were created by weighing the species functional   MWU: Mann-Whitney U Test; FDR: False Discovery Rate
+Loftus et al. BMC Microbiology           (2021) 21:98                                                                                                    Page 16 of 18
+
+
+
+
+Supplementary Information                                                            9.    Jones S, Chen W. D., Parmigiani G, Diehl F, Beerenwinkel N, Antal T,
+The online version contains supplementary material available at https://doi.               et al. comparative lesion sequencing provides insights into tumor
+org/10.1186/s12866-021-02153-x.                                                            evolution. Proc Natl Acad Sci. 2008;105(11):4283–8. https://doi.org/10.1
+                                                                                           073/pnas.0712345105.
+                                                                                     10.   Fedirko V, Tramacere I, Bagnardi V, Rota M, Scotti L, Islami F, Negri E,
+ Additional file 1.
+                                                                                           Straif K, Romieu I, la Vecchia C, Boffetta P, Jenab M. Alcohol drinking
+                                                                                           and colorectal cancer risk: an overall and dose–response meta-analysis
+Acknowledgements                                                                           of published studies. Ann Oncol. 2011;22(9):1958–72. https://doi.org/10.1
+Not applicable                                                                             093/annonc/mdq653.
+                                                                                     11.   Thanikachalam K, Khan G. Colorectal Cancer and nutrition. Nutrients. 2019;
+Authors’ contributions                                                                     11(1):164. https://doi.org/10.3390/nu11010164.
+Study Design: ML, SH, SY. Data Analysis: ML. Manuscript Writing: ML, SH, SY.         12.   Botteri E, Iodice S, Bagnardi V, Raimondi S, Lowenfels AB, Maisonneuve P.
+All author(s) have read and approved the final manuscript.                                 Smoking and colorectal Cancer: a meta-analysis. JAMA. 2008;300(23):2765–
+                                                                                           78. https://doi.org/10.1001/jama.2008.839.
+Funding                                                                              13.   Fearon ER, Vogelstein B. A genetic model for colorectal tumorigenesis. Cell.
+Not applicable                                                                             1990;61(5):759–67. https://doi.org/10.1016/0092-8674(90)90186-I.
+                                                                                     14.   Jasperson KW, Tuohy TM, Neklason DW, Burt RW. Hereditary and familial
+Availability of data and materials                                                         Colon Cancer. Gastroenterology. 2010;138(6):2044–58. https://doi.org/10.1
+All data and scripts used in this study can be found at https://github.com/                053/j.gastro.2010.01.054.
+Markloftus/CancerMicrobiome.                                                         15.   Dzutsev A, Goldszmid RS, Viaud S, Zitvogel L, Trinchieri G. The role of the
+                                                                                           microbiota in inflammation, carcinogenesis, and cancer therapy. Eur J
+Declarations                                                                               Immunol. 2015;45(1):17–31. https://doi.org/10.1002/eji.201444972.
+                                                                                     16.   Yu T, Guo F, Yu Y, Sun T, Ma D, Han J, et al. Fusobacterium nucleatum
+Ethics approval and consent to participate                                                 Promotes Chemoresistance to Colorectal Cancer by Modulating Autophagy.
+Not applicable                                                                             Cell. 2017;170(3):548–63 e16.
+                                                                                     17.   Tjalsma H, Boleij A, Marchesi JR, Dutilh BE. A bacterial driver–passenger
+Consent for publication                                                                    model for colorectal cancer: beyond the usual suspects. Nat Rev Microbiol.
+Not applicable                                                                             2012;10(8):575–82. https://doi.org/10.1038/nrmicro2819.
+                                                                                     18.   Sears CL, Pardoll DM. Perspective: alpha-bugs, their microbial partners, and
+Competing interests                                                                        the link to Colon Cancer. J Infect Dis. 2011;203(3):306–11. https://doi.org/1
+The authors declare no competing interests.                                                0.1093/jinfdis/jiq061.
+                                                                                     19.   Gopalakrishnan V, Spencer CN, Nezi L, Reuben A, Andrews MC, Karpinets TV,
+Author details                                                                             Prieto PA, Vicente D, Hoffman K, Wei SC, Cogdill AP, Zhao L, Hudgens CW,
+1
+ Burnett School of Biomedical Sciences, Genomics and Bioinformatics Cluster,               Hutchinson DS, Manzo T, Petaccia de Macedo M, Cotechini T, Kumar T,
+University of Central Florida, Orlando 32816, FL, USA. 2Department of                      Chen WS, Reddy SM, Szczepaniak Sloane R, Galloway-Pena J, Jiang H, Chen
+Computer Science, Genomics and Bioinformatics Cluster, University of                       PL, Shpall EJ, Rezvani K, Alousi AM, Chemaly RF, Shelburne S, Vence LM,
+Central Florida, Orlando, FL 32816, USA.                                                   Okhuysen PC, Jensen VB, Swennes AG, McAllister F, Marcelo Riquelme
+                                                                                           Sanchez E, Zhang Y, le Chatelier E, Zitvogel L, Pons N, Austin-Breneman JL,
+Received: 23 December 2020 Accepted: 16 March 2021                                         Haydu LE, Burton EM, Gardner JM, Sirmans E, Hu J, Lazar AJ, Tsujikawa T,
+                                                                                           Diab A, Tawbi H, Glitza IC, Hwu WJ, Patel SP, Woodman SE, Amaria RN,
+                                                                                           Davies MA, Gershenwald JE, Hwu P, Lee JE, Zhang J, Coussens LM, Cooper
+References                                                                                 ZA, Futreal PA, Daniel CR, Ajami NJ, Petrosino JF, Tetzlaff MT, Sharma P,
+1. Sender R, Fuchs S, Milo R. Revised estimates for the number of human and                Allison JP, Jenq RR, Wargo JA. Gut microbiome modulates response to anti–
+    Bacteria cells in the body. PLoS Biol. 2016;14(8):e1002533. https://doi.org/1          PD-1 immunotherapy in melanoma patients. Science. 2018;359(6371):97–
+    0.1371/journal.pbio.1002533.                                                           103. https://doi.org/10.1126/science.aan4236.
+2. Kho ZY, Lal SK. The human gut microbiome – a potential controller of              20.   Matson V, Fessler J, Bao R, Chongsuwat T, Zha Y, Alegre M-L, Luke JJ,
+    wellness and disease. Front Microbiol. 2018;9:1835. https://doi.org/10.3389/           Gajewski TF. The commensal microbiome is associated with anti–PD-1
+    fmicb.2018.01835.                                                                      efficacy in metastatic melanoma patients. Science. 2018;359(6371):104–8.
+3. Thaiss CA, Zmora N, Levy M, Elinav E. The microbiome and innate immunity.               https://doi.org/10.1126/science.aao3290.
+    Nature. 2016;535(7610):65–74. https://doi.org/10.1038/nature18847.               21.   Hibbing ME, Fuqua C, Parsek MR, Peterson SB. Bacterial competition:
+4. Ahn J, Sinha R, Pei Z, Dominianni C, Wu J, Shi J, Goedert JJ, Hayes RB, Yang            surviving and thriving in the microbial jungle. Nat Rev Microbiol. 2010;8(1):
+    L. Human gut microbiome and risk for colorectal Cancer. JNCI: Journal of               15–25. https://doi.org/10.1038/nrmicro2259.
+    the National Cancer Institute. 2013;105(24):1907–11. https://doi.org/10.1093/    22.   Gould AL, Zhang V, Lamberti L, Jones EW, Obadia B, Korasidis N,
+    jnci/djt300.                                                                           Gavryushkin A, Carlson JM, Beerenwinkel N, Ludington WB. Microbiome
+5. Feng Q, Liang S, Jia H, Stadlmayr A, Tang L, Lan Z, Zhang D, Xia H, Xu                  interactions shape host fitness. Proc Natl Acad Sci U S A. 2018;115(51):
+    X, Jie Z, Su L, Li X, Li X, Li J, Xiao L, Huber-Schönauer U, Niederseer D,             E11951–60. https://doi.org/10.1073/pnas.1809349115.
+    Xu X, al-Aama JY, Yang H, Wang J, Kristiansen K, Arumugam M, Tilg H,             23.   Gloor GB, Macklaim JM, Pawlowsky-Glahn V, Egozcue JJ. Microbiome
+    Datz C, Wang J. Gut microbiome development along the colorectal                        datasets are compositional: and this is not optional. Front Microbiol. 2017;8:
+    adenoma–carcinoma sequence. Nat Commun. 2015;6(1):6528. https://doi.                   2224. https://doi.org/10.3389/fmicb.2017.02224.
+    org/10.1038/ncomms7528.                                                          24.   Aitchison J. The statistical analysis of compositional data. J R Stat Soc Ser B
+6. Li S, Konstantinov SR, Smits R, Peppelenbosch MP. Bacterial biofilms in                 Methodol. 1982;44(2):139–77.
+    colorectal Cancer initiation and progression. Trends Mol Med. 2017;23(1):18–     25.   Kurtz ZD, Müller CL, Miraldi ER, Littman DR, Blaser MJ, Bonneau RA. Sparse
+    30. https://doi.org/10.1016/j.molmed.2016.11.004.                                      and Compositionally Robust Inference of Microbial Ecological Networks. von
+7. Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM, Ojesina AI,              Mering C, editor. PLOS Computational Biology. 2015 May 7;11(5):e1004226.
+    Jung J, Bass AJ, Tabernero J, Baselga J, Liu C, Shivdasani RA, Ogino S, Birren   26.   Ai D, Pan H, Li X, Gao Y, Liu G, Xia LC. Identifying gut microbiota associated
+    BW, Huttenhower C, Garrett WS, Meyerson M. Genomic analysis identifies                 with colorectal Cancer using a zero-inflated lognormal model. Front
+    association of Fusobacterium with colorectal carcinoma. Genome Res. 2012;              Microbiol. 2019;10:826. https://doi.org/10.3389/fmicb.2019.00826.
+    22(2):292–8. https://doi.org/10.1101/gr.126573.111.                              27.   Liao H, Li C, Ai Y, Kou Y. The gut microbiome is more stable in males than
+8. Siegel RL, Miller KD, Goding Sauer A, Fedewa SA, Butterly LF, Anderson JC,              in females during the development of colorectal cancer [Internet]. In
+    Cercek A, Smith RA, Jemal A. Colorectal cancer statistics, 2020. CA A Cancer           Review; 2020 Jan [cited 2020 Dec 5]. Available from: https://www.resea
+    J Clin. 2020;70(3):145–64. https://doi.org/10.3322/caac.21601.                         rchsquare.com/article/rs-12211/v1
+Loftus et al. BMC Microbiology               (2021) 21:98                                                                                                     Page 17 of 18
+
+
+
+
+28. Flemer B, Lynch DB, Brown JMR, Jeffery IB, Ryan FJ, Claesson MJ, O'Riordain             48. El-Gebali S, Mistry J, Bateman A, Eddy SR, Luciani A, Potter SC, et al. The
+    M, Shanahan F, O'Toole PW. Tumour-associated and non-tumour-associated                      Pfam protein families database in 2019. Nucleic Acids Res. 2019;47(D1):
+    microbiota in colorectal cancer. Gut. 2017;66(4):633–43. https://doi.org/1                  D427–32. https://doi.org/10.1093/nar/gky995.
+    0.1136/gutjnl-2015-309595.                                                              49. Bottery MJ, Pitchford JW, Friman V-P. Ecology and evolution of antimicrobial
+29. Warren RL, Freeman DJ, Pleasance S, Watson P, Moore RA, Cochrane K, Allen-                  resistance in bacterial communities. ISME J [Internet]. 2020 Nov 20 [cited 2020
+    Vercoe E, Holt RA. Co-occurrence of anaerobic bacteria in colorectal                        Dec 5]; Available from: http://www.nature.com/articles/s41396-020-00832-7
+    carcinomas. Microbiome. 2013;1(1):16. https://doi.org/10.1186/2049-2618-1-16.           50. D’Souza G, Shitut S, Preussger D, Yousif G, Waschina S, Kost C. Ecology and
+30. Edgar RC. Accuracy of taxonomy prediction for 16S rRNA and fungal ITS                       evolution of metabolic cross-feeding interactions in bacteria. Nat Prod Rep.
+    sequences. PeerJ. 2018;6:e4652. https://doi.org/10.7717/peerj.4652.                         2018;35(5):455–88. https://doi.org/10.1039/C8NP00009C.
+31. Yachida S, Mizutani S, Shiroma H, Shiba S, Nakajima T, Sakamoto T,                      51. Round JL, Mazmanian SK. The gut microbiota shapes intestinal immune
+    Watanabe H, Masuda K, Nishimoto Y, Kubo M, Hosoda F, Rokutan H,                             responses during health and disease. Nat Rev Immunol. 2009;9(5):313–23.
+    Matsumoto M, Takamaru H, Yamada M, Matsuda T, Iwasaki M, Yamaji T,                          https://doi.org/10.1038/nri2515.
+    Yachida T, Soga T, Kurokawa K, Toyoda A, Ogura Y, Hayashi T, Hatakeyama                 52. Cerf-Bensussan N, Gaboriau-Routhiau V. The immune system and the gut
+    M, Nakagama H, Saito Y, Fukuda S, Shibata T, Yamada T. Metagenomic and                      microbiota: friends or foes? Nat Rev Immunol. 2010;10(10):735–44. https://
+    metabolomic analyses reveal distinct stage-specific phenotypes of the gut                   doi.org/10.1038/nri2850.
+    microbiota in colorectal cancer. Nat Med. 2019;25(6):968–76. https://doi.               53. Newman MEJ. Networks: an introduction. In Oxford University Press, Inc.;
+    org/10.1038/s41591-019-0458-7.                                                              2010. p. 168–234, DOI: https://doi.org/10.1093/acprof:oso/9780199206650.
+32. Ranjan R, Rani A, Metwally A, McGee HS, Perkins DL. Analysis of the                         001.0001.
+    microbiome: advantages of whole genome shotgun versus 16S amplicon                      54. Steele JA, Countway PD, Xia L, Vigil PD, Beman JM, Kim DY, Chow CET,
+    sequencing. Biochem Biophys Res Commun. 2016;469(4):967–77. https://doi.                    Sachdeva R, Jones AC, Schwalbach MS, Rose JM, Hewson I, Patel A, Sun F,
+    org/10.1016/j.bbrc.2015.12.083.                                                             Caron DA, Fuhrman JA. Marine bacterial, archaeal and protistan association
+33. Friedman J, Hastie T, Tibshirani R. Sparse inverse covariance estimation with               networks reveal ecological linkages. ISME J. 2011;5(9):1414–25. https://doi.
+    the graphical lasso. Biostatistics. 2008;9(3):432–41. https://doi.org/10.1093/              org/10.1038/ismej.2011.24.
+    biostatistics/kxm045.                                                                   55. Lozupone CA, Stombaugh JI, Gordon JI, Jansson JK, Knight R. Diversity,
+34. Johnson KV-A, Burnet PWJ. Microbiome: should we diversify from                              stability and resilience of the human gut microbiota. Nature. 2012;489(7415):
+    diversity? Gut Microbes. 2016;7(6):455–8. https://doi.org/10.1080/194                       220–30. https://doi.org/10.1038/nature11550.
+    90976.2016.1241933.                                                                     56. Thomas AM, Manghi P, Asnicar F, Pasolli E, Armanini F, Zolfo M, Beghini F,
+35. Strobl C, Boulesteix A-L, Zeileis A, Hothorn T. Bias in random forest variable              Manara S, Karcher N, Pozzi C, Gandini S, Serrano D, Tarallo S, Francavilla A,
+    importance measures: illustrations, sources and a solution. BMC                             Gallo G, Trompetto M, Ferrero G, Mizutani S, Shiroma H, Shiba S, Shibata T,
+    Bioinformatics. 2007;8(1):25. https://doi.org/10.1186/1471-2105-8-25.                       Yachida S, Yamada T, Wirbel J, Schrotz-King P, Ulrich CM, Brenner H,
+36. Oswal P, Katti S, Joshi V, Shaikh H. Identification of Dialister pneumosintes in            Arumugam M, Bork P, Zeller G, Cordero F, Dias-Neto E, Setubal JC, Tett A,
+    healthy and chronic periodontitis patients with type 2 diabetes mellitus and                Pardini B, Rescigno M, Waldron L, Naccarati A, Segata N. Metagenomic
+    its correlation with the red complex bacteria. J Interdiscip Dentistry. 2020;               analysis of colorectal cancer datasets identifies cross-cohort microbial
+    10(1):17. https://doi.org/10.4103/jid.jid_4_19.                                             diagnostic signatures and a link with choline degradation. Nat Med. 2019;
+37. Contreras A, Doan N, Chen C, Rusitanonta T, Flynn MJ, Slots J. Importance                   25(4):667–78. https://doi.org/10.1038/s41591-019-0405-7.
+    of Dialister pneumosintes in human periodontitis: Dialister pneumosintes in             57. Edgar RC. Accuracy of microbial community diversity estimated by closed- and
+    periodontitis. Oral Microbiol Immunol. 2000;15(4):269–72. https://doi.org/1                 open-reference OTUs. PeerJ. 2017;5:e3889. https://doi.org/10.7717/peerj.3889.
+    0.1034/j.1399-302x.2000.150410.x.                                                       58. Harris AL. Hypoxia — a key regulatory factor in tumour growth. Nat Rev
+38. Neilands J, Davies JR, Bikker FJ, Svensäter G. Parvimonas micra stimulates expression       Cancer. 2002;2(1):38–47. https://doi.org/10.1038/nrc704.
+    of gingipains from Porphyromonas gingivalis in multi-species communities.               59. Corbet C, Feron O. Tumour acidosis: from the passenger to the driver’s seat.
+    Anaerobe. 2019;55:54–60. https://doi.org/10.1016/j.anaerobe.2018.10.007.                    Nat Rev Cancer. 2017;17(10):577–93. https://doi.org/10.1038/nrc.2017.77.
+39. Horiuchi A, Kokubu E, Warita T, Ishihara K. Synergistic biofilm formation by            60. Warburg O, Wind F, Negelein E. The metabolism of tumors in the body. J
+    Parvimonas micra and Fusobacterium nucleatum. Anaerobe. 2020;62:                            Gen Physiol. 1927;8(6):519–30. https://doi.org/10.1085/jgp.8.6.519.
+    102100. https://doi.org/10.1016/j.anaerobe.2019.102100.                                 61. Commisso C, Davidson SM, Soydaner-Azeloglu RG, Parker SJ, Kamphorst JJ,
+40. Schlafer S, Riep B, Griffen AL, Petrich A, Hübner J, Berning M, Friedmann A,                Hackett S, Grabocka E, Nofal M, Drebin JA, Thompson CB, Rabinowitz JD,
+    Göbel UB, Moter A. Filifactor alocis - involvement in periodontal biofilms.                 Metallo CM, Vander Heiden MG, Bar-Sagi D. Macropinocytosis of protein is
+    BMC Microbiol. 2010;10(1):66. https://doi.org/10.1186/1471-2180-10-66.                      an amino acid supply route in Ras-transformed cells. Nature. 2013;497(7451):
+41. Chattopadhyay I, Verma M, Panda M. Role of Oral microbiome signatures in                    633–7. https://doi.org/10.1038/nature12138.
+    diagnosis and prognosis of Oral Cancer. Technol Cancer Res Treat. 2019;18:              62. Kamphorst JJ, Nofal M, Commisso C, Hackett SR, Grabocka E, Heiden MGV,
+    153303381986735. https://doi.org/10.1177/1533033819867354.                                  et al. Human pancreatic cancer tumors are nutrient poor and tumor cells
+42. Momen-Heravi F, Babic A, Tworoger SS, Zhang L, Wu K, Smith-Warner SA,                       actively scavenge extracellular protein 2016;20.
+    Ogino S, Chan AT, Meyerhardt J, Giovannucci E, Fuchs C, Cho E, Michaud                  63. Beloribi-Djefaflia S. Lipid metabolic reprogramming in cancer cells. 2016;10.
+    DS, Stampfer MJ, Yu YH, Kim D, Zhang X. Periodontal disease, tooth loss                 64. Finicle BT, Jayashankar V, Edinger AL. Nutrient scavenging in cancer. Nat Rev
+    and colorectal cancer risk: results from the nurses’ health study: periodontal              Cancer. 2018;18(10):619–33. https://doi.org/10.1038/s41568-018-0048-x.
+    disease, tooth loss and colorectal cancer risk. Int J Cancer. 2017;140(3):646–          65. Yilmaz P, Parfrey LW, Yarza P, Gerken J, Pruesse E, Quast C, Schweer T,
+    52. https://doi.org/10.1002/ijc.30486.                                                      Peplies J, Ludwig W, Glöckner FO. The SILVA and “all-species living tree
+43. Lee D, Jung KU, Kim HO, Kim H, Chun H-K. Association between oral health                    project (LTP)” taxonomic frameworks. Nucl Acids Res. 2014;42(D1):D643–8.
+    and colorectal adenoma in a screening population. Medicine. 2018;97(37):                    https://doi.org/10.1093/nar/gkt1209.
+    e12244. https://doi.org/10.1097/MD.0000000000012244.                                    66. O’Leary NA, Wright MW, Brister JR, Ciufo S, Haddad D, McVeigh R, et al.
+44. Michaud DS, Fu Z, Shi J, Chung M. Periodontal disease, tooth loss, and Cancer               Reference sequence (RefSeq) database at NCBI: current status, taxonomic
+    risk. Epidemiol Rev. 2017;39(1):49–58. https://doi.org/10.1093/epirev/mxx006.               expansion, and functional annotation. Nucleic Acids Res. 2016;44(D1):D733–
+45. Lauritano D, FOCUS ON. Periodontal disease and colorectal carcinoma. ORL.                   45. https://doi.org/10.1093/nar/gkv1189.
+    2017;10(3):229–33. https://doi.org/10.11138/orl/2017.10.3.229.                          67. Loomba R, Seguritan V, Li W, Long T, Klitgord N, Bhatt A, et al. Gut
+46. Escapa IF, Chen T, Huang Y, Gajare P, Dewhirst FE, Lemon KP. New Insights                   Microbiome-Based Metagenomic Signature for Non-invasive Detection of
+    into Human Nostril Microbiome from the Expanded Human Oral                                  Advanced Fibrosis in Human Nonalcoholic Fatty Liver Disease. Cell Metab.
+    Microbiome Database (eHOMD): a Resource for the Microbiome of the                           2017;25(5):1054–62 e5.
+    Human Aerodigestive Tract. Xu J, editor. mSystems. 2018 Dec 4;3(6):e00187–              68. Aruni AW, Mishra A, Dou Y, Chioma O, Hamilton BN, Fletcher HM. Filifactor
+    18, /msystems/3/6/msys.00187–18.atom.                                                       alocis – a new emerging periodontal pathogen. Microbes Infect. 2015;17(7):
+47. Haft DH. TIGRFAMs: a protein family resource for the functional                             517–30. https://doi.org/10.1016/j.micinf.2015.03.011.
+    identification of proteins. Nucleic Acids Res. 2001;29(1):41–3. https://doi.            69. Jalava J, Eerola E. Phylogenetic analysis of Fusobacterium alocis and
+    org/10.1093/nar/29.1.41.                                                                    Fusobacterium sulci based on 16S rRNA gene sequences: proposal of
+Loftus et al. BMC Microbiology              (2021) 21:98                                                                                                      Page 18 of 18
+
+
+
+
+      Filifactor alocis (Cato, Moore and Moore) comb. nov. and Eubacterium sulci         87. Phang JM, Liu W, Hancock CN, Fischer JW. Proline metabolism and cancer:
+      (Cato, Moore and Moore) comb. nov. Int J Syst Bacteriol. 1999 Oct;49 Pt 4:              emerging links to glutamine and collagen. Curr Opin Clin Nutr Metabolic
+      1375–9.                                                                                 Care. 2015;18(1):71–7. https://doi.org/10.1097/MCO.0000000000000121.
+70.   Rousee JM, Bermond D, Piemont Y, Tournoud C, Heller R, Kehrli P, Harlay            88. Dixit SN, Seyer JM, Kang AH. Covalent structure of collagen: amino-acid
+      ML, Monteil H, Jaulhac B. Dialister pneumosintes associated with human                  sequence of Chymotryptic peptides from the carboxyl-terminal region of
+      brain abscesses. J Clin Microbiol. 2002;40(10):3871–3. https://doi.org/10.112           alpha2-CB3 of Chick-skin collagen. Eur J Biochem. 1977;81(3):599–607.
+      8/JCM.40.10.3871-3873.2002.                                                             https://doi.org/10.1111/j.1432-1033.1977.tb11987.x.
+71.   Flemer B, Warren RD, Barrett MP, Cisek K, Das A, Jeffery IB, Hurley E,             89. Tsoy O, Ravcheev D, Mushegian A. Comparative genomics of ethanolamine
+      O‘Riordain M, Shanahan F, O‘Toole PW. The oral microbiota in colorectal                 utilization. JB. 2009;191(23):7157–64. https://doi.org/10.1128/JB.00838-09.
+      cancer is distinctive and predictive. Gut. 2018;67(8):1454–63. https://doi.        90. Garsin DA. Ethanolamine utilization in bacterial pathogens: roles and
+      org/10.1136/gutjnl-2017-314814.                                                         regulation. Nat Rev Microbiol. 2010;8(4):290–5. https://doi.org/10.1038/
+72.   Mima K, Cao Y, Chan AT, Qian ZR, Nowak JA, Masugi Y, et al. Fusobacterium               nrmicro2334.
+      nucleatum in Colorectal Carcinoma Tissue According to Tumor Location:              91. Bolger AM, Lohse M, Usadel B. Trimmomatic: a flexible trimmer for Illumina
+      Clinical and Translational Gastroenterology 2016;7(11):e200, DOI: https://doi.          sequence data. Bioinformatics. 2014;30(15):2114–20. https://doi.org/10.1093/
+      org/10.1038/ctg.2016.53.                                                                bioinformatics/btu170.
+73.   Drewes JL. High-resolution bacterial 16S rRNA gene profile meta-analysis           92. Langmead B, Salzberg SL. Fast gapped-read alignment with bowtie 2. Nat
+      and biofilm status reveal common colorectal cancer consortia. npj Biofilms              Methods. 2012;9(4):357–9. https://doi.org/10.1038/nmeth.1923.
+      and Microbiomes. 2017;12.                                                          93. Genome Reference Consortium. The GRCh38.p12 Human Genome
+74.   Dai Z, Coker OO, Nakatsu G, Wu WKK, Zhao L, Chen Z, Chan FKL, Kristiansen               [Internet]. [cited 2018 Oct 1]. Available from: https://www.ncbi.nlm.nih.gov/a
+      K, Sung JJY, Wong SH, Yu J. Multi-cohort analysis of colorectal cancer                  ssembly/GCF_000001405.38/
+      metagenome identified altered bacteria across populations and universal            94. Xia LC, Cram JA, Chen T, Fuhrman JA, Sun F. Accurate Genome Relative
+      bacterial markers. Microbiome. 2018;6(1):70. https://doi.org/10.1186/s40168-            Abundance Estimation Based on Shotgun Metagenomic Reads. Dias-Neto E,
+      018-0451-2.                                                                             editor. PLoS ONE. 2011;6(12):e27992.
+75.   Baxter NT, Ruffin MT, Rogers MAM, Schloss PD. Microbiota-based model               95. Loftus M, Hassouneh SA-D, Yooseph S. Bacterial associations in the healthy
+      improves the sensitivity of fecal immunochemical test for detecting colonic             human gut microbiome across populations. Sci Rep. 2021;11(1):2828.
+      lesions. Genome Med. 2016;8(1):37. https://doi.org/10.1186/s13073-016-0290-3.           https://doi.org/10.1038/s41598-021-82449-0.
+76.   Takahashi N. Microbial ecosystem in the oral cavity: metabolic diversity in        96. Pedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B, Grisel O, et al. Scikit-
+      an ecological niche and its relationship with oral diseases. Int Congr Ser.             learn: Machine Learning in Python. MACHINE LEARNING IN PYTHON. :6.
+      2005;1284:103–12. https://doi.org/10.1016/j.ics.2005.06.071.                       97. Shannon CE. A Mathematical Theory of Communication. :55.
+77.   Socransky SS, Haffajee AD. Dental biofilms: difficult therapeutic targets:         98. Hyatt D, Chen G-L, LoCascio PF, Land ML, Larimer FW, Hauser LJ. Prodigal:
+      Dental biofilms: difficult therapeutic targets. Periodontology 2000. 2002;              prokaryotic gene recognition and translation initiation site identification. BMC
+      28(1):12–55.                                                                            Bioinformatics. 2010;11(1):119. https://doi.org/10.1186/1471-2105-11-119.
+78.   Abubucker S, Segata N, Goll J, Schubert AM, Izard J, Cantarel BL,                  99. Jones P, Binns D, Chang H-Y, Fraser M, Li W, McAnulla C, McWilliam H,
+      Rodriguez-Mueller B, Zucker J, Thiagarajan M, Henrissat B, White O,                     Maslen J, Mitchell A, Nuka G, Pesseat S, Quinn AF, Sangrador-Vegas A,
+      Kelley ST, Methé B, Schloss PD, Gevers D, Mitreva M, Huttenhower C.                     Scheremetjew M, Yong SY, Lopez R, Hunter S. InterProScan 5: genome-scale
+      Metabolic reconstruction for metagenomic data and its application to                    protein function classification. Bioinformatics. 2014;30(9):1236–40. https://
+      the human microbiome. PLoS Comput Biol. 2012;8(6):e1002358. https://                    doi.org/10.1093/bioinformatics/btu031.
+      doi.org/10.1371/journal.pcbi.1002358.                                              100. Liao Y, Smyth GK, Shi W. featureCounts: an efficient general purpose
+79.   Neis E, Dejong C, Rensen S. The role of microbial amino acid metabolism in              program for assigning sequence reads to genomic features. Bioinformatics.
+      host metabolism. Nutrients. 2015;7(4):2930–46. https://doi.org/10.3390/                 2014;30(7):923–30. https://doi.org/10.1093/bioinformatics/btt656.
+      nu7042930.                                                                         101. Zhao T, Liu H, Roeder K. Wasserman L. The huge Package for High-
+80.   Hopkins MJ, Englyst HN, Macfarlane S, Furrie E, Macfarlane GT, McBain AJ.               dimensional Undirected Graph Estimation in R. 2016;6.
+      Degradation of cross-linked and non-cross-linked Arabinoxylans by the              102. Liu H, Roeder K, Wasserman L. Stability Approach to Regularization Selection
+      intestinal microbiota in children. AEM. 2003;69(11):6354–60. https://doi.org/1          (StARS) for High Dimensional Graphical Models. arXiv:10063316 [stat]
+      0.1128/AEM.69.11.6354-6360.2003.                                                        [Internet]. 2010 Jun 16 [cited 2020 Sep 9]; Available from: http://arxiv.org/a
+81.   Pessione E. Lactic acid bacteria contribution to gut microbiota complexity:             bs/1006.3316
+      lights and shadows. Front Cell Inf Microbio [Internet]. 2012 [cited 2020 Dec       103. Hagberg AA, Schult DA, Swart PJ. Exploring network structure. Dynamics,
+      8];2. Available from: http://journal.frontiersin.org/article/10.3389/fcimb.2012.        and Function using NetworkX. 2008;6.
+      00086/abstract                                                                     104. Clauset A, Newman MEJ, Moore C. Finding community structure in very
+                                                                                              large networks. Phys Rev E. 2004;70(6):066111. https://doi.org/10.1103/
+82.   Koh A, De Vadder F, Kovatcheva-Datchary P, Bäckhed F. From dietary Fiber
+                                                                                              PhysRevE.70.066111.
+      to host physiology: short-chain fatty acids as key bacterial metabolites. Cell.
+                                                                                         105. Cordasco G, Gargano L. Community Detection via Semi-Synchronous Label
+      2016;165(6):1332–45. https://doi.org/10.1016/j.cell.2016.05.041.
+                                                                                              Propagation Algorithms. arXiv:11034550 [physics] [Internet]. 2011 Mar 23
+83.   Canani RB. Potential beneficial effects of butyrate in intestinal and
+                                                                                              [cited 2020 Jul 31]; Available from: http://arxiv.org/abs/1103.4550
+      extraintestinal diseases. WJG. 2011;17(12):1519–28. https://doi.org/10.3748/
+                                                                                         106. Mann HB, Whitney DR. On a test of whether one of two random variables is
+      wjg.v17.i12.1519.
+                                                                                              stochastically larger than the other. Ann Math Statist. 1947;18(1):50–60.
+84.   Xu M, Yamada M, Li M, Liu H, Chen SG, Han YW. FadA from Fusobacterium
+                                                                                              https://doi.org/10.1214/aoms/1177730491.
+      nucleatum utilizes both secreted and nonsecreted forms for functional
+                                                                                         107. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical
+      Oligomerization for attachment and invasion of host cells. J Biol Chem.
+                                                                                              and powerful approach to multiple testing. J R Stat Soc Ser B Methodol.
+      2007;282(34):25000–9. https://doi.org/10.1074/jbc.M611567200.
+                                                                                              1995;57(1):289–300.
+85.   Rubinstein MR, Baik JE, Lagana SM, Han RP, Raab WJ, Sahoo D, et al.
+      Fusobacterium nucleatum promotes colorectal cancer by inducing Wnt/β-
+      catenin modulator Annexin A1. EMBO Rep [Internet]. 2019 Apr [cited 2020            Publisher’s Note
+      Dec 6];20(4). Available from: https://onlinelibrary.wiley.com/doi/abs/10.152       Springer Nature remains neutral with regard to jurisdictional claims in
+      52/embr.201847638                                                                  published maps and institutional affiliations.
+86.   Yang Y, Weng W, Peng J, Hong L, Yang L, Toiyama Y, et al. Fusobacterium
+      nucleatum Increases Proliferation of Colorectal Cancer Cells and Tumor
+      Development in Mice by Activating Toll-Like Receptor 4 Signaling to
+      Nuclear Factor−κB, and Up-regulating Expression of MicroRNA-21.
+      Gastroenterology. 2017 Mar;152(4):851–866.e24.
+

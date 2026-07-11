@@ -1,0 +1,533 @@
+Original Article
+
+
+
+NGS-based accurate and efficient
+detection of circulating cell-free
+mitochondrial DNA in cancer patients
+Yang Liu,1,4 Kaixiang Zhou,1,4 Shanshan Guo,1 Yang Wang,1 Xiaoying Ji,1 Qing Yuan,2 Liping Su,1 Xu Guo,1
+Xiwen Gu,3 and Jinliang Xing1
+1State Key Laboratory of Cancer Biology and Department of Physiology and Pathophysiology, Fourth Military Medical University, Xi’an, China; 2Institute of Medical
+
+Research, Northwestern Polytechnical University, Xi’an, China; 3Key Laboratory of Shaanxi Province for Craniofacial Precision Medicine Research, Clinical Research
+Center of Shaanxi Province for Dental and Maxillofacial Diseases, College of Stomatology, Xi’an Jiaotong University, Xi’an, China
+
+
+Mitochondrial DNA (mtDNA) mutations are closely impli-                               as mitochondrial heteroplasmy.4 Mitochondrial dysfunctions,
+cated in the pathogenesis of multiple cancers, making circu-                         mainly mtDNA mutations occurring in the heteroplasmic state
+lating cell-free mtDNA (ccf-mtDNA) as a potential non-inva-                          and mtDNA copy number variations, have been demonstrated to
+sive tumor biomarker. However, an effective approach to                              be strongly associated with tumor development and metastasis.5,6
+comprehensively proﬁle ccf-mtDNA mutations is still lacking.
+In this study, we ﬁrst characterized ccf-mtDNA by low-depth                          The discovery of circulating cell-free DNA (ccf-DNA) in the plasma
+whole-genome sequencing (WGS) and found that plasma                                  of cancer patients has opened up an exciting opportunity for non-
+DNA samples exhibited a dramatic decrease in mtDNA copy                              invasive diagnostic and prognostic evaluation of cancer.7 Empowered
+number when compared with fresh tumor tissues. Further                               by the rapid advances of next-generation sequencing (NGS), exten-
+analysis revealed that plasma ccf-mtDNA had a biased distri-                         sive studies have been attempted to identify tumor-speciﬁc mutations,
+bution of fragment size with a peak around 90 bp. Based on                           copy number variations, chromosomal alterations, and fragmentation
+these insights, we developed a robust captured-based mtDNA                           patterns in plasma ccf-DNA from cancer patients.8 Notably, most of
+deep-sequencing approach that enables accurate and efﬁcient                          these investigations have focused on ccf-DNA of nuclear origin (ccf-
+detection of plasma ccf-mtDNA mutations by systematic opti-                          nDNA), but the abundance of tumor-derived ccf-nDNA is extremely
+mization of probe quantity and length, hybridization temper-                         low in many early stage and certain metastatic cancers.9,10 In addition,
+ature, and PCR ampliﬁcation cycles. Moreover, we found that                          it has recently been found that leucocyte-derived mutations are unex-
+placement of isolated plasma for 6 h at both 4 C and room                           pectedly pervasive in plasma ccf-nDNA, even accounting for more
+temperature (RT) led to a dramatic decrease of ccf-mtDNA                             than 50% of total ccf-nDNA variants, which may greatly hinder its
+stability, highlighting the importance of proper plasma sam-                         clinical application.11
+ple processing. We further showed that the optimized
+approach can successfully detect a substantial fraction of                           Because of the high copy number and high mutation rate, circulating
+tumor-speciﬁc mtDNA mutations in plasma ccf-mtDNA spe-                               cell-free mtDNA (ccf-mtDNA) may hold great promise for a novel
+ciﬁcally from hepatocellular carcinoma (HCC) patients but                            tumor biomarker.12,13 Unfortunately, our current understanding of
+not from colorectal cancer (CRC) patients, suggesting the                            the biological properties of plasma ccf-mtDNA is poor. Meanwhile,
+presence of a potential cancer-speciﬁc difference in the abun-                       an accurate and efﬁcient approach to comprehensively proﬁle ccf-
+dance of tumor-derived mtDNA in plasma.                                              mtDNA mutations and copy numbers is still lacking. Traditional
+
+INTRODUCTION
+Human mitochondrial DNA (mtDNA) is a maternally inherited 16-                        Received 18 September 2020; accepted 17 December 2020;
+kb genome, which is characterized as double-stranded circular DNA                    https://doi.org/10.1016/j.omtn.2020.12.017.
+                                                                                     4
+that encodes 13 essential components of the mitochondrial electron                    These authors contributed equally
+transport chain and ATP synthase.1 Due to the lack of protective                     Correspondence: Jinliang Xing, State Key Laboratory of Cancer Biology and
+                                                                                     Department of Physiology and Pathophysiology, Fourth Military Medical Uni-
+histones and an inefﬁcient DNA repair system, mtDNA exhibits a                       versity, Xi’an, China.
+much higher mutation rate than nuclear DNA.2 As opposed to                           E-mail: xingjinliang@163.com
+diploid nuclear DNA, the number of mtDNA copies ﬂuctuates                            Correspondence: Xiwen Gu, Key Laboratory of Shaanxi Province for Craniofacial
+                                                                                     Precision Medicine Research, Clinical Research Center of Shaanxi Province for
+from several hundred to more than 10,000 according to cell types
+                                                                                     Dental and Maxillofacial Diseases, College of Stomatology, Xi’an Jiaotong Uni-
+and pathological conditions.3 Consequently, the common coexis-                       versity, Xi’an, China.
+tence of wild-type and mutant mtDNA in the same cell is deﬁned                       E-mail: xiwen.gu@xjtu.edu.cn
+
+
+
+                                                                   Molecular Therapy: Nucleic Acids Vol. 23 March 2021 ª 2021 The Authors.                    657
+                          This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+                                                                                                              Molecular Therapy: Nucleic Acids
+
+
+
+
+technologies, such as Sanger sequencing and high-resolution melt          was observed between healthy subjects and HCC patients, suggesting
+analysis, face the great limitations of sensitivity and throughput in     that inﬂammation may play a role in the distribution of ccf-mtDNA
+identifying low heteroplasmic mtDNA mutations.14 Moreover,                fragment size (Figure S1B). In addition, the ccf-mtDNA breakpoint,
+Weerts et al.15 recently reported limited ability in tracing tumor-spe-   which is deﬁned as the cleavage position of mtDNA fragments at
+ciﬁc ccf-mtDNA variants by single-molecule real-time sequencing,          the mitochondrial genome, seemed to be distributed randomly across
+showing that most of the variants they identiﬁed from tumor tissues       the whole mitochondrial genome among all plasma samples
+were undetectable in matched plasma mtDNA. Alternatively,                 (Figure 1C).
+although both capture and PCR-based strategies have been used to
+efﬁciently enrich mtDNA from genomic DNA of tissue samples,16             Optimization of plasma ccf-mtDNA detection by capture-based
+none of them is directly applicable to enrich ccf-mtDNA from              mtDNA sequencing
+plasma. Speciﬁcally, the highly fragmented nature of plasma DNA           The low abundance and unique size distribution of plasma ccf-
+can impose great prohibition for PCR-based ccf-mtDNA enrichment           mtDNA presented a great challenge for the WGS-based full charac-
+while the atypical abundance of plasma mtDNA also renders capture-        terization of ccf-mtDNA. To overcome this obstacle, based on
+based enrichment suffering from low capture efﬁciency.17–19 Thus, it      insights gained from low-depth WGS analysis of plasma ccf-
+is of great importance to develop an NGS-based approach for accu-         mtDNA, we turned to capture-based detection of tissue mtDNA
+rate and highly efﬁcient detection of plasma ccf-mtDNA, especially        as described in our previous study21 and performed a systematic
+in cancer patients.                                                       optimization against probe quantity, probe length, probe-mtDNA
+                                                                          hybridization, and post-capture ampliﬁcation using 10 HCC plasma
+In the present study, we ﬁrst comprehensively analyzed the basic          samples. The mtDNA mapping rate and sequencing depth were
+characteristics of plasma ccf-mtDNA from both healthy and cancer          used for assessing mtDNA enrichment efﬁciency. As shown in Fig-
+patients using the whole-genome sequencing (WGS) approach. Based          ure 2A, the highest mtDNA enrichment efﬁciency, with an average
+on these insights, we developed an optimized capture-based mtDNA          mtDNA mapping rate of 38% (ranging from 23% to 50%) and
+deep-sequencing procedure enabling the accurate and efﬁcient detec-       average mtDNA sequencing depth of 1,578 (ranging from 868
+tion of ccf-mtDNA. Finally, we applied this innovative approach into      to 2,036), was achieved when using 0.8 ng of probe per 200 ng of
+the measurement of paired tumor, tumor-adjacent, peripheral blood         the WGS library. In addition, we found that the enrichment efﬁ-
+and plasma samples, and successfully detected tumor-speciﬁc               ciency can further be moderately improved by using gradually
+mtDNA mutations from plasma ccf-mtDNA of hepatocellular carci-            increased probe length (150, 250, and 350 bp) (p < 0.001, Fig-
+noma (HCC) patients.                                                      ure 2B). Although previous reports suggested that hybridization
+                                                                          at 55 C is more suitable for capture-based enrichment of ancient
+RESULTS                                                                   DNA,22 we found that hybridization at 65 C performed signiﬁ-
+Analysis of ccf-mtDNA copy number, fragment size, and                     cantly better for enrichment of ccf-mtDNA from plasma samples
+breakpoint by low-depth WGS                                               (p < 0.001, Figure 2C). Finally, we showed that maximum enrich-
+To explore the clinical application potential of plasma ccf-mtDNA in      ment of plasma ccf-mtDNA can be achieved by further setting 20
+various cancers, we ﬁrst comprehensively analyzed the characteristics     cycles of PCR ampliﬁcation (all p < 0.001, Figure 2D), which
+of ccf-mtDNA from 40 plasma samples (10 healthy subjects, 10 hep-         does not affect the detection of homoplasmic and heteroplasmic
+atitis patients, 10 HCC patients, and 10 colorectal cancer [CRC] pa-      mtDNA variants in each of 10 HCC samples (Table S2). Interest-
+tients) using low-depth WGS. All sequencing data are summarized           ingly, we also observed a signiﬁcant positive correlation between
+in Table S1. For comparison, we also analyzed the mtDNA copy num-         mtDNA copy number and enrichment efﬁciency (Spearman r =
+ber in matched fresh tumor tissues for HCC and CRC patients. Based        0.952, p < 0.001; Figure S2). Taken together, these results identiﬁed
+on low-depth WGS data, we calculated the mtDNA copy number and            probe quantity of 0.8 ng, probe length of 350 bp, probe-mtDNA hy-
+found that plasma samples exhibited a dramatic decrease in mtDNA          bridization at 65 C, and subsequent PCR ampliﬁcation for 20 cycles
+copy number when compared with fresh tumor tissues (p < 0.001),           as the optimal condition for detection of plasma ccf-mtDNA by
+with an average number of 5.05 (ranging from 0.76 to 27.83) and           captured-based mtDNA sequencing.
+935.40 (ranging from 139.52 to 3,170.49), respectively (Figure 1A).
+Also, we found that healthy subjects had signiﬁcantly higher plasma       Robust detection of plasma ccf-mtDNA variants by optimized
+ccf-mtDNA copy numbers than the other three groups (Figure S1A).          captured-based mtDNA sequencing
+Further analysis of fragment size distribution revealed that plasma       We next evaluated the performance of our optimized capture proced-
+ccf-mtDNA had a biased distribution of fragment size with peaks           ure for detecting plasma ccf-mtDNA using the same set of samples.
+around 90 bp, and plasma ccf-DNA of nuclear origin had an approx-         Compared with the capture procedure that was routinely used for tis-
+imately normal distribution of fragment size with peaks around            sue DNA samples, the optimized procedure greatly improved both
+167 bp, consistent with the reported nucleosome length (Figure 1B).20     the mtDNA mapping rate and the mtDNA sequencing depth for
+When median insert size was compared among four groups, we found          plasma DNA samples (p < 0.001, Figures 3A and 3B). Furthermore,
+that hepatitis patients had signiﬁcantly longer insert size than did      while both procedures detected similar numbers of homoplasmic
+healthy subjects and HCC patients, and no difference of insert size       mtDNA variants, the optimized procedure can detect signiﬁcantly
+
+
+658    Molecular Therapy: Nucleic Acids Vol. 23 March 2021
+www.moleculartherapy.org
+
+
+
+
+Figure 1. Analysis of ccf-mtDNA copy number, fragment size, and breakpoint by low-depth whole genome sequencing (WGS)
+(A) Comparison of mtDNA copy number between plasma (orange) and fresh tissues (purple). The significance was determined by a Student’s t test. (B) Fragment size
+distribution of ccf-mtDNA (orange) and ccf-DNA (purple) among healthy controls, hepatitis patients, HCC patients, and CRC patients. (C) Proportion of ccf-mtDNA
+breakpoints across the mitochondrial genome among healthy controls, hepatitis patients, HCC patients, and CRC patients. HC, heathy control; HCC, hepatocellular
+carcinoma; CRC, colorectal cancer.
+
+
+
+higher numbers of heteroplasmic mtDNA variants (p < 0.001, Figures                ples, thus allowing more accurate and sensitive detection of ccf-
+3C and 3D). Further analysis revealed that most of the mtDNA var-                 mtDNA mutations, especially for those with low heteroplasmic levels.
+iants (92%) only detectable by the optimized procedure could be
+conﬁrmed by replicate experiments (Figure 3E). Notably, most                      Reliability evaluation of optimized capture-based ccf-mtDNA
+mtDNA variants only detectable by the optimized procedure had                     sequencing
+low heteroplasmic level (%10%) and exhibited signiﬁcant transition                We then assessed the reproducibility of the optimized capture-based
+predominance (Figures 3F and 3G), consistent with the mtDNA mu-                   NGS approach in detecting ccf-mtDNA by independently preparing
+tation signature previously reported.5 Taken together, these data                 another replicate sequencing library for each of the 10 plasma DNA
+demonstrated that our optimized procedure greatly enhanced the                    samples from HCC patients. We found that all of the homoplasmic
+speciﬁcity and efﬁciency of mtDNA capture from plasma DNA sam-                    variants and the vast majority of the heteroplasmic variants exhibited
+
+
+                                                                                            Molecular Therapy: Nucleic Acids Vol. 23 March 2021            659
+                                                                                                                             Molecular Therapy: Nucleic Acids
+
+
+
+
+Figure 2. Optimization of plasma ccf-mtDNA detection by capture-based mtDNA sequencing
+(A–D) Comparison of mtDNA mapping rate and mtDNA sequencing depth among (A) different probe quantity, (B) different probe length, (C) different hybridization tem-
+perature, and (D) different PCR amplification cycles. The significance between different treatments was determined by a paired t test.
+
+
+an almost 100% consistency between two replicate experiments (Fig-                 and 6B), whereas placement of isolated plasma for 6 h at both 4 C and
+ure 4A). Even in four cases where the heteroplasmic variants showed                RT led to a dramatic decrease of ccf-mtDNA copy number and frag-
+relatively lower consistency, the most heteroplasmic variants could                ment size (Figures 6C and 6D), suggesting that plasma ccf-mtDNA is
+still be conﬁdently reproduced (Figure 4B). Furthermore, the opti-                 susceptible to degradation. Although the reason underlying this
+mized procedure exhibited very high consistency in determining                     distinct ccf-mtDNA behavior between whole blood and plasma re-
+the exact heteroplasmy levels (Spearman r = 0.986; Figure 4C). In                  quires further investigation, these ﬁndings highlight the importance
+addition, the mutation spectrum of heteroplasmic variants in both                  of proper plasma sample processing.
+replicates showed highly similar transition predominance, consistent
+with the established mtDNA mutation signatures5 (Figure 4D).                       Tumor-specific mtDNA mutations can be effectively detected in
+                                                                                   plasma samples based on an optimized NGS approach
+To further analyze whether the optimized procedure may generate                    To explore the clinical application potential of plasma ccf-mtDNA,
+potential capture-related bias, we compared the basic features of                  we simultaneously detected mtDNA variants in matched tumor tis-
+plasma ccf-mtDNA between data from optimized capture sequencing                    sue, adjacent non-tumor tissue, peripheral blood mononuclear cells
+and WGS. To our satisfaction, both analyses revealed a highly consis-              (PBMCs), and plasma samples from 5 HCC and 10 CRC patients
+tent portrait of plasma ccf-mtDNA in terms of mtDNA copy number,                   (Figure 7; Figures S3 and S4; see Table S3 for detailed patient informa-
+fragment size, and distribution of fragment ends across the whole                  tion). On average, we were able to detect 64.2 mtDNA variants (range,
+mitochondrial genome (Figure 5). Overall, these data demonstrate                   51–92) in plasma from HCC patients and 50.6 mtDNA variants
+that the optimized capture-based sequencing enables comprehensive                  (range, 31–112) in plasma from CRC patients by the optimized pro-
+proﬁling of plasma ccf-mtDNA with prominent reliability.                           cedure, when the heteroplasmy level was set at 1%. In addition, the
+                                                                                   repertoire of germline mtDNA variants (deﬁned as variants that
+Suitable sample processing and placement are critical for                          were shared by tumor tissue and adjacent non-tumor tissue) can be
+accurate detection of circulating mtDNA                                            fully recovered from the plasma sample of each patient. Remarkably,
+To further investigate the suitable sample processing for accurate                 a fraction of tumor-speciﬁc mutations (deﬁned as variants presented
+proﬁling of ccf-mtDNA, we further evaluated the impact of different                only in tumor tissue but absent in both adjacent non-tumor tissue and
+sample placement times and temperatures on downstream ccf-                         PBMCs) was recovered in each of 5 HCC plasma samples, but such
+mtDNA detection. mtDNA copy number and fragment size were                          mutations were completely undetectable in all 10 CRC plasma sam-
+used as indicators of ccf-mtDNA stability. Intriguingly, placement                 ples. However, there still existed a substantial amount of plasma-spe-
+of peripheral blood for up to 24 h at either 4 C or room temperature              ciﬁc variants with unknown originations (VUOs) in both HCC and
+(RT) had no discernible impact on ccf-mtDNA stability (Figures 6A                  CRC patients.
+
+
+660     Molecular Therapy: Nucleic Acids Vol. 23 March 2021
+www.moleculartherapy.org
+
+
+
+
+Figure 3. Robust detection of plasma ccf-mtDNA variants by optimized captured-based mtDNA sequencing
+(A–D) Comparison of (A) mtDNA mapping rate, (B) mtDNA sequencing depth, and (C) homoplasmic and (D) heteroplasmic mtDNA variant numbers between conventional
+capture-based sequencing procedure and the optimized capture-based sequencing procedure. Significance was determined by a paired t test. (E) Number of repeatable
+and unrepeatable mtDNA variants only detected by optimized capture-based sequencing. (F) Distribution of mtDNA variants only detected by optimized capture-based
+sequencing at different heteroplasmy level. (G) Substitution spectrum of mtDNA variants only detected by optimized capture-based sequencing.
+
+
+
+To examine whether intratumor heterogeneity may constitute a                      ccf-mtDNA mutations was successfully detected in plasma samples
+source for plasma VUOs, we further applied multiple-spot mtDNA                    from HCC patients but not CRC patients by the optimized approach.
+sequencing of tumor and adjacent non-tumor tissues (10 sampling                   Our study provides a more robust means to identify tumorous ccf-
+spots for each tumor tissue and 5 spots for each adjacent non-tumor               mtDNA in the noninvasive diagnosis of speciﬁc cancer patients.
+tissue). Multiple-spot sequencing of HCC samples revealed a consid-
+erable increase of tumor-speciﬁc mutations (range, 1–4), among                    Plasma mtDNA has long been considered as a promising liquid bi-
+which a substantial fraction can ﬁnd identical counterparts in the                opsy candidate because of its high copy number and high mutation
+plasma VUOs (Table S4). Furthermore, we revealed that the hetero-                 rate. Moreover, several studies have reported that the release of
+plasmy levels of tumor-speciﬁc mutations was highly correlated                    mtDNA into plasma is involved in immune responses and is elevated
+(spearman r = 0.761, p < 0.001) between HCC tumor tissue and                      in cancer patients.23,24 Most previous studies have used the quantita-
+plasma samples (Figure S5). Surprisingly, multiple-spot sequencing                tive PCR (qPCR)-based approach to measure plasma mtDNA content
+of CRC samples identiﬁed much greater tumor-speciﬁc mutations                     in cancer patients.13 Despite the great importance of ccf-mtDNA con-
+(range, 2–22), suggesting the presence of tremendous CRC intratu-                 tent as the tumor biomarker, there are still a number of inconsistent
+mor heterogeneity. However, the vast majority of them were still un-              ﬁndings. Studies have reported a decreased ccf-mtDNA copy number
+detectable in the corresponding plasma samples. These results                     in the plasma of HCC patients.20 However, others have observed the
+strongly suggest that the abundance of tumor-derived ccf-mtDNA                    opposite trend.25 This discrepancy may be partially due to the
+in plasma may be cancer-type speciﬁc.                                             different detection methods, including massively parallel sequencing
+                                                                                  and qPCR. In our previous study, we directly compared these ap-
+DISCUSSION                                                                        proaches in the same sample set and demonstrated that qPCR is
+In the present study, we ﬁrst comprehensively proﬁled the character-              not appropriate for the detection of mtDNA content in plasma
+istics of plasma ccf-mtDNA in both healthy controls and cancer pa-                DNA samples, due to their low quality. In addition, because alter-
+tients. Based on the insight of ccf-mtDNA properties, we successfully             ations of ccf-mtDNA content have also been reported in multiple
+optimized the capture-based NGS approach, which remarkably                        non-malignant pathologies, such as Alzheimer’s disease, Parkinson’s
+increased the capture efﬁciency of mtDNA from plasma DNA sam-                     disease, and coronary heart disease,26,27 the usage of plasma mtDNA
+ples and thus greatly improved in the detection of ccf-mtDNA muta-                content alone as a cancer biomarker may be inaccurate and
+tions. More importantly, the substantial fraction of tumor-derived                misleading, highlighting the importance of identifying tumor-derived
+
+
+                                                                                            Molecular Therapy: Nucleic Acids Vol. 23 March 2021             661
+                                                                                                                                     Molecular Therapy: Nucleic Acids
+
+
+
+
+Figure 4. Reproducibility of captured-based mtDNA sequencing in detecting plasma ccf-mtDNA
+(A) Consistency of homoplasmic and heteroplasmic mtDNA variants between two repeat experiments using 10 HCC plasma samples. (B) Comparison of heteroplasmic
+mtDNA variants in HCC plasma samples with lower consistency. (C) Correlation of mtDNA heteroplasmy level of all mtDNA variants between two repeat experiments. The
+significance of correlation was determined by Spearman’s rank correlation coefficient. (D) Percentage of heteroplasmic mtDNA variants with different substitution category of
+two repeat experiments. Rep, replicate.
+
+
+mtDNA mutations in plasma samples. Recently, we developed a novel                        tity), capture condition (hybridization temperature), and post-capture
+capture-based NGS approach using both mtDNA and nDNA probes                              ampliﬁcation. We found that increasing the probe quantity promoted
+to capture target fragments, enabling simultaneous detection of                          mtDNA capture when the probe quantity is insufﬁcient. However,
+mtDNA mutation and copy number.28 Nonetheless, considering                               when the probe quantity is excessive, further increasing the probe
+the complex environment of plasma greatly different from tissue sam-                     quantity may cause non-speciﬁc capture, such as the capture of nuclear
+ples, these approaches remain to be comprehensively evaluated and                        mtDNA (NUMT). Therefore, the mtDNA mapping rate ﬁrst increases
+optimized when applied in the detection of circulating mtDNA.                            and then decreases as the quantity of the capture probe increases. These
+                                                                                         efforts enabled us to develop a highly efﬁcient capture-based plasma
+Based on low-depth WGS data, we ﬁrst comprehensively characterized                       mtDNA detection pipeline. Compared to conventional capture-based
+the circulating mtDNA (ccf-mtDNA), including copy number, frag-                          deep sequencing, our optimized procedure can achieve at least 4-fold
+ment distribution, and break points, providing a deﬁnitive description                   higher mtDNA enrichment using plasma DNA samples. In addition,
+of ccf-mtDNA. We found that only around 0.001% of plasma DNA can                         we found that ccf-mtDNA in plasma samples, but not in whole-blood
+be mapped to mtDNA, which is almost 180-fold less compared to that                       samples, was susceptible to degradation, highlighting the importance of
+of matched fresh tissue samples. The extremely low abundance of                          proper plasma sample processing. Recently, Hotz et al.31 reported that
+mtDNA in plasma samples may prohibit further mutation calling                            red blood cells can homeostatically bind a large proportion of circu-
+based on capture-free deep sequencing, such as WGS. A few studies                        lating mtDNA through Toll-like receptor 9 (TLR9). Thus, it is possible
+have attempted to detect ccf-mtDNA mutations in plasma or other                          that whole-blood samples have a more stable level of circulating cell-
+bodily ﬂuids,29,30 although all of these detections are faced with various               free mtDNA than do isolated plasma samples due to the dynamic
+limitations, such as low sensitivity or high cost. For instance, Weerts                  release of ccf-mtDNA from red blood cells.
+et al.15 reported the frustrated detection of tumor-speciﬁc mtDNA in
+plasma using single-molecule real-time sequencing and concluded                          More importantly, we demonstrated that the optimized procedure
+that tracing tumor-speciﬁc mtDNA variants in plasma is of limited                        could greatly enhance the accurate and sensitive detection of ccf-
+value. In our present study, based on novel insights into mtDNA char-                    mtDNA mutations. We analyzed the plasma mtDNA in a few HCC
+acteristics, we performed a systematic optimization of the conventional                  and CRC patients, leading to the recovery of abundant plasma mtDNA
+capture-based NGS approach against capture probe (length and quan-                       variants. Combined analysis of tumor tissue, adjacent non-tumor
+
+
+662      Molecular Therapy: Nucleic Acids Vol. 23 March 2021
+www.moleculartherapy.org
+
+
+
+
+                                                                                             Figure 5. Consistency between capture-based
+                                                                                             approach and low-depth WGS for profiling ccf-
+                                                                                             mtDNA characteristics
+                                                                                             (A) Correlation of mtDNA copy number between optimized
+                                                                                             capture-based sequencing and low-depth WGS. The sig-
+                                                                                             nificance of correlation was determined by Spearman’s
+                                                                                             rank correlation coefficient. (B) Distribution of ccf-mtDNA
+                                                                                             fragment size detected by optimized capture-based
+                                                                                             sequencing (orange) and low-depth WGS (purple). (C) Dis-
+                                                                                             tribution of ccf-mtDNA breakpoints across the mitochon-
+                                                                                             drial genome detected by optimized capture-based
+                                                                                             sequencing (orange) and low-depth WGS (purple).
+
+
+
+
+                                                                                             MATERIALS AND METHODS
+                                                                                             Sample collection
+                                                                                            Peripheral blood and/or tissue samples were
+                                                                                            collected from a total of 15 healthy controls, 10
+                                                                                            hepatitis patients, 15 HCC patients, and 20 CRC
+                                                                                            patients in Xijing Hospital, Fourth Military Med-
+                                                                                            ical University (FMMU) in Xi’an, China. This
+                                                                                            study was approved by the Ethical Committees
+                                                                                            of FMMU (permission no. KY20183331-1; date
+tissue, and PBMC samples allowed us to partially decipher the biolog-     issued, March 6, 2018), and written consent was obtained from
+ical origins of plasma mtDNA variants. Interestingly, tumor-speciﬁc       each subject.
+mtDNA mutations were identiﬁed in all 5 HCC plasma samples, but
+no tumor-speciﬁc mtDNA mutations were identiﬁed in 10 CRC                 Sample processing and DNA extraction
+plasma samples. Owing to the intratumor heterogeneity and sampling        To obtain matched ccf-DNA and leucocyte genomic DNA, we
+regional biases, the detection of tumor-speciﬁc mtDNA mutations in-       simultaneously isolated plasma and PBMCs from 5 mL of peripheral
+ferred from single biopsy-based sequencing data may be limited.32         blood. The peripheral blood was collected in EDTAK2 tubes and
+Therefore, we further took intratumor heterogeneity into account by       processed. Blood was ﬁrst centrifuged at 4 C at 1,600 rpm for
+using multi-regional sequencing of tissue samples. Our results revealed   10 min to separate plasma from blood cells. The plasma supernatant
+signiﬁcantly increased numbers of tumor-speciﬁc mtDNA mutations           was puriﬁed by centrifugation at 4 C at 10,000 rpm for 15 min to
+in HCC plasma samples. However, tumor-speciﬁc mtDNA mutations             remove residual cells or debris. A total of 55 ccf-DNA samples
+were still barely detectable in CRC plasma samples. We thus propose       were extracted using 2 mL of plasma from 10 healthy controls, 10
+that different types of cancer may have great differences in tumor-       hepatitis patients, 15 HCC patients, and 20 CRC patients by the
+derived plasma mtDNA abundance. In line with previous studies, we         QIAamp circulating nucleic acid kit (QIAGEN, USA). Also, 15
+also observed the high fractions of plasma-speciﬁc mtDNA variants         genomic DNA samples were extracted using PBMCs from 5 HCC
+that are of unknown origins in both HCC and CRC patients, which           and 10 CRC patients by an EZNA DNA kit (Omega, USA). To
+are actually tumor-speciﬁc mtDNA mutations that originated from in-       further identify the source of mtDNA variants in plasma samples,
+tratumor heterogeneity, or possibly owing to the intricate mixture of     multiple-spot samplings of tumor and adjacent non-tumor tissue
+DNA released from different organs or cell types to plasma.33 There-      were performed for 5 HCC patients and 10 CRC patients, and the
+fore, the comprehensive proﬁling of ccf-mtDNA in plasma may pro-          genomic DNA was extracted with an EZNA DNA kit (Omega,
+vide more promising biomarkers to identify patients from cancer-          USA). Qubit 3.0 (Thermo Fisher Scientiﬁc, USA) and an Agilent
+free healthy populations and monitor the tumor progression.               2100 Bioanalyzer system (Agilent Technologies, USA) were used
+                                                                          to evaluate DNA quality and quantity.
+In summary, we successfully optimized a capture-based NGS
+approach for accurate and highly efﬁcient detection of both plasma        Library construction and low-depth WGS
+ccf-mtDNA copy number and mutations, which provides a great pos-          Genomic DNA (1 mg for each sample) was used to construct the WGS
+sibility with plasma ccf-mtDNA as an invasive tumor biomarker.            library as previously described.34 The plasma ccf-DNA (20 ng for
+Based on our preliminary analysis, plasma mtDNA from HCC pa-              each sample) was used to construct the WGS library by an NEB ultra
+tients seems to contain abundant tumor-speciﬁc mtDNA mutations            v2 kit (NEB, USA) as previously described.35 The WGS libraries from
+that can be attributed to intratumor heterogeneity. The comprehen-        40 plasma samples and 20 tumor tissues were sequenced by the Illu-
+sive proﬁling of plasma mtDNA in large cohorts of HCC patients de-        mina HiSeq X Ten platform using paired-end runs with 2  150 cy-
+serves special attention in the future.                                   cles (PE 150).
+
+
+                                                                                  Molecular Therapy: Nucleic Acids Vol. 23 March 2021              663
+                                                                                                                    Molecular Therapy: Nucleic Acids
+
+
+
+
+                                                                                                Figure 6. Suitable sample processing and placement
+                                                                                                are critical for accurate detection of circulating
+                                                                                                mtDNA
+                                                                                                (A) Comparison of mtDNA copy number between 4 C (or-
+                                                                                                ange) and room temperature (RT, purple) at different
+                                                                                                placement times of peripheral blood. (B) Comparison of
+                                                                                                median mtDNA fragment size between 4 C (orange) and
+                                                                                                RT (purple) at different placement times of peripheral blood.
+                                                                                                (C) Comparison of mtDNA copy number between 4 C
+                                                                                                (orange) and RT (purple) at different placement times of
+                                                                                                plasma. (D) Comparison of median mtDNA fragment size
+                                                                                                between 4 C (orange) and RT (purple) at different place-
+                                                                                                ment times of plasma. The significance between groups
+                                                                                                was determined by a paired t test. *p < 0.05, **p < 0.01.
+
+
+
+
+                                                                                                Assessment of plasma sample processing
+                                                                                                   To investigate whether the condition of blood
+                                                                                                   sample processing affects downstream ccf-
+                                                                                                   mtDNA detection, we obtained 30 mL of periph-
+                                                                                                   eral blood from each of ﬁve additional healthy
+                                                                                                   subjects. The acquired peripheral blood was
+                                                                                                   divided into two groups. In group 1, peripheral
+                                                                                                   blood samples were placed for different times
+Capture-based mtDNA sequencing                                              (0, 3, 6, 9, 12, and 24 h) at either 4 C or RT before plasma centrifu-
+Capture-based mtDNA sequencing was performed as previously                  gation and DNA extraction. In group 2, plasma samples were ob-
+described.21 In brief, 200 ng of WGS library was mixed with 10 ng           tained immediately by centrifugation and placed for different time
+of home-made biotinylated mtDNA capture probes (average 250 bp              (0, 3, and 6 h) at either 4 C or RT before DNA extraction. The impact
+in length) and hybridized at 65 C for 24 h. The captured mtDNA li-         of different treatments on ccf-mtDNA was evaluated by optimized
+brary was further PCR-ampliﬁed for 16 cycles and sequenced on an            capture-based mtDNA sequencing.
+Illumina HiSeq X Ten platform using PE 150.
+                                                                            Calculation of mtDNA copy number and mtDNA mapping rate
+Optimization of mtDNA enrichment for plasma samples                         For WGS data, the mtDNA copy number was calculated using the
+To speciﬁcally optimize mtDNA enrichment for plasma samples, we             following formula: mtDNA copy number = 2  average mtDNA
+selected 10 plasma samples from HCC patients to compare the impact          sequencing depth/average nuclear DNA sequencing depth. For cap-
+of different experimental conditions on mtDNA enrichment efﬁciency.         ture-based mtDNA sequencing data, the relative mtDNA copy num-
+We evaluated probe quantity (0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.4, 0.8,   ber was calculated using the following formula: mtDNA copy num-
+1.6, 3.2, 6.4, and 10 ng), probe length (150, 250, and 350 bp), hybridi-    ber = 2  average mtDNA depth/average depth of reference gene.
+zation temperature (55 C and 65 C), and subsequent mtDNA ampli-           The mtDNA mapping rate was calculated as sequencing reads aligned
+ﬁcation cycles (16, 20, and 24). The enrichment efﬁciency of mtDNA          to mtDNA/total sequencing reads after deduplication.
+was assessed by mtDNA mapping rate and sequencing depth.
+                                                                            Somatic mtDNA mutation calling and analysis
+Optimized capture-based mtDNA sequencing                                    Raw sequencing data were trimmed using the FASTQ preprocessor
+Optimization of the mtDNA enrichment procedure enabled us to                fastp software version 0.20.0 (https://github.com/OpenGene/fastp;
+establish a novel captured-based ccf-mtDNA sequencing pipeline.             last accessed July 14, 2019),36 and the trimmed reads were mapped to
+Brieﬂy, 200 ng of the WGS library from the plasma sample was mixed          the revised Cambridge Reference Sequence (rCRS) and whole-genome
+with mtDNA capture probes (probe length, 350 bp) using probe quan-          hg19 with BWA-MEM software version 0.7.1521 to minimize contam-
+tity of 0.8 ng and hybridized at 65 C for 24 h. In addition, the PCR       ination from nuclear DNA of mitochondrial origin (NUMT). Then,
+ampliﬁcation cycle for the mtDNA library was increased from 16 to           Picard Tools software version 1.119 (Broad Institute, Cambridge,
+20. Finally, the ampliﬁed mtDNA libraries were sequenced on an Illu-        MA; https://broadinstitute.github.io/picard; last accessed November
+mina HiSeq X Ten platform using PE 150. To assess the repeatability of      12, 2014) was used for sorting the reads and marking the duplicate
+the optimized capture-based ccf-mtDNA sequencing pipeline, WGS              reads. Local realignment was performed with IndelRealigner in
+libraries constructed from 10 plasma samples were re-captured,              GATK software version 3.2-2 (Broad Institute; https://gatk.
+ampliﬁed, and sequenced on an Illumina HiSeq X Ten platform using           broadinstitute.org/hc/en-us; last accessed September 29, 2014) to
+PE 150 to compare the consistency of mtDNA mutations.                       reduce the false-positive rate of nearby indel positions. Finally,
+
+
+664     Molecular Therapy: Nucleic Acids Vol. 23 March 2021
+www.moleculartherapy.org
+
+
+
+
+Figure 7. Tumor-specific mtDNA mutations can be effectively detected in plasma samples based on optimized NGS approach
+(A) Representative Venn diagrams of mtDNA variants detected by single-spot sequencing of matched tumor tissue, adjacent non-tumor tissue, PBMCs and plasma samples
+from HCC and CRC patients. (B) Representative Venn diagrams of mtDNA variants detected by multiple-spot sequencing of matched tumor tissue, adjacent non-tumor
+tissue, PBMCs, and plasma samples from HCC and CRC patients.
+
+
+SAMtools (http://www.htslib.org; last accessed September 19, 2014)                 ported by the National Natural Science Foundation of China (grant
+was used for selecting reads of high quality. For each site, we ﬁrst               81830070), the Autonomous Project of State Key Laboratory of Cancer
+counted the respective read numbers of the major and minor allele                  Biology, China (grant CBSKL2019ZZ06), the National Science and
+and calculated the site-speciﬁc minor allele frequency (MAF). Also,                Technology Major Projects of China (grant 2018ZX10302205-002),
+the mtDNA-mutation calling was performed according to the                          and by the Key Research and Development Program of Shaanxi Prov-
+following ﬁlter conditions: (1) at least three reads on each strand                ince, China (grant 2018ZDXM-SF-061).
+have the mutation site; (2) minimum MAF cutoff 1%; (3) remove het-
+erogeneity sites in rCRS repeat regions (66–71, 303–311, 514–523,                  AUTHOR CONTRIBUTIONS
+12418–12425, 16184–16193); (4) remove C>A/G>T mutations with                       J.X. and X. Gu conceptualized and designed the study. Y.L. and K.Z.
+low MAF (<1%) and strong sequence context bias (at CpCpN>CpApN,                    carried out the sample collection, performed the data analysis, and
+most frequently CpCpG>CpApG),37 which is known to arise from arti-                 drafted the manuscript. S.G., Q.Y., and L.S. participated in the bioin-
+ﬁcial guanine oxidation during sequencing library preparation; and (5)             formatics analyses. X.J. and Y.W. performed the laboratory experi-
+remove mtDNA mutations if the mutant rate and mutant base quality                  ments. X. Guo and X. Gu participated in the design of the study
+do not pass a binominal test (p > 0.001).38                                        and performed the draft revision. J.X. conceived of the study, partic-
+                                                                                   ipated in its design and coordination, and helped to revise the manu-
+Statistical analysis                                                               script. All authors read and approved the ﬁnal manuscript.
+GraphPad Prism 5.0 (GraphPad, USA) was used for statistical anal-
+ysis. A Student’s t test was used to compare the difference between                DECLARATION OF INTERESTS
+groups with continuous variables. Spearman’s rank correlation coef-                The authors declare no competing interests.
+ﬁcient was performed to measure the correlations between groups. All
+p values were two-tailed and reported using a signiﬁcance level of
+                                                                                   REFERENCES
+0.05.
+                                                                                    1. Anderson, S., Bankier, A.T., Barrell, B.G., de Bruijn, M.H., Coulson, A.R., Drouin, J.,
+                                                                                       Eperon, I.C., Nierlich, D.P., Roe, B.A., Sanger, F., et al. (1981). Sequence and organi-
+SUPPLEMENTAL INFORMATION                                                               zation of the human mitochondrial genome. Nature 290, 457–465.
+Supplemental Information can be found online at https://doi.org/10.                 2. Ju, Y.S., Alexandrov, L.B., Gerstung, M., Martincorena, I., Nik-Zainal, S.,
+1016/j.omtn.2020.12.017.                                                               Ramakrishna, M., Davies, H.R., Papaemmanuil, E., Gundem, G., Shlien, A., et al.;
+                                                                                       ICGC Breast Cancer Group; ICGC Chronic Myeloid Disorders Group; ICGC
+                                                                                       Prostate Cancer Group (2014). Origins and functional consequences of somatic mito-
+ACKNOWLEDGMENTS                                                                        chondrial DNA mutations in human cancer. eLife 3, e02935.
+The authors thank Huanqin Zhang and Qinqin Mo in the State Key
+                                                                                    3. Reznik, E., Miller, M.L., xSenbabaoglu, Y., Riaz, N., Sarungbam, J., Tickoo, S.K., Al-
+Laboratory of Cancer Biology and Department of Physiology and Path-                    Ahmadie, H.A., Lee, W., Seshan, V.E., Hakimi, A.A., and Sander, C. (2016).
+ophysiology for ongoing support and discussion. This work was sup-                     Mitochondrial DNA copy number variation across human cancers. eLife 5, e10769.
+
+
+
+                                                                                              Molecular Therapy: Nucleic Acids Vol. 23 March 2021                         665
+                                                                                                                                                        Molecular Therapy: Nucleic Acids
+
+
+
+
+ 4. Stewart, J.B., and Chinnery, P.F. (2015). The dynamics of mitochondrial DNA heter-                   Experimental conditions improving in-solution target enrichment for ancient
+    oplasmy: implications for human health and disease. Nat. Rev. Genet. 16, 530–542.                    DNA. Mol. Ecol. Resour. 17, 508–522.
+ 5. Yuan, Y., Ju, Y.S., Kim, Y., Li, J., Wang, Y., Yoon, C.J., Yang, Y., Martincorena, I.,           23. Fang, C., Wei, X., and Wei, Y. (2016). Mitochondrial DNA in the regulation of innate
+    Creighton, C.J., Weinstein, J.N., et al.; PCAWG Consortium (2020).                                   immune responses. Protein Cell 7, 11–16.
+    Comprehensive molecular characterization of mitochondrial genomes in human can-
+                                                                                                     24. Yu, M. (2012). Circulating cell-free mitochondrial DNA as a novel cancer biomarker:
+    cers. Nat. Genet. 52, 342–352.
+                                                                                                         opportunities and challenges. Mitochondrial DNA 23, 329–332.
+ 6. He, Y., Wu, J., Dressman, D.C., Iacobuzio-Donahue, C., Markowitz, S.D., Velculescu,
+                                                                                                     25. Li, L., Hann, H.W., Wan, S., Hann, R.S., Wang, C., Lai, Y., Ye, X., Evans, A., Myers,
+    V.E., Diaz, L.A., Jr., Kinzler, K.W., Vogelstein, B., and Papadopoulos, N. (2010).
+                                                                                                         R.E., Ye, Z., et al. (2016). Cell-free circulating mitochondrial DNA content and risk of
+    Heteroplasmic mitochondrial DNA mutations in normal and tumour cells. Nature
+                                                                                                         hepatocellular carcinoma in patients with chronic HBV infection. Sci. Rep. 6, 23992.
+    464, 610–614.
+                                                                                                     26. Lowes, H., Pyle, A., Santibanez-Koref, M., and Hudson, G. (2020). Circulating cell-
+ 7. De Rubis, G., Rajeev Krishnan, S., and Bebawy, M. (2019). Liquid Biopsies in Cancer
+                                                                                                         free mitochondrial DNA levels in Parkinson’s disease are inﬂuenced by treatment.
+    Diagnosis, Monitoring, and Prognosis. Trends Pharmacol. Sci. 40, 172–186.
+                                                                                                         Mol. Neurodegener. 15, 10.
+ 8. Goodwin, S., McPherson, J.D., and McCombie, W.R. (2016). Coming of age: ten years
+                                                                                                     27. Liu, J., Cai, X., Xie, L., Tang, Y., Cheng, J., Wang, J., Wang, L., and Gong, J. (2015).
+    of next-generation sequencing technologies. Nat. Rev. Genet. 17, 333–351.
+                                                                                                         Circulating Cell Free Mitochondrial DNA is a Biomarker in the Development of
+ 9. Volik, S., Alcaide, M., Morin, R.D., and Collins, C. (2016). Cell-free DNA (cfDNA):                  Coronary Heart Disease in the Patients with Type 2 Diabetes. Clin. Lab. 61, 661–667.
+    Clinical Signiﬁcance and Utility in Cancer Shaped By Emerging Technologies. Mol.
+                                                                                                     28. Zhou, K., Mo, Q., Guo, S., Liu, Y., Yin, C., Ji, X., Guo, X., and Xing, J. (2020). A Novel
+    Cancer Res. 14, 898–908.
+                                                                                                         Next-Generation Sequencing-Based Approach for Concurrent Detection of
+10. Tang, J.C., Feng, Y.L., Guo, T., Xie, A.Y., and Cai, X.J. (2016). Circulating tumor DNA              Mitochondrial DNA Copy Number and Mutation. J. Mol. Diagn. 22, 1408–1418.
+    in hepatocellular carcinoma: trends and challenges. Cell Biosci. 6, 32.
+                                                                                                     29. Uzawa, K., Baba, T., Uchida, F., Yamatoji, M., Kasamatsu, A., Sakamoto, Y., Ogawara,
+11. Razavi, P., Li, B.T., Brown, D.N., Jung, B., Hubbell, E., Shen, R., Abida, W., Juluru, K.,           K., Shiiba, M., Bukawa, H., and Tanzawa, H. (2012). Circulating tumor-derived
+    De Bruijn, I., Hou, C., et al. (2019). High-intensity sequencing reveals the sources of              mutant mitochondrial DNA: a predictive biomarker of clinical prognosis in human
+    plasma circulating cell-free DNA variants. Nat. Med. 25, 1928–1937.                                  squamous cell carcinoma. Oncotarget 3, 670–677.
+12. Ellinger, J., Albers, P., Müller, S.C., von Ruecker, A., and Bastian, P.J. (2009).               30. Newell, C., Hume, S., Greenway, S.C., Podemski, L., Shearer, J., and Khan, A. (2018).
+    Circulating mitochondrial DNA in the serum of patients with testicular germ cell                     Plasma-derived cell-free mitochondrial DNA: A novel non-invasive methodology to
+    cancer as a novel noninvasive diagnostic biomarker. BJU Int. 104, 48–52.                             identify mitochondrial DNA haplogroups in humans. Mol. Genet. Metab. 125,
+13. Afrifa, J., Zhao, T., and Yu, J. (2019). Circulating mitochondria DNA, a non-invasive                332–337.
+    cancer diagnostic biomarker candidate. Mitochondrion 47, 238–243.                                31. Hotz, M.J., Qing, D., Shashaty, M.G.S., Zhang, P., Faust, H., Sondheimer, N., Rivella,
+14. Rohlin, A., Wernersson, J., Engwall, Y., Wiklund, L., Björk, J., and Nordling, M.                    S., Worthen, G.S., and Mangalmurti, N.S. (2018). Red Blood Cells Homeostatically
+    (2009). Parallel sequencing used in detection of mosaic mutations: comparison                        Bind Mitochondrial DNA through TLR9 to Maintain Quiescence and to Prevent
+    with four diagnostic DNA screening techniques. Hum. Mutat. 30, 1012–1020.                            Lung Injury. Am. J. Respir. Crit. Care Med. 197, 470–480.
+15. Weerts, M.J.A., Timmermans, E.C., van de Stolpe, A., Vossen, R.H.A.M., Anvar, S.Y.,              32. Gerlinger, M., Rowan, A.J., Horswell, S., Math, M., Larkin, J., Endesfelder, D.,
+    Foekens, J.A., Sleijfer, S., and Martens, J.W.M. (2018). Tumor-Speciﬁc Mitochondrial                 Gronroos, E., Martinez, P., Matthews, N., Stewart, A., et al. (2012). Intratumor het-
+    DNA Variants Are Rarely Detected in Cell-Free DNA. Neoplasia 20, 687–696.                            erogeneity and branched evolution revealed by multiregion sequencing. N. Engl. J.
+16. Ye, F., Samuels, D.C., Clark, T., and Guo, Y. (2014). High-throughput sequencing in                  Med. 366, 883–892.
+    mitochondrial DNA research. Mitochondrion 17, 157–163.                                           33. Aucamp, J., Bronkhorst, A.J., Badenhorst, C.P.S., and Pretorius, P.J. (2018). The
+17. Zhang, R., Nakahira, K., Guo, X., Choi, A.M., and Gu, Z. (2016). Very Short                          diverse origins of circulating cell-free DNA in the human body: a critical re-evalua-
+    Mitochondrial DNA Fragments and Heteroplasmy in Human Plasma. Sci. Rep. 6,                           tion of the literature. Biol. Rev. Camb. Philos. Soc. 93, 1649–1683.
+    36097.                                                                                           34. Yin, C., Liu, Y., Guo, X., Li, D., Fang, W., Yang, J., Zhou, F., Niu, W., Jia, Y., Yang, H.,
+18. Liu, Y., Guo, S., Yin, C., Guo, X., Liu, M., Yuan, Z., Zhao, Z., Jia, Y., and Xing, J. (2020).       and Xing, J. (2019). An Effective Strategy to Eliminate Inherent Cross-Contamination
+    Optimized PCR-Based Enrichment Improves Coverage Uniformity and Mutation                             in mtDNA Next-Generation Sequencing of Multiple Samples. J. Mol. Diagn. 21,
+    Detection in Mitochondrial DNA Next-Generation Sequencing. J. Mol. Diagn. 22,                        593–601.
+    503–512.                                                                                         35. Tao, K., Bian, Z., Zhang, Q., Guo, X., Yin, C., Wang, Y., Zhou, K., Wan, S., Shi, M.,
+19. Mamanova, L., Coffey, A.J., Scott, C.E., Kozarewa, I., Turner, E.H., Kumar, A.,                      Bao, D., et al. (2020). Machine learning-based genome-wide interrogation of somatic
+    Howard, E., Shendure, J., and Turner, D.J. (2010). Target-enrichment strategies for                  copy number aberrations in circulating tumor DNA for early detection of hepatocel-
+    next-generation sequencing. Nat. Methods 7, 111–118.                                                 lular carcinoma. EBioMedicine 56, 102811.
+20. Jiang, P., Chan, C.W., Chan, K.C., Cheng, S.H., Wong, J., Wong, V.W., Wong, G.L.,                36. Chen, S., Zhou, Y., Chen, Y., and Gu, J. (2018). fastp: an ultra-fast all-in-one FASTQ
+    Chan, S.L., Mok, T.S., Chan, H.L., et al. (2015). Lengthening and shortening of plasma               preprocessor. Bioinformatics 34, i884–i890.
+    DNA in hepatocellular carcinoma patients. Proc. Natl. Acad. Sci. USA 112, E1317–                 37. Costello, M., Pugh, T.J., Fennell, T.J., Stewart, C., Lichtenstein, L., Meldrim, J.C.,
+    E1325.                                                                                               Fostel, J.L., Friedrich, D.C., Perrin, D., Dionne, D., et al. (2013). Discovery and char-
+21. Yin, C., Li, D.Y., Guo, X., Cao, H.Y., Chen, Y.B., Zhou, F., Ge, N.J., Liu, Y., Guo, S.S.,           acterization of artifactual mutations in deep coverage targeted capture sequencing
+    Zhao, Z., et al. (2019). NGS-based proﬁling reveals a critical contributing role of so-              data due to oxidative DNA damage during sample preparation. Nucleic Acids Res.
+    matic D-loop mtDNA mutations in HBV-related hepatocarcinogenesis. Ann. Oncol.                        41, e67.
+    30, 953–962.                                                                                     38. Campo, D.S., Nayak, V., Srinivasamoorthy, G., and Khudyakov, Y. (2019). Entropy of
+22. Cruz-Dávalos, D.I., Llamas, B., Gaunitz, C., Fages, A., Gamba, C., Soubrier, J.,                     mitochondrial DNA circulating in blood is associated with hepatocellular carcinoma.
+    Librado, P., Seguin-Orlando, A., Pruvost, M., Alfarhan, A.H., et al. (2017).                         BMC Med. Genomics 12 (Suppl 4 ), 74.
+
+
+
+
+666       Molecular Therapy: Nucleic Acids Vol. 23 March 2021
+

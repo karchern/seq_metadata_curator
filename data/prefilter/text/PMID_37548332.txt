@@ -1,0 +1,636 @@
+Received: 5 February 2023
+                            | Revised: 15 July 2023 | Accepted: 25 July 2023
+DOI: 10.1002/cam4.6414
+
+
+RESEARCH ARTICLE
+
+
+
+
+Aging characteristics of colorectal cancer based on gut
+microbiota
+
+Yinhang Wu1,2,3 | Jing Zhuang1,2,3 | Qi Zhang1 | Xingming Zhao4 |
+Gong Chen1,2,3 | Shugao Han5 | Boyang Hu1,2,3 | Wei Wu1,2,3 | Shuwen Han1,2,3
+1
+ Huzhou Central Hospital, Affiliated
+Central Hospital Huzhou University,                 Abstract
+Huzhou, China                                       Background: Aging is one of the factors leading to cancer. Gut microbiota is
+2
+ Key Laboratory of Multiomics                       related to aging and colorectal cancer (CRC).
+Research and Clinical Transformation
+of Digestive Cancer, Huzhou, China
+                                                    Methods: A total of 11 metagenomic data sets related to CRC were collected
+3
+ Fifth Affiliated Clinical Medical                  from the R package curated Metagenomic Data. After batch effect correction,
+College of Zhejiang Chinese Medical                 healthy individuals and CRC samples were divided into three age groups. Ggplot2
+University, Huzhou Central Hospital,
+                                                    and Microbiota Process packages were used for visual description of species
+Huzhou, China
+4                                                   composition and PCA in healthy individuals and CRC samples. LEfSe analy-
+ Institute of Science and Technology
+for Brain-­Inspired Intelligence, Fudan             sis was performed for species relative abundance data in healthy/CRC groups
+University, Shanghai, China                         according to age. Spearman correlation coefficient of age-­differentiated bacteria in
+5
+ Second Affiliated Hospital of School               healthy individuals and CRC samples was calculated separately. Finally, the age
+of Medicine, Zhejiang University,
+Hangzhou, China                                     prediction model and CRC risk prediction model were constructed based on the
+                                                    age-­differentiated bacteria.
+Correspondence
+                                                    Results: The structure and composition of the gut microbiota were significantly
+Wei Wu and Shuwen Han, Huzhou
+Central Hospital, Affiliated Central                different among the three groups. For example, the abundance of Bacteroides
+Hospital Huzhou University, No. 1558,               vulgatus in the old group was lower than that in the other two groups, the abun-
+Sanhuan North Road, Wuxing District,
+                                                    dance of Bacteroides fragilis increased with aging. In addition, seven species of
+Huzhou, Zhejiang Province 313000,
+China.                                              bacteria whose abundance increases with aging were screened out. Furthermore,
+Email: hchwuwei2018@126.com and                     the abundance of pathogenic bacteria (Escherichia_coli, Butyricimonas_virosa,
+shuwenhan985@163.com
+                                                    Ruminococcus_bicirculans, Bacteroides_fragilis and Streptococcus_vestibularis)
+Funding information                                 increased with aging in CRCs. The abundance of probiotics (Eubacterium_eli-
+Key Research and Development Project                gens) decreased with aging in CRCs. The age prediction model for healthy
+of Zhejiang Province, Grant/Award
+Number: 2022C03026; Public Welfare                  individuals based on the 80 age-­related differential bacteria and model of CRC
+Technology Application Research                     patients based on the 58 age-­related differential bacteria performed well, with
+Program of Huzhou, Grant/Award
+                                                    AUC of 0.79 and 0.71, respectively. The AUC of CRC risk prediction model based
+Number: 2022GZB04; Zhejiang Medical
+and Health Technology Project, Grant/               on 45 disease differential bacteria was 0.83. After removing the intersection
+Award Number: 2022KY1218 and                        between the disease-­  differentiated bacteria and the age-­   differentiated bacte-
+2023RC274
+                                                    ria from the healthy samples, the AUC of CRC risk prediction model based on
+                                                    remaining 31 bacteria was 0.8. CRC risk prediction models for each of the three
+
+
+
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided
+the original work is properly cited.
+© 2023 The Authors. Cancer Medicine published by John Wiley & Sons Ltd.
+
+17822   | wileyonlinelibrary.com/journal/cam4
+          	﻿                                                                                                                   Cancer Medicine. 2023;12:17822–17834.
+WU et al.                                                                                                                         | 17823
+
+                                      age groups showed no significant difference in accuracy (young: AUC=0.82,
+                                      middle: AUC=0.83, old: AUC=0.85).
+                                      Conclusion: Age as a factor affecting microbial composition should be consid-
+                                      ered in the application of gut microbiota to predict the risk of CRC.
+
+                                      KEYWORDS
+                                      aging, artificial intelligence, colorectal cancer, gut microbiota, metagenomic sequencing
+
+
+
+
+1    |      I N T RO DU CT ION                                     (stromelysin)10 and VEGF,11 is associated with driving
+                                                                   the development of cancer. Cancer and aging may share a
+Aging is the gradual decrease in the body's physiolog-             common origin. Aging is divided into physiological senes-
+ical and psychological adaptation to the environment               cence and pathological senescence. Physiological senes-
+and the gradual progression toward death. The physio-              cence refers to the gradual aging of cells without disease
+logical changes in the aging process of the human body             due to a decrease in the body's ability to remove senescent
+are mainly reflected in the loss of tissue cells and com-          cells. Tumors are manifestations of pathological aging.
+ponents, the slowing down of metabolic rate, and the de-               Colorectal cancer (CRC) is the third most common
+cline of body and organ functions.1,2 Recent studies have          malignant tumor in the world, and the occurrence and
+shown that aging is the result of comprehensive factors            prevalence of CRC are closely related to age.12 More than
+such as stem cell decline, DNA degeneration, dietary and           90% of CRC tumors are first diagnosed in individuals over
+spiritual factors, and active aging genes. However, there          50 years of age.13 The incidence of early-­onset CRC (di-
+is still no unified theory of aging. Recent mechanisms to          agnosis at an age of less than 50 years) has significantly
+explain aging include somatic mutations,3 free radical the-        increased.14 Age is an important factor in recurrence
+ory,4 natural biomolecular crosslinking, and “uncapped”            and poor prognosis of CRC.15 However, new tumor his-
+telomere accumulation.5 The common hallmarks of aging              topathological evidence suggests that early-­     onset CRC
+include genomic instability, telomere attrition, epigenetic        is prone to recurrence and poor prognosis.16,17 Yue et al.
+alterations, loss of proteostasis, deregulated nutrient sens-      identified 15 aging-­related genes (ITGA7, CD36, PCSK5,
+ing, mitochondrial dysfunction, cellular senescence, stem          FNBP1, etc.) associated with poor prognosis of CRC and
+cell exhaustion, and altered intercellular communica-              11 aging-­related genes (CCL28, CCNB1, PLK1, MOC1,
+tion.2 Studies have shown that aging is a major risk factor        etc.) associated with good prognosis.18 In addition, aging
+for human pathologies, including cardiovascular disease            affects CRC tumor immunity. Early-­onset CRC showed
+and neurodegenerative disease, malignancies, metabolic             low levels of tumor-­infiltrating lymphocytes. Later-­onset
+diseases, diabetes, and so on.6                                    CRC showed a higher density of macrophages, M1-­like
+    The global population is getting older. The incidence of       macrophages, CD14HLA-­DR cells, and CD3CD4FOXP3
+cancer increases with aging, indicating that there is a link       cells.19 However, the exact relationship between aging and
+between aging and cancer. Organism senescence is the               CRC remains unclear. The identification of CRC aging-­
+senescence of the cells of an organism at the whole, sys-          related targets may provide new evidence for CRC prog-
+tem or organ level, but it is not equal to the senescence of       nosis and risk assessment.
+all cells of an organism. Aging individuals are less able to           The abundance of gut microbes is more than 100 times
+maintain and restore homeostasis in response to stress and         the size of the human genome. Gut microbes encode more
+injury, thus increasing the risk of malignancy. Inducing           than 3.3 million genes.20 Colorectal cancer is closely asso-
+senescence of tumor cells is considered an antitumor               ciated with the gut microbiota. The main manifestations
+mechanism.7 However, senescent cells can also promote              of intestinal dysbiosis in CRC are the loss of beneficial bac-
+cancer. Increased levels of reactive oxygen species (ROS)          teria (e.g., Lactobacillus, Granulicatella, Proteobacteria),
+due to oxidative stress induced by the accumulation of mi-         an increase in pathogens or potentially harmful species
+tochondrial DNA (mtDNA) mutations that occur in aging              (e.g., Fusobacterium, Peptostreptococcus, Streptococcus,
+have also been found in cancer.8 Both cancer and aging             Ruminococcus, Bacteroidetes, Firmicutes), and the loss of
+can be seen as accumulation of cellular damage. Almost             overall microbial diversity.21 A cohort study found that the
+all cancers are caused by somatic mutations, including             intestinal microbiome diversity in those with early-­onset
+breast, pancreatic, lung, liver, medulloblastoma, leukemia,        CRC was lower than that of the normal population of
+and B-­cell lymphoma.9 High expression of senescence-­             the same age, but the diversity was still higher than that
+associated secretory phenotypes (SASPs), such as MMP3              of later-­onset CRC. Flavonifractor plautii is increased in
+17824       |                                                                                                          WU et al.
+
+
+
+early-­onset CRC, and Streptococcus is increased in later-­      data from 11 items were used for batch effect correction
+onset CRC.22 This indicates that age is one of the factors       (MMUPHin package), the species with prevalence <0.01
+that affects the structure and composition of gut microbi-       and maximum relative abundance <0.001 among all sam-
+ota in CRC samples.                                              ples were filtered out, and the datasets were combined for
+   It has been confirmed that the composition of the gut         downstream statistical analysis.
+microbiome is different in healthy individuals of differ-
+ent ages.23 Intestinal diversity and complexity gradually
+increase from infancy to adulthood. The gut microbi-             2.2   | Descriptive analysis
+ota is most stable at adulthood. However, after entering
+senectitude, the diversity of the human gut microbiota           For the combined species, species-­level data were analyzed
+decreases, the dominant species and beneficial microor-          separately for the health/disease group according to the
+ganisms (such as Firmicutes and Actinobacteria) decrease,        following procedure. The ggplot2 and MicrobiotaProcess
+and the state of the gut microbiome becomes unstable.24          packages were used to visualize species composition
+The gut microbiome is a key regulator and indicator of           and perform principal component analysis (PCA). The
+aging. Animal experiments confirmed that the proportion          top 20 species of bacteria were selected according to the
+of Firmicutes/Bacteroidetes in the intestinal tract of elderly   comprehensive ranking of average abundance and preva-
+individuals was significantly higher than that in the intes-     lence. The composition of CRC samples and samples from
+tinal tracts of younger individuals, indicating that aging is    healthy individuals were calculated, and a PCA dimen-
+more likely to induce intestinal microecology disorders.25       sionality reduction graph was produced after the logarith-
+   Furthermore, intestinal microecology disorders fur-           mic relative abundance of species was calculated.
+ther damage intestinal permeability, induce systemic
+inflammation, and more easily lead to adverse health
+outcomes.26 Therefore, we hypothesize that age-­induced          2.3   | Difference analysis
+intestinal microecological disturbances may influence in-
+dividual CRC risk. The analysis of age-­related differential     LEfSe was performed on the three age brackets of the
+gut microbiota in CRC and the age-­related characteristics       healthy/CRC groups. The microbiomeMarker package
+of CRC can provide a new biological target and accurate          was used to test the difference in relative abundance
+means for CRC risk prediction and prognosis assessment.          data of species. The different species were screened out
+   In the present study, intestinal microbiome metage-           with the threshold of effect size LDA Score (log10) > 2.
+nomic data were collected from healthy individuals and           Age-­differentiated bacteria from the healthy group were
+CRC samples. The structure and composition of the gut            compared with disease-­     differentiated bacteria from all
+microbiota in the three age groups were compared, and            samples. To prevent the difference caused by sample
+the different bacteria from CRC samples from the differ-         size, all samples were repeatedly downsampled five times
+ent age groups were screened. The aim of this study was to       (healthy and CRC downsampled 303 times), and the oc-
+confirm the presence of age-­related bacteria in the intes-      currence frequency of markers greater than or equal to
+tines of CRC patients. It was shown that CRC is an aging-­       three out of five was selected as the stable disease differen-
+related disease. The results of this study might provide         tiator. Finally, the intersection of the disease differentiator
+novel aging-­related biomarkers for CRC risk prediction.         with all samples was selected as the final disease differ-
+                                                                 entiator. The healthy/CRC samples were divided into
+                                                                 three age groups, and the differences in bacteria between
+2       |    M ET H ODS                                          the healthy and CRC groups were compared for each age
+                                                                 group. The method is the same as above.
+2.1         | Data acquisition and processing
+A total of 11 metagenomic datasets related to CRC were           2.4   | Correlation analysis
+collected from the R package curated Metagenomic Data,27
+and further screened for samples with detailed age and           Spearman correlation coefficients were calculated sepa-
+BMI information. The R package provided MetaPhlAn3               rately for CRC/healthy groups, and FDR multiple test cor-
+annotated species results. The relative abundance table of       rection was performed by BH. Only the correlations with
+species composition at the species level and genus level         absolute values of correlation coefficients >0.4 and p val-
+was obtained for downstream analysis. The samples with           ues <0.05 were retained, and the rest were assigned 0. Plot
+<2% species were removed, and the information of the             correlation heatmaps were produced with the corrplot
+final 1296 samples is summarized in Table S1. After the          package.
+WU et al.                                                                                                                        | 17825
+
+2.5 | Construction of CRC risk and age                            55–­65, and >65 years) to ensure that the number of sam-
+prediction model                                                  ples of all ages was similar (Figure S2, Table 1).
+                                                                      The structure and composition of the gut microbiota
+According to the risk group label of all samples and the          in healthy individuals at young, middle, and old ages
+age bracket label of the health/disease group, a binary           were compared. The results showed that the abundance
+classifier was established using randomForest and caret           of Bacteroides vulgatus in the three age groups was the
+package three times fivefold nested cross-­validation ran-        highest, but the abundance in the old group was lower
+domForest algorithm. First, the age prediction model was          than that in the other two groups. The relative abundance
+established (young and middle were combined as the                of Bacteroides fragilis increased with aging. The struc-
+young group). Based on the modeling of age-­differentiated        ture and composition of the gut microbiota in the elderly
+bacteria, nested cross-­validation results were obtained,         were significantly different from those in the young and
+AUC, F1 score, sensitivity, and specificity were calculated,      middle-­aged groups (Figure 1A).
+and a confusion matrix was drawn. The healthy/CRC sam-                Further analysis of differences revealed 80 different
+ples were modeled separately. The top 20 important fea-           species of bacteria in the three age groups. The biomarkers
+tures of the model were removed, and the intersection was         in the young group included Escherichia_coli, Bacteroides
+removed. The Wilcoxon difference test and FDR multiple            fragilis, and Eubacterium_sp_CAG_180. The biomark-
+test correction were performed. Finally, the intersection         ers in the middle group included Ruminococcus bromii,
+between the disease-­   differential bacteria and the age-­       Akkermansia muciniphila, and Bacteroides eggerthii. The
+differential bacteria in the healthy samples was removed,         biomarkers in the old group included Bacteroides vulga-
+and the remaining 31 differential bacteria were used to           tus, Bifidobacterium longum, Dorea longicatena, and so on
+construct the CRC risk prediction model. Moreover, CRC            (Figure 1B).
+risk prediction models were established for each of the               The correlation between different species at three age
+three age groups based on differential disease bacteria in        groups in the healthy population was analyzed. The cor-
+the young group, middle group, and old group.                     relation between Veillonella_infantium and Veillonella_
+                                                                  dispar was the highest (Spearman = 0.786) (Figure 1C).
+                                                                  Analyzing correlations between differential species and
+2.6       | Statistical analysis                                  age, Streptococcus salivarius, Streptococcus parasangui-
+                                                                  nis, Veillonella parvula, Veillonella atypica, Haemophilus
+SPSS 22.0 statistical software was used for statistical           parainfluenzae, Lactobacillus salivarius, Megasphaera
+processing. Continuous variables are expressed as the             micronuciformis, Bifidobacterium dentium, and Veillonella
+mean ± standard deviation (mean ± SD). The enumeration            dispar were the most relevant to the older age group.
+data consistent with a normal distribution were compared          Lactobacillus salivarius and Megasphaera micronuciformis
+using the t test. Statistical differences of p < 0.05 were con-   were only associated with old age. Eubacterium siraeum
+sidered significant.                                              was evenly distributed in the three age groups (Figure 1D).
+
+
+3     |     R E S U LTS                                           3.2 | Age affects the composition of gut
+                                                                  microbiota in CRC samples
+3.1 | Differences in gut microbiota in
+different ages                                                    The structure and composition of the gut microbiota
+                                                                  of the CRC population at young, middle, and old ages
+We prepared a collection of metagenomic sequences for             were also compared. The results showed that the abun-
+691 CRC samples and 605 healthy individuals from 11               dance of Parabacteroides distasonis was the highest in the
+publicly available datasets (Table S1). The corrected spe-        three age groups, and the abundance of Parabacteroides
+cies and genus data were analyzed in the healthy/CRC              distasonis was relatively high in the old group.
+group according to the analytical procedure (Figure S1).          Prevotella_sp_CAG_1092, Acidaminococcus_intestini, and
+Pretreatment results showed that species was superior to
+genus. Histograms of age differences and frequencies of           TABLE 1     Frequency statistics of age groups.
+healthy/CRC subgroups were calculated and show that
+                                                                                   Young          Middle            Old
+the data are more concentrated in 50–­75 years old. The                            (≤55)          (55, 65)          (>65)
+Wilcoxon variance test showed significant age differences
+                                                                   Healthy         193            196               216           605
+among individuals in the healthy/CRC groups. Therefore,
+                                                                   CRC             153            235               303           691
+the samples were divided into three age groups (≤55,
+17826   |                                                                    WU et al.
+
+
+
+               F I G U R E 1 Structure and differences in gut microbiota in the
+               healthy group at different ages. (A-­a1) Average abundance and
+               prevalence ranking of the top 20 bacterial species in the three age
+               groups within the healthy group. (A-­a2) PCA dimension reduction
+               diagram. The horizontal and vertical coordinates are the first and
+               second principal components, respectively (explanatory variance
+               percentage in parentheses). (B) LEfSe hierarchical tree is shown
+               above. Different color nodes indicate the microbial groups that
+               are significantly enriched in the corresponding groups and have
+               a significant influence on the differences between groups. The
+               following is the LDA discriminant histogram. Species with LDA
+               score >2 differences are shown, that is, biomarkers with significant
+               differences. Species with significant differences in abundance in
+               different groups are shown. The length of the bar chart represents
+               the impact of the species with significant differences. The greater
+               the LDA score is, the greater the impact of species abundance
+               on the differential effect. (C) Heatmap of the correlation between
+               different species. The size and color of the corresponding point at
+               each position correspond to its Spearman correlation coefficient.
+               The color of the font corresponds to the direction of enrichment of
+               differentials, which is consistent with the color in the right picture.
+               The young group is red, the middle group is green, and the old
+               group is blue (diagonal elements are not considered). (D) Circos
+               diagram. The average abundance of bacteria with significant age
+               differences among each group of samples.
+
+               Mitsuokella_multacida decreased with aging. The struc-
+               ture and composition of the gut microbiota in CRC sam-
+               ples from the old group were significantly different from
+               those in the young and middle-­aged groups (Figure 2A).
+                   Further differential analysis screened 58 different bac-
+               teria among CRC samples of three age groups. The bio-
+               markers in the young group included Escherichia_coli,
+               Eubacterium_sp_CAG_180, and Klebsiella pneumoniae.
+               The biomarkers in the middle group included Escherichia_
+               coli, Eubacterium_sp_CAG_180, and Klebsiella pneu-
+               moniae. The biomarkers in the old group included
+               Bifidobacterium adolescentis, Parabacteroides distasonis,
+               and Bifidobacterium longum (Figure 2B).
+                   The correlation between different species in the three age
+               groups of CRC samples was analyzed, and the correlation
+               between Adlercreutzia equolifaciens and Asaccharobacter
+               celatus was the largest (Spearman = 0.957). Veillonella_
+               infantium was also associated with Veillonella_dispar
+               (Spearman = 0.815) (Figure 2C). Analyzing the correla-
+               tion between differential species and the age of CRC
+               samples, we found that Lactobacillus_paragasseri,
+               Streptococcus_parasanguinis,        Haemophilus_parainflu-
+               enzae, Megasphaera_micronuciformis, Veillonella_atyp-
+               ica, Lactobacillus_salivarius, Bifidobacterium_dentium,
+               Streptococcus_vestibularis,Streptococcus_mitis,Streptococcus_
+               gordonii, and Streptococcus_anginosus_group were
+               more correlated with CRC samples from the old group
+               than the young and middle-­      aged groups. Young CRC
+WU et al.                                                              | 17827
+            F I G U R E 2 Structure and differences in different gut
+            microbiota of CRC. (A-­a1) Average abundance and prevalence
+            ranking of the top 20 bacterial species in the three age groups
+            of CRCs. (A-­a2) PCA dimension reduction diagram. (B) LEfSe
+            hierarchical tree is shown above. The LDA discriminant histogram
+            is shown below. (C) A heatmap of the correlation between different
+            species. (D) Circos diagram.
+
+
+            samples were not associated with Lactobacillus_paragas-
+            seri. Blautia_obeum, Fusicatenibacter_saccharivorans, and
+            Anaerostipes_hadrus were evenly distributed in the three
+            age groups and accounted for a significant proportion
+            overall (Figure 2D).
+
+
+            3.3 | Role of age in CRC intestinal
+            differential bacteria
+
+            We intermingled 80 age-­     differentiated bacteria from
+            healthy individuals with 58 age-­   differentiated bacteria
+            from CRC samples.
+                Twenty-­one species of common differential bacteria
+            were identified. Among them, seven species increased in
+            abundance with aging in both populations: Escherichia_
+            coli, Eubacterium_sp_CAG_180, Streptococcus parasangui-
+            nis, Veillonella atypica, Megasphaera micronuciformis,
+            Streptococcus gordonii, and Streptococcus anginosus group
+            (Figure 3A,B).
+                In addition, there were 37 age-­related unique bac-
+            teria in the CRC samples, excluding the intersecting
+            parts. Among them, 15 types of bacteria decreased with
+            aging in the CRC samples: Bifidobacterium_adolescentis,
+            Parabacteroides_distasonis, Acidaminococcus_intestini,
+            Fusicatenibacter_saccharivorans, Barnesiella_intestini-
+            hominis, Mitsuokella_multacida, Odoribacter_splanchnicus,
+            Prevotella_sp_CAG_1092, Coprobacillus_cateniformis,
+            Firmicutes_bacterium_CAG_94, Adlercreutzia_equolifa-
+            ciens, Peptostreptococcus_anaerobius, Asaccharobacter_
+            celatus, and Acidaminococcus_sp_CAG_542. Four
+            types of bacteria increased with aging in the CRC sam-
+            ples: Klebsiella pneumoniae, Morganella_morganii,
+            Catenibacterium_mitsuokai, and Firmicutes_bacterium_
+            CAG_170 (Figure 3C).
+                Moreover, we divided the healthy and CRC groups into
+            three groups according to age and compared the differen-
+            tial bacteria in each age group (Figure 3D).
+                Eighty-­eight differentially abundant bacteria were
+            selected from the young group between the healthy and
+            CRC groups. Faecalibacterium prausnitzii, Roseburia in-
+            testinalis, and Eubacterium siraeum were enriched in the
+            samples from healthy individuals. Ruminococcus bromii,
+            Bacteroides fragilis, and Bacteroides cellulosilyticus were
+            enriched in CRC samples.
+17828   |                                                                                                            WU et al.
+
+
+
+    Seventy differentially abundant bacteria were screened       group). The results showed that the age model had high
+out from the middle age group. Faecalibacterium praus-           accuracy (AUC: 0.71, sensitivity: 0.78, specificity: 0.49).
+nitzii, Eubacterium rectale, and Roseburia faecis were           In addition, in the age prediction model of healthy indi-
+abundant in healthy individuals. Prevotella_sp_CAG_520,          viduals, the top three important differential bacteria were
+Prevotella_stercorea, and Escherichia_coli were enriched         Bifidobacterium dentium, Haemophilus parainfluenzae,
+in CRC samples.                                                  and Anaerostipes hadrus (Figure 5A-­a2).
+    Eighty differential bacteria were screened out from              The intersection of the top 20 important features of
+the old group. Faecalibacterium prausnitzii, Eubacterium         the healthy/CRC group age prediction model was re-
+rectale, and Roseburia faecis were abundant in healthy           moved and tested in groups. Streptococcus_vestibularis,
+individuals. Bacteroides vulgatus, Escherichia_coli, and         Haemophilus_parainfluenzae, and Streptococcus_angino-
+Ruminococcus torques were enriched in CRC samples.               sus_group were also found to be differential disease bac-
+    We also performed an overall disease differential            teria (Figure 5B).
+bacterial analysis. Comparing the differential bacteria              Finally, the CRC risk prediction model results were
+from healthy individuals and CRC samples, 45 disease-­           established based on all samples. An AUC of 0.83 was
+related differential bacteria were found. Among them,            achieved by using 45 disease-­       differential bacteria.
+the disease-­  related biomarkers included Escherichia_          After removing the intersection between the disease-­
+coli, Prevotella_sp_CAG_520, Akkermansia muciniph-               differentiated bacteria and the age-­differentiated bacteria
+ila, Ruminococcus gnavus, and Bacteroides fragilis.              from the healthy samples, the risk prediction model estab-
+(Figure 4A).                                                     lished for the remaining 31 different bacteria showed little
+    Finally, we conducted overall disease differential bac-      difference (in line with expectations), with an AUC of 0.8
+terial analysis and found 14 age-­related CRC differential       (Figure 5C).
+bacteria after the intersection of 80 age-­differential bacte-       To further verify the influence of age on the results
+ria of healthy individuals with 45 disease-­related differen-    of the CRC risk prediction model, we established CRC
+tial bacteria (Figure 4B). Five bacteria were identified that    risk prediction models for each of the three age groups
+increased in intestinal abundance with aging in CRC sam-         (Figure 5D). The results showed that there was no sig-
+ples: Escherichia_coli, Butyricimonas violus, Ruminococcus       nificant difference in accuracy among the three models
+bicirculans, Bacteroides fragilis, and Streptococcus vestibu-    (young: AUC = 0.82, middle: AUC = 0.83, old: AUC = 0.85).
+laris. Eubacterium_eligens decreased in the intestinal
+abundance of CRC samples with aging (Figure 4C). In ad-
+dition, after adjusting for age, we identified 31 CRC differ-    4   |   DISC USSION
+ential bacteria. Among them, 19 bacteria with significant
+differences (p < 0.001) included Morganella_morganii,            The study collected metagenomic data of gut microbiota
+Peptostreptococcus_anaerobius, Peptostreptococcus_stoma-         from 691 CRC samples and 605 healthy individuals and
+tis, and Fusobacterium_nucleatum. (Figure 4D).                   found differences in the structure and composition of gut
+                                                                 microbiota between healthy individuals and CRC sam-
+                                                                 ples at different ages. In addition, there are differences
+3.4 | Establishment of the age prediction                        in bacteria between healthy individuals and CRC sam-
+model and CRC risk prediction model                              ples at different ages. The structure and composition of
+                                                                 the gut microbiota in the elderly were significantly dif-
+Finally, the age prediction model of the healthy group           ferent from those in the young and middle-­aged groups.
+was constructed based on the 80 age-­related differential        We screened for seven species of bacteria whose abun-
+bacteria. Model prediction using the tripartite is not effec-    dance increases with aging and are not associated with
+tive, so the dichotomy model was used instead (the age           disease. Furthermore, the abundance of Escherichia_
+of the young group was ≤65 years old, and the age of the         coli, Butyricimonas_virosa, Ruminococcus_bicirculans,
+old group was >65 years old). The results showed that the        Bacteroides_fragilis, and Streptococcus_vestibularis in-
+age model had high accuracy (AUC: 0.79, sensitivity: 0.92,       creased with aging in CRC samples. The abundance of
+specificity: 0.4). In addition, in the age prediction model      Eubacterium_eligens decreased with aging in CRC sam-
+of healthy individuals, the top three important differential     ples. The age prediction model and CRC risk prediction
+bacteria were Streptococcus gordonii, Bifidobacterium den-       model based on age-­    differentiated bacteria performed
+tium, and Veillonella atypica (Figure 5A-­a1).                   well.
+    A dichotomous model for age prediction of CRC sam-              Intestinal age, which reflects the changes in the distri-
+ples was established based on 58 age-­      related bacteria     bution of gut microbiota, is the “third age” of the human
+(age ≤ 65 years in the young group and >65 years in the old      body. There are more than 100 species of bacteria, with a
+WU et al.        | 17829
+17830   |                                                                                                                         WU et al.
+
+
+F I G U R E 3 Effect of aging on gut microbiota. (A) Bacterial Venn diagram of age differences between the healthy group and CRC group.
+(B) Seven age-­differentiated bacteria with increasing abundance with aging in the healthy and CRC groups. (C) Age-­differentiated bacteria
+with a step-­change in abundance with increasing age that are unique to the CRC group. (D) The differences in gut microbiota in the healthy
+group and the CRC group (young, middle, and old groups) were analyzed, as shown by the LDA discriminant histogram.
+
+
+
+
+F I G U R E 4 Effect of aging on gut microbiota changes in CRC. (A) LEfSe hierarchical tree. (B) LDA discriminant histogram. (C) Venn
+diagram of age-­differentiated bacteria and CRC disease-­differentiated bacteria in the healthy group. (D) The abundance of five species
+increased with aging, and the intestinal abundance of CRC increased. The abundance of one species increased with aging, but the intestinal
+abundance of CRC decreased. (E) Age-­independent differential bacteria for CRC disease, *** indicating p < 0.001.
+
+
+total population of approximately 10 trillion in the guts               change. The main factors that determine intestinal age
+of healthy infants. Normally, the guts of infants are domi-             are probiotics such as Bifidobacterium and Lactobacillus.29
+nated by Bifidobacterium, Lactobacillus, and Escherichia_               The state of intestinal microecology can predict the de-
+coli.28 As the human body grows, the gut microbiota                     gree of aging of the body, evaluate the health status of the
+WU et al.                                             | 17831
+F I G U R E 5 Age prediction model and
+CRC risk prediction model. (A-­a1) The
+figure above shows the cross-­validation
+results of the age prediction model for
+healthy samples. The following figure
+is the interpretation diagram of the top
+20 feature models, and the horizontal
+coordinate is relative importance. (B)
+Box plot and mean difference test of the
+Z score (logarithmic standardization of
+relative abundance) for nine overlapping
+species in each grouping. (C-­c1) CRC risk
+prediction model based on all samples.
+The red line “all_marker” represents
+the use of all 45 disease differential
+bacteria, and the yellow line “age_
+marker” represents the use of 31 disease
+differential bacteria after removing age
+bacteria. (C-­c2) cross-­validation results of
+age prediction models for all 45 disease
+differentials. (C-­c3) cross-­validation of
+age prediction models for 31 disease-­
+differential bacteria. (D) cross-­validation
+results of CRC risk prediction models
+based on disease-­differentiating bacteria
+of three age groups.
+17832   |                                                                                                            WU et al.
+
+
+
+human body, and measure the incidence of age-­related            in a decrease in beneficial bacteria and an increase in
+diseases. Galkin et al. prepared a collection of full intesti-   harmful bacteria, such as an increase in Proteobacteria
+nal metagenomic sequences for 1165 healthy individuals           and a decrease in Verrucomicrobia.43 The results of the
+between 20 and 90 years old and found that the abundance         present study showed that the abundance of Escherichia_
+of Eubacterium hallii increased with aging and Bacteroides       coli, Butyricimonas virosa, Ruminococcus bicirculans,
+vulgatus decreased. At the same time, 39 species of bacte-       Bacteroides fragilis, and Streptococcus vestibularis in-
+ria that could be used to accurately predict biological age      creased with aging in CRCs. Among them, Escherichia_
+were identified.30 In the present study, it was found that       coli has been shown to affect intestinal barrier integrity,
+the abundance of Bifidobacterium longum in older ages            glucose homeostasis, and immune response through the
+was different from that in youth or middle age, both in          production of aromatic amino acid metabolites. In addi-
+healthy individuals and CRC samples. Bifidobacterium             tion, micromectin produced by Escherichia_coli inhibits
+longum is a gram-­positive rod-­like bacterium that exists       the growth of other bacteria and secretes the genotoxin
+naturally in the human gastrointestinal tract. It is one of      colibactin, which causes DNA damage and promotes
+the first bacteria to colonize the gut as newborn infants        CRC.44 Escherichia_coli secretes siderophores, which
+pass through the birth canal.31 During adulthood, the            compete with host cells for iron when iron levels are low
+levels of Bifidobacterium longum decrease considerably           during intestinal inflammation, affecting iron uptake by
+but remain relatively stable. It declines progressively in       mitochondria. Escherichia_coli K-­12 extends the lifespan
+old age.32 Chen et al. found that Bifidobacterium longum         of the host C. elegans by secreting colanic acid to regulate
+CCFM681 could alleviate colitis by promoting the secre-          the mitochondrial unfolded protein response (UPRmt)
+tion of conjugated linoleic acid, protecting the intestinal      and mitochondrial dynamics.45,46 Mitochondria play an
+mechanical barrier, modulating the gut microbiota, and           important role in the aging process of organisms. Smith
+inhibiting the TLR4/NF-­κB pathway and associated proin-         et al. found that age-­related mitochondrial DNA mutations
+flammatory cytokines.33                                          cause defects in mitochondrial oxidative phosphorylation
+    The structure and composition of the gut microbiota de-      (OXPHOS), leading to changes in cellular metabolism
+termine intestinal age. Microbiome dysbiosis is a potential      and thus accelerating the occurrence of CRC.47 Therefore,
+hallmark and biomarker of aging.34 Age-­related changes in       our results suggested that age should be considered in the
+gut microbiota can weaken the gut barrier, releasing toxic       study of gut microbiota as a predictor of CRC.
+products of bacteria, causing inflammation, impairing im-            However, there are still some limitations and deficien-
+mune function, and reducing life expectancy.35,36 The gut        cies in this study. Considering antibiotics, chemotherapy
+microbiome of older individuals is more complex and un-          drugs and other conditions affecting the gut microbiota,
+stable than that of younger individuals.37 Normally, there       strict inclusion and exclusion criteria holds significant
+is a striking negative association between aging and gut         importance. The research was based on database analysis,
+microbe taxonomic richness, diversity, and evenness of           and the data set came from multiple countries. So, strict
+the community.38 The reason for the longevity may be that        inclusion and exclusion criteria could not be achieved.
+the gut microbiota of centenarians tends to be younger in        In addition, as the data mainly came from public data-
+nature. Healthy aging is linked to gut microbiota. The di-       bases, there was a lack of corresponding metabolome
+versity of the gut microbiota increased, and the relative        data. Therefore, we could not further determine the cor-
+abundance of Clostridium XIVA, Rumenobacteriaceae,               relation between metabolic disorders caused by intestinal
+Akkermansia, and Christensenellaceae was higher among            ecological disorders and the occurrence of CRC through
+the fecal bacteria of centenarians.39 Sato et al. found that     metabolome data. In the future, we will further expand
+centenarians' unique gut microbiome, rich in microbes            the sample size and carry out multicenter and multi-­
+capable of producing unique secondary bile acids (BAs),          omics clinical studies to further confirm the relationship
+protects them from certain bacterial infections, including       between metabolome and CRC. Furthermore, in view of
+those caused by multidrug-­resistant bacteria. In addition,      CRC and age-­related differential bacteria, it is necessary to
+Odoribacteraceae screened from the intestinal tract of           further explore the specific mechanism by which bacteria
+long-­lived elderly people could effectively produce isoal-      cause CRC by influencing aging.
+loLCA, a derivative of secondary bile acids, in vitro and
+in vivo.40 Identification of gut microbiota signatures asso-
+ciated with aging provides a promising modulation target         5   |   CONC LUSION
+for intestinal health.
+    CRC is a disease highly associated with gut microbes.        Overall, the age prediction model of healthy individu-
+CRCs are mostly associated with reduced intestinal diver-        als and the CRC risk prediction model based on age-­
+sity and intestinal microbial disorders.41,42 Aging results      differentiated bacteria have good performance. The
+WU et al.                                                                                                                         | 17833
+                                                                      3. Vijg J, Dong X. Pathogenic mechanisms of somatic mutation
+present study confirmed that intestinal microbiota are an                and genome mosaicism in aging. Cell. 2020;182(1):12-­23.
+important characteristic of aging. Age should be consid-              4. Balaban RS, Nemoto S, Finkel T. Mitochondria, oxidants, and
+ered in the study of gut microbiota as a predictor of CRC.               aging. Cell. 2005;120(4):483-­495.
+These findings may provide insights into CRC and aging                5. Aubert G, Lansdorp PM. Telomeres and aging. Physiol Rev.
+from the perspective of gut microbiota.                                  2008;88(2):557-­579.
+                                                                      6. McHugh D, Gil J. Senescence and aging: causes, consequences,
+AUTHOR CONTRIBUTIONS                                                     and therapeutic avenues. J Cell Biol. 2018;217(1):65-­77.
+                                                                      7. Calcinotto A, Kohli J, Zagato E, Pellegrini L, Demaria M,
+Yinhang Wu: Formal analysis (equal). Jing Zhuang:
+                                                                         Alimonti A. Cellular senescence: aging, cancer, and injury.
+Formal analysis (equal). Qi Zhang: Writing –­original                    Physiol Rev. 2019;99(2):1047-­1078.
+draft (equal). Xingming Zhao: Writing –­original draft                8. Lee HC, Chang CM, Chi CW. Somatic mutations of mitochon-
+(equal). Gong Chen: Investigation (equal). Shugao Han:                   drial DNA in aging and cancer progression. Ageing Res Rev.
+Investigation (equal). Boyang Hu: Investigation (equal).                 2010;9(Suppl 1):S47-­S58.
+Wei Wu: Writing –­review and editing (equal). Shuwen                  9. Alexandrov LB, Nik-­    Zainal S, Wedge DC, et al. Signatures
+Han: Writing –­review and editing (equal).                               of mutational processes in human cancer. Nature.
+                                                                         2013;500(7463):415-­421.
+                                                                     10. Purohit S, Zhi W, Ferris DG, et al. Senescence-­associated secre-
+ACKNOWLEDGMENTS
+                                                                         tory phenotype determines survival and therapeutic response
+Not Applicable.                                                          in cervical cancer. Cancers (Basel). 2020;12(10):2899.
+                                                                     11. Coppé JP, Kauser K, Campisi J, Beauséjour CM. Secretion of
+FUNDING INFORMATION                                                      vascular endothelial growth factor by primary human fibro-
+This work was supported by the Key Research and                          blasts at senescence. J Biol Chem. 2006;281(40):29568-­29574.
+Development Project of Zhejiang Province (No.                        12. Siegel RL, Miller KD, Fuchs HE, Jemal A. Cancer statistics,
+2022C03026), Zhejiang Medical and Health Technology                      2021. CA Cancer J Clin. 2021;71(1):7-­33.
+                                                                     13. Gong Y, Liu Y, Wang T, et al. Age-­associated proteomic signa-
+Project (No. 2022KY1218 and 2023RC274), and Public
+                                                                         tures and potential clinically actionable targets of colorectal
+Welfare Technology Application Research Program of                       cancer. Mol Cell Proteomics. 2021;20:100115.
+Huzhou (No. 2022GZB04).                                              14. Keum N, Giovannucci E. Global burden of colorectal cancer:
+                                                                         emerging trends, risk factors and prevention strategies. Nat Rev
+CONFLICT OF INTEREST STATEMENT                                           Gastroenterol Hepatol. 2019;16(12):713-­732.
+The authors declare that no potential conflicts of interest          15. Boakye D, Walter V, Jansen L, et al. Magnitude of the age-­
+exist.                                                                   advancement effect of comorbidities in colorectal cancer prog-
+                                                                         nosis. J Natl Compr Canc Netw. 2020;18(1):59-­68.
+                                                                     16. Soliman BG, Karagkounis G, Church JM, Plesec T, Kalady
+DATA AVAILABILITY STATEMENT
+                                                                         MF. Mucinous histology signifies poor oncologic outcome
+The datasets generated during the current study are                      in young patients with colorectal cancer. Dis Colon Rectum.
+not publicly available but obtained from corresponding                   2018;61(5):547-­553.
+authors on reasonable request.                                       17. Anele CC, Askari A, Navaratne L, et al. The association of
+                                                                         age with the clinicopathological characteristics and prognosis
+CONSENT FOR PUBLICATION                                                  of colorectal cancer: a UK single-­centre retrospective study.
+Not applicable.                                                          Colorectal Dis. 2020;22(3):289-­297.
+                                                                     18. Yue T, Chen S, Zhu J, et al. The aging-­related risk signature in
+                                                                         colorectal cancer. Aging (Albany NY). 2021;13(5):7330-­7349.
+ETHICS APPROVAL AND CONSENT TO
+                                                                     19. Ugai T, Väyrynen JP, Lau MC, et al. Immune cell profiles in the
+PARTICIPATE                                                              tumor microenvironment of early-­onset, intermediate-­onset,
+Not applicable.                                                          and later-­onset colorectal cancer. Cancer Immunol Immunother.
+                                                                         2022;71(4):933-­942.
+ORCID                                                                20. Almeida A, Mitchell AL, Boland M, et al. A new ge-
+Jing Zhuang https://orcid.org/0000-0002-6910-8824                        nomic blueprint of the human gut microbiota. Nature.
+Wei Wu https://orcid.org/0000-0002-4894-7178                             2019;568(7753):499-­504.
+                                                                     21. Torres-­Maravilla E, Boucard AS, Mohseni AH, Taghinezhad SS,
+Shuwen Han https://orcid.org/0000-0001-6180-9565
+                                                                         Cortes-­Perez NG, Bermúdez-­Humarán LG. Role of gut microbi-
+                                                                         ota and probiotics in colorectal cancer: onset and progression.
+REFERENCES                                                               Microorganisms. 2021;9(5):1021.
+ 1. van Deursen JM. The role of senescent cells in ageing. Nature.   22. Yang Y, Du L, Shi D, et al. Dysbiosis of human gut microbiome in
+    2014;509(7501):439-­446.                                             young-­onset colorectal cancer. Nat Commun. 2021;12(1):6757.
+ 2. López-­Otín C, Blasco MA, Partridge L, Serrano M, Kroemer G.     23. Ahmadi S, Wang S, Nagpal R, et al. A human-­origin probiotic
+    The hallmarks of aging. Cell. 2013;153(6):1194-­1217.                cocktail ameliorates aging-­related leaky gut and inflammation
+17834    |                                                                                                                                  WU et al.
+
+
+        via modulating the microbiota/taurine/tight junction axis. JCI         37. Claesson MJ, Cusack S, O'Sullivan O, et al. Composition, vari-
+        Insight. 2020;5(9):e132055.                                                ability, and temporal stability of the intestinal microbiota of the
+24.     Claesson MJ, Jeffery IB, Conde S, et al. Gut microbiota com-               elderly. Proc Natl Acad Sci USA. 2011;108(Suppl 1):4586-­4591.
+        position correlates with diet and health in the elderly. Nature.       38. Jackson MA, Jeffery IB, Beaumont M, et al. Signatures of early
+        2012;488(7410):178-­184.                                                   frailty in the gut microbiota. Genome Med. 2016;8(1):8.
+25.     Spychala MS, Venna VR, Jandzinski M, et al. Age-­            related   39. Kong F, Hua Y, Zeng B, Ning R, Li Y, Zhao J. Gut microbiota
+        changes in the gut microbiota influence systemic inflammation              signatures of longevity. Curr Biol. 2016;26(18):R832-­R833.
+        and stroke outcome. Ann Neurol. 2018;84(1):23-­36.                     40. Sato Y, Atarashi K, Plichta DR, et al. Novel bile acid biosyn-
+26.     Luissint AC, Parkos CA, Nusrat A. Inflammation and the in-                 thetic pathways are enriched in the microbiome of centenari-
+        testinal barrier: leukocyte-­   epithelial cell interactions, cell         ans. Nature. 2021;599(7885):458-­464.
+        junction remodeling, and mucosal repair. Gastroenterology.             41. Wong SH, Yu J. Gut microbiota in colorectal cancer: mecha-
+        2016;151(4):616-­632.                                                      nisms of action and clinical applications. Nat Rev Gastroenterol
+27.     Pasolli E, Schiffer L, Manghi P, et al. Accessible, curated                Hepatol. 2019;16(11):690-­704.
+        metagenomic data through ExperimentHub. Nat Methods.                   42. Tilg H, Adolph TE, Gerner RR, Moschen AR. The intestinal mi-
+        2017;14(11):1023-­1024.                                                    crobiota in colorectal cancer. Cancer Cell. 2018;33(6):954-­964.
+28.     Milani C, Duranti S, Bottacini F, et al. The first microbial col-      43. Bárcena C, Valdés-­Mas R, Mayoral P, et al. Healthspan and
+        onizers of the human gut: composition, activities, and health              lifespan extension by fecal microbiota transplantation into pro-
+        implications of the infant gut microbiota. Microbiol Mol Biol              geroid mice. Nat Med. 2019;25(8):1234-­1242.
+        Rev. 2017;81(4):e00036-17.                                             44. Gatsios A, Kim CS, Crawford JM. Escherichia coli small mol-
+29.     Arnold JW, Roach J, Fabela S, et al. The pleiotropic effects of pre-       ecule metabolism at the host-­     microorganism interface. Nat
+        biotic galacto-­oligosaccharides on the aging gut. Microbiome.             Chem Biol. 2021;17(10):1016-­1026.
+        2021;9(1):31.                                                          45. Zhou Y, Hu G, Wang MC. Host and microbiota metabolic signals
+30.     Galkin F, Mamoshina P, Aliper A, et al. Human gut microbiome               in aging and longevity. Nat Chem Biol. 2021;17(10):1027-­1036.
+        aging clock based on taxonomic profiling and deep learning.            46. Han B, Sivaramakrishnan P, Lin CJ, et al. Microbial genetic com-
+        iScience. 2020;23(6):101199.                                               position tunes host longevity. Cell. 2017;169(7):1249-­1262.e1213.
+31.     Arboleya S, Watkins C, Stanton C, Ross RP. Gut Bifidobacteria          47. Smith AL, Whitehall JC, Bradshaw C, et al. Age-­associated mi-
+        populations in human health and aging. Front Microbiol.                    tochondrial DNA mutations cause metabolic remodelling that
+        2016;7:1204.                                                               contributes to accelerated intestinal tumorigenesis. Nat Cancer.
+32.     Odamaki T, Kato K, Sugahara H, et al. Age-­related changes in              2020;1(10):976-­989.
+        gut microbiota composition from newborn to centenarian: a
+        cross-­sectional study. BMC Microbiol. 2016;16:90.
+33.     Chen Y, Chen H, Ding J, et al. Bifidobacterium longum ame-             SUPPORTING INFORMATION
+        liorates dextran sulfate sodium-­induced colitis by producing          Additional supporting information can be found online
+        conjugated linoleic acid, protecting intestinal mechanical bar-        in the Supporting Information section at the end of this
+        rier, restoring unbalanced gut microbiota, and regulating the
+                                                                               article.
+        toll-­like receptor-­4/nuclear factor-­κB signaling pathway. J Agric
+        Food Chem. 2021;69(48):14593-­14608.
+34.     Bana B, Cabreiro F. The microbiome and aging. Annu Rev
+        Genet. 2019;53:239-­261.
+                                                                                  How to cite this article: Wu Y, Zhuang J, Zhang
+35.     Lynch SV, Pedersen O. The human intestinal microbiome in
+        health and disease. N Engl J Med. 2016;375(24):2369-­2379.
+                                                                                  Q, et al. Aging characteristics of colorectal cancer
+36.     Salazar N, Valdés-­Varela L, González S, Gueimonde M, de Los              based on gut microbiota. Cancer Med.
+        Reyes-­Gavilán CG. Nutrition and the gut microbiome in the el-            2023;12:17822-17834. doi:10.1002/cam4.6414
+        derly. Gut Microbes. 2017;8(2):82-­97.
+

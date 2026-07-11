@@ -1,0 +1,699 @@
+                                                                                                                            TYPE Original Research
+                                                                                                                            PUBLISHED 22 May 2023
+                                                                                                                            DOI 10.3389/fmicb.2023.1130446
+
+
+
+
+                                                     Metagenomic analysis reveals gut
+OPEN ACCESS                                          plasmids as diagnosis markers for
+                                                     colorectal cancer
+EDITED BY
+William K. K. Wu,
+Chinese University of Hong Kong, China
+
+REVIEWED BY
+Hu Gui,                                              Zhiyuan Cai 1, Ping Li 1, Wen Zhu 1, Jingyue Wei 1, Jieyu Lu 1,
+Central South University, China                      Xiaoyi Song 1, Kunwei Li 2, Sikai Li 1 and Man Li 1*
+Mingsong Kang,
+Canadian Food Inspection Agency (CFIA),              1
+                                                      Guangdong Provincial Key Laboratory of Biomedical Imaging and Guangdong Provincial Engineering
+Canada                                               Research Center of Molecular Imaging, The Fifth Affiliated Hospital of Sun Yat-sen University, Zhuhai,
+*CORRESPONDENCE
+                                                     China, 2 Radiology Department, The Fifth Affiliated Hospital of Sun Yat-sen University, Zhuhai, China
+Man Li
+ liman26@mail.sysu.edu.cn
+                                                     Background: Colorectal cancer (CRC) is linked to distinct gut microbiome
+RECEIVED 23 December 2022
+ACCEPTED 09 May 2023
+                                                     patterns. The efficacy of gut bacteria as diagnostic biomarkers for CRC has
+PUBLISHED 22 May 2023                                been confirmed. Despite the potential to influence microbiome physiology and
+CITATION                                             evolution, the set of plasmids in the gut microbiome remains understudied.
+Cai Z, Li P, Zhu W, Wei J, Lu J, Song X, Li K,
+                                                     Methods: We investigated the essential features of gut plasmid using metagenomic
+Li S and Li M (2023) Metagenomic analysis
+reveals gut plasmids as diagnosis markers for        data of 1,242 samples from eight distinct geographic cohorts. We identified 198
+colorectal cancer.                                   plasmid-related sequences that differed in abundance between CRC patients and
+Front. Microbiol. 14:1130446.
+                                                     controls and screened 21 markers for the CRC diagnosis model. We utilize these
+doi: 10.3389/fmicb.2023.1130446
+                                                     plasmid markers combined with bacteria to construct a random forest classifier
+COPYRIGHT
+© 2023 Cai, Li, Zhu, Wei, Lu, Song, Li, Li and Li.
+                                                     model to diagnose CRC.
+This is an open-access article distributed under     Results: The plasmid markers were able to distinguish between the CRC patients and
+the terms of the Creative Commons Attribution
+License (CC BY). The use, distribution or
+                                                     controls [mean area under the receiver operating characteristic curve (AUC=0.70)]
+reproduction in other forums is permitted,           and maintained accuracy in two independent cohorts. In comparison to the bacteria-
+provided the original author(s) and the              only model, the performance of the composite panel created by combining plasmid
+copyright owner(s) are credited and that the
+original publication in this journal is cited, in
+                                                     and bacteria features was significantly improved in all training cohorts (mean
+accordance with accepted academic practice.          AUCcomposite=0.804 and mean AUCbacteria=0.787) and maintained high accuracy in
+No use, distribution or reproduction is              all independent cohorts (mean AUCcomposite=0.839 and mean AUCbacteria=0.821). In
+permitted which does not comply with these
+terms.
+                                                     comparison to controls, we found that the bacteria-plasmid correlation strength was
+                                                     weaker in CRC patients. Additionally, the KEGG orthology (KO) genes in plasmids that
+                                                     are independent of bacteria or plasmids significantly correlated with CRC.
+                                                     Conclusion: We identified plasmid features associated with CRC and showed
+                                                     how plasmid and bacterial markers could be combined to further enhance CRC
+                                                     diagnosis accuracy.
+
+                                                     KEYWORDS
+
+                                                     metagenome, colorectal cancer, plasmid, biomarkers, diagnosis, gut microbiome
+
+
+
+
+                                                     1. Introduction
+                                                         Colorectal cancer (CRC) is the most common clinical malignant tumor of the digestive
+                                                     system and poses a huge threat to human health and society (Bray et al., 2018). Most CRC
+                                                     patients are diagnosed at an advanced stage and lose the opportunity for radical surgery (Di
+                                                     Nicolantonio et al., 2021). Prompt diagnosis of CRC is essential for effective treatment and
+                                                     favorable prognosis (Tomizawa et al., 2017). Colonoscopy and biopsy are currently considered
+                                                     the gold standard for the screening of CRC (Rex et al., 2006). Fecal occult blood test (FOBT) is
+                                                     non-invasive and the most commonly used method for colorectal cancer screening currently
+                                                     (Faivre et al., 2004; Lee et al., 2020). The specificity of FOBT for CRC detection was 92.4%, but
+                                                     the sensitivity was only 30.8% (Allison et al., 1996). Due to its dependence on tumor tissue
+
+
+Frontiers in Microbiology                                                    01                                                               frontiersin.org
+Cai et al.                                                                                                                     10.3389/fmicb.2023.1130446
+
+
+
+
+bleeding, FOBT has limited sensitivity and accuracy for CRC                         cohort (PRJNA447983) since we were unable to determine the case–
+(Hardcastle et al., 1996). Therefore, there is an urgent need for reliable          control status that matched the sequencing data in that dataset.
+and efficient biomarkers for the diagnosis of colorectal cancer.                    We selected an Asian cohort from China and a European cohort from
+     With the development of metagenomic technology, an increasing                  Germany as independent validation datasets, and the other six
+number of recent studies have highlighted the vital role of the gut                 cohorts as training datasets, to ensure the reliability and
+microbiome in regulating human health and disease (Ghaisas et al.,                  generalizability of the prediction model. We downloaded fecal
+2016; Schmidt et al., 2018; Gurung et al., 2020). The gut microbiome                metagenomic sequencing data of the eight cohorts in NCBI on CRC
+may have an impact on the onset and development of CRC (Zamani                      patients and healthy controls (Supplementary Table 1). For discovery
+et al., 2019), while some intestinal bacteria may slow the disease’s                cohorts (n = 1,123), Accession of China Cohort1 (CHN1) is
+progression (Chan et al., 2019). The efficacy of gut bacteria as                    PRJNA763023 (Yang et al., 2021), CRC, n = 100; and Control, n = 100.
+diagnostic biomarkers for CRC has been confirmed (Dai et al., 2018;                 Accession of China Cohort2 (CHN2) is PRJNA731589 (Liu et al.,
+Liu et al., 2022).                                                                  2022), CRC, n = 80; and Control, n = 86. Accession of Japan (JPN) is
+     Plasmids play important roles in the evolutionary events of                    PRJDB4176 (Yachida et al., 2019), CRC, n = 218; and Control, n = 212.
+microbial communities, and many plasmid genes are involved in                       Accession of Austria (AUS) is PRJEB7774 (Feng et al., 2015), CRC,
+bacterial survival and adaptation to environmental changes (Fondi                   n = 46; and Control, n = 63. Accession of France (FRA) is PRJEB6070
+et al., 2010; Dib et al., 2015). Many bacteria can exchange genetic                 (Zeller et al., 2014), CRC, n = 53; and Control, n = 61. Accession of the
+material through horizontal gene transfer, which is facilitated by                  United States of America (USA) is PRJEB12449 (Vogtmann et al.,
+plasmids and transposable elements carried by plasmids (Smalla and                  2016), CRC, n = 52; and Control, n = 52. For validation cohorts
+Sobecky, 2002). It indicates that plasmids should not be disregarded                (n = 119), Accession of China Cohort3 (CHN3) is PRJNA514108
+in research. Plasmidomics refers to the whole plasmid DNA of the                    (Gao et al., 2022), CRC, n = 32; and Control, n = 44. Accession of
+samples (Brown Kav et al., 2012; Bleicher et al., 2013). With the                   Germany (GER) is PRJEB6070 (Zeller et al., 2014), CRC, n = 38; and
+advancement of next-generation sequencing technology and the                        Control, n = 5. The cohorts’ characteristics are listed in
+development of bioinformatics tools, numerous methods were                          Supplementary Table 1.
+developed for identifying plasmid sequences in metagenomic data,
+such as Plasflow (Krawczyk et al., 2018), Plasmidseeker (Roosaare
+et al., 2018), PlasmidFinder (Carattoli et al., 2014), SCAPP (Pellow                2.2. Sequencing data processing
+et al., 2021), and cBar (Zhou and Xu, 2010). For short-reads
+metagenomic sequencing, PlasFlow software based on deep neural                           KneadData2 v0.7.4 was used to obtain high-quality microbial
+networks is the way of maximizing plasmid coverage and minimizing                   reads. The metagenomic shotgun sequencing data were trimmed
+false positives currently (Hilpert et al., 2021). With the help of these            using Trimmomatic (Bolger et al., 2014; v0.39) with the following
+techniques, we can examine how intestinal plasmids and plasmid                      parameters: SLIDINGWINDOW:4:20 MINLEN:50. Then, human
+genes change during diseases.                                                       reads were mapped to hg37 human reference genome and discarded
+     Many human diseases are closely associated with plasmids,                      by bowtie2 (v.2.4.3; −-very-sensitive --dovetail; Langmead and
+particularly those involving antibiotic resistance genes and virulence              Salzberg, 2012). High-quality reads were used to conduct species-level
+genes (Cheung et al., 2004; Dolejska and Papagiannitsis, 2018).                     community profiling with relative abundance by MetaPhlAn2 (v2.8.1)
+Enterotoxigenic Escherichia coli (ETEC) causes numerous cases of                    using the setting “-a” to determine all taxonomic level (Truong et al.,
+diarrheal disease worldwide, which is linked to the virulence plasmid               2015). Quality-controlled reads were assembled into contigs with
+pEntYN10 within ETEC (Ban et al., 2015). Emerging research points to                Megahit (v.1.2.9) using the default parameters: “--min-contig-len 200,
+the significance of other microbial kingdoms in gastrointestinal disease            −-disconnect-ratio 0.1” (Li et al., 2015). PlasFlow was run with a
+in addition to gut bacteria (Liu et al., 2022), but no studies on intestinal        minimum posterior probability of 0.7 to filter plasmid contigs longer
+plasmids in CRC patients have been explored. The primary goal of this               than 1,000 bp (Hilpert et al., 2021). We compared the plasmid contigs
+study is to examine the key characteristics of the plasmids in the gut              to the NCBI plasmid reference sequence database (accessed on 2021-
+microbiomes of CRC patients from eight cohorts worldwide. We seek                   06-28) by using BLAST (Altschul et al., 1990; v 2.11) with an E-value
+to expand existing CRC diagnosis biomarkers and develop a more                      of 10−5 and coverage of 50% as the cut-off. The plasmid genes were
+precise diagnosis model using newly discovered plasmid biomarkers.                  predicted by Prodigal (Hyatt et al., 2010) via the metagenome mode.
+                                                                                    CD-HIT (Fu et al., 2012; v4.8.1) was used to create a non-redundant
+                                                                                    plasmid gene catalog, with an identity cut-off of 0.95 and a coverage
+2. Methods                                                                          cut-off of 90%. The plasmid gene catalog was annotated with EggNOG
+                                                                                    mapper (Cantalapiedra et al., 2021; v.2.1.5) based on EggNOG DB
+2.1. Public data collection                                                         (Huerta-Cepas et al., 2019; v5.02). The carbohydrate-active enzymes
+                                                                                    (CAZy) genes were identified using run_dbcan (v2.0.11; Zhang et al.,
+    We used the terms “Colorectal cancer” and “Human gut                            2018). Moreover, the relative abundance of plasmid and plasmid genes
+metagenomics” to search the NCBI database,1 and we found a total                    was determined using salmon (Patro et al., 2017; v.1.5.2) with settings
+of nine CRC gut metagenomic cohorts. We excluded the Italian                        “--meta.”
+
+
+
+
+1 https://www.ncbi.nlm.nih.gov/                                                     2 http://huttenhower.sph.harvard.edu/kneaddata
+
+
+
+Frontiers in Microbiology                                                      02                                                             frontiersin.org
+Cai et al.                                                                                                                  10.3389/fmicb.2023.1130446
+
+
+
+
+2.3. Annotation of plasmid                                                       2.7. Associations between species and
+                                                                                 function
+     Host taxa information for plasmids was obtained from the
+NCBI plasmid reference. Antibiotic resistance genes were                             Associations between bacteria, plasmids, and their KO genes were
+annotated through the ResFinder database (Bortolaia et al., 2020;                performed by Spearman correlation using the “corAndPvalue”
+https://cge.cbs.dtu.dk/services/ResFinder/) by BLAST (E value,                   function of the “WGCNA” R package (Langfelder and Horvath, 2008).
+<10−5; identity, >80%). The oriT regions and relaxase genes were
+identified based on the oriTDB database (Li et al., 2018; https://
+bioinfo-mml.sjtu.edu.cn/oriTDB/) by BLAST (E value, <10−5;                       2.8. Statistical analysis
+identity, >80%). It was determined that plasmids containing both
+the oriT region and relaxase gene are conjugative plasmids (Smillie                   All statistical analyses were conducted by R software (v 4.1.2, the
+et al., 2010).                                                                   R Project for Statistical Computing). In order to compare the two
+                                                                                 groups, Wilcoxon rank-sum test was used. Correlations were
+                                                                                 calculated using Spearman’s rank correlation. The Benjamini-
+2.4. Microbial ecological analysis                                               Hochberg method was used to adjust p values for multiple testing to
+                                                                                 account for the false discovery rate (FDR). p value <0.05 is considered
+    For each sample, Shannon metrics of plasmids were used to                    statistically significant.
+calculate alpha diversity. The Bray-Curtis distance was used to
+calculate the beta diversity. Using the “Vegan” R package (v 2.6–2) in
+R software (Jari Oksanen et al., 2022), Shannon’s index for each sample          3. Results
+and the Bray-Curtis distance between samples was both evaluated.
+Using principal coordinates analysis (PCoA), the Bray–Curtis                     3.1. Characterization of CRC cohorts
+dissimilarity index was used to visualize the microbial community
+structures. Permutational multivariate ANOVA (PERMANOVA) was                         We gathered metagenomic data from 1,242 samples across eight
+performed to reveal the plasmid community differences between                    publicly available CRC cohorts worldwide (Supplementary Table 2).
+groups or cohorts with 999 permutations (Anderson, 2001).                        We included six of these cohorts as discovery cohorts to identify gut
+                                                                                 plasmids as biomarkers for CRC diagnosis, consisting of 549 CRC
+                                                                                 patients and 574 tumor-free controls from five countries (China,
+2.5. Feature selection                                                           CHN1 and CHN2; Japan, JPN; Austria, AUS; France, FRA; and the
+                                                                                 United States, USA). As a result, the independent validation dataset,
+     Plasmid community batch effects among cohorts were corrected                which comprised 70 CRC patients and 49 tumor-free controls from
+using the “adjust_batch” function of the MMUPHin R package (v                    two countries, was created (China, CHN3 and Germany, GER). The
+2.6-2; Ma et al., 2022). We identified differential plasmids as candidate        bioinformatics analysis of all raw shotgun sequencing data was
+features for the CRC diagnosis models with the “lm_meta” function                conducted consistently to reduce technical bias.
+of MMUPHin. Subsequently, feature selection was performed using
+the package Boruta (Miron and Kursa, 2010; v7.0.0) with default
+settings (pValue = 0.01, mcAdj = T, maxRuns = 100). Differential                 3.2. Alteration of the intestinal plasmids in
+EggNOG gene KOs, CAZY, and bacteria species were selected with                   CRC patients
+the same pipeline.
+                                                                                      In the discovery cohorts, we identified a total of 12,515 plasmids
+                                                                                 using metagenomic approaches. Only 628 plasmids were present in all
+2.6. Prediction model construction and                                           six cohorts, with more cohort-specific plasmids being found in CHN1,
+validation                                                                       CHN2, and JPN cohorts (Figure 1A). We found that Proteobacteria
+                                                                                 and Firmicutes phylas made up the majority of the host taxa for each
+     Random forest prediction model was constructed using “random                cohort of plasmids, and that there were no differences in these
+forest” R package with 500 trees (Breiman, 2001). Based on differential          proportions between CRC patients and healthy controls. However,
+plasmids and bacteria signatures, the random forest prediction model             compared to other cohorts, a greater percentage of plasmids in the US
+for CRC was trained with 10-fold cross-validation on the discovery               cohort had Bacteroidetes phyla as their host (Figure 1B). We found no
+cohorts. Model evaluation was performed with cohort-to-cohort                    discernible differences in the proportion of plasmids between CRC
+transfer validation, leave-one-cohort-out (LOCO) evaluation, and                 patients and controls, although a smaller portion of the identified
+independent validation. In cohort-to-cohort validation, the models               plasmids were conjugative or carried antibiotic-resistance genes
+were trained on a single cohort and their performances were evaluated            (Supplementary Figure 1).
+in the other cohorts. In LOCO evaluation, the models were trained on                  We then assessed differences in intestinal plasmid alpha diversity
+five of the six cohorts in the discovery dataset and their performances          between CRC patients and controls. According to the Shannon index
+were evaluated on the sixth cohort. Furthermore, an independent                  in the discovery cohorts, we observed increased plasmid alpha
+validation analysis was conducted in order to assess the reliability of          diversity in CRC patients (p = 0.015; Figure 1C). Meanwhile,
+microbial features as CRC diagnostic markers, and two additional                 geographic differences are visible in intestinal plasmid alpha diversity
+datasets from CHN3 and GER were used in the process.                             (Supplementary Figure 2). The difference in intestinal plasmid alpha
+
+
+Frontiers in Microbiology                                                   03                                                             frontiersin.org
+Cai et al.                                                                                                                       10.3389/fmicb.2023.1130446
+
+
+
+
+    FIGURE 1
+    The gut plasmid comparison of patients with colorectal cancer (CRC) and controls. (A) Upset plot for host taxa of plasmids per cohort. There are a total
+    of 12,515 plasmids observed across six discovery cohorts. (B) Stacked column chart showing the proportion of host taxa of plasmids per cohort.
+    (C) Alpha diversity measured by the Shannon index of the gut plasmid of patients with CRC (red, n=549) and control individuals (blue, n=574; Wilcoxon
+    rank-sum test, p=0.015). Boxplots indicate medians (horizontal line in the box), interquartile (boxes), and ranges (whiskers). (D) Principal coordinate
+    analysis (PCoA) of samples from all six cohorts based on Bray–Curtis distance, which shows that microbial composition was not different between
+    groups (p=0.697) and cohorts (p=0.129). p values of beta diversity based on Bray–Curtis distance corresponds to Adonis PERMANOVA tests by 999
+    permutations (two-sided test). The cohort is shape-coded while the group is color-coded.
+
+
+
+
+diversity between CRC patients and healthy controls was only found                 eight (including NZ_AP023416.1) were less prevalent in CRC patients
+in the CHN1 cohort (p = 0.03). In other cohorts, the intestinal plasmid            (Figure 2A). We first trained the random forest classifier with the 21
+alpha diversity between CRC patients and healthy controls was not                  plasmid features in each dataset used 20 times repeated 10-fold cross-
+significantly different (Supplementary Figure 2). Based on the analysis            validation to assess the diagnostic accuracy of the plasmid features for
+of beta diversity, the beta diversity of intestinal plasmids was not               diagnosing CRC. Depending on the region, the plasmid random forest
+associated with CRC (p = 0.129, Figure 1D), nor was there a significant            classifier performed differently. The plasmid random forest classifier
+difference between cohorts (p = 0.697; Figure 1D).                                 demonstrated strong predictive power in the CHN1, CHN2, and FRA
+                                                                                   cohorts, with mean AUC ranging from 0.75 to 0.80 across cohorts that
+                                                                                   were 20 times repeated using 10-fold cross-validation. In contrast, the
+3.3. Plasmid biomarkers for CRC diagnosis                                          plasmid random forest classifier performs worse in JPN (AUC, 0.58),
+                                                                                   AUS (AUC, 0.67), and USA (AUC, 0.62) datasets (Figure 2B).
+     We conducted a meta-analysis of six datasets from the discovery                   We conducted cohort-to-cohort validation and leave-one-
+cohort in order to find plasmids that could be used as diagnostic                  cohort-out (LOCO) validation on the training cohorts to evaluate the
+markers for CRC. After that, we discovered 198 plasmids that had                   geographical robustness of plasmid signatures as a universal
+different abundances in patients with CRC and controls                             biomarker. In cohort-to-cohort validation, the mean AUC of the
+(Supplementary Table 3), 108 of which were highly abundant in the                  plasmid random forest model ranged from 0.51 to 0.75 (Figure 2C).
+guts of CRC patients (p < 0.05), and 90 of which were decreased in the             The LOCO performance of the plasmid model ranged from 0.59 to
+guts of CRC patients (p < 0.05). To screen out plasmid signatures for              0.71 (Figure 2D). To further test predictive performance, the plasmid
+diagnosing CRC, we performed further signature selection on these                  classifiers trained within study cross-validation were applied to two
+198 plasmids using Boruta. We screened 21 plasmids, of which 13                    independent validation sets. In the CHN3 and GER cohorts, the
+(including NZ_CP036554.1) were more prevalent in CRC patients and                  model’s average AUC was 0.79 and 0.66, respectively (Figure 2E).
+
+
+
+
+Frontiers in Microbiology                                                     04                                                                 frontiersin.org
+Cai et al.                                                                                                                        10.3389/fmicb.2023.1130446
+
+
+
+
+    FIGURE 2
+    Plasmid metagenomic classification models generalize across different cohorts. (A) Bar plot of the 21 plasmid features’ effect sizes for the prediction of
+    CRC diagnosis, as determined by MMUPHin and Boruta. The significance of the difference between patients with CRC and controls was determined via
+    Wilcoxon rank-sum test: *p<0.05. (B) CRC classification performances (AUC) calculated through the cohort-to-cohort model transfer for the random
+    forest classifier trained on relative abundance profiles of plasmids. The values refer to an average value of 20 times repeated 10-fold cross-validation.
+    (C) CRC classification performances (AUC) calculated through 20 times repeated 10-fold cross-validation within each study for the random forest
+    classifier trained on relative abundance profiles of plasmids. (D) CRC classification performances (AUC) calculated through leave-one-cohort-out
+    validation (LOCO, Model was trained using five of six cohorts and validated by the other one) for random forest classifier trained on relative abundance
+    profiles of plasmids. (E) Validation of the plasmid random forest classifier in two independent cohorts (CHN3 and GER). The CRC classification
+    performances (AUC) of the plasmid random forest classifier trained with all the training cohorts were obtained in the CHN3 and GER cohorts.
+
+
+
+
+3.4. Improved predictability based on a                                               at detecting CRC (Wirbel et al., 2019). The bacterial random forest
+combination of plasmid and bacterial                                                  classifier performed admirably in diagnosing CRC in our study. The
+features                                                                              bacteria random forest classifier showed strong predictive power within
+                                                                                      cohorts, with a mean AUC ranging from 0.81 to 0.93 except for the JPN
+    Using the same pipeline as plasmids, 91 differential bacteria species             (0.68) and USA (0.63) cohorts due to the distinct food culture of
+were identified (p < 0.05), and 39 of them were extracted as biomarkers               Japanese and the prolonged cryopreservation of fecal specimens in USA
+for the diagnosis of CRC (Supplementary Figure 3A;                                    cohort, respectively (Supplementary Figure 3B). The cohort-to-cohort
+Supplementary Table 4). Previous studies have demonstrated a strong                   validation (Supplementary Figure 3C) and LOCO validation had
+link between gut bacteria and the occurrence and progression of CRC                   similar outcomes (Supplementary Figure 3D). In independent
+(Sang et al., 2020; Yinhang et al., 2022). Bacterial classifiers are effective        validation, the average AUC of the model obtained in the CHN3 and
+
+
+Frontiers in Microbiology                                                        05                                                               frontiersin.org
+Cai et al.                                                                                                                          10.3389/fmicb.2023.1130446
+
+
+
+
+    FIGURE 3
+    Bacterial metagenomic classification models generalize across different cohorts. (A) Bar plot of the 50 plasmid and bacterial features’ importance for
+    the prediction of CRC diagnosis, as determined by MMUPHin and Boruta. The significance of the difference between patients with CRC and controls
+    was determined via Wilcoxon rank-sum test: *p<0.05. (B) CRC classification performances (AUC) calculated through the cohort-to-cohort model
+    transfer for the random forest classifier trained on relative abundance profiles of plasmid and bacterial species. The values refer to an average value of
+    20 times repeated 10-fold cross-validation. (C) CRC classification performances (AUC) calculated through 20 times repeated 10-fold cross-validation
+    within each study for the random forest classifier trained on relative abundance profiles of plasmid and bacterial species. (D) CRC classification
+    performances (AUC) calculated through leave-one-cohort-out validation (LOCO, Model was trained using two of three cohorts and validated by the
+    other one) for random forest classifier trained on relative abundance profiles of plasmid and bacterial species. (E) Validation of the plasmid and
+    bacterial random forest classifier in two independent cohorts (CHN3 and GER). The CRC classification performances (AUC) of the plasmid and
+    bacterial random forest classifier trained with all the training cohorts were obtained in the CHN3 and GER cohorts.
+
+
+
+
+GER cohorts were 0.84 and 0.86, respectively (Supplementary Figure 3E).              2019; Liu et al., 2022). The 10-fold cross-validation AUC scores for the
+We investigated whether creating a diagnostic panel with plasmids and                various cohorts were 0.84 for CHN1, 0.94 for CHN2, 0.68 for JPN, 0.86
+bacterial species would result in better performance. 13 plasmids and                for AUS, 0.86 for FRA, and 0.63 for USA (Figure 3B). The model
+37 bacteria made up the panel after feature screening (Figure 3A). 10 of             showed valuable prediction performance in cohort-to-cohort validation
+the 37 bacteria have also been linked to CRC in previous studies,                    (Figure 3C) and LOCO validation (Figure 3D). The average AUC of the
+including Parvimonas micra, Peptostreptococcus stomatis, Prevotella                  model obtained in the CHN3 and GER cohorts during independent
+intermedia, Porphyromonas asaccharolytica, Porphyromonas somerae,                    validation was 0.87 and 0.81, respectively (Figure 3E). In all training
+Porphyromonas uenonis, Gemella morbillorum, Fusobacterium                            cohorts (Composite model, AUC = 0.804; Bacterial model, AUC = 0.787)
+nucleatum, Roseburia hominis, and Roseburia intestinalis (Wirbel et al.,             and all independent cohorts (Composite model, AUC = 0.839; Bacterial
+
+
+Frontiers in Microbiology                                                       06                                                                  frontiersin.org
+Cai et al.                                                                                                                   10.3389/fmicb.2023.1130446
+
+
+
+
+model, AUC = 0.821), the prediction performance of the composite                  better than the bacteria-only model was significantly improved
+panel by combining the plasmid and bacterial features was significantly           (Figure 4). In comparison to the bacteria-only model, the average
+                                                                                  AUROC of the cross-validation models with the combined panel for all
+                                                                                  independent cohorts was 0.88 (Supplementary Figure 4).
+
+
+
+                                                                                  3.5. Correlations between gut bacterial
+                                                                                  features and plasmids
+
+                                                                                      We further investigated the correlations between the bacteria and
+                                                                                  plasmids based on the Spearman correlation analysis in the controls
+                                                                                  and patients with CRC, respectively, to gain insights into the bacteria-
+                                                                                  plasmid interactions from an ecological perspective. In comparison to
+                                                                                  CRC cases, we found that the bacteria-plasmid correlation strength
+                                                                                  was stronger in controls. NZ_CP041417.1 (Escherichia coli strain
+                                                                                  STEC711 plasmid pSTEC711_1) in the gut of CRC patients served as
+                                                                                  the hub of the correlation network. And the relevant network in the
+                                                                                  control group’s NZ_CP059935.1 (Escherichia coli strain 28.1 plasmid
+                                                                                  p4) was at its hub. Escherichia coli and plasmids were strongly
+                                                                                  associated in both CRC patients and controls. In addition, we found
+                                                                                  other bacteria that were closely related to the plasmids only in
+                                                                                  controls, particularly Enterobacter cloacae and Atopobium parvulum
+                                                                                  (Figure 5).
+
+
+
+                                                                                  3.6. Plasmid functional alterations in CRC
+
+                                                                                       We looked at the plasmid functional alterations at the Kyoto
+    FIGURE 4
+                                                                                  Encyclopedia of Genes and Genomes (KEGG) orthology (KO) genes
+    Average ROC curve obtained through 20 times repeated 10-fold
+    cross-validation. (A) Average ROC curve obtained through 20 times             and carbohydrate-active enzymes (CAZy) genes in order to
+    repeated 10-fold cross-validation on all the training cohorts.                investigate the plasmid metagenomic functions of pathogenesis in
+    (B) Average ROC curve obtained through independent validation on
+                                                                                  CRC. From 9,514 plasmids KO genes, we first identified 613
+    all the independent cohorts using the random forest classifier trained
+    with 20 times repeated 10-fold cross-validation of all the training           differential KO genes (p < 0.05), including 333 KO genes with
+    cohorts. AUC data are shown as (average of AUC)±SD.                           increased abundance and 280 KO genes with decreased abundance
+                                                                                  in CRC patients compared to controls (Supplementary Table 5).
+
+
+
+
+    FIGURE 5
+    Coabundance correlations between plasmids and bacterial species in patients with CRC and controls. Coabundance networks involving plasmids and
+    bacterial species in the CRC and control samples, with absolute correlations above 0.7 and with a significance cut-off of FDR<0.05. The colors of
+    nodes indicate plasmids (green) and bacterial species (deep pink).
+
+
+
+
+Frontiers in Microbiology                                                    07                                                             frontiersin.org
+Cai et al.                                                                                                                       10.3389/fmicb.2023.1130446
+
+
+
+
+    FIGURE 6
+    Plasmid functional classification models generalize across different cohorts. (A) Bar plot of the 34 plasmid gene KO features’ importance for the
+    prediction of CRC diagnosis, as determined by MMUPHin and Boruta. The significance of the difference between patients with CRC and controls was
+    determined via Wilcoxon rank-sum test: *p<0.05. (B) CRC classification performances (AUC) calculated through the cohort-to-cohort model transfer
+    for the random forest classifier trained on relative abundance profiles of plasmid KO genes. The values refer to an average value of 20 times repeated
+    10-fold cross-validation. (C) CRC classification performances (AUC) calculated through 20 times repeated 10-fold cross-validation within each study
+    for the random forest classifier trained on relative abundance profiles of plasmid KO genes. (D) CRC classification performances (AUC) calculated
+    through leave-one-cohort-out validation (LOCO, Model was trained using two of three cohorts and validated by the other one) for random forest
+    classifier trained on relative abundance profiles of plasmid KO genes. (E) Validation of the plasmid KO gene random forest classifier in two independent
+    cohorts (CHN3 and GER). The CRC classification performances (AUC) of the plasmid KO gene random forest classifier were obtained by using 20×
+    repeated 10-fold cross-validation in the CHN3 and GER cohort.
+
+
+
+
+Following feature screening, 35 KO genes (including K03561,                        validation sets, the average AUC was 0.72 and 0.69, respectively, in
+K05595, and K06250), mainly related to metabolism, were found to                   the CHN3 and GER cohorts (Figure 6E). We carried out the
+be potential biomarkers for CRC prediction (Figure 6A). The plasmid                Spearman correlation analysis of differential plasmid KO genes with
+KO random forest classifier showed strong predictive power within                  differential plasmids or bacteria to comprehend the relationship
+cohorts 20 times repeated 10-fold cross-validation, with mean AUC                  between differential KO and differential bacteria or plasmids,
+ranging from 0.63 to 0.84 (Figure 6B). The mean AUC of the plasmid                 Differential plasmid KO genes had no significant correlation with
+KO random forest model ranged from 0.63 to 0.81 in cohort-to-                      differential plasmids or bacteria (Supplementary Figure 5). Plasmid
+cohort validation (Figure 6C). The LOCO performance of the plasmid                 KO genes might serve as biomarkers for diagnosing CRC, which is
+KO model ranged from 0.68 and 0.84 (Figure 6D). In independent                     independent of bacteria and plasmids. From 414 plasmids CAZy
+
+
+Frontiers in Microbiology                                                     08                                                                 frontiersin.org
+Cai et al.                                                                                                                     10.3389/fmicb.2023.1130446
+
+
+
+
+genes, we first identified 43 differential CAZy genes (p < 0.05),                 plasmid genes in our study were not associated with differential gut
+including 16 CAZy genes with increased abundance and 27 CAZy                      bacteria or differential gut plasmids.
+genes with decreased abundance in CRC patients compared to                             The prognosis of CRC is closely related to the stage of the patient
+controls (Supplementary Figure 6A; Supplementary Table 6). The                    at the time of diagnosis (Bruni et al., 2020). Host gene variation
+plasmid CAZy random forest classifier showed strong predictive                    (Schmit et al., 2019), RNAs (Wu et al., 2021), proteins (Li et al., 2020),
+power with mean AUC ranging from 0.61 to 0.71 in cross-validation                 metabolites (Chen et al., 2022), and gut microbes (Liu et al., 2022) are
+(Supplementary Figure 6B). The mean AUC of the plasmid CAZy                       some of the currently validated colorectal cancer markers; however,
+random forest model ranged from 0.63 to 0.61 in cohort-to-cohort                  more work needs to be done to increase their predictive power. A
+validation (Supplementary Figure 6C). The plasmid CAZy model’s                    non-invasive, effective, and efficient diagnostic method is urgently
+LOCO       performance     ranged     from    0.62     and     0.72               needed for colorectal cancer patients who are asymptomatic in order
+(Supplementary Figure 6D). In independent validation sets, while the              to lower CRC morbidity and mortality, and thereby lower the
+average AUC of the model obtained in the GER cohort was 0.51, it                  economic costs of CRC. We screened 21 plasmids, including NZ_
+was 0.76 on average for the CHN3 (Supplementary Figure 6E).                       CP036554.1 and NZ_AP023416.1, and created a colorectal cancer
+Plasmid CAZy genes were less effective as diagnostic indicators for               prediction model based on these intestinal plasmids for the first time,
+CRC than plasmid KO genes.                                                        applying various validation techniques to demonstrate the robustness
+                                                                                  and accuracy of the model. Additionally, we observed that the
+                                                                                  combination of plasmids and bacteria markers could further improve
+4. Discussion                                                                     the predictive power of CRC. In the external validation, the mean
+                                                                                  specificity and sensitivity of the plasmid and bacterial marker combo
+      Plasmid-mediated horizontal gene transfer is regarded as a major            for CRC detection were 65.2 and 88.5%, respectively. Our plasmid and
+driver of bacterial adaptation and diversification, as demonstrated by            bacterial marker combo predict CRC with high accuracy and is as
+several studies (Smalla et al., 2015; Wein et al., 2020; Rodríguez-               non-invasive as FOBT. Our model has a relatively low predictive effect
+Beltrán et al., 2021). Plasmids can provide ecological benefits to their          for the Japan cohort. We suspect that this may be related to the
+host bacteria (Di Venanzio et al., 2019). These plasmids may change               regional heterogeneity of the gut microbiome. It has been shown that
+the biological characteristics of their bacterial hosts, which may have           glycoceramides contained in the Japanese diet increase the abundance
+an impact on human health (Rozwandowicz et al., 2018). However,                   of Blautia coccoides in the intestine, which affects the composition of
+little is known about the function of gut plasmids, which are carried             the intestinal flora (Hamajima et al., 2016). Meanwhile, glycoceramides
+by bacteria that cause disease. We thoroughly analyzed the                        inhibited the development of colorectal cancer in multiple intestinal
+plasmidome in this study across eight different CRC cohorts. This                 neoplasia (min) mice (Symolon et al., 2004). The regional
+study provides the most comprehensive metagenomic sequencing-                     heterogeneity of intestinal bacteria in the Japanese cohort is likely due
+based gut plasmidomic study to date in the largest sample of CRC                  to Japanese diet. Further experimental verification of the specific
+patients. The bioinformatics pipeline allowed us to locate 12,515                 mechanism is needed.
+intestinal plasmids in total. We observed that compared to healthy                     Several limitations of this study are noted. Identification of
+controls, intestinal plasmid diversity was higher in CRC patients. It             plasmids from short-read metagenomic sequencing data remains
+might imply that CRC patients’ intestinal environments were more                  challenging. It can be difficult to detect and extract a complete plasmid
+stressful than those of controls, where bacteria required more plasmids           since plasmids can vary greatly in size, have high homology with other
+to adjust to changes. To the best of our knowledge, our study is the first        plasmids or with the host genome, often contain repetitive regions, or
+to pinpoint differential intestinal plasmids in patients with colorectal          may be incomplete or missing key regions. We have used filtering
+cancer. Some of the 198 differential plasmids, including NC_012780.1              techniques to exclude less accurate plasmid contigs in light of these
+(Eubacterium eligens ATCC 27750 plasmid unnamed, complete),                       difficulties, but we cannot completely rule out the possibility of false
+corresponding bacteria that were equally abundant in CRC patients                 positives. As a result, long-read sequencing technology (Pacific
+and controls. Such bacteria may increase the abundance of their                   Biosciences and Oxford Nanopore Technology) and future tool
+associated plasmids to increase their tolerance rather than changing              development may enable us to fully understand the structure of human
+their own abundance in order to adapt to changes in the gut                       gut plasmids (Suzuki et al., 2019). The staging of tumors, gender, age,
+environment of colorectal cancer patients. The bacteria corresponding             and other factors affecting the incidence of CRC were not taken into
+to other differential plasmids, like NZ_CP036554.1 (Bacteroides                   consideration. The controls in the majority of cohorts were determined
+fragilis strain DCMOUH0067B plasmid pBFO67_1, complete), are                      by colonoscopy without detecting CRC, yet the controls in the CHN2
+also differential in abundance between CRC patients and controls.                 cohort were selected from Taizhou Imaging Study who did not undergo
+Although these bacteria also affected the plasmids they were                      colonoscopy, which could potentially introduce detection bias. A
+associated with, changes in the colorectal cancer patients’ intestinal            fourth limitation is the cohort effect due to variations in the distribution
+environment could also affect the abundance of these bacteria. In                 of gut flora across regions and the use of different sequencing platforms,
+contrast to controls, the abundance of intestinal plasmids in CRC                 even though we eliminated the batch effect through MMUPHin.
+patients was more independent of their gut microbiota’s abundance.                We were unable to determine the actual host of the plasmids because
+According to this, the relationships between bacteria and plasmids                of the phenomenon of the horizontal transfer of plasmids. A high-
+may be relevant in the microbiome-mediated tumorigenesis of                       throughput technique called Microbe-seq was created by Zheng et al.
+CRC. An additional layer of information about the contribution of                 to examine individual bacterial cells in the microbiota. This approach
+plasmid genes to host health independent of changes in bacterial                  enables further exploration of plasmid horizontal transfer and the host
+abundance was revealed by the intriguing fact that the differential               profile of plasmids (Zheng et al., 2022). Future prospective studies with
+
+
+Frontiers in Microbiology                                                    09                                                                frontiersin.org
+Cai et al.                                                                                                                                                     10.3389/fmicb.2023.1130446
+
+
+
+
+large patient cohorts are needed to validate the results. We cannot                                  Funding
+establish a causal relationship between CRC and plasmids in the
+current data collection. We anticipate that long-read metagenomic                                        This study was funded by grants from the National Natural
+sequencing and upcoming experimental research will clarify the causal                                Science Foundation of China (grant number 82000628), and the
+relationship between CRC and plasmids.                                                               Department of Science and Technology of Guangdong Province to the
+     In conclusion, we used plasmid-related sequences to identify the                                Guangdong Provincial Key Laboratory of Biomedical Imaging
+corresponding plasmids and found that they were able to distinguish                                  (2018B030322006).
+between CRC patients and controls. We constructed a combined
+plasmid and bacteria panel, which performed superior at predicting
+CRC than bacteria alone. Our study expands the knowledge of the                                      Acknowledgments
+function of plasmids in CRC patients may lead to further research into
+potential CRC diagnosis applications. Plasmids should be taken into                                      We thank Rashmi Sinha for providing the complete metadata of
+account when studying the gut microbiota.                                                            the United States cohort.
+
+
+
+Data availability statement                                                                          Conflict of interest
+    Publicly available datasets were analyzed in this study. This data                                   The authors declare that the research was conducted in the
+can be found at: https://www.ncbi.nlm.nih.gov/sra.                                                   absence of any commercial or financial relationships that could
+                                                                                                     be construed as a potential conflict of interest.
+
+Ethics statement
+                                                                                                     Publisher’s note
+     Ethical review and approval was not required for the study on
+human participants in accordance with the local legislation and                                          All claims expressed in this article are solely those of the authors
+institutional requirements. Written informed consent for participation                               and do not necessarily represent those of their affiliated organizations,
+was not required for this study in accordance with the national                                      or those of the publisher, the editors and the reviewers. Any product
+legislation and the institutional requirements.                                                      that may be evaluated in this article, or claim that may be made by its
+                                                                                                     manufacturer, is not guaranteed or endorsed by the publisher.
+
+Author contributions
+                                                                                                     Supplementary material
+    ML and ZC designed the research. ZC, PL, WZ, and JW collected
+the data. ZC, JL, XS, KL, and SL performed the statistical analysis. ML                                   The Supplementary material for this article can be found online
+and ZC wrote the paper. All authors contributed to the article and                                   at: https://www.frontiersin.org/articles/10.3389/fmicb.2023.1130446/
+approved the submitted version.                                                                      full#supplementary-material
+
+
+
+References
+  Allison, J. E., Tekawa, I. S., Ransom, L. J., and Adrain, A. L. (1996). A comparison of              Breiman, L. (2001). Random                forests.   Mach.     Learn.     45,   5–32.    doi:
+fecal occult-blood tests for colorectal-cancer screening. N. Engl. J. Med. 334, 155–160.             10.1023/A:1010933404324
+doi: 10.1056/NEJM199601183340304                                                                       Brown Kav, A., Sasson, G., Jami, E., Doron-Faigenboim, A., Benhar, I., and Mizrahi, I.
+   Altschul, S. F., Gish, W., Miller, W., Myers, E. W., and Lipman, D. J. (1990). Basic local        (2012). Insights into the bovine rumen plasmidome. Proc. Natl. Acad. Sci. U. S. A. 109,
+alignment search tool. J. Mol. Biol. 215, 403–410. doi: 10.1016/S0022-2836(05)80360-2                5452–5457. doi: 10.1073/pnas.1116410109
+  Anderson, M. J. (2001). A new method for non-parametric multivariate analysis of                     Bruni, D., Angell, H. K., and Galon, J. (2020). The immune contexture and
+variance. Austral. Ecol. 26, 32–46. doi: 10.1111/j.1442-9993.2001.01070.pp.x                         Immunoscore in cancer prognosis and therapeutic efficacy. Nat. Rev. Cancer 20,
+                                                                                                     662–680. doi: 10.1038/s41568-020-0285-7
+  Ban, E., Yoshida, Y., Wakushima, M., Wajima, T., Hamabata, T., Ichikawa, N., et al.
+(2015). Characterization of unstable pEntYN10 from enterotoxigenic Escherichia coli                    Cantalapiedra, C. P., Hernandez-Plaza, A., Letunic, I., Bork, P., and Huerta-Cepas, J.
+(ETEC) O169:H41. Virulence 6, 735–744. doi: 10.1080/21505594.2015.1094606                            (2021). eggNOG-mapper v2: functional annotation, Orthology assignments, and
+                                                                                                     domain prediction at the metagenomic scale. Mol. Biol. Evol. 38, 5825–5829. doi:
+  Bleicher, A., Schöfl, G., Rodicio, M. E. R., and Saluz, H. P. (2013). The plasmidome of            10.1093/molbev/msab293
+a Salmonella enterica serovar Derby isolated from pork meat. Plasmid 69, 202–210. doi:
+10.1016/j.plasmid.2013.01.001                                                                           Carattoli, A., Zankari, E., García-Fernández, A., Voldby Larsen, M., Lund, O., Villa, L.,
+                                                                                                     et al. (2014). In silico detection and typing of plasmids using PlasmidFinder and plasmid
+   Bolger, A. M., Lohse, M., and Usadel, B. (2014). Trimmomatic: a flexible trimmer for              multilocus sequence typing. Antimicrob. Agents Chemother. 58, 3895–3903. doi: 10.1128/
+Illumina sequence data. Bioinformatics 30, 2114–2120. doi: 10.1093/bioinformatics/                   aac.02412-14
+btu170
+                                                                                                       Chan, J. L., Wu, S., Geis, A. L., Chan, G. V., Gomes, T. A. M., Beck, S. E., et al. (2019).
+  Bortolaia, V., Kaas, R. S., Ruppe, E., Roberts, M. C., Schwarz, S., Cattoir, V., et al.            Non-toxigenic Bacteroides fragilis (NTBF) administration reduces bacteria-driven
+(2020). ResFinder 4.0 for predictions of phenotypes from genotypes. J. Antimicrob.                   chronic colitis and tumor development independent of polysaccharide A. Mucosal
+Chemother. 75, 3491–3500. doi: 10.1093/jac/dkaa345                                                   Immunol. 12, 164–177. doi: 10.1038/s41385-018-0085-5
+  Bray, F., Ferlay, J., Soerjomataram, I., Siegel, R. L., Torre, L. A., and Jemal, A. (2018).          Chen, F., Dai, X., Zhou, C. C., Li, K. X., Zhang, Y. J., Lou, X. Y., et al. (2022). Integrated
+Global cancer statistics 2018: GLOBOCAN estimates of incidence and mortality                         analysis of the faecal metagenome and serum metabolome reveals the role of gut
+worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 68, 394–424. doi: 10.3322/             microbiome-associated metabolites in the detection of colorectal cancer and adenoma.
+caac.21492                                                                                           Gut 71, 1315–1325. doi: 10.1136/gutjnl-2020-323476
+
+
+
+
+Frontiers in Microbiology                                                                       10                                                                                frontiersin.org
+Cai et al.                                                                                                                                                   10.3389/fmicb.2023.1130446
+
+
+
+
+  Cheung, A. M., Farizo, K. M., and Burns, D. L. (2004). Analysis of relative levels of              Li, D., Liu, C. M., Luo, R., Sadakane, K., and Lam, T. W. (2015). MEGAHIT: an
+production of pertussis toxin subunits and Ptl proteins in Bordetella pertussis. Infect.           ultra-fast single-node solution for large and complex metagenomics assembly via
+Immun. 72, 2057–2066. doi: 10.1128/IAI.72.4.2057-2066.2004                                         succinct de Bruijn graph. Bioinformatics 31, 1674–1676. doi: 10.1093/bioinformatics/
+                                                                                                   btv033
+  Dai, Z., Coker, O. O., Nakatsu, G., Wu, W. K. K., Zhao, L., Chen, Z., et al. (2018).
+Multi-cohort analysis of colorectal cancer metagenome identified altered bacteria across             Li, C., Sun, Y. D., Yu, G. Y., Cui, J. R., Lou, Z., Zhang, H., et al. (2020). Integrated omics
+populations and universal bacterial markers. Microbiome 6:70. doi: 10.1186/                        of metastatic colorectal Cancer. Cancer Cell 38, 734–747.e9. doi: 10.1016/j.
+s40168-018-0451-2                                                                                  ccell.2020.08.002
+  di Nicolantonio, F., Vitiello, P. P., Marsoni, S., Siena, S., Tabernero, J.,                       Li, X., Xie, Y., Liu, M., Tai, C., Sun, J., Deng, Z., et al. (2018). oriTfinder: a web-
+Trusolino, L., et al. (2021). Precision oncology in metastatic colorectal cancer -                 based tool for the identification of origin of transfers in DNA sequences of bacterial
+from biology to medicine. Nat. Rev. Clin. Oncol. 18, 506–525. doi: 10.1038/                        mobile genetic elements. Nucleic Acids Res. 46, W229–W234. doi: 10.1093/nar/
+s41571-021-00495-z                                                                                 gky352
+  di Venanzio, G., Flores-Mireles, A. L., Calix, J. J., Haurat, M. F., Scott, N. E.,                 Liu, N. N., Jiao, N., Tan, J. C., Wang, Z., Wu, D., Wang, A. J., et al. (2022). Multi-
+Palmer, L. D., et al. (2019). Urinary tract colonization is enhanced by a plasmid that             kingdom microbiota analyses identify bacterial-fungal interactions and biomarkers of
+regulates uropathogenic Acinetobacter baumannii chromosomal genes. Nat. Commun.                    colorectal cancer across cohorts. Nat. Microbiol. 7, 238–250. doi: 10.1038/
+10:2763. doi: 10.1038/s41467-019-10706-y                                                           s41564-021-01030-7
+  Dib, J. R., Wagenknecht, M., Farías, M. E., and Meinhardt, F. (2015). Strategies and               Ma, S., Shungin, D., Mallick, H., Schirmer, M., Nguyen, L. H., Kolde, R., et al. (2022).
+approaches in plasmidome studies-uncovering plasmid diversity disregarding of linear               Population structure discovery in meta-analyzed microbial communities and
+elements? Front. Microbiol. 6:463. doi: 10.3389/fmicb.2015.00463                                   inflammatory bowel disease using MMUPHin. Genome Biol. 23:208. doi: 10.1186/
+                                                                                                   s13059-022-02753-4
+  Dolejska, M., and Papagiannitsis, C. C. (2018). Plasmid-mediated resistance is going
+wild. Plasmid 99, 99–111. doi: 10.1016/j.plasmid.2018.09.010                                         Miron, B., and Kursa, W. R. R. (2010). Feature selection with the Boruta package. J.
+                                                                                                   Stat. Softw. 36, 1–13. doi: 10.18637/jss.v036.i11
+  Faivre, J., Dancourt, V., Lejeune, C., Tazi, M. A., Lamour, J., Gerard, D., et al.
+(2004). Reduction in colorectal cancer mortality by fecal occult blood screening in a                Patro, R., Duggal, G., Love, M. I., Irizarry, R. A., and Kingsford, C. (2017). Salmon
+French controlled study. Gastroenterology 126, 1674–1680. doi: 10.1053/j.gastro.                   provides fast and bias-aware quantification of transcript expression. Nat. Methods 14,
+2004.02.018                                                                                        417–419. doi: 10.1038/nmeth.4197
+ Feng, Q., Liang, S., Jia, H., Stadlmayr, A., Tang, L., Lan, Z., et al. (2015). Gut                  Pellow, D., Zorea, A., Probst, M., Furman, O., Segal, A., Mizrahi, I., et al. (2021).
+microbiome development along the colorectal adenoma-carcinoma sequence. Nat.                       SCAPP: an algorithm for improved plasmid assembly in metagenomes. Microbiome
+Commun. 6:6528. doi: 10.1038/ncomms7528                                                            9:144. doi: 10.1186/s40168-021-01068-z
+  Fondi, M., Bacci, G., Brilli, M., Papaleo, M. C., Mengoni, A., Vaneechoutte, M., et al.            Rex, D. K., Petrini, J. L., Baron, T. H., Chak, A., Cohen, J., Deal, S. E., et al. (2006).
+(2010). Exploring the evolutionary dynamics of plasmids: the Acinetobacter pan-                    Quality indicators for colonoscopy. Gastrointest. Endosc. 63, S16–S28. doi: 10.1016/j.
+plasmidome. BMC Evol. Biol. 10:59. doi: 10.1186/1471-2148-10-59                                    gie.2006.02.021
+  Fu, L., Niu, B., Zhu, Z., Wu, S., and Li, W. (2012). CD-HIT: accelerated for clustering            Rodríguez-Beltrán, J., DelaFuente, J., León-Sampedro, R., MacLean, R. C., and San
+the next-generation sequencing data. Bioinformatics 28, 3150–3152. doi: 10.1093/                   Millán, Á. (2021). Beyond horizontal gene transfer: the role of plasmids in bacterial
+bioinformatics/bts565                                                                              evolution. Nat. Rev. Microbiol. 19, 347–359. doi: 10.1038/s41579-020-00497-1
+  Gao, R., Wu, C., Zhu, Y., Kong, C., Zhu, Y., Gao, Y., et al. (2022). Integrated analysis           Roosaare, M., Puustusmaa, M., Möls, M., Vaher, M., and Remm, M. (2018).
+of colorectal Cancer reveals cross-cohort gut microbial signatures and associated                  PlasmidSeeker: identification of known plasmids from bacterial whole genome
+serum metabolites. Gastroenterology 163, 1024–1037.e9. doi: 10.1053/j.gastro.2022.                 sequencing reads. PeerJ 6:e4588. doi: 10.7717/peerj.4588
+06.069
+                                                                                                     Rozwandowicz, M., Brouwer, M. S. M., Fischer, J., Wagenaar, J. A.,
+  Ghaisas, S., Maher, J., and Kanthasamy, A. (2016). Gut microbiome in health and                  Gonzalez-Zorn, B., Guerra, B., et al. (2018). Plasmids carrying antimicrobial
+disease: linking the microbiome-gut-brain axis and environmental factors in the                    resistance genes in Enterobacteriaceae. J. Antimicrob. Chemother. 73, 1121–1137. doi:
+pathogenesis of systemic and neurodegenerative diseases. Pharmacol. Ther. 158, 52–62.              10.1093/jac/dkx488
+doi: 10.1016/j.pharmthera.2015.11.012
+                                                                                                     Sang, T., Qiu, W., Li, W., Zhou, H., Chen, H., and Zhou, H. (2020). The relationship
+  Gurung, M., Li, Z., You, H., Rodrigues, R., Jump, D. B., Morgun, A., et al. (2020). Role         between prevention and treatment of colorectal Cancer and cancerous toxin
+of gut microbiota in type 2 diabetes pathophysiology. EBioMedicine 51:102590. doi:                 pathogenesis theory basing on gut microbiota. Evid. Based Complement. Alternat. Med.
+10.1016/j.ebiom.2019.11.051                                                                        2020, 7162545–7162549. doi: 10.1155/2020/7162545
+   Hamajima, H., Matsunaga, H., Fujikawa, A., Sato, T., Mitsutake, S., Yanagita, T., et al.          Schmidt, T. S. B., Raes, J., and Bork, P. (2018). The human gut microbiome:
+(2016). Japanese traditional dietary fungus koji aspergillus oryzae functions as a                 from association to modulation. Cells 172, 1198–1215. doi: 10.1016/j.
+prebiotic for Blautia coccoides through glycosylceramide: Japanese dietary fungus koji             cell.2018.02.044
+is a new prebiotic. Springerplus 5:1321. doi: 10.1186/s40064-016-2950-6
+                                                                                                     Schmit, S. L., Edlund, C. K., Schumacher, F. R., Gong, J., Harrison, T. A., Huyghe, J. R.,
+  Hardcastle, J. D., Chamberlain, J. O., Robinson, M. H., Moss, S. M., Amar, S. S.,                et al. (2019). Novel common genetic susceptibility loci for colorectal Cancer. J. Natl.
+Balfour, T. W., et al. (1996). Randomised controlled trial of faecal-occult-blood                  Cancer Inst. 111, 146–157. doi: 10.1093/jnci/djy099
+screening for colorectal cancer. Lancet 348, 1472–1477. doi: 10.1016/S0140-6736
+                                                                                                     Smalla, K., Jechalke, S., and Top, E. M. (2015). Plasmid detection, characterization,
+(96)03386-7
+                                                                                                   and ecology. Microbiol. Spectr. 3:PLAS-0038-2014. doi: 10.1128/microbiolspec.
+  Hilpert, C., Bricheux, G., and Debroas, D. (2021). Reconstruction of plasmids by                 PLAS-0038-2014
+shotgun sequencing from environmental DNA: which bioinformatic workflow? Brief.
+                                                                                                     Smalla, K., and Sobecky, P. A. (2002). The prevalence and diversity of mobile genetic
+Bioinform. 22. doi: 10.1093/bib/bbaa059
+                                                                                                   elements in bacterial communities of different environmental habitats: insights gained
+  Huerta-Cepas, J., Szklarczyk, D., Heller, D., Hernández-Plaza, A., Forslund, S. K.,              from different methodological approaches. FEMS Microbiol. Ecol. 42, 165–175. doi:
+Cook, H., et al. (2019). eggNOG 5.0: a hierarchical, functionally and phylogenetically             10.1111/j.1574-6941.2002.tb01006.x
+annotated orthology resource based on 5090 organisms and 2502 viruses. Nucleic Acids
+                                                                                                     Smillie, C., Garcillan-Barcia, M. P., Francia, M. V., Rocha, E. P., and de la Cruz, F.
+Res. 47, D309–D314. doi: 10.1093/nar/gky1085
+                                                                                                   (2010). Mobility of plasmids. Microbiol. Mol. Biol. Rev. 74, 434–452. doi: 10.1128/
+  Hyatt, D., Chen, G. L., Locascio, P. F., Land, M. L., Larimer, F. W., and Hauser, L. J.          MMBR.00020-10
+(2010). Prodigal: prokaryotic gene recognition and translation initiation site
+                                                                                                     Suzuki, Y., Nishijima, S., Furuta, Y., Yoshimura, J., Suda, W., Oshima, K., et al. (2019).
+identification. BMC Bioinformatics 11:119. doi: 10.1186/1471-2105-11-119
+                                                                                                   Long-read metagenomic exploration of extrachromosomal mobile genetic elements in
+  Jari Oksanen, G.L.S., Guillaume Blanchet, F., Kindt, R, Legendre, P, Minchin, P.R.,              the human gut. Microbiome 7:119. doi: 10.1186/s40168-019-0737-z
+O'Hara, R.B., et al. (2022). Vegan: community ecology package. Ter Braak and
+                                                                                                     Symolon, H., Schmelz, E. M., Dillehay, D. L., and Merrill, A. H. Jr. (2004). Dietary soy
+James Weedon R package version 2.6-2. Available at: https://CRAN.R-project.org/
+                                                                                                   sphingolipids suppress tumorigenesis and gene expression in 1,2-dimethylhydrazine-
+package=vegan
+                                                                                                   treated CF1 mice and ApcMin/+ mice. J. Nutr. 134, 1157–1161. doi: 10.1093/
+  Krawczyk, P. S., Lipinski, L., and Dziembowski, A. (2018). PlasFlow: predicting                  jn/134.5.1157
+plasmid sequences in metagenomic data using genome signatures. Nucleic Acids Res.
+                                                                                                     Tomizawa, M., Shinozaki, F., Uchida, Y., Uchiyama, K., Fugo, K., Sunaoshi, T., et al.
+46:e35. doi: 10.1093/nar/gkx1321
+                                                                                                   (2017). Diffusion-weighted whole-body imaging with background body signal
+  Langfelder, P., and Horvath, S. (2008). WGCNA: an R package for weighted correlation             suppression/T2 image fusion for the diagnosis of colorectal polyp and cancer. Exp. Ther.
+network analysis. BMC Bioinformatics 9:559. doi: 10.1186/1471-2105-9-559                           Med. 13, 639–644. doi: 10.3892/etm.2016.3981
+ Langmead, B., and Salzberg, S. L. (2012). Fast gapped-read alignment with bowtie 2.                 Truong, D. T., Franzosa, E. A., Tickle, T. L., Scholz, M., Weingart, G., Pasolli, E., et al.
+Nat. Methods 9, 357–359. doi: 10.1038/nmeth.1923                                                   (2015). MetaPhlAn2 for enhanced metagenomic taxonomic profiling. Nat. Methods 12,
+                                                                                                   902–903. doi: 10.1038/nmeth.3589
+   Lee, M. W., Pourmorady, J. S., and Laine, L. (2020). Use of fecal occult blood testing
+as a diagnostic tool for clinical indications: A systematic review and Meta-analysis. Am.            Vogtmann, E., Hua, X., Zeller, G., Sunagawa, S., Voigt, A. Y., Hercog, R., et al.
+J. Gastroenterol. 115, 662–670. doi: 10.14309/ajg.0000000000000495                                 (2016). Colorectal Cancer and the human gut microbiome: reproducibility with
+
+
+
+
+Frontiers in Microbiology                                                                     11                                                                                frontiersin.org
+Cai et al.                                                                                                                                                      10.3389/fmicb.2023.1130446
+
+
+
+
+whole-genome shotgun sequencing. PLoS One 11:e0155362. doi: 10.1371/journal.                            Yinhang, W., Wei, W., Jing, Z., Qing, Z., Yani, Z., Yangyanqiu, W., et al. (2022).
+pone.0155362                                                                                          Biological roles of toll-like receptors and gut microbiota in colorectal cancer. Future
+                                                                                                      Microbiol. 17, 1071–1089. doi: 10.2217/fmb-2021-0072
+  Wein, T., Wang, Y., Hülter, N. F., Hammerschmidt, K., and Dagan, T. (2020).
+Antibiotics interfere with the evolution of plasmid stability. Curr. Biol. 30, 3841–3847.e4.            Zamani, S., Taslimi, R., Sarabi, A., Jasemi, S., Sechi, L. A., and Feizabadi, M. M. (2019).
+doi: 10.1016/j.cub.2020.07.019                                                                        Enterotoxigenic Bacteroides fragilis: A possible etiological candidate for bacterially-
+                                                                                                      induced colorectal precancerous and cancerous lesions. Front. Cell. Infect. Microbiol.
+  Wirbel, J., Pyl, P. T., Kartal, E., Zych, K., Kashani, A., Milanese, A., et al. (2019).
+                                                                                                      9:449. doi: 10.3389/fcimb.2019.00449
+Meta-analysis of fecal metagenomes reveals global microbial signatures that are
+specific for colorectal cancer. Nat. Med. 25, 679–689. doi: 10.1038/                                    Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P. I., et al. (2014).
+s41591-019-0406-6                                                                                     Potential of fecal microbiota for early-stage detection of colorectal cancer. Mol. Syst. Biol.
+                                                                                                      10:766. doi: 10.15252/msb.20145645
+  Wu, Y., Yang, X., Jiang, G., Zhang, H., Ge, L., Chen, F., et al. (2021). 5'-tRF-GlyGCC:
+a tRNA-derived small RNA as a novel biomarker for colorectal cancer diagnosis.                          Zhang, H., Yohe, T., Huang, L., Entwistle, S., Wu, P., Yang, Z., et al. (2018). dbCAN2:
+Genome Med. 13:20. doi: 10.1186/s13073-021-00833-x                                                    a meta server for automated carbohydrate-active enzyme annotation. Nucleic Acids Res.
+                                                                                                      46, W95–W101. doi: 10.1093/nar/gky418
+  Yachida, S., Mizutani, S., Shiroma, H., Shiba, S., Nakajima, T., Sakamoto, T., et al.
+(2019). Metagenomic and metabolomic analyses reveal distinct stage-specific                             Zheng, W., Zhao, S., Yin, Y., Zhang, H., Needham, D. M., Evans, E. D., et al. (2022).
+phenotypes of the gut microbiota in colorectal cancer. Nat. Med. 25, 968–976. doi:                    High-throughput, single-microbe genomics with strain resolution, applied to a human
+10.1038/s41591-019-0458-7                                                                             gut microbiome. Science 376:eabm1483. doi: 10.1126/science.abm1483
+  Yang, Y., du, L., Shi, D., Kong, C., Liu, J., Liu, G., et al. (2021). Dysbiosis of human gut          Zhou, F., and Xu, Y. (2010). cBar: a computer program to distinguish plasmid-derived
+microbiome in young-onset colorectal cancer. Nat. Commun. 12:6757. doi: 10.1038/                      from chromosome-derived sequence fragments in metagenomics data. Bioinformatics
+s41467-021-27112-y                                                                                    26, 2051–2052. doi: 10.1093/bioinformatics/btq299
+
+
+
+
+Frontiers in Microbiology                                                                        12                                                                                frontiersin.org
+

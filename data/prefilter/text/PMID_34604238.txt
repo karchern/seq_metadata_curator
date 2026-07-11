@@ -1,0 +1,812 @@
+                                                                                                                                             ORIGINAL RESEARCH
+                                                                                                                                      published: 17 September 2021
+                                                                                                                                      doi: 10.3389/fcell.2021.736994
+
+
+
+
+                                            Microbiomes and Resistomes in
+                                            Biopsy Tissue and Intestinal Lavage
+                                            Fluid of Colorectal Cancer
+                                            Yumeng Yuan 1† , Yihuan Chen 2† , Fen Yao 3,4† , Mi Zeng 1 , Qingdong Xie 1 ,
+                                            Muhammad Shafiq 1 , Sohail Muhammad Noman 1 and Xiaoyang Jiao 1*
+                                            1
+                                             Department of Cell Biology and Genetics, Shantou University Medical College, Shantou, China, 2 The Second Affiliated
+                                            Hospital of Shantou University Medical College, Shantou, China, 3 Guangdong Provincial Key Laboratory of Infectious
+                                            Diseases and Molecular Immunopathology, Shantou, China, 4 Department of Pharmacology, Shantou University Medical
+                                            College, Shantou, China
+
+
+                                            Aim: The gut microbiome plays a crucial role in colorectal cancer (CRC) tumorigenesis,
+                           Edited by:
+                      Daniele Vergara,      but compositions of microorganisms have been inconsistent in previous studies due to
+            University of Salento, Italy    the different types of specimens. We investigated the microbiomes and resistomes of
+                       Reviewed by:         CRC patients with colonic biopsy tissue and intestinal lavage fluid (IVF).
+                     Francesca Pirini,
+    Laboratorio di Bioscienze, Istituto     Methods: Paired samples (biopsy tissue and IVF) were collected from 20 patients
+Scientifico Romagnolo per lo Studio e
+                                            with CRC, and their gut microbiomes and resistomes were measured by shotgun
+     la Cura dei Tumori (IRCCS), Italy
+                   M. Nazmul Hoque,         metagenomics. Clinical and laboratory data were recorded. Bioinformatics (KneadData,
+         Bangabandhu Sheikh Mujibur         Kraken2, and FMAP) and statistical analysis were done using the R (v4.0.2) software.
+       Rahman Agricultural University,
+                          Bangladesh        Results: Bacterial diversity in IVF was higher than in tissue samples, and bacterial
+                                Yu Xia,
+            Jiangnan University, China
+                                            operational taxonomic units (OTUs) were 2,757 in IVF vs. 197 in tissue. β-diversity
+                  *Correspondence:
+                                            showed distinct clusters in paired samples. The predominant bacteria in IVF were
+                         Xiaoyang Jiao      phylum Proteobacteria, while the predominant bacteria of tissue were phylum
+                    xyjiao@stu.edu.cn       Actinobacteria. Twenty-seven representative bacteria were selected to form six bacterial
+     † These authors have contributed
+                                            clusters, which showed only Firmicutes Cluster 1, and the Bacteroidetes Cluster 1 were
+                   equally to this work
+                                            significantly more abundant in the IVF group than those in the tissue group (p < 0.05).
+                    Specialty section:      The Firmicutes Cluster 2, Bacteroidetes Cluster 2, Pathogen Cluster, and Prevotella
+         This article was submitted to
+                                            Cluster were not significantly different between IVF and tissue (p > 0.05). Correlation
+    Molecular and Cellular Oncology,
+                a section of the journal    analysis revealed that some bacteria could have effects on metabolic and inflammatory
+  Frontiers in Cell and Developmental       parameters of CRC patients. A total of 1,295 antibiotic resistance genes (ARGs) were
+                                Biology
+                                            detected in the gut microbiomes, which conferred multidrug resistance, as well as
+            Received: 06 July 2021
+        Accepted: 19 August 2021
+                                            resistance to tetracycline, aminoglycoside, and more. Co-occurrence patterns revealed
+     Published: 17 September 2021           by the network showed mainly ARG-carrying bacteria to be similar between IVF and
+                              Citation:     tissue, but leading bacteria located in the hub differed between IVF and tissue.
+      Yuan Y, Chen Y, Yao F, Zeng M,
+     Xie Q, Shafiq M, Noman SM and          Conclusion: Heterogeneity of microbiota is particularly evident when studied with
+           Jiao X (2021) Microbiomes        IVF and tissue samples, but bacterial clusters that have close relationships with CRC
+     and Resistomes in Biopsy Tissue
+            and Intestinal Lavage Fluid     carcinogenesis are not significantly different, using IVF as an alternative to tissue for gut
+                 of Colorectal Cancer.      microbiome, and resistome assessment may be a feasible method.
+      Front. Cell Dev. Biol. 9:736994.
+      doi: 10.3389/fcell.2021.736994        Keywords: colorectal cancer, intestinal lavage fluid, gut microbiome, resistome, bacterial cluster
+
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                 1                                      September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                           Microbiome and Resistome in CRC
+
+
+
+
+INTRODUCTION                                                                   procedure is invasive and has difficultly being accepted by the
+                                                                               participants. Thus, the clinical applicability of biopsy tissue as a
+Colorectal cancer (CRC) represents approximately 10% of the                    screening method for CRC is significantly reduced. In addition,
+global cancer incidence, and also is the third most diagnosed                  the spatial organization of bacteria along the gastrointestinal
+cancer (10.2% of total cases) and the second leading cause                     tract is highly variable (Donaldson et al., 2016), causing microbial
+of cancer death (9.2% of total cases) worldwide (Vogelstein                    diversity to depend, to a large extent, on the anatomical site
+et al., 2013; Bray et al., 2018). Despite extensive effort, the                sampled rather than the entire intestine. Thus, considerable
+carcinogenesis of CRC is still not fully understood. Currently,                cohort-to-cohort differences have been reported among mucosal
+the role of the intestinal microbiome in the pathogenesis of                   microbial taxa from CRC patients (Zeller et al., 2014; Burns
+CRC has become increasingly important. The gut microbiota                      et al., 2015; Nakatsu et al., 2015). Bowel preparation before
+or its metabolites is a key environmental factor influencing                   biopsy may change the microbiota composition. Decreases
+colon tumorigenesis, which is usually associated with altered                  in richness and microbial structure similarity after extensive
+microbial diversity, increased abundance of pathogenic microbes,               colonic lavage have also been observed (Harrell et al., 2012).
+or depletion of protective microbes (Wong and Yu, 2019). The                   Intestinal lavage fluid (IVF) is obtained from patients preparing
+intimate crosstalk between the gut microbial community and the                 for laparoscopic colorectal resection and is very easy to aspirate,
+epithelium layer of the host is a critical factor for cell proliferation       through a suction channel in the colonoscope, directly into a
+and differentiation, gene expression in host epithelial cells,                 collecting tube. Some species of mucosa-associated microbiota
+and regulation of inflammation (Hasegawa et al., 2007; Arthur                  (either on the surface or in cavities) may be obtained after a few
+et al., 2014). Recent studies revealed that various bacteria,                  intestinal rinses (Shen et al., 2020). A previous study showed
+including Fusobacterium sp. (Fn), Escherichia coli, Enterococcus               that IVF contains higher microbial counts than corresponding
+faecalis, Streptococcus gallolyticus, and enterotoxigenic Bacteroides          biopsy samples, suggesting that IVF better reflects the microbial
+fragilis, are microorganisms that are closely associated with CRC              composition of a mucosal biopsy (Watt et al., 2016). Although
+carcinogenesis (Yoon et al., 2017). Therefore, characterization                detection of microbiota in IVF has several advantages in
+of the tumor microbiome is an essential step in unraveling the                 mirroring mucosa-associated microbiota (Shen et al., 2020),
+effects of bacteria on cancer hallmarks (Nejman et al., 2020).                 data correlating tumor tissue with microbiota from IVF are
+    Presently, the role of microorganisms in CRC carcinogenesis                sparse. In this study, both tumor tissue and IVF samples were
+has not been unified nor conclusive (Flemer et al., 2017).                     collected simultaneously, and multifaceted comparisons were
+Because of the complex network and interaction between                         made between the two sample types.
+microorganisms, intestinal microbiota may have a greater
+ability to influence the intestinal microenvironment than a
+single bacterium. Therefore, a study on intestinal microbiota                  MATERIALS AND METHODS
+may provide more information on CRC carcinogenesis.
+However, current studies in understanding intestinal microbiota                Patients
+complexity and dynamics are inconsistent (Kostic et al., 2012;                 The Shantou University Medical College Institutional Ethics
+Zeller et al., 2014; Flemer et al., 2017). The variability may be              Board approved the study including all procedures (participant
+due to different detection methodologies, tumor location, or                   recruitment and all experimental protocols). Patients who
+sampling stages. There are currently three main types of samples               were selected from the Second Affiliated Hospital of Shantou
+for intestinal microbiome detection: feces, mucosal tissue, and                University provided written informed consent. Pathological
+intestinal lavage samples. As feces samples are being acquired                 tests diagnosed 20 CRC patients. Patients with a history of
+relatively easily, most studies assess gut microbial diversity                 polyps, adenomas, or non-primary CRC were excluded. None
+through analysis of fecal samples. However, feces, reflecting the              of the patients received antibiotics before sample collection. All
+fecal–luminal microbiota, are largely influenced and continually               participants were Chinese living in Guangdong Province, China.
+changed by various factors, including diet, time of sampling, and              No antibiotics or prebiotics were used in these patients before the
+antibiotic use. This instability largely affects their accuracy in             sample collection.
+mirroring the microbial structure. Moreover, microbial diversity
+at the mucosal surface is hard to reflect using fecal samples                  Sample Collection
+(Zoetendal et al., 2002; Eckburg et al., 2005). Studies have                   All participants underwent a similar bowel cleansing procedure.
+confirmed significant differences existing in microbial structure              For IVF collection, the patient fasted for 1 day before sample
+and community composition between normal fecal and mucosal                     collection. Then, all patients were given a 500-ml enema, and
+samples and found fecal microbiota to be less representative of                all liquid discharged from the intestine was collected. Samples
+disease-associated dysbiosis than their mucosal counterparts,                  were centrifuged (4◦ C, 10,000 × g, 10 min) within 2 h. The
+especially among CRC patients (Zoetendal et al., 2002; Eckburg                 sediments were collected and stored at −80◦ C. Bowel preparation
+et al., 2005; Chen et al., 2012). Mucosal biopsies display greater             was good in all subjects in the study. Tissue samples [biopsy
+microbial diversity, taxonomic and phylogenetic differences                    (Bx)] were collected from 20 participants after CRC screening
+(Durban et al., 2011; Li et al., 2015), and contrasting dominant               colonoscopy. Subsequent histological analysis was performed
+bacterial populations (Zoetendal et al., 2002). However, obtaining             on all participants. Paired samples [biopsy (Bx)] and IVF were
+a mucosa sample requires bowel preparation and biopsy. The                     collected from the 20 CRC participants.
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org          2                                  September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                 Microbiome and Resistome in CRC
+
+
+
+
+Shotgun Metagenomic Detection for                                       samples were selected to build the network using the software
+Tumor Tissue and Intestinal Lavage Fluid                                Gephi (v 0.9.2).
+                                                                           Co-occurring network analysis using the Spearman
+Bacterial genetic DNA was isolated from tissue/IVF samples
+                                                                        rank correlation was conducted using Hmisc (Harrell,
+using an AllPrep DNA/RNA kit (Qiagen, German). A DNA
+                                                                        Vanderbilt University School of Medicine, Nashville, TN,
+quality test was performed by using Qubit dsDNA Assay
+                                                                        United States) within the R software package, using the
+KitinQubit 2.0 Fluorometer (Life Technologies, CA,
+                                                                        relative abundance of different types of bacterial genera.
+United States), and then the qualified DNA samples with
+                                                                        Each co-occurring pair had an absolute Spearman rank
+an OD value between 1.8 and 2.0 were accepted, and about
+                                                                        correlation above 0.4, with a significance level under 0.05.
+1 µg of DNA from each sample was used to construct a library.
+                                                                        The results were transformed into links between two
+Sequencing libraries were generated using NEB NextUltra
+                                                                        bacterial taxa in the co-occurrence network. Co-occurring
+DNA Library Prep Kit for Illumina (NEB, United States).
+                                                                        networks were visualized using Gephi (v 0.9.2). Spearman rank
+PCR products were purified (AMPure XP system), and
+                                                                        correlation analysis between ARGs and bacterial communities
+libraries were analyzed for size distribution by Agilent2100
+                                                                        was performed in R with the psych package. Univariate
+Bioanalyzer and quantified using qPCR. Water was used
+                                                                        analysis using a Mann–Whitney U-test was performed to
+as the negative control. The clustering of the index-coded
+                                                                        assess associations between ARGs and gut microbiota and
+samples was performed on a cBot Cluster Generation System.
+                                                                        clinical factors.
+DNA samples was used for shotgun library construction.
+Subsequently, Illumina high-throughput sequencing was
+performed with the NovaSeq 6000 platform (paired-end
+                                                                        RESULTS
+sequencing, PE150 × 2). The bacterial genomic sequences
+identified in this study were deposited in the NCBI Sequence
+Read Archive with accession numbers (PRJNA754518), which
+                                                                        Clinical and Demographic Information of
+can be shared with readers.                                             Patients
+                                                                        Twenty newly diagnosed CRC patients were enrolled in our
+                                                                        study, including 10 males and 10 females, and their average
+Bioinformatics Analysis Workflow                                        age was 58.40 ± 2.36 years. Tumors of four (20%) patients
+For subsequent bioinformatics analysis, the KneadData                   were in the proximal colon, tumors of eight (40%) patients
+software was used for quality control of raw data (based on             were located in the distal colon, and tumors of eight (40%)
+Trimmomatic) and de-hosting (based on Bowtie2). Before and              patients were in the rectum. Fourteen (70%) patients were
+after KneadData, FastQC was used to detect the rationality              in I–II stage of tumor node metastasis (TNM I–II), and six
+and effect of quality control, and tags were clustered to OTU           (30%) patients were in TNM III–IV. Seven (35%) patients
+at 97% sequence similarity. Taxonomic ranks were assigned               had hypertension. The tumor marker CA-19-9 was significantly
+to the OTU representative sequence using the Kraken2. The               higher in CRC patients (155.09 ± 585.59; reference range 0–
+diversity indices were calculated by the R software (v4.0.2).           37 U/ml). Other tumor markers and biochemistry parameters
+Alpha diversity, beta diversity, and the different species              in CRC patients were not significantly different compared with
+screening were analyzed based on OTU and taxonomic ranks.               reference range (Table 1).
+Starting from clean reads with host genes removed, FMAP
+software was used to compare and annotate the reads of                  Comparison of Gut Bacterial
+each sample with the antibiotic resistance gene database                Communities Between Intestinal Lavage
+(CARD) to check for the ARGs conferring resistance to
+                                                                        Fluid and Tissue Samples
+aminoglycoside, tetracycline, beta-lactam, colistin, fosfomycin,
+                                                                        In this study, we analyzed a total of 20 paired tissue and
+fusidic acid, macrolide, nitroimidazole, oxazolidinone, phenicol,
+                                                                        IVF samples, with each pair being taken from one subject.
+quinolone, rifampicin, sulfonamide, trimethoprim, and
+                                                                        After filtering raw data with the criteria, we obtained a
+glycopeptide antibiotics.
+                                                                        dataset consisting of 350,606,294 high-quality gene sequence
+                                                                        reads, with an average of 8,765,157 (n = 40) sequences per
+Statistical Analyses                                                    sample. Within the dataset, we identified a total of 2,758
+Mann–Whitney U (non-parametric) and Dunn’s tests were                   OTUs, based on 97% sequence similarity (equal to bacterial
+employed to analyze the differences in the abundance                    species level), with an average of 323.35 ± 386.37(n = 40)
+between two groups for non-normally distributed data.                   OTUs per sample.
+Data were analyzed using the R software (v4.0.2), SPSS 23.0
+software, and p-values represent two-sided statistical tests.           Diversity and Taxonomical
+All graphics were made with GraphPad Prism (v 8.0.2) and                Measurements of the Microbiome Data
+R (v4.0.2). Spearman’s correlation analysis was employed                Comparisons of alpha and beta diversity were performed between
+to assess associations between ARG subtypes and bacterial               the two types of samples. Alpha diversity includes Observed
+species. Pairs with thresholds of correlation coefficient >0.4,         species, Chao, Ace, Shannon, and Simpson indices. Shannon’s
+p < 0.05, and the two items occurring in more than half of the          diversity and index were similar between the two groups, while
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org   3                               September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                 Microbiome and Resistome in CRC
+
+
+
+TABLE 1 | Clinical characteristics of participants.
+
+Indexes                                                                       Tumor patients                                                Reference range
+
+Age (years)                                                                       58.40 ± 2.36
+Gender
+Female                                                                             10 (50%)
+Male                                                                               10 (50%)
+Location of tumor
+Proximal colon                                                                      4(20%)
+Distal colon                                                                        8 (40%)
+Rectum                                                                              8 (40%)
+TNM
+0–II                                                                               14 (70%)
+III–IV                                                                              6 (30%)
+Blood pressure
+Hypertension                                                                        7 (35%)
+Normotension                                                                       13 (65%)
+LNM
+Yes                                                                                 6 (30%)
+No                                                                                 14 (70%)
+BMI, kg/m2                                                                        22.68 ± 3.53
+Laboratory parameters (M ± Q)
+Glu, mmol/L                                                                       6.14 ± 1.50                                                   3.90–6.10
+T-CH, mmol/L                                                                      4.56 ± 0.63                                                   3.10–5.71
+TG, mmol/L                                                                        1.81 ± 0.35                                                   0.58–1.70
+HDL, mmol/L                                                                       1.25 ± 0.26                                                   0.91–1.55
+LDL, mmol/L                                                                       2.77 ± 0.47                                                   2.07–3.12
+CEA, µg/L                                                                         4.39 ± 5.97                                                      0–5
+CA-19-9, U/ml                                                                 155.09 ± 585.59                                                     0–37
+TBA, µmol/L                                                                       4.78 ± 4.87                                                     0–10
+LDH, U/L                                                                       180.30 ± 46.00                                                  120.0–250.0
+ADA, U/L                                                                          10.05 ± 3.08                                                    0–25
+NEUT#, 109 /L                                                                     4.40 ± 1.49                                                    1.8–6.3
+LY#, 109 /L                                                                       1.52 ± 0.44                                                    1.1–3.2
+PLT, 109 /L                                                                    275.45 ± 78.40                                                    125–350
+NLR                                                                               3.35 ± 2.28
+PLR                                                                            199.43 ± 90.07
+
+TNM, tumor–node–metastasis; LNM, lymph node metastasis; BMI, body mass index; Glu, glucose; T-CH, total cholesterol; TG, triglyceride; HDL, high-density
+lipoprotein cholesterol; LDL, low-density lipoprotein cholesterol; CEA, carcinoembryonic antigen; CA199, carbohydrate antigen 19-9; TBA, total bile acid; LDH,
+lactate dehydrogenase; ADA, adenosine deaminase; NEUT#, neutrophils; LY#, lymphocyte; PLT, platelet count; NLR, neutrophil–lymphocyte ratio; PRL, platelet-to-
+lymphocyte ratio.
+
+
+
+
+Simpson’s diversity and index, although insignificant, tended to                  bacterial species distributions between tissue and normal IVF
+be higher in the tissue group than in the IVF group (p > 0.05).                   groups. Our results showed that microflora clustered strongly by
+The higher the Simpson index, the lower the bacterial diversity.                  samples. Paired samples (tissue vs. IVF) of the 20 subjects formed
+Our results suggested that the gut microbiome had higher                          distinct clusters at the family level. Alpha and beta diversities in
+bacterial diversity in IVF than in tissue samples. The Chao index                 the two sample groups are shown in Figure 1B.
+(species richness) was higher in IVF than in tissue (p < 0.05),
+while equitability and Pielou evenness were significantly lower
+in IVF than in tissue (p < 0.05) (617.35, 0.006, and 0.243 in
+                                                                                  Comparison of Bacteria at the Phyla,
+IVF vs. 29.35, 0.236, and 0.596 in the tissue group, respectively),               Genus, and Species Levels Between
+and Good’s coverage demonstrated no statistical differences                       Intestinal Lavage Fluid and Tissue
+between the two groups (Figure 1A). Beta diversity was analyzed                   This study also evaluated the similarity (or dissimilarity) of taxa
+by the QIIME software (v1.80) to reveal the differences in                        in IVF and tissue samples. We performed taxonomical analysis
+species complexity. PCoA performed on the Bray–Curtis distance                    on the 2,757 OTUs in IVF and 197 OTUs in tissue, excluding the
+index, measured in unannotated OTUs, revealed distinguishing                      unclassified OTUs. Among the classified OTUs, we identified 19
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org             4                                     September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                            Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 1 | (A) Boxplots represent the indices of observed species. Chao, equitability, Pielou, Shannon’s diversity, and Simpson’s diversity indices in the IVF and
+  tissue groups. IVF, intestinal lavage fluid; tissue, tumor tissue. (B) Beta diversity between the two groups. PCoA analyses. The abscissa is a principal component, the
+  ordinate is another principal component, and the percentage on the coordinate axis indicates the contribution of the two principal components to the sample
+  difference.
+
+
+
+phyla, 42 classes, 100 orders, 221 families, 859 genera, and 2,747                      structure that could be more informative than abundance
+species in IVF, in contrast to the 11 phyla, 21 classes, 33 orders,                     differences of individual taxa (Claesson et al., 2012; Flemer
+52 families, 102 genera, and 197 species in the tissue group.                           et al., 2017). According to previous studies and the literature
+   First, we studied the differences between the two groups                             analyses, we selected 27 representative bacteria that play
+of samples at the top 10 phyla level by Dunn’s test. We                                 crucial roles in CRC pathogenesis to determine which bacterial
+identified six phyla that were significantly different between the                      clusters were the primary drivers of the microbiome (either
+two groups. Phyla Proteobacteria and Verrucomicrobia were                               in IVF or in tissue samples). First, the Spearman correlation
+higher in IVF, while Bacteroidetes, Actinobacteria, Synergistetes,                      coefficient was calculated, and according to the correlation
+and Planctomycetes were higher in tumor tissue (p < 0.05).                              coefficient, the R language was used for cluster heatmap analysis.
+Fusobacteria tended to be higher in tissue than in IVF                                  Six robust CAGs or bacterial clusters in the OTU dataset
+(p > 0.05). In the top 10 genera, Escherichia, Citrobacter, and                         were identified, including Bacteroidetes1, Bacteroidetes 2,
+Acinetobacter were higher in IVF, and Tetrasphaera, Alcanivorax,                        Firmicutes1, Firmicutes 2, Pathogen Cluster, and Prevotella
+and Paeniglutamicibacter were higher in tumor tissue. In the                            Cluster (Flemer et al., 2017) (Figure 3A).
+top 10 bacteria species detected, there were seven species that                            Then, the abundance of each cluster was compared between
+were significantly different between the two groups. Escherichia                        the two groups. Our results showed that Firmicutes Cluster 1 and
+coli, Prevotella copri, and Citrobacter freundii were higher in                         Bacteroidetes Cluster 1 were significantly more abundant in the
+IVF, while Tetrasphaera japonica, Alcanivorax hongdengensis,                            IVF group than those in the tissue group (p < 0.05), Firmicutes
+Paeniglutamicibacter antarcticus, and Bacteroides dorei were                            Cluster 2 tended to be more abundant in the IVF group than
+higher in tissue. Klebsiella pneumoniae was insignificantly higher                      those in the tissue group, but the difference was insignificant.
+in IVF, and Bacteroides fragilis and Bacteroides vulgatus were                          Conversely, Bacteroidetes 2, Pathogen Cluster, and Prevotella
+insignificantly higher in tissue. Comparisons between the two                           Cluster tended to be less abundant in the IVF group than those in
+samples of the top 10 bacterial phyla, genera, and species are                          the tissue group, but the difference was not statistically significant
+shown in Figure 2.                                                                      (p > 0.05) (Figures 3B,C).
+                                                                                           In order to determine which bacterial taxa are the main
+                                                                                        drivers of IVF and tissue microbiota, linear discriminant
+Bacterial Co-abundance Groups in                                                        analysis (LDA) was used to calculate the effect size of different
+Intestinal Lavage Fluid and Tissue of                                                   bacterial taxa. An LDA > 2 indicates significant differences
+Colorectal Cancer Patients                                                              among species, and the larger the LDA, the greater the species
+Co-abundance groups (CAGs) resemble the previously                                      difference. In the phylogenetic tree, the circle radiating from the
+formulated concept of enterotypes, which reflect community                              inside to the outside represents the classification level from the
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                   5                                        September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                             Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 2 | Histogram of IVF and tissue at the phylum, genus, and species levels. IVF, intestinal lavage fluid; tissue, tumor tissue. ∗∗∗ p < 0.001, ∗∗ p < 0.01,
+  ∗ p < 0.05.
+
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                    6                                        September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                            Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 3 | (A) Hierarchical Ward-linkage clustering based on the Pearson correlation coefficients of the relative abundance of operational taxonomic units in IVF
+  and tissue microbiota of 20 individuals with colorectal cancer (CRC). Bacterial clusters were defined based on the clusters in the vertical tree and named after their
+  most notable characteristic. Column color coding is according to the legend below. The right shows the most abundant bacterial genera, and the most strongly
+  connected genera in each bacterial cluster (i.e., genera with the highest numbers of significant positive correlations with other members of each respective group)
+  are listed. (B) Boxplots of the relative abundances of the six co-abundance groups (CAGs) of bacterial clusters, **p < 0.01. (C) Hierarchical Ward-linkage clustering
+  based on the Pearson correlation coefficients of the relative abundance of CAGs in CRC samples (20 individuals).
+
+
+
+phylum to the genus. Each node represents a species, and the                            that play a crucial role in tissue. The dominant bacteria in
+diameter of each small circle was proportional to the relative                          IVF (LDA > 4) were Proteobacteria (phylum level), mainly
+abundance of the taxon. The yellow nodes indicate that the                              Betaproteobacteria and Gammaproteobacteria (class level);
+differences among the two groups were not significant, the red                          Pseudomonadales, Burkholderiales, and Enterobacterales (order
+nodules represent the main bacteria that play an important                              level); Moraxellaceae, Comamonadaceae, and Enterobacteriaceae
+role in IVF, and the green nodules represent the bacteria                               (family level); Acinetobacter, Citrobacter, and Escherichia (genera
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                   7                                         September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                      Microbiome and Resistome in CRC
+
+
+
+level), and Escherichia coli (species level). On the other hand, the       clusters that had the most influence on signaling pathways,
+dominant bacteria of tissue (LDA > 4) were Actinobacteria                  both of which had a close association with the signaling
+and Synergistetes (phyla), mainly Actinobacteria and                       pathways connected with RNA degradation, D-glutamine, and D-
+Synergistia (class); Micrococcales and Oceanospirillales (order);          glutamate metabolism, ribosome, valine, leucine and isoleucine
+Intrasporangiaceae, Alcanivoracaceae, and Synergistaceae                   biosynthesis, D-alanine metabolism, and lipoic acid metabolism.
+(family); Tetrasphaera and Alcanivorax (genera), and T. japonica,          In addition, Bacteroidetes 1 was related to pantothenate and
+and A. hongdengensis (species). Our results indicate that the              CoA biosynthesis, and Firmicutes 1 was related to beta-lactam
+dominant bacteria in IVF are different from those in tissue (LDA           resistance. On the contrary, Bacteroidetes 2 and Prevotella
+score histogram and the evolutionary branching plot are shown              Clusters were negatively associated with cationic antimicrobial
+in Figures 4A,B).                                                          peptide (CAMP) resistance. Pathogen Cluster was negatively
+                                                                           associated with ascorbate and alternate metabolism (Figure 5C).
+
+Correlation of Bacterial Communities
+and Clinical Parameters
+To study the influence of bacteria or bacterial clusters on
+                                                                           Identification of Operational Taxonomic
+parameters reflecting patient disease characteristics, we identified       Units That Are Associated With
+the associations between bacteria genera and the following                 Antibiotic Resistance Genes
+confounding factors: body mass index (BMI), metabolic                      A total of 1,295 ARGs were detected in the gut microbiomes. We
+parameters, including total bile acid (TBA), glucose, and low-             selectively studied the top 100 ARGs based on their abundance,
+density lipoprotein (LDL)/high-density lipoprotein (HDL),                  and matched each resistance gene type to its corresponding
+inflammatory parameters, including neutrophils, and tumor                  antibiotic, then summarized the relative abundance of types
+markers such as CA-19-9 and CEA. Neutrophil count was                      resistant to the same antibiotic. The subtypes (>5) belong
+positively correlated with Bifidobacterium bifidum, Prevotella             to the multidrug resistance types (27), followed by resistance
+nigrescens, B. dorei, Bacteroides thetaiotaomicron, Parvimonas             to aminoglycosides (12), tetracycline (10), peptide antibiotics
+micra, Peptostreptococcus stomatis, Fusobacterium nucleatum,               (8), dual drugs (6), and fluoroquinolone antibiotics (5). Our
+Fusobacterium hwasookii, Alloprevotella tannerae, Prevotella               results showed that ARGs of multidrug resistance, tetracycline,
+intermedia, Bacteroides ovatus, Pyramidobacter piscolens, and              and aminoglycosides were the dominant types in the human
+Prevotella multiformis (p < 0.05). BMI index was positively                gut. Among all ARGs, VatI, MdtE, TetQ, ErmB, AAC(3)-
+correlated with B. bifidum, P. nigrescens, P. multiformis,                 IIa, MphA, MdtF, Sul1,TolC, PmrE, BaeR, PmrF, AcrE, CRP,
+and B. ovatus (p < 0.05); TBA was positively correlated                    MdtP, MdtM, bacA, MsbA, MdtB, and ErmF were the top
+with B. fragilis/dorei, P. micra, P. stomatis, F. hwasookii, and           20 ARGs in both IVF and tissue. We then compared ARG
+A. tannerae (p < 0.05); glucose (Glu) and HDL were found                   richness between IVF and tissue samples based on the
+to negatively correlate with P. copri, Fusobacterium varium,               number of subtypes and total abundance for each sample.
+Clostridium perfringens, B. dorei, Bilophila wadsworthia,                  Procrustes analysis showed that ARG subtypes had significant
+P. micra, and Clostridium symbiosum (p < 0.05); and tumor                  associations with microbial species. In IVF, ARG-carrying
+marker CA-19-9 was found to be negatively correlated with                  bacteria mainly were Bacteroides (fragilis/vulgatus), Citrobacter
+P. copri and B. bifidum, but positively correlated with B. vulgatus,       (freundii/complex_sp._CFNIH9/youngae), E. coli, K. pneumoniae,
+Erysipelatoclostridium ramosum, and Parabacteroides_sp._CT06               P. copri, and Tepidimonas fonticaldi. While in the tissue, the most
+(p < 0.05). CEA was positively correlated with P. nigrescens and           ARG-carrying bacteria were B. vulgatus, Colwellia marinimaniae,
+B. fragilis (p < 0.05). Our results suggest that some intestinal           P. antarcticus, E. coli, A. hongdengensis, B. thetaiotaomicron,
+bacteria could influence the metabolic and inflammatory                    P. piscolens, and T. japonica. Our results indicate that the main
+parameters of CRC patients. Conversely, other bacteria had no              ARG-carrying bacteria, i.e., Bacteroides and E. coli are similar
+significant influence (Figure 5A).                                         between IVF and tissue.
+    The correlation between bacterial clusters and patient                     We then investigated the co-occurrence patterns between
+characteristics was also analyzed. TBA was positively correlated           ARG types and microbial taxa using the network analysis
+with Bacteroidetes 1, Bacteroidetes 2, and Pathogen Cluster                approach. Pairs with Spearman r > 0.4 and p < 0.05 were
+(p < 0.01). Neutrophil count was positively correlated with                used to stand for co-occurrence patterns. Bacterial genera
+Bacteroidetes 1, Pathogen Cluster, and Prevotella Cluster                  were speculated as possible ARG-type hosts based on co-
+(p < 0.05); Pathogen Cluster and Prevotella Cluster were also              occurrence results. In IVF, a total of 69 nodes (23 species and
+positively associated with the metabolic parameters LDL and                46 ARG subtypes) and 161 edges (subtype–species connections)
+ADA. Pathogen Cluster was negatively associated with Glu                   were included in the co-occurrence network. The figure
+(p < 0.01), and Firmicutes Cluster 2 was negatively associated             clearly shows that the leading bacterial hubs were Citrobacter,
+with HDL (p < 0.01). The correlation between bacteria and                  Acinetobacter junii, and E. coli. Three subtypes of Citrobacter
+patient characteristics is depicted as a heatmap (Figure 5B).              (portucalensis/youngae/freundii/freundii_complex_sp._CFNIH9)
+    We used the pheatmap tool to identify potential differences            were the hub node that connected with several ARGs. A. junii and
+in the metabolic capability of each cluster between sample                 E. coli were also hub nodes with a high degree of connectedness.
+groups. Bacteroidetes 1 and Firmicutes 1 were the two                      E. coli co-occurred with ARG subtypes, including five multidrug
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org      8                                 September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                               Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 4 | System clustering tree. (A) The red color indicates IVF, the green color represents the tissue. The red nodes represent the key species in the IVF group;
+  the green nodes represent the key species in the tissue group. The yellow nodes represent normal species. The species’ name is on the right side of the figure.
+  (B) The key species in the two groups are analyzed by linear discriminant analysis (LDA) analysis. The LDA score is represented.
+
+
+
+
+  FIGURE 5 | (A) Heatmaps of interactions between species and environmental factors. Environmental factors are on the X-axis, and species are on the Y-axis.
+  (B) Heatmap of the relationship between clusters and environmental factors. The X-axis is the environmental factor, and the Y-axis is the cluster. (C) Heatmap of the
+  relationship between metabolic pathways and clusters. The X-axis shows the clusters, and the Y-axis shows the metabolic paths. The R-value (rank correlation) and
+  the p-value of the corrected error finding rate were calculated. The R values are shown in different colors in the figure. The legend on the right is the color code of the
+  different R values. *p < 0.05, **p < 0.01, ***p < 0.001.
+
+
+
+resistance genes (e.g., mdtP, mdtO, GadW, GadX, AcrA), 30 -                               nodes (24 species and 38 ARG subtypes) and 116 edges (subtype–
+aminoglycoside [AAC(3)-IIa, AAC(3)-IIc, aadA5], 2 quinolone                               species connections) were included. The leading hubs were
+(EmrR, emrB), 1 Sul2, TetQ, and ampC. In tissue, a total of 62                            C. marinimaniae that connected with seven multidrug resistance
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                     9                                         September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                      Microbiome and Resistome in CRC
+
+
+
+genes (CRP, AcrS, mdfA, mdtP, mdtM, AcrF, and AcrE), one                  F. nucleatum, E. coli, enterotoxigenic B. fragilis, S. gallolyticus,
+dual resistance (BaeR), two peptide antibiotics (YojI, PmrE),             and Klebsiella, among others, have been successively discovered
+and one of TetQ, ErmF, and mdtG. E. coli co-occurred with                 to act as driver bacteria for CRC carcinogenesis (Swidsinski
+ARG subtypes, including eight multidrug resistance genes (AcrS,           et al., 1998; Tjalsma et al., 2012; Wang et al., 2012, 2020;
+AcrE, acrB, vgaC, mdtN, mdtO, mdtP, and TolC), two peptide                Antonic et al., 2013; Sears and Garrett, 2014; Tahara et al.,
+antibiotics (bacA and PmrF), and one MdtB. Other leading                  2014). Therefore, the microbiota of tumor tissue may provide
+bacteria were A. hongdengensis, Dialister invisus, P. piscolens,          extremely valuable information in identifying the tipping point
+and B. vulgatus. Except for E. coli, bacteria located in the hub          in malignant transformation, detecting stages of carcinogenesis,
+were quite different between IVF and tissue, and the microbiota           and evaluating the potential prognosis of CRC (Shah et al.,
+network showed a significantly different bacterial distribution           2018). However, due to the aforementioned limitations in tissue
+(Figures 6A,B).                                                           samples, plus the considerable variation in composition and
+                                                                          abundance of the gut microbiota across anatomic sublocations
+Analysis of Microbial Community                                           in the colorectum (Donaldson et al., 2016; Purcell et al.,
+Function/Metabolic Pathway With                                           2017), there are still uncertainties and inconsistent results
+Intestinal Lavage Fluid and Tissue                                        when detected from tissue specimens (Flemer et al., 2017;
+                                                                          Shah et al., 2018; Wang et al., 2020). Furthermore, the CRC-
+We analyzed the factors representing metabolic pathways by
+                                                                          associated microbiome is dynamic, with changes occurring
+metagenomics, and the top 10 metabolic pathways are shown in
+                                                                          during CRC progression. Interindividual microbial community
+Figure 7. After the conversion of standardized data and log2,
+                                                                          heterogeneity of the human gut is influenced by spatial
+they were ranked according to abundance. The main metabolic
+                                                                          distribution, microheterogeneity, and host genetics, which has
+pathways were for valine, leucine, and isoleucine biosynthesis, D-
+                                                                          posed a long-standing challenge when investigating microbial
+glutamine and D-glutamate metabolism, lipoic acid metabolism,
+                                                                          signatures implicated in CRC tumorigenesis (Eckburg et al.,
+flagellar assembly, biosynthesis of amino acids, sulfur relay
+                                                                          2005; Hong et al., 2011; Zhang et al., 2014; Thomas et al.,
+system, and biotin metabolism were abundant in the IVF,
+                                                                          2016; Pan et al., 2020). Differences in analysis, methodology
+whereas beta-lactam resistance, RNA degradation, ascorbate and
+                                                                          (e.g., phylogeny, culturing, and metagenomics), and sample size
+aldarate metabolism, quorum sensing, biofilm formation—Vibrio
+                                                                          can also lead to markedly different findings (Walker et al.,
+cholerae, CAMP resistance, and phosphotransferase system (PTS)
+                                                                          2014). Uncovering specific microbiota structures with suitable
+were abundant in tissue. D-Alanine metabolism, ribosome, and
+                                                                          specimens will benefit our understanding of how microbial
+pantothenate, and CoA biosynthesis were found in both IVF and
+                                                                          dysbiosis impacts the microenvironment of the colon.
+tissue. Our results indicate that metabolic pathways detected in
+                                                                             The biofilm-like architecture of the mucosal microbiota, in
+IVF or tissue samples were incomplete same (Figure 7).
+                                                                          close contact with the underlying gut epithelium, facilitates
+                                                                          nutrient exchange and induction of host innate immunity
+DISCUSSION                                                                (Sonnenburg et al., 2004). The stability of intestinal microbiota is
+                                                                          achieved in part through the ability of these microbes to attach
+The gut microbiome has emerged as a central player in                     to the mucosa (Harrell et al., 2012). Thus, mucosal adherent
+CRC pathogenesis, and it has been shown to have multiple                  bacteria are likely to play a more direct role in the pathogenesis
+effects on tumor biology, such as the transformation process,             of CRC than luminal bacteria (Keku et al., 2015). Currently,
+tumor progression, and the response to anticancer therapies,              the mucosa-associated gut microbial richness and biodiversity
+including immunotherapy (Wong et al., 2017; Matson et al.,                shifts associated with CRC progression have remained largely
+2018; Helmink et al., 2019). Some bacteria play a leading role            unexamined (Flemer et al., 2017). IVF is obtained from patients
+in the occurrence and development of CRC. Previous studies                preparing for laparoscopic colorectal resection. Some species
+have yielded inconsistent results. In one report, CRC tumor               of mucosa-associated microbiota (either on the surface or in
+biopsy specimens were shown to harbor greater abundances of               cavities) may be obtained after a few whole intestinal rinses. Thus,
+Fusobacteria and Actinobacteria, and their paired adjacent tissue         IVF is enriched in mucosal microbes from the entire colonic
+counterparts harbor an elevated abundance of Firmicutes (Shah             environment and includes areas that tissue biopsy cannot reach
+et al., 2018). However, in another study, a lower abundance               (Shen et al., 2020). A previous study reported that microbiota
+of Bacteroidetes, Firmicutes, and Actinobacteria, and higher              of paired mucosal and fecal samples from individuals with CRC
+abundance of Proteobacteria and Fusobacteria were observed in             differed significantly (Flemer et al., 2017; Russo et al., 2017;
+tumor tissues (Wang et al., 2020). Compared with their tumor              Shen et al., 2020). Due to intestinal flora being susceptible to
+biopsy counterparts, fecal samples harbor a greater abundance             food and antibiotics, fecal bacteria fluctuate greatly and likely
+of Verrucomicrobia roseburia, Blautia, Bifidobacterium, and               do not accurately reflect the mucosal microbiota composition.
+fewer Proteobacteria and Prevotella, suggesting that the bacterial        Given the known limitations of tissue sampling, we set out to
+microbiota varies in different types of samples or anatomical             investigate whether IVF was an alternative approach. Our results
+positions. Bacteria existing as the abundant taxon of CRC tumor           show that a greater number of bacterial species is detected in
+tissues are protagonists of tumor development, due to their               IVF than that in tumor tissue (2,757 species vs. 197 species).
+close interactions with epithelial and immune cells, and their            Similarly, higher bacterial diversity is detected in IVF samples
+presence correlates with increased risks of CRC. Up to now,               than in tissue, particularly pertaining to species richness. Bowel
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org    10                                  September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                          Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 6 | Network analysis of co-occurrence patterns among antibiotic resistance gene (ARG) subtypes and microbial taxa in IVF (A) and tissue (B). The nodes
+  are colored according to ARG types and species. A connection represents a strong (Spearman’s correlation coefficient r > 0.4) and significant (p < 0.05) correlation.
+  The size of each node is proportional to the number of connections.
+
+
+
+preparation may alter microbial alpha and beta diversity (Harrell                       and Bacteroidetes phyla are the most abundant species in CRC
+et al., 2012; O’brien et al., 2013). On the other hand, it is likely                    (Gao et al., 2015; Nejman et al., 2020), and that Firmicutes
+that luminal bacteria have a more complex community structure                           Cluster 2, Prevotella Cluster, Pathogen Cluster, and Bacteroidetes
+(Keku et al., 2015). Beta diversity revealed that distinguishing                        Cluster 2 are more abundant in CRC biopsy microbiota (Flemer
+cluster of bacteria formed between tissue and IVF groups. When                          et al., 2017). From a functional point of view, the microbiota
+the differences at each bacterial level between the two specimen                        of individuals with high abundances of the Prevotella Cluster
+groups were further studied, we found that Proteobacteria and                           and Pathogen Cluster might influence the development of CRC
+Verrucomicrobia were higher in IVF, while Bacteroidetes and                             through modulating the expression of immunoinflammatory
+Actinobacteria were higher in tumor tissue. Verrucomicrobia                             response genes (i.e., CXCL1), which has been shown to increase
+and fewer Proteobacteria mainly existed in the fecal of CRC,                            the survival of cancerous cells and promote angiogenesis in
+while abundant Fusobacteria and Actinobacteria existed in tumor                         CRC(Wang et al., 2006; Acharyya et al., 2012; Flemer et al.,
+tissue (Shah et al., 2018). In our study, Fusobacteria did not                          2017). In our study, there was no significant difference between
+significantly differ in both tissue and IVF, suggesting that bacterial                  Firmicutes Cluster 2, Bacteroidetes 2, Pathogen Cluster, and
+composition in IVF could reflect either fecal or tissue microbiota.                     Prevotella Cluster in the IVF group and those in the tissue group,
+Fusobacteria is a key bacterium in CRC carcinogenesis, which                            demonstrating that microbiomes in IVF could reflect those in
+is enriched in CRC tissues (Tahara et al., 2014). Some bacteria,                        the tissue. Pathogen Cluster is associated with increased TH17
+including E. coli, K. pneumoniae, B. fragilis, and B. vulgatus,                         response and may be associated with a poor prognosis for CRC
+presented in large quantities in both IVF and tissue, suggesting                        (Flemer et al., 2017). However, the Pathogen Cluster is in very
+that IVF could provide a comparative assessment of microbial                            low abundance in fecal microbiota (Flemer et al., 2017), making it
+diversity without the limitations associated with biopsy collection                     difficult to detect in feces. Thus, detecting it with IVF may provide
+(Watt et al., 2016).                                                                    more valuable information mirroring its content in tissues. The
+    Heterogeneity of microbiota is particularly evident when it                         abundance of Firmicutes Cluster 2 and Bacteroidetes Cluster 2
+was studied at the level of CAGs rather than at the level of                            is also correlated with a mucosal gene-expression profile more
+individual organisms or taxa. Microbial clusters were considered                        resembling that of a healthy mucosa (Flemer et al., 2017).
+a higher-level structure of the CRC-associated microbiota,                                  The relative abundance of these CAGs differs by tumor
+reflecting gut microflora better than a particular bacterium.                           location. For example, Bacteroidetes Cluster 2 and the Pathogen
+However, inconsistent results have also been observed in various                        Cluster are more abundant in distal cancers, whereas the
+studies (Kostic et al., 2012; Zeller et al., 2014; Flemer et al.,                       Prevotella Cluster and Firmicutes Cluster 2 are only significantly
+2017). A previous study showed that Firmicutes Cluster 1                                more abundant in individuals with proximal cancers (Flemer
+and Bacteroidetes Cluster 1 were significantly less abundant                            et al., 2017). As IVF enriches the mucosal microbes from the
+in the microbiota of individuals with CRC. In contrast, other                           entire colonic environment, the differences in spatial distribution
+studies have shown that bacteria belonging to the Firmicutes                            are alleviated. From this point, bacterial microbes in tissue more
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                  11                                       September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                 Microbiome and Resistome in CRC
+
+
+
+
+  FIGURE 7 | Functional features of the gut microbiome. (A) The 10 most abundant metagenomic pathways in IVF. (B) The 10 most abundant metagenomic
+  pathways in tissue. (C) The 10 most abundant metagenomic pathways in the two groups. The heatmap is converted from standardized data and log2.
+
+
+
+accurately reflect the relationship between bacterial flora and                   are also positively associated with the metabolic parameters
+cancer. Therefore, selecting suitable specimens according to the                  LDL and ADA. Pathogen Cluster is negatively associated
+purpose of the study is essential for a better understanding of the               with Glu. These results indicate the effects of the intestinal
+host–microbial relationships in health and disease.                               microbiome on metabolism.
+   Presently, a full understanding of how the bacteria                               Antibiotic administration results in a fundamentally altered
+microbiome impacts host metabolism is still lacking. Bacteroides                  gut microbiome, and the stable microbiome has remarkable
+species are closely associated with an increased risk of CRC                      plasticity to routine perturbation of antibiotics, but the
+because of their ability to convert bile to fecapentaenes,                        response to each antibiotic differs based on the microbiome
+considered carcinogenic or mutagenic metabolites (Moore                           composition (Gibson et al., 2016; Schwartz et al., 2020). The
+and Moore, 1995). In our study, Bifidobacterium, Prevotella,                      gut microbiome can act as a reservoir for antibiotic-resistant
+and Bacteroides were positively correlated with BMI index.                        bacteria and their associated genes (ARGs) (Hu et al., 2013).
+Bacteria, including Bacteroides, Parvimonas, Peptostreptococcus,                  ARGs transmit between species within the gut microbiome,
+Fusobacterium, and Alloprevotella tannerae, as well as                            including potential pathogens. Therefore, understanding how
+Bacteroidetes 1, Bacteroidetes 2, and Pathogen Cluster, influence                 the resistome changes in parallel with the microbiome is vitally
+the TBA. Glu and HDL are negatively correlated with Firmicutes                    important in CRC (Stalder et al., 2019). Nowadays, only a few
+Cluster 2, Prevotella copri, Fusobacterium, Clostridium, and                      studies have characterized the effects of particular antibiotic
+Bacteroides. The Pathogen Cluster and Prevotella Cluster                          regimens on the gut ecosystems of individuals with respect
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org            12                                    September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                        Microbiome and Resistome in CRC
+
+
+
+to the associated resistome (Palleja et al., 2018), which may be             between sample types in large sample sizes are needed, and
+because data for antibiotic exposure on gut microbiota are                   a combinatorial approach may enable a sensitive and accurate
+quite hard to obtain. To assess the resistomes in IVF and                    evaluation of the gut microbiota.
+tissue samples, we used a measure for the antibiotic resistance                 The main limitation of this study is the small sample size.
+potential of a microbial community based on the abundance                    Nowadays, patients do not need intestinal lavage before doing a
+of its resistance genes relative to its species composition.                 colonoscopy in general clinical practice, then the paired sample is
+We then matched each ARG type to its corresponding                           extremely difficult to obtain. The results would be more valuable
+antibiotic and summarized the relative abundance of types                    if microbiome detects in various anatomical locations (rectum,
+resistant to the same antibiotic. Our results reveal that the                proximal colon, distal colon) as well as different TNM stages.
+common ARGs, detected in both IVF and tissue, confer
+multidrug resistance, as well as resistance to aminoglycosides,
+beta-lactams, and tetracycline antibiotics. A previous study                 DATA AVAILABILITY STATEMENT
+showed that tetracycline, aminoglycoside, beta-lactam, MLS,
+vancomycin, and multidrug resistance genes are the dominant                  The datasets presented in this study can be found in online
+types in the human gut (Qiu et al., 2020). The human                         repositories. The names of the repository/repositories and
+microbiome may constitute a mobilizable reservoir of ARGs,                   accession number(s) can be found below: https://www.ncbi.nlm.
+which are accessible to pathogenic bacteria for acquiring                    nih.gov/, PRJNA754518.
+antibiotic resistance. However, direct experimental proof of
+in vivo transfer of antibiotic resistance genes within the
+human microbiome remains to be shown (Sommer et al.,                         ETHICS STATEMENT
+2009). Characterizing resistome distribution and its relationship
+with the gut microbiota can help elucidate the effects of                    The studies involving human participants were reviewed
+antibiotic use in CRC pathogenesis and manage antibiotics at the             and approved by The Shantou University Medical College
+clinical practice.                                                           Institutional Ethics Board. The patients/participants provided
+    The gut microbiota network shows different bacterial hubs                their written informed consent to participate in this study.
+in tissue groups compared with IVF microbiota. The leading                   Written informed consent was obtained from the individual(s)
+bacterial hubs in IVF are Citrobacter, A. junii, and E. coli,                for the publication of any potentially identifiable images or data
+which relate to many ARGs. While in the tissue, the leading                  included in this article.
+hubs were Colwellia, E. coli, and B. vulgatus. E. coli is the
+only bacterium located in the central hub of IVF and tissue
+and contains similar ARGs in the two sample groups. Most                     AUTHOR CONTRIBUTIONS
+ARGs in the human gut are those resistant to widely used
+antibiotics, and antibiotic therapy leads to personalized resistome          XJ, YY, YC, and FY designed and drafted the manuscript. XJ
+diversification and individual-specific strain level selection in the        revised the final manuscript and had full access to all of the data
+gut microbiota (Li et al., 2019). Analysis of ARG distribution in            in the study and took responsibility for the integrity of the data
+the population provides an important indicator for public health             and the accuracy of the data analysis. YC collected the samples.
+policies (Qiu et al., 2020).                                                 YY finished the experiment. MS and SN summarized the clinical
+    The characterization of the tumor microbiome has remained                data. YY, MZ, and QX processed the statistical data. All authors
+challenging because of its low biomass, methodology of detection,            contributed to the data analysis, drafting or revising the article,
+and sample size (Walker et al., 2014; Nejman et al., 2020).                  had agreed on the journal to which the article will be submitted,
+Evaluating on-tumor versus off-tumor microbial communities,                  gave final approval of the version to be published, and agreed to
+and mucosal versus fecal taxonomic disparities in the context                be accountable for all aspects of the work.
+of CRC, have been hindered by the limited number of studies
+that have examined differences in both the mucosal (both
+tumor and tumor-adjacent tissue) and fecal microbiota within                 FUNDING
+the same CRC cases (Chen et al., 2012; Weir et al., 2013;
+Mira-Pascual et al., 2015; Flemer et al., 2017). Fecal sample                This study was supported by the Shantou Science and Technology
+collection still offers the benefit of participants not needing to           Project (grant number 180709174010328) and 2020 Li Ka
+have a colonoscopy to provide samples. Therefore, attracting                 Shing Foundation Cross-Disciplinary Research Grant (Project
+a large sample size is not an issue (Watt et al., 2016). Even                Numbers 200LKSFG03E and 2020LKSFG07B).
+though fecal microbiota partially reflects the microbiota at the
+mucus layer, differences between fecal and tissue microbiota
+are still evident. The bacterial clusters in IVF may provide                 ACKNOWLEDGMENTS
+greater insight into mucosal-specific colonic neoplasia due to
+their close interactions with epithelial and immune cells (Hong              We would like to thank our colleagues who work on the front
+et al., 2019). As there is no unanimous conclusion in the                    line of clinical treatment, and we thank all the patients who
+advantages of different types of specimens, accurate comparisons             participated in the study.
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org       13                                 September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                                        Microbiome and Resistome in CRC
+
+
+
+
+REFERENCES                                                                                      Kostic, A. D., Gevers, D., Pedamallu, C. S., Michaud, M., Duke, F., Earl, A. M.,
+                                                                                                    et al. (2012). Genomic analysis identifies association of Fusobacterium with
+Acharyya, S., Oskarsson, T., Vanharanta, S., Malladi, S., Kim, J., Morris, P. G.,                   colorectal carcinoma. Genome Res. 22, 292–298. doi: 10.1101/gr.126573.111
+   et al. (2012). A CXCL1 paracrine network links cancer chemoresistance and                    Li, G., Yang, M., Zhou, K., Zhang, L., Tian, L., Lv, S., et al. (2015). Diversity
+   metastasis. Cell 150, 165–178. doi: 10.1016/j.cell.2012.04.042                                   of duodenal and rectal microbiota in biopsy tissues and luminal contents in
+Antonic, V., Stojadinovic, A., Kester, K. E., Weina, P. J., Brucher, B. L., Protic, M.,             healthy volunteers. J. Microbiol. Biotechnol. 25, 1136–1145. doi: 10.4014/jmb.
+   et al. (2013). Significance of infectious agents in colorectal cancer development.               1412.12047
+   J. Cancer 4, 227–240. doi: 10.7150/jca.5835                                                  Li, J., Rettedal, E. A., Van Der Helm, E., Ellabaan, M., Panagiotou, G., and Sommer,
+Arthur, J. C., Gharaibeh, R. Z., Muhlbauer, M., Perez-Chanona, E., Uronis, J. M.,                   M. O. A. (2019). Antibiotic treatment drives the diversification of the human
+   Mccafferty, J., et al. (2014). Microbial genomic analysis reveals the essential                  gut resistome. Genom. Proteomics Bioinform. 17, 39–51. doi: 10.1016/j.gpb.
+   role of inflammation in bacteria-induced colorectal cancer. Nat. Commun. 5,                      2018.12.003
+   4724–4734. doi: 10.1038/ncomms5724                                                           Matson, V., Fessler, J., Bao, R., Chongsuwat, T., Zha, Y., Alegre, M. L., et al.
+Bray, F., Ferlay, J., Soerjomataram, I., Siegel, R. L., Torre, L. A., and Jemal, A.                 (2018). The commensal microbiome is associated with anti-PD-1 efficacy in
+   (2018). Global cancer statistics 2018: GLOBOCAN estimates of incidence and                       metastatic melanoma patients. Science 359, 104–108. doi: 10.1126/science.aao
+   mortality worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 68,                      3290
+   394–424. doi: 10.3322/caac.21492                                                             Mira-Pascual, L., Cabrera-Rubio, R., Ocon, S., Costales, P., Parra, A., Suarez, A.,
+Burns, M. B., Lynch, J., Starr, T. K., Knights, D., and Blekhman, R. (2015).                        et al. (2015). Microbial mucosal colonic shifts associated with the development
+   Virulence genes are a signature of the microbiome in the colorectal tumor                        of colorectal cancer reveal the presence of different bacterial and archaeal
+   microenvironment. Genome Med. 7, 55–66. doi: 10.1186/s13073-015-0177-8                           biomarkers. J. Gastroenterol. 50, 167–179. doi: 10.1007/s00535-014-0963-x
+Chen, W., Liu, F., Ling, Z., Tong, X., and Xiang, C. (2012). Human intestinal lumen             Moore, W. E., and Moore, L. H. (1995). Intestinal floras of populations that have
+   and mucosa-associated microbiota in patients with colorectal cancer. PLoS One                    a high risk of colon cancer. Appl. Environ. Microbiol. 61, 3202–3207. doi:
+   7:e39743. doi: 10.1371/journal.pone.0039743                                                      10.1128/aem.61.9.3202-3207.1995
+Claesson, M. J., Jeffery, I. B., Conde, S., Power, S. E., O’connor, E. M., Cusack, S.,          Nakatsu, G., Li, X., Zhou, H., Sheng, J., Wong, S. H., Wu, W. K., et al. (2015). Gut
+   et al. (2012). Gut microbiota composition correlates with diet and health in the                 mucosal microbiome across stages of colorectal carcinogenesis. Nat. Commun.
+   elderly. Nature 488, 178–184. doi: 10.1038/nature11319                                           6, 8727–8735. doi: 10.1038/ncomms9727
+Donaldson, G. P., Lee, S. M., and Mazmanian, S. K. (2016). Gut biogeography of the              Nejman, D., Livyatan, I., Fuks, G., Gavert, N., Zwang, Y., Geller, L. T., et al. (2020).
+   bacterial microbiota. Nat. Rev. Microbiol. 14, 20–32. doi: 10.1038/nrmicro3552                   The human tumor microbiome is composed of tumor type-specific intracellular
+Durban, A., Abellan, J. J., Jimenez-Hernandez, N., Ponce, M., Ponce, J., Sala, T.,                  bacteria. Science 368, 973–980. doi: 10.1126/science.aay9189
+   et al. (2011). Assessing gut microbial diversity from feces and rectal mucosa.               O’brien, C. L., Allison, G. E., Grimpen, F., and Pavli, P. (2013). Impact of
+   Microb. Ecol. 61, 123–133. doi: 10.1007/s00248-010-9738-y                                        colonoscopy bowel preparation on intestinal microbiota. PLoS One 8:e62815.
+Eckburg, P. B., Bik, E. M., Bernstein, C. N., Purdom, E., Dethlefsen, L., Sargent,                  doi: 10.1371/journal.pone.0062815
+   M., et al. (2005). Diversity of the human intestinal microbial flora. Science 308,           Palleja, A., Mikkelsen, K. H., Forslund, S. K., Kashani, A., Allin, K. H., Nielsen, T.,
+   1635–1638. doi: 10.1126/science.1110591                                                          et al. (2018). Recovery of gut microbiota of healthy adults following antibiotic
+Flemer, B., Lynch, D. B., Brown, J. M., Jeffery, I. B., Ryan, F. J., Claesson, M. J.,               exposure. Nat. Microbiol. 3, 1255–1265. doi: 10.1038/s41564-018-0257-9
+   et al. (2017). Tumour-associated and non-tumour-associated microbiota in                     Pan, H. W., Du, L. T., Li, W., Yang, Y. M., Zhang, Y., and Wang, C. X. (2020).
+   colorectal cancer. Gut 66, 633–643. doi: 10.1136/gutjnl-2015-309595                              Biodiversity and richness shifts of mucosa-associated gut microbiota with
+Gao, Z., Guo, B., Gao, R., Zhu, Q., and Qin, H. (2015). Microbiota disbiosis is                     progression of colorectal cancer. Res. Microbiol. 171, 107–114. doi: 10.1016/
+   associated with colorectal cancer. Front. Microbiol. 6:20. doi: 10.3389/fmicb.                   j.resmic.2020.01.001
+   2015.00020                                                                                   Purcell, R. V., Visnovska, M., Biggs, P. J., Schmeier, S., and Frizelle, F. A. (2017).
+Gibson, M. K., Wang, B., Ahmadi, S., Burnham, C. A., Tarr, P. I, Warner, B. B.,                     Distinct gut microbiome patterns associate with consensus molecular subtypes
+   et al. (2016). Developmental dynamics of the preterm infant gut microbiota and                   of colorectal cancer. Sci. Rep. 7, 11590–11601. doi: 10.1038/s41598-017-11
+   antibiotic resistome. Nat. Microbiol. 1, 16024–16033. doi: 10.1038/nmicrobiol.                   237-6
+   2016.24                                                                                      Qiu, Q., Wang, J., Yan, Y., Roy, B., Chen, Y., Shang, X., et al. (2020). Metagenomic
+Harrell, L., Wang, Y., Antonopoulos, D., Young, V., Lichtenstein, L., Huang,                        analysis reveals the distribution of antibiotic resistance genes in a large-scale
+   Y., et al. (2012). Standard colonic lavage alters the natural state of mucosal-                  population of healthy individuals and patients with varied diseases. Front. Mol.
+   associated microbiota in the human colon. PLoS One 7:e32545. doi: 10.1371/                       Biosci. 7:590018. doi: 10.3389/fmolb.2020.590018
+   journal.pone.0032545                                                                         Russo, E., Bacci, G., Chiellini, C., Fagorzi, C., Niccolai, E., Taddei, A., et al. (2017).
+Hasegawa, M., Kawasaki, A., Yang, K., Fujimoto, Y., Masumoto, J., Breukink, E.,                     Preliminary comparison of oral and intestinal human microbiota in patients
+   et al. (2007). A role of lipophilic peptidoglycan-related molecules in induction                 with colorectal cancer: A pilot study. Front. Microbiol. 8:2699. doi: 10.3389/
+   of Nod1-mediated immune responses. J. Biol. Chem. 282, 11757–11764. doi:                         fmicb.2017.02699
+   10.1074/jbc.M700846200                                                                       Schwartz, D. J., Langdon, A. E., and Dantas, G. (2020). Understanding the impact
+Helmink, B. A., Khan, M. A. W., Hermann, A., Gopalakrishnan, V., and Wargo,                         of antibiotic perturbation on the human microbiome. Genome Med. 12, 82–93.
+   J. A. (2019). The microbiome, cancer, and cancer therapy. Nat. Med. 25,                          doi: 10.1186/s13073-020-00782-x
+   377–388. doi: 10.1038/s41591-019-0377-7                                                      Sears, C. L., and Garrett, W. S. (2014). Microbes, microbiota, and colon cancer. Cell
+Hong, B. Y., Ideta, T., Lemos, B. S., Igarashi, Y., Tan, Y., Disiena, M., et al. (2019).            Host. Microbe 15, 317–328. doi: 10.1016/j.chom.2014.02.007
+   Characterization of mucosal dysbiosis of early colonic neoplasia. NPJ Precis                 Shah, M. S., Desantis, T., Yamal, J. M., Weir, T., Ryan, E. P., Cope, J. L., et al.
+   Oncol. 3, 29–38. doi: 10.1038/s41698-019-0101-6                                                  (2018). Re-purposing 16S rRNA gene sequence data from within case paired
+Hong, P. Y., Croix, J. A., Greenberg, E., Gaskins, H. R., and Mackie, R. I.                         tumor biopsy and tumor-adjacent biopsy or fecal samples to identify microbial
+   (2011). Pyrosequencing-based analysis of the mucosal microbiota in healthy                       markers for colorectal cancer. PLoS One 13:e0207002. doi: 10.1371/journal.
+   individuals reveals ubiquitous bacterial groups and micro-heterogeneity. PLoS                    pone.0207002
+   One 6:e25042. doi: 10.1371/journal.pone.0025042                                              Shen, W., Sun, J., Yao, F., Lin, K., Yuan, Y., Chen, Y., et al. (2020). Microbiome
+Hu, Y., Yang, X., Qin, J., Lu, N., Cheng, G., Wu, N., et al. (2013). Metagenome-wide                in intestinal lavage fluid may be a better indicator in evaluating the risk of
+   analysis of antibiotic resistance genes in a large cohort of human gut microbiota.               developing colorectal cancer compared with fecal samples. Transl. Oncol. 13,
+   Nat. Commun. 4, 2151–2157. doi: 10.1038/ncomms3151                                               100772–100783. doi: 10.1016/j.tranon.2020.100772
+Keku, T. O., Dulal, S., Deveaux, A., Jovov, B., and Han, X. (2015). The                         Sommer, M. O. A., Dantas, G., and Church, G. M. (2009). Functional
+   gastrointestinal microbiota and colorectal cancer. Am. J. Physiol. Gastrointest                  characterization of the antibiotic resistance reservoir in the human microflora.
+   Liver Physiol. 308, 351–363. doi: 10.1152/ajpgi.00360.2012                                       Science 325, 1128–1131. doi: 10.1126/science.1176950
+
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                          14                                            September 2021 | Volume 9 | Article 736994
+Yuan et al.                                                                                                                                      Microbiome and Resistome in CRC
+
+
+
+Sonnenburg, J. L., Angenent, L. T., and Gordon, J. I (2004). Getting a grip on                     cancer patients and healthy adults. PLoS One 8:e70803. doi: 10.1371/journal.
+   things: how do communities of bacterial symbionts become established in our                     pone.0070803
+   intestine? Nat. Immunol. 5, 569–573. doi: 10.1038/ni1079                                     Wong, S. H., and Yu, J. (2019). Gut microbiota in colorectal cancer: mechanisms of
+Stalder, T., Press, M. O., Sullivan, S., Liachko, I., and Top, E. M. (2019). Linking               action and clinical applications. Nat. Rev. Gastroenterol. Hepatol. 16, 690–704.
+   the resistome and plasmidome to the microbiome. ISME J. 13, 2437–2446.                          doi: 10.1038/s41575-019-0209-8
+   doi: 10.1038/s41396-019-0446-4                                                               Wong, S. H., Zhao, L., Zhang, X., Nakatsu, G., Han, J., Xu, W., et al. (2017).
+Swidsinski, A., Khilkin, M., Kerjaschki, D., Schreiber, S., Ortner, M., Weber, J.,                 Gavage of fecal samples from patients with colorectal cancer promotes intestinal
+   et al. (1998). Association between intraepithelial Escherichia coli and colorectal              carcinogenesis in germ-free and conventional mice. Gastroenterology 153,
+   cancer. Gastroenterology 115, 281–286. doi: 10.1016/S0016-5085(98)70194-5                       1621–1633. doi: 10.1053/j.gastro.2017.08.022
+Tahara, T., Yamamoto, E., Suzuki, H., Maruyama, R., Chung, W., Garriga, J., et al.              Yoon, H., Kim, N., Park, J. H., Kim, Y. S., Lee, J., Kim, H. W., et al.
+   (2014). Fusobacterium in colonic flora and molecular features of colorectal                     (2017). Comparisons of Gut microbiota among healthy control, patients
+   carcinoma. Cancer Res. 74, 1311–1318. doi: 10.1158/0008-5472.CAN-13-                            with conventional adenoma, sessile serrated adenoma, and colorectal cancer.
+   1865                                                                                            J. Cancer Prev. 22, 108–114. doi: 10.15430/JCP.2017.22.2.108
+Thomas, A. M., Jesus, E. C., Lopes, A., Aguiar, S. Jr., Begnami, M. D., Rocha, R. M.,           Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P. I., et al.
+   et al. (2016). Tissue-associated bacterial alterations in rectal carcinoma patients             (2014). Potential of fecal microbiota for early-stage detection of colorectal
+   revealed by 16S rRNA community profiling. Front. Cell. Infect. Microbiol. 6:179.                cancer. Mol. Syst. Biol. 10, 766–783. doi: 10.15252/msb.20145645
+   doi: 10.3389/fcimb.2016.00179                                                                Zhang, Z., Geng, J., Tang, X., Fan, H., Xu, J., Wen, X., et al. (2014).
+Tjalsma, H., Boleij, A., Marchesi, J. R., and Dutilh, B. E. (2012). A bacterial driver-            Spatial heterogeneity and co-occurrence patterns of human mucosal-associated
+   passenger model for colorectal cancer: beyond the usual suspects. Nat. Rev.                     intestinal microbiota. ISME J. 8, 881–893. doi: 10.1038/ismej.2013.185
+   Microbiol. 10, 575–582. doi: 10.1038/nrmicro2819                                             Zoetendal, E. G., Von Wright, A., Vilpponen-Salmela, T., Ben-Amor, K.,
+Vogelstein, B., Papadopoulos, N., Velculescu, V. E., Zhou, S., Diaz, L. A. Jr., and                Akkermans, A. D., and De Vos, W. M. (2002). Mucosa-associated bacteria in
+   Kinzler, K. W. (2013). Cancer genome landscapes. Science 339, 1546–1558.                        the human gastrointestinal tract are uniformly distributed along the colon and
+   doi: 10.1126/science.1235122                                                                    differ from the community recovered from feces. Appl. Environ. Microbiol. 68,
+Walker, A. W., Duncan, S. H., Louis, P., and Flint, H. J. (2014). Phylogeny,                       3401–3407. doi: 10.1128/AEM.68.7.3401-3407.2002
+   culturing, and metagenomics of the human gut microbiota. Trends Microbiol.
+   22, 267–274. doi: 10.1016/j.tim.2014.03.001                                                  Conflict of Interest: The authors declare that the research was conducted in the
+Wang, D., Wang, H., Brown, J., Daikoku, T., Ning, W., Shi, Q., et al. (2006). CXCL1             absence of any commercial or financial relationships that could be construed as a
+   induced by prostaglandin E2 promotes angiogenesis in colorectal cancer. J. Exp.              potential conflict of interest.
+   Med. 203, 941–951. doi: 10.1084/jem.20052124
+Wang, Q., Ye, J., Fang, D., Lv, L., Wu, W., Shi, D., et al. (2020). Multi-omic profiling        Publisher’s Note: All claims expressed in this article are solely those of the authors
+   reveals associations between the gut mucosal microbiome, the metabolome, and                 and do not necessarily represent those of their affiliated organizations, or those of
+   host DNA methylation associated gene expression in patients with colorectal                  the publisher, the editors and the reviewers. Any product that may be evaluated in
+   cancer. BMC Microbiol. 20:83. doi: 10.1186/s12866-020-01762-2                                this article, or claim that may be made by its manufacturer, is not guaranteed or
+Wang, T., Cai, G., Qiu, Y., Fei, N., Zhang, M., Pang, X., et al. (2012). Structural             endorsed by the publisher.
+   segregation of gut microbiota between colorectal cancer patients and healthy
+   volunteers. ISME J. 6, 320–329. doi: 10.1038/ismej.2011.109                                  Copyright © 2021 Yuan, Chen, Yao, Zeng, Xie, Shafiq, Noman and Jiao. This is an
+Watt, E., Gemmell, M. R., Berry, S., Glaire, M., Farquharson, F., Louis, P., et al.             open-access article distributed under the terms of the Creative Commons Attribution
+   (2016). Extending colonic mucosal microbiome analysis-assessment of colonic                  License (CC BY). The use, distribution or reproduction in other forums is permitted,
+   lavage as a proxy for endoscopic colonic biopsies. Microbiome 4, 61–75. doi:                 provided the original author(s) and the copyright owner(s) are credited and that the
+   10.1186/s40168-016-0207-9                                                                    original publication in this journal is cited, in accordance with accepted academic
+Weir, T. L., Manter, D. K., Sheflin, A. M., Barnett, B. A., Heuberger, A. L., and Ryan,         practice. No use, distribution or reproduction is permitted which does not comply
+   E. P. (2013). Stool microbiome and metabolome differences between colorectal                 with these terms.
+
+
+
+
+Frontiers in Cell and Developmental Biology | www.frontiersin.org                          15                                          September 2021 | Volume 9 | Article 736994
+

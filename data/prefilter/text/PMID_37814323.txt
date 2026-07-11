@@ -1,0 +1,755 @@
+Ou et al. Journal of Translational Medicine (2023) 21:704                                                                                                  Journal of
+https://doi.org/10.1186/s12967-023-04527-3
+                                                                                                                                              Translational Medicine
+
+
+    RESEARCH                                                                                                                                                    Open Access
+
+Fusobacterium nucleatum upregulates MMP7
+to promote metastasis-related characteristics
+of colorectal cancer cell via activating
+MAPK(JNK)-AP1 axis
+Suwen Ou1,9† , Haipeng Chen2†, Hufei Wang1†, Jinhua Ye1†, Huidi Liu3,4, Yangbao Tao1, Songlin Ran1,
+Xiaoqin Mu3,4, Fangzhou Liu1, Shuang Zhu1, Kangjia Luo1,5, Zilong Guan1,6, Yinghu Jin1, Rui Huang1*,
+Yanni Song7* and Shu‑lin Liu3,4,8*
+
+
+
+    Abstract
+    Background Colorectal cancer (CRC) is the third most common malignant tumor. Fusobacterium nucleatum (F.
+    nucleatum) is overabundant in CRC and associated with metastasis, but the role of F. nucleatum in CRC cell migration
+    and metastasis has not been fully elucidated.
+    Methods Differential gene analysis, protein−protein interaction, robust rank aggregation analysis, functional enrich‑
+    ment analysis, and gene set variation analysis were used to figure out the potential vital genes and biological func‑
+    tions affected by F. nucleatum infection. The 16S rDNA sequencing and q-PCR were used to detect the abundance
+    of F. nucleatum in tissues and stools. Then, we assessed the effect of F. nucleatum on CRC cell migration by wound
+    healing and transwell assays, and confirmed the role of Matrix metalloproteinase 7 (MMP7) induced by F. nucleatum
+    in cell migration. Furthermore, we dissected the mechanisms involved in F. nucleatum induced MMP7 expression.
+    We also investigated the MMP7 expression in clinical samples and its correlation with prognosis in CRC patients.
+    Finally, we screened out potential small molecular drugs that targeted MMP7 using the HERB database and molecular
+    docking.
+    Results F. nucleatum infection altered the gene expression profile and affected immune response, inflammation,
+    biosynthesis, metabolism, adhesion and motility related biological functions in CRC. F. nucleatum was enriched in CRC
+    and promoted the migration of CRC cell by upregulating MMP7 in vitro. MMP7 expression induced by F. nucleatum
+    infection was mediated by the MAPK(JNK)-AP1 axis. MMP7 was highly expressed in CRC and correlated with CMS4
+    and poor clinical prognosis. Small molecular drugs such as δ-tocotrienol, 3,4-benzopyrene, tea polyphenols, and gallic
+    catechin served as potential targeted therapeutic drugs for F. nucleatum induced MMP7 in CRC.
+
+†
+ Suwen Ou, Haipeng Chen, Hufei Wang and Jinhua Ye have contributed
+equally to this work and shared the first authorship.
+*Correspondence:
+Rui Huang
+huangrui2019@163.com
+Yanni Song
+yannimd@126.com
+Shu‑lin Liu
+slliu@hrbmu.edu.cn
+Full list of author information is available at the end of the article
+
+
+                                             © The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which
+                                             permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+                                             original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or
+                                             other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+                                             to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory
+                                             regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this
+                                             licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+                                             mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                   Page 2 of 17
+
+
+
+
+  Conclusions Our study showed that F. nucleatum promoted metastasis-related characteristics of CRC cell by upregu‑
+  lating MMP7 via MAPK(JNK)-AP1 axis. F. nucleatum and MMP7 may serve as potential therapeutic targets for repressing
+  CRC advance and metastasis.
+  Keywords Colorectal cancer, Fusobacterium nucleatum, Matrix metalloproteinase 7, Migration
+
+
+Introduction                                                  cancer metastasis and assist translational research in
+Colorectal cancer (CRC) ranked as the third in new            using F. nucleatum and MMP7 as potential therapeutic
+cases of malignant tumors and was the second leading          targets for the treatment of CRC.
+cause of cancer death in 2020 [1]. About 25% of CRC
+patients present with metastatic lesions at the time          Materials and methods
+of diagnosis, and more than 50% of CRC patients will          Public data source
+develop metastases eventually [2]. The 5-year survival        The transcriptome data of CRC cell lines (LoVo and
+rate of patients with distant metastasis is less than 10%     Caco-2) were downloaded from Gene Expression Omni-
+[3]. Therefore, it is of great significance to uncover the    bus, with accession ID: GSE173549 and GSE102573. The
+mechanism and causes of CRC metastasis for the pre-           gene expression data and clinical information of TCGA
+vention and treatment of CRC.                                 COAD and READ cohorts were obtained from UCSC
+   Microbes are involved in the development of a large        database [19]. Then, the RNA sequencing data were con-
+number of cancers. It is conservatively estimated that        verted to transcripts per kilobase million (TPM) and
+about 15% of cancer cases in the world can be attrib-         further transformed to l­og2(TPM + 1). The combined
+uted to the infection of pathogens [4]. The composition       GEO cohort was integrated by five microarray data sets
+of mucosal microbiota has changed during the devel-           of GPL570 platform (GSE39582, GSE14333, GSE17536,
+opment of colorectal cancer, indicating that some gut         GSE17537, and GSE72968). Background correction,
+bacteria may play a role in the occurrence and devel-         standardization, and batch effect were described in our
+opment of CRC [5]. In the past decade, a rising num-          previous study [20]. Patients with survival time less than
+ber of researches focused on the role of bacteria in          1 month were removed during survival analysis. Kaplan–
+the evolution of colorectal cancer [6]. Fusobacterium         Meier (KM) plots were visualized using the “survminer”
+nucleatum (F. nucleatum) is gram-negative anaerobic           package. Statistical significance was evaluated by Log-
+bacillus, which is enriched not only in feces but also        rank test. And in this study, R package “CMScaller” was
+in the tumor tissues of CRC patients [7–9]. It has been       used for the Consensus Molecular Subtypes (CMS) clas-
+reported that F. nucleatum not only promotes the pro-         sification as described by the original author [21].
+liferation of CRC cells [10] but also enhances the resist-
+ance of CRC cells to chemotherapy [11, 12]. In addition,      Differential expression analysis
+the abundance of F. nucleatum in CRC tissue is also           R package “limma” was used for performing the differen-
+related to metastasis and prognosis [13]. Recent stud-        tial expression analysis [22]. The differentially expressed
+ies have shown that F. nucleatum can promote CRC              genes (DEGs) were identified through adjusted P < 0.05
+cell metastasis by regulating epithelial mesenchymal          and |log2FC| ≥ 1. The volcano and heat maps were vis-
+transformation, non-coding RNA expression, exosomes           ualized using the “ggplot2” and “pheatmap” packages,
+production and secretion, m6A modification of mRNA,           respectively.
+etc. [14–17]. However, the exact roles and potential
+mechanisms of F. nucleatum promoting CRC metasta-
+                                                              Protein−protein interaction analysis and visualization
+sis remain largely unclear.
+                                                              Upregulated genes by F. nucleatum infection in both CRC
+   Matrix metalloproteinases (MMPs) family plays
+                                                              cell lines LoVo and Caco-2 were inputted into online bio-
+an important role in tumor matrix degradation and
+                                                              informatics tool STRING (https://​cn.​string-​db.​org/) to
+remodeling. MMPs can degrade various protein com-
+                                                              conduct Protein−Protein Interaction Analysis. The result
+ponents in extracellular matrix (ECM), destroy the
+                                                              of Interaction Network was visualized by Cytoscape Soft-
+histological barrier of cancer invasion, and play a key
+                                                              ware (v3.9.1).
+role in cancer cell invasion and metastasis [18]. In this
+study, we found that F. nucleatum infection promoted
+                                                              Robust rank aggregation analysis
+CRC cell migration by upregulating MMP7 via acti-
+                                                              The Robust Rank Aggregation (RRA) can rank and iden-
+vating the MAPK (JNK)-AP1 axis. Our data provide
+                                                              tify the most robust DEGs among multiple datasets [23].
+new insights into the role of F. nucleatum in colorectal
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                    Page 3 of 17
+
+
+
+
+In GSE173549 and GSE102573, genes with adjusted               Bacterial strain and cell culture
+P < 0.05 and |log2FC| ≥ 0.5 were integrated using the R       F. nucleatum (ATCC 25,586) was purchased from Guang-
+package “RobustRankAggreg” to find robust DEGs. Then,         dong Microbial Culture Collection Center (GDMCC),
+the top 10 upregulated and downregulated DEGs ranked          and grown in Brain Heart Infusion Broth (hopebio,
+by RRA were visualized via a heat map.                        China) supplemented with hemin, ­K2HPO4, Vitamin K1,
+                                                              and L-Cysteine in a round bottom vertical anaerobic cul-
+Functional enrichment analysis                                ture bag (hopebio, China) at 37 ℃. Escherichia coli strain
+Gene Ontology (GO) and Kyoto Encyclopedia of Genes            DH5α (obtained from Genomics Research Center, Col-
+and Genomes (KEGG) analyses were performed with               lege of Pharmacy, Harbin Medical University) was cul-
+DEGs meeting adjusted P < 0.05 and |log2FC| ≥ 1 using         tured in Luria-Bertani medium. Human CRC cell lines
+the R package “clusterProfiler” [24, 25]. The top 15          (HCT-116, LoVo) and a normal colon epithelium cell line
+enrichment terms of GO and KEGG were visualized               (NCM460) were purchased from the American Type Cul-
+using the above package. Furthermore, we downloaded           ture Collection (ATCC, USA). HCT116 and LoVo were
+hallmark gene sets that summarize and represent specific      cultured in RPMI 1640 (Gibco, USA) and F-12K Nutri-
+well-defined biological states or processes from MSigDB       ent Mixture (Gibco, USA) supplemented with 10% fetal
+website [26]. Then, Gene Set Variation Analysis (GSVA)        bovine serum (purchased from Inner Mongolia Opcel
+was used to investigate the differences in hallmark gene      Biotechnology Co.,Ltd., China), respectively. All cell lines
+sets between F. nucleatum-infected and non-infected           were cultured at 37 ℃ in humidified 5% ­CO2 atmosphere.
+cells [27]. Gene Set Enrichment Analysis (GSEA) was
+applied to explore the biological functions influenced by     Clinical samples
+F. nucleatum in our own transcriptome data using the          Stool samples were collected from 26 healthy volun-
+C5 gene sets of MSigDB website. The significant terms of      teers, 13 patients with acute abdominal diseases, 18
+GSEA were visualized using the R package “enrichplot”.        patients with colorectal precancerous lesion (adenomas
+                                                              or polyps) and 76 patients with CRC. All patients did not
+Correlation analysis                                          undergo surgical treatment before collecting fecal speci-
+The Pearson correlation analysis was performed with           mens. Colorectal cancer and adjacent normal tissues
+“ggpubr” package and visualized using “ggplot2” pack-         were obtained from surgical specimens of 19 patients
+age. The representative genes of KEGG MAPK signaling          diagnosed with CRC. All specimens were collected dur-
+pathway were downloaded from MSigDB website, and              ing 2019–2022. All participants were from the Second
+ssGSEA algorithm was then used to calculate the KEGG          Affiliated Hospital of Harbin Medical University (Harbin,
+MAPK signaling pathway scores of CRC patients.                China).
+
+Identification of components targeting MMP7 and network       DNA extraction and 16S rRNA gene sequencing
+
+                                                              zen colorectal cancer tissue with the E.Z.N.A.® tissue
+visualization                                                 Genomic DNA (gDNA) was extracted from fresh fro-
+We used the HERB database [28] to find components
+
+                                                              with the E.Z.N.A.® soil DNA Kit (Omega Bio-tek, U.S.)
+that target MMP7. Components-MMP7 network map                 DNA Kit (Omega Bio-tek, U.S.) and from fecal samples
+was constructed using Cytoscape Software.
+                                                              according to manufacturer’s instructions. The V3-V4
+Molecular docking                                             regions of the 16S rRNA gene were PCR amplified using
+Using molecular docking analysis, we predicted the bind-      primer pairs 338F (5′-ACT​CCT​ACG​GGA​GGC​AGC​
+ing of proteins, along with the free energy of binding,       AG-3′) and 806R (5′ GGA​CTA​CHVGGG​T WT​CTAAT-
+and differential components. The molecular structures         3′). The PCR reaction was set up in triplicate, and the
+of these components were obtained from the PubChem            PCR product was purified using the AxyPrep DNA Gel
+database [29] and the protein structures of MMP7              Extraction Kit (Axygen Biosciences, USA). The high-
+(PDB ID:7WXX) were obtained from the PDB database             throughput sequencing was performed in Majorbio Bio-
+(https://​www.​rcsb.​org/) [30]. Molecular docking was per-   Pharm Technology Co. Ltd. (Shanghai, China). Analysis
+formed using AutoDock Tools software (1.5.7). A heat          of the 16S rRNA microbiome sequencing data was per-
+map was plotted by Sangerbox online drawing tool, and         formed using the free online platform of Majorbio Cloud
+PYMOL software was used for the visualization of opti-        Platform (cloud.majorbio.com).
+mal docking results.
+                                                              F. nucleatum quantification
+                                                              Genomic DNA extraction from fresh frozen colorectal
+                                                              tissue was conducted as described above. gDNA from
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                       Page 4 of 17
+
+
+
+
+each specimen was subjected to qPCR to estimate the           using the DESeq2. Differences with P value < 0.05 and |
+abundance of F. nucleatum by detecting the 16S rRNA           log2 (fold change) | > 1 were considered as statistically
+gene. Each reaction was assayed in triplicate in 20 µl        significant.
+reaction containing PowerUp SYBR Master Mix (Applied
+Biosystems, USA), primers, template DNA, d       ­dH2O,       RNA extraction and quantitative real‑time PCR
+
+                                                              TRIzol™ Reagent (Invitrogen, USA). 1 µg of total RNAs
+and was placed in an optical PCR plate. Amplification         Total RNAs were extracted from CRC cell lines by using
+
+­StepOne™ Real-Time PCR System (Applied Biosystems,           was reverse transcribed to cDNA using ­PrimeScript™ RT
+and detection of DNA were performed with the ABI
+
+
+                                                              was performed in ABI ­StepOne™ Real-Time PCR Sys-
+USA) under the following reaction conditions: 10 min at       Master Mix (Takara, Japan). Quantitative real-time PCR
+95 ℃, followed by 40 cycles of denaturation at 95 ℃ for
+15 s and at 60℃ for 1 min. The cycle threshold (Ct) val-      tem. Each reaction was assayed in quadruplicate in 20 µl
+ues for F. nucleatum were normalized to the amount of         reaction containing PowerUp SYBR Master Mix (Applied
+human biopsy gDNA in each reaction by using PGT as a          biosystems, USA), primers, template cDNA and ­ddH2O.
+reference gene. The following primer sets were used:          Relative abundance of mRNA was calculated by 2 − ΔΔCt
+   F. nucleatum:                                              method. ACTB served as internal reference gene. The fol-
+   Forward: 5ʹ-CGG​GTG​AGT​AAC​G CGT​AAA​G-3ʹ,                lowing primer sets were used:
+   Reverse: 5ʹ-GCA​TTC​GTT​TCC​AAA​TGT​TGTCC-3ʹ;                Human MMP7:
+   PGT                                                          Forward: 5ʹ- CAT​GAT​TGG​CTT​TGC​GCG​AG-3ʹ,
+   Forward: 5ʹ-ATC​CCC​AAA​GCA​CCT​GGT​TT-3ʹ,                   Reverse: 5ʹ- AGA​CTG​CTA​CCA​TCC​GTC​CA-3ʹ;
+   Reverse: 5ʹ-AGA​GGC​CAA​GAT​AGT​CCT​GGTAA-3ʹ.                Human ACTB:
+                                                                Forward: 5ʹ- GAT​TCC​TAT​GTG​GGC​GAC​GA-3ʹ,
+                                                                Reverse: 5ʹ- AGG​TCT​CAA​ACA​TGA​TCT​GGGT-3ʹ;
+RNA sequencing
+LoVo cells were cocultured with PBS or F. nucleatum at        Wound healing assays
+
+RNA was extracted from the treated cells using ­TRIzol™
+a multiplicity of infection (MOI) of 100:1 for 2 h. Total     CRC cells were seeded in 6-well plates to create a con-
+                                                              fluent monolayer. The cells of each well were incubated
+Reagent according the manufacturer’s instructions (Inv-       with F. nucleatum or E. coli (DH5α) at a MOI of 100:1,
+itrogen, USA) and genomic DNA was removed using               or equal volume of PBS for 2 h. The cell monolayers were
+DNase I (TaKara, Japan). Then RNA quality was deter-          then scraped with 10 µl pipette tips in a straight line to
+mined by 2100 Bioanalyser (Agilent, USA) and quanti-          create a scratch. After washing twice with PBS, the cells
+fied using the ND-2000 (NanoDrop Technologies, USA).          were incubated in serum-free medium supplemented
+Only high-quality RNA sample (OD260/280 = 1.8 ~ 2.2,          with penicillin, streptomycin, metronidazole for 24 h.
+OD260/230 ≥ 2.0, RIN ≥ 6.5, 28S:18S ≥ 1.0, > 1 µg) was        Cell scratch images were taken under a microscope at
+used to construct sequencing library. RNA-seq transcrip-      0, 24 h, respectively. The scratch area was measured
+tome library was prepared following TruSeqTM RNA              by ImageJ software. The cell migration rate (%) = (0 h
+sample preparation Kit (Illumina, USA) using 1 µg of total    scratch area − 24 h scratch area)/ 0 h scratch area ×100%.
+RNA. Messenger RNA was isolated according to polyA
+selection method by oligo (dT) beads and then frag-           Transwell migration assays
+mented by fragmentation buffer. Double-stranded cDNA          CRC cell lines were incubated with PBS, F. nucleatum or
+was synthesized using a SuperScript double-stranded           E. coli for 2 h in advance. For migration assay, 1 × ­105 cells
+cDNA synthesis kit (Invitrogen, USA) with random hex-         suspended in 200 µl medium supplemented with 1% fetal
+amer primers (Illumina, USA). Then the synthesized            bovine serum were seeded in the upper chamber of tran-
+cDNA was subjected to end-repair, phosphorylation and         swell chambers (8 μm pores, Corning, USA), and 800 µl
+‘A’ base addition according to Illumina’s library construc-   fresh medium with 10% serum was added to the lower
+tion protocol. Libraries were size selected for cDNA tar-     chamber. After incubation for 36 h at 37 °C, the cells in
+get fragments of 300 bp on 2% Low Range Ultra Agarose         the upper chamber were fixed with 4% paraformalde-
+followed by PCR amplified using Phusion DNA polymer-          hyde, followed by staining with 0.1% crystal violet. The
+ase (NEB, USA) for 15 PCR cycles. After quantification        images in five fields (100×) were taken under an optical
+by TBS380, paired-end RNA-seq sequencing library was          microscope. The migrated cells were quantified by using
+sequenced with the NovaSeq 6000 sequencer (2 × 150 bp         ImageJ software.
+read length). Paired-end clean reads were aligned to the
+human genome version hg38 using Hisat2 v2.0.5. Differ-
+ential expression analysis of two groups was performed
+Ou et al. Journal of Translational Medicine      (2023) 21:704                                                                              Page 5 of 17
+
+
+
+
+Protein extraction and western blotting                                           performed according to the manufacturer’s instructions.
+Total proteins were extracted from CRC cell lines by                              Following transfection, cells stably expressing shRNAs
+using RIPA lysis buffer (Beyotime, China) supplemented                            were selected in the presence of puromycin (Beyotime,
+with PMSF (Beyotime, China) and phosphatase inhibi-                               China) for 5 days. The efficiencies of shRNA knockdown
+tor (Roche, Switzerland) and then quantified using                                were confirmed with qPCR and western blotting.
+BCA Protein Assay Kit (Beyotime, China). Nuclear and
+cytoplasmic protein were prepared using the Nuclear                               Immunofluorescence
+and Cytoplasmic Protein Extraction Kit (Absin, China)                             CRC cells were seeded on chamber slides and cocul-
+according to the protocol provided by the manufac-                                tured with PBS or F. nucleatum (MOI = 100:1) for 2 h.
+turer. Protein was electrophoresed through 10% SDS                                After washing with PBS, the cells were fixed with 4%
+polyacrylamide gels and then transferred to PVDF mem-                             paraformaldehyde for 15 min at room temperature. The
+branes. The membranes were blocked with 5% fat-free                               slides were incubated with 0.2% Triton X-100 for 10 min
+milk for 2 h and incubated with primary antibodies at                             and blocked in 3% BSA for 30 min. After discarding the
+4 °C overnight. Membranes were then incubated with                                blocking solution, the slides were incubated with primary
+second antibodies labeled with HRP at room temperature                            antibody against c-Jun (CST# 9165T) at room tempera-
+for 2 h on the following day and the signal was detected                          ture for 2 h. Then the slides were washed by PBST three
+using an ECL kit (Beyotime, China). The following pri-
+                                                                                  with Alexa ­Fluor® 488 (CST#4412S) and DAPI (Beyo-
+                                                                                  times and incubated with secondary antibody conjugated
+mary antibodies were used: JNK (Abcam # ab179461),
+P-JNK (Abcam # ab124956), c-Jun (CST# 9165), P-c-                                 time, China) at room temperature for 1 h and 5 min,
+Jun (Abcam#ab32385), and MMP7 (Abcam#ab205525).                                   respectively. The slides were fixed with Antifade Mount-
+β-actin (Abclonal#AC026), GAPDH (Abclonal#AC002)                                  ing Medium (Beyotime, China) and imaged using light
+or PCNA (Abcam#ab29) was used as reference gene.                                  microscopy.
+
+Transcription factors prediction                                                  Statistical analysis
+The four online bioinformatics tools AnimalTFDB3                                  All bioinformatic analyses were performed in R 4.0.3.
+(http://​bioin​fo.​life.​hust.​edu.​cn/​Anima​lTFDB/), TRANS-                     Kruskal-Wallis test, Mann Whitney U test, Wilcoxon
+FAC PATCH (http://​gene-​regul​ation.​com/​cgi-​bin/​pub/​                        test, Welch t’ test, Paired t test, Student’s t test, one-way
+progr​ams/​patch/​bin/​patch.​cgi), TRANSFAC MATCH                                ANOVA, and the log-rank test were used to analyze the
+(http:// ​ g ene- ​ r egul​ a tion.​ c om/​ c gi-​ b in/​ p ub/​ p rogr​ a ms/​   data. All statistical tests were performed using Graph-
+match/​bin/​match.​cgi), and PROMO (https://​alggen.​lsi.​                        Pad Prism Software. Data were shown as mean ± stand-
+upc.​es/) were used for scanning the potential transcrip-                         ard deviation (SD). P < 0.05 was considered statistically
+tion factors of MMP7. Binding score of five selected tran-                        significant.
+scription factors was evaluated by using JASPAR (http://​
+jaspar.​gener​eg.​net/).                                                          Result
+                                                                                  F. nucleatum infection affects gene expression profile
+Lentivirus production and cell transfection                                       and biological function of colorectal cancer cell
+MMP7 shRNA lentivirus and their control shRNA len-                                To look into the overall impact of F. nucleatum infec-
+tivirus were generated using the GV344 (hU6-MCS-                                  tion on the biological properties of colorectal cancer,
+Ubiquitin-firefly_Luciferase-IRES-puromycin)   vector                             we analyzed the public transcriptome data of CRC cell
+(Genechem Co. Ltd., Shanghai, China). JUN shRNA                                   lines (LoVo and Caco-2) with or without F. nuclea-
+lentivirus and control shRNA lentivirus were gener-                               tum infection. Through differential expression analy-
+ated using the GV248 (hU6-MCS-Ubiquitin-EGFP-                                     sis, we obtained 206 differentially expressed genes in
+IRES-puromycin) vector (Genechem Co. Ltd., Shanghai,                              LoVo GSE173549 (175 upregulated, 31 downregulated)
+China). Transfection of the lentivirus construct was                              and 1208 in Caco-2 GSE102573 (605 upregulated, 603
+
+
+
+  (See figure on next page.)
+  Fig. 1 F. nucleatum infection affects gene expression profile and biological function of colorectal cancer cell. A–D Volcano plots (A, B) and Heat
+  maps (C, D) representing the differentially expressed genes between F. nucleatum-infected and PBS-treated colorectal cancer cells (GSE173549,
+  LoVo; GSE102573, Caco-2). E Protein−protein interaction network of genes upregulated in both two cell lines. Network nodes represent proteins,
+  and Edges represent protein−protein associations. F The top upregulated and downregulated genes by F. nucleatum infection via RRA analysis. G,
+  H The activated pathways by F. nucleatum infection via KEGG enrichment analysis. I, J The biological functions influenced by F. nucleatum infection
+  via GO enrichment analysis. K, L The hallmarks of CRC cell affected by F. nucleatum infection via GSVA
+Ou et al. Journal of Translational Medicine   (2023) 21:704   Page 6 of 17
+
+
+
+
+ Fig. 1 (See legend on previous page.)
+Ou et al. Journal of Translational Medicine    (2023) 21:704                                                                                  Page 7 of 17
+
+
+
+
+downregulated) affected by F. nucleatum infection                              such as PI3K_AKT_MTOR_SIGNALING, REACTIVE_
+(Fig. 1A, B). The heat maps show the top 20 upregulated                        OXYGEN_SPECIES_PATHWAY, and WNT_BETA_
+genes and 20 downregulated genes (Fig. 1C, D). Among                           CATENIN_SIGNALING (Fig. 1L).
+them, CCL20 and CXCL8, both of which could promote
+the migration and metastasis of colorectal cancer cells,                       F. nucleatum is overabundant in CRC and promotes
+were validated to be upregulated by F. nucleatum infec-                        the migration of CRC cells
+tion [15, 31]. BIRC3 was reported to be upregulated by                         To assess the association between F. nucleatum and CRC,
+F. nucleatum infection and mediate the F. nucleatum-                           we detected Fusobacterium spp. abundance in feces
+induced chemoresistance in CRC cells (Fig. 1C) [12]. As                        and tissues of healthy volunteers and patients using 16S
+a vital gene related to CRC invasion and metastasis [18],                      ribosomal RNA gene sequencing. We found that the
+MMP7 is upregulated significantly by F. nucleatum in                           abundance of Fusobacterium spp. in feces from colorec-
+both two datasets. We conduct protein−protein inter-                           tal cancer patients was significantly higher than healthy
+action analysis with the common genes significantly                            volunteers and patients with acute abdominal diseases
+upregulated by F. nucleatum infection in both datasets.                        (Fig. 2A). The abundance of Fusobacterium spp. in CRC
+The result indicates that MMP7, CXCL1, and LCN2 are                            tissues was significantly higher than feces from CRC
+the core node in the whole protein−protein interaction                         patients (Fig. 2B). In paired tissue samples, the abun-
+network (Fig. 1E). The heat map shows the top 10 genes                         dance of Fusobacterium spp. in cancer tissues was sig-
+of RRA analysis in the two datasets (Fig. 1F). MMP7,                           nificantly higher than adjacent normal tissues (Fig. 2C).
+MMP1, and CCL20 are the most obviously changed                                 Consistently, the result of qPCR showed that the abun-
+genes in the CRC cells infected by F. nucleatum. KEGG                          dance of F. nucleatum in cancer tissues was significantly
+pathway enrichment and GO analyses were used to                                higher than adjacent normal tissues (Fig. 2D). This result
+investigate the F. nucleatum affected biological func-                         was also consistant with the privious research [10]. In
+tion of CRC cell. The results of KEGG analysis revealed                        addition, we evaluated the effect of F. nucleatum on the
+that F. nucleatum mainly altered the immune response,                          migration of CRC cells with wound-healing and transwell
+inflammation and infection related signal pathways                             assays. CRC cell lines HCT116 and LoVo infected with F.
+in GSE173549 (Fig. 1G), and altered the biosynthe-                             nucleatum had enhanced migratory capacity compared
+sis, metabolism, cell cycle, and ferroptosis pathways                          to cells uninfected (PBS) or infected with common intes-
+in GSE102573 (Fig. 1H). According to GO analysis, F.                           tinal bacteria E. coli (DH5α) (Fig. 2E–G).
+nucleatum infection primarily affected the functions
+of cell surface receptor-ligand binding involved in                            F. nucleatum upregulates MMP7 in CRC cells
+MHC protein complex, chemokine, cytokine, and their                            In order to uncover the potential molecular mechanism
+receptors in GSE173549 (Fig. 1I), and affected the cell                        of F. nucleatum promoting CRC cell migration, we per-
+functions of adhesion and motility, which were impor-                          formed RNA sequencing profile analysis of CRC cells
+tant for metastasis in GSE102573 (Fig. 1J). GSVA was                           with or without F. nucleatum infection. The result showed
+used to further analysis the impact of F. nucleatum on                         that MMP7 was one of the most significantly upregulated
+CRC. Some common hallmarks were up-regulated by                                genes in F. nucleatum-infected LoVo cells (Fig. 3A, B).
+F. nucleatum infection in both two datasets, such as                           According to the report, matrix metalloproteinases play
+MYC _TARGETS, GLYCOLISIS, MTORC1_SIGNAL-                                       a critical role in cancer metastasis [18]. Among all the
+ING, and KRAS_SIGNALING (Fig. 1K, L). However,                                 matrix metalloproteinases, MMP7 was the most upregu-
+some hallmarks were up-regulated only in GSE173549,                            lated matrix metalloproteinase by F. nucleatum infection
+such as EPITHELIAL_MESENCHYMAL_TRANSI-                                         (Fig. 3C). To confirm this find, the MMP7 expression of
+TION, INFLAMMATORY_RESPONSE, COMPLE-                                           LoVo and HCT116 cells was analyzed by qPCR and west-
+MENT, and HYPOXIA (Fig. 1K), or only in GSE173549,                             ern blot after incubation with F. nucleatum, E. coli, or
+
+
+ (See figure on next page.)
+ Fig. 2 F. nucleatum is overabundant in CRC and promotes the migration of CRC cells. A The relative abundance of fecal Fusobacterium spp.
+ among the healthy volunteers (HV, n = 26), the patients with acute abdominal diseases (AAD, n = 13), the patients with colorectal precancerous
+ lesion (CPL, n = 18), and the patients with colorectal cancer (CRC, n = 76, Kruskal-Wallis test). B The relative abundance of Fusobacterium spp. in stool
+ (n = 76) and cancer tissue of colorectal cancer (n = 19, Mann Whitney U test). C The relative abundance of Fusobacterium spp. in paired cancer tissue
+ and adjacent normal tissue (Wilcoxon test). D The abundance of F. nucleatum in paired cancer tissue (n = 19) and adjacent normal tissue (n = 19,
+ Wilcoxon test). E, F the motility of LoVo and HCT116 cells was detected by wound-healing assay after incubation with PBS or F. nucleatum or E. coli
+ (n = 6, one-way ANOVA). G the motility of LoVo was tested by transwell assay after treatment with PBS, F. nucleatum or E. coli (n = 5, one-way ANOVA).
+ Data are shown as mean ± SD, * p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001
+Ou et al. Journal of Translational Medicine   (2023) 21:704   Page 8 of 17
+
+
+
+
+ Fig. 2 (See legend on previous page.)
+Ou et al. Journal of Translational Medicine    (2023) 21:704                                                                                 Page 9 of 17
+
+
+
+
+PBS. We observed that the expression of MMP7 was sig-                         proteins c-Jun and phosphorylated c-Jun also increased
+nificantly upregulated in F. nucleatum-infected CRC cells                     significantly (Fig. 5E, F). To verify the regulatory relation-
+(Fig. 3D, E). Furthermore, the expression level of MMP7                       ship between AP1 and MMP7, knockdown assays were
+rose along with the MOI or the time after infection                           performed. We observed that knockdown of JUN sig-
+(Fig. 3F–H). The level of protein expression was consist-                     nificantly suppressed the expression of MMP7 (Fig. 5G,
+ent with RNA expression (Fig. 3I). However, the MMP7                          H). In addition, we confirmed that the phosphorylated
+expression of normal colon epithelial cell NCM460 was                         c-Jun and total c-Jun in the nucleus of CRC cell were
+affected by F. nucleatum very slightly (Fig. 3J).                             elevated by F. nucleatum infection (Fig. 5I). This result
+                                                                              was validated again by immunofluorescence experi-
+F. nucleatum promotes migration of CRC cells                                  ments (Fig. 5J). We examined activation of this pathway
+by upregulating MMP7                                                          at different time points after two hours of co-culture. We
+To determine whether the effect of F. nucleatum on the                        found that the signaling activation was most pronounced
+CRC cell migration was mediated by MMP7, loss-of-                             at 4 h after infection, and then gradually diminished over
+function assays were performed. We constructed MMP7-                          time (Fig. 5K). However, 48 h after infection, this sig-
+knockdown cell lines by using lentivirus vector. The                          nal was still up-regulated. To ascertain whether there is
+efficiency of knockdown was verified by qPCR (Fig. 4A,                        a feedback regulatory between MMP7 and its upstream
+B). The Lentivirus vector with knockdown efficiency of                        proteins p-c-Jun, c-Jun, p-JNK or JNK, We detect the
+more than 50% in both two cell lines was selected for                         expression of these proteins in HCT116 and LOVO cell
+further experiments. We observed that knockdown of                            lines with or without MMP7 knockown and/or F. nucle-
+MMP7 attenuated F. nucleatum-induced upregulation                             atum infection. And We found that the expression of
+of MMP7 (Fig. 4C-F), and also abolished F. nucleatum-                         upstream proteins (p-JNK, JNK, p-c-Jun, c-Jun) remained
+enhanced migration of CRC cells (Fig. 4G–I).                                  unchanged after MMP7 knockdown (Additional file 2:
+                                                                              Fig. S2). This indicates that MMP7 does not exert feed-
+F. nucleatum upregulates MMP7 by activating MAPK                              back regulation on these upstream proteins.
+(JNK)‑AP1 axis
+Using the online bioinformatics tools AnimalTFDB,                             MMP7 is upregulated in CRC and associated with a poor
+TRANSFAC, PROMO and JASPAR, we predicted the                                  prognosis
+potential transcription factors that may bind to the pro-                     By analyzing the gene expression of CRC patients in
+moter region of MMP7 (Fig. 5A). Among them, AP1                               the TCGA-COAD/READ- datasets, we found that the
+subunit, JUN’s score is the highest. In addition, previous                    mRNA expression of MMP7 in colon and rectal can-
+study have confirmed that AP1 is a direct transcription                       cer tissues was significantly higher than normal tis-
+factor of MMP7 by Chip and luciferase reporter assays                         sues (Fig. 6A, B). The results of paired colon or rectal
+[32]. Therefore, we speculated that F. nucleatum-induced                      cancer tissues and adjacent normal tissues were simi-
+upregulation of MMP7 is mediated by the transcription                         lar (Fig. 6C, D). Consistent with our experimental
+factor AP1. By using the tool KEGG Maper, we knew                             results, MMP7 mRNA expression was positively corre-
+that AP1 was regulated by the MAPK (JNK) pathway                              lated with MAPK signaling pathway in TCGA-COAD/
+(Additional file 1: Fig. S1). The result of GSEA analysis                     READ (Fig. 6E, F). The mRNA expression of MMP7
+indicated that F. nucleatum infection activated MAPK                          was also positively correlated with JUN mRNA expres-
+signaling (Fig. 5B). Through western blot experiment, we                      sion in TCGA-COAD (Fig. 6G). CRC patients with
+confirmed that JNK signaling was activated by F. nuclea-                      high MMP7 or JUN expression had a worse progno-
+tum infection (Fig. 5C, D). F. nucleatum infection led to                     sis (Fig. 6H, I). The Consensus Molecular Subtypes
+an increase in phosphorylated JNK, and its downstream                         (CMS) classification is one of the most widely used
+
+
+
+ (See figure on next page.)
+ Fig. 3 F. nucleatum upregulates MMP7 in CRC cells. A, B Volcano map (A) and heat map (B), representing the differentially expressed genes
+ between F. nucleatum-infected and PBS-treated LoVo cell by RNA-seq (n = 3 per group, logFC ≥ 2, adjusted P value < 0.05). C The expression of MMP7
+ among all MMPs in LoVo cells incubated with F. nucleatum or PBS was represented by heat map (n = 3 per group). D, E The mRNA expression
+ of MMP7 after F. nucleatum, E. coli or PBS treatment in CRC cells (n = 4 per group, One-way ANOVA test). F, G The mRNA expression of MMP7
+ after PBS treatment or F. nucleatum infection of MOI = 100 or 500 in CRC cells (n = 4 per group, One-way ANOVA test). H The mRNA expression
+ of MMP7 at 0 h, 12 h, and 24 h after F. nucleatum infection in HCT116 cells (n = 4 per group, One-way ANOVA test). I The protein expression of MMP7
+ after PBS treatment, F. nucleatum infection of MOI = 100 or 500, or E. coli infection of MOI = 100 in CRC cells (repeated three times). J The mRNA
+ expression of MMP7 after F. nucleatum infection in NCM460 cells (n = 4 per group). Data are shown as mean ± SD, * p < 0.05, ** p < 0.01, *** p < 0.001,
+ **** p < 0.0001
+Ou et al. Journal of Translational Medicine   (2023) 21:704   Page 10 of 17
+
+
+
+
+ Fig. 3 (See legend on previous page.)
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                                             Page 11 of 17
+
+
+
+
+ Fig. 4 F. nucleatum promotes the migration of CRC cells by upregulating MMP7. A, B The mRNA expression of MMP7 in CRC cells transfected
+ with MMP7 shRNA lentivirus or control lentivirus (n = 4). C–I CRC cells were transfected with MMP7 shRNA lentivirus or control lentivirus, and then
+ incubated with F. nucleatum or PBS. The mRNA expression (C, D) and protein expression (E, F) of MMP7 were measured by qPCR (n = 4, One-way ANOVA
+ test) and western blot (repeated three times), respectively. The motility was detected by wound-healing assay (G, H) (n = 6, One-way ANOVA test)
+ or transwell assay (I) (n = 5, One-way ANOVA test). Data are shown as mean ± SD, * p < 0.05, ** p < 0.01, *** p < 0.001, p < 0.001, **** p < 0.0001
+Ou et al. Journal of Translational Medicine     (2023) 21:704                                                                                    Page 12 of 17
+
+
+
+
+ Fig. 5 F. nucleatum upregulates MMP7 by activating the MAPK (JNK)-AP1 axis. A Venn diagram showing five overlapping transcription factors
+ in four prediction sets (AnimalTFDB, TRANSFAC PATCH, TRANSFAC MATCH, and PROMO). The binding score of selected transcription factors
+ was evaluated by JASPAR. B GSEA of RNA-seq data comparing the transcriptome of LoVo infected with or without F. nucleatum. C–F Protein
+ expression of CRC cells after PBS treatment, F. nucleatum infection of MOI = 100 (F100) or 500 (F500), or E. coli infection of MOI = 100 measured
+ by western blot (repeated three times). G The mRNA expression of MMP7 and JUN in CRC cells transfected with JUN shRNA lentivirus or control
+ lentivirus (n = 4, One-way ANOVA test). H CRC cells transfected with JUN shRNA lentivirus or control lentivirus, were incubated with or without
+ F. nucleatum. The protein expression was measured by western blot (repeated three times). I The protein level in the nucleus of CRC cells after F.
+ nucleatum or PBS treatment measured by western blot (repeated three times). J LoVo cells were incubated with F. nucleatum or PBS for 2 h,
+ immunofluorescence assay was conducted to show the protein c-Jun in LoVo cells (repeated three times). K The protein expression of CRC cells
+ at 0 h, 4 h, 12 h, 24 h, and 48 h after F. nucleatum infection (repeated three times). Data are shown as mean ± SD, * p < 0.05, ** p < 0.01, *** p < 0.001,
+ **** p < 0.0001
+
+
+
+classification systems in the clinical treatment of CRC,                         (mesenchymal). Different subtypes of patients had dif-
+including CMS1 (microsatellite instability immune),                              ferent molecular characteristics, prognoses, and treat-
+CMS2 (canonical), CMS3 (metabolic), and CMS4                                     ment options. CMS 4 patients were characterized by
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                                              Page 13 of 17
+
+
+
+
+ Fig. 6 MMP7 is upregulated in CRC and associated with a poor prognosis. A, B Expression level of MMP7 in unpaired tumor tissues and normal
+ tissues of TCGA-COAD (Normal, n = 41; Tumor, n = 480, Welch t’ test), or READ (Normal, n = 10; Tumor, n = 167, Welch t’ test). C, D Expression level
+ of MMP7 in paired tumor tissues and adjacent normal tissues of TCGA-COAD (Normal, n = 41; Tumor, n = 41; Wilcoxon signed rank test) or READ
+ (Normal, n = 9; Tumor, n = 9, Paired t test). E, F Pearson correlation between the MAPK signaling pathway and the expression of MMP7 in the tumor
+ tissues from TCGA-COAD/READ (COAD, n = 471, READ, n = 165). G Pearson correlation between the expression of JUN and MMP7 in the tumor
+ tissues from TCGA-COAD (n = 480). (H, I) Kaplan–Meier survival curves were analyzed and compared between patients with low and high level
+ of JUN (H) and MMP7 (I) in CRC patients from the GEO combined dataset (n = 864, the log-rank test). J, K The JUN (J) and MMP7 (K) expression score
+ of CMS1/2/3 (n = 713) or CMS4 (n = 340, Wilcoxon signed rank test) group in the GEO combined dataset. Data are shown as mean ± SD, * p < 0.05, **
+ p < 0.01, *** p < 0.001
+
+
+
+prominent transforming growth factor β (TGF-β) acti-                         higher than in the other three types (Fig. 6J, K). This
+vation, stromal invasion, and angiogenesis with poor                         implies the potential association between MMP7, JUN
+overall survival and recurrence-free survival [33].                          and CMS 4. It is reported that MMPs are associated
+According to previous research, F. nucleatum was prog-                       with tumor epithelial-mesenchymal transformation
+nostic for CMS4 patients [34]. Therefore, we analyzed                        and angiogenesis [35]. All findings support the hypoth-
+the relationship between MMP7 and JUN and CMS                                esis that F. nucleatum-activated JUN and MMP7 may
+classification. The results showed that the expression                       be key molecules leading to a poor prognosis in CMS
+of MMP7 and JUN in CMS 4 patients was significantly
+Ou et al. Journal of Translational Medicine   (2023) 21:704                                                   Page 14 of 17
+
+
+
+
+4 patients and have the potential to correct the poor           The mechanisms involved in the invasion and metas-
+prognosis of CMS 4 patients.                                  tasis of cancer are complex and diverse, including
+                                                              epithelial-mesenchymal transformation, cytoskeletal
+Potential small molecule drugs to target MMP7                 remodeling, cell-cell adhesion, matrix destruction in
+Considering that MMP7 plays an important role in F.           the front of tumor invasion, and angiogenesis. Several
+nucleatum-induced CRC cell migration, we tried to find        previous studies have partially revealed the mecha-
+small molecule drugs that can target MMP7 for CRC             nisms underlying the role of Fusobacterium nucleatum
+patients with high MMP7 expression. According to              in promoting CRC metastasis, such as the upregulation
+reports, some natural drugs have inhibitory effects on F.     of metastasis-associated cytokines and chemokines,
+nucleatum or F. nucleatum-activated signal pathways in        induction of epithelial-mesenchymal transition, regula-
+CRC [36]. We built the MMP7- components Network by            tion of cell adhesion-related molecules, and modulation
+Cytoscape Software according to the data of HERB data-        of cytoskeletal proteins [36]. Here, our works initially
+base (Additional file 3: Fig. S3A). To determine the possi-   found that MMP7 played a vital role in F. nucleatum-
+ble binding of different components to MMP7, molecular        infection promoted CRC cell migration. MMP7, a sig-
+docking was performed. The heat map showed the dock-          nificant member of the MMPs family, has a function in
+ing score of MMP7 and different components (Additional        tumor growth, metastasis, and angiogenesis [18]. It can
+file 3: Fig. S3B). The top four components docking with       not only digest ECM macromolecule such as fibronec-
+MMP7 are δ-tocotrienol, 3,4-benzopyrene, tea polyphe-         tin, laminin, type I collagen and gelatin, but also activate
+nols, and gallic catechin. The combining details were vis-    other MMPs, such as pro-MMP9 and pro-MMP2 [18].
+ualized with PYMOL (Additional file 3: Fig. S3C).             In addition, since MMP7 can degrade E-cadherin, it is
+                                                              speculated that MMP-7 on the cancer cell membranes
+Discussion                                                    cleaves E-cadherin, allowing the cell to be detached
+The interactions of gut-microbiota and host have been         from the primary cancer cell nests [49]. Mechanisti-
+implicated in the progression of CRC, but its underly-        cally, we revealed that F. nucleatum up-regulated MMP7
+ing mechanisms remain largely unclear. Metastasis is one      expression by activating MAPK (JNK) - AP1 axis.
+of the malignant features of CRC, and also a vital cause      According to previous study, AP1 is a transcription
+for poor prognosis of CRC patients. According to previ-       factor which targets MMP7 [32]. MAPK (JNK) signal
+ous reports, F. nucleatum is overabundant in the feces        plays an important role in cell response to stress and
+and tumor tissue of CRC patients [7, 9, 37]. F. nuclea-       infection [50]. F. nucleatum were likely to selectively
+tum abundance in the tumor is significantly higher than       upregulate MMP7 in CRC cells, as MMP7 expression
+in neighboring normal mucosal tissue [9, 38, 39]. Tissues     in normal colon epithelial cell NCM460 was not signifi-
+and feces from patients with invasive CRC (T1b-T3) con-       cantly affected by F. nucleatum infection. We speculate
+tained more F. nucleatum than patients with early CRC         that some upstream molecules specifically expressed in
+(Tis and T1a) [40]. Moreover, the lymph node metasta-         CRC cells mediate F. nucleatum induced activation of
+ses CRC and F. nucleatum are positively correlated [38].      JNK signal. But unfortunately, we have not found such
+To our surprise, Bullman and colleagues proved the per-       molecules. Interestingly, the up-regulation of MMP7
+sistence of F. nucleatum in CRC distal metastases [41].       was F. nucleatum-dose-dependent, suggesting that the
+Therefore, the question whether F. nucleatum is the           more amount of F. nucleatum in the tumor, the more
+driver or the passenger of CRC progress and metasta-          significant the expression of MMP7, and the stronger
+sis has puzzled many researchers and attracted them to        the effect of F. nucleatum to promote cancer cell metas-
+explore this unknown field with all their passion.            tasis. Our study showed that MMP7 is highly expressed
+  By analyzing the public CRC cell line transcrip-            in CRC tissue compared to normal colorectal tissue and
+tome data, we found that F. nucleatum infection mainly        is associated with poor prognosis of patients. This find-
+affected the biological functions of epithelial-mesen-        ing was consistent with the previous study [51]. Small
+chymal transformation, cell adhesion, cadherin binding,       molecular drugs play an important role in the field of
+IL-17 signaling pathway, cytoskeletal motor activity, glyc-   cancer targeted therapy. Some compounds, such as ber-
+olysis, and fat metabolism, all of which has been validated   berine, L-fucose, vanillin derivatives, TAK-242, have
+by pervious studies [13, 14, 42–48]. There are still some     been used in targeted therapy for F. nucleatum and its
+functions and mechanisms that perhaps influenced by F.        activated signal pathway in pilot study [36]. We tried to
+nucleatum, but are unclear and need further exploration,      screen small molecular agents targeting MMP7 through
+such as reactive oxygen species pathway, complement           using HERB dataset and molecular docking. The result
+cascade, hypoxia, amino acid synthesis and transmem-          showed that δ-tocotrienol, 3,4-benzopyrene, tea poly-
+brane transport, and ferroptosis pathways.                    phenols, and gallic catechin had a high binding score
+Ou et al. Journal of Translational Medicine        (2023) 21:704                                                                                     Page 15 of 17
+
+
+
+
+with MMP7 protein, and are potential targeted thera-                                320.6750.19092-41), Chen Xiao-ping Foundation for The Development of
+                                                                                    Science and Technology of Hubei Province (No. CXPJJH12000002-2020025),
+peutic drugs for F. nucleatum infected CRC patients.                                Scientific Research Foundation of Heilongjiang Provincial Health and Fam‑
+  There are still some deficiencies in our study. Experi-                           ily Planning Commission (No. 2018249), Beijing Medical Foundation (No.
+ments in vivo need to be carried out to further verify                              MDK2022-1001).
+our theory. We lack large size clinical cohort to validate                          Availability of data and materials
+the correlation between F. nucleatum and the expres-                                The data used in this study are available from the corresponding author upon
+sion level of MMP7 and c-Jun in CRC. We also lack                                   request.
+further experiments to confirm the inhibitory effect
+of small molecular drugs on the MMP7 protein and                                    Declarations
+migratory capacity of CRC cells.                                                    Ethics approval and consent to participate
+                                                                                    All clinical samples were collected with the informed consent of volun‑
+                                                                                    teers and patients, and ethical consent was approved by the Institutional
+                                                                                    Review Board of Second Affiliated Hospital of Harbin Medical University (No.
+Conclusion                                                                          YJSKY2022-494).
+Taken together, our results suggested that F. nucleatum
+infection altered gene expression profile and biologi-                              Consent for publication
+                                                                                    All authors agree with the submission.
+cal function in CRC. F. nucleatum was overabundant
+in CRC and upregulated MMP7 to accelerate CRC cell                                  Competing interests
+migration via activating MAPK(JNK)-AP1 axis. MMP7                                   The authors report no conflict of interest.
+and F. nucleatum may serve as potential therapeutic                                 Author details
+targets for patients with CRC.                                                      1
+                                                                                      Department of Colorectal Surgery, The Second Affiliated Hospital of Harbin
+                                                                                    Medical University, Harbin 150081, China. 2 Department of Colorectal Surgery,
+                                                                                    National Clinical Research Center of Cancer/Cancer Hospital, National Cancer
+Supplementary Information                                                           Center, Chinese Academy of Medical Sciences and Peking Union Medical
+The online version contains supplementary material available at https://​doi.​      College, Beijing 100021, China. 3 Genomics Research Center (Key Laboratory
+org/​10.​1186/​s12967-​023-​04527-3.                                                of Gut Microbiota and Pharmacogenomics of Heilongjiang Province), College
+                                                                                    of Pharmacy, Harbin Medical University, Harbin 150081, China. 4 Cumming
+  Additional file 1: Figure S1. KEGG Maper showing the regulatory rela‑             School of Medicine Centre for Infection and Genomics, Harbin Medical
+  tionships among JNK, AP1, and MMP7.                                               University-University of Calgary, Harbin Medical University, Harbin 150081,
+                                                                                    China. 5 Department of Gastrointestinal Surgery, The Affiliated Hospital
+  Additional file 2: Figure S2. A, B CRC cells were transfected with                of Medical School of Ningbo University, Ningbo 315020, China. 6 Department
+  MMP7 shRNA lentivirus or control lentivirus, and then incubated with F.           of General Surgery, The Fourth Affiliated Hospital of Harbin Medical University,
+  nucleatum or PBS. The protein expression were measured by western blot            Harbin 150000, China. 7 Department of Breast Surgery, Harbin Medical Uni‑
+  (repeated three times).                                                           versity Cancer Hospital, Harbin 150081, China. 8 Department of Microbiology,
+  Additional file 3: Figure S3. A Combination network of MMP7 and dif‑              Immunology and Infectious Diseases, University of Calgary, Calgary, AB T2N
+  ferent components. B Heat map showing the molecular docking scores of             4N1, Canada. 9 Department of Pancreatic and Biliary Surgery, The First Affiliated
+  different components and MMP7. C Molecular docking model of different             Hospital of Harbin Medical University, Harbin 150001, China.
+  components with MMP7.
+                                                                                    Received: 26 February 2023 Accepted: 15 September 2023
+
+Acknowledgements
+All the authors thank Yifan Mu, School of Architecture, Harbin Institute of
+Technology, Harbin, China, for her assistance in figures. All the authors thank
+all the colleagues of Genomics Research Center and Department of Colorectal         References
+Surgery for comments on earlier versions of this manuscript and assistance in       1. Sung H, Ferlay J, Siegel RL, Laversanne M, Soerjomataram I, Jemal A, Bray
+experiments.                                                                            F. Global cancer statistics 2020: GLOBOCAN estimates of incidence and
+                                                                                        mortality worldwide for 36 cancers in 185 countries. CA Cancer J Clin.
+Author contributions                                                                    2021;71:209–49.
+All the authors contributed to the preparation of this manuscript. RH, S-lL, YS     2. Van Cutsem E, Cervantes A, Nordlinger B, Arnold D. Metastatic colorectal
+provided direction and instruction. SO, RH, HL designed the experiments. SO,            cancer: ESMO clinical practice guidelines for diagnosis, treatment and
+JY, SR, KL carried out the experiments. YT, YJ collected the clinical samples.          follow-up. Ann Oncol. 2014;25(3):1–9.
+HW, SO conducted the bioinformatic analyses. FL, SZ and ZG contributed to           3. Dahan L, Sadok A, Formento JL, Seitz JF, Kovacic H. Modulation of cellular
+data curation. SO, HC, XM conducted data analysis. SO, HW, HC, JY prepared              redox state underlies antagonism between oxaliplatin and cetuximab in
+the figures, SO, HC, HW wrote the original draft. S-lL, SO, RH, HL contributed to       human colorectal cancer cell lines. Br J Pharmacol. 2009;158:610–20.
+furtherly editing the manuscript. RH, YS, S-lL contributed to project administra‑   4. Plummer M, de Martel C, Vignat J, Ferlay J, Bray F, Franceschi S. Global
+tion, validation, funding acquisition.                                                  burden of cancers attributable to infections in 2012: a synthetic analysis.
+                                                                                        Lancet Glob Health. 2016;4:e609–16.
+Funding                                                                             5. Nakatsu G, Li X, Zhou H, Sheng J, Wong SH, Wu WK, Ng SC, Tsoi H, Dong
+This work was supported by National Natural Science Foundation of China                 Y, Zhang N, et al. Gut mucosal microbiome across stages of colorectal
+(No. 81872034), Natural Science Foundation of Heilongjiang Province                     carcinogenesis. Nat Commun. 2015;6:8727.
+(No. H2017016), Heilongjiang Natural Science Foundation of China (No.               6. Hernández-Luna MA, López-Briones S, Luria-Pérez R. The four horsemen
+LH2020H120), Haiyan Research Fund of Harbin Medical University Can‑                     in colon cancer. J Oncol. 2019;2019: 5636272.
+cer Hospital (No. JJZD2020-04), Wu Jieping Medical Foundation (No.
+Ou et al. Journal of Translational Medicine           (2023) 21:704                                                                                          Page 16 of 17
+
+
+
+
+7.    Amitay EL, Werner S, Vital M, Pieper DH, Höfler D, Gierse IJ, Butt J, Bala‑        26. Liberzon A, Birger C, Thorvaldsdóttir H, Ghandi M, Mesirov JP, Tamayo P. The
+      varca Y, Cuk K, Brenner H. Fusobacterium and colorectal cancer: causal                 molecular signatures database (MSigDB) hallmark gene set collection. Cell
+      factor or passenger? Results from a large colorectal cancer screening                  Syst. 2015;1:417–25.
+      study. Carcinogenesis. 2017;38:781–8.                                              27. Hänzelmann S, Castelo R, Guinney J. GSVA: gene set variation analysis for
+8.    Xu K, Jiang B. Analysis of mucosa-associated microbiota in colorectal                  microarray and RNA-seq data. BMC Bioinformatics. 2013;14: 7.
+      cancer. Med Sci Monit. 2017;23:4422–30.                                            28. Fang S, Dong L, Liu L, Guo J, Zhao L, Zhang J, Bu D, Liu X, Huo P, Cao W, et al.
+9.    Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM,                         HERB: a high-throughput experiment- and reference-guided database of
+      Ojesina AI, Jung J, Bass AJ, Tabernero J, et al. Genomic analysis identifies           traditional chinese medicine. Nucleic Acids Res. 2021;49:D1197–206.
+      association of Fusobacterium with colorectal carcinoma. Genome Res.                29. Wang Y, Bryant SH, Cheng T, Wang J, Gindulyte A, Shoemaker BA, Thiessen
+      2012;22:292–8.                                                                         PA, He S, Zhang J. PubChem bioassay: 2017 update. Nucleic Acids Res.
+10.   Yang Y, Weng W, Peng J, Hong L, Yang L, Toiyama Y, Gao R, Liu M, Yin M, Pan            2017;45:D955–63.
+      C, et al. Fusobacterium nucleatum increases proliferation of colorectal cancer     30. Burley SK, Bhikadiya C, Bi C, Bittrich S, Chen L, Crichlow GV, Christie CH.
+      cells and tumor development in mice by activating toll-like receptor 4 sign‑           Dalenberg: RCSB protein data bank: powerful new tools for exploring 3D
+      aling to nuclear factor-κB, and up-regulating expression of MicroRNA-21.               structures of biological macromolecules for basic and applied research and
+      Gastroenterology. 2017;152:851-866.e824.                                               education in fundamental biology, biomedicine, biotechnology, bioengi‑
+11.   Yu T, Guo F, Yu Y, Sun T, Ma D, Han J, Qian Y, Kryczek I, Sun D, Nagarsheth N,         neering and energy sciences. Nucleic Acids Res. 2021;49:D437–51.
+      et al. Fusobacterium nucleatum promotes chemoresistance to colorectal              31. Casasanta MA, Yoo CC, Udayasuryan B, Sanders BE, Umaña A, Zhang Y, Peng
+      cancer by modulating autophagy. Cell. 2017;170:548-563.e516.                           H, Duncan AJ, Wang Y, Li L, et al. Fusobacterium nucleatum host-cell binding
+12.   Zhang S, Yang Y, Weng W, Guo B, Cai G, Ma Y, Cai S. Fusobacterium nucleatum            and invasion induces IL-8 and CXCL1 secretion that drives colorectal cancer
+      promotes chemoresistance to 5-fluorouracil by upregulation of BIRC3                    cell migration. Sci Signal. 2020;13:9157.
+      expression in colorectal cancer. J Exp Clin Cancer Res. 2019;38:14.                32. Shi M, Liu D, Duan H, Han C, Wei B, Qian L, Chen C, Guo L, Hu M, Yu M, et al.
+13.   Zhang Y, Zhang L, Zheng S, Li M, Xu C, Jia D, Qi Y, Hou T, Wang L, Wang B,             Catecholamine up-regulates MMP-7 expression by activating AP-1 and
+      et al. Fusobacterium nucleatum promotes colorectal cancer cells adhesion               STAT3 in gastric cancer. Mol Cancer. 2010;9:269.
+      to endothelial cells and facilitates extravasation and metastasis by inducing      33. Guinney J, Dienstmann R, Wang X, de Reyniès A, Schlicker A, Soneson C,
+      ALPK1/NF-κB/ICAM1 axis. Gut Microbes. 2022;14: 2038852.                                Marisa L, Roepman P, Nyamundanda G, Angelino P, et al. The consensus
+14.   Yu MR, Kim HJ, Park HR. Fusobacterium nucleatum accelerates the progres‑               molecular subtypes of colorectal cancer. Nat Med. 2015;21:1350–6.
+      sion of colitis-associated colorectal cancer by promoting EMT. Cancers             34. Salvucci M, Crawford N, Stott K, Bullman S, Longley DB, Prehn JHM. Patients
+      (Basel). 2020;12:2728.                                                                 with mesenchymal tumours and high Fusobacteriales prevalence have
+15.   Xu C, Fan L, Lin Y, Shen W, Qi Y, Zhang Y, Chen Z, Wang L, Long Y, Hou T, et al.       worse prognosis in colorectal cancer (CRC). Gut. 2022;71:1600–12.
+      Fusobacterium nucleatum promotes colorectal cancer metastasis through              35. Roy R, Morad G, Jedinak A, Moses MA. Metalloproteinases and their roles in
+      miR-1322/CCL20 axis and M2 polarization. Gut Microbes. 2021;13: 1980347.               human cancer. Anat Rec (Hoboken). 2020;303:1557–72.
+16.   Guo S, Chen J, Chen F, Zeng Q, Liu WL, Zhang G. Exosomes derived from              36. Ou S, Wang H, Tao Y, Luo K, Ye J, Ran S, Guan Z, Wang Y, Hu H, Huang R.
+      Fusobacterium nucleatum-infected colorectal cancer cells facilitate tumour             Fusobacterium nucleatum and colorectal cancer: from phenomenon to
+      metastasis by selectively carrying miR-1246/92b-3p/27a-3p and CXCL16.                  mechanism. Front Cell Infect Microbiol. 2022;12: 1020583.
+      Gut. 2020;70:1507–19.                                                              37. Castellarin M, Warren RL, Freeman JD, Dreolini L, Krzywinski M, Strauss J,
+17.   Chen S, Zhang L, Li M, Zhang Y, Sun M, Wang L, Lin J, Cui Y, Chen Q, Jin C,            Barnes R, Watson P, Allen-Vercoe E, Moore RA, Holt RA. Fusobacterium
+      et al. Fusobacterium nucleatum reduces METTL3-mediated m(6)a modi‑                     nucleatum infection is prevalent in human colorectal carcinoma. Genome
+      fication and contributes to colorectal cancer metastasis. Nat Commun.                  Res. 2012;22:299–306.
+      2022;13:1248.                                                                      38. Li YY, Ge QX, Cao J, Zhou YJ, Du YL, Shen B, Wan YJ, Nie YQ. Association
+18.   Pezeshkian Z, Nobili S, Peyravian N, Shojaee B, Nazari H, Soleimani H,                 of Fusobacterium nucleatum infection with colorectal cancer in chinese
+      Asadzadeh-Aghdaei H, Ashrafian Bonab M, Nazemalhosseini-Mojarad E,                     patients. World J Gastroenterol. 2016;22:3227–33.
+      Mini E. Insights into the role of Matrix Metalloproteinases in Precancerous        39. Yamaoka Y, Suehiro Y, Hashimoto S, Hoshida T, Fujimoto M, Watanabe M,
+      Conditions and in Colorectal Cancer. Cancers (Basel) 2021, 13: 6226                    Imanaga D, Sakai K, Matsumoto T, Nishioka M, et al. Fusobacterium nuclea-
+19.   Navarro Gonzalez J, Zweig AS, Speir ML, Schmelter D, Rosenbloom                        tum as a prognostic marker of colorectal cancer in a Japanese population. J
+      KR, Raney BJ, Powell CC, Nassar LR, Maulding ND, Lee CM, et al. The                    Gastroenterol. 2018;53:517–24.
+      UCSC genome browser database: 2021 update. Nucleic Acids Res.                      40. Pu ZCT, Yamamoto L, Honda K, Nakamura T, Yamamura M, Hattori T, Burt S,
+      2021;49:D1046–57.                                                                      Singh AD, Hirooka R, Fujishiro Y. Microbiota profile is different for early and
+20.   Wang H, Li Z, Ou S, Song Y, Luo K, Guan Z, Zhao L, Huang R, Yu S. Tumor                invasive colorectal cancer and is consistent throughout the colon. J Gastro‑
+      microenvironment heterogeneity-based score system predicts clinical prog‑              enterol Hepatol. 2020;35:433–7.
+      nosis and response to immune checkpoint blockade in multiple colorectal            41. Bullman S, Pedamallu CS, Sicinska E, Clancy TE, Zhang X, Cai D, Neuberg D,
+      cancer cohorts. Front Mol Biosci. 2022;9: 884839.                                      Huang K, Guevara F, Nelson T, et al. Analysis of Fusobacterium persistence
+21.   Eide PW, Bruun J, Lothe RA, Sveen A. CMScaller: an R package for consensus             and antibiotic response in colorectal cancer. Science. 2017;358:1443–8.
+      molecular subtyping of colorectal cancer pre-clinical models. Sci Rep.             42. Chen Y, Chen Y, Zhang J, Cao P, Su W, Deng Y, Zhan N, Fu X, Huang Y, Dong
+      2017;7:16618.                                                                          W. Fusobacterium nucleatum promotes metastasis in colorectal cancer by
+22.   Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W. Smyth GK: limma powers               activating autophagy signaling via the upregulation of CARD3 expression.
+      differential expression analyses for RNA-sequencing and microarray studies.            Theranostics. 2020;10:323–39.
+      Nucleic Acids Res. 2015;43:e47.                                                    43. Lu X, Xu Q, Tong Y, Zhang Z, Dun G, Feng Y, Tang J, Han D, Mao Y, Deng L,
+23.   Kolde R, Laur S, Adler P, Vilo J. Robust rank aggregation for gene list integra‑       et al. Long non-coding RNA EVADR induced by Fusobacterium nucleatum
+      tion and meta-analysis. Bioinformatics. 2012;28:573–80.                                infection promotes colorectal cancer metastasis. Cell Rep. 2022;40: 111127.
+24.   Yu G, Wang LG, Han Y, He QY. clusterProfiler: an R package for comparing           44. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. Fusobacte-
+      biological themes among gene clusters. OMICS. 2012;16:284–7.                           rium nucleatum promotes colorectal carcinogenesis by modulating
+25.   Kanehisa M, Goto S. KEGG: kyoto encyclopedia of genes and genomes.
+      Nucleic Acids Res. 2000;28:27–30.
+Ou et al. Journal of Translational Medicine            (2023) 21:704                                                                                     Page 17 of 17
+
+
+
+
+      E-cadherin/β-catenin signaling via its FadA adhesin. Cell Host Microbe.
+      2013;14:195–206.
+45.   Brennan CA, Clay SL, Lavoie SL, Bae S, Lang JK, Fonseca-Pereira D, Rosinski
+      KG, Ou N, Glickman JN, Garrett WS. Fusobacterium nucleatum drives a pro-
+      inflammatory intestinal microenvironment through metabolite receptor-
+      dependent modulation of IL-17 expression. Gut Microbes. 2021;13: 1987780.
+46.   Chen S, Su T, Zhang Y, Lee A, He J, Ge Q, Wang L, Si J, Zhuo W, Wang L. Fuso-
+      bacterium nucleatum promotes colorectal cancer metastasis by modulating
+      KRT7-AS/KRT7. Gut Microbes. 2020;11:511–25.
+47.   Hong J, Guo F, Lu SY, Shen C, Ma D, Zhang X, Xie Y, Yan T, Yu T, Sun T, et al. F.
+      nucleatum targets lncRNA ENO1-IT1 to promote glycolysis and oncogenesis
+      in colorectal cancer. Gut. 2020;70:2123.
+48.   Liu H, Du J, Chao S, Li S, Cai H, Zhang H, Chen G, Liu P, Bu P. Fusobacterium
+      nucleatum promotes Colorectal Cancer Cell to acquire Stem Cell-Like
+      features by manipulating lipid droplet-mediated numb degradation. Adv
+      Sci (Weinh). 2022;9: e2105222.
+49.   Shiomi T, Okada Y. MT1-MMP and MMP-7 in invasion and metastasis of
+      human cancers. Cancer Metastasis Rev. 2003;22:145–52.
+50.   Arthur JS, Ley SC. Mitogen-activated protein kinases in innate immunity. Nat
+      Rev Immunol. 2013;13:679–92.
+51.   Wu Q, Yang Y, Wu S, Li W, Zhang N, Dong X, Ou Y. Evaluation of the correla‑
+      tion of KAI1/CD82, CD44, MMP7 and β-catenin in the prediction of progno‑
+      sis and metastasis in colorectal carcinoma. Diagn Pathol. 2015;10:176.
+
+
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in pub‑
+lished maps and institutional affiliations.
+
+
+
+
+                                                                                          Ready to submit your research ? Choose BMC and benefit from:
+
+                                                                                           • fast, convenient online submission
+                                                                                           • thorough peer review by experienced researchers in your field
+                                                                                           • rapid publication on acceptance
+                                                                                           • support for research data, including large and complex data types
+                                                                                           • gold Open Access which fosters wider collaboration and increased citations
+                                                                                           • maximum visibility for your research: over 100M website views per year
+
+                                                                                          At BMC, research is always in progress.
+
+                                                                                          Learn more biomedcentral.com/submissions
+

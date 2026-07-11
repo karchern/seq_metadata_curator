@@ -1,0 +1,804 @@
+www.oncotarget.com                                      Oncotarget, 2018, Vol. 9, (No. 29), pp: 20409-20425
+
+                                                                                                             Research Paper
+  Identification of copy number alterations in colon cancer from
+  analysis of amplicon-based next generation sequencing data
+  Duarte Mendes Oliveira1,*, Gianluca Santamaria1,*, Carmelo Laudanna1, Simona
+  Migliozzi1, Pietro Zoppoli1, Michael Quist4, Catie Grasso5, Chiara Mignogna2,
+  Laura Elia3, Maria Concetta Faniello1, Cinzia Marinaro1, Rosario Sacco3, Francesco
+  Corcione6, Giuseppe Viglietto1, Donatella Malanga1 and Antonia Rizzuto3
+  1
+      Dipartimento di Medicina Sperimentale e Clinica, Università Magna Graecia, Catanzaro, Italy
+  2
+      Dipartimento di Scienze della Salute, Università Magna Graecia, Catanzaro, Italy
+  3
+      Dipartimento di Scienze Mediche e Chirurgiche, Università Magna Graecia, Catanzaro, Italy
+  4
+      Fred Hutchinson Cancer Research Center, Seattle, WA, USA
+  5
+      University of California Los Angeles (UCLA), Los Angeles, CA, USA
+  6
+      UOC Chirurgia Generale, Azienda Ospedaliera dei Colli, Napoli, Italy
+  *
+  These authors contributed equally to this work
+  Correspondence to: Giuseppe Viglietto, email: viglietto@unicz.it
+                     Donatella Malanga, email: malanga@unicz.it
+  Keywords: colon cancer; Next generation sequencing; copy number alteration
+  Received: April 04, 2017    Accepted: February 28, 2018    Published: April 17, 2018
+  Copyright: Oliveira et al. This is an open-access article distributed under the terms of the Creative Commons Attribution License
+  3.0 (CC BY 3.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and
+  source are credited.
+
+
+  ABSTRACT
+
+                   The objective of this study was to determine the feasibility to detect copy number
+              alterations in colon cancer samples using Next Generation Sequencing data and to
+              elucidate the association between copy number alterations in specific genes and the
+              development of cancer in different colon segments. We report the successful detection
+              of somatic changes in gene copy number in 37 colon cancer patients by analysis of
+              sequencing data through Amplicon CNA Algorithm. Overall, we have found a total
+              of 748 significant copy number alterations in 230 significant genes, of which 143
+              showed CN losses and 87 showed CN gains. Validation of results was performed on 20
+              representative genes by quantitative qPCR and/or immunostaining. By this analysis,
+              we have identified 4 genes that were subjected to copy number alterations in tumors
+              arising in all colon segments (defined “common genes”) and the presence of copy
+              number alterations in 14 genes that were significantly associated to one specific site
+              (defined “site-associated genes”). Finally, copy number alterations in ASXL1, TSC1
+              and IL7R turned out to be clinically relevant since the loss of TSC1 and IL7R was
+              associated with advanced stages and/or reduced survival whereas copy number gain
+              of ASXL1 was associated with good prognosis.
+
+  INTRODUCTION                                                         cells [4–9]. They contribute to both onset and progression
+                                                                       of cancer by inappropriate activation of proto-oncogenes
+        The development of cancer is driven by the                     and/or inactivation of tumor suppressor genes [4, 10–15].
+  acquisition of somatic genetic alterations that include              Characterization of CNAs in tumors have helped in the
+  single nucleotide variations (SNVs), gene fusions and                identification of relevant oncogenes including ERBB2
+  copy-number alterations (CNAs). CNAs are somatic                     and EGFR, as well as tumor suppressors such as pRB
+  changes that cause the gain or loss of DNA fragments                 and TP53 [16], resulting into better diagnostics and more
+  [1–3], and represent the most common alterations of cancer           appropriate therapy [17–19].
+
+
+www.oncotarget.com                                             20409                                                 Oncotarget
+        Recent studies revealed that development of Colon               Graecia of Catanzaro in the years 2013–2015. The samples
+  Cancer (CC) involves stepwise accumulation of CNAs [20–               were resected from multiple anatomical segments of
+  23]. CC is the second most commonly diagnosed cancer in               the colon: ascending colon (7 patients), descending
+  females and the third in males, with over 50,000 new cancer           colon (7 patients), hepatic flexure (8 patients), splenic
+  patients in Italy every year [24]. CC is a heterogeneous              flexure (5 patients), transverse colon (4 patients) and
+  disease that displays a characteristic molecular stepwise             cecum (6 patients) (Supplementary Figure 1). Complete
+  progression [25]. Numerous studies have reported on the               demographic and clinical information of patients are
+  identification of somatic CNAs in CC [26–37], which, in               reported in Supplementary Table 1. NGS was performed
+  some cases, have been associated to clinical outcome or               in 37 tumor samples and 13 matched PBLs (Oliveira et al.,
+  metastatic progression [38–42]. However, many of these                under revision). Figure 1 illustrates the pipeline analysis
+  studies had inherent limitations due to small sample size,            of NGS data implemented in R statistical environment
+  low-resolution assays and/or lack of associated clinical              [53]. The input for the Amplicon CNA Algorithm was
+  annotation, particularly for early-stage CC.                          the Binary Alignment Multifasta (BAM) file. The use of
+        This notwithstanding, previous studies have                     pooled normal samples as reference has been reported to
+  established that the most frequent CNAs in CC are CN                  be a valid alternative to the one-by-one match between
+  gains at chromosomes 7p, 7q, 13q, 20p, 20q, Xp and Xq                 tumors and the corresponding normal tissues [52]. The
+  and CN losses at chromosomes 8p, 17p, 18p and 18q.27                  algorithm output consisted in a list of all CNAs identified
+  [16]. Notably, colon adenomas apparently have similar                 for each sample analyzed. Overall, 1904 CNA calls were
+  levels of CNAs as carcinomas [43, 44] whereas the highest             identified. Copy Number (CN) gains were defined as
+  levels of CNAs were detected in metastatic CC [39]. All               alterations showing log2 CN ratio ≥ 0.1 and CN losses
+  these studies have led to the identification of multiple              were defined as alterations showing log2 CN ratio ≤ –0.1.
+  oncogenes (EGFR, ERBB2, CCND1, MET, MYC) and/or                       Benjamini-Hochberg procedure was used to reduce false
+  tumor suppressors (TP53, APC, SMAD4) [45, 46].                        discovery rate and CNAs were considered significant
+        Previous studies of CNAs detection in CC were                   when the q-value was ≤ 0.05 (Supplementary File 1).
+  carried out by quantitative PCR, fluorescence in situ                        On the basis of these parameters we found a total
+  hybridization (FISH), whole-genome array comparative                  of 785 significant CNA calls, of which 328 (41.7%) were
+  genomic hybridization (aCGH) or single-nucleotide                     CN gains and 457 (58.2%) were CN losses, distributed
+  polymorphism (SNP) arrays [47–49]. The recent advent                  along 243 different genes. Finally, for the sake of clarity,
+  of high-throughput sequencing techniques and the                      we considered significant only the alteration calls that
+  subsequent development of ad hoc algorithms have made                 showed concordance in ≥65% of the samples. Using
+  available CNAs identification [50, 51]. Recently, Grasso              this threshold, we found that the majority of genes with
+  and co-workers have developed an algorithm for assessing              CNAs were concordant (230/243). The remaining 13
+  CNAs from Next Generation Sequencing (NGS) data                       genes (DICER1, FGFR1, HOOK3, IGF2, IKBKB,
+  generated by amplicon-based DNA libraries derived from                MARK1, NFKB1, NF1, PTPRD, SMAD2, SYNE1,
+  Formalin Fixed Paraffin-Embedded (FFPE) tumors [52].                  TAF1L, TRIP11) presented discordant calls and were not
+        In the present study, we applied this algorithm to              considered in the rest of the manuscript. We will consider
+  DNA sequencing data to determine the feasibility to detect            only the 230 genes that showed concordant calls. Among
+  CNAs using NGS and elucidate the association between                  the concordant genes, 143 presented CN losses and 87
+  specific CNAs and cancer originating from different                   presented CN gains (Supplementary Table 2). The Circos
+  anatomical colon segments.                                            plot shown in Figure 2 summarizes all detected CNAs.
+                                                                        The median number of genes per tumor showing CN
+  RESULTS                                                               gains was 12 (range 1–37) whereas the median number
+                                                                        of genes per tumor showing CN losses was 20 (range
+  Identification of CNAs in colon cancer by                             1–41). CN gains and losses involved genes located on all
+  analysis of amplicon-based NGS data                                   chromosomes except chromosome 23. The heatmap in
+                                                                        Figure 3 shows all significant CNAs ordered by cytobands
+        In this manuscript we have applied the Amplicon                 (see also Supplementary Table 3), with CN gains (red) and
+  CNA Algorithm, previously described by Grasso and co-                 CN losses (green).
+  workers [52] to identify somatic CNAs from amplicon-                         As indicated in Table 1 (columns 1–8), the most
+  based NGS data generated using the Ion AmpliSeq™                      frequent CN gains were observed at chromosomes 7, 20
+  Comprehensive Cancer Panel (CCP), which provides                      and 8. Frequent CN gains involved MLL3 at chromosome
+  complete whole exon coverage of the 409 most important                7q36.1 (n = 16, 43.24%), AKAP9 at chromosome 7q21.2
+  cancer-associated genes. As described in a parallel                   (n = 15, 40.54%), ASXL1 at chromosome 20q11.21
+  manuscript (Oliveira et al., under revision), we have                 (n = 14, 37.84%), PLCG1 at chromosome 20q12 (n =
+  selected 37 patients among those who underwent surgery                13, 35.14%), and UBR5 at chromosome 8q22.3 (n = 13,
+  for CC at the General Surgery Unit of University Magna                35.14%).
+
+
+www.oncotarget.com                                              20410                                                 Oncotarget
+   Figure 1:Pipeline analysis implemented for this study.
+
+www.oncotarget.com                                      20411   Oncotarget
+        Conversely, the most frequent CN losses were                            In Table 2 are listed the genes with the highest
+  MBD1 at 18q21.1 (n = 10, 27%), DCC at 18q21.2 (n =                      values of CN changes (columns 1–8). Among these, there
+  13, 35.14%), WHSC1 (n = 12, 32.43%) at 4p16.3, NLRP1                    were CCND1 with a mean CN ratio of 6.0, CCNE1 with
+  (n = 10, 27%) and RNF213 (n = 9, 24.3%) at 17p13.2 and                  a mean CN ratio of 4, MAF with a mean CN ratio of 3.30,
+  17q25.3, respectively.                                                  BCL2L1 with a mean CN ratio of 2.19 and CDKN2A with
+        Other genes that, in this study, presented frequent               a mean CN ratio of 0.2.
+  CN gains were KAT6A at 8p11.21, CSMD3 at 8q23.3,                              Expectedly, most genes showing alterations
+  PTPRT at 20q12, DST at 6p12.1 and ATR at 3q23.                          had already been reported to be associated with the
+  Conversely frequent CN losses were observed for TGM7                    development of colon cancer [22]. However, among the
+  at 15q15.2, EP400 at 12q24.33, CDH2 at 18q12.1, LTK at                  230 genes that presented significant CN changes in colon
+  15q15.1 and ERG at 21q22.2.                                             cancer we identified at least 10 whose alterations had not
+
+
+
+
+  Figure 2: The Circos plot summarizes all CNAs detected in colon cancers samples under analysis. The two outermost
+  tracks report the distributions of 409 genes along the genome; the innermost tracks reported the values of the log2 CN ratio. Genes with
+  altered CN are distinguished by colour as deletions (green) and amplifications (red).
+
+www.oncotarget.com                                                20412                                                     Oncotarget
+  been previously associated to colon cancer. Of these 4                    analysis relative to 2 genes showing CN gains (MAF
+  genes were subjected to CN gains (DST, KLF6, FANCA,                       and BCL2L1) and 2 genes with CN losses (SMAD4,
+  CSMD3) and 6 were subjected to CN losses (TGM7,                           CDKN2A). In Supplementary Figure 2 we reported
+  NKX2-1, RHOH, RNF213, ERG, and CRBN).                                     representative Q-PCR relative to additional genes
+                                                                            showing significant CNVs. Overall Q-PCR results were
+  Validation of NGS results by Q-PCR analysis                               consistent with bioinformatics analysis of NGS data, also
+  and immunohistochemistry analysis                                         in those genes that resulted discordant (Supplementary
+                                                                            Figure 2). Immunostaining analysis demonstrated that
+        Subsequently, we used Q-PCR to validate the                         the observed CNA in the gene encoding CCND1 resulted
+  results obtained through the bioinformatics analysis of                   into cyclin D1 protein overexpression in CC27 (see
+  NGS data. In Figure 4 we reported representative Q-PCR                    Figure 5).
+
+
+
+
+  Figure 3: Heatmap representation of the data across all the cytobands harbouring CNAs ordered by chromosome
+  position. Colour intensity is proportional to degree of CNAs, one-copy gains are indicated in light red and one-copy losses are indicated
+  in light green.
+
+www.oncotarget.com                                                 20413                                                      Oncotarget
+  Table 1: Most frequently detected CNAs and corresponding values in TCGA
+                                           CNAs DETECTED IN 37 CC                                                             TCGA
+                                   Number
+                                                Percentage                                              Percentage    Number of    Percentage   Number of
+                                      of
+      Gene      Chromosome                      of samples    Log2    Mean CN    Range of    Type of    of samples     samples     of samples    samples
+                                   samples
+      symbol       band                          showing     (CNA)*   ratio **   CN ratio     CNA      showing CN    showing CN   showing CN     showing
+                                   showing
+                                                   CNA                                                    GAIN          GAIN         LOSS       CN LOSS
+                                     CNA
+      MLL3          7q36.1            16            43.24     0.41      1.34     1.14–1.49   GAIN         47.21         169          1.96           7
+      AKAP9         7q21.2            15            40.54     0.47      1.4      1.21–1.52   GAIN         47.49         170          1.12           4
+      ASXL1        20q11.21           14            37.84     0.72      1.66     1.40–2.10   GAIN         70.95         254           0             0
+      UBR5          8q22.3            13            35.14     0.54      1.47     1.23–1.72   GAIN         55.87         200          1.96           7
+      PLCG1         20q12             13            35.14     0.89      1.88     1.39–2.55   GAIN         71.23         255          0.56           2
+      KAT6A        8p11.21            9             24.32     0.79      1.79     1.43–3.22   GAIN         42.74         153           9.5          34
+      DST           6p12.1            8             21.62     0.36      1.29     1.17–1.42   GAIN         19.27          69          8.38          30
+      ATR            3q23             7             18.92     0.49      1.41     1.19–1.54   GAIN         14.53          52          7.82          28
+      BRAF           7q34             7             18.92     0.66      1.58     1.41–1.67   GAIN         47.77         171          1.12           4
+      CSMD3         8q23.3            7             18.92     0.53      1.47     1.29–1.92   GAIN         55.87         200          2.51           9
+      DCC          18q21.2            13            35.14     -0.61     0.66     0.54–0.81   LOSS         2.23           8           61.17         219
+      WHSC1         4p16.3            12            32.43     -0.50     0.71     0.63–0.75   LOSS         2.23           8           27.65         99
+      NLRP1        17p13.2            10            27.03     -0.60     0.66     0.55–0.76   LOSS         3.63           13          53.07         190
+      MBD1         18q21.1            10            27.03     -0.67     0.63     0.54–0.72   LOSS         2.79           10          59.22         212
+      EP400        12q24.33           9             24.32     -0.51     0.7      0.56–0.76   LOSS         18.99          68          12.01         43
+      TGM7         15q15.2            9             24.32     -0.71     0.61     0.50–0.72   LOSS         2.79           10          37.43         134
+      RNF213       17q25.3            9             24.32     -0.36     0.78     0.71–0.86   LOSS         23.46          84          12.01         43
+      ERG          21q22.2            9             24.32     -0.67     0.63     0.48–0.78   LOSS         4.75           17          27.93         100
+      GATA2         3q21.3            8             21.62     -0.85     0.56     0.45–0.65   LOSS         13.97          50          7.54          27
+      LTK          15q15.1            8             21.62     -0.64     0.64     0.55–0.72   LOSS         2.79           10          37.43         134
+  *
+   Base 2 logarithm of CN ratio.
+   Ratio of the Tumor Vs Normal intensity signal.
+  **
+
+
+
+
+  Comparison of the results with Colon                                                 Table 4 for further details. Notably, some among the 69
+  Adenocarcinoma dataset present in public                                             genes with a significant correlation between CN changes
+  repositories                                                                         and RNA expression are involved in the development of
+                                                                                       CC, such as SMAD2, ASXL1, PLCG1, UBR5, TOP1 and
+         We validated the results obtained in this study                               MBD1. In Figure 6 are reported two of the genes that
+  relative to the association of genes with CNAs and                                   showed the most significant correlation between CNAs
+  localization of tumors in colon segments by analysing                                and mRNA expression (ASXL1 and MBD1).
+  the Colon Adenocarcinoma dataset within The Cancer
+  Genome Atlas database (COAD-TCGA). Within this                                       Clinical-pathological correlations
+  dataset, 358 tumor samples arising from different colon
+  segments were present. Eighty tumors derived from                                          For clinical analysis we selected those genes that
+  ascending colon, 146 from descending colon, 6 from                                   presented concordant CNAs in at least 5% of the samples.
+  splenic flexure, 16 from hepatic flexure, 84 from cecum                              We found that 60, among 230 significant genes, presented
+  and 27 from transverse colon.                                                        CNAs in ≥ 5% of patients and correlated them with clinical
+         We further validated the analysis of CNAs                                     and pathological parameters such as node status (N),
+  by investigating the correlation between the 230                                     stage, tumor size (T) and/or presence of metastasis (M1)
+  genes showing CNAs identified in this study and the                                  (p-value < 0.05). See Supplementary Table 5. Expectedly,
+  corresponding mRNA expression reported in the COAD-                                  Univariate Cox Regression analysis demonstrated that
+  TCGA dataset. The analysis was performed by a linear                                 the parameters T, M and stage were predictors of overall
+  regression model, which allowed the identification of                                survival (OS) (see Table 3).
+  genes presenting direct association between CN changes                                     Subsequently, the genetic status of CC patients (n = 35)
+  (i.e. amplification/loss) and RNA expression (i.e. over-                             was correlated with OS and the gain of ASXL1, loss of TSC1
+  expression/under-expression). Among the identified 230                               or loss of IL7R predicted poor prognosis, as shown by the
+  genes with significant CNAs, 69 genes (30%) showed a                                 corresponding Kaplan–Meier curves (see Figure 7).
+  statistically significant Pearson correlation value higher                                 In particular, the average 4-year survival rate of all
+  than 0.45 (R2 > 0.2, p-value < 0.01). See Supplementary                              CC patients was 86%. Upon stratification for the status of
+
+
+www.oncotarget.com                                                             20414                                                         Oncotarget
+  Table 2: Genes showing high level of CN alteration and corresponding values in TCGA
+                                         CNAs DETECTED IN 37 CC                                                                   TCGA
+                                   Number of                                                               Percentage   Number of    Percentage     Number of
+                                                      Percentage             Mean                  Type
+      Gene        Chromosome        samples                          Log2              Range of            of samples    samples     of samples      samples
+                                                       of samples             CN                    of
+      symbol         band           showing                         (CNA)*             CN ratio           showing CN     showing    showing CN     showing CN
+                                                     showing CNA             Ratio**               CNA
+                                      CNA                                                                    GAIN       CN GAIN        LOSS           LOSS
+      CCND1          11q13.3            1                2.70        2.58      6       5.99–5.99   GAIN       41          11.45          51          14.25
+      CCNE1           19q12             1                2.70        2.03     4.09     4.09–4.09   GAIN       72          20.11          25           6.98
+      MAF            16q23.2            6               16.21        1.52     2.92     2.48–4.16   GAIN       84          23.46          23           6.42
+      BCL2L1        20q11.21            2                5.40        1.41     2.66     2.63–2.68   GAIN      254          70.95           0            0
+      SRC           20q11.23            2                5.40        1.39     2.92     1.62–4.21   GAIN      255          71.23           1           0.28
+      IRS2            13q34             1                2.70        1.35     2.55     2.54–2.54   GAIN      211          58.94           7           1.96
+      CEBPA         19q13.11            6               16.21        1.31     2.53     1.95–3.54   GAIN       69          19.27          25           6.98
+      PMS2           7p22.1             1                2.70        1.11     2.16     2.15–2.15   GAIN      195          54.47           1           0.28
+      FANCA          16q24.3            1                2.70        1.11     2.15     2.15–2.15   GAIN       85          23.74          27           7.54
+      CDK8          13q12.13            3                8.10        1.09     2.18     1.57–2.69   GAIN      214          59.78           8           2.23
+      CDKN2A         9p21.3             1                2.70       −2.13     0.23     0.22–0.22   LOSS       60          16.76          48          13.41
+      NPM1           5q35.1             1                2.70       −1.26     0.42     0.41–0.41   LOSS       24           6.7           67          18.72
+      TCL1A         14q32.13            1                2.70       −1.24     0.42     0.42–0.42   LOSS       25          6.98           118         32.96
+      CHEK2          22q12.1            1                2.70       −1.19     0.44     0.43–0.43   LOSS       9           2.51           117         32.68
+      PAX5           9p13.2             1                2.70       −1.17     0.45     0.44–0.44   LOSS       59          16.48          41          11.45
+      SUFU          10q24.32            1                2.70       −1.07     0.48     0.47–0.47   LOSS       12          3.35           80          22.35
+      HSP90AA1      14q32.31            1                2.70       −1.03     0.49     0.48–0.48   LOSS       24           6.7           118         32.96
+      FOXO3           6q21              3                8.10        −1       0.5      0.47–0.51   LOSS       51          14.25          49          13.69
+      NRAS           1p13.2             1                2.70       −0.99     0.5      0.50–0.50   LOSS       15          4.19           88          24.58
+      FBXW7          4q31.3             2                5.40       −0.94     0.52     0.49–0.55   LOSS       13          3.63           101         28.21
+  *
+   Base 2 logarithm of CN ratio.
+  **
+    Ratio of the Tumor Vs Normal intensity signal.
+
+
+
+  ASXL1, TSC1 or IL7R genes, the 4-year survival rates of                                  CN alterations according to the anatomical localization of
+  CNA-negative patients were 73.3% for ASXL1, 91% for                                      the tumor (ascending colon, descending colon, transverse
+  TSC1 and 91% for IL7R. Conversely, the 4-year survival                                   colon, hepatic flexure, splenic flexure and cecum). Genes
+  rates of patients showing gain of ASXL1, loss of TSC1 and                                that presented gains or losses in all colon segments
+  loss of IL7R were 100%, 33.3% and 33.3%, respectively.                                   were defined “common genes”. Genes that presented
+  Patients with CN gain in ASXL1 showed a mean survival                                    gains or losses significantly associated to one anatomic
+  time of 48 months with no dead among the 14 patients                                     colon segment were defined “site-associated genes”.
+  under analysis. Conversely, ASXL1-negative patients                                      “Common genes” and “site-associated genes” are listed
+  showed mean survival of 41, with 5 dead patients out of 22.                              in Supplementary Tables 6 and Table 4, respectively.
+         Patients with CN loss in TSC1 (2 dead patients                                           Analysis of the results demonstrated that tumors in the
+  out of 3) showed mean survival of 34 months whereas                                      ascending colon presented 49 genes with CNAs (26 gains and
+  patients with no TSC1 alterations (3 dead patients out of                                23 losses) with a mean value of 14.25 CNAs/tumor (1–24);
+  33) showed mean survival of 45 months. Patients with                                     Tumors arising in the descending colon presented 169 genes
+  CN loss in IL7R (2 dead patients out of 3) showed mean                                   with CNAs (53 gains and 108 losses, 8 discordants) with
+  survival time of 34 months in comparison with patients                                   a mean value of 40.85 CNAs/tumor (range 4–61); tumors
+  showing normal genetic status of IL7R, mean survival of                                  arising in transverse colon presented 23 genes with CNAs
+  45 months (3 dead patients out of 33).                                                   (8 gains and 15 losses) with a mean value of 12.5 CNAs/
+         However, none of the covariates that resulted                                     tumor (range 10–15); tumors in the hepatic flexure presented
+  significant in Univariate analysis turned out to be independent                          90 genes with CNAs (40 gains and 48 losses, 2 discordant)
+  prognostic factors by Multivariate Cox Regression analysis.                              with a mean value of 24.8 CNAs/tumor (range 2–61);
+                                                                                           tumors in the splenic flexure presented 111 genes with CNAs
+  Genes showing CNAs in colon cancer arising in                                            (46 gains and 62 losses, 3 discordant) with a mean value
+  different anatomical segments                                                            of 32.8 CNAs/tumor (range 9–65); and tumors in the cecum
+                                                                                           presented 75 genes with CNAs (28 gains and 47 losses) with
+        In order to identify a specific pattern of genetic                                 a mean value of 26.6 CNAs/tumor (range 20–36). See circos
+  alterations based on tumor site, we stratified genes with                                plots in Supplementary Figures 3–8.
+
+www.oncotarget.com                                                                 20415                                                          Oncotarget
+  Figure 4: Q-PCR analysis of samples presenting CNAs in SMAD4, CDKN2A, MAF and BCL2L1. Q-RT-PCR analysis of
+  CN losses in SMAD4 and CDKN2A and of CN gains in MAF and BCL2L1. Values are expressed as CN ratio using as standard the median
+  value of 3 PBL samples set as 1. Tumors presenting normal CN for the specific genes were also included in each experiment. Statistical
+  significance as indicated when confronted with PBL.
+
+
+
+
+  Figure 5: Representative images of CCND1 immunostaining. Sample CC27 (with CN gain of CCND1) and sample CC15 (with
+  normal CN of CCND1), respectively. Magnification as indicated.
+
+
+
+www.oncotarget.com                                                 20416                                                  Oncotarget
+         Among “common genes”, CN gains were observed                                 Finally, PKHD1, RET, MDB1 RNF213, DCC and
+  in PLCG1 and ASXL1 genes, whereas CN losses were                              UBR5 showed less specific dependency on anatomical
+  observed in NLRP1 and WHSC1 genes.                                            position. PKHD1 and RET were lost predominantly in
+         “Site-associated genes” were identified by use of a chi-               splenic flexure tumors and descending colon tumors (60%
+  square test with a threshold of significance set at p-value ≤ 0.05.           and 29%, respectively) and less frequently in hepatic
+  As listed in Table 4, “site-associated genes” that showed                     flexure tumors (12.5%); MDB1 was lost predominantly
+  significant association with tumors arising in specific colon                 in tumors from ascending colon and splenic flexure (85%
+  sites were 14. Among these, CN losses were identified in                      and 60%, respectively) and less frequently in hepatic
+  APC, DCC, MBD1, NOTCH2, PDGFB, PKHD1, PIK3R1,                                 flexure tumors (12.5%); RNF213 was lost predominantly
+  RET, RNF213, SMAD4 and WRN whereas CN gains were                              in descending colon tumors (71%) but also in tumors
+  identified in BCL2L1, RB1 and UBR5.                                           from hepatic flexure, transverse colon and ascending
+         Among the 14 “site-associated genes” that showed the                   colon (25%, 25%, 14%); DCC was lost in tumors from
+  most significant association with colon segments, PDGFB,                      5 different segments: splenic flexure, descending colon,
+  SMAD4, RB1, BCL2L1 showed anatomical position                                 ascending colon, cecum and hepatic flexure (80%, 86%,
+  dependency for only one site with highly significant                          14% 17%, 12.5%); UBR5 showed CN gain in tumors from
+  p-values (≤ 0.01). CN loss of PDGFB was observed only                         splenic flexure, descending colon, transverse colon, and
+  in tumors from splenic flexure, CN loss of SMAD4 was                          hepatic flexure (80%, 57%, 50% and 37.5%, respectively).
+  observed only in tumors from descending colon, whereas                              Given the limited number of samples analysed in
+  CN gain of RB1 was observed only in tumors from                               the cohort of patients under study here, the significance
+  descending colon and CN gain of BCL2L1 was observed                           of the anatomical position dependency shown for the 14
+  only in tumors from splenic flexure.                                          “site-associated genes” described above was investigated
+         On the other hand, CN loss of WRN, NOTCH2, APC                         using a larger dataset of CC (COAD-TCGA). Notably, we
+  and PIK3R1 were observed in tumors arising in two colon                       found a significant association for 7 of the “site-associated
+  segments. WRN was lost in descending colon tumors (57%)                       genes” reported in this study also for samples present in
+  and transverse colon tumors (25%); NOTCH2 was lost in                         COAD-TCGA (n = 358). In particular, CNAs in MBD1,
+  tumors arising in splenic flexure (60%) and cecum (17%);                      SMAD4, PIK3R1, DCC, WRN, RB1 were significantly
+  APC was lost in tumors arising in descending colon (43%)                      associated with tumors originating in descending colon
+  and splenic flexure (40%); PIK3R1 was lost in tumors of                       whereas CNAs in NOTCH2 was associated with tumors
+  descending colon (43%) and splenic flexure (40%).                             originating in splenic flexure (p-value < 0.05).
+
+
+
+
+  Figure 6: Scatter plots representing Pearson correlation between CN and mRNA expression. Scatter plots showing
+  Pearson correlation between CN and mRNA expression as downloaded from the COAD-TCGA dataset. (A) Pearson correlation between
+  CN and mRNA expression of MBD1 (R2 = 0.62). (B) Pearson correlation between CN and mRNA expression of ASXL1 (R2 = 0.58).
+  Linear regression lines are represented in red, CN value = 0 represent diploid status.
+
+www.oncotarget.com                                                      20417                                                  Oncotarget
+  Table 3: Univariate Cox regression analysis of OS of CC patients, genes showing CNAs and the clinical covariates
+  previously selected by Log-Rank test
+               Covariates                                                             OS
+                                                   HR                              95% CI                             p-value
+      T (TMN) (2–3/4)                              11.2                           1.16–108                             0.008*
+      Stage (I + II + III/IV)                      0.08                          0.013–0.563                          0.0022*
+      M (TNM) stage (M0/M1)                       11.37                           1.77–72.8                            0.002*
+      TSC1                                         5.8                           0.85–39.38                            0.05*
+      IL7R                                         5.8                           0.85–39.39                            0.05*
+      ASXL1                                        1.62                          0.25–10.52                            0.04*
+  *
+   p-value ≤ 0.05.
+
+
+        These findings confirmed the significance of the                   DISCUSSION
+  anatomical position dependency shown for at least
+  7 out of 14 “site-associated genes” reported in this                           In this manuscript, we have applied a previously
+  study, indicating that tumors arising in different colon                 described Amplicon CNA Algorithm, to investigate
+  segments may be caused by alterations that occur in                      the presence of somatic CNAs in tumors originating in
+  different genes.                                                         different colon sites [52]. This analysis was performed on
+                                                                           NGS data generated using the Ion AmpliSeq™ CCP, which
+
+
+
+
+  Figure 7: Kaplan–Meier analysis of 4-year survival in colon cancer patients. (A) Kaplan–Meier survival curve of OS in in
+  colon cancer patients that were stratified for being positive or negative for CNAs in TSC1. (B) Kaplan–Meier survival curve of OS in in
+  colon cancer patients that were stratified for being positive or negative for CNAs in IL7R. (C) Kaplan–Meier survival curve of OS in colon
+  cancer patients that were stratified for being positive or negative for CNAs in ASXL1.
+
+www.oncotarget.com                                                 20418                                                       Oncotarget
+  Table 4: Genes with CNAs showing significant association with tumors arising in specific colon sites by χ2 test
+                                                                                                     Anatomic Site
+
+      GENE SYMBOL                 p-value   Ascending                                   Descending
+                                                                   Cecum                                      Hepatic Flexure      Splenic Flexure     Transverse
+                                            colon                                       colon
+                                                                   (n = 6)                                    (n = 8)              (n = 5)             colon (n = 4)
+                                            (n = 7)                                     (n = 7)
+
+                                            Obs* = 0               Obs = 0              Obs = 6 (85.7%)       Obs = 1 (12.5%)      Obs = 3 (60%)      Obs = 0
+                      MBD1       0.0005
+                                            Exp** = 0.75 (10.7%)   Exp = 0.64 (10.7%)   Exp = 0.75 (10.7%)    Exp = 0.86 (10.7%)   Exp = 0.54 (10.7%) Exp = 0.43 (10.7%)
+                                            Obs = 0                Obs = 0              Obs = 0               Obs = 0              Obs = 3 (60%)       Obs = 0
+                      PDGFB      0.0008
+                                            Exp = 0.56 (8%)        Exp = 0.48 (8%)      Exp = 0.56 (8%)       Exp = 0.64 (8%)      Exp = 0.4 (8%)      Exp = 0.32 (8%)
+                                            Obs = 1 (14.28%)       Obs = 1 (16.66%)     Obs = 6 (85.71%)      Obs = 1 (12.5%)      Obs = 4 (80%)       Obs = 0
+                      DCC        0.002
+                                            Exp = 2.45 (35%)       Exp = 2.1 (35%)      Exp = 2.45 (35%)      Exp = 2.81 (35%)     Exp = 1.75 (35%)    Exp = 1.4 (35%)
+                                            Obs = 0                Obs = 0              Obs = 4 (57.14%)      Obs = 0              Obs = 0             Obs = 1 (25%)
+                      WRN        0.007
+                                            Exp = 0.94 (13%)       Exp = 0.81 (13%)     Exp = 0.94 (13%)      Exp = 1.08 (13%)     Exp = 0.67 (13%)    Exp = 0.54 (13%)
+                                            Obs = 0                Obs = 1 (16.66%)     Obs = 0               Obs = 0              Obs = 3 (60%)       Obs = 0
+                      NOTCH2     0.007
+                                            Exp = 0.75 (11%)       Exp = 0.64 (11%)     Exp = 0.75 (11%)      Exp = 0.86 (11%)     Exp = 0.64 (11%)    Exp = 0.43 (11%)
+      Genes                                 Obs = 0                Obs = 0              Obs = 3 (42.85%)      Obs = 0              Obs = 0             Obs = 0
+                      SMAD4      0.01
+      with CN LOSS                          Exp = 0.56 (8%)        Exp = 0.48 (8%)      Exp = 0.56 (8%)       Exp = 0.64 (8%)      Exp = 0.4 (8%)      Exp = 0.32 (8%)
+                                            Obs = 1 (14.28%)       Obs = 0              Obs = 5 (71.42)       Obs = 2 (25%)        Obs = 0             Obs = 1 (25%)
+                      RNF213     0.03
+                                            Exp = 1.7 (24%)        Exp = 1.45 (24%)     Exp = 1.7 (24%)       Exp = 1.94 (24%)     Exp = 1.21 (24%)    Exp = 0.97 (24%)
+                                            Obs = 0                Obs = 0              Obs = 3 (42.85%)      Obs = 0              Obs = 2 (40%)       Obs = 0
+                      APC        0.03
+                                            Exp = 0.94 (13 %)      Exp = 0.81 (13 %)    Exp = 0.94 (13 %)     Exp = 1.08 (13 %)    Exp = 0.67 (13 %)   Exp = 0.54 (13 %)
+                                            Obs = 0                Obs = 0              Obs = 3 (42.85%)      Obs = 0              Obs = 2 (40%)       Obs = 0
+                      PIK3R1     0.03
+                                            Exp = 0.94 (13%)       Exp = 0.81 (13 %)    Exp = 0.94 (13 %)     Exp = 1.08 (13 %)    Exp = 0.67 (13 %)   Exp = 0.54 (13 %)
+                                            Obs = 0                Obs = 0              Obs = 2 (28.57%)      Obs = 1 (12.5%)      Obs = 3 (60%)       Obs = 0
+                      RET        0.04
+                                            Exp = 1.13 (16%)       Exp = 0.97 (16%)     Exp = 1.13 (16%)      Exp = 1.29 (16%)     Exp = 0.81 (16%)    Exp = 0.64 (16%)
+                                            Obs = 0                Obs = 0              Obs = 2 (28.57%)      Obs = 1 (12.5%)      Obs = 3 (60%)       Obs = 0
+                      PKHD1      0.04
+                                            Exp = 1.13 (16%)       Exp = 0.97 (16%)     Exp = 1.13 (16%)      Exp = 1.29 (16%)     Exp = 0.81 (16%)    Exp = 0.64 (16%)
+                                            Obs = 0                Obs = 0              Obs = 3 (42.85%)      Obs = 0              Obs = 0             Obs = 0
+                      RB1        0.01
+                                            Exp = 0.56 (8%)        Exp = 0.48 (8%)      Exp = 0.56 (8%)       Exp = 0.64 (8%)      Exp = 0.4 (8%)      Exp = 0.32 (8%)
+      Genes with CN                         Obs = 0                Obs = 0              Obs = 0               Obs = 0              Obs = 2 (40%)       Obs = 0
+                      BCL2L1     0.01
+      GAIN                                  Exp = 0.37 (5%)        Exp = 0.32 (5%)      Exp = 0.37 (5%)       Exp = 0.43 (5%)      Exp = 0.27 (5%)     Exp = 0.21 (5%)
+                                            Obs = 0                Obs = 0              Obs = 4 (57.14%)      Obs = 3 (37.5%)      Obs = 4 (80%)       Obs = 2 (50%)
+                      UBR5       0.02
+                                            Exp = 2.45 (35%)       Exp = 2.1 (5%)       Exp = 2.45 (5%)       Exp = 2.81 (5%)      Exp = 1.75 (5%)     Exp = 1.4 (5%)
+  Obs: Observed CC patients showing CNAs.
+  *
+
+  Exp: Expected CC patients showing CNAs.
+  **
+
+
+
+
+  provides full exon coverage of the 409 most important                                  30% of the 230 genes with significant CNAs in CC
+  cancer-associated genes. The main results reported in this                             showed a statistically significant correlation with mRNA
+  manuscript were: i) the successful detection of somatic                                expression, at difference with a similar analysis using the
+  CNAs in 230 genes from NGS amplicon-based libraries                                    COAD-TCGA dataset, in which 20% of genes (3542 out
+  in CC samples (143 genes with CN losses and 87 genes                                   of 17630) presented a positive correlation between CNAs
+  with CN gains), ii) the identification of clinically relevant                          and mRNA expression (R2 > 0.2; p ≤ 0.01).
+  CNAs in genes such as ASXL1, TSC1 and IL7R, iii) the                                         Previous studies have reported that in colon cancer
+  identification of CNAs in 4 genes in tumors originating                                chr20 was most frequently subjected to CN gains and
+  from all colon segments (“common genes”) and iv) the                                   chr18 was most frequently subjected to CN losses [55].
+  detection of CNAs in 14 genes associated preferentially to                             In agreement with these previous reports, the genes
+  a specific colon site (“site-associated genes”).                                       most frequently subjected to CN gains observed in
+        The main characteristic of the approach described                                this study were located on chromosome 20 including
+  by Grasso et al., and applied here, was to use read counts/                            ASXL1, PLCG1, TOP1 and PTPRT whereas the genes
+  amplicon to identify CNAs from NGS data. Prediction of                                 most frequently subjected to CN losses were located on
+  gene amplification/deletion is possible if sufficient number                           chromosome 18 and include MBD1, DCC and CDH2.
+  of amplicons is analyzed [54]. Overall, we have found a                                Most of the genes that presented CNAs identified in this
+  total of 785 significant CNAs in 243 different genes,                                  manuscript, such as TOP1, ASXL1, PTPRD, DCC, NLRP1
+  of which 328 were CN gains and 457 were CN losses.                                     and CDH2 have already been directly associated with the
+  The results obtained in silico with the Amplicon CNA                                   development of CC. In particular, gene amplification and/
+  Algorithm were validated by quantitative Q-PCR and                                     or overexpression of TOP1 has been detected in metastatic
+  immunostaining. Further control of our results was                                     colon cancer whereas loss of ASXL1 occurs in CC with
+  performed by combining information from COAD-                                          microsatellite instability [56]. Loss of PTPRD expression
+  TCGA database and sequencing data presented in this                                    was observed in highly invasive cancers and correlated
+  manuscript. From this analysis it appears that almost                                  with patient survival [57].
+
+
+www.oncotarget.com                                                            20419                                                                     Oncotarget
+         Some of the genes that presented the highest                       particular, WRN has been reported to be frequently deleted
+  values of CNAs have already been associated with CC.                      in CC, and its deficiency apparently predisposes to various
+  In particular, gene amplification and/or overexpression                   types of cancer [22]. In the present study WNR was found
+  of CCND1 have been associated with poor prognosis                         to be lost preferentially in descending colon tumors.
+  and reduced overall survival in CC patients whereas                       Similarly, in agreement with the existing literature [63],
+  BCL2L1 has been shown to play a role in the adenoma-                      we found that NOTCH2 was deleted in CC (preferentially
+  to-carcinoma progression [58, 59]. Less clear is the role                 in splenic flexure tumors), which suggested a role as
+  of MAF having been described either as an oncogene or                     tumor suppressor in this subset of CC. On the other hand,
+  as a tumor suppressor, depending on the cell context [60].                we have found that MBD1 loss is a frequent event in
+         On the other hand, at least 10, among the 230 genes                colon carcinogenesis, being associated with descending
+  showing CNAs, were not known to be associated to CC.                      colon tumors in different studies. This observation is
+  Among these TGM7, NKX2-1, RHOH, RNF213, ERG,                              in agreement with previous studies reporting frequent
+  and CRBN presented significant CN losses and thus were                    deletion of 18q21 (where MBD1 maps) in CC [64].
+  potential tumor suppressor genes whereas DST, KLF6,                       Notably, the results described in the present study show a
+  FANCA, CSMD3 presented significant CN gains and can                       significant association between MBD1 loss and late stage
+  be considered potential oncogenes.                                        of disease. Finally, loss of PIK3R1 was preferentially
+         Notably, we observed that CN gain of ASXL1 was                     observed in descending colon tumors. PIK3R1 represents
+  associated with an improvement in OS, whereas CN loss                     the p85 regulatory subunit of heterodimeric enzymes, the
+  of TSC1 and IL7R predicted significantly reduced OS.                      PI3Ks, which also include a p110 catalytic subunit [65].
+         An important aim of this study was to determine                    PI3Ks are downstream effectors of tyrosine kinase and
+  whether tumors arising in different colon segments presented              G-protein-coupled receptors, which coordinate multiple
+  specific molecular alterations. Overall we have identified 4              cell functions including proliferation, migration and
+  “common genes” subjected to CNAs in tumors originating                    survival [66, 67]. PIK3R1 plays an important role in
+  from all colon segments and 14 “site-associated genes”                    restraining cell migration. Loss of PIK3R1 was observed
+  whose alterations are associated to tumors arising in specific            in patients with stage III disease (5/12 patients) but in none
+  colon segments. Among the 4 “common genes” we found                       of the patients with stage I or II disease (0/20), suggesting
+  CN gains in ASXL1 and PLGC1, which suggest that they                      that its down-regulation promotes aberrant activation of
+  act as oncogenes in CC. However previous studies showing                  PI3K signalling in colon cancer cells, which would lead to
+  the involvement of ASXL1 and PLGC1 in the development                     invasion of adjacent tissues and/or regional dissemination.
+  of CC were inconsistent. In fact both ASXL1 and PLGC1                            In conclusion, in this study we report the successful
+  have been shown to act either as tumor suppressor genes or                detection of somatic CNAs in 230 genes using NGS data
+  oncogenes [56, 61]. Among the “common genes” presenting                   relative to 37 CC samples. Expectedly, most genes showing
+  CN losses identified in this study is NLRP1, a protein                    CNAs had already been reported to be associated with
+  whose function is apparently involved in gastrointestinal                 CC [22] whereas at least 10 among the 230 altered genes
+  inflammation and tumorigenesis [62].                                      had not apparently been associated to CC yet. Notably,
+         Among the 14 “site-associated genes” that showed                   the analysis reported in this study indicated that CN
+  highly significant association with a specific colon segment,             changes in at least 3 genes (ASXL1, TSC1 and IL7R) were
+  PDGFB, SMAD4, RB1, BCL2L1 showed anatomical                               clinically relevant, being their alteration associated with
+  position dependency for only one colon segment, WRN,                      survival. Finally, the analysis of the distribution of genes
+  NOTCH2, APC and PIK3R1 showed anatomical position                         with CNAs relative to the site of origin of cancer led to
+  dependency for two colon segments whereas the remaining                   the identification of 4 “common genes” that were subjected
+  genes PKHD1, RET, MDB1 RNF213, UBR5 and DCC                               to CNAs in tumors arising in all 6 colon segments and 14
+  were associated to 3 or more segments. Moreover, a further                “site-associated genes” whose CNAs occurs preferentially
+  support to the significance of the association reported in this           in tumors originating only in certain colon segments.
+  study, was the finding that 7 out of the 14 “site-associated
+  genes” reported here showed a significant position                        MATERIALS AND METHODS
+  dependency also in the cohort of tumors present within the
+  COAD-TCGA database. In particular, CNAs in MBD1,                          Ethics statement
+  SMAD4, PIK3R1, DCC, WRN, RB1 were significantly
+  associated with tumors originating in descending colon                           Accrual of patients was conducted according to
+  whereas CNAs in NOTCH2 was associated with tumors                         Institutional Review Board of the AOU Mater Domini/
+  originating in splenic flexure.                                           University Magna Graecia (Catanzaro, Italy). The study
+         It is also of note that loss of “site-associated” genes            was approved by the Institutional Review Board of the
+  such as WRN, NOTCH2, MBD1 and PI3KR1 had already                          AOU Mater Domini/University Magna Graecia in the
+  been associated to development of human cancer. In                        meeting of May 21st, 2014.
+
+
+www.oncotarget.com                                                  20420                                                   Oncotarget
+  Tumor samples                                                        log2 CN ratio ≥ 0.1 and CN losses were defined as genes
+                                                                       showing log2 CN ratio ≤ −0.1.
+         Tumor samples, matched normal mucosa and
+  peripheral blood lymphocytes (PBL) were obtained from                Association and survival studies
+  patients referring to General Surgery unit of the AOU
+  Mater Domini/University Magna Graecia (Catanzaro,                           The association between genes showing CNAs
+  Italy), who underwent surgical resection for colon cancer            and the clinical-pathological parameters was evaluated
+  since January 2013. Biopsies were immediately snap                   by Fisher’s exact test and χ2 test. Overall survival (OS)
+  frozen and stored at –80° C. Hematoxylin and eosin-                  was calculated from the day of surgery to death or end of
+  stained tissue sections were reviewed by an expert                   follow-up. Kaplan–Meier curves were used for analysis
+  pathologist to confirm diagnosis.                                    of OS.
+                                                                              Univariate and multivariate survival analyses with
+  Patients’ demographics                                               calculation of hazard ratios (HR) were performed using
+                                                                       Cox’s proportional-hazards model. R software was used
+        General demographic information, histo-patological             for statistical analysis and a p-value ≤ 0.05 was considered
+  and clinical parameters, surgical treatment and follow-up            significant.
+  data were collected prospectively and are also reported in                  Regarding the correlation of CNA with mRNA
+  Oliveira et al. (submitted). However, for sake of clarity            expression, a gene-level table of copy number values
+  we summarize below the clinical characteristics of the               and gene expression data were downloaded from the
+  patients included in the study.                                      COAD-TCGA dataset. Using as input CNA and miRNA
+        Among the 37 patients, 13 were women and 24                    expression, we describe the relationship between these
+  were males. Mean age of patients was 68.35 years old                 variables by linear regression analysis setting as significant
+  (range 47–84). Stage was known for 36 of the 37 patients:            Pearson correlation value >0.45 (R2 > 0.2, p-value ≤ 0.01)
+  7 patients had stage I disease, 13 patients had stage II
+  disease, 12 patients had stage III disease and 4 patients            Quantitative real-time (Q-PCR)
+  had stage IV disease. Grade was known for 35 out of
+  37 patients: 1 patient had tumor that was graded G1, 25                     To validate bioinformatic analysis of CN alterations
+  patients had tumors that were graded G2 and 9 patients               we performed real-time PCR in selected genes. We used
+  had tumors that were graded G3. Of the patients included             GAPDH to normalize the data and PBLs as reference
+  in the present study, four presented distant metastasis.             samples. Reactions were performed using SYBR Green I
+  None of the patients received chemotherapy or radiation              PCR Master Mix (Thermofisher), which includes the internal
+  therapy prior to surgery.                                            reference (ROX). Each qPCR reaction comprised 10 μl 2×
+                                                                       SYBR Green PCR Master Mix, forward and reverse primers
+  Bioinformatic analysis for CNV detection                             at final concentration of 500 nM. QPCR reactions were
+                                                                       performed using the Quantstudio 12 K Flex (Thermofisher).
+        DNA extraction, library preparation using the Ion              The reaction profile was: initial step, 50° C for 2 min,
+  AmpliSeq™ Comprehensive Cancer Panel on the Ion                      denaturation, 95° C for 10 min, then 40 cycles of denaturing
+  Torrent platform (Thermofisher, MA, USA), sequencing                 at 95° C for 15 sec and combined annealing and extension
+  and NGS primary analysis were carried out as described               at 60° C for 60 sec. Each qPCR experiment contained
+  (Oliveira et al., submitted).                                        triplicates of the no-template-controls and test samples for
+        To identify CNAs in NGS amplicon-based dataset                 all of the primers tested. Three independent experiments
+  we replaced average coverage of exon pull-down regions               were conducted for each analysis. Statistical analysis was
+  with read counts per amplicon. All reads were aligned to             performed with one-way ANOVA and Dunnett’s multiple
+  the human reference genome (hg19). For each sample,                  comparisons test using Graphpad software. *p < 0.05, **p <
+  normalization was performed by dividing the number                   0.01, ***p < 0.001 and ****p < 0.0001.
+  of reads of each amplicon by the total number of reads.
+  Subsequently, the normalized reads obtained as described             Immunoistochemistry
+  from tumor samples were divided by the normalized
+  reads from pool made of blood samples from 13 patients,                    Immunostaining was performed with standard
+  set as reference. The resulting Log2 values (raw copy                protocols using Bond™ Polymer Refine Detection Kit
+  number ratios) were corrected for the GC content in each             (Leica Biosystem, Buffalo Grove, IL) according to the
+  amplicon and the Poisson model was applied using the                 manufacturer’s instructions, on formalin-fixed, paraffin-
+  CNA amplicon algorithm described in Grasso et al. [52]               embedded tissues. Sections (5 μm) were mounted on slides
+  to identify CNAs. Genes were defined significant when                and stained with hematoxylin and eosin to be evaluated by
+  the q-value was ≤ 0.05 after the Benjamini-Hochberg                  light microscopy. The antibody used in immunostaining
+  correction [68]. CN gains were defined as genes showing              for CCND1 (#3642, DAKO, Carpinteria, CA, USA).
+
+
+www.oncotarget.com                                             20421                                                   Oncotarget
+  Author contributions                                                      4. Stratton MR, Campbell PJ, Futreal PA. The cancer genome.
+                                                                               Nature. 2009; 458:719–24.
+        Duarte Mendes Oliveira: Participated in the                         5. NCI and NCBI’s SKY/M-FISH and CGH Database. https://
+  conception, design and execution of the study; performed                     www.ncbi.nlm.nih.gov/dbvar/studies/nstd136/#samplesetsTab.
+  the NGS sequencing runs and validation experiments;                          2001.
+  writing and editing of the manuscript; Gianluca                           6. Baudis M. Genomic imbalances in 5918 malignant epithelial
+  Santamaria: Participated in the analysis and interpretation                  tumors: an explorative meta-analysis of chromosomal CGH
+  of data; drafting and editing of the manuscript; Carmelo                     data. BMC Cancer. 2007; 7:226.
+  Laudanna: Participated in bioinformatic analysis and                      7. Beroukhim R, Mermel CH, Porter D, Wei G, Raychaudhuri
+  intrepertation of NGS data; Pietro Zoppoli: Participated                     S, Donovan J, Barretina J, Boehm JS, Dobson J, Urashima
+  in bioinformatic analysis and intrepertation of NGS                          M, Mc Henry KT, Pinchback RM, Ligon AH, et al. The
+  data; Simona Migliozzi: Participated in bioinformatic                        landscape of somatic copy-number alteration across human
+  analysis and intrepertation of NGS data; Michael Quist:                      cancers. Nature. 2010; 463:899–905.
+  Provided bionformatic tools and revised the draft of the
+                                                                            8. Kim TM, Xi R, Luquette LJ, Park RW, Johnson MD,
+  manuscript; Catie Grasso: Provided bionformatic tools
+                                                                               Park PJ. Functional genomic analysis of chromosomal
+  and revised the draft of the manuscript; Chiara Mignogna:
+                                                                               aberrations in a compendium of 8000 cancer genomes.
+  Revision of pathologic slides; Laura Elia: Participated in
+                                                                               Genome Res. 2013; 23:217–27.
+  patient recruitment and collected clinical information;
+  Maria Concetta Faniello: Participated in data collection;                 9. Mitelman FJ, Mertens BF. Mitelman Database of
+  Cinzia Marinaro: Participated in data collection; Rosario                    Chromosome Aberrations in Cancer. https://ulib.iupui.edu/
+  Sacco: Performed the operations; Donatella Malanga:                          databases/mitelman-database-chromosome-aberrations-and-
+  Participated in data collection, execution of the study and                  gene-fusions-cancer.
+  the analysis and interpretation of data; assisted extensively            10. Stephens PJ, McBride DJ, Lin ML, Varela I, Pleasance ED,
+  in writing the manuscript and critical revision; Francesco                   Simpson JT, Stebbings LA, Leroy C, Edkins S, Mudie LJ,
+  Corcione: Assisted in writing the manuscript and critical                    Greenman CD, Jia M, Latimer C, et al. Complex landscapes
+  revision; Antonia Rizzuto: Performed the operations;                         of somatic rearrangement in human breast cancer genomes.
+  participated in the design of the study; collected clinical                  Nature. 2009; 462:1005–10.
+  data of patients; helped in data interpretation; Giuseppe                11. Weir BA, Woo MS, Getz G, Perner S, Ding L, Beroukhim R,
+  Viglietto: Supervised development of work, helped in                         Lin WM, Province MA, Kraja A, Johnson LA, Shah K, Sato
+  data interpretation, assisted extensively in writing the                     M, Thomas RK, et al. Characterizing the cancer genome in
+  manuscript and critical revision.                                            lung adenocarcinoma. Nature. 2007; 450:893–98.
+                                                                           12. Hammerman PS, Lawrence MS, Voet D, Jing R, Cibulskis
+  CONFLICTS OF INTEREST                                                        K, Sivachenko A, Stojanov P, McKenna A, Lander ES,
+                                                                               Gabriel S, Getz G, Sougnez C, Imielinski M, et al, and
+        The authors declare no conflicts of interest.                          Cancer Genome Atlas Research Network. Comprehensive
+                                                                               genomic characterization of squamous cell lung cancers.
+  GRANT SUPPORT                                                                Nature. 2012; 489:519–25.
+                                                                           13. Xue W, Kitzing T, Roessler S, Zuber J, Krasnitz A, Schultz
+        This work was supported by MIUR (PON01_02782;                          N, Revill K, Weissmueller S, Rappaport AR, Simon J,
+  PON03_0475) and by Centro Interdipartimentale di                             Zhang J, Luo W, Hicks J, et al. A cluster of cooperating
+  Servizi of the University Magna Graecia of Catanzaro.                        tumor-suppressor gene candidates in chromosomal
+                                                                               deletions. Proc Natl Acad Sci U S A. 2012; 109:8212–17.
+  REFERENCES                                                               14. Nik-Zainal S, Van Loo P, Wedge DC, Alexandrov LB,
+                                                                               Greenman CD, Lau KW, Raine K, Jones D, Marshall J,
+   1. Futreal PA, Coin L, Marshall M, Down T, Hubbard T,                       Ramakrishna M, Shlien A, Cooke SL, Hinton J, et al, and
+      Wooster R, Rahman N, Stratton MR. A census of human                      Breast Cancer Working Group of the International Cancer
+      cancer genes. Nat Rev Cancer. 2004; 4:177–83.                            Genome Consortium. The life history of 21 breast cancers.
+   2. Stuart D, Sellers WR. Linking somatic genetic alterations                Cell. 2012; 149:994–1007.
+      in cancer to therapeutics. Curr Opin Cell Biol. 2009;                15. Harada T, Chelala C, Bhakta V, Chaplin T, Caulee K, Baril
+      21:304–10.                                                               P, Young BD, Lemoine NR. Genome-wide DNA copy
+   3. Redon R, Ishikawa S, Fitch KR, Feuk L, Perry GH,                         number analysis in pancreatic cancer using high-density
+      Andrews TD, Fiegler H, Shapero MH, Carson AR, Chen                       single nucleotide polymorphism arrays. Oncogene. 2008;
+      W, Cho EK, Dallaire S, Freeman JL, et al. Global variation               27:1951–60.
+      in copy number in the human genome. Nature. 2006;                    16. Xie T, D’ Ario G, Lamb JR, Martin E, Wang K, Tejpar
+      444:444–54.                                                              S, Delorenzi M, Bosman FT, Roth AD, Yan P, Bougel S,
+
+
+www.oncotarget.com                                                 20422                                                   Oncotarget
+       Di Narzo AF, Popovici V, et al. A comprehensive                             copy number analysis in screening for prognosis-related
+       characterization of genome-wide copy number aberrations                     genomic regions in colorectal carcinoma. Cancer Sci. 2008;
+       in colorectal cancer reveals novel oncogenes and patterns of                99:1835–40.
+       alterations. PLoS One. 2012; 7:e42001.                                  29. Platzer P, Upender MB, Wilson K, Willis J, Lutterbaugh
+  17. Tsao MS, Sakurada A, Cutz JC, Zhu CQ, Kamel-Reid                             J, Nosrati A, Willson JK, Mack D, Ried T, Markowitz S.
+      S, Squire J, Lorimer I, Zhang T, Liu N, Daneshmand M,                        Silence of chromosomal amplifications in colon cancer.
+      Marrano P, da Cunha Santos G, Lagarde A, et al. Erlotinib                    Cancer Res. 2002; 62:1134–38.
+      in lung cancer - molecular and clinical predictors of                    30. Ried T, Knutzen R, Steinbeck R, Blegen H, Schröck E,
+      outcome. N Engl J Med. 2005; 353:133–44.                                     Heselmeyer K, du Manoir S, Auer G. Comparative genomic
+  18. Cheang MC, Chia SK, Voduc D, Gao D, Leung S, Snider                          hybridization reveals a specific pattern of chromosomal
+      J, Watson M, Davies S, Bernard PS, Parker JS, Perou                          gains and losses during the genesis of colorectal tumors.
+      CM, Ellis MJ, Nielsen TO. Ki67 index, HER2 status, and                       Genes Chromosomes Cancer. 1996; 15:234–45.
+      prognosis of patients with luminal B breast cancer. J Natl
+                                                                               31. Douglas EJ, Fiegler H, Rowan A, Halford S, Bicknell DC,
+      Cancer Inst. 2009; 101:736–50.
+                                                                                   Bodmer W, Tomlinson IP, Carter NP. Array comparative
+  19. Kim ES, Hirsh V, Mok T, Socinski MA, Gervais R, Wu                           genomic hybridization analysis of colorectal cancer
+      YL, Li LY, Watkins CL, Sellers MV, Lowe ES, Sun Y,
+                                                                                   cell lines and primary carcinomas. Cancer Res. 2004;
+      Liao ML, Osterlind K, et al. Gefitinib versus docetaxel in
+                                                                                   64:4817–25.
+      previously treated non-small-cell lung cancer (INTEREST):
+                                                                               32. Nakao K, Mehta KR, Fridlyand J, Moore DH, Jain AN,
+      a randomised phase III trial. Lancet. 2008; 372:1809–18.
+                                                                                   Lafuente A, Wiencke JW, Terdiman JP, Waldman FM.
+  20. Sheffer M, Bacolod MD, Zuk O, Giardina SF, Pincas H,
+                                                                                   High-resolution analysis of DNA copy number alterations
+      Barany F, Paty PB, Gerald WL, Notterman DA, Domany
+                                                                                   in colorectal cancer by array-based comparative genomic
+      E. Association of survival and disease progression
+                                                                                   hybridization. Carcinogenesis. 2004; 25:1345–57.
+      with chromosomal instability: a genomic exploration
+      of colorectal cancer. Proc Natl Acad Sci U S A. 2009;                    33. Camps J, Nguyen QT, Padilla-Nash HM, Knutsen T,
+      106:7131–36.                                                                 McNeil NE, Wangsa D, Hummon AB, Grade M, Ried T,
+                                                                                   Difilippantonio MJ. Integrative genomics reveals
+  21. Brosens RP, Belt EJ, Haan JC, Buffart TE, Carvalho B,
+      Grabsch H, Quirke P, Cuesta MA, Engel AF, Ylstra B,                          mechanisms of copy number alterations responsible for
+      Meijer GA. Deletion of chromosome 4q predicts outcome                        transcriptional deregulation in colorectal cancer. Genes
+      in stage II colon cancer patients. Anal Cell Pathol (Amst).                  Chromosomes Cancer. 2009; 48:1002–17.
+      2010; 33:95–104.                                                         34. Ji H, Kumm J, Zhang M, Farnam K, Salari K, Faham M,
+  22. Wang H, Liang L, Fang JY, Xu J. Somatic gene copy number                     Ford JM, Davis RW. Molecular inversion probe analysis
+      alterations in colorectal cancer: new quest for cancer drivers               of gene copy alterations reveals distinct categories of
+      and biomarkers. Oncogene. 2016; 35:2011–19.                                  colorectal carcinoma. Cancer Res. 2006; 66:7910–19.
+  23. Haan JC, Labots M, Rausch C, Koopman M, Tol J,                           35. Bartos JD, Gaile DP, McQuaid DE, Conroy JM, Darbary
+      Mekenkamp LJ, van de Wiel MA, Israeli D, van Essen                           H, Nowak NJ, Block A, Petrelli NJ, Mittelman A, Stoler
+      HF, van Grieken NC, Voorham QJ, Bosch LJ, Qu X, et al.                       DL, Anderson GR. aCGH local copy number aberrations
+      Genomic landscape of metastatic colorectal cancer. Nat                       associated with overall copy number genomic instability
+      Commun. 2014; 5:5457.                                                        in colorectal cancer: coordinate involvement of the regions
+  24. AIRTUM GdlA. I numeri del cancro in Italia: Intermedia                       including BCR and ABL. Mutat Res. 2007; 615:1–11.
+      Editore, Breascia. 2014.                                                 36. Brosens RP, Haan JC, Carvalho B, Rustenburg F, Grabsch
+  25. Fearon ER. Molecular genetics of colorectal cancer. Annu                     H, Quirke P, Engel AF, Cuesta MA, Maughan N, Flens
+      Rev Pathol. 2011; 6:479–507.                                                 M, Meijer GA, Ylstra B. Candidate driver genes in focal
+  26. Sayagués JM, Fontanillo C, Abad MM, González-González                        chromosomal aberrations of stage II colon cancer. J Pathol.
+      M, Sarasquete ME, Chillon MC, Garcia E, Bengoechea                           2010; 221:411–24.
+      O, Fonseca E, Gonzalez-Diaz M, De las Rivas J, Muñoz-                    37. Martin ES, Tonon G, Sinha R, Xiao Y, Feng B, Kimmelman
+      Bellvis L, Orfao A. Mapping of genetic abnormalities of                      AC, Protopopov A, Ivanova E, Brennan C, Montgomery K,
+      primary tumours from metastatic CRC by high-resolution                       Kucherlapati R, Bailey G, Redston M, et al. Common and
+      SNP arrays. PLoS One. 2010; 5:e13752.                                        distinct genomic events in sporadic colorectal cancer and
+  27. Ashktorab H, Schäffer AA, Daremipouran M, Smoot DT,                          diverse cancer types. Cancer Res. 2007; 67:10736–43.
+      Lee E, Brim H. Distinct genetic alterations in colorectal                38. Postma C, Koopman M, Buffart TE, Eijk PP, Carvalho B,
+      cancer. PLoS One. 2010; 5:e8879.                                             Peters GJ, Ylstra B, van Krieken JH, Punt CJ, Meijer GA.
+  28. Kurashina K, Yamashita Y, Ueno T, Koinuma K, Ohashi                          DNA copy number profiles of primary tumors as predictors
+      J, Horie H, Miyakura Y, Hamada T, Haruta H, Hatanaka                         of response to chemotherapy in advanced colorectal cancer.
+      H, Soda M, Choi YL, Takada S, et al. Chromosome                              Annals of Oncology. 2009; 20:1048–1056.
+
+www.oncotarget.com                                                     20423                                                    Oncotarget
+  39. Diep CB, Kleivi K, Ribeiro FR, Teixeira MR, Lindgjaerde OC,            50. Liu B, Morrison CD, Johnson CS, Trump DL, Qin M,
+      Lothe RA. The order of genetic events associated with                      Conroy JC, Wang J, Liu S. Computational methods for
+      colorectal cancer progression inferred from meta-analysis                  detecting copy number variations in cancer genome using
+      of copy number changes. Genes Chromosomes Cancer.                          next generation sequencing: principles and challenges.
+      2006; 45:31–41.                                                            Oncotarget. 2013; 4:1868–81. https://doi.org/10.18632/
+  40. Venkatachalam R, Ligtenberg MJ, Hoogerbrugge N, Geurts                     oncotarget.1537.
+      van Kessel A, Kuiper RP. Predisposition to colorectal                  51. Lonigro RJ, Grasso CS, Robinson DR, Jing X, Wu YM,
+      cancer: exploiting copy number variation to identify novel                 Cao X, Quist MJ, Tomlins SA, Pienta KJ, Chinnaiyan AM.
+      predisposing genes and mechanisms. Cytogenet Genome                        Detection of somatic copy number alterations in cancer
+      Res. 2008; 123:188–94.                                                     using targeted exome capture sequencing. Neoplasia. 2011;
+  41. Nakao M, Kawauchi S, Furuya T, Uchiyama T, Adachi J,                       13:1019–25.
+      Okada T, Ikemoto K, Oga A, Sasaki K. Identification of                 52. Grasso C, Butler T, Rhodes K, Quist M, Neff TL, Moore
+      DNA copy number aberrations associated with metastases                     S, Tomlins SA, Reinig E, Beadling C, Andersen M,
+      of colorectal cancer using array CGH profiles. Cancer                      Corless CL. Assessing copy number alterations in targeted,
+      Genet Cytogenet. 2009; 188:70–76.                                          amplicon-based next-generation sequencing data. J Mol
+  42. Poulogiannis G, Ichimura K, Hamoudi RA, Luo F, Leung                       Diagn. 2015; 17:53–63.
+      SY, Yuen ST, Harrison DJ, Wyllie AH, Arends MJ.                        53. R Development Core Team. R: A language and environment
+      Prognostic relevance of DNA copy number changes in                         for statistical computing. Vienna: R Foundation for
+      colorectal cancer. J Pathol. 2010; 220:338–47.                             Statistical Computing; 2010.
+  43. Pillaire MJ, Selves J, Gordien K, Gourraud PA, Gentil C,               54. Budczies J, Bockmayr M, Denkert C, Klauschen F, Gröschel
+      Danjoux M, Do C, Negre V, Bieth A, Guimbaud R, Trouche                     S, Darb-Esfahani S, Pfarr N, Leichsenring J, Onozato
+      D, Pasero P, Méchali M, et al. A ‘DNA replication’ signature               ML, Lennerz JK, Dietel M, Fröhling S, Schirmacher P,
+      of progression and negative outcome in colorectal cancer.                  et al. Pan-cancer analysis of copy number changes in
+      Oncogene. 2010; 29:876–87.                                                 programmed death-ligand 1 (PD-L1, CD274) - associations
+  44. Carvalho B, Postma C, Mongera S, Hopmans E, Diskin                         with gene expression, mutational load, and survival. Genes
+      S, van de Wiel MA, van Criekinge W, Thas O, Matthäi A,                     Chromosomes Cancer. 2016; 55:626–39.
+      Cuesta MA, Terhaar Sive Droste JS, Craanen M, Schröck E,
+                                                                             55. Jasmine F, Rahaman R, Dodsworth C, Roy S, Paul R, Raza
+      et al. Multiple putative oncogenes at the chromosome 20q
+                                                                                 M, Paul-Brutus R, Kamal M, Ahsan H, Kibriya MG. A
+      amplicon contribute to colorectal adenoma to carcinoma
+                                                                                 genome-wide study of cytogenetic changes in colorectal
+      progression. Gut. 2009; 58:79–89.
+                                                                                 cancer using SNP microarrays: opportunities for future
+  45. Lin CH, Lin JK, Chang SC, Chang YH, Chang HM, Liu                          personalized treatment. PLoS One. 2012; 7:e31968.
+      JH, Li LH, Chen YT, Tsai SF, Chen WS. Molecular profile
+                                                                             56. Katoh M. Functional and cancer genomics of ASXL family
+      and copy number analysis of sporadic colorectal cancer in
+                                                                                 members. Br J Cancer. 2013; 109:299–306.
+      Taiwan. J Biomed Sci. 2011; 18:36.
+                                                                             57. Funato K, Yamazumi Y, Oda T, Akiyama T. Tyrosine
+  46. Eldai H, Periyasamy S, Al Qarni S, Al Rodayyan M,
+                                                                                 phosphatase PTPRD suppresses colon cancer cell migration
+      Muhammed Mustafa S, Deeb A, Al Sheikh E, Afzal M,
+                                                                                 in coordination with CD44. Exp Ther Med. 2011; 2:457–63.
+      Johani M, Yousef Z, Aziz MA. Novel genes associated
+      with colorectal cancer are revealed by high resolution                 58. Rømer MU, Jensen NF, Nielsen SL, Müller S, Nielsen
+      cytogenetic analysis in a patient specific manner. PLoS                    KV, Nielsen HJ, Brünner N. TOP1 gene copy numbers in
+      One. 2013; 8:e76251.                                                       colorectal cancer samples and cell lines and their association
+                                                                                 to in vitro drug sensitivity. Scand J Gastroenterol. 2012;
+  47. Pinkel D, Segraves R, Sudar D, Clark S, Poole I, Kowbel
+      D, Collins C, Kuo WL, Chen C, Zhai Y, Dairkee SH, Ljung                    47:68–79.
+      BM, Gray JW, Albertson DG. High resolution analysis of                 59. Bahnassy AA, Zekri AR, El-Houssini S, El-Shehaby AM,
+      DNA copy number variation using comparative genomic                        Mahmoud MR, Abdallah S, El-Serafi M. Cyclin A and
+      hybridization to microarrays. Nat Genet. 1998; 20:207–11.                  cyclin D1 as significant prognostic markers in colorectal
+  48. Sharp AJ, Locke DP, McGrath SD, Cheng Z, Bailey JA,                        cancer patients. BMC Gastroenterol. 2004; 4:22.
+      Vallente RU, Pertz LM, Clark RA, Schwartz S, Segraves                  60. Hurt EM, Wiestner A, Rosenwald A, Shaffer AL, Campo
+      R, Oseroff VV, Albertson DG, Pinkel D, Eichler EE.                         E, Grogan T, Bergsagel PL, Kuehl WM, Staudt LM.
+      Segmental duplications and copy-number variation in the                    Overexpression of c-maf is a frequent oncogenic event
+      human genome. Am J Hum Genet. 2005; 77:78–88.                              in multiple myeloma that promotes proliferation and
+  49. McCarroll SA, Kuruvilla FG, Korn JM, Cawley S, Nemesh                      pathological interactions with bone marrow stroma. Cancer
+      J, Wysoker A, Shapero MH, de Bakker PI, Maller JB,                         Cell. 2004; 5:191–99.
+      Kirby A, Elliott AL, Parkin M, Hubbell E, et al. Integrated            61. Behjati S, Tarpey PS, Sheldon H, Martincorena I, Van
+      detection and population-genetic analysis of SNPs and copy                 Loo P, Gundem G, Wedge DC, Ramakrishna M, Cooke
+      number variation. Nat Genet. 2008; 40:1166–74.                             SL, Pillay N, Vollan HK, Papaemmanuil E, Koss H, et al.
+
+www.oncotarget.com                                                   20424                                                      Oncotarget
+      Recurrent PTPRB and PLCG1 mutations in angiosarcoma.                 65. Yu J, Zhang Y, McIlroy J, Rordorf-Nikolic T, Orr GA,
+      Nat Genet. 2014; 46:376–79.                                              Backer JM. Regulation of the p85/p110 phosphatidylinositol
+  62. Williams TM, Leeth RA, Rothschild DE, Coutermarsh-Ott                    3′-kinase: stabilization and inhibition of the p110alpha
+      SL, McDaniel DK, Simmons AE, Heid B, Cecere TE, Allen                    catalytic subunit by the p85 regulatory subunit. Mol Cell
+      IC. The NLRP1 inflammasome attenuates colitis and colitis-               Biol. 1998; 18:1379–87.
+      associated tumorigenesis. J Immunol. 2015; 194:3369–80.              66. Lin Y, Yang Z, Xu A, Dong P, Huang Y, Liu H, Li F, Wang
+  63. Chu D, Zhang Z, Zhou Y, Wang W, Li Y, Zhang H, Dong G,                   H, Xu Q, Wang Y, Sun D, Zou Y, Zou X, et al. PIK3R1
+      Zhao Q, Ji G. Notch1 and Notch2 have opposite prognostic                 negatively regulates the epithelial-mesenchymal transition
+      effects on patients with colorectal cancer. Annals of                    and stem-like phenotype of renal cancer cells through the
+      Oncology. 2011; 22:2440–2447.                                            AKT/GSK3β/CTNNB1 signaling pathway. Sci Rep. 2015;
+  64. Derks S, Bosch LJ, Niessen HE, Moerkerk PT, van                          5:8997.
+      den Bosch SM, Carvalho B, Mongera S, Voncken JW,                     67. Wen F, He S, Sun C, Li T, Wu S. PIK3CA and PIK3CB
+      Meijer GA, de Bruïne AP, Herman JG, van Engeland M.                      expression and relationship with multidrug resistance
+      Promoter CpG island hypermethylation- and H3K9me3                        in colorectal carcinoma. Int J Clin Exp Pathol. 2014;
+      and H3K27me3-mediated epigenetic silencing targets                       7:8295–303.
+      the deleted in colon cancer (DCC) gene in colorectal                 68. Benjamini Y, Hochberg Y. Controlling the False Discovery
+      carcinogenesis without affecting neighboring genes                       Rate: A Practical and Powerful Approach to Multiple
+      on chromosomal region 18q21. Carcinogenesis. 2009;                       Testing. J R Stat Soc Ser A Stat Soc. 1995; 57:289–300.
+      30:1041–48.
+
+
+
+
+www.oncotarget.com                                                 20425                                                   Oncotarget
+

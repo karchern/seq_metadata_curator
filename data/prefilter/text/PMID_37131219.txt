@@ -1,0 +1,1038 @@
+Sambruni et al. Genome Medicine     (2023) 15:32                                                                                                   Genome Medicine
+https://doi.org/10.1186/s13073-023-01180-9
+
+
+
+
+ RESEARCH                                                                                                                                                  Open Access
+
+Location and condition based reconstruction
+of colon cancer microbiome from human RNA
+sequencing data
+Gaia Sambruni1, Angeli D. Macandog1, Jakob Wirbel2, Danilo Cagnina1, Carlotta Catozzi1, Tiziano Dallavilla1,
+Francesca Borgo1,3, Nicola Fazio4, Uberto Fumagalli‑Romario5, Wanda L. Petz5, Teresa Manzo1,
+Simona P. Ravenda4, Georg Zeller2, Luigi Nezi1* and Martin H. Schaefer1*   
+
+
+
+  Abstract
+  Background The association between microbes and cancer has been reported repeatedly; however, it is not clear if
+  molecular tumour properties are connected to specific microbial colonisation patterns. This is due mainly to the cur‑
+  rent technical and analytical strategy limitations to characterise tumour-associated bacteria.
+  Methods Here, we propose an approach to detect bacterial signals in human RNA sequencing data and associate
+  them with the clinical and molecular properties of the tumours. The method was tested on public datasets from The
+  Cancer Genome Atlas, and its accuracy was assessed on a new cohort of colorectal cancer patients.
+  Results Our analysis shows that intratumoural microbiome composition is correlated with survival, anatomic loca‑
+  tion, microsatellite instability, consensus molecular subtype and immune cell infiltration in colon tumours. In particu‑
+  lar, we find Faecalibacterium prausnitzii, Coprococcus comes, Bacteroides spp., Fusobacterium spp. and Clostridium spp.
+  to be strongly associated with tumour properties.
+  Conclusions We implemented an approach to concurrently analyse clinical and molecular properties of the tumour
+  as well as the composition of the associated microbiome. Our results may improve patient stratification and pave the
+  path for mechanistic studies on microbiota-tumour crosstalk.
+  Keywords Tumour microbiome, RNA-Seq data deconvolution, Microbe-tumour interaction, Microbiome biomarker
+
+
+                                                                                          Background
+                                                                                          Tumours are evolutionary systems and natural selec-
+                                                                                          tion operates on their genomes, facilitating adaptation to
+*Correspondence:
+Luigi Nezi                                                                                the environment [1]. Therefore, the composition of the
+luigi.nezi@ieo.it                                                                         microenvironment has a profound impact on the selec-
+Martin H. Schaefer                                                                        tive forces shaping the tumour genome and may lead to
+martin.schaefer@ieo.it
+1
+  Department of Experimental Oncology, European Institute of Oncology-                    distinct molecular subtypes. In this regard, the tumour
+IRCCS, Milano, Italy                                                                      microbiota is emerging as a significant determinant
+2
+  Structural and Computational Biology Unit, European Molecular Biology                   [2, 3], as demonstrated by the association of gastroin-
+Laboratory, Heidelberg, Germany
+3
+  Center for Omics Sciences, IRCCS San Raffaele Institute, Milano, Italy                  testinal dysbiosis with colorectal cancer [4, 5] and the
+4
+  Division of Gastrointestinal Medical Oncology and Neuroendocrine                        impact of microbiota on tumour initiation, progression
+Tumors, European Institute of Oncology-IRCCS, Milano, Italy                               and therapy response [6]. However, to date only a few
+5
+  Digestive Surgery, European Institute of Oncology-IRCCS, Milano, Italy
+                                                                                          bacterial species have been shown to have oncogenic or
+
+                                        © The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which
+                                        permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the
+                                        original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or
+                                        other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line
+                                        to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory
+                                        regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this
+                                        licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+                                        mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Sambruni et al. Genome Medicine       (2023) 15:32                                                                                         Page 2 of 19
+
+
+
+
+cancer-supportive capabilities [7], including Helicobacter                   We applied our workflow to colon, lung, brain, head
+pylori in gastric cancer [8] and Fusobacterium nucleatum                     and neck, ovary, skin and breast tumour samples from
+and colibactin producing Escherichia coli in colon cancer                    The Cancer Genome Atlas (TCGA) to reconstruct the
+[9, 10]. The interactions of bacteria with tumours engage                    tumour-specific microbiome. Subsequently, the accuracy
+specific metabolic activities along with physical contact                    of this workflow in inferring microbiome composition
+and can modulate the host immune system [11, 12]. Nev-                       was validated in a novel cohort of colon cancer patients
+ertheless, if and how bacteria contribute to shaping the                     in which we simultaneously sequenced the tumour and
+molecular properties of the tumour and influence the                         quantified bacterial abundances by two independent
+clinical outcome is still poorly understood [13–17]. Can-                    approaches. Our results indicate strong associations
+cer is a highly heterogeneous disease and the detection of                   between the bacterial composition and molecular, clini-
+subtypes and molecular characteristics of patients drove                     cal and prognostic properties of the tumour and high-
+the development of personalised treatment strategies                         light specific bacterial species potentially associated with
+[18]. For personalised medicine, the microbiome plays                        them. Finally, we explored associations with the immune
+a minor role so far. To change this, the first step would                    compartment and bacterial metabolic peculiarities in the
+be to understand how the microbiome varies between                           left and right colon.
+subtypes and is associated with specific properties of the
+tumour. Addressing these points is currently challeng-                       Methods
+ing as it requires simultaneous characterisation of the                      Samples
+microbiome and tumour properties of a large number of                        After obtaining the required permission, we down-
+patient samples.                                                             loaded the RNA-Seq data from 3737 primary tumour
+   Recent studies have begun to explore the possibility                      and 318 solid tissue normal control samples from NCI
+of extrapolating information on tumour-associated bac-                       Genomic Data Commons (GDC)/TCGA. The non-
+teria from widely available human sequencing data, e.g.                      malignant samples were taken during the biopsy of
+from whole exome sequencing (WXS) [19–26] or RNA                             cancer patients from an adjacent area from the tumour
+sequencing (RNA-Seq) [20, 23–25, 27, 28]. Most of these                      site. The analysed samples belonged to colon adeno-
+studies focused on the differences between cancer types                      carcinoma (COAD [30], 382 primary tumour, 39 solid
+or tumour versus control tissue [20–24, 26, 28]. Recent                      tissue normal), glioblastoma multiforme (GBM [31],
+studies suggested a link between the presence of specific                    152 primary tumour, 5 solid tissue normal), lung ade-
+bacteria in tumour samples and clinical properties of                        nocarcinoma (LUAD [32], 512 primary tumour, 59
+the tumours [21, 22, 25–27]. However, how much these                         solid tissue normal), lung squamous cell carcinoma
+associations could be influenced by batch effects and                        (LUSC [33], 499 primary tumour, 49 solid tissue nor-
+contamination is still under debate [19–22, 27] and a sys-                   mal), head and neck squamous cell carcinoma (HNSC
+tematic study of the link between molecular, clinical and                    [34], 499 primary tumour, 44 solid tissue normal), ovar-
+prognostic properties of tumours with their microbiome                       ian serous cystadenocarcinoma (OV [35], 366 primary
+is still missing.                                                            tumour), rectum adenocarcinoma (READ [30], 151
+   We implemented a computational workflow [29] to                           primary tumour, 9 solid tissue normal), skin cutaneous
+extract microbial reads from human RNA-Seq data, iden-                       melanoma (SKCM [36], 103 primary tumour, 1 solid
+tify and eliminate experimental contamination and quan-                      tissue normal) and breast invasive carcinoma (BRCA
+tify the associations between properties of the tumour                       [37], 1073 primary tumour, 112 solid tissue normal)
+and the species-level microbiome composition (Fig. 1a).                      patients. To avoid any possible intra-study bias caused
+
+ (See figure on next page.)
+ Fig. 1 General overview on bacteria reconstructed microbiomes. a Summary of the microbial reconstruction workflow to detect clinical and
+ molecular associations with bacteria. Each RNA sequencing BAM file was analysed by this workflow: after removing the human sequences, the rest
+ of the reads were aligned to a set of microbial genomes from the National Center for Biotechnology Information (NCBI) and assigned to one or
+ more species. The last step to reconstruct the microbiome of the samples involves a batch effect detection that identifies the influence of available
+ technical properties on the reconstructed microbiome composition. Microbiome profiles are then corrected accordingly for the most relevant
+ batch effects. Finally, the corrected microbiome profiles were tested for associations with clinical and molecular properties of the tumour, survival
+ analysis and property classification. For the properties associated with microbiome composition, the bacterial composition underwent a property
+ classification approach, while specific bacterial species were detected as linked to the property levels and the prognosis. Colon adenocarcinoma
+ (COAD) bacterial reads were pooled into left and right-sided, CMS1 and CMSs pooled and mutation burden high and low and underwent pathway
+ profiling to compare metabolic differences between the sides of the colon, CMSs and mutational burden levels, respectively. b Principal component
+ analysis on all the reconstructed bacterial microbiomes of the cancer types analysed. GBM, glioblastoma multiforme; LUAD, lung adenocarcinoma;
+ LUSC, lung squamous cell carcinoma; HNSC, head and neck squamous cell carcinoma; OV, ovarian serous cystadenocarcinoma; READ, rectum
+ adenocarcinoma; SKCM, skin cutaneous melanoma; BRCA, breast invasive carcinoma. Number of samples analysed in brackets
+Sambruni et al. Genome Medicine     (2023) 15:32                                                      Page 3 of 19
+
+
+
+
+ Fig. 1 (See legend on previous page.)
+
+
+
+by different sample preparations, we only considered   preparation steps was downloaded from the GDC Leg-
+samples analysed by the Illumina Truseq method (in     acy Archive [38].
+COAD, LUAD and BRCA) and AllPrep RNA extrac-             We additionally enrolled a cohort of 30 resectable colon
+tion (in OV) and removed the cases with duplicated     cancer patients prospectively from European Institute of
+samples (GBM and LUSC); the information about the      Oncology (IEO) hospital. The local Ethics Committee
+Sambruni et al. Genome Medicine          (2023) 15:32                                                                            Page 4 of 19
+
+
+
+
+approved the study and each patient was asked to sign                            species. Data were calculated by normalising the bacte-
+an informed consent. We obtained from each patient a                             rial counts from FISH images by the number of EUB pos-
+tissue sample of the tumour and non-tumour adjacent                              itive signals and total cells (DAPI) present in the images.
+region (at 2 and 10 cm from the border of the pathologist-
+assessed neoplastic lesion). Samples underwent RNA-Seq
+(90 samples), ribosomal RNA 16S gene (16S) sequencing                            DNA extraction, 16S sequencing and analysis
+(61 samples) and bacterial fluorescence in situ hybridisa-                       We isolated a mucosal scrap from each tissue sample
+tion (FISH, 10 samples). Two samples with low amounts                            by gently scraping the mucosa with 1 ml of phosphate
+of RNA-Seq bacterial reads (less than 300 reads) were                            buffered saline (PBS) solution. Of this, 500 µl was used
+removed from the final analyses.                                                 to extract DNA using the DNA Power Soil Pro Isola-
+                                                                                 tion kit (Qiagen). DNA was quantified by Qubit, and
+RNA extraction, sequencing and analysis                                          the quality was assessed by Nanodrop. The amplifica-
+RNA was extracted from flash-frozen tissues using the                            tion and sequencing of the 16S V3–V4 regions were
+AllPrep DNA/RNA kit (Qiagen) following manufacturer                              performed following the 16S Metagenomic Sequencing
+recommendations. One hundred nanograms was used                                  Library Preparation protocol [40]. Briefly, the first PCR
+for RNA library preparation using the Illumina Truseq                            (25 cycles) was performed using the 16S V3–V4 prim-
+or Stranded Total RNA Prep Ligation with Ribo-Zero                               ers under the manufacturer’s instructions. Both forward
+Plus kit (Illumina). In brief, after depleting rRNA, the                         and reverse primers (Additional file 1: Table S1) were
+RNA was fragmented at 94° C for 2 min. After retrotran-                          composed of Illumina overhang adapter sequences and
+scription and anchor ligation, the library was amplified                         the specific 16S sequences of primers. Then, the second
+(13 cycles). Sample quality and quantity were checked                            PCR (8 cycles) was carried out to attach dual indices
+again by Bioanalyser and Qubit, respectively and then                            and Illumina sequencing adapters using the Nextera XT
+sequenced (50 base pair paired-end reads) by Illumina                            Index Kit. After pooling, DNA quality and quantity were
+NovaSeq 6000.                                                                    checked by Bioanalyser and Qubit and run on a MiSeq
+  Intending to reduce as much as possible the differ-                            flowcell (Illumina).
+ences in the bioinformatic approaches used to analyse                               For validation of RNA-Seq data, the IEO cohort sam-
+GDC/TCGA and the IEO cohort samples, we processed                                ples underwent 16S V3–V4 amplicon sequencing. The
+the IEO cohort samples with the same tools and the                               16S sequences were analysed using qiime2 [41]. Raw
+same parameters described by TCGA. We ran the STAR                               count tables were produced using q2-dada2 [42] with
+aligner (GRCh38) on the IEO cluster with the same                                truncation length parameters set to the primer length.
+parameters described in TCGA documentation (https://​                            Taxonomic profiling was done by trimming whole-gene
+docs.​ g dc.​ c ancer.​ g ov/​ D ata/​ B ioin​ f orma​ t ics_​ P ipel​ i nes/​   16S sequences from the SILVA 132 database [43] by the
+Expre​ssion_​mRNA_​Pipel​ine/).                                                  flanking region of the V3–V4 primers. The trimmed
+                                                                                 SILVA sequences were trained with the q2-classifier
+FISH                                                                             skclassify plug-in [44], after which the trained classi-
+Carnoy’s fixed and paraffin-embedded tumour tissues                              fier was run on the representative sequences output
+were processed for FISH following a modified version                             of DADA2 [42]. The majority of the sequences were
+of the previously published protocol [39]. Briefly, after                        resolved to genus level, so the output taxonomy table was
+deparaffination and rehydratation, tissue slides were                            collapsed to genus level and transformed into relative fre-
+incubated for 3 h in the hybridization buffer (with a spe-                       quencies for further analysis.
+cific temperature and amount of formamide depending                                 The comparison between RNA-Seq and 16S was made
+on each probe) with FISH probes targeting most of bac-                           by subsetting the datasets to include only the intersecting
+teria universally (EUB probe) in combination with probes                         genera between the two and then doing the Spearman
+targeting one of the following species specifically: Akker-                      correlation test on each genus. To understand how rare,
+mansia muciniphila and Faecalibacterium prausnitzii                              low-abundance taxa (with many zero abundance values)
+(Additional file 1: Table S1). Then, slides were washed,                         are affecting the correlation, prevalence filtering was
+incubated with 4’,6-diamidino-2-phenylindole (DAPI) for                          applied to both datasets, where genera that are present
+nuclei staining and mounted. Image acquisition was per-                          (i.e. bacterial relative abundance > 0) above a percentage
+formed using an SP8 confocal microscope (Leica) at × 63                          threshold of number of samples in both datasets were
+magnification. Example images are shown in Additional                            kept (0%, 10%, 20%, 30%, 40%, 50% and 60%). The dis-
+file 1: Fig. S1a-b.                                                              tribution of the Spearman coefficients across prevalence
+   The comparison between RNA-Seq and FISH values                                filter thresholds was visualised with a density plot, using
+was done using Spearman correlation for each analysed                            one-sample Wilcoxon to test at each cut-off whether the
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                  Page 5 of 19
+
+
+
+
+median of the distribution is greater than zero (Addi-        if the frequency of zero values is over 30%, we considered
+tional file 1: Fig. S1c).                                     the presence or absence (anything above zero considered
+                                                              as presence); if the distribution was normal (Shapiro test)
+Tumour properties
+                                                              or the distribution was bimodal (is.bimodal function
+Among the clinical information of samples provided by         from LaplacesDemon R package), we defined low and
+TCGA, we selected those that are lowly redundant, are         high values taking the mean or the lowest value between
+available for most of the patients and are considered         the two peaks as break, respectively; and if none of the
+clinically relevant. In particular, we considered gender,     previous conditions were satisfied, we binned the values
+body mass index (BMI), stage, history of other malig-         by quartiles (low, medium–low, medium–high and high
+nancy, side, age at initial pathological diagnosis, history   levels).
+of colon polyps and percentage of normal cells. Among
+all the properties reported by TCGA, we also considered       Microbiome reconstruction workflow
+technical properties from which we assumed that they          Our computational workflow [29] consisted of five steps:
+could potentially affect our results. Among the residual
+properties, we decided to select the ones that could be         (1) Microbial read extraction: we applied PathSeq from
+associated with the microbiota composition. To expand               the Genome Analysis Toolkit [53] using the pro-
+our analysis of clinical properties of the tumours, we              vided reference genomes prepared on 12/04/2017
+took advantage of some previously published analyses                (human: GRCh38). We ran the tool PathSeq [54]
+on TCGA cohorts: we considered microsatellite insta-                with default parameters and for each bacterial spe-
+bility (MSI) level [45] (as suggested by the authors, we            cies we used the “score” values from the PathSeq
+classified as high MSI those samples with a MANTIS                  output matrix to evaluate bacterial abundances:
+score > 0.4 and with a low MSI the ones with MANTIS                 they take into account that species share homolo-
+score < or equal to 0.4), the CpG methylation phenotype             gous genomic regions. A read that maps to a com-
+(CIMP) status [46], the consensus molecular subtype                 mon region cannot be assigned to only one taxon,
+(CMS) classification (determined from the tumour gene               so PathSeq provides a “weighted count” of the
+expression profile with the CMSclassifier R package [47])           number of reads that map to the reference genome
+and the stemness value [48].                                        of the taxon considered. Considering taxon t, if
+  We also considered two molecular properties of                    a read maps only to the genome of the taxon t, it
+tumours: the aneuploidy status [49] and the driver gene             has a value of 1; if it does not map, it has a value of
+mutation status. We quantified the status of the most fre-          0; and if the read maps to more than one genome
+quently mutated genes in colorectal cancer and the other            (to a common region), it has a value of 1/(number
+cancer types [50] as the total number of mutations found            of genomes to which the read maps). The bacterial
+in each TCGA sample using the GDC database collection               score of the taxon t is the sum of the values from all
+[51]. We considered a gene mutated if it carries any type           the reads.
+of non-silent mutation (silent mutations: silent, 5’flank,      (2) Genome redundancy adjustment: the reconstruc-
+RNA, intron, 3’flank).                                              tion of the microbiome from human RNA-Seq
+  Finally, we inferred immune cell infiltration by running          with PathSeq can be affected by several prob-
+CIBERSORTx [52] from their web page on transcript per               lems: human samples can undergo contamination
+million (TPM) gene expression quantification with the               at different stages of processing (from surgery to
+default signature matrix LM22, B-mode batch correc-                 sequencing) [23]. The detection of bacterial species
+tion activated, with 1000 permutations in both absolute             can also be affected by the wrong identification of
+and relative mode. We considered only the significant               species due to technical reasons: technical sequenc-
+(p < 0.05) immune estimates. TPM were calculated from               ing errors (usually discarded in human analyses)
+fragments per kilobase million (FPKM) tables from the               can randomly map to bacterial genomes and the
+GDC by dividing each FPKM value with the sum of the                 presence of common sequences shared by two (or
+FPKM values of that sample and then multiplied by 1                 even more) different species can alter the quanti-
+million. Ensembl IDs were converted to HUGO gene                    fication or wrongly detect bacteria which are not
+names using the annotation version v22. We tested con-              present. To avoid taking into account the bacterial
+tinuous properties with a specific test (i.e. Spearman cor-         scores of non-detected species that share genomic
+relation test), but if needed (i.e. for the independence            regions with the real sample-derived ones, we only
+test), we converted the continuous variables to discrete            considered the bacterial scores of those species
+ones by binning the properties. To this end, we applied             with at least one unambiguously mapping read. The
+an approach to automatically find the best break points:            bacterial score values were then intra-sample nor-
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                      Page 6 of 19
+
+
+
+
+      malised so that all bacterial species scores sum up               total number of samples (frac), if frac > 5, frac was
+      to 100 as a measure of bacterial relative abundance               set to 5.
+      scaled to percentages.                                        (4) Microbiome composition PCA: to investigate
+  (3) Batch effect detection and correction: to detect                  the differences between the whole reconstructed
+      the major technical batch affecting the bacterial                 microbiota of samples with PCA, we applied the
+      composition of each cancer type, we measured                      prcomp function from the stats R package. Before
+      the Euclidean distances of samples in the first six               applying the method, we removed the species with
+      principal components (PCs) of the principal com-                  zero bacterial relative abundances in all the sam-
+      ponent analysis (PCA, collectively explaining more                ples analysed. After this, we selected the 1000 spe-
+      than 10% of the variability) of each cancer type. We              cies with the highest standard deviation values. The
+      compared the distributions of these distances of                  presence of outliers in the PCA can alter the results,
+      samples belonging to the same level of the techni-                so we measured the Euclidean distances between
+      cal property to the distances of samples belonging                samples and, if one sample was the most distant
+      to different levels of that property by the Wilcoxon              to 95% of the other samples (or more), it was con-
+      test. For example, we compared the distribution of                sidered an outlier and removed. After removing an
+      the distances between the samples belonging to the                outlier, we reran the outlier identification method
+      same 96-well plate identifier (plate ID) to the dis-              to identify and remove further outliers until no fur-
+      tances between samples from different plate IDs.                  ther ones could be detected.
+      The technical property showing the lowest p value             (5) Tumour property association with microbi-
+      was considered the major batch effect in the ana-                 ome composition: to test the specific association
+      lysed cancer type. For all the cancer types analysed,             between the PCs and the tumour properties, we ran
+      we determined that the plate ID is the most impor-                the PCA and compared the different distributions
+      tant batch effect, except for GBM samples in which                of the PC coordinates with the subgroups we were
+      no clear technical batch effects were found. In the               analysing with the Wilcoxon or Kruskal–Wallis test.
+      IEO cohort, the dominant detected technical batch                 We also tested the correlation between PC coor-
+      was the sequencing run. In the PCA, we noticed                    dinates and the tumour properties values with the
+      a separation between samples sequenced with a                     Spearman correlation test. We considered the first
+      different read length in COAD and READ tissues                    six PCs since they can explain more than 10% of the
+      (Additional file 1: Fig. S2a). In fact, read length was           total variability of the reconstructed microbiome
+      the second-most influential factor identified by our              for all the cancer types tested. For survival analysis,
+      batch effect detection approach. Correcting for                   we considered as top PC-contributing species (200
+      the plate IDs also reduced this read length effect                species) with the highest absolute loading values of
+      (Additional file 1: Fig. S2b), since it is strongly asso-         each PC of the PCA (Additional file 2: Table S2).
+      ciated with the plate IDs (Additional file 1: Fig.
+      S2c). As major confirmation, we tested the clinical           Since there are different ways to deal with reads
+      property associations with tumour COAD samples              mapping to sequence-redundant regions of bacterial
+      batch corrected for sequencing read length and we           genomes, we wanted to understand if these different
+      got similar results to the ones obtained correcting         ways to estimate bacterial signals could affect our results.
+      for plate IDs (Additional file 1: Fig. S2d-e, 3a). We       To this end, we tested if different COAD bacterial abun-
+      also tested the clinical property association to the        dance estimations could detect associations not previ-
+      subset of tumour COAD samples with 48 bp-read               ously found with the here described approach (steps 1
+      length or 76-read length and observed that some             and 2). We applied the same workflow considering only
+      of the associations still held (Additional file 1: Fig.     uniquely mapping reads per species (i.e. the unambigu-
+      S3b-c).                                                     ous reads) or using the sum of all the mapping reads, both
+      To correct for the identified batch effect, the recon-      unambiguous reads and reads mapping to redundant
+      structed bacterial microbiome relative abundances           regions (i.e. the ambiguous reads). We detected and cor-
+      were scaled and log-transformed. After that, we             rected for the strongest batch effect (i.e. the sequencing
+      applied the ComBat function from the sva package            plate, as identified with our current approach) and tested
+      in R [55], controlling for the known batch covari-          for significant associations between the first six PCs of
+      ate (the plate IDs or the sequencing run). Since            the reconstructed microbiome PCA and tumour proper-
+      some cancer types have few samples per plate, we            ties. All the approaches found side, MSI, CIMP and ane-
+      pooled the plates with a low number of samples:             uploidy status associated with the bacterial compositions
+      plates were pooled if they had less than 10% of the         of samples (Additional file 1: Fig. S3d), while the relaxed
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                    Page 7 of 19
+
+
+
+
+one (including ambiguous reads) detected also the asso-        the other sublevel (e.g. sides of the colon) as differentially
+ciation with the percentage of normal cells that was not       active.
+previously identified.                                           We applied bootstrapping to estimate the significance
+  To compare the variations of bacterial abundances of         of our observations: we randomly picked one third of the
+species related to specific properties of the tumour (e.g.     samples from each sublevel in 50 independent permuta-
+the abundances in the left versus the right side of the        tions and applied HUMAnN as described above to obtain
+colon in the primary tumour), we used the generalised          pathway distributions of the sublevels (e.g. in left and
+log fold change, as described in Wirbel et al. [56].           right). The distributions of the previously identified path-
+                                                               ways were compared with the Wilcoxon test and a false
+LASSO regression model                                         discovery rate (FDR) multiple-test corrected q value < 0.2.
+In order to test if the bacterial composition could serve
+as potential biomarker for clinical tumour properties, we      Survival analysis
+trained a least absolute shrinkage and selection operator      The cBioPortal for Cancer Genomics disease-free survival
+(LASSO) logistic regression machine learning model [57]        (DFS) and overall survival (OS) data were downloaded
+to distinguish stage, MSI status, CMS and the percent-         from cBioPortal [60, 61]. To measure the association
+age of normal cells across all COAD samples. To have a         between survival and the microbiome composition, we
+binary classification problem, the tumour properties were      applied Cox proportional-hazard models with the coxph
+adjusted to obtain only two classes, when needed: the          function of the survival R package. First, we ran univari-
+stage information was split into early (stages I and II) and   ate Cox models on the top six PC coordinates separately
+late (stages III and IV) stage; for each CMS, a new label      and selected the significant ones. To exclude the possible
+was created in which every CMS was grouped against             impact on survival due to clinical properties associated
+the rest of the CMSs (e.g. CMS1 versus all other CMSs);        with PCs, we tested the selected PC coordinates together
+finally, the percentage of normal cells were split by low      with their associated properties in a multivariate model
+(zero value) and high (over 10%). We selected 500 bacte-       and checked whether PCs remained significant. To take
+ria with the highest standard deviation (SD) on which we       into account properties with different scales, we scaled
+then trained a LASSO regression model with the SIAM-           continuous properties to be in the range 0–1. We fur-
+CAT package in R [58], using a 10 times repeated tenfold       ther validated our results by running the Kaplan–Meier
+cross-validation strategy. Given the repeated cross-val-       analysis on PC coordinates that are not confounded by
+idation, there are multiple predictions for each sample        associated properties (in this case, we used original PC
+(whenever it was used as a test sample during a single         coordinates). To stratify patients into “high” and “low”
+round of cross-validation). We therefore averaged all pre-     groups, maximally selected rank statistics were adopted.
+dictions across the cross-validation repeats to get a single   To detect which bacterium is associated with the relapse
+prediction per sample, which was then used to assess the       probability, we applied univariate Cox analysis to the
+accuracy of the model. For classification of non-malignant     batch corrected values of the first 100 bacteria with the
+versus tumour samples, we selected 200 bacteria with the       highest loadings of the PCs associated with relapse prob-
+highest SD and grouped the samples by Patient ID during        ability (PC4). We then multiple-test correct the p value of
+cross-validation, since we used only paired samples.           the Wald test, selecting for q < 0.2 species.
+
+Pathway analysis                                               Filter criteria on bacteria
+To compare the pathways enriched in the tumour colon           We applied two different approaches to select the species
+properties (e.g. the two sides of the colon), we pooled        of interest:
+together the PathSeq output BAM files of the primary
+tumour samples from the same sublevel (e.g. from the             (1) High-confidence set of species: given the high
+left and the right sections). We then analysed these                 number of bacterial species detected in the cancer
+pooled reads with HUMAnN 3.0 [59] and, as suggested                  types analysed, we defined three filters to remove
+by the authors of this tool, we normalised the pathway               the low-present, batch-affected bacteria and select
+abundances to copies per million (CPM). We filtered                  the cancer type–specific ones. To remove the bac-
+out the low-abundance pathways (abundance below the                  teria whose distribution is affected by the domi-
+first quartile, 30.49 CPM on the left, 27.02 CPM on the              nant batch effect of the cancer type, we applied
+right, 26.74 CPM in CMS1, 31.27 CPM in pooled CMSs,                  the Wilcoxon test to their relative abundances and
+26.18 CPM in high mutation burden and 25.36 CPM in                   removed the bacteria with FDR multiple-test cor-
+low mutation burden) and then we considered the path-                rected q value < 0.1. To filter out the low prevalent
+ways showing at least one third higher abundance than                bacteria, we selected those bacteria detected in
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                   Page 8 of 19
+
+
+
+
+      at least 10% of the samples of the cancer type of        normalised to obtain bacterial relative abundances.
+      interest. To select cancer type–specific bacteria,       With this approach, we reduced the number of bacterial
+      we finally selected those bacteria showing a higher      species detected per sample and recovered a significant
+      mean in the cancer type analysed than in the other       fraction of reads shared by multiple genomes that would
+      types.                                                   otherwise be discarded. We next established a step in
+  (2) Colon–specific set of species: we screened the           the workflow to computationally correct the technical
+      bacteria by applying the presence and cancer type-       variation affecting the reconstructed microbiome (see
+      specificity filters described above. After that, in      “Methods” for details): to compare samples from differ-
+      order to test for differentially abundant species        ent cancer types, we applied a PCA on the species of the
+      between different levels of properties, we applied       bacterial microbiome showing the highest variability
+      a non-parametric Mann–Whitney test: the inde-            between samples (using the 1000 bacteria with the SD)
+      pendence_test function as implemented in the R           (Fig. 1b). This approach revealed that the reconstructed
+      package coin [62]. To consider the batch effect pre-     microbiome clustered by cancer type, suggesting cancer
+      sent in the samples, we applied the independence_        type–specific bacterial composition. However, when we
+      test blocking for the property we considered the         analysed each cancer type, technical factors were also
+      dominant technical batch. Finally, we considered         critical for the clustering, with plate ID emerging as the
+      bacteria statistically significantly associated with a   strongest contributor. After correcting for these batch
+      property, if their multiple-testing corrected q value    effects (see “Methods”), differences between the recon-
+      (FDR method) was below 0.1.                              structed microbiomes were only minimally affected by
+                                                               technical factors (Additional file 1: Fig. S4d), suggesting
+                                                               that our approach can quantify the presence of bacterial
+Results                                                        reads on a broad number of samples while controlling
+Microbiome reconstruction from RNA‑Seq data of different
+                                                               for sources of unwanted technical variation and noise in
+cancer types
+                                                               the data.
+A computational workflow was implemented (Fig. 1a)
+to reconstruct the microbiome by extracting bacterial          Comparison with experimental detection approaches
+reads from RNA-Seq data [54], detecting and correct-           to characterise the microbiome
+ing for contaminants and batch effects and summa-              To better understand how accurately our computational
+rising global microbiome composition trends using              approach is able to reconstruct true tissue microbiome
+dimensionality reduction (see “Methods”). We started           composition, we applied the same workflow to a cohort
+by reconstructing the microbiome from nine TCGA                of 30 non-metastatic colon cancer patients who under-
+RNA-Seq studies on epithelial tumours. These studies           went surgical resection at the IEO (Milan). From each
+originate from tissues strongly exposed to microbiota,         patient, we analysed both the tumour and the non-malig-
+namely colorectal, head and neck, skin, lung and breast        nant tissues (Additional file 3: Table S3). We first verified
+epithelial tissues; additionally, we analysed ovary, where     that the IEO cohort grouped with TCGA colon samples
+exposure to microbiome is under debate [63] and brain          in microbiome space (Fig. 2a,b). Second, we evaluated
+tissue, which is largely sheltered from microbes in con-       the agreement of microbial genus profiles inferred from
+trast with epithelial cancers (in total 3737 samples).         RNA-Seq data with those generated by sequencing the
+This analysis yielded 59,592,060 bacterial reads (0.02%        DNA of bacterial ribosomal RNA 16S from the same
+of the total reads; Additional file 1: Fig. S4a) mapping       samples, an established approach for profiling tissue-
+to 11,961 bacterial species and, surprisingly, detected        resident microbiota. Spearman rank correlation showed
+bacterial signals in all the cancer types analysed, includ-    good agreement between the two methods when filtering
+ing brain tumours (GBM). Next, we aimed to remove              for bacterial genera with a prevalence higher than 20%
+those bacterial reads that might originate from con-           across samples (Fig. 2c; p = 0.004; one-sample Wilcoxon
+tamination and bacteria only supported by ambiguous            test, rs = 0.17; Spearman correlation) and the correlation
+genomic regions. To minimise these effects, first, we          is stronger when considering highly prevalent bacteria
+included only the bacteria detected by at least one read       (Additional file 1: Fig. S1c). As expected, colon adeno-
+mapping to a non-redundant region (18,236,650 unam-            carcinoma samples from TCGA and IEO are grouped
+biguous reads). Then, we used a bacterial score that           together even at the genus-level PCA, see Additional
+weights the reads by the number of genomes they map            file 1: Fig. S1d. Third, we performed FISH on intesti-
+to (based on 39,081,191 reads associated with 10,910           nal tissues from a subset of ten colon cancer patients
+bacterial species; Additional file 1: Fig. S4b,c) (see         of the IEO cohort using probes targeting specifically A.
+“Methods”). Bacterial scores were then intra-sample            muciniphila and F. prausnitzii, two bacteria found under
+Sambruni et al. Genome Medicine       (2023) 15:32                                                                                          Page 9 of 19
+
+
+
+
+ Fig. 2 Validation of the reconstructed microbiome profiles from The Cancer Genome Atlas (TCGA) with the European Institute of Oncology (IEO)
+ cohort. a Principal component analysis of microbiome profiles from the TCGA (primary tumour and non-pathological solid tissue normal samples)
+ and the IEO cohort shows cross-cohort clustering of colon adenocarcinoma samples. b Total number of normal and tumour samples. c Density
+ plot of the Spearman coefficients describing the correlation between the 76 most abundant bacterial genera (present in more than 20% of the
+ samples) profiled in both RNA sequencing (RNA-Seq) and ribosomal RNA 16S gene (16S) sequencing data. The majority of correlation coefficients
+ are significantly larger than zero (p < 0.005, one-sample Wilcoxon test), meaning a similar tendency of detecting bacteria by the two approaches.
+ d Correlation between the reconstructed microbiome (RNA-Seq bacterial relative abundances) and fluorescence in situ hybridisation (FISH)
+ quantification of two bacteria, Faecalibacterium prausnitzii and Akkermansia muciniphila. Pearson (rp) and Spearman (rs) coefficients are indicated. e
+ Representative FISH images of A. muciniphila and F. prausnitzii. GBM, glioblastoma multiforme; LUAD, lung adenocarcinoma; LUSC, lung squamous
+ cell carcinoma; HNSC, head and neck squamous cell carcinoma; OV, ovarian serous cystadenocarcinoma; READ, rectum adenocarcinoma; SKCM, skin
+ cutaneous melanoma, BRCA, breast invasive carcinoma. Number of samples analysed in brackets
+
+
+
+
+physiological conditions in the digestive tract [64], see                     F. prausnitzii (rs = 0.21; Spearman correlation; with a
+Additional file 1: Fig. S1a-b.                                                prevalence of 1 in RNA-Seq data) (Fig. 2d,e). Those cor-
+  When compared with reconstructed signals obtained                           relations were not statistically significant. In summary,
+by our workflow, the FISH signals showed a good cor-                          these analyses indicate that RNA-Seq experiments from
+relation for A. muciniphila (rs = 0.58; Spearman corre-                       human samples can be used to accurately quantify bac-
+lation; with a prevalence of 0.5 in RNA-Seq data) and                         terial species, especially those with higher prevalence.
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                    Page 10 of 19
+
+
+
+
+Association between bacterial composition and clinical            properties for which we had sufficient separation in PCA
+and molecular properties of colon cancer                          space and a minimum number of samples in each class:
+We next wondered if we could use the extracted bacterial          side, MSI and CMS (see “Methods”). We predicted MSI
+reads to detect associations between clinical properties          and CMS1 samples with an area under the receiver oper-
+of the tumours and the composition of the microbiome.             ating characteristic curve (AUC) of 0.7 (Additional file 1:
+Considering that the accuracy of the bacterial extraction         Fig. S8a, c, d) and we classified tumour location (left ver-
+from RNA-Seq data differs across species, we first tested         sus right side of the colon) with a slightly lower AUC of
+for associations between coordinates of TCGA samples              0.64 (Additional file 1: Fig. S8a, e).
+in the PCA of the microbial abundance space with spe-                Each colon cancer CMS is characterised by specific
+cific tumour properties. We considered the first six PCs,         molecular and clinical properties and we wondered if
+which together covered more than 10% of the variation in          this was the case also for their microbial composition.
+microbiome composition (see “Methods”).                           Indeed, microbiome composition varied significantly
+   We initially tested for associations with 14 clinical prop-    with CMSs, with CMS1 being linked to a distinct micro-
+erties on each analysed cancer type, including age, gen-          biome (Fig. 3b). Since CMS1 is characterised by strong
+der, tumour location (i.e. side), BMI, presence of previous       immune cell infiltration and activation of immune eva-
+malignancy, history of polyps, stemness of the sample,            sion pathways, we characterised the immune landscape
+percentage of normal cells, stage of the tumour, MSI sta-         from gene expression data [52]. Among the 22 immune
+tus, CIMP status, CMS (the gene expression–based clas-            cell types detected, we found an association between
+sification of colon cancer subtypes) [47], aneuploidy status      the PCs and the estimates of dendritic cells, memory B
+and mutation burden, when available (see “Methods”).              cells, regulatory T cells (Tregs) and mast cells in COAD
+We were able to detect associations between the microbi-          samples (q < 0.1; Wilcoxon, Kruskal–Wallis or Spear-
+ome, as quantified by the microbial PCs, and the proper-          man correlation tests, see “Methods”) and other mild
+ties of the COAD samples (Fig. 3a). For most cancer types,        association with eosinophils, macrophages M2 and rest-
+no significant or mildly significant associations (q < 0.1 or     ing CD4 memory T cells, both in terms of abundance
+q < 0.2; Wilcoxon, Kruskal–Wallis or Spearman correla-            and proportions of immune cells per sample (Fig. 3c
+tion test) were detected, apart from a mild association of        and Additional file 1: Fig. S9a). Moreover, when test-
+mutation burden and stemness in BRCA (q = 0.19, Spear-            ing the associations of the bacterial composition with
+man correlation test), see Additional file 1: Fig. S5a-h.         the immune cell proportions of the other cancer types,
+Only for COAD the PC coordinates of the reconstructed             we detected several interesting associations: Tregs
+microbiome showed association with side, CMS, mutation            were associated with the majority of the cancer types
+burden, stemness and history of polyps; we also detected          (COAD, LUAD, LUSC, HNSC and BRCA), followed by
+mild associations (0.1 < q < 0.2 Wilcoxon, Kruskal–Wallis         dendritic cells (COAD, READ, HNSC and BRCA) and
+or Spearman correlation test) with MSI status, CIMP sta-          resting CD4 memory T cells (COAD, LUAD, HNSC and
+tus, age, aneuploidy status and gender and other malignan-        BRCA), while monocytes and neutrophils are examples
+cies (Fig. 3a,b and Additional file 1: Fig. S6a-v). To test the   of immune cell subtypes associated with a specific can-
+robustness of our approach and exclude that our observa-          cer type (BRCA and HNSC respectively), see Additional
+tions could be influenced by technical biases, we repeated        file 1: Fig. S10 for details. This infiltrating immune cell
+the analysis of associations with clinical properties on a        analysis highlights that some immune cell subtypes are
+small, high-confidence set of species by stringent filtering      more frequently found associated with the bacterial
+of the bacteria detected in COAD samples by prevalence            composition of the tumour while others are more can-
+and cancer type specificity as well as removing species           cer type specific. Along with immune-mediated inter-
+that co-vary with technical properties of the samples (see        actions, the bacteria-host crosstalk relies on mutual
+“Methods”). We could reconfirm side, MSI and aneuploidy           metabolic exchanges in both physiologic or pathologi-
+associations with microbial composition based only on 44          cal conditions. To explore bacterial pathway activity,
+species (Additional file 4: Table S4) that could be quanti-       we quantified the microbial metabolic pathways using
+fied with high confidence (Additional file 1: Fig. S7a).          a tool to profile the abundance of bacterial metabolic
+   Moreover, to reconfirm the associations between the            pathways from metagenomics or -transcriptomics data
+bacterial composition and tumour properties and explore           [59]. As our approach revealed substantially fewer bac-
+a potential future use of bacterial biomarkers, we wanted         terial reads than direct bacterial sequencing approaches,
+to test if the bacterial composition of COAD samples can          we decided to group samples and pool their reads. As
+classify clinical properties. We trained a LASSO logistic         tumour side showed one of the strongest associations
+regression model on the reconstructed bacterial com-              with the reconstructed microbiomes, we quantified the
+position of the COAD samples to classify the tumour               differential signals of bacterial metabolic pathways in
+Sambruni et al. Genome Medicine       (2023) 15:32                                                                                      Page 11 of 19
+
+
+
+
+ Fig. 3 Associations of microbiome profiles reconstructed from colon adenocarcinoma (COAD) with tumour properties. a Heatmaps of the q values
+ of the association and correlation between the first six principal components (PCs) of COAD microbiome profiles (PCs in rows, clinical properties
+ in columns). b Boxplot of PC2 coordinates by consensus molecular subtypes (CMS), highlighting the particular behaviour of CMS1 microbiome
+ profiles. c Heatmap analogous to a that links the first six microbiome PCs of COAD samples and immune cell infiltration (relative quantification by
+ CIBERSORTx). d Kaplan–Meier analysis of disease-free survival on patients stratified by high or low values of PC4. CIMP, CpG methylation phenotype;
+ MSI, microsatellite instability; BMI, body mass index; NK, natural killer. Number of samples analysed in brackets
+
+
+
+
+the pooled left versus right colon tumours (Additional                       abundance via bootstrapping subsets of samples (q < 0.2;
+file 5: Table S5). After filtering out low-abundance path-                   see “Methods”). This revealed stronger signals for path-
+ways (see “Methods”), we chose those with a differen-                        ways of fatty acid biosynthesis in the left side of the
+tial abundance of at least 30% when comparing the left                       colon, in particular in the palmitate to cis-vaccenate
+versus the right side and substantiated their differential                   synthesis pathway (we found a higher abundance of
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                 Page 12 of 19
+
+
+
+
+(5Z)-dodecenoate biosynthesis I, palmitoleate biosyn-          general chromosomal number alteration, see Additional
+thesis I (from (5Z)-dodec-5-enoate) and cis-vaccenate          file 1: Fig. S5.
+biosynthesis) and stearate biosynthesis, in concord-              Since molecular and immunological characteristics of
+ance with literature [65–69]. The TCA cycle was associ-        the tumour are associated with clinical outcome of colon
+ated with the left side of colon. It was previously found      cancer [73], we next sought a link between the microbial
+enriched in colorectal cancer-associated bacteria [70].        composition extracted from RNA-Seq data and clinical
+We applied the same approach to CMS and mutation               prognosis. Therefore, we fitted Cox proportional-hazard
+burden since they showed the strongest association             models to the top six PC coordinates and performed
+with the reconstructed microbiomes together with side.         univariate analyses assessing the impact of each PC
+We pooled CMS2, 3 and 4 samples and compared their             coordinate on OS (Additional file 1: Fig. S13a) and DFS
+metabolic pathways with the ones of CMS1 samples but           (Additional file 1: Fig. S13b). We found that PC4 was sig-
+no pathways showed significantly different abundance           nificantly associated with DFS: among the top 20 bacteria
+in one of the two groups (Additional file 5: Table S5).        contributing to PC4, we found Cutibacterium granulo-
+When we compared the pathways of high and low                  sum, Corynebacterium tuberculostearicum, Moraxella
+mutation burden samples, we detected two subgroups             osloensis, Gemella haemolysans, Staphylococcus epider-
+more abundant in high mutation burden samples: one             midis, Finegoldia magna, Lawsonella clevelandensis and
+is associated to DNA degradation (inosine 5’-phos-             Acinetobacter baumannii. We then stratified patients into
+phate, purine ribonucleosides, adenosine and guano-            “high” and “low” groups according to PC4 coordinates
+sine nucleotides degradation), the other is associated to      and applied Kaplan–Meier analysis: patients with higher
+sugar metabolism (starch, D-glucarate and D-galacta-           PC4 coordinates had a higher probability of relapsing
+rate, GDP-mannose, glucose, glucose-1-phosphate and            (Fig. 3d). Importantly, the survival association was inde-
+xylose degradation) (Additional file 5: Table S5).             pendent of the molecular and clinical properties (e.g. age,
+   The genetic background of the host is an essential          polyps history and mutation load) associated with PC4
+determinant of both tumour growth and progression and          (multivariate Cox model, Additional file 1: Fig. S13c). We
+has been suggested to also influence the tumour-associ-        applied the same analysis to the other cancer types but
+ated microbial ecosystem [71, 72]. Thus, we investigated       only PC4 of COAD resulted in a significant association
+the association of the bacterial composition detected          with DFS (q = 0.03, univariate Cox model), see Additional
+in tumour samples with two molecular properties of             file 9: Table S9. Together, those results suggest a direct
+tumours: the mutation status of frequently mutated genes       link between microbiome composition and the risk of
+(i.e. the driver genes mutation status) and the abnormal       relapse in COAD samples.
+number of chromosomes (i.e. the aneuploidy status).               To understand if these associations were detectable
+We did not detect any significant association between          only in the tumour microenvironment or reflect a more
+the microbiome composition and the driver gene muta-           general dysbiosis of the colon, we tested if the associa-
+tion status in colon cancer [50] (Additional file 1: Fig.      tions between our 14 clinical properties and microbiome
+S11a). In other cancer types, we did not observe any           composition hold in the non-malignant tissues available
+associations between microbial composition and muta-           from TCGA. The reconstructed microbiome of these
+tion status of their driver genes either (Additional file 6:   non-malignant samples of the colon did not show an
+Table S6). Likewise, no significant association emerged        association with the clinical properties available (Addi-
+between extracted microbiome composition and chro-             tional file 1: Fig. S14a). However, the lack of significance
+mosomal gain or loss in COAD (Additional file 1: Fig.          might be due to lower statistical power (TCGA contains
+S11b, Additional file 7: Table S7 and Additional file 8:       only 39 non-malignant colon samples). To exclude this
+Table S8), even though we detected a significant associa-      possibility, we tested the same associations in the subset
+tion between the bacterial composition and the general         of tumour samples paired with the non-malignant ones.
+quantification of the degree of aneuploidy, which quan-        For seven of the previous ten significant associations, we
+tifies the overall deviation from a diploid karyotype, see     observed lower significance levels in the paired, reduced
+Fig. 3a. However, we detected an association between           tumour cohort compared to non-malignant, showing a
+microbes and specific chromosome aneuploidy status in          tendency of association similar to the one detected with
+HNSC (14, 16 and 20 chromosome loss), OV (alteration           the full COAD cohort (Additional file 1: Fig. S14b). Even
+of chromosome 14) and READ (chromosome 2 deletion)             though we could not rule out that significant associa-
+(Additional file 1: Fig. S12a-c, Additional file 7: Table S7   tions may be seen with a larger number of non-malignant
+and Additional file 8: Table S8), even though in this case     samples, the complete absence of associations suggests
+no significant associations have been detected between         that the detected ones in our initial pool of samples are
+the bacterial compositions of these cancer types and the       tumour-microenvironment specific. Given the absence of
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                     Page 13 of 19
+
+
+
+
+associations detected in the non-malignant COAD sam-             and Peptostreptococcus genera, and Firmicutes phylum.
+ples, we wondered if the bacterial composition of sam-           Even if not F. nucleatum itself, which has been previ-
+ples could be used to distinguish between non-malignant          ously linked to the growth and progression of colorectal
+and tumour samples. We trained another LASSO regres-             cancer [73–75], we detected five Fusobacterium species
+sion model to classify the status (non-malignant versus          with a higher level in the CMS1 subgroup. These bacteria
+tumour) of samples based on the reconstructed bacterial          contributed to PC2 or PC6, the two PCs associated with
+composition: using the 39 non-malignant samples and              CMS. Moreover, five species of Clostridium were found
+their paired tumour counterparts, we reached an AUC              associated with CMS1: while Clostridium perfringens was
+of 0.83 (Additional file 1: Fig. S8b,f ), highlighting that we   not contributing to PC2, the LASSO model used it to
+can predict the malignancy status of the sample from its         classify CMS1 samples, together with Fusobacterium per-
+reconstructed bacterial composition.                             iodonticum and F. sp. OBRC1 (Additional file 1: Fig. S8d).
+                                                                    A similar approach was applied to detect potential
+Identification of bacteria associated with specific              associations of specific bacteria to subtypes of immune
+cancer‑related properties                                        cells. In this regard, 12 bacteria were associated with the
+Our previous analyses revealed links between micro-              absence of resting mast cells (with an opposite tendency
+biome composition and different properties of colon              for activated mast cells): B. fragilis, Clostridium clostridi-
+tumours. To further refine this, we investigated if spe-         oforme, Clostridiales bacterium 1_7_47FAA and Clostrid-
+cific bacteria were associated with each of the different        ium sp. FS41 (Fig. 4d and Additional file 10: Table S10).
+properties. To identify the species associated with the          All of them contributed to PC2, which was associated
+left- or right-sided tumours, we tested for abundance            with mast cell infiltration, and C. clostridioforme was
+differences for a subset of colon-specific species (cancer       among the bacteria associated with CMS1.
+type–specific and prevalent in colon cancer samples, see            Finally, we tested if there were any specific bacteria
+“Methods”), while controlling for the technical variation        associated with patient survival. Given the association
+(independence test blocking by plate ID; see “Methods”)          of PC4 with the DFS of COAD patients, we selected 100
+(Fig. 4a). We found nine species whose abundances dif-           bacteria with the highest PC4 loading values and per-
+fered between the left and the right side of the colon. In       formed a univariate Cox analysis. Seventeen bacteria
+particular, we discovered that F. prausnitzii, Coprococ-         showed significant positive associations with the relapse
+cus comes and two Bacteroides spp. (Bacteroides vulga-           probability (hazard ratio > 3; q < 0.2; Wald test; Additional
+tus and Bacteroides thetaiotaomicron) showed higher              file 10: Table S10), including Corynebacterium matru-
+abundances in the samples from the right (Fig. 4a and            chotii, A. baumannii, Pseudomonas stutzeri and Propi-
+Additional file 10: Table S10). Notably, these four bacte-       onibacterium namnetense.
+ria were among the 20% of species contributing the most             Even if we did not identify strong associations between
+to PC2, the most robust side-associated PC (Fig. 3a). In         the bacterial composition and tumour properties of the
+addition, in the previously described LASSO regression           other cancer types, we anyway tested if any single bacte-
+model, F. prausnitzii showed a high relative weight on           ria were associated with clinical properties. We selected
+the right side of the colon (Additional file 1: Fig. S8e).       the most prevalent bacteria (present in 10% or more
+When the same approach was applied to the other prop-            samples, see “Methods”) and tested their association to
+erties significantly associated with PCs (q < 0.2; Wilcoxon,     tumour properties in all the investigated cancer types
+Kruskal–Wallis or Spearman correlation tests), CMS               (Additional file 1: Fig. S15). LUAD, HNSC, OV and BRCA
+and MSI status were the only two showing an associa-             showed at maximum two properties with associated spe-
+tion with specific bacterial taxa. Specifically, five species    cies, READ four, compared to COAD with six properties
+had a higher abundance in MSI high samples (Additional           being associated with differential species abundance, see
+file 10: Table S10), including Bacteroides fragilis, Clostrid-   Additional file 11: Table S11.
+ium asparagiforme, Fusobacterium sp. OBRC1 and                      Given the associations of single bacterial species with
+Bacteroides sp. 3_2_5 (Fig. 4b), which were strongly con-        tumour properties in COAD, we wondered if we could
+tributing to the two PCs associated with MSI level (PC2          identify associations even at the genus level. On the genus
+and PC6). B. fragilis, C. asparagiforme and F. sp. OBRC1         level, we assessed the reliability of quantification by com-
+were also highlighted by the LASSO regression model              paring 16S and RNA-Seq data. As shown in the Additional
+as a marker of MSI high samples (Additional file 1: Fig.         file 1: Fig. S16, we detected 18 high-confidence genera
+S8c). We also tested which bacteria were associated with         (Spearman R > 0.25, Additional file 1: Fig. S16) and tested
+the highly immune infiltrated CMS1 subtype (Fig. 4c and          their association with clinical properties. We detected
+Additional file 10: Table S10) and found 18 bacteria from        seven associated properties and all of them were previously
+Clostridium, Bacteroides, Fusobacterium, Actinomyces             observed at the species level. With the PCA approach at
+Sambruni et al. Genome Medicine        (2023) 15:32                                                                                           Page 14 of 19
+
+
+
+
+ Fig. 4 Species associated with colon adenocarcinomas properties. Barplots of the means of the bacterial relative abundances of a subset of the
+ bacterial species with differential distribution in a the side, b microsatellite instability (MSI) level, c consensus molecular subtype (CMS) and d mast
+ cells resting. In total, we found nine bacteria associated with side, five with MSI, eighteen with CMSs and twelve with resting mast cells. Error bars
+ showing the standard error
+
+
+
+
+the species level, we detected a higher number of signifi-                      that carry the alteration. While in species evolution
+cant associations (q < 0.2; 22 significant q) than with a single                the modulatory effect of the environment on fitness
+genera approach (16 significant q). Some associations such                      and hence selection is well established (e.g. the shape
+as with MSI and CIMP were missing at the genus level,                           and size of the beak of Darwin finches is an adaption
+hinting at a lower sensitivity when using genera and sug-                       to availability of food), the link between the ecologi-
+gesting that these could be species-specific associations.                      cal niche in which tumours grow and selective forces
+                                                                                favouring specific phenotypes is much less clear. Our
+Discussion                                                                      present work focuses on detecting different microbes in
+Tumour development mirrors species evolution in the                             the tumour niche, intending to identify how differences
+sense that tumours acquire random alterations that may                          in bacterial composition are associated with specific
+confer a fitness advantage or disadvantage to the clones                        tumour properties.
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                Page 15 of 19
+
+
+
+
+   Heterogeneity in both the human microbiome compo-           been associated with colon cancer and inflammation or
+sition and tumour molecular properties poses a challenge       gastrointestinal diseases [47, 77–83] while others have
+for association studies of bacteria and tumour properties      been identified in healthy colon [84, 85]. In particu-
+as it requires a large number of samples. Our approach         lar we identified B. fragilis, some strains of which are
+allowed us to overcome this problem since we were able         known commensals of the human gut, whereas others
+to deeply portray the clinical and molecular properties        can enhance tumour growth via production of an enter-
+of every tumour, taking advantage of the high amount           otoxin that commensal strains are lacking. This entero-
+of information and analyses of TCGA cohort patients            toxin can induce tumours in several ways, one of them
+and, concurrently, reconstruct the bacterial composi-          includes immune cell deregulation [86]. While among
+tion of each sample analysed. Moreover, the possibility        the healthy related bacteria, we found F. prausnitzii
+of observing and correcting the technical differences of       enriched in the right side of the colon: F. prausnitzii is
+the reconstructed microbiomes prevents the detection           also known as one of the main anaerobic bacteria that
+of spurious associations. This batch correction workflow       feed the colon cells by fermentation [84], which is one
+makes it possible in principle to combine these analyses       of the main roles of microbiota in the proximal colon
+with other datasets to further increase statistical power      [87]. The differences in the sides of the colon were also
+by leveraging the large amount of human RNA-Seq                evident in the modification of the chemical context of
+experiments that are publicly available.                       the tumour [65]: for example, we showed the differ-
+   The composition of bacteria that we reconstructed           ences in bacterial fatty acid metabolism of the tumours
+from human RNA-Seq data is affected by biases and con-         from the two sides of the colon. Interestingly, some
+tamination thus limiting our capability to investigate the     of the pathways associated with the left part of the
+bacterial ecosystem of the tumour. The impact of some          colon were previously associated with cancer [65–68]
+of these biases can be quantified from the association         or inflammation [69]. In particular, palmitate accu-
+of the bacterial composition with technical features that      mulation has been shown to contribute to creating an
+are reported by TCGA. Our computational approach               immune-suppressive tumour microenvironment [88].
+detects and corrects for the most strongly associated          In this context, the immune system involvement rep-
+feature. Technical features are highly correlated among        resents another mechanism connecting bacteria with
+each other and, thereby, when correcting for the strong-       tumour properties: previous studies have demonstrated
+est associated feature, our approach substantially reduces     that the interaction between bacteria and the immune
+the impact of other technical features too. Still, we cannot   system can shape the growth and progression of spe-
+rule out that weaker or undetected batch effects remain        cific tumour subtypes [11]. Here, mast cells were most
+and may still influence our observations. In addition, it is   strongly linked with bacteria amidst all tested immune
+sometimes difficult to decide if a reported property of the    cell subtypes. With the advantage of using human colon
+tumour is in fact a technical or biologically relevant fea-    cancer samples, this result confirms previous studies
+ture (e.g. the percentage of normal cells).                    demonstrating that bacteria can induce mast cell acti-
+   Indeed, further validations and improvements may            vation in mouse models or in small cohorts of patients
+be needed for accurately profiling intratumoural bacte-        [89, 90]. Moreover, the infiltrating immune cells are
+ria as our approach cannot perfectly mirror the actual         associated with the tumoural bacterial composition
+abundance of each single bacterium as it is the case with      not only in colon cancer, but also in other cancer types.
+metagenomics methods that show a large variability in          Interestingly, for these tissues few other bacterial com-
+accuracy across methods [76]. Using PCA allowed us to          position associations were detected. We observe that
+robustly capture prominent trends of variation in bacte-       some immune cell subtypes are more frequently asso-
+rial composition and circumvents the need to quantify          ciated to the bacterial composition of the tumour, e.g.
+every single bacterial taxon accurately. With this inte-       the Tregs and dendritic cells. These two cells are known
+grated workflow and the systematic analysis of a total of      to be reactive to microbial stimuli and play a role in
+264 tumour properties, we went beyond previous work            microbial regulation [91, 92]. Moreover, we identified
+which established links involving particular tumour            different types of DNA degradation pathways associ-
+properties, species or tumour types [19–28]. This con-         ated with mutation burden of the tumour (e.g. purine
+firmed previous observations (e.g. CMS, clinical out-          degradation). This highlights an interesting association
+come) and revealed novel associations (e.g. aneuploidy         between bacterial metabolism and mutational pro-
+status).                                                       cesses that should be further explored.
+   Besides these global relationships with bacterial com-        These differences can directly affect (or be affected by)
+position, we detected specific bacteria associated with        the properties of the tumour since they shape its chemi-
+those tumour properties. Some of them have already             cal environment: interactions through immune cells and
+Sambruni et al. Genome Medicine   (2023) 15:32                                                                                   Page 16 of 19
+
+
+
+
+metabolism can be used to describe and represent the          GBM	Glioblastoma multiforme
+                                                              LUAD	Lung adenocarcinoma
+tumour niche as an evolving ecosystem.                        LUSC	Lung squamous cell carcinoma
+   Despite clinical prognosis in colorectal cancer depend-    HNSC	Head and neck squamous cell carcinoma
+ing strongly on the time of diagnosis, almost half of the     OV	Ovarian serous cystadenocarcinoma
+                                                              READ	Rectum adenocarcinoma
+resected colon tumours relapse within 5 years from sur-       SKCM	Skin cutaneous melanoma
+gery [93]. Here we showed that the bacterial composition of   BRCA​	Breast invasive carcinoma
+tumours can be predictive of patient prognosis. Among the     IEO	European Institute of Oncology
+                                                              16S	Ribosomal RNA 16S gene
+bacteria we identified, A. baumannii, P. namnetense and P.    FISH	Fluorescence in situ hybridisation
+stutzeri associated with bad prognosis and have been previ-   DAPI	4’,6-Diamidino-2-phenylindole
+ously linked to human diseases or cancer [94–97].             PBS	Phosphate buffered saline
+                                                              BMI	Body mass index
+   In our analysis, we decided to focus on the associa-       MSI	Microsatellite instability
+tion between colon cancer properties and microbiome           CIMP	CpG methylation phenotype
+composition. While we observed particularly strong            CMS	Consensus molecular subtype
+                                                              TPM	Transcript per million
+associations in colon, we would like to clarify that we       FPKM	Fragments per kilobase million
+also observed weaker associations in other cancer types       PCs	Principal components
+(e.g. breast). Those should be explored further in future     PCA	Principal component analysis
+                                                              plate ID	96-Well plate identifier
+studies. While other studies observed the specific asso-      LASSO	Least absolute shrinkage and selection operator
+ciation between colon cancer properties such as sur-          SD	Standard deviation
+vival and microbiome composition too [19, 20, 26], we         CPM	Copies per million
+                                                              DFS	Disease-free survival
+here systematically test a large number of molecular          OS	Overall survival
+and clinical features and, therefore, expand beyond the       FDR	False discovery rate
+previous work. The large number of detected associa-          AUC​	Area under the receiver operating characteristic curve
+                                                              Tregs	Regulatory T cells
+tions might reflect the specific quantity and diversity       NK	Natural killer cells
+of the colon microbiome and its direct influence on the
+colon [98, 99].                                               Supplementary Information
+   Despite the clear clinical relevance of some of our        The online version contains supplementary material available at https://​doi.​
+observations (such as associations of the bacterial com-      org/​10.​1186/​s13073-​023-​01180-9.
+position of tumour to patient’s prognosis), the primary
+aim of this study is to better understand the tumour and        Additional file 1: Table S1 and supplementary figures. FISH primers,
+                                                                16S probes and all supplementary figures.
+its environment as a system where the probability of
+occurrence of components are statistically linked to each       Additional file 2: Table S2. COAD PC loadings. Bacterial species involved
+                                                                in the first six COAD PCs.
+other. Further experimental work would be needed to
+                                                                Additional file 3: Table S3. IEO cohort clinical metadata summary.
+address directionality and causality of the described asso-
+                                                                Additional file 4: Table S4. COAD specific bacterial species. Highly preva‑
+ciations. However, our work indicates that the microbial        lent and cancer-type specific species of COAD (not affected by technical
+component of the tissue microenvironment might influ-           bias).
+ence selection in tumour evolution and outcome.                 Additional file 5: Table S5. HUMAnN3 microbial pathways.
+                                                                Additional file 6: Table S6. Mutated gene associations. Association
+Conclusions                                                     tests (q values) between each of the first six PCs from the COAD recon‑
+By showing that specific consortia of bacteria are              structed microbiome and the gene mutational status.
+associated explicitly with molecular and clinical prop-         Additional file 7: Table S7. Whole chromosome associations. Association
+                                                                tests (q values) between each of the first six PCs from the COAD recon‑
+erties of the tumour, we suggest that the profiling of          structed microbiome and the whole chromosome aneuploidy status.
+bacterial composition can be developed into a stratifi-
+                                                                Additional file 8: Table S8. Chromosome arm level associations. Asso‑
+cation biomarker, with relevant implications in prog-           ciation tests (q values) between each of the first six PCs from the COAD
+nosis predictions and with the potential to implement           reconstructed microbiome and the arm level chromosome aneuploidy
+colon cancer therapies, e.g. immune checkpoint inhib-           status.
+
+itor therapy.                                                   Additional file 9: Table S9. Survival analyses. DFS and OS univariate Cox
+                                                                survival analysis results of all the cancer types analysed.
+                                                                Additional file 10: Table S10. Species associated with COAD proper‑
+Abbreviations                                                   ties. Filtered bacteria tested for differential abundances in the sublevels of
+WXS	Whole exome sequencing                                     the relevant tumour COAD properties.
+RNA-Seq	RNA sequencing                                         Additional file 11: Table S11. Species associations for other cancer
+TCGA​	The Cancer Genome Atlas                                  types. Most prevalent bacteria tested for differential abundances in the
+GDC	NCI Genomic Data Commons                                   sublevels of the cancer type properties.
+COAD	Colon adenocarcinoma
+Sambruni et al. Genome Medicine            (2023) 15:32                                                                                            Page 17 of 19
+
+
+
+
+Acknowledgements                                                                    6. Garrett WS. Cancer and the microbiota. Science. 2015;348(6230):80–6.
+Gaia Sambruni, Angeli D. Macandog and Danilo Cagnina are PhD students               7. Boccellato F, Meyer TF. Bacteria moving into focus of human cancer.
+within the European School of Molecular Medicine (SEMM).                               Cell Host Microbe. 2015;17(6):728–30.
+The results shown here are in whole or part based upon data generated by            8. De Martel C, Ferlay J, Franceschi S, Vignat J, Bray F, Forman D, et al.
+the TCGA Research Network: https://​www.​cancer.​gov/​tcga.                            Global burden of cancers attributable to infections in 2008: a review
+Figure 1a was created with BioRender.com.                                              and synthetic analysis. Lancet Oncol. 2012;13(6):607–15.
+                                                                                    9. Sun CH, Li BB, Wang B, Zhao J, Zhang XY, Li TT, et al. The role of
+Authors’ contributions                                                                 Fusobacterium nucleatum in colorectal cancer: from carcinogenesis
+G.S. implemented the workflow. A.D.M., J.W., D.C., T.D. and G.Z. contributed           to clinical management. Chronic Dis Transl Med. 2019;5(03):178–87.
+with computational analyses. C.C. and F.B. performed experiments. U.F.R, N.F.,     10. Dziubańska-Kusibab PJ, Berger H, Battistini F, Bouwman BA, Iftekhar
+W.L.P. and S.R. performed sample collection and clinical data analysis. T.M. and       A, Katainen R, et al. Colibactin DNA-damage signature indicates
+L.N. implemented the translational study design. M.S. conceived the study.             mutational impact in colorectal cancer. Nat Med. 2020;26(7):1063–9.
+M.S. and L.N. supervised the project. G.S. and M.S. wrote the manuscript           11. Ternes D, Karta J, Tsenkova M, Wilmes P, Haan S, Letellier E. Microbiome
+with contributions of all authors. All authors read and approved the final             in colorectal cancer: how to get from meta-omics to mechanism?
+manuscript.                                                                            Trends Microbiol. 2020;28(5):401–23.
+                                                                                   12. Nejman D, Livyatan I, Fuks G, Gavert N, Zwang Y, Geller LT, et al. The
+Funding                                                                                human tumor microbiome is composed of tumor type–specific intra‑
+The work leading to this manuscript was supported by Fondazione AIRC, grant            cellular bacteria. Science. 2020;368(6494):973–80.
+reference number MFAG 21791 and partially supported by the Italian Ministry        13. Viljoen KS, Dakshinamurthy A, Goldberg P, Blackburn JM. Quantitative
+of Health with Ricerca Corrente and 5 × 1000 funds. Associazione Italiana per          profiling of colorectal cancer-associated bacteria reveals associations
+la Ricerca contro il Cancro (AIRC IG 26406 to L.N.) Worldwide Cancer Research          between fusobacterium spp., enterotoxigenic Bacteroides fragilis
+(WWCR 22–0402 to L.N.). CC is supported by donations from cancer survivor              (ETBF) and clinicopathological features of colorectal cancer. PloS One.
+Ms. Paola Merico and A.M. by a fellowship of Fondazione IEO-CCM. This work             2015;10(3):e0119462.
+was partially supported by EMBL, the German Federal Ministry of Education          14. Nosho K, Sukawa Y, Adachi Y, Ito M, Mitsuhashi K, Kurihara H, et al.
+and Research (BMBF grant no. 031L0181A to G.Z.) and the German Research                Association of Fusobacterium nucleatum with immunity and
+Foundation (DFG, grant no. 395357507 – SFB 1371 to G.Z.).                              molecular alterations in colorectal cancer. World J Gastroenterol.
+                                                                                       2016;22(2):557.
+Availability of data and materials                                                 15. Tahara T, Yamamoto E, Suzuki H, Maruyama R, Chung W, Garriga J, et al.
+The raw, controlled access data from the IEO cohort are available on request           Fusobacterium in colonic flora and molecular features of colorectal
+from the European Genome-Phenome Archive (EGA) EGAD00001009635,                        carcinoma. Cancer Res. 2014;74(5):1311–8.
+(https://​ega-​archi​ve.​org/​datas​ets/​EGAD0​00010​09635) [100]. TCGA raw data   16. Saffarian A, Mulet C, Regnault B, Amiot A, Tran-Van-Nhieu J, Ravel J, et al.
+are available from NCI Genomic Data Commons (GDC).                                     Crypt-and mucosa-associated core microbiotas in humans and their
+The microbiome data generated and analysed in this study, any additional               alteration in colon cancer patients. MBio. 2019;10(4):e01315-e1319.
+methods, source data and codes to reproduce these results are available at         17. Advani SM, Advani P, DeSantis SM, Brown D, VonVille HM, Lam M, et al.
+https://​github.​com/​SamGa3/​micro​biome_​recon​struc​tion [29].                      Clinical, pathological, and molecular characteristics of CpG island
+                                                                                       methylator phenotype in colorectal cancer: a systematic review and
+                                                                                       meta-analysis. Transl Oncol. 2018;11(5):1188–201.
+Declarations                                                                       18. Longo DL. Tumor heterogeneity and personalized medicine. N Engl J
+                                                                                       Med. 2012;366(10):956–7.
+Ethics approval and consent to participate                                         19. Dohlman AB, Mendoza DA, Ding S, Gao M, Dressman H, Iliev ID, et al.
+This study was reviewed and approved by the Ethics Committee of the Euro‑              The cancer microbiome atlas: a pan-cancer comparative analysis to
+pean Institute of Oncology (study no. IEO 1149). All donors provided written           distinguish tissue-resident microbiota from contaminants. Cell Host
+informed consent to participate. All research was performed in accordance              Microbe. 2021;29(2):281–98.
+with the Declaration of Helsinki.                                                  20. Poore GD, Kopylova E, Zhu Q, Carpenter C, Fraraccio S, Wandro S, et al.
+                                                                                       Microbiome analyses of blood and tissues suggest cancer diagnostic
+Consent for publication                                                                approach. Nature. 2020;579(7800):567–74.
+Not applicable.                                                                    21. Rodriguez RM, Hernandez BY, Menor M, Deng Y, Khadka VS. The land‑
+                                                                                       scape of bacterial presence in tumor and adjacent normal tissue across
+Competing interests                                                                    9 major cancer types using TCGA exome sequencing. Comput Struct
+The authors declare that they have no competing interests.                             Biotechnol J. 2020;18:631–41.
+                                                                                   22. Ternes D, Tsenkova M, Pozdeev VI, Meyers M, Koncina E, Atatri S, et al.
+                                                                                       The gut microbial metabolite formate exacerbates colorectal cancer
+Received: 18 August 2022 Accepted: 13 April 2023                                       progression. Nat Metab. 2022;4(4):458–75.
+                                                                                   23. Robinson KM, Crabtree J, Mattick JS, Anderson KE, Dunning Hotopp JC.
+                                                                                       Distinguishing potential bacteria-tumor associations from contamina‑
+                                                                                       tion in a secondary data analysis of public cancer genome sequence
+                                                                                       data. Microbiome. 2017;5(1):1–17.
+References                                                                         24. Salyakina D, Tsinoremas NF. Viral expression associated with gastroin‑
+  1. Parker TM, Gupta K, Palma AM, Yekelchyk M, Fisher PB, Grossman SR,                testinal adenocarcinomas in TCGA high-throughput sequencing data.
+      et al. Cell competition in intratumoral and tumor microenvironment               Hum Genomics. 2013;7(1):1–12.
+      interactions. EMBO J. 2021;40(17):e107271.                                   25. Hermida LC, Gertz EM, Ruppin E. Predicting cancer prognosis and drug
+  2. Wong-Rolle A, Wei HK, Zhao C, Jin C. Unexpected guests in the tumor               response from the tumor microbiome. Nat Commun. 2022;13(1):1–15.
+      microenvironment: microbiome in cancer. Protein Cell. 2021;12(5):426–35.     26. Wang J, Wang Y, Li Z, Gao X, Huang D. Global analysis of microbiota
+  3. Hanahan D. Hallmarks of Cancer: New Dimensions. Cancer Discov.                    signatures in four major types of gastrointestinal cancer. Front Oncol.
+      2022;12(1):31–46.                                                                2021;11:685641.
+  4. Sobhani I, Tap J, Roudot-Thoraval F, Roperch JP, Letulle S, Langella P,       27. Chakladar J, Kuo SZ, Castaneda G, Li WT, Gnanasekar A, Yu MA, et al. The
+      et al. Microbial dysbiosis in colorectal cancer (CRC) patients. PLoS             Pancreatic microbiome is associated with carcinogenesis and worse
+      ONE. 2011;6(1):e16393.                                                           prognosis in males and smokers. Cancers. 2020;12(9):2672.
+  5. Wu N, Yang X, Zhang R, Li J, Xiao X, Hu Y, et al. Dysbiosis signature         28. Zhao L, Grimes SM, Greer SU, Kubit M, Lee H, Nadauld LD, et al. Charac‑
+      of fecal microbiota in colorectal cancer patients. Microb Ecol.                  terization of the consensus mucosal microbiome of colorectal cancer.
+      2013;66(2):462–70.                                                               NAR Cancer. 2021;3(4):zcab049.
+Sambruni et al. Genome Medicine          (2023) 15:32                                                                                           Page 18 of 19
+
+
+
+
+ 29. Sambruni G, Dallavilla T. Microbiome Reconstruction Workflow. Github.       52. Newman AM, Steen CB, Liu CL, Gentles AJ, Chaudhuri AA, Scherer
+     2022. Available from: https://​github.​com/​SamGa3/​micro​biome_​recon​         F, et al. Determining cell type abundance and expression from bulk
+     struc​tion.                                                                     tissues with digital cytometry. Nat Biotechnol. 2019;37(7):773–82.
+ 30. Muzny DM, Bainbridge MN, Chang K, Dinh HH, Drummond JA, Fowler              53. McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky
+     G, et al. Comprehensive molecular characterization of human colon               A, et al. The Genome Analysis Toolkit: a MapReduce framework for
+     and rectal cancer. Nature. 2012;487(7407):330–7.                                analyzing next-generation DNA sequencing data. Genome Res.
+ 31. Network TCGA (TCGA) R. Comprehensive genomic characteriza‑                      2010;20(9):1297–303.
+     tion defines human glioblastoma genes and core pathways. Nature.            54. Walker MA, Pedamallu CS, Ojesina AI, Bullman S, Sharpe T, Whelan
+     2008;455(7216):1061.                                                            CW, et al. GATK PathSeq: a customizable computational tool for the
+ 32. Collisson EA, Campbell JD, Brooks AN, Berger AH, Lee W, Chmielecki              discovery and identification of microbial sequences in libraries from
+     J, et al. Comprehensive molecular profiling of lung adenocarcinoma.             eukaryotic hosts. Bioinformatics. 2018;34(24):4287–9.
+     Nature. 2014;511(7511):543–50.                                              55. Leek JT, Johnson WE, Storey JD, et al. sva package for removing batch
+ 33. Hammerman PS, Lawrence MS, Voet D, Jing R, Cibulskis K, Sivachenko              effects and other unwanted variation in high-throughput experi‑
+     A, et al. Comprehensive genomic characterization of squamous cell               ments. Oxford Academic: Bioinformatics. 2012;28(6):882–3.
+     lung cancers. Nature. 2012;489(7417):519–25.                                56. Wirbel J, Pyl PT, Kartal E, Zych K, Kashani A, Milanese A, et al. Meta-
+ 34. Lawrence MS, Sougnez C, Lichtenstein L, Cibulskis K, Lander E,                  analysis of fecal metagenomes reveals global microbial signatures that
+     Gabriel SB, et al. Comprehensive genomic characterization of head               are specific for colorectal cancer. Nat Med. 2019;25(4):679–89.
+     and neck squamous cell carcinomas. Nature. 2015;517(7536):576–82.           57. Tibshirani R. Regression shrinkage and selection via the lasso. J R Stat
+ 35. The Cancer Genome Atlas Research Network. Integrated genomic                    Soc Ser B Methodol. 1996;58(1):267–88.
+     analyses of ovarian carcinoma. Nature. 2011;474(7353):609–15.               58. Wirbel J, Zych K, Essex M, Karcher N, Kartal E, Salazar G, et al. Micro‑
+ 36. Akbani R, Akdemir KC, Aksoy BA, Albert M, Ally A, Amin SB,                      biome meta-analysis and cross-disease comparison enabled by the
+     et al. Genomic classification of cutaneous melanoma. Cell.                      SIAMCAT machine learning toolbox. Genome Biol. 2021;22(1):1–27.
+     2015;161(7):1681–96.                                                        59. Beghini F, McIver LJ, Blanco-Míguez A, Dubois L, Asnicar F, Maharjan
+ 37. Koboldt DC, Fulton RS, McLellan MD, Schmidt H, Kalicki-Veizer J,                S, et al. Integrating taxonomic, functional, and strain-level profiling of
+     McMichael JF, et al. Comprehensive molecular portraits of human                 diverse microbial communities with bioBakery 3. Elife. 2021;10:e65088.
+     breast tumours. Nature. 2012;490(7418):61–70.                               60. Cerami E, Gao J, Dogrusoz U, Gross BE, Sumer SO, Aksoy BA, et al. The
+ 38. Grossman RL, Heath AP, Ferretti V, Varmus HE, Lowy DR, Kibbe WA,                cBio cancer genomics portal: an open platform for exploring multidi‑
+     et al. Toward a shared vision for cancer genomic data. N Engl J Med.            mensional cancer genomics data. Cancer Discov. 2012;2(5):401–4.
+     2016;375(12):1109–12.                                                       61 Gao J, Aksoy BA, Dogrusoz U, Dresdner G, Gross B, Sumer SO, et al. Inte‑
+ 39. Greuter D, Loy A, Horn M, Rattei T. probeBase—an online resource                grative analysis of complex cancer genomics and clinical profiles using
+     for rRNA-targeted oligonucleotide probes and primers: new features              the cBioPortal. Sci Signal. 2013;6(269):p11–p11.
+     2016. Nucleic Acids Res. 2016;44(D1):D586–9.                                62. Zeileis A, Wiel MA, Hornik K, Hothorn T. Implementing a class of permu‑
+ 40. Illumina. 16S Metagenomic sequencing library preparation. 2013.                 tation tests: the coin package. J Stat Softw. 2008;28(8):1–23.
+     https://​suppo​r t.​illum​ina.​com/​downl​oads/​16s_​metag​enomic_​seque​   63. Wang Q, Zhao L, Han L, Fu G, Tuo X, Ma S, et al. The differential distribu‑
+     ncing_​libra​r y_​prepa​ration.​html.                                           tion of bacteria between cancerous and noncancerous ovarian tissues
+ 41. Bolyen E, Rideout JR, Dillon MR, Bokulich NA, Abnet CC, Al-Ghalith              in situ. J Ovarian Res. 2020;13(1):8.
+     GA, et al. Reproducible, interactive, scalable and extensi‑                 64. Verhoog S, Taneri PE, Roa Díaz ZM, Marques-Vidal P, Troup JP, Bally L,
+     ble microbiome data science using QIIME 2. Nat Biotechnol.                      et al. Dietary factors and modulation of bacteria strains of Akkermansia
+     2019;37(8):852–7.                                                               muciniphila and Faecalibacterium prausnitzii: a systematic review.
+ 42. Callahan BJ, McMurdie PJ, Rosen MJ, Han AW, Johnson AJA, Holmes                 Nutrients. 2019;11(7):1565.
+     SP. DADA2: High-resolution sample inference from Illumina amplicon          65. Choi S, Yoo YJ, Kim H, Lee H, Chung H, Nam MH, et al. Clinical and bio‑
+     data. Nat Methods. 2016;13(7):581–3.                                            chemical relevance of monounsaturated fatty acid metabolism target‑
+ 43. Quast C, Pruesse E, Yilmaz P, Gerken J, Schweer T, Yarza P, et al. The          ing strategy for cancer stem cell elimination in colon cancer. Biochem
+     SILVA ribosomal RNA gene database project: improved data process‑               Biophys Res Commun. 2019;519(1):100–5.
+     ing and web-based tools. Nucleic Acids Res. 2012;41(D1):D590–6.             66. Pickens CA, Lane-Elliot A, Comstock SS, Fenton JI. Altered saturated
+ 44. Pedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B, Grisel O,            and monounsaturated plasma phospholipid fatty acid profiles in
+     et al. Scikit-learn: Machine learning in Python. J Mach Learn Res.              adult males with colon adenomas. Cancer Epidemiol Prev Biomark.
+     2011;12:2825–30.                                                                2016;25(3):498–506.
+ 45. Bonneville R, Krook MA, Kautto EA, Miya J, Wing MR, Chen HZ, et al.         67. Schirmer M, Smeekens SP, Vlamakis H, Jaeger M, Oosting M, Franzosa
+     Landscape of microsatellite instability across 39 cancer types. JCO             EA, et al. Linking the human gut microbiome to inflammatory cytokine
+     Precis Oncol. 2017;1:1–15.                                                      production capacity. Cell. 2016;167(4):1125–36.
+ 46. Liu Y, Sethi NS, Hinoue T, Schneider BG, Cherniack AD, Sanchez-Vega         68. Butler LM, Yuan JM, Huang JY, Su J, Wang R, Koh WP, et al. Plasma fatty
+     F, et al. Comparative molecular analysis of gastrointestinal adenocar‑          acids and risk of colon and rectal cancers in the Singapore Chinese
+     cinomas. Cancer Cell. 2018;33(4):721–35.                                        Health Study. NPJ Precis Oncol. 2017;1(1):1–10.
+ 47. Guinney J, Dienstmann R, Wang X, De Reynies A, Schlicker A, Sone‑           69. Akazawa Y, Morisaki T, Fukuda H, Norimatsu K, Shiota J, Hashiguchi
+     son C, et al. The consensus molecular subtypes of colorectal cancer.            K, et al. Significance of serum palmitoleic acid levels in inflammatory
+     Nat Med. 2015;21(11):1350–6.                                                    bowel disease. Sci Rep. 2021;11(1):1–8.
+ 48. Malta TM, Sokolov A, Gentles AJ, Burzykowski T, Poisson L, Weinstein        70. Dai Z, Coker OO, Nakatsu G, Wu WK, Zhao L, Chen Z, et al. Multi-cohort
+     JN, et al. Machine learning identifies stemness features associated             analysis of colorectal cancer metagenome identified altered bacteria
+     with oncogenic dedifferentiation. Cell. 2018;173(2):338–54.                     across populations and universal bacterial markers. Microbiome.
+ 49. Taylor AM, Shih J, Ha G, Gao GF, Zhang X, Berger AC, et al. Genomic             2018;6(1):1–12.
+     and functional approaches to understanding cancer aneuploidy.               71 Pleguezuelos-Manzano C, Puschhof J, Rosendahl Huber A, van Hoeck A,
+     Cancer Cell. 2018;33(4):676–89.                                                 Wood HM, Nomburg J, et al. Mutational signature in colorectal cancer
+ 50. Lawrence MS, Stojanov P, Mermel CH, Robinson JT, Garraway LA,                   caused by genotoxic pks+ E. coli. Nature. 2020;580(7802):269–73.
+     Golub TR, et al. Discovery and saturation analysis of cancer genes          72. Kadosh E, Snir-Alkalay I, Venkatachalam A, May S, Lasry A, Elyada E, et al.
+     across 21 tumour types. Nature. 2014;505(7484):495–501.                         The gut microbiome switches mutant p53 from tumour-suppressive to
+ 51. Ellrott K, Bailey MH, Saksena G, Covington KR, Kandoth C, Stew‑                 oncogenic. Nature. 2020;586(7827):133–8.
+     art C, et al. Scalable open science approach for mutation calling           73. Mima K, Nishihara R, Qian ZR, Cao Y, Sukawa Y, Nowak JA, et al. Fusobac‑
+     of tumor exomes using multiple genomic pipelines. Cell Syst.                    terium nucleatum in colorectal carcinoma tissue and patient prognosis.
+     2018;6(3):271–81.                                                               Gut. 2016;65(12):1973–80.
+Sambruni et al. Genome Medicine            (2023) 15:32                                                                                                   Page 19 of 19
+
+
+
+
+ 74. Abed J, Maalouf N, Manson AL, Earl AM, Parhi L, Emgård JE, et al. Colon          95     Aubin GG, Bémer P, Kambarev S, Patel NB, Lemenand O, Caillon J, et al.
+     cancer-associated Fusobacterium nucleatum may originate from the                        Propionibacterium namnetense sp. nov., isolated from a human bone
+     oral cavity and reach colon tumors via the circulatory system. Front Cell               infection. Int J Syst Evol Microbiol. 2016;66(9):3393–9.
+     Infect Microbiol. 2020;10:400.                                                   96.    Peleg AY, Seifert H, Paterson DL. Acinetobacter bauman‑
+ 75. Hamada T, Zhang X, Mima K, Bullman S, Sukawa Y, Nowak JA, et al. Fuso‑                  nii: emergence of a successful pathogen. Clin Microbiol Rev.
+     bacterium nucleatum in colorectal cancer relates to immune response                     2008;21(3):538–82.
+     differentially by tumor microsatellite instability status. Cancer Immunol        97.    Lalucat J, Bennasar A, Bosch R, García-Valdés E, Palleroni NJ. Biology of
+     Res. 2018;6(11):1327–36.                                                                Pseudomonas stutzeri. Microbiol Mol Biol Rev. 2006;70(2):510–47.
+ 76. Meyer F, Fritz A, Deng ZL, Koslicki D, Lesker TR, Gurevich A, et al. Critical    98.    Knight R, Callewaert C, Marotz C, Hyde ER, Debelius JW, McDonald D,
+     Assessment of Metagenome Interpretation: the second round of chal‑                      et al. The microbiome and human biology. Annu Rev Genomics Hum
+     lenges. Nat Methods. 2022;19(4):429–40.                                                 Genet. 2017;18(1):65–86.
+ 77. Onderdonk AB, Steeves RM, Cisneros RL, Bronson RT. Adoptive transfer             99.    Kim J, Lee HK. Potential role of the gut microbiome in colorectal cancer
+     of immune enhancement of experimental ulcerative colitis. Infect                        progression. Front Immunol. 2022;7(12):807648.
+     Immun. 1984;46(1):64–7.                                                         100.    Sambruni G, Macandog AD, Wirbel J, Cagnina D, Catozzi C, Dallavilla T,
+ 78. Delday M, Mulder I, Logan ET, Grant G. Bacteroides thetaiotaomicron                     et al. bulk RNA-Seq samples of CRC patients. EGAD00001009635. EGA
+     ameliorates colon inflammation in preclinical models of Crohn’s dis‑                    European Genome-Phenome Archive. 2021. Available from: https://​
+     ease. Inflamm Bowel Dis. 2019;25(1):85–96.                                              ega-​archi​ve.​org/​datas​ets/​EGAD0​00010​09635.
+ 79. Sokol H, Pigneur B, Watterlot L, Lakhdari O, Bermúdez-Humarán LG,
+     Gratadoux JJ, et al. Faecalibacterium prausnitzii is an anti-inflammatory
+     commensal bacterium identified by gut microbiota analysis of Crohn              Publisher’s Note
+     disease patients. Proc Natl Acad Sci. 2008;105(43):16731–6.                     Springer Nature remains neutral with regard to jurisdictional claims in pub‑
+ 80. Underwood MA. Intestinal dysbiosis: novel mechanisms by which gut               lished maps and institutional affiliations.
+     microbes trigger and prevent disease. Prev Med. 2014;65:133–7.
+ 81. Guo Y, Huang ZP, Liu CQ, Qi L, Sheng Y, Zou DJ. Modulation of the gut
+     microbiome: a systematic review of the effect of bariatric surgery. Eur J
+     Endocrinol. 2018;178(1):43–56.
+ 82 Haghi F, Goli E, Mirzaei B, Zeighami H. The association between
+     fecal enterotoxigenic B. fragilis with colorectal cancer. BMC Cancer.
+     2019;19(1):1–4.
+ 83. Fidelle M, Yonekura S, Picard M, Cogdill A, Hollebecque A, Roberti MP,
+     et al. Resolving the paradox of colon cancer through the integra‑
+     tion of genetics, immunology, and the microbiota. Front Immunol.
+     2020;11:3209.
+ 84. Ferreira-Halder CV, de Sousa Faria AV, Andrade SS. Action and function
+     of Faecalibacterium prausnitzii in health and disease. Best Pract Res Clin
+     Gastroenterol. 2017;31(6):643–8.
+ 85 Mohan R, Namsolleck P, Lawson PA, Osterhoff M, Collins MD, Alpert CA,
+     et al. Clostridium asparagiforme sp. nov., isolated from a human faecal
+     sample. Syst Appl Microbiol. 2006;29(4):292–9.
+ 86. Clay SL, Fonseca-Pereira D, Garrett WS. Colorectal cancer: the facts in
+     the case of the microbiota. J Clin Invest. 2022;132(4):e155101.
+ 87. Müller M, Hermes GD, Canfora EE, Smidt H, Masclee AA, Zoetendal
+     EG, et al. Distal colonic transit is linked to gut microbiota diversity and
+     microbial fermentation in humans with slow colonic transit. Am J
+     Physiol-Gastrointest Liver Physiol. 2020;318(2):G361–9.
+ 88. Manzo T, Prentice BM, Anderson KG, Raman A, Schalck A, Codreanu GS,
+     et al. Accumulation of long-chain fatty acids in the tumor microenvi‑
+     ronment drives dysfunction in intrapancreatic CD8+ T cells. J Exp Med.
+     2020;217(8):e20191920.
+ 89. Johnzon CF, Rönnberg E, Pejler G. The role of mast cells in bacterial
+     infection. Am J Pathol. 2016;186(1):4–14.
+ 90. Mancuso G, Midiri A, Biondo C, Beninati C, Gambuzza M, Macri D,
+     et al. Bacteroides fragilis-derived lipopolysaccharide produces cell
+     activation and lethal toxicity via toll-like receptor 4. Infect Immun.
+     2005;73(9):5620–7.
+ 91. Wculek SK, Cueto FJ, Mujal AM, Melero I, Krummel MF, Sancho D.
+     Dendritic cells in cancer immunology and immunotherapy. Nat Rev
+                                                                                         Ready to submit your research ? Choose BMC and benefit from:
+     Immunol. 2020;20(1):7–24.
+ 92. Pandiyan P, Bhaskaran N, Zou M, Schneider E, Jayaraman S, Huehn J.
+                                                                                            • fast, convenient online submission
+     Microbiome dependent regulation of Tregs and Th17 cells in mucosa.
+     Front Immunol. 2019;10:426.                                                            • thorough peer review by experienced researchers in your field
+ 93. Zafar SN, Hu CY, Snyder RA, Cuddy A, You YN, Lowenstein LM, et al. Pre‑                • rapid publication on acceptance
+     dicting risk of recurrence after colorectal cancer surgery in the United
+                                                                                            • support for research data, including large and complex data types
+     States: an analysis of a special commission on cancer national study.
+     Ann Surg Oncol. 2020;27(8):2740–9.                                                     • gold Open Access which fosters wider collaboration and increased citations
+ 94. Freire M, de Oliveira GD, Garcia C, Bueno MC, Camargo C, Magri AK,                     • maximum visibility for your research: over 100M website views per year
+     et al. Bloodstream infection caused by extensively drug-resistant Acine‑
+     tobacter baumannii in cancer patients: high mortality associated with                 At BMC, research is always in progress.
+     delayed treatment rather than with the degree of neutropenia. Clin
+     Microbiol Infect. 2016;22(4):352–8.                                                   Learn more biomedcentral.com/submissions
+

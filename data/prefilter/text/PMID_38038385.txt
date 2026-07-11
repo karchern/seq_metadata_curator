@@ -1,0 +1,1151 @@
+GUT MICROBES
+2023, VOL. 15, NO. 2, 2288200
+https://doi.org/10.1080/19490976.2023.2288200
+
+
+
+
+Characterization of markers, functional properties, and microbiome composition
+in human gut-derived bacterial extracellular vesicles
+Chih-Chi Lia, Wei-Fan Hsub,c, Po-Chieh Chiangc, Ming-Che Kuod,e, Andrew M. Wob,c, and Yufeng Jane Tsenga,f,g
+a
+ Graduate Institute of Biomedical Electronics and Bioinformatics, College of Electrical Engineering and Computer Science, National Taiwan
+University, Taipei, Taiwan; bInstitute of Applied Mechanics, National Taiwan University, Taipei, Taiwan; cDepartment of R&D, Reliance
+Biosciences Inc, New Taipei City, Taiwan; dDepartment of Medicine, National Taiwan University Cancer Center, Taipei, Taiwan; eDepartment of
+Neurology, National Taiwan University Hospital, Taipei, Taiwan; fDepartment of Computer Science and Information Engineering, College of
+Electrical Engineering and Computer Science, National Taiwan University, Taipei, Taiwan; gMaster’s Program in Smart Medicine and Health
+Informatics, National Taiwan University, Taipei, Taiwan
+
+
+    ABSTRACT                                                                                                                                       ARTICLE HISTORY
+    Past studies have confirmed the etiologies of bacterial extracellular vesicles (BEVs) in various                                               Received 27 June 2023
+    diseases, including inflammatory bowel disease (IBD) and colorectal cancer (CRC). This study                                                   Revised 13 October 2023
+    aimed to investigate the characteristics of stool-derived bacterial extracellular vesicles (stBEVs)                                            Accepted 22 November 2023
+    and discuss their association with stool bacteria. First, three culture models – gram-positive (G+)                                            KEYWORDS
+    BcBEVs (from B.coagulans), gram-negative (G-)EcBEVs (from E.coli), and eukaryotic cell-derived EVs                                             Bacterial extracellular vesicle;
+    (EEV, from Colo205 cell line) – were used to benchmark various fractions of stEVs separated from                                               extracellular vesicle; stool;
+    optimized density gradient approach (DG). As such, WB, TEM, NTA, and functional assays, were                                                   fecal; separation;
+    utilized to analyze properties and distribution of EVs in cultured and stool samples. Stool samples                                            characterization;
+    from healthy individuals were interrogated using the approaches developed. Results demon­                                                      microbiome; 16S rRNA;
+    strated successful separation of most stBEVs (within DG fractions 8&9) from stEEVs (within DG                                                  metagenomics; personalized
+    fractions 5&6). Data also suggest the presence of stBEV DNA within vesicles after extraction of BEV                                            medicine
+    DNA and DNase treatment. Metagenomic analysis from full-length (FL) region sequencing results
+    confirmed significant differences between stool bacteria and stBEVs. Significantly, F8&9 and the
+    pooled sample (F5-F9) exhibited a similar microbial composition, indicating that F8&9 were
+    enriched in most stBEV species, primarily dominated by Firmicutes (89.6%). However, F5&6 and
+    F7 still held low-density BEVs with a significantly higher proportion of Proteobacteria (20.5% and
+    40.7%, respectively) and Bacteroidetes (24% and 13.7%, respectively), considerably exceeding the
+    proportions in stool and F8&9. Importantly, among five healthy individuals, significant variations
+    were observed in the gut microbiota composition of their respective stBEVs, indicating the
+    potential of stBEVs as a target for personalized medicine and research.
+
+
+
+Introduction
+                                                                                             pathogenic bacteria may play a regulatory role, and
+The gut microbiome, consisting of diverse and com­                                           even have the ability to cross biological barriers into
+plex microorganisms, plays a role in various host                                            the bloodstream or central nervous system (CNS)
+interactions and forms of dysbiosis. This can result                                         than whole-cell bacteria.6–9
+in various disorders, such as Crohn’s disease, ulcera­                                          Extensive research has already been conducted
+tive colitis, type II diabetes, cardiovascular diseases,1                                    on human EVs, categorizing them into three main
+and even neuropsychiatric disorders,2 which are                                              groups: exosomes, microvesicles, and apoptotic
+often linked by the activation of the immune system                                          bodies, based on their size, biogenesis, and cellular
+and inflammatory responses.3 Despite the crucial                                             release mechanisms. Microvesicles and apoptotic
+role of gut bacteria in regulating the gut microenvir­                                       bodies typically fall within the size range of 100 to
+onment and host health, the underlying mechanisms                                            1000 nm and 1–4 μm, respectively. In contrast,
+of this regulation remain largely unknown.4,5 Recent                                         exosomes exhibit a diameter of 30–150 nm. The
+studies suggest that bacterial extracellular vesicles                                        challenge arises from the size and density overlap
+(BEVs) secreted by gut commensal, probiotic, and                                             between exosomes and microvesicles (100–150 nm
+
+CONTACT Yufeng Jane Tseng           yjtseng@csie.ntu.edu.tw     Graduate Institute of Biomedical Electronics and Bioinformatics, College of Electrical
+Engineering and Computer Science, National Taiwan University, Taipei 106319, Taiwan
+   Supplemental data for this article can be accessed online at https://doi.org/10.1080/19490976.2023.2288200
+© 2023 The Author(s). Published with license by Taylor & Francis Group, LLC.
+This is an Open Access article distributed under the terms of the Creative Commons Attribution License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use,
+distribution, and reproduction in any medium, provided the original work is properly cited. The terms on which this article has been published allow the posting of the Accepted
+Manuscript in a repository by the author(s) or with their consent.
+2     C.-C. LI ET AL.
+
+
+and 1.08–1.19 g/ml) which makes their differentia­    macrophages, express most of the TLRs men­
+tion intricate. Exosomes are often identified by      tioned above. They can be stimulated by LPS,
+their content of endosome-associated proteins         LTA, or other bacterial components to produce
+such as tetraspanins CD9, CD63, and CD81.             proinflammatory cytokines. As a result, they are
+However, further investigations are needed to elu­    suitable for studying the presence and functional
+cidate the distinct characteristics of EEVs present   properties of BEVs.14,22
+in stool.10,11                                           Furthermore, sequencing of DNA transported
+   Both pathogenic and commensal bacteria             by stBEVs may disclose its origin and improve
+release roughly 20–400 nm BEVs, consisting of         our understanding of the gut microbial commu­
+membrane-encased particles that spread some of        nity. Amplicon sequencing of the 16S ribosomal
+a parent bacterium’s biological material outside      RNA (rRNA) gene is an accurate and effective
+the cell. These vesicles contain biological mate­     method for identifying bacterial taxonomy through
+rial from bacteria, such as proteins, enzymes,        sequence-based analysis.23,24 Conventional paral­
+toxins, polysaccharides, DNA, RNA, and                lel-type short-read sequencers (V3-V4 region) can­
+peptidoglycan.12,13 Bacteria are classified into      not generate full-length V1-V9 reads (FL regions)
+two types based on the properties of their cell       of the 16S rRNA gene.25 Therefore, partial
+membranes: gram-negative (G-) and gram-               sequences of particular 16S rRNA gene regions
+positive (G+). G- bacteria can form vesicles in       are targeted for sequencing, which can result in
+two ways: by blebbing the outer membrane of           ambiguous taxonomic classification.26 However,
+the bacterium, creating outer-membrane vesicles       when conducting shotgun metagenomic analysis,
+(OMVs), and through cell explosion, forming           it is important to consider the availability of ade­
+outer-inner membrane vesicles (OIMVs) and             quate amounts of DNA for testing. This can be
+explosive outer-membrane vesicles (EOMVs).14          a challenging requirement when purifying DNA
+G+ bacteria create cytoplasmic membrane vesi­         from EV samples.
+cles (CMVs) through bubbling cell death caused           Recently, stBEVs have been widely acknowl­
+by endolysin.12,15                                    edged in the literature for their ability to induce
+   Numerous studies have shown that commen­           microenvironmental changes, communicate with
+sal microorganisms and their metabolites play         bacteria or host cells, and even trigger immune
+a role in the maturation of both the intestinal       responses leading to the development of diseases
+and systemic immune systems.16,17 Toll-like           such as IBD or CRC. However, most of studies on
+receptors (TLR) are a family of innate immune         BEVs were conducted using BEVs isolated from
+system receptors that help protect against            in vitro cultures. It remains to be investigated
+infections18 by recognizing the highly conserved      whether the physiological characteristics of BEVs
+motifs in microbes such as pathogen-associated        secreted in vitro are comparable to those secreted
+molecular patterns (PAMPs). Some receptors in         in vivo. In addition, some studies investigated dis­
+the TLR family (TLR1, 2, 4, 5, 6, and 10) help        eases using stBEVs did not effectively separate
+detect certain bacterial components and trigger       EEVs from BEVs, making it challenging to deter­
+an immune response.19 G- BEVs have an inner           mine the specific functional roles of stBEVs.4
+layer of phospholipids and an outer layer com­           To comprehensively understand the role of
+posed of lipopolysaccharide (LPS), which is           stBEVs in the human gut, this study utilized
+known to activate TLR4.14,20 This type of BEV         a density-based purification method to isolate
+is rich in outer membrane proteins, such as           stool EVs, followed by an interrogation of the char­
+OmpA and contains periplasmic components.             acteristics of the purified EVs. Additionally, an
+On the opposite, G+ BEVs, also referred to as         optimized procedure for 16S rRNA sequencing of
+CMVs, contain both membrane and cytoplasmic           stBEVs’ DNA was developed to analyze the rela­
+components and present lipoteichoic acid (LTA)        tionship between stBEVs and the stool microbiota.
+on their surface, which can activate TLR2.15,21       This refined methodology has the potential to facil­
+Peripheral blood mononuclear cells (PBMCs),           itate further exploration of the role of stBEVs in
+consisting of lymphocytes, monocytes, and             various diseases.
+                                                                                           GUT MICROBES      3
+
+
+Results                                                concentrations (F5&6, F7, and F8&9) revealed
+                                                       that EVs, regardless of their sources or fractions,
+Correlate stool EVs (stEVs) with EVs from three
+                                                       exhibit size heterogeneity, ranging between 50 and
+culture models – NTA, TEM & protein quantification
+                                                       150 nm (Figure 2b). Additionally, they displayed
+results
+                                                       a distinct cup-shaped morphology. Notably, non-
+The stEVs were purified using the same method as       EV structures were observed in F8&9 of (G-)
+the three types of EVs derived from cultured mod­      EcBEVs and (G+)BcBEVs and stEV groups, which
+els: G+ BEVs from B.coagulans, G- BEVs from E.         were also mentioned in the Tulkens et al.14 as
+coli, and eukaryotic cell-derived EVs from Colo205     fragments of pili or flagella produced by bacteria.
+cell (Figure 1). They were referred to as (G+)         Based on the size distribution results from NTA,
+BcBEVs, (G-)EcBEVs, and EEVs, respectively. The        the mode sizes for (G-)EcBEVs and (G+)BcBEVs
+crude extracts of these four sources were separated    were small (65–99 nm) across all three fractions,
+into 13 fractions using DG and purified into EV        while the mode sizes for EEVs were generally larger
+fractions through ultracentrifugation (UC) for sub­    (120–150 nm) in all three fractions (Figure 2c).
+sequent experiments (Figure S1).                       Interestingly, the stEVs showed a mode particle
+   Based on the nanoparticle tracking analysis         size of 139.5 nm in F5&6, 126.5 nm in F7, and
+(NTA) results (Figure 2a, left y-axis), the highest    88.5 nm in F8&9. Notably, in Figure 2c were nor­
+particle concentration of (G-)EcBEVs was enriched      malized by assigning the numerical value 1 to the
+in DG fractions 8 & 9 (F8&9), while (G+)BcBEVs         mode of particle size, which does not reflect actual
+and EEVs were both in DG fractions 5 & 6 (F5&6).       quantities. As a result, the EEVs group in F8&9
+The stEVs showed high particle concentrations in       exhibited a noise-like peak in the larger particle size
+both F5&6 and F8&9 fractions, indicating that          range, which was due to the amplification of noise
+EEVs, G+ BEVs, and G- BEVs are predominantly           caused by a low particle count, rather than repre­
+present in these two fractions. Accordingly, it is     senting the true particle sizes.
+EEVs and G+ BEVs may be likely to distribute in           Collectively, the NTA data suggest that the par­
+F5&6, while G- BEVs may be present in F8&9.            ticle sizes of stEVs in F5&6 are similar to those of
+Furthermore, protein quantification results            EEVs, while the particle sizes of stEVs in F8&9 are
+(Figure 2a, right y-axis) show the concentration of    closer to those of (G-)EcBEVs and (G+)BcBEVs
+proteins generally resembles closely with the con­     groups. This indirectly suggests a higher presence
+centration of particles. The high concentration in     of EEVs in stEVs from F5&6 and a higher presence
+F13 was likely due to its proximity to the sample      of G- BEVs in F8&9. However, further discussion
+source (i.e., the sample was bottom-loading in DG)     and characterization of EV features are required.
+which may have resulted in residual samples that
+were not completely separated. Interestingly,
+                                                       Correlate stEVs with EVs from three culture models –
+although the particle concentration was low in
+                                                       WB
+F8&9 for (G+)BcBEVs, the protein concentration
+was relatively high. Upon further observation of       Using multiple markers, Figure 3a shows WB
+the (G-)EcBEVs and stEVs groups, it was found          results for cell or bacteria lysates from three
+that the protein concentration was higher in F8&9,     different models and their corresponding EVs.
+while the EEVs group did not show this trend. The      Syntenin-1 and CD9 signals are only found in
+above data suggests that samples originating from      the Colo205 group, while LPS and OmpA sig­
+bacterial sources exhibit higher protein concentra­    nals are specific to the (G-)E.coli group. LTA
+tions in F8&9, which may not necessarily correlate     signals are unique to the (G+)B.coagulans
+with their particle concentrations. This suggests      group. Flagellin signals appear in both (G-)E.
+that other bacterial proteins might have been co-      coli and (G+)B.coagulans groups. Surprisingly,
+purified in this fraction, as confirmed later by TEM   signals for Alix, TSG101, and Flotillin were
+and WB data.                                           detected not only in the Colo205 group but
+   Transmission electron microscope (TEM) mea­         also in the other two bacterial groups. This
+surements of three fractions with high particle        indicated that these three markers might exhibit
+4       C.-C. LI ET AL.
+
+
+
+
+Figure 1. Schematic illustration of extracellular vesicle purification from four different resources. EVs were isolated from G- bacteria,G+
+bacteria, eukaryotic cell culture medium, and human stool specimens by centrifugation, 0.22-μm filter filtration, 100 kDafilter
+ultracentrifugation, density gradient separation, and ultracentrifugation. After the application of the serial purification strategy,
+several technologies were used to characterize the EV conditions.
+                                                                                                                     GUT MICROBES         5
+
+
+
+
+Figure 2. Characterization of EVs derived from four sources (G+ and G- bacterial medium, eukaryotic cell medium, and stool) by the
+same serial purification method (DG+UC). Samples were divided into several fractions by DG; fractions (F4-F13) were chosen for the
+characterization of EVs. F5 and F6, F8 and F9 were pooled, respectively. (a) Fractional distribution of particle concentration (left Y-axis,
+shown in a bar plot) and protein concentrations (right Y-axis, shown with a red line) from (G-)EcBEVs, (G+)BcBEVs, EEVs and stEVs.
+Results are shown as the means ± SDs of experiments performed in triplicate. (b) Representative TEM images of three major fractions
+(F5&6, F7 and F8&9) from four resources. (Scale bar = 0.2 µm) The yellow arrows indicate particles with a shape that conforms to the
+criteriaof EVs, and the red arrows indicate some linear structures, which may be fragments of bacterial flagella or pili. (c) Comparison of
+the particle sizedistribution, which has been normalized, (by converting the mode of each group to 1) of three main fractions from four
+different sources determined by NTA. Each line represents the average of two samples with three technical replicates.
+
+
+
+nonspecific binding to bacterial proteins.                              results reveal strong staining for G- BEV mar­
+Consequently, we designated these markers as                            kers (LPS and OmpA) and bacterial flagellar
+nonspecific EV markers and omitted them                                 fragments (Flagellin) in F8&9. This suggests
+from the ensuing discussion regarding EEVs                              that the purification method effectively isolates
+and BEVs.                                                               (G-)EcBEVs in F8&9 but may still contain some
+   For EEVs (Figure 3b), EEV markers like CD9,                          flagellar contamination. For (G+)BcBEVs
+Syntenin-1 exhibit strong signals in F5&6. These                        (Figure 3d), G+ BEV marker (LTA) shows
+signals align well with the NTA results in                              a strong positive stain in F5&6, which correlates
+Figure 2a, confirming the successful isolation                          with the corresponding NTA results with a clear
+of EEVs in F5&6 through this purification                               signal in F5&6, shown in Figure 2a. Flagellin
+method. In the case of (G-)EcBEVs (Figure 3c),                          also mainly appeared in F8&9, which may
+6       C.-C. LI ET AL.
+
+
+
+
+Figure 3. Western blot of the separated fractions by DG show enrichment of G- BEVs, G+ BEVs, and EEVs. (a) Investigating marker
+specificity by analyzing cell or bacterial lysates and their EVs across three cultured models. Representative western blot analyses of (b)
+EEVs, (c) (G-)EcBEVs, (d)(G+)BcBEVs, and (e) stEVs specimens fractionated by DG+UC separation. Ten micrograms of F5&6, F7 and F8&9
+were loaded in each lane, and 30 µl of the other fractions was loaded. The blot was probed with antibodies against the EEV markers
+CD9 and syntenin-1; the G- BEV markers LPS and OmpA; the G+BEV marker LTA; and the bacterial marker flagellin, The non-specific EV
+markers flotillin, TSG101, and Alix.
+
+
+
+
+explain why (G+)BcBEVs exhibited high protein                          Stool BEVs distribution can be assessed by
+concentrations in F8&9 in Figure 2a.                                   combining endotoxin measurements,
+   For stEVs (Figure 3d), the G- BEV marker OmpA                       immunoassays, and NTA
+was detected in F8&9 as expected, while no LPS
+                                                                       Figure 4a displayed the initial stEVs in F8&9 (F8&9
+signal was observed. The LTA marker for G+ BEVs
+                                                                       Ori) subjected to immunoprecipitation (IP) for
+unexpectedly appeared in F8&9 instead of F5&6,                         obtaining flagella pulldown (PD) and flow-
+which differs from the result of (G+)BcBEVs. The                       through (FT). Subsequently, the elution of proteins
+variation might result from differences in particle                    from PD was performed. Figure 4b presents the
+density between (G+)BcBEVs and G+ stBEVs, sug­                         WB results of stEVs F8&9 PD, FT, and Ori.
+gesting that BEVs from each bacterial species could                    Flagellin is enriched in the PD group, while LTA
+have unique densities. This density distinction isn’t                  and OmpA are enriched in the FT group.
+solely dictated by G+ or G- characteristics. The                       Furthermore, in Figure 4c, TEM images clearly
+metagenomic analysis of stBEVs data (Figure 7b)                        show that most of flagella have been effectively
+supported this notion. Among the EEV markers,                          removed, whether magnified at 50,000× or
+CD9 and Syntenin-1 were detected in F5&6 as                            100,000×. The combined evidence from Figures 4
+expected. Flagellin were detected in F8&9 as                           (b,c) demonstrates that this IP method successfully
+expected. In summary, we observed the presence of                      separates Flagella fragments from BEVs.
+CD9 and syntenin-1 in F5&6, whereas OmpA and                           Consequently, in subsequent experiments, F8&9
+LTA were identified in F8&9. This suggests that                        PD was recognized as the fraction containing fla­
+stEEVs are concentrated in F5&6, while stBEVs are                      gella, and F8&9 as the purified stEVs.
+enriched in F8&9. However, F8&9 still contain                             Figure 4d illustrates the design of subsequent
+a significant amount of flagella, which was removed                    functional assays, targeting stEVs from F4-F13.
+for further functional assays later.                                   Additionally, separate experiments are conducted
+                                                                                                                  GUT MICROBES         7
+
+
+
+
+Figure 4. Determining the location and biological traits of stool-derived EVs through functional assays. (a) The image illustrates the
+process of immunoprecipitation (IP) and the naming origin of samples tested for F8&9 in stEVs, grouped as Pull Down (PD), Flow-
+through (FT), and untreated F8&9 (Ori). (b)The WB shows the expression levels of flagella and G+BEVs vs. G-BEVs in F8&9 after IP. (c)
+Representative TEM images from F8&9 Ori and F8&9 FT are displayed. The scale bar is 0.2 µm. Yellow arrows highlight EVs , while red
+arrows indicate flagella or pilifragments. The upper image is magnified at 50,000x, and the lower image at 100,000x. (d) This diagram
+explains the evaluation of functional traits in separated stool BEV samples and their associated result figures.EV characteristics were
+examined from various fractions using tests (e) LALtest, (f) TLR2 receptor assay and (g, h, i) PBMCs stimulation. F8&9 PD (flagella
+representation) and F8&9 FT (pureF8&9 BEVs), (G+)BcBEVs from F5&6, (G-)EcBEVs from F8&9, LPS were included as a positive control,
+and endotoxin-free (EF) water as a negative control. (g) IL-6, (h) IL-1α, and (i) TNFα were the cytokines tested in stimulated PBMCs. The
+figure includes datafrom three technical replicates, with error bars representing standard deviations.
+
+
+
+
+for F8&9 PD and FT, which utilize an equivalent                        a slightly lower signal compared to F8&9, while
+protein quantity as F8&9. Moreover, LPS, (G+)                          F8&9 FT showed a signal similar to that of F8&9.
+BcBEVs from F5&6, and (G-)EcBEVs from F8&9                             It was observed that the (G-)EcBEVs exhibited
+(after flagellin removal by IP) serve as positive                      a higher signal, while the (G+)BcBEVs displayed
+control groups. Similarly, both BEVs groups are                        a comparatively lower signal (Figure 4e, right). It
+loaded with a comparable particle concentration                        can be inferred that the LAL test produces a high
+as the stEVs groups, while endotoxin-free (EF)                         signal in samples containing LPS. Therefore,
+water is used as a negative control. Limulus ame­                      despite the absence of specific antibody staining
+bocyte lysate (LAL) assay is a sound method for                        for LPS in the WB image of stEVs, this experiment
+accurately measuring endotoxin (LPS) in a sample.­                     confirms that LPS primarily exists in stEVs
+27
+   We utilized this characteristic to measure the                      from F8&9.
+relative abundance of G- BEVs based on the signal                         In the results of the TLR2 receptor assay, focusing
+intensity from this assay, as G- BEVs carry LPS as                     solely on the stEV groups, it can be observed that
+a marker. In the stEV group, it was clearly observed                   F8&9 still exhibit a slightly higher signal (Figure 4f,
+that G- BEVs were mainly present in F8&9                               left). Furthermore, F8&9 FT shows a slightly higher
+(Figure 4e, left). Furthermore, F8&9 PD exhibited                      signal compared to F8&9. It is hypothesized that in
+8       C.-C. LI ET AL.
+
+
+
+
+Figure 5. Optimization of stool-derived BEV DNA extraction for 16S gene amplification. (a) Illustration of the BEV DNA extraction, PCR
+gene amplification, and DNA qualitycontrol strategies. (b) Total DNA yield (ng/µL) obtained from different DNA extraction methods
+measured by Qubit 2.0, mean ±SD, one-way ANOVA test, *p < 0.05, ***p < 0.0005. (c, d) DNA extracted from stBEVs using two
+methods, Boiling and XCF, was amplified by PCR targeting the V3-V4 region and the FL region. The total amplified DNA yield (ng) was
+measured using a NanoDrop system, and electropherograms were used to assess results from the quality control. The XCF underwent
+two repeated PCR experiments, referred to as rp1 and rp2. (e) This figure shows five tests to determine if stBEV DNA is enclosed in the
+membrane. It includes pre-processing, DNA extraction using the XCF kit, PCR amplification targeting FL regions, (f) measuring DNA
+concentration with NanoDrop, and verifying DNA quality through gel electrophoresis.
+
+
+
+
+the case of F8&9 FT, the removal of flagellin resulted               stEV groups, the three cytokines still exhibit the
+in increased purity, leading to a higher quantity of                 highest signal in F8&9 (Figure 4g-i, left). In con­
+BEVs in samples of the same concentration.                           trast, there isn’t a significant difference observed
+Furthermore, at equivalent concentrations, (G+)                      between F8&9 PD and FT groups when compared
+BcBEVs display a stronger signal than (G-)EcBEVs                     to F8&9. Notably, LPS and (G-)EcBEV demon­
+(Figure 4f, right). This indicates that G+ BEVs in                   strate a more pronounced impact on this immune
+F8&9 FT likely substantially contribute more to the                  response, resulting in significantly higher signals,
+signal than G- BEVs.                                                 whereas (G+)BcBEVs have a comparatively smal­
+   Some studies28 have suggested that BEVs have                      ler effect (Figure 4g-i, right). Accordingly, it is
+the ability to activate human PBMCs in ex vivo                       evident that G- BEVs stimulate PBMCs to
+assays due to their expression of bacterial markers                  a greater extent compared to G+ BEVs and
+such as LPS, TLA, or flagella. This experimental                     Flagellin.
+approach was aimed at measuring the production                          Based on the cumulative findings, we proposed
+of the proinflammatory cytokines IL-6, IL-1a, and                    that F8&9 predominantly capture a significant por­
+TNF-α in PBMCs after activation to provide                           tion of G+ and G- stBEVs. Therefore, we referred
+a functional basis for determining the relative                      to the stEVs from F8&9 as stBEVs for the subse­
+abundance of BEVs. When focusing solely on the                       quent analysis.
+                                                                                                                GUT MICROBES         9
+
+
+Exploration of purification strategy for stBEVs DNA                  further analysis under either gene amplification
+and investigation of fragment selection targeting                    strategy. In contrast, the XCF kit-extracted sam­
+16S rRNA gene regions                                                ples show sufficient DNA quantities under both
+                                                                     gene amplification strategies. This indicates that
+Figure 5a illustrates the experimental design for
+this section, which includes EV DNA extraction                       the absence of DNA purification in the Boiling
+strategies, PCR amplification of different regions                   method led to significant contamination, or
+of 16S rRNA, and two checkpoints to determine                        alternatively, DNA fragmentation that adversely
+the most appropriate approach for each step.                         affected     gene      amplification    efficiency
+During the optimization phase of stBEV DNA                           (Figure 5c). Based on the electrophoresis results,
+extraction, a pooled sample of F8&9 was used as                      the Boiling group showed PCR bands in V3-V4,
+a sample. After DNA extraction, using Qubit 2.0                      but the amount of DNA did not reach the
+system, it was found that the Boiling method                         required threshold. In contrast, no bands were
+presented the highest DNA yield, followed by                         observed in the FL group, and this group was
+the XCF kit method. Therefore, these two meth­                       excluded from further analyses. On the other
+ods were selected for further bacterial DNA                          hand, the XCF kit group exhibited clear bands
+quality testing experiments (Figure 5b). After                       under both gene amplification strategies, indi­
+amplifying the V3-V4 and FL regions of the                           cating successful gene amplification (Figure 5d).
+16S rRNA gene, it was found that the Boiling                         As a result, the XCF kit method was chosen for
+method did not produce enough DNA for                                DNA purification in subsequent stBEV studies.
+
+
+
+
+Figure 6. Comparison of taxonomic assignments from stBevs at the phylum and genus levels using the 16S rRNA V3-V4 region,
+analyzed with the Illumina platform, and the 16S rRNA FL region, analyzed with the PacBio platform. The figures present comparisons
+among the top ten phylum-level (a, b) taxonomic assignments in terms of relative abundance according to the sequencing results for
+the V3-V4 region and FL region. In the genus-level plots (c, d), the category ”Other” was excluded. Additionally, for the FL region, in
+addition to showing the top ten genera, the genera for which the V3-V4 region was sequenced were also included in the bar graph for
+comparison. No.1 to No.5 represent stBEVs derived from five healthy individuals.
+10     C.-C. LI ET AL.
+
+
+Since successful amplification was achieved for         method more clearly reveals differences among the
+both the V3-V4 and FL regions of the 16S                samples at phylum level.
+rRNA, both groups proceeded to the next                    At the genus level, we excluded the unclassified
+sequencing experiment for further comparison.           group labeled as “Others” and focused solely on the
+   In addition, the origin of BEV DNA, whether it       genera that could be classified in both groups
+originates from within or outside the membrane,         (Figure 6(c,d)). The relative abundance of the genera
+was investigated. DNA purified from E. coli lysate      detected by sequencing the V3-V4 region accounted
+(bacterial DNA) was used as a sample. Equal             for 20–30% of the total abundance. In comparison,
+amounts of DNase I were separately added to             that of genera detected by sequencing the FL region
+both bacterial and BEV samples. Furthermore, we         accounted for an average of 60%, with greater diver­
+explored whether soluble DNA could be enriched          sity of genera detected. Among the highly abundant
+in the DG’s F8&9. Therefore, an additional experi­      genera, shared by bothㄜ groups, are Delftia,
+mental group was included to test this phenom­          Anoxybacillus, Bacteroides, Blautia, Phocaeicola,
+enon (Figure 5e). DNA quantification and                Lactobacillus, and Roseburia, although not expressed
+electrophoresis results showed that equal DNase         in every sample. In the V3-V4 region group,
+treatment led to the lysis of Bacterial DNA, pre­       Bacteroides (average 6.57 ± 3.48%) and Prevotella
+venting PCR amplification. In contrast, it had no       (average 5.31 ± 3.33%) exhibited relatively higher
+impact on BEV F8&9 DNA. Additionally, no signal         expression levels across all five samples.
+was observed for re-enriched BEVs F8&9 DNA                 Only Faecalibacterium exhibited relatively high
+(Figure 5f). These findings strongly suggest that       expression levels in the FL region group across all
+the amplified BEV DNA exclusively originates            five samples (average 10.5 ± 3.28%). On the other
+from the intramembrane of BEVs.                         hand, other genera showed variations in expression
+                                                        levels among individuals. These results indicate
+                                                        that sequencing targeting the FL region provides
+The microbiota composition analysis of stBEVs was       higher overall richness in the detected genera com­
+investigated using two different 16S rRNA               pared to sequencing targeting the V3-V4 region.
+sequencing techniques                                   Consequently, in subsequent experiments, this
+                                                        sequencing method was used to investigate further
+To ensure optimal microbial composition analysis        the interrelationship between the microbiota of
+in stBEVs samples, we utilized DNA extracted from       stEVs from different fractions and the gut
+stBEVs purified from F8&9 fractions obtained            microbiota.
+from five healthy individuals as the source material.
+Five stBEV samples were each divided for sequen­
+cing, targeting the V3-V4 region and the FL region.     Differential gut microbiome composition in stool
+Figure 6(a,b) demonstrate that both sequencing          samples and stBEVs from various fractions and their
+methods primarily identified Firmicutes,                interrelationship
+Bacteroidetes, Proteobacteria, and Actinobacteria       Individual samples were collected from five healthy
+as the dominant phyla. These phyla accounted for        individuals, and 16S rRNA sequencing targeting
+approximately 98% to 100% of the microbial com­         the FL region was performed to analyze gut micro­
+position in both groups. Moreover, Firmicutes and       biota composition.
+Bacteroidetes were found to be the dominant com­           Figure 7(a,b) represent the averaged results of all
+ponents, accounting for 90–93% in the V3-V4             five samples, while individual sample results for
+region group and 80–97% in the FL region group.         phylum and species are presented in Figure S3.
+On the other hand, it was observed that within the      Figure 7(a,b) show the top 10 most prevalent taxa
+phylum Firmicutes, the FL region group exhibited        within the stool, stool bacteria (bacteria), and
+a higher average relative abundance (68 ± 24%)          stBEVs groups (F5&6, F7, F8&9, PF), categorized
+compared to the V3-V4 region group (45 ±                by phylum and species levels.
+13.9%), with greater variability among the samples.        At the phylum level, within the Firmicutes category,
+These results suggest that the FL region sequencing     the proportions are as follows: stool, bacteria, F5&6,
+                                                                                                                   GUT MICROBES          11
+
+
+
+
+Figure 7. The microbiome in stool and various stBEV fractions from five healthy individuals was analyzed, including assessments of α-
+diversity and β-
+diversity. This comparison displays the relative abundance (% of total 16S rDNA gene sequences) of gut microbes at the phylum level
+(a) and species level (b) in stool, stool bacterial lysate (Bacteria), and stBEV fractions: F5&6, F7, F8&9, and pooled-fractions F5-F9 (PF).
+The data represents the average results from five healthy individuals, presented in a grouped format. (c) Rarefaction curves compare
+thetotal diversity among the six groups. Stool (St), Bacteria (Bac), and stBEV groups (PF, F8&9, F7,F5&6). (d) CPCoA plot illustrates
+bacterial β-diversity, the percentage indicatesthe contribution of group information to sample variations, ranging from 0% to100%.
+The p-value assesses whether group information influences the explanation of some sample differences (f) Heatmap shows the 35
+bacterial species with thegreatest differences in relative abundance between stool, stool bacteria and stBEV groups at the species
+level.
+12          C.-C. LI ET AL.
+
+
+Table 1. α-diversity indices of stool, bacteria, different stBevs fractions determined by FL 16S rRNA sequencing.
+               Observed features     Shannon entropy Simpson Pielou evenness   Menhinick      Margalef        Faith pd     Goods coverage
+ Stool           336.4 ± 27.61          7.11 ± 0.28       0.98         0.85    2.33 ± 0.25  33.73 ± 2.87    11.98 ± 1.05          1
+ Bacteria        291.0 ± 27.05          6.95 ± 0.25       0.98         0.85    2.31 ± 0.26  29.96 ± 2.66    10.98 ± 1.07          1
+ PF              247.0 ± 75.43          5.83 ± 0.67       0.96         0.74    1.82 ± 0.49  25.04 ± 7.49    14.59 ± 2.60          1
+ F8&9            246.2 ± 96.47          5.33 ± 0.73       0.91         0.68    1.72 ± 0.65  24.68 ± 9.64    15.09 ± 3.04          1
+ F7              221.8 ± 54.44          5.31 ± 0.28       0.94         0.69    1.57 ± 0.38  22.30 ± 5.48    13.48 ± 1.95          1
+ F5&6            159.6 ± 44.25          4.83 ± 0.21       0.92         0.67    1.16 ± 0.31  16.10 ± 4.44    10.44 ± 0.96          1
+             actual species number                score ↑, diversity ↑         community species richness   score ↑, sample authenticity ↑
+
+
+
+F7, F8&9, and PF account for 80.2%, 82.3%, 53.5%,                       Phocaeicola plebeius DSM 17,135 exhibits elevated
+42.6%, 89.6%, and 79.5%, respectively. Notably,                         expression exclusively in F5&6 (4.9%). Additionally,
+Firmicutes exhibited high abundance in stool, bac­                      Methylobacterium radiotolerans JCM 2831 was
+teria, F8&9, and PF groups. In the Bacteroidetes cate­                  exclusively detected in F7 at a significant level
+gory, the respective proportions, in the same order as                  (21.5%). We discuss bacterial strains with high
+mentioned above, are: 9.8%, 6.4%, 24%, 13.7%, 2.2%,                     expression in at least two or more samples (Figure
+6.3%. Notably, F5&6 exhibit a higher proportion of                      S3). Strains with isolated cases of high expression are
+Bacteroidetes compared to other groups, with F7                         not included in this discussion. The stool and bac­
+ranking second. In the Proteobacteria category, the                     teria group had a high species diversity, resulting in
+respective proportions, in the same order as men­                       most of its members being classified as “other.”
+tioned above, are: 0.7%, 0.5%, 20.5%, 40.7%, 8%,                           The rarefaction curves confirmed that the
+13.3%. Notably, there is an interesting observation                     sequencing depth was sufficient to assess the repre­
+with F7 exhibiting a significantly higher proportion                    sentative microbial composition of the six samples.
+of Proteobacteria compared to other groups, with                        When using the same sequencing depth for all
+F5&6 ranking second. In the Actinobacteria category,                    samples, diversity is highest in the Stool group,
+the respective proportions are as follows: 9.3%, 10.7%,                 followed by the Bacteria group (Bac), and similar
+1.7%, 2.9%, 0.2%, 0.8%, in the order mentioned. The                     levels in the PF and F8&9 groups. The F7 group has
+highest proportion of Actinobacteria is found in the                    slightly lower diversity, while F5&6 exhibits the
+Stool and bacteria groups, suggesting that                              lowest diversity (Figure 7c). This trend is consistent
+Actinobacteria may not produce EVs as readily.                          with the α-diversity indices (Table 1).
+   At the species level, we observe similarities in                        We analyzed β-diversity using Constrained
+composition: stool and bacteria, F5&6 and F7, and                       Principal Coordinates Analysis (CPCoA), which
+F8&9 and PF, when grouped pairwise. Six groups                          integrates PCoA and RDA methods while consid­
+consistently demonstrated a substantial presence of                     ering group information to identify key differences
+Faecalibacterium duncaniae (8.9%, 8.7%, 14.7%,                          between groups. We assessed sample similarity and
+8.0%, 2.7%, 4.4%), indicating both their abundance                      found that group information contributes only
+and capacity for BEV production. Moreover, it was                       16.5% of the variance in this sample, with a non-
+observed that the majority of these BEVs were pre­                      significant P-value of 0.62. This suggests that group
+dominantly found in F5&6, characterized by lower                        categorization has minimal impact on our analysis
+density. Megamonas rupellensis is only predomi­                         results (Figure 7d). Hence, this plot illustrates simi­
+nantly present in Stool and Bacteria (6.2%, 6.8%),                      lar findings to Figure 7b, showing composition
+indicating a high abundance in the gut microbiota                       similarities when grouped pairwise: stool and bac­
+but infrequent BEV production. Faecalibacterium                         teria, F5&6 and F7, F8&9 and PF.
+prausnitzii exclusively occupies F8&9 (9.7%), and                          Figure 7f shows the hierarchical clustering and
+despite their lower abundance in the gut microbiota,                    heatmap of the 35 species with the highest relative
+these strains tend to produce higher-density BEVs.                      abundance. Although the stool, F8&9, and PF
+Faecalibacterium longum is predominantly found in                       groups all presented a high proportion of
+the distribution of stBEVs across all groups (4.6% to                   Firmicutes at the phylum level, their bacterial and
+5.9%). It is noteworthy that Stenotrophomonas mal­                      BEV compositions were markedly different. This
+tophilia shows higher expression in both F5&6 and                       suggests that not every bacterial species with high
+F7 (11.7% and 8%, respectively), whereas                                gut abundance produces BEVs. Furthermore, while
+                                                                                                                GUT MICROBES         13
+
+
+most of the species in PF are contributed by F8&9                     pairwise, affirming the technique’s robustness,
+(consistent with WB and functional assay results),                    with differences primarily arising from individual
+it is also observed that F5&6, F7, and F8&9 have                      variability.
+species present under these three different densi­
+ties. This suggests that each strain’s BEV may vary,
+                                                                      Differences in metagenomic analysis between
+explaining why the signal of LTA in (G+)BcBEV
+                                                                      various fractions of stBEVs and stool samples were
+and stEVs is not found in the same fractions as
+                                                                      assessed using Welch’s t-test and LEfSe analysis
+observed in the WB results. Taken together, upon
+observing each grouping, significant inter-                           Figure 8(a-e) present the results of Welch’s t-test,
+individual variability was evident. However, indi­                    comparing pairwise group data at the phylum level.
+viduals displayed similar patterns when grouped                       F8&9 serves as the primary concentration of BEVs,
+
+
+
+
+Figure 8. Significant differences in the microbiota of stool DNA and stBEV DNA in different fractions were identified by metagenomic
+analysis. Investigation of microbial composition differences involved Welch‘s t-test comparisons between (a) F5&6 vs. F8&9, (b) F7 vs.
+F8&9, (c) Stool vs. F8&9, (d) Stool vs. F5&6, and (e) Stool vs. F7. The left y-axis represents phyla, with mean abundance on the x-axis.
+Colored dots highlight groups with higher phylum abundance, and error bars depict the 95% confidence intervals for group
+differences. Significance levels are shown on the right y-axis. LEfSe analysis demonstrated significant bacterial distinctions in fecal
+microbiota for (f) F5&6 vs. F7 vs. F8&9 and (g) Stool vs. F8&9 vs. PF, with LDA scores (log10) > 4 and P value <0.05 displayed.
+14     C.-C. LI ET AL.
+
+
+hence it is compared to F5&6, F7, and stool groups.        from a simplified culture medium. Secondly, to
+F5&6 showed significantly higher proportions of            evaluate the effects on functional assays separately
+Bacteroidota and Actinobacteria compared to F8&9           for G+ BEVs and G- BEVs within the cultured
+(p-values = .037 and .014, respectively). Addit            models, without mutual interference. E. coli was
+ionally, F7 exhibited a notably higher abundance           chosen as the G- bacteria model because it is
+of Proteobacteria and Bacteroidota compared to             a common G- bacterium found in the human
+F8&9 (p-values = .039 and .033, respectively).             colon, and many studies on G- BEVs use it as
+Conversely, F8&9 displayed a significant composi­          a model organism.22,31 B. coagulans, although not
+tion of Firmicutes, with p-values = .008 and .011 in       a native human gut bacterium, can be consumed
+contrast to F5&6 and F7, respectively. Compared to         through various foods and supplements and has
+stool, F8&9 exhibited a notably higher abundance           functional properties in the human gut, such as
+of Bacteroidota (p-value = .34). Additionally, both        lactic acid production. Additionally, it is easy to
+F5&6 and F7 showed significantly higher levels of          culture, making it a suitable representative of G+
+Proteobacteria compared to stool (p-values = .019          bacteria in this study. The Colo205 cell line,
+and .02, respectively). In summary, when compar­           derived from human colon cancer, was chosen for
+ing stBEV subgroups, F5&6 and F7 showed                    the EEVs group. Colo205 cells exhibit gene and
+a higher prevalence of BEVs from Bacteroidota              protein expression patterns similar to normal
+and Proteobacteria, as well as Actinobacteria, in          colon epithelial cells, making them a valuable
+contrast to F8&9. On the other hand, F8&9 were             model for studying gut biology.32 It’s important
+characterized by a predominant presence of BEVs            to note that the human gut microbiota comprises
+from Firmicutes.                                           a wide array of both G- and G+ bacteria. Selecting
+   Figure 8f-g utilize Linear Discriminant Analysis        single cultured model can encompass all these
+Effect Size (LEfSe) analysis to identify differences       types is impossible. Therefore, these cultured mod­
+between F5&6, F7, F8&9, and between Stool,                 els represent subsets of G- BEVs and G+ BEVs.
+F8&9, and PF groups. We used a threshold of LDA            When discussing the effectiveness of distinguishing
+scores (log10) > 4 and P < 0.05 to display statistically   stool EEVs and BEVs, these three cultured models
+significant differences. Most of the phyla and species     provided their characteristics such as markers,
+shown here were previously discussed in Figure 7(a,        functional features, etc., in the G- BEVs, G+
+b), offering strong evidence of their significance.        BEVs, and EEVs groups as complementary tools.
+Additionally, this section provides information               Some studies have investigated the most appro­
+about taxonomic differences at various levels, such        priate methods for purifying stool-derived BEVs
+as class, order, family, and more, for reference.          according to the total recovery, reproducibility,
+                                                           purity, and RNA composition of the products; for
+                                                           example, one article mentions five EV separation
+Discussion
+                                                           methods (UC, precipitation [EQ-O, EQ-TC], size
+Recent research has suggested that BEVs, which are         exclusion chromatography [SEC], and ultrafiltra­
+naturally secreted by the most of bacterial species,       tion [UF]).33 However, these methods are not cap­
+may impact both the maintenance of health and the          able of separating BEVs from EEVs. Tulkens et al.14
+development of diseases, making them significant           developed a density gradient centrifugation-based
+intermediaries through which the microbiome can            purification method for purifying stBEVs. Their
+influence the host.29,30 Despite ample knowledge           data demonstrated that stEEVs typically float at
+about the bacterial composition of the gut micro­          a density of 1.083–1.111 g/mL, while stBEVs have
+biome, there is still a considerable amount of             a slightly higher density and are found at 1.133–
+research needed to fully comprehend the develop­           1.201 g/mL.14 Notably, these density ranges corre­
+ment, attributes, and functions of BEVs in fecal           spond to our findings for F5&6 and F8&9. In our
+specimens.20                                               results, (G-)EcBEVs were primarily enriched in
+    This work established three cultured models for        fractions F8&9, while EEVs showed a higher con­
+two reasons: Firstly, to assess the efficiency of pur­     centration in fractions F5&6, aligning with pre­
+ification by isolating G- BEVs, G+ BEVs, and EEVs          vious literature findings. However, the majority of
+                                                                                           GUT MICROBES     15
+
+
+(G+)BcBEVs were found in F5&6, which has not             the caveat that the LPS antibody used in WB was
+been discussed in the previous study. Based on our       unable to detect it.
+TEM data, we observed heterogeneity in size for             On the other hand, studies have shown that G+
+both EEVs and BEVs. NTA data showed that cul­            bacteria, including their BEVs, express LTA and
+tured BEVs (both (G-)EcBEVs and (G+)BcBEVs)              can activate immune cells via TLR2.14,23,36 The
+were smaller than cultured EEVs, supporting pre­         TLR2 receptor assay employs InvivoGen HEK-
+vious findings.34 The above results indirectly sug­      Blue™ hTLR2 cells, which are specifically designed
+gest a higher presence of EEVs in stEVs from F5&6        for monitoring the activation of NF-kB in response
+and a higher presence of G- BEVs in F8&9, but            to the stimulation of human TLR2 (hTLR2). When
+further characterization data are still required for     comparing (G+)BcBEVs and (G-)EcBEVs at the
+validation.                                              same concentration, it’s noteworthy that (G+)
+   Secondly, the protein characteristics of these        BcBEVs exhibit a slightly higher signal. Therefore,
+purified EVs were interrogated. Toward this end,         it is inferred that G+ BEVs remain the primary
+well-known exosomal markers, i.e., tetraspanins          influencing factor in this assay.
+(CD9), syntenin-1,the ESCRT protein TSG101,                 PBMCs are blood cells that encompass lym­
+the ESCRT-associated protein ALIX, and flotillin,        phocytes, monocytes, and macrophages. Many
+were used.35 However, Figure 3a reveals distinct         of these cells express TLR4, TLR2, and TLR5,
+signals for Alix, TSG101, and flotillin in both bac­     which LPS, LTA, or flagella can stimulate to pro­
+terial lysate and BEVs. It should be noted that          duce proinflammatory cytokines. Therefore, they
+bacteria naturally do not express these proteins,        are suitable for experiments investigating BEVs’
+which are typically exclusive to eukaryotic systems.     presence.22 This study utilized this characteristic
+This suggests that certain proteins in bacterial         to assess whether these fractions of stBEVs can
+lysate and BEVs may nonspecifically bind to these        activate human PBMCs. The results showed that
+antibodies. Consequently, when assessing the effec­      all three proinflammatory cytokines (IL-6, TNF-a,
+tiveness of distinguishing stEVs from EEVs and           and IL-1a) presented the highest values in F8&9.
+BEVs, the results obtained with these three anti­        However, when comparing LPS and (G-)EcBEV
+bodies are initially disregarded.                        to F8&9 FT individually, it becomes evident that
+   When attempting to separate flagella from stEVs       the group with a higher expression of LPS sig­
+in the F8&9 groups of stEVs, we initially employed       nificantly contributes to this assay (Figure 4g-i,
+size exclusion chromatography (SEC). However,            right). Therefore, it is deduced here that G-BEVs
+the results were not as expected (Figure S2).            containing LPS contribute significantly to the sti­
+Based on the WB results, most of the BEVs and            mulation of PBMCs, while Flagellin and G+
+Flagellin remain within fractions F3 to F6, without      BEVs, although stimulating, do not exhibit the
+distinct separation. TEM results indicate that EV        same level of intensity. In summary, stBEVs
+particle sizes decrease gradually as fraction num­       have a complex role in host cell immune
+bers increase. Nonetheless, Flagella are still present   responses. Based on the results of functional stu­
+in each fraction, albeit decreasing in size with         dies and precious characterization data, it can be
+higher fraction numbers. The coexistence of frag­        inferred that the most of G+ BEVs and G- BEVs
+mented flagella with EVs poses challenges for effec­     in stBEVs are enriched in the F8&9 fractions.
+tive separation. Hence, we opted for the IP method          Subsequently, we explored the optimization of
+to separate Flagella from BEVs.                          DNA extraction methods for stBEVs and the selec­
+   The LAL test was utilized to quantify the total       tion of PCR amplification sites for 16S rRNA genes
+LPS content and pinpoint the presence of G- BEVs.        from stBEV DNA. This study selected two com­
+LPS and (G-)EcBEV were employed as positive              monly used EV DNA extraction kits (the DNeasy
+control groups to validate that the LAL signal ori­      kit, which uses beads to physically disrupt the mem­
+ginates from LPS. Furthermore, the results indi­         brane, and the XCF kit, which uses a lysis reagent to
+cated that the most of G- stBEVs were located in         disrupt the membrane). It combined these methods
+F8&9. This finding corroborates the WB results           with the Boiling method in an attempt to find the
+and indicates the presence of LPS in F8&9, with          most suitable BEV DNA extraction approach for 16S
+16     C.-C. LI ET AL.
+
+
+rRNA sequencing. After PCR amplification, DNA              stBEVs, they can serve as a basis for speculating
+quality control results showed that using the XCF kit      which bacteria are more likely to produce BEVs in
+directly to extract stBEVs DNA was identified as the       the body. At the phylum level, the main microbial
+most effective method.                                     components of both the stool samples and stBEVs
+    PCR primers specific to parts of the 16S rRNA          were Firmicutes, Bacteroidetes, and Actinobacteria,
+gene containing constant and variable sequences            similar to what has been reported in the literature43.
+have been used for many years to identify and clas­        However, there were significant differences between
+sify microbiomes. This approach is considered the          the two groups at the species level. Currently, there is
+gold standard for phylogenetic studies.37 While            limited literature on microbiota analysis of stBEVs
+selecting the appropriate sequencing method is cru­        using FL regions of genes. The variations in purifica­
+cial for precise taxonomic classification, it is equally   tion methods and sequencing approaches may con­
+important to determine the presence of the 16S             tribute to inconsistent results. Therefore, further
+rRNA gene fragments in stBEVs and assess if speci­         data is needed to explore the relationship between
+fic PCR primers can effectively amplify them. This         gut microbiota and stBEV microbiota. Interestingly,
+experiment showed that DNA from stBEVs can be              both stBEVs from F8&9 and PF exhibited a similar
+effectively amplified using PCR targeting the V3-V4        microbial composition, supporting the effectiveness
+or FL region of the 16S rRNA gene. Due to the              of our purification method in concentrating the
+limited literature discussing the selection of specific    majority of stBEVs in F8&9.
+16S rRNA gene amplification regions for stBEVs                On the other hand, considering that stBEVs
+samples, this study provides empirical validation          possess personalized microbiota composition akin
+on this matter.                                            to the gut microbiome (Figure S4), along with their
+    The metagenomic analysis data of stBEV DNA             communicative nature and ability to indicate their
+using the 16S rRNA V3-V4 region and the FL                 bacterial origin, these characteristics emphasize the
+region were compared. Our findings revealed that           potential of stBEVs as valuable targets for disease
+the FL region group showed a higher abundance of           categorization and clinical diagnostics. Anticipated
+microbial composition at the genus level. Previous         future developments are expected to expand the
+studies reported that V3-V4 sequencing of the              applications of stBEVs even further.
+human gut microbiota resulted in 18.97% of                    This study has limitations. The gut microbiota is
+unclassified bacteria at the genus level. In contrast,     a complex community of trillions of bacteria,
+FL regions sequencing showed only 1.10% of                 archaea, fungi, and viruses. However, in this
+unclassified bacteria. At the species level, V3-V4         study, we focused only on three types of EVs:
+sequencing led to a higher proportion of unclassi­         EEVs, G+ BEVs, and G- BEVs. These types may
+fied bacteria at 55.17%, while FL regions exhibited        not fully represent the entirety of microbial EVs. It
+approximately 7.47%. Hence, FL region sequencing           is worth exploring whether archaea, fungi, and
+is recommended for species-level classification.38,39      viruses can also produce EVs and whether our
+    The differences in microbiota between stool sam­       purification method unintentionally enriches
+ples and different stBEVs fractions were discussed.        them or related substances. Further investigations
+Previous studies have reported significant differ­         are required to gain more insights into these
+ences in the microbiota composition between gut            aspects. On the other hand, investigations into gut
+bacteria and stBEVs, but these studies did not spe­        microbiota are still limited to healthy donors. More
+cifically purify stBEVs, which may have led to the         diverse samples are needed to better understand
+sequencing of residual bacterial DNA40–42. In the          the composition of various BEV fractions and
+current study, BEVs were purified using a density-         their relationship with stool bacteria.
+based method to ensure the analyzed bacterial DNA             In summary, we optimized a purification
+was derived from stBEVs. Although the experimen­           method to enrich stBEVs from human stool and
+tal results still showed a significant difference in the   validated its efficacy using cultured models repre­
+microbial composition between gut bacteria and             senting EEVs, G+ BEVs, and G- BEVs as
+                                                                                            GUT MICROBES     17
+
+
+representative EVs. We employed various techni­           five donors was mixed, aliquoted, and stored at
+ques to investigate the characteristics of stBEVs,        −80°C for downstream analyses.
+including their particle number, morphology, spe­
+cific antigens, and functional properties. In addi­
+tion, we optimized the DNA purification method            Cell and Bacterial Culture Medium (CCM & BCM)
+for stBEVs and established an experimental work­          CCM from the Colo205 cell line
+flow for microbiota composition analysis. Finally,        The Colo205 cell line was purchased from the
+we established a connection between the gut               American Type Culture Collection (ATCC,
+microbiome composition and stBEVs, with the               Manassas, VA, USA). Colo205 cells were maintained
+invention of developing novel fluid-based biomar­         in RPMI-1640 medium (HyClone SH30027.02) con­
+kers for clinical applications.                           taining 10% FBS and 1% penicillin‒streptomycin
+                                                          (Gibco, CA, USA). For EV isolation, cells were
+                                                          grown in medium containing 10% exosome-
+Materials and methods                                     depleted FBS (Gibco A27208–01) for 48 h (to ensure
+                                                          that cells reached confluence of ∼70–80%).
+Collection of human specimens
+                                                          Thereafter, the CCM was collected and centrifuged
+Stool samples were obtained with informed con­            at 300 × g for 10 min at RT and then at 1,500 × g for
+sent from healthy individuals and the approval of         10 min at 4°C. The subsequent isolation steps for
+the Research Ethics Committee Office of the               EVs were performed as described below.
+National Taiwan University Hospital under project
+number 202006060RINB. Three aliquots of stool             BCM from the E. coli DH5α strain and B. coagulans
+samples were collected at the same time point and         The preculture of E. coli strain DH5α (native) and
+stored in a sterile tube. The samples were trans­         B. coagulans was carried out by inoculating a single
+ported to the laboratory and stored at − 80°C until       bacterial colony into 5 mL of LB medium (10 g/L
+isolation, limiting the number of freeze‒thaw             tryptone, 5 g/L yeast extract, and 10 g/L NaCl at
+cycles to a maximum of one and avoiding under             pH 7). After incubation for 8 h (for DH5α) or 16 h
+room temperature for more than four hours.                (for B. coagulans) at 37°C and 150 RPM, the pre­
+Whole blood was collected from donors using               culture was inoculated (with 1/100 dilution) into
+a 21 G needle into EDTA-coated vacutainers (BD            500 mL of LB medium in a 2-L flask. The culture
+Biosciences, San Jose, CA). Within 1 hour of col­         was collected after several hours (12 h for DH5α
+lection, the subsequent purification steps for            and 24 h for B. coagulans) of incubation at 37°C
+PBMCs were performed as described below.                  and 150 RPM and centrifuged at 600 × g for 15 min
+                                                          at RT and then at 1,500 × g for 10 min at 4°C. The
+                                                          subsequent isolation steps for EVs were performed
+Generation of stool pool                                  as described below.
+Five healthy donors (3 males and 2 females, aged
+24–32, with a regular diet) were included for initial
+                                                          Isolation of EVs from CCM, BCM and human feces
+protocol optimization. The pooled samples were
+                                                          using DG and UC methods
+used for all experiments (Figures 2–5). Each sample
+was thawed at RT and aliquoted to 5 grams per tube.       The EV purification method was described
+After the purification method described below, each       previously14 with minor modifications. An over­
+sample became a crude extract. The crude extracts         view of sample preparation is provided in
+from five donors were mixed, aliquoted into cryo­         Figure 1. Briefly, five grams of stool sample was
+vials, and stored at − 80°C until the next purification   dissolved in 50 mL of prewarmed (37°C) filtered
+step. For the 16S rDNA sequencing analysis, DNA           phosphate-buffered saline (PBS) in a 50 mL sterile
+was extracted from each sample. The DNA from              centrifugal tube. To suspend the sample gently,
+18     C.-C. LI ET AL.
+
+
+constant 360° rotation was applied in a slight vibra­   tubes, totaling 15 tubes. Each tube underwent UC to
+tion mode on the sample mixer (HulaMixer,               enrich and remove the density buffer. Finally, the
+Invitrogen) for 30 min at 37°C. After these steps,      purification results were analyzed using WB
+CCM and BCM underwent the same preparation              and TEM.
+protocol described below. The sample was centri­
+fuged at 8,000 × g for 15 min at 4°C to remove cell
+                                                        Immunoprecipitation for separating flagella and
+debris, fibers, bacteria, and undigested food. The
+                                                        BEVs in F8&9 of stEVs, (G-)EcBEVs, and (G+)BcBEVs
+supernatant was collected in a new 50 mL sterile
+                                                        samples
+centrifugal tube and then centrifuged at 12,000 ×
+g for 15 min at 4°C to remove contaminants, then        The flagellin antibody was coupled using the
+filtered through a 0.22-μm Nalgene Rapid-Flow           Dynabeads™ Protein G Immunoprecipitation Kit
+filter (Thermo Fisher Scientific, Waltham, MA,          (Invitrogen) following the provided instructions. In
+USA) done on the ice. The sample was concen­            brief, 50 μL of Dynabeads™ magnetic beads were
+trated by using 100-kDa Amicon Ultra15 centrifu­        resuspended, mixed with 10 μg of the anti-flagellin
+gal filters (Merck) at 5,000 × g for 8 min several      antibody (Abcam) in 200 μL of Ab Binding and
+times. Finally, samples were concentrated to            Washing Buffer. The mixture was rotated at room
+a volume of at least 1350 μl, distributed in aliquots   temperature using a HulaMixer™ Sample Mixer for
+of 450 µl per cryovial, and stored at −80°C until the   30 minutes. Subsequently, it was washed twice with
+test. The crude extract was mixed with iodixanol        the same buffer using gentle pipetting. Additionally,
+(OptiPrep, Sigma #1556) to obtain a final propor­       the crosslinking reagent DSS (Invitrogen) was used as
+tion of 50% (w/v) iodixanol. The 2.68 mL mixture        per the manual to prevent co-elution of the conju­
+was transferred to a tube bottom, followed by load­     gated antibody. Antibody-coupled magnetic beads
+ing with a 2.68 mL 40%, 2.68 mL 20%, and 2.35 mL        were added to the 200 μL sample and incubated at
+10% iodixanol gradient; these dilutions were pre­       4°C for 2 hours on a rotor. The mixture was then
+pared by diluting a stock solution (60% w/v) of         placed on a magnet for 1 minute, resulting in the
+iodixanol with a buffer solution (0.25 M sucrose/       supernatant known as the F8&9 Flow-through (FT).
+1 mM EDTA/10 mM Tris, pH 7.4), and the top was          The beads underwent three washes, each with 200 μL
+loaded with 0.67 mL filtered PBS. The tubes were        of Washing Buffer. Subsequently, 20 μL of Elution
+then centrifuged at 100,000 × g for 18 h at 4°C in      Buffer was added, and the magnetic bead-Ab-Ag
+a P40ST swinging bucket rotor (Hitachi CP80             complex was gently pipetted to resuspend it, and this
+WX). Thirteen fractions of 670 µl each were col­        sample is referred to as F8&9 Pull Down (PD). Finally,
+lected, starting with the top fraction. All fractions   both FT and PD samples were processed using a 10
+were diluted and washed with filtered PBS and           kDa ultrafiltration centrifugation to switch to an
+centrifuged at 100,000 × g for 3 h at 4°C in the        endotoxin-free PBS buffer, preparing them for the
+MLA-50 rotor (BECKMAN). Finally, each fraction          subsequent functional assay.
+was resuspended in 200 µl of PBS.
+                                                        Nanoparticle Tracking Analysis (NTA)
+Size exclusion chromatography (SEC) for separating
+                                                        NTA was used to determine the EV size distribu­
+flagella and BEVs in F8&9 of stEV samples
+                                                        tion and concentration with a NanoSight NS300
+Ten milliliters of sepharose beads CL-2B (GE            instrument (Malvern) equipped with a 488 nm blue
+Healthcare) were allowed to settle in a PD-10 column    laser and an sCMOS camera. NanoSight software
+(GE Healthcare). They were washed five times with       (NTA 3.4 Build 3.4.003) was used for recording and
+endotoxin-free PBS, using a volume equal to five        analysis. Briefly, each EV sample was diluted with
+times the bead’s volume. After washing, the beads       PBS according to the detection range (20–100 par­
+were packed. F8&9 from the samples, previously sub­     ticles/frame). For each sample, six 60-second
+jected to DG, were collected. Approximately 2 mL of     videos were captured with the following settings:
+this fraction was loaded into the column. The liquid    syringe flow rate 100, camera level 16, temperature
+that dripped down was collected in 1 mL eppendorf       25°C, and viscosity 0.9 cP (water). For analysis, the
+                                                                                        GUT MICROBES     19
+
+
+following settings were used: screen gain 10 and       Biochemical endotoxin detection by Limulus
+detection threshold 4. The focus was automatically     Amebocyte Lysate (LAL) test
+adjusted daily using standard beads.
+                                                       For the stEVs group, each sample was diluted to
+                                                       106 particles in a 50 μl volume per well. The F8&9
+Transmission Electron Microscopy (TEM)                 PD and F8&9 FT samples were prepared using the
+                                                       same protein concentration (diluted to approxi­
+The EV pellet was resuspended in PBS before being
+                                                       mately 0.000625 µg/mL). LPS was used at
+assessed by TEM. A 10 µl sample was absorbed on
+                                                       a standard concentration of approximately 1.5
+a carbon-coated 200 mesh copper grid for 5 min,
+                                                       EU/mL, and (G+)BcBEVs and (G-)EcBEVs were
+followed by another round of fixation with 2.5%
+                                                       employed at the same particle concentration as
+(w/v) glutaraldehyde for 5 min. The grids were
+                                                       stEVs group. Testing was performed with the
+washed with phosphate buffer six times for 1 min
+                                                       Pierce Chromogenic Endotoxin Quant Kit
+each and with distilled water twice for 1 min each.
+                                                       (Thermo Scientific) by following the manufac­
+After negative staining with 2% (w/v) uranyl acet­
+                                                       turer’s guidelines. In brief, 50 μl of the sample,
+ate for 1 min, the remaining dye was immediately
+                                                       endotoxin standard dilutions, and endotoxin-free
+removed with a filter paper. Thereafter, the grids
+                                                       water were added to the prewarmed plate.
+were observed with a Hitachi H-7650 transmission
+                                                       Furthermore, 50 μl of Amebocyte Lysate Reagent
+electron microscope operated at 120 kV.
+                                                       was added, followed by incubation for 12 min at
+                                                       37°C. Thereafter, 100 μl of prewarmed chromo­
+Western blot analysis                                  genic substrate solution was added, followed by
+                                                       incubation for 6 min at 37°C. Finally, 25% acetic
+Protein concentrations were determined using the
+                                                       acid was added to stop the reaction, and the optical
+Pierce BCA protein assay kit (Thermo Scientific,
+                                                       density (OD) at 405 nm was measured using
+Waltham, MA, USA). Two sample loading strate­
+                                                       SpectraMax iD3 Multi-Mode Microplate Readers
+gies were employed: 10 μg protein was loaded for
+                                                       (Molecular Device, Silicon Valley, CA, USA).
+fractions with sufficient protein (usually F5&6, F7,
+and F8&9), while 30 μl of the sample was loaded for
+other fractions with less than 10 µg per 30 μl. All
+                                                       Peripheral Blood Mononuclear Cell (PBMC)
+samples were prepared in 4× Laemmli sample buf­
+                                                       stimulation test
+fer (Bio-Rad, Benicia, CA, USA) containing β-
+mercaptoethanol and heated at 95°C for 15 min.         Isolation of PBMCs from human peripheral blood
+Samples were separated on 4–15% Mini-                  Peripheral blood from healthy donors was col­
+PROTEAN TGX precast Gels (Bio-Rad) on                  lected in an EDTA-coated tube (BD Bios
+a Mini PROTEAN Tetra Cell system (Bio-Rad)             ciences, San Jose, CA, USA.). The whole blood
+and transferred to an Immobilon-P PVDF mem­            was diluted with 2 times the volume of PBS/
+brane (Millipore) following the manufacturer’s         EDTA (with 2 mM disodium EDTA). Fifteen
+guidelines. The membrane was then blocked with         milliliters of Ficoll-Paque PREMIUM sterile
+5% BSA for 1.5 h at RT and incubated overnight at      solution with a density of 1.077 (Cytiva) was
+4°C with the primary antibodies. After incubation      loaded in a 50 mL centrifuge tube, and 30 mL
+with primary antibodies, the membranes were            of the diluted blood was carefully layered on
+washed with 0.05% Tween in phosphate-buffered          Ficoll-Paque solution. The tube was centrifuged
+saline (PBST) six times for 5 min each. Secondary      at 400 × g for 40 min at RT. The mononuclear
+antibody staining was conducted at RT for 1 h.         cell fractions at the interface between plasma
+After washing with PBST, the membranes were            and Ficoll-Paque were collected and transferred
+detected using Western Lightning Ultra substrate       to a new tube. The pellet was resuspended in
+(PerkinElmer). Images were taken by using a UVP        40 mL of PBS/EDTA and centrifuged at 300 ×
+ChemStudio PLUS Touch system (Analytic Jena).          g for 10 min at RT. The supernatant was dis­
+All the antibodies used in this study are listed in    carded, and PBMCs were resuspended in 5 mL
+Supplementary Table .                                  of PBS.
+20     C.-C. LI ET AL.
+
+
+PBMC stimulation test                                   mL). LPS was added at a standard concentration of
+PBMCs were diluted to 1.33 × 107 cells/ml with          approximately 1.5 EU/mL. Twenty microliters of
+prewarmed (37°C) RPMI-1640 medium (HyClone              a diluted sample were added, followed by gentle
+SH30027.02) supplemented with 5% exosome-               mixing and incubation at 37°C in CO2 for 18 h.
+depleted FBS (Gibco A27208–01). Then, 150 μl of         The assay results were obtained by measuring the
+PBMC solution was added to a well of a 96-well          optical density (OD) at 620 nm by using
+plate, and PBMCs were allowed to adhere for 2 h         SpectraMax iD3 Multi-Mode Microplate Readers.
+(37°C, 5% CO2). The cell medium was carefully
+removed, and prewarmed serum-free RPMI med­
+                                                        Strategy for extracting stBEVs DNA and amplifying
+ium was replaced twice; For stEVs, (G+)BcBEVs,
+                                                        the 16S rRNA gene
+and (G-)EcBEVs, BEVs were diluted to
+a concentration of 2 × 107 BEVs/mL in serum-free        Figure 5a depicts this whole procedure. In the DNA
+RPMI medium and added to the wells. F8&9 PD             purification strategy for stBEVs, we considered the
+and F8&9 FT samples were added to wells at the          following five methods: (1) Boiling: involved boil­
+same protein concentration (diluted to approxi­         ing purified stool EVs at 100°C for 40 minutes,
+mately 0.0125 µg/mL). LPS was added at                  followed by centrifugation at 13,000 × g for 30
+a standard concentration of approximately 1.5           minutes at 4°C and collection of the supernatant.
+EU/mL. The samples were then incubated for              (2) Boiling followed by DNA extraction using the
+a minimum of 24 h.                                      XCF Exosomal DNA isolation kit (Boiling+XCF),
+   Thereafter, the medium was collected and cen­        (3) Boiling followed by DNA extraction using the
+trifuged at 500 × g for 9 min at 4°C to remove cell     DNeasy PowerSoil Pro kit (Boiling+DNeasy), (4)
+debris. The BEVs were removed by ultrafiltration        Direct DNA extraction using the XCF kit (XCF)
+with a 100-kDa centrifugal filter at 3,000 × g for 10   and (5) Direct DNA extraction using the DNeasy
+min at 4°C. The flow-through was concentrated           kit (DNeasy). At Checkpoint 1, the total DNA yield
+with a 3-kDa centrifugal filter. IL-1α, TNF-α, and      extracted from the five methods mentioned above
+IL-6 Quantikine ELISA kits (R&D system) were            was measured using the Qubit 2.0 Fluorometer.
+used to measure cytokine contents according to          The top two methods with the highest DNA yield
+the instructions provided by the manufacturer.          were selected for further analysis. Next, DNA pur­
+                                                        ified from the two selected DNA extraction meth­
+                                                        ods was subjected to PCR amplification targeting
+TLR2 receptor assay
+                                                        the V3-V4 and FL regions of the 16S rRNA gene.
+TLR2 activity was measured using HEK-BlueTM             At Checkpoint 2, the total DNA yield from the
+hTLR2 cells (InvivoGen) according to the instruc­       amplified DNA was quantified using the
+tions provided by the manufacturer. In brief, HEK-      Nanodrop system. Additionally, the quality of the
+Blue hTLR2 cells were maintained in medium sup­         PCR-amplified DNA was assessed using gel elec­
+plemented with 1X HEK-Blue Selection                    trophoresis. After passing Checkpoint 2, the
+(InvivoGen) to 50–80% confluence. The cells were        selected samples proceeded to the subsequent
+separated from the growth medium and rinsed             experiment of 16S rRNA sequencing.
+with prewarmed PBS twice to remove cell debris.
+The cells were suspended in HEK-Blue Detection
+                                                        Extraction of stool and stool bacteria DNA
+medium (InvivoGen) and diluted to 2.8 × 105 cells/
+mL. Then, 180 μl of the cell suspension was imme­       DNA extraction from stool and stool bacteria was
+diately added to each well of the 96-well plate. For    performed using the DNeasy PowerSoil Pro kit
+stEVs, (G+)BcBEVs, and (G-)EcBEVs, the samples          according to the manufacturer’s instructions. For
+were prepared by diluting BEVs with prewarmed           stool samples, 250 mg of sample was directly used
+PBS to a concentration of 1 × 108 BEVs/mL and           as per the kit’s instructions. Stool bacteria samples
+adding them to the wells. F8&9 PD and F8&9 FT           were prepared by centrifuging 250 mg of stool in
+samples were added to wells using the same protein      50 mL of endotoxin-free PBS at 6000 g for 30 min­
+concentration (diluted to approximately 0.0625 µg/      utes to remove the EV-containing supernatant.
+                                                                                        GUT MICROBES     21
+
+
+This step was repeated twice, and then the pellet      introduce universal hairpin adapters to double-
+was processed for DNA extraction following the         stranded DNA fragments. The SMRTbell library
+kit’s instructions.                                    was purified with AMPure PB beads to remove
+                                                       adapter dimers and then incubated with sequencing
+                                                       primer v4 and Sequel II Binding Kit 2.1 reagents for
+DNase I treatment of DNA from bacterial lysate and
+                                                       primer annealing and polymerase binding. Finally,
+stBEVs
+                                                       sequencing was performed in circular consensus
+The DNase I treatment experiment was conducted         sequence (CCS) mode on a PacBio Sequel IIe instru­
+using the TURBO DNA-free kit (Invitrogen), fol­        ment to generate HiFi reads with a predicted accu­
+lowing the manufacturer’s instructions. Two            racy (Phred scale) = 30.
+groups for DNA from bacterial lysate and two
+groups for DNA from stBEVs were tested with
+                                                       V3-V4 region of 16S rRNA amplification and gene
+equal DNA concentrations (approximately 15 ng/
+                                                       sequencing on the Illumina platform
+µL). Following the routine DNase treatment pro­
+tocol from the kit’s instructions, samples were then   The V3-V4 region of the 16S rRNA gene was
+purified using the XCF Exosomal DNA isolation          sequenced using specific primers (341F: 5’-
+kit. Subsequently, PCR targeting the FL region was     CCTACGGGNGGCWGCAG-3’, and 806 R: 5’-
+performed, followed by electrophoresis testing.        GACTACHVGGGTATCTAATCC-3’) according
+                                                       to the 16S Metagenomic Sequencing Library
+                                                       Preparation protocol (Illumina). PCR was carried
+FL region of 16S rRNA amplification and gene
+                                                       out using 12.5 ng of gDNA with KAPA HiFi
+sequencing on the PacBio platform
+                                                       HotStart ReadyMix (Roche) under the following
+16S gene-specific primers with barcodes were used      conditions: 95°C for 3 minutes; 25 cycles of 95°C
+to amplify FL 16S genes (V1-V9 regions). Each          for 30 seconds, 55°C for 30 seconds, 72°C for 30
+primer contained a 5’ phosphate-modified buffer        seconds; 72°C for 5 minutes; and holding at 4°C.
+sequence (GCATC), a 16-base barcode, and degen­        PCR products with a bright main band at approxi­
+erate 16S gene-specific forward or reverse primer      mately 500 bp were selected and purified with
+sequences (Forward: 5’Phos/GCATC-16-base bar­          AMPure XP beads for library preparation. The
+code-AGRGTTYGATYMTGGCTCAG-3’, Reverse:                 sequencing library was prepared using the 16S
+5’Phos/GCATC-16-base barcode-RGYTACCTTGT               Metagenomic Sequencing Library Preparation pro­
+TACGACTT-3’, where the degenerate base identi­         cedure (Illumina). Secondary PCR was conducted
+ties used were R = A, G; Y = C, T; and M = A, C).      with the V3-V4 region PCR amplicon and the
+PCR was carried out with KAPA HiFi HotStart            Nextera XT Index Kit, containing dual indices
+ReadyMix (Roche) using 2 ng of gDNA, and the           and Illumina sequencing adapters. Indexed PCR
+products were assessed on a 1% agarose gel.            product quality was evaluated using a Qubit 4.0
+Samples with a bright main band at approximately       Fluorometer and a Qsep100TM system. The
+1500 bp were purified using AMPure PB Beads and        indexed PCR products were mixed in equal
+used for subsequent library preparation. The PCR       amounts to generate the sequencing library.
+conditions were as follows: 95°C for 3 minutes; 20 ~   Finally, paired 300-bp reads were generated using
+27 cycles of 95°C for 30 seconds, 57°C for 30 sec­     the Illumina MiSeq platform.
+onds, 72°C for 60 seconds; 72°C for 5 minutes; and
+holding at 4°C. The SMRTbell library was prepared
+                                                       Taxonomic assignment
+using the amplification of FL 16S gene with bar­
+coded primers for multiplexed SMRTbell library         For the PacBio platform
+preparation and sequencing procedure (PacBio).         PacBio’s official workflow with a minimum of
+The barcoded PCR products were pooled in equal         three passes and a predicted accuracy of 0.9 was
+amounts, and 500–1,000 ng of the pooled amplicon       used to generate circular consensus sequences
+sample was subjected to DNA damage repair, fol­        (CCSs), which were demultiplexed and further
+lowed by end-repair/A-tailing and ligation to          processed using DADA2.36 The DADA2 workflow
+22     C.-C. LI ET AL.
+
+
+included quality filtering, dereplication, learning      QIIME2 and the Silva database. Multiple sequence
+the dataset-specific error model, ASV inference,         alignment was conducted with QIIME2 alignment
+and chimera removal. The algorithm resolved              MAFFT against the Silva database, and
+exact amplicon sequence variants (ASVs) with             a phylogenetic tree was constructed with QIIME2
+a single-nucleotide resolution and a near-zero           phylogeny FastTree using representative ASV
+error rate. Taxonomic classification was performed       sequences.
+using the feature-classifier44 and classify-consensus
+-blast algorithms in QIIME2,45 with information
+retrieved from the NCBI database. Multiple               Statistical analyses
+sequence alignment was conducted using                   The data were analyzed using either one-way
+MAFFT46 against the NCBI database, and                   ANOVA or Student’s t test at a significance
+a phylogenetic tree was constructed using the            level of p < 0.05. GraphPad Prism 9.0 software
+QIIME2 phylogeny FastTree47,48 algorithm with            was used for analysis, and the results are pre­
+a set of representative ASV sequences.                   sented as the mean ± SD for three independent
+    This study examined α-diversity indexes, includ­     experiments. Welch’s t-test is employed to com­
+ing species richness indicators such as observed         pare means and determine if two different, ran­
+features, Menhinick, and Margalef; as well as spe­       domly sampled, independent datasets have equal
+cies diversity indices such as Shannon entropy,          average values. To identify species with signifi­
+Simpson, Pielou’s evenness, and Faith’s phyloge­         cant differences between pairs of categories, the
+netic diversity.                                         Welch’s t-test is used for inter-group analysis.
+    In β-diversity analysis, Constrained Principal       Species with significant differences (p-value
+Coordinate Analysis (CPCoA) were employed.               <0.05) are identified and illustrated in inter-
+CPCoA enhances Principal Coordinate Analysis             group species variation bar charts. Furthermore,
+(PCoA) by considering the links between factors          we employed LEfSe (Linear Discriminant
+of interest and species composition. It merges           Analysis Effect Size), which uses non-
+PCoA with Redundancy Analysis (RDA) and                  parametric factorial Kruskal-Wallis sum-rank
+incorporates group information to find the planes        tests to detect species with significant abundance
+that best explain inter-group differences in specific    differences. Linear discriminant analysis (LDA)
+conditions. It assesses sample similarity and quan­      was then applied to estimate the magnitude of
+tifies how group information contributes to sample       the effect of each species’ abundance on the
+variations. The statistical significance (P) was         differentiation. This approach helps identify
+determined through anova.cca with permutation            communities or species that significantly influ­
+tests. If P is statistically significant, it indicates   ence the division of samples. To display statisti­
+that group information can explain part of the           cally significant differences, we utilized
+variation among samples.                                 a threshold of LDA scores (log10) > 4 and
+                                                         P <0.05.
+For the Illumina platform
+Amplicon sequencing generated 300 bp paired-end
+reads, which were demultiplexed based on bar­            Generation of schematic diagrams
+codes. The QIIME2 Cutadapt plugin was used to            All schematic diagrams in this article were created
+remove primer and adapter sequences. The                 using biorender.com.
+QIIME2 DADA2 plugin was used to construct
+ASVs, which involved quality filtering, dereplica­
+tion, error model learning, denoising, paired-end        Acknowledgement
+read joining, and chimera removal. A maximum of
+                                                         We appreciate the support from Technology Commons,
+two expected errors per read was set for trimming        College of Life Science, NTU, for our TEM experiments and
+and filtering. Taxonomic classification was per­         BIOTOOLS Co., Ltd for their assistance in 16S rRNA sequen­
+formed using the feature-classifier algorithm in         cing analysis.
+                                                                                                          GUT MICROBES        23
+
+
+Disclosure statement                                                6. Turunen J, Tejesvi MV, Suokas M, Virtanen N,
+                                                                       Paalanne N, Kaisanlahti A, Reunanen J, Tapiainen T.
+No potential conflict of interest was reported by the author(s).       Bacterial extracellular vesicles in the microbiome of
+                                                                       first-pass meconium in newborn infants. Pediatr Res.
+                                                                       2023;93(4):887–896. doi:10.1038/s41390-022-02242-1.
+Funding                                                             7. Liu L, Liang L, Yang C, Zhou Y, Chen Y. Extracellular
+                                                                       vesicles of Fusobacterium nucleatum compromise
+This work was supported by the Taiwan Food and Drug                    intestinal barrier through targeting RIPK1-mediated
+Administration (TFDA) under project number MOHW112-                    cell death pathway. Gut Microbes. 2021;13(1):1–20.
+FDA-D-114-000611, the Higher Education Sprout Project by               doi:10.1080/19490976.2021.1902718.
+the Ministry of Education (MOE) in Taiwan under project             8. Castillo DJ, Rifkin RF, Cowan DA, Potgieter M. The
+number NTU-112L900703, the National Science and                        healthy human blood microbiome: fact or fiction?
+Technology Council (NSTC) in Taiwan under project number               Front Cell Infect Microbiol. 2019;9:148. doi:10.3389/
+most-111-2320-B-002-043-MY2, the National Taiwan                       fcimb.2019.00148.
+University Cancer Center under project number NTUCCS-               9. Jones EJ, Booth C, Fonseca S, Parker A, Cross K,
+112-13, and Reliance Biosciences Inc. under project number             Miquel-Clopés A, Hautefort I, Mayer U, Wileman T,
+RB2019-2022-001 .                                                      Stentz R, et al. The uptake, trafficking, and biodistribu­
+                                                                       tion of Bacteroides thetaiotaomicron generated outer
+                                                                       membrane vesicles. Front Microbiol. 2020;11(57).
+Data availability statement                                            doi:10.3389/fmicb.2020.00057.
+                                                                   10. Brennan K, Martin K, FitzGerald SP, O’Sullivan J,
+Data used to in this work will be made available upon request          Wu Y, Blanco A, Richardson C, Mc Gee MM.
+and is conditional to approval from the Graduate Institute of          A comparison of methods for the isolation and separa­
+Biomedical Electronics and Bioinformatics at National                  tion of extracellular vesicles from protein and lipid
+Taiwan University.                                                     particles in human serum. Sci Rep. 2020;10(1):1039.
+                                                                       doi:10.1038/s41598-020-57497-7.
+                                                                   11. Doyle LM, Wang MZ. Overview of extracellular vesi­
+                                                                       cles, their origin, composition, purpose, and methods
+Ethical statement                                                      for exosome isolation and analysis. Cells. 2019;8(7):727.
+This work was approved by the National Taiwan University               doi:10.3390/cells8070727.
+Hospital’s Institutional Review Board with informed patient        12. Toyofuku M, Nomura N, Eberl L. Types and origins of
+consent under project number 202006060RINB.                            bacterial membrane vesicles. Nat Rev Microbiol.
+                                                                       2019;17(1):13–24. doi:10.1038/s41579-018-0112-2.
+                                                                   13. Lee EY, Bang JY, Park GW, Choi D-S, Kang JS,
+References                                                             Kim H-J, Park K-S, Lee J-O, Kim Y-K, Kwon K-H,
+                                                                       et al. Global proteomic profiling of native outer mem­
+   1. Hand TW, Vujkovic-Cvijin I, Ridaura VK, Belkaid Y.               brane vesicles derived from Escherichia coli.
+      Linking the microbiota, chronic disease, and the                 Proteomics. 2007;7(17):3143–3153. doi:10.1002/pmic.
+      immune system. Trends Endocrinol Metab. 2016;27                  200700196.
+      (12):831–843. doi:10.1016/j.tem.2016.08.003.                 14. Tulkens J, De Wever O, Hendrix A. Analyzing bacterial
+   2. Moos WH, Faller DV, Harpp DN, Kanara I, Pernokas J,              extracellular vesicles in human body fluids by orthogo­
+      Powers WR, Steliou K. Microbiota and neurological                nal biophysical separation and biochemical
+      disorders: a gut feeling. Biores Open Access. 2016;5             characterization. Nat Protoc. 2020;15(1):40–67. doi:10.
+      (1):137–145. doi:10.1089/biores.2016.0010.                       1038/s41596-019-0236-5.
+   3. Vlasova AN, Takanashi S, Miyazaki A, Rajashekara G,          15. Brown L, Wolf JM, Prados-Rosales R, Casadevall A.
+      Saif LJ. How the gut microbiome regulates host                   Through the wall: extracellular vesicles in gram-positive
+      immune responses to viral vaccines. Curr Opin Virol.             bacteria, mycobacteria and fungi. Nat Rev Microbiol.
+      2019;37:16–25. doi:10.1016/j.coviro.2019.05.001.                 2015;13(10):620–630. doi:10.1038/nrmicro3480.
+   4. Liang X, Dai N, Sheng K, Lu H, Wang J, Chen L,               16. Vlasova AN, Shao L, Kandasamy S, Fischer DD, Rauf A,
+      Wang Y. Gut bacterial extracellular vesicles: important          Langel SN, Chattha KS, Kumar A, Huang H-C,
+      players in regulating intestinal microenvironment. Gut           Rajashekara G, et al. Escherichia coli nissle 1917 pro­
+      Microbes. 2022;14(1):2134689. doi:10.1080/19490976.              tects gnotobiotic pigs against human rotavirus by mod­
+      2022.2134689.                                                    ulating pDC and NK-cell responses. Eur J Immunol.
+   5. Zeng MY, Inohara N, Nunez G. Mechanisms of                       2016;46(10):2426–2437. doi:10.1002/eji.201646498.
+      inflammation-driven bacterial dysbiosis in the gut.          17. Vlasova AN, Kandasamy S, Chattha KS, Rajashekara G,
+      Mucosal Immunol. 2017;10(1):18–26. doi:10.1038/mi.               Saif LJ. Comparison of probiotic lactobacilli and bifi­
+      2016.75.                                                         dobacteria effects, immune responses and rotavirus
+24         C.-C. LI ET AL.
+
+
+         vaccines and infection in different host species. Vet            Microbiol Spectr. 2019;7(1). doi:10.1128/microbiol
+         Immunol Immunopathol. 2016;172:72–84. doi:10.                    spec.PSIB-0001-2018.
+         1016/j.vetimm.2016.01.003.                                   30. Macia L, Nanan R, Hosseini-Beheshti E, Grau GE. Host-
+     18. Ferrandon D, Imler JL, Hoffmann JA. Sensing infection            and Microbiota-Derived Extracellular Vesicles, Immune
+         in Drosophila: toll and beyond. Semin Immunol.                   Function, and Disease Development. Int J Mol Sci.
+         2004;16(1):43–53. doi:10.1016/j.smim.2003.10.008.                2019;21(1):107. doi:10.3390/ijms21010107.
+     19. Chaturvedi A, Pierce SK. How location governs toll-like      31. Wei S, Jiao D, Xing W. A rapid method for isolation of
+         receptor signaling. Traffic. 2009;10(6):621–628. doi:10.         bacterial extracellular vesicles from culture media using
+         1111/j.1600-0854.2009.00899.x.                                   epsilon-poly-L-lysine that enables immunological func­
+     20. Kameli N, Borman R, Lpez-Iglesias C, Savelkoul P,                tion research. Front Immunol. 2022;13:930510. doi:10.
+         Stassen FRM. Characterization of feces-derived bacter­           3389/fimmu.2022.930510.
+         ial membrane vesicles and the impact of their origin on      32. Schneider M, Huber J, Hadaschik B, Siegers GM,
+         the inflammatory response. Front Cell Infect Microbiol.          Fiebig H-H, Schüler J. Characterization of colon cancer
+         2021;11:667987. doi:10.3389/fcimb.2021.667987.                   cells: a functional approach characterizing CD133 as
+     21. Meganathan V, Moyana R, Natarajan K, Kujur W,                    a potential stem cell marker. BMC Cancer. 2012;12(1).
+         Kusampudi S, Mulik S, Boggaram V. Bacterial extracel­            doi:10.1186/1471-2407-12-96.
+         lular vesicles isolated from organic dust induce neutro­     33. Northrop-Albrecht EJ, Taylor WR, Huang BQ,
+         philic inflammation in the lung. Am J Physiol Lung Cell          Kisiel JB, Lucien F. Assessment of extracellular vesicle
+         Mol Physiol. 2020;319(6):L893–L907. doi:10.1152/                 isolation methods from human stool supernatant.
+         ajplung.00107.2020.                                              J Extracell Vesicles. 2022;11(4):e12208. doi:10.1002/
+     22. Hong J, Dauros‐Singorenko P, Whitcombe A, Payne L,               jev2.12208.
+         Blenkiron C, Phillips A, Swift S. Analysis of the            34. Schulz E, Karagianni A, Koch M, Fuhrmann G. Hot
+         Escherichia coli extracellular vesicle proteome identifies       EVs - How temperature affects extracellular vesicles.
+         markers of purity and culture conditions. J Extracell            Eur J Pharm Biopharm. 2020;146:55–63. doi:10.1016/j.
+         Vesicles. 2019;8(1):1632099. doi:10.1080/20013078.               ejpb.2019.11.010.
+         2019.1632099.                                                35. Juan T, Furthauer M. Biogenesis and function of
+     23. Clarridge JE. 3rd. Impact of 16S rRNA gene sequence              ESCRT-dependent extracellular vesicles. Semin Cell
+         analysis for identification of bacteria on clinical micro­       Dev Biol. 2018;74:66–77. doi:10.1016/j.semcdb.2017.
+         biology and infectious diseases. Clin Microbiol Rev.             08.022.
+         2004;17(4):840–862. table of contents doi:10.1128/           36. Quin C, Estaki M, Vollman DM, Barnett JA, Gill SK,
+         CMR.17.4.840-862.2004.                                           Gibson DL. Probiotic supplementation and associated
+     24. Sender R, Fuchs S, Milo R. Revised estimates for the             infant gut microbiome and health: a cautionary retro­
+         number of human and bacteria cells in the body. PLoS             spective clinical comparison. Sci Rep. 2018;8(1):8283.
+         Biol. 2016;14(8):e1002533. doi:10.1371/journal.pbio.             doi:10.1038/s41598-018-26423-3.
+         1002533.                                                     37. Hiergeist A, Glasner J, Reischl U, Gessner A. Analyses
+     25. Ravi RK, Walton K, Khosroheidari M. MiSeq: a next                of Intestinal Microbiota: Culture versus Sequencing:
+         Generation sequencing platform for genomic analysis.             Figure 1. ILAR J. 2015;56(2):228–240. doi:10.1093/ilar/
+         Methods Mol Biol. 2018;1706:223–232. doi:10.1007/                ilv017.
+         978-1-4939-7471-9_12.                                        38. Matsuo Y, Komiya S, Yasumizu Y, Yasuoka Y,
+     26. Kuczynski J, Lauber CL, Walters WA, Parfrey LW,                  Mizushima K, Takagi T, Kryukov K, Fukuda A,
+         Clemente JC, Gevers D, Knight R. Experimental and                Morimoto Y, Naito Y, et al. Full-length 16S rRNA
+         analytical tools for studying the human microbiome.              gene amplicon analysis of human gut microbiota
+         Nat Rev Genet. 2011;13(1):47–58. doi:10.1038/nrg3129.            using MinION™ nanopore sequencing confers species-
+     27. Harm S, Schildbock C, Strobl K, Hartmann J. An                   level resolution. BMC Microbiol. 2021;21(1). doi:10.
+         in vitro study on factors affecting endotoxin neutraliza­        1186/s12866-021-02094-5.
+         tion in human plasma using the Limulus amebocyte             39. Wenger AM, Peluso P, Rowell WJ, Chang P-C,
+         lysate test. Sci Rep. 2021;11(1):4192. doi:10.1038/              Hall RJ, Concepcion GT, Ebler J, Fungtammasan A,
+         s41598-021-83487-4.                                              Kolesnikov A, Olson ND, et al. Accurate circular con­
+     28. Tulkens J, Vergauwen G, Van Deun J, Geeurickx E,                 sensus long-read sequencing improves variant detec­
+         Dhondt B, Lippens L, De Scheerder M-A,                           tion and assembly of a human genome. Nat
+         Miinalainen I, Rappu P, De Geest BG. Increased levels            Biotechnol. 2019;37(10):1155–1162. doi:10.1038/
+         of systemic LPS-positive bacterial extracellular vesicles        s41587-019-0217-9.
+         in patients with intestinal barrier dysfunction. Gut.        40. Park J, Kim N-E, Yoon H, Shin CM, Kim N, Lee DH,
+         2018;69(1):191–193. doi:10.1136/gutjnl-2018-317726.              Park JY, Choi CH, Kim JG, Kim Y-K, et al. Fecal
+     29. Cecil JD, Sirisaengtaksin N, O’Brien-Simpson NM,                 Microbiota and Gut Microbe-Derived Extracellular
+         Krachler AM, Sandkvist M, Cascales E, Christie PJ.               Vesicles in Colorectal Cancer. Front Oncol.
+         Outer Membrane Vesicle-Host Cell Interactions.                   2021;11:650026. doi:10.3389/fonc.2021.650026.
+                                                                                                   GUT MICROBES       25
+
+
+41. Yang J, McDowell A, Kim EK, Seo H, Yum K, Lee WH,             amplicon sequences with QIIME 2’s q2-feature-
+    Jee Y-K, Kim Y-K. Consumption of a Leuconostoc                classifier plugin. Microbiome. 2018;6(1). doi:10.1186/
+    holzapfelii-enriched synbiotic beverage alters the com­       s40168-018-0470-z.
+    position of the microbiota and microbial extracellular    45. Bolyen E, Rideout JR, Dillon MR, Bokulich NA,
+    vesicles. Experimental & Molecular Medicine. 2019;51          Abnet CC, Al-Ghalith GA, Alexander H, Alm EJ,
+    (8):1–11. doi:10.1038/s12276-019-0288-1.                      Arumugam M, Asnicar F, et al. Reproducible, interac­
+42. Kim DJ, Yang J, Seo H, Lee WH, Ho Lee D, Kym S,               tive, scalable and extensible microbiome data science
+    Park YS, Kim JG, Jang I-J, Kim Y-K, et al. Colorectal         using QIIME 2. Nat Biotechnol. 2019;37(8):852–857.
+    cancer diagnostic model utilizing metagenomic and             doi:10.1038/s41587-019-0209-9.
+    metabolomic data of stool microbial extracellular         46. Katoh K, Standley DM. MAFFT multiple sequence
+    vesicles. Sci Rep. 2020;10(1):2860. doi:10.1038/s41598-       alignment software version 7: improvements in perfor­
+    020-59529-8.                                                  mance and usability. Mol Biol Evol. 2013;30
+43. Park JY, Kang C-S, Seo H-C, Shin J-C, Kym S-M,                (4):772–780. doi:10.1093/molbev/mst010.
+    Park Y-S, Shin T-S, Kim J-G, Kim Y-K. Bacteria-           47. Price MN, Dehal PS, Arkin AP. FastTree: computing
+    derived extracellular vesicles in urine as a novel bio­       large minimum evolution trees with profiles instead of
+    marker for gastric cancer: Integration of Liquid Biopsy       a distance matrix. Mol Biol Evol. 2009;26(7):1641–1650.
+    and metagenome analysis. Cancers Basel. 2021;13               doi:10.1093/molbev/msp077.
+    (18):4687. doi:10.3390/cancers13184687.                   48. Price MN, Dehal PS, Arkin AP, Poon AFY. FastTree 2–
+44. Bokulich NA, Kaehler BD, Rideout JR, Dillon M,                approximately maximum-likelihood trees for large
+    Bolyen E, Knight R, Huttley GA, Gregory Caporaso J.           alignments. PLoS ONE. 2010;5(3):e9490. doi:10.1371/
+    Optimizing taxonomic classification of marker-gene            journal.pone.0009490.
+

@@ -1,0 +1,908 @@
+      Gut Microbes
+
+
+
+
+      ISSN: 1949-0976 (Print) 1949-0984 (Online) Journal homepage: www.tandfonline.com/journals/kgmi20
+
+
+
+
+Concurrent gut transcriptome and microbiota
+proﬁling following chronic ethanol consumption
+in nonhuman primates
+
+Tasha Barr, Suhas Sureshchandra, Paul Ruegger, Jingfei Zhang, Wenxiu Ma,
+James Borneman, Kathleen Grant & Ilhem Messaoudi
+
+To cite this article: Tasha Barr, Suhas Sureshchandra, Paul Ruegger, Jingfei Zhang, Wenxiu Ma,
+James Borneman, Kathleen Grant & Ilhem Messaoudi (2018) Concurrent gut transcriptome
+and microbiota proﬁling following chronic ethanol consumption in nonhuman primates, Gut
+Microbes, 9:4, 338-356, DOI: 10.1080/19490976.2018.1441663
+
+To link to this article: https://doi.org/10.1080/19490976.2018.1441663
+
+
+
+
+       View supplementary material
+
+
+
+       Published online: 27 Apr 2018.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 3606
+
+
+
+       View related articles
+
+
+
+       View Crossmark data
+
+
+
+       Citing articles: 5 View citing articles
+
+
+
+
+                       Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=kgmi20
+GUT MICROBES
+2018, VOL. 9, NO. 4, 338–356
+https://doi.org/10.1080/19490976.2018.1441663
+
+
+RESEARCH PAPER
+
+Concurrent gut transcriptome and microbiota proﬁling following chronic ethanol
+consumption in nonhuman primates
+Tasha Barra, Suhas Sureshchandrab, Paul Rueggerc, Jingfei Zhangd, Wenxiu Mad, James Bornemanc,
+Kathleen Grante, and Ilhem Messaoudib
+a
+  Division of Biomedical Sciences, University of California-Riverside, Riverside, CA, USA; bDepartment of Molecular Biology and Biochemistry,
+University of California-Irvine, Irvine, CA, USA; cDepartment of Plant Pathology and Microbiology, University of California-Riverside, Riverside,
+CA, USA; dDepartment of Statistics, University of California-Riverside, Riverside, CA, USA; eOregon National Primate Research Center, Oregon
+Health and Science University, Beaverton, OR, USA
+
+
+
+    ABSTRACT                                                                                                                           ARTICLE HISTORY
+    Alcohol use disorder (AUD) results in increased intestinal permeability, nutrient malabsorption, and                               Received 11 August 2017
+    increased risk of colorectal cancer (CRC). Our understanding of the mechanisms underlying these                                    Revised 28 November 2017
+    morbidities remains limited because studies to date have relied almost exclusively on short-term                                   Accepted 13 February 2018
+    heavy/binge drinking rodent models and colonic biopsies/fecal samples collected from AUD                                           KEYWORDS
+    subjects with alcoholic liver disease (ALD). Consequently, the dose- and site-dependent impact of                                  alcohol; bacterial 16S rRNA
+    chronic alcohol consumption in the absence of overt liver disease remains poorly understood. In                                    gene sequencing; colorectal
+    this study, we addressed this knowledge gap using a nonhuman primate model of voluntary                                            cancer; gut microbiome;
+    ethanol self-administration where rhesus macaques consume varying amounts of 4% ethanol in                                         mucosal immunity; gut;
+    water for 12 months. Speciﬁcally, we performed RNA-Seq and 16S rRNA gene sequencing on                                             rhesus macaque; RNA-Seq;
+    duodenum, jejunum, ileum, and colon biopsies collected from 4 controls and 8 ethanol-consuming                                     gene expression
+    male macaques. Our analysis revealed that chronic ethanol consumption leads to changes in the
+    expression of genes involved in protein trafﬁcking, metabolism, inﬂammation, and CRC
+    development. Additionally, we observed differences in the relative abundance of putatively
+    beneﬁcial bacteria as well as those associated with inﬂammation and CRC. Given that the animals
+    studied in this manuscript did not exhibit signs of ALD or CRC, our data suggest that alterations in
+    gene expression and bacterial communities precede clinical disease and could serve as biomarkers
+    as well as facilitate future studies aimed at developing interventions to restore gut homeostasis.
+
+
+
+Introduction
+                                                                                         Alcohol use disorder (AUD) results in gut injury
+The gastrointestinal (GI) tract is the largest mucosal                                highlighted by increased permeability, perturbations
+surface composed of intestinal epithelial cells (IEC),                                of the gut microbiome, nutrient malabsorption,
+immune cells, and microorganisms that together form                                   increased risk of colorectal cancer (CRC), and func-
+the most critical barrier between the host and its envi-                              tional alterations in mucosal immune cells.6 Data
+ronment.1,2 Interactions between these three compo-                                   from in vitro studies indicate that increased perme-
+nents are vital to maintaining selective permeability                                 ability is mediated by dysregulated expression and/or
+and immune homeostasis in the gut.3,4 Each region of                                  distribution of tight junction proteins, notably, zonula
+the GI tract is unique in its physiological function and                              occludens (ZO)-1 and claudin-1 in ethanol or acetal-
+microbial load5: the duodenum and jejunum are pri-                                    dehyde-treated IEC lines.7-9 These in vitro ﬁndings are
+marily responsible for absorption and digestion of die-                               in line with clinical and animal model studies that
+tary components; the ileum, the longest segment of the                                showed reduced expression of claudin-1, occludin,
+small intestine, harbors the majority of gut-associated                               and ZO-1 in the duodenum, ileum, and colon,10,11 in
+lymphoid tissue (GALT); and the colon functions to                                    part due to increased expression of microRNA-212.8
+reabsorb water, eliminate waste, and contains the                                     Increased intestinal permeability coupled with translo-
+highest bacterial content.                                                            cation of luminal contents plays a critical role in the
+
+
+CONTACT Ilhem Messaoudi, PhD            imessaou@uci.edu      University of California Irvine, 2400 Biological Sciences III, Irvine, CA 92697.
+   Supplemental data for this article can be accessed on the publisher’s website.
+© 2018 Taylor & Francis
+                                                                                                GUT MICROBES      339
+
+
+initiation and pathogenesis of alcoholic liver disease       ethanol and water for 22 h/day for up to
+(ALD).12-14                                                  24 months.31,32 Because animals voluntarily consume
+   AUD alters the fecal microbiome in both humans15-18       varying doses of ethanol, they naturally segregate into
+and rodent models.13,19 Early studies reported increased     non-heavy and heavy drinkers with intakes that
+abundance of Gram-negative anaerobic bacteria and            closely mirror human data.31 After 18 months of
+endospore-forming rods,15 as well as bacteria over-          chronic heavy ethanol consumption, animals develop
+growth in AUD subjects compared to healthy controls.16       ALD as evidenced by elevated liver enzymes and liver
+Lower abundances of Bacteroidetes and higher abundan-        inﬂammation.33 Using this animal model, we recently
+ces of Proteobacteria have been shown in colonic             reported robust gene expression changes and disrup-
+biopsies and fecal samples from patients17,18 as well as     tions in innate immune pathways in peripheral blood
+mice with ALD.13 Changes in microbial communities            mononuclear cells isolated from both male34 and
+are believed to contribute to higher intestinal permeabil-   female35 heavy drinkers. These data provide potential
+ity since antibiotic treatment prevents the ethanol-         mechanisms to explain the higher incidence of infec-
+induced increase in intestinal permeability in rats.20       tion, delay in wound healing, and the increased risk of
+   Additionally, AUD affects nutrients absorption by         cardiovascular disease, lung inﬂammatory disease,
+decreasing secretion of digestive enzymes.21 This is         and cancer seen in subjects with AUD. We also previ-
+further compounded by the fact that subjects with            ously showed that despite the lack of differences in the
+AUD often derive most of their caloric intake from           frequency of intestinal lymphocytes, chronic ethanol
+alcohol limiting their supply of nutrients necessary for     consumption resulted in a dose-dependent decreased
+structural maintenance of IEC.22 Consequently,               production of IL-2, IL-17, TNFa, and IFNg by gut-
+subjects with AUD are often deﬁcient in essential            resident CD4C and CD8C T cells.28
+vitamins and minerals that play a crucial role in the           In this study, we sought to uncover dose- and site-
+modulation of gut mucosal immunity.23 Furthermore,           dependent ethanol-induced alterations in mucosal
+AUD is associated with a 70% greater risk for develop-       gene expression and bacterial composition of intesti-
+ing colorectal cancer (CRC).24-26 Finally, studies           nal biopsies collected from all major gut sections from
+showed reduced cytokine production by lamina prop-           8 ethanol-consuming and 4 control male rhesus maca-
+ria lymphocytes with ethanol consumption, suggestive         ques. Our RNA-Seq analysis revealed several gene
+of reduced immune surveillance.27,28                         expression changes associated with protein localiza-
+   Despite these ﬁndings, several gaps in our under-         tion, metabolism, inﬂammation, and CRC in ethanol-
+standing of the impact and mechanisms of ethanol-            consuming animals. We also found that chronic etha-
+mediated GI injury persist. For instance, very few           nol consumption led to a dose-dependent decrease in
+studies have examined the impact of AUD on GI tract          putatively beneﬁcial bacteria and an increase in bacte-
+segments other than the colon. Additionally, the             ria associated with inﬂammation and CRC along the
+impact of non-heavy alcohol consumption is largely           GI tract. Additional in silico analyses suggest putative
+understudied despite the fact it is widespread.29            changes in bacterial metabolic pathways. Since none
+Finally, mechanisms of reduced nutrient absorption           of our animals exhibited clinical signs of CRC or
+and the increased risk for CRC remain unclear. Some          ALD, these data suggest that ethanol-mediated
+of the major obstacles to addressing these questions         changes in gene expression and bacterial communities
+are: 1) limited access to intestinal biopsies along the      could serve as early biomarkers of GI disease.
+entire GI tract from human subjects; 2) ethical consid-
+eration in obtaining biopsies along the GI tract from
+                                                             Results
+subjects who are non-heavy consumers and don’t
+exhibit disease; and 3) the short duration of ethanol        Chronic ethanol consumption modulates expression
+consumption coupled with high ethanol concentration          of genes critical for regulation of gene expression,
+used in rodent studies.30                                    metabolism, and cell adhesion in the jejunum.
+   To address these questions, we used a nonhuman               Although it is believed most of the ethanol con-
+primate model of voluntary ethanol self-administra-          sumed is rapidly absorbed into circulation in the
+tion where following a 3-month ethanol induction             duodenum, we did not detect any differentially
+period, animals are given “open-access” to both 4%           expressed genes (DEG) in the duodenal biopsies. In
+340       T. BARR ET AL.
+
+
+the jejunum, we detected 45 DEG between controls                      like-1 (IMMP1L; protein export). Finally, upregu-
+and ethanol-consuming male macaques (Fig. 1A).                        lated DEG with a role in cellular metabolism include
+The 28 DEG with human homologs (Fig. 1B) play a                       those involved in digestion of carbohydrates such as
+role in the regulation of gene expression, protein                    sucrose-isomaltase (SI) and enolase-4 (ENO4), as
+trafﬁcking, and metabolism (Fig. 1C). Upregulated                     well as fatty acid metabolism such as acyl-coen-
+DEG that play a role in regulating gene expression                    zyme-A synthetase medium chain-3 (ACSM3) and
+include DNA replication licensing factor (MCM6),                      apolipoprotein B (APOB). Several of the downregu-
+histone H3 (H3F3A), and serine/arginine-rich                          lated DEG also played a role in regulation of: gene
+splicing factor (SRSF11). Upregulated DEG that are                    expression such as chromatin-modifying protein-1A
+important for protein trafﬁcking include zinc ﬁnger                   (CHMP1A); metabolism such as the insulin-induced
+DHHC-type-containing-6 (ZDHHC6; protein fold-                         gene-2 (INSIG2); and cell movement such as the
+ing) and inner mitochondrial membrane peptidase-                      adhesion molecule CD109.
+
+
+
+
+Figure 1. Chronic ethanol consumption modulates jejunum mucosal gene expression. DEG were identiﬁed using the generalized linear
+model likelihood ratio test method from the edgeR package as those with a fold change of 2 and a Benjamini-Hochberg- corrected
+false discovery rate (FDR) of <0.05. (A) Volcano plot summarizing the gene expression changes with red representing the upregulated
+DEG and blue representing the downregulated DEG. The number of up- and down-regulated genes is noted. (B) Pie chart representing
+the breakdown of DEG as: noncoding RNA, uncharacterized rhesus genes, and human homologs. (C) Heatmap representing gene
+expression (shown as absolute normalized RPKM values) of the genes listed; ﬁrst column shows median RPKM values of the controls
+(n D 4), and subsequent columns show RPKM values of each individual ethanol-consuming animals ordered by alcohol dose (g of etha-
+nol/kg/day); range of colors is based on scaled and centered RPKM values of the entire set of genes (red represents increased expression
+while blue represents decreased expression).
+                                                                                                GUT MICROBES      341
+
+
+   Chronic ethanol consumption modulates expres-            gamma (PIK3C2G); transcription factors hepatocyte
+sion of genes important for immune processes in the         nuclear factor alpha 1 and 4 (HNFA1, HNFA4); and
+ileum.                                                      the low-density lipoprotein receptor (LDLR) and its
+   The ileum exhibited the most robust changes in           ligand proprotein convertase subtilisin/kexin type-9
+gene expression with 510 DEG (Fig. 2A). Of the 454          (PCSK9). Similarly, analysis using the diseases data-
+DEG with human homologs (Fig. 2B), 363 were upre-           base showed enrichment to “lipid metabolism disor-
+gulated and 91 were downregulated. The upregulated          ders” and “metabolic diseases”. Additionally, several
+DEG primarily enriched to gene ontology (GO) terms          of the 32 genes that enriched to the disease pathway
+related to immunity and signal transduction (Fig. 2C).      “adenocarcinoma” (Fig. 2G) are associated with pro-
+A nework analysis using the functional enrichment           gression of CRC including caspase recruitment
+software MetacoreTM showed that of the 136 upregu-          domain-containing protein (PYCARD), melanophilin
+lated DEG that functionally enriched to the GO pro-         (MLPH), transient receptor potential cation channel
+cess “immune system process”, 73 DEG directly               (TRPM6), and suppressor of cytokine signaling-6
+interact with one another (Fig. 2D). These genes            (SOCS6).
+include T-cell markers (CD1C, CD40LG); B-cell                   Chronic ethanol consumption modulates expres-
+markers (CD19, CD79B); antigen presenting cell              sion of genes important for pathways involving cancer
+markers (CD40, CD86); adhesion molecules (VCAM1,            development and immunity in the colon mucosa.
+CD44); cytokines, chemokines, and their receptors               In the colon, 3 genes were upregulated and 108
+(CCL19, CCR6, CCR7, TNFRSF13C); and Toll-like               genes were downregulated with ethanol-consumption
+receptors (TLR1, TLR7, TLR10). The majority of the          (Fig. 3A). Of the 107 downregulated DEG with human
+DEG that functionally enriched to “signal transduc-         homologs (Fig. 3B), 67 enriched to the GO term
+tion” also enriched to “immune system process”.             “immune system process” (Fig. 3C and E) and 71
+Those that uniquely enriched to “signal transduction”       enriched to the disease term “immune system dis-
+play a role in G-protein signaling e.g., regulator of G     eases” (Fig. 3D). These genes include B-cell markers
+protein signaling RGS13, the signaling G protein            (CD19, CD72, CD79B); co-stimulatory markers
+RAC2, the guanine nucleotide exchange factor GIV/           (CD83); as well as cytokines, chemokines, and their
+Girdin (CCDC88A), and the GTPase dynamin                    receptors (e.g. IL24, CCL19, IL21R, and CCR7). Sev-
+(DNM1).                                                     eral DEG also encode for T-cell markers (e.g. CD1C,
+   Additional functional enrichment analysis using a        CD2, CD3D, CD3E, CD5, CD8A) and enriched to GO
+disease database available on MetacoreTM revealed sig-      terms “regulation of T-cell activation” and “T-cell dif-
+niﬁcant enrichment to immune system diseases                ferentiation”. Interestingly, several of these DEG were
+(Fig. 2E) including genes that are critical to the devel-   upregulated with ethanol consumption in the ileum
+opment and progression of various lymphomas such            (CD1C, CD19, CD22, CD72, CD79B, CCL19, CCR7,
+as BCL2A1, BCL6, Bruton’s tyrosine kinase (BTK), B-         CXCR4, FCRL1, IL21R, TNFRSF13C). Additional
+and T-lymphocyte attenuator (BTLA), matrix metallo-         downregulated immune genes include indoleamine-
+proteinases (MMP12), and mitogen-activated protein          2,3-dioxygenase-1 (IDO1), which drives differentia-
+kinases (MAP4K1). Most of the 108 DEG that                  tion of regulatory T-cells; peptidase inhibitor (PI3);
+uniquely enriched to “neoplasms by histologic type”         and defensin-6 (DEF6). Some downregulated genes
+are associated with GI neoplasms including comple-          are also critical for signal transduction including Janus
+ment component-4 binding protein alpha (C4BPA),             kinase-3 (JAK3) and signal transducer and activator of
+protein tyrosine phosphatase non-receptor type-7            transcription (STAT1). Several of the immune genes
+(PTPN7), and transcription factor 4 (TCF4). Expres-         listed above enriched to the disease term “gastrointes-
+sion of genes involved in structural integrity such as      tinal neoplasms” and are also associated with CRC
+gap junction protein (GJA5) was also upregulated.           development including the T cell chemoattractant
+   The 91 DEG that were downregulated in the ileum          CXCL9, keratin-7 (KRT7), and IDO1.
+with ethanol consumption enriched to GO processes               Ethanol consumption results in dynamic dose-
+related to steroid/lipid metabolism (Fig. 2F). Notable      dependent mucosal gene expression changes.
+DEG include the signaling molecule phosphatidylino-             Since we collected samples from male macaques
+sitol-4-phosphate 3-kinase catalytic subunit type-2-        with varying ethanol intake, we next explored
+342       T. BARR ET AL.
+
+
+
+
+Figure 2. Chronic heavy ethanol consumption modulates expression of genes important for immune system processes in the ileum. DEG
+were identiﬁed using the generalized linear model likelihood ratio test method from the edgeR package as those with a fold change of
+2 and a Benjamini-Hochberg- corrected false discovery rate (FDR) of <0.05. (A) Volcano plot summarizing the gene expression
+changes with red representing the upregulated DEG and blue representing the downregulated DEG. The number of up- and down-
+regulated genes is noted. (B) Pie chart representing the breakdown of DEG as noncoding RNA, uncharacterized rhesus genes, and
+human homologs. (C) Bar graphs displaying the number of DEG upregulated with ethanol consumption that enriched to the listed
+Gene Ontology (GO) terms; line represents the -log(FDR-adjusted P-values) associated with each enrichment to a GO term. (D) Network
+image of the upregulated DEG that enriched to “immune system process” and directly interact with one another. (E) Bar graphs display-
+ing the number of DEG upregulated with ethanol consumption that enriched to the Disease terms; line represents the -log(FDR-adjusted
+P-values) associated with each Disease. (F) Bar graphs displaying the number of DEG downregulated with ethanol consumption that
+enriched to the listed GO terms; line represents the -log(FDR-adjusted P-values) associated with enrichment to each GO term. (G) Bar
+graphs displaying the number of DEG upregulated with ethanol consumption that enriched to the Disease terms; line represents the
+-log(FDR-adjusted P-values) associated with each Disease term.
+                                                                                                              GUT MICROBES         343
+
+
+
+
+Figure 3. Chronic heavy ethanol consumption modulates expression of genes associated with cancer development and immune func-
+tion in the colon. DEG were identiﬁed using the generalized linear model likelihood ratio test method from the edgeR package as those
+with a fold change of 2 and a Benjamini-Hochberg- corrected false discovery rate (FDR) of <0.05. n D 4/group. (A) Volcano plot sum-
+marizing the gene expression changes with red representing the upregulated DEG and blue representing the downregulated DEG. The
+number of up- and down-regulated genes is noted. (B) Pie chart representing the breakdown of DEG as noncoding RNA, uncharacter-
+ized rhesus genes, and human homologs. (C, D) Bar graphs displaying the number of DEG downregulated with ethanol consumption
+that enriched to GO and Disease terms respectively; line represents the -log(FDR-adjusted P-values) associated with enrichment to each
+GO/disease term. (E) Heatmap representing gene expression (shown as absolute normalized RPKM values) of DEG that enriched to the
+GO term “immune system process”; ﬁrst column shows median RPKM values of the controls (n D 4), and subsequent columns show
+RPKM values of each individual ethanol-consuming animals ordered by alcohol dose (g of ethanol/kg/day); range of colors is based on
+scaled and centered RPKM values of the entire set of genes (red represents increased expression while blue represents decreased
+expression).
+
+dose-dependent dynamic changes in gene expression                    with an average RPKM value 50 (reads per kilobase
+that go beyond positive or negative correlations by uti-             of transcript per million mapped reads). In the duode-
+lizing Short Time-series Expression Miner (STEM).                    num, STEM analysis identiﬁed 2 clusters of genes the
+Animals were divided into 3 groups based on their                    expression of which increases with non-heavy ethanol
+ethanol consumption patterns: controls (n D 4), non-                 consumption then decreases to either control or near
+heavy drinkers (n D 4), and heavy drinkers (n D 4).36                control levels with heavy drinking. Genes in cluster 1
+We focused our analysis on highly expressed genes                    play a role in protein transport and localization
+344       T. BARR ET AL.
+
+
+(Fig. 4A; Supplemental Table 1; Fig. S1A) and func-                 protein HSPA8. All 13 genes within cluster 2 also
+tionally enriched to GO terms such as “cotranslational              enriched to “colonic diseases” (FDR-P D 3.00e-4).
+protein targeting to membrane” (FDR-P D 1.15e-17;                      Similarly, in the jejunum, STEM analysis revealed a
+e.g ribosomal proteins RPL11 and RPS27) and “pro-                   cluster of genes whose expression increases with non-
+tein targeting to ER” (FDR-P D 2.66e-17). Genes also                heavy ethanol consumption then returns to near con-
+enriched to “transport” (FDR-P D 1.30e-10; e.g. solute              trol levels with heavy ethanol consumption (Fig. 4B;
+carrier SLC26A3) and “immune response-regulating                    Supplemental Table 2). Majority of these 129 genes
+signaling pathway” (FDR-P D 8.11e-7; e.g. immuno-                   are important for cellular metabolism, and function-
+globulin genes IGHM and IGJ). Furthermore, 41 of                    ally enriched to the GO term “cellular metabolic pro-
+these 47 genes enriched to the Disease term “digestive              cess” (n D 80; FDR-P D 5.16e-3) including the
+system diseases” (FDR-P D 4.95e-5) including those                  Acetyl-CoA Acetyltransferase 1 ACAT1 and the ubiq-
+encoding for the transporter PIGR and mucin gene                    uitin ligase MARCH7. STEM also identiﬁed a second
+MUC6. Genes in cluster 2 (Fig. 4A; Supplemental                     group of genes with expression that increases with
+Table 1) play a role in exocytosis and enriched to GO               non-heavy ethanol consumption and remains
+terms “secretion” (FDR-P D 1.92e-4) and “neutrophil                 unchanged with heavy ethanol consumption (Fig. 4B;
+degranulation” (FDR-P D 1.92e-4) such as heat shock                 Supplemental Table 2) that also functionally enriched
+
+
+
+
+Figure 4. Dynamic gene expression changes mediated by ethanol consumption. Expression patterns of DEG clusters uncovered by STEM
+analysis in (A) duodenum, (B) jejunum, (C) ileum, (D) and colon with the number of genes and FDR p-value reported. First point repre-
+sents controls (n D 4); second point represents non-heavy group (n D 4) and last point represents heavy group (n D 4).
+                                                                                              GUT MICROBES      345
+
+
+to GO term “metabolic process” (FDR-P D 8.42e-2;           Table 4). Functional enrichment showed that 16 genes
+Fig. S1B) including the phosphofructokinase PFKM           are associated with “localization” (FDR-P D 7.78e-12)
+and the solute carrier SLC7A7. STEM further identi-        and 19 of these genes mapped to the Disease term
+ﬁed a third cluster of genes in the jejunum, with          “colonic diseases” (FDR-P D 3.17e-4), notably adhe-
+expression levels that drastically increase with non-      sion molecule CD9, and components of the actin cyto-
+heavy ethanol consumption then continue to increase        skeleton such as ACTB.
+with heavy ethanol consumption (Fig. 4B; Supplemen-           Given the robust changes in gene expression
+tal Table 2). These genes are critical for signal trans-   observed along the GI tract, we next determined if
+duction and include natural killer cell receptor CD160     these alterations were accompanied by an increased
+and the choline phosphotransferase CEPT1.                  permeability of the GI barrier. We measured circulat-
+   STEM analysis of the ileum transcriptome uncov-         ing endotoxin-core antibodies in plasma samples col-
+ered a cluster of 89 genes the expression of which         lected after 12 months of alcohol consumption and
+decreases with non-heavy ethanol consumption and           discovered a positive correlation between levels of
+to a lesser extent with heavy ethanol consumption          anti-endotoxin IgM levels and ethanol intake (r D
+(FDR-P D 2.3e-20; Fig. 4C; Supplemental Table 3).          0.8201; p D 0.0016) (Fig. S2G).
+These genes functionally enriched to GO terms “neu-           Alcohol consumption impacts mucosa-associated
+trophil mediated immunity” (FDR-P D 9.25e-6; e.g.          bacterial communities in both small and large
+chemokine CCL25 and innate immune gene PLAC8),             intestine.
+“transport” (FDR-P D 9.25e-6; members of the solute           We next investigated ethanol-induced changes in
+carriers family SCL2, 5, 6 and 7), and “digestion”         gut mucosa-associated bacterial communities using
+(FDR-P D 1.16e-5; mucin gene MUC2 and actin-bind-          16S rRNA gene sequencing37 (Fig. 5A). Since we did
+ing protein VIL1). STEM analysis identiﬁed a second        not have access to luminal contents, we sequenced the
+cluster of 60 genes the expression of which was unal-      second half of the mucosal biopsies used for RNA-Seq
+tered with non-heavy ethanol consumption but greatly       analysis. Although not ideal, this approach would pro-
+increased with heavy ethanol consumption (Fig. 4C;         vide insight into the microbial niche that is closely
+Supplemental Table 3). These genes enriched to the         interacting with intestinal epithelial and immune cells.
+GO term “negative regulation of metabolic process”         To assess alpha diversity, we calculated the Shannon
+(FDR-P D 1.88e-25; Fig. S1C) including heat shock          diversity index, which revealed similarities in evenness
+protein HSP90AB1 and ribosomal protein UBA52.              among the intestinal regions and groups (Fig. S3A).
+Additionally, 38 other genes enriched to the Disease       The beta diversity analysis using weighted UniFrac
+term “colonic diseases” (FDR-P D 1.00e-5) such as          values showed that biopsies from ethanol-consuming
+metastasis suppressor CD82, putative tumor suppres-        male macaques did not form a distinct cluster from
+sor TAGLN2, and actin-sequestering TMSB4X.                 those collected from controls (Fig. 5B and Fig. S3B-E).
+   In the colon, STEM analysis identiﬁed 37 genes, the     In line with these observations, only subtle differences
+expression of which greatly decreased with non-heavy       were noted at the phyla level (Fig. 5A and Fig. S4A).
+ethanol consumption, and even more with heavy etha-        In the jejunum and ileum, we observed a small
+nol consumption (Fig. 4D; Supplemental Table 4).           decrease in relative abundance of Firmicutes in etha-
+These genes play a role in macromolecule transport         nol-consuming animals compared to controls (36.3%
+and functionally enriched to GO terms such as “pro-        and 36.8% compared to 41.2% and 42.8%). In the
+tein targeting” (FDR-P D 4.67e-20) and “macromole-         colon, we detected a slight increase in Bacteroidetes
+cule localization” (FDR-P D 6.20e-11) including            (25.2% vs. 18.2%) that was accompanied by a decrease
+coﬁlin gene CFL1 and carbohydrate binding galectin 3       in Proteobacteria (33.2% vs. 38.3%) in ethanol-con-
+LGALS3. Furthermore, 32 of these genes enriched            sumers compared to controls (Fig. 5A). A genus level
+to the Disease term “gastrointestinal neoplasms”           analysis further revealed minimal changes in the
+(FDR-P D 1.88e-3) including gut permeability indica-       colon, where levels of Flexispira slightly decreased
+tor FABP and signaling molecule RACK1. STEM iden-          while Clostridiales, S24-7, and Prevotella increased
+tiﬁed an additional cluster of genes where expression      with ethanol consumption (Fig. S4B).
+negatively correlated with increasing ethanol dose in a       Since we did not detect signiﬁcant differences in
+linear fashion (Fig. 4D; Fig. S1D; Supplemental            microbial communities at the group level, we decided
+346       T. BARR ET AL.
+
+
+
+
+Figure 5. Chronic ethanol intake results in minor changes in mucosal microbial communities. Low quality, chimeric, and Cyanobacteria
+sequences were removed, reference OTU were selected at 97% similarity, and beta diversity calculations were performed using QIIME.
+n D 4/group. (A) The average abundance (% of total) of bacterial rRNA gene sequences at the phylum level in the duodenum, jejunum,
+ileum, and colon of controls and ethanol-consuming male macaques. The % abundance of Bacteroidetes, Firmicutes, and Proteobacteria
+are noted on the plots. (B) Principal component analysis (PCA) of weighted UniFrac values to examine beta diversity between controls
+and ethanol-consuming animals.
+
+
+to examine Spearman correlations between individual                 consumption in the duodenum (Table S5 and
+average daily ethanol consumption and operational                   Fig. 6A). PICRUSt analysis revealed 21 putative bacte-
+taxonomic unit (OTU) abundance (Table S5-S8). We                    rial genes associated with the metabolism of carbon
+also utilized Phylogenetic Investigation of Communi-                compounds, carbohydrates, and lipids that positively
+ties by Reconstruction of Unobserved States (PIC-                   correlated with ethanol consumption (Table S9 and
+RUSt) to carry out an in silco analysis of the pathways             Fig. 6B). An additional putative 19 bacterial genes
+associated with the bacterial communities using K                   involved in metabolism of purines and carbohydrates
+numbers from the KEGG database and measured cor-                    negatively correlated with ethanol consumption
+relations with ethanol consumption (Table S9-S12). In               (Table S9 and Fig. 6B).
+the duodenum, these analyses revealed 19 OTU whose                     In the jejunum, 4 OTU positively correlated with
+abundance positively correlated with ethanol con-                   ethanol consumption including the opportunistic
+sumption including several members of the Porphyro-                 pathogen Prevotella veroralis.38 Many of the 34 OTU
+monadaceae (Table S5 and Fig. 6A). Only 4 OTU,                      that negatively correlated with ethanol consumption
+which were members of the Proteobacteria and                        were members of Clostridiales including OTU in
+Bacteroidetes phyla, negatively correlated with ethanol             the Lachnospiraceae and Ruminococcaceae families
+                                                                                                               GUT MICROBES         347
+
+
+
+
+Figure 6. Chronic ethanol consumption alters bacterial communities and subsequently critical metabolic pathways in a dose-dependent
+manner. Heatmaps of (A) OTU (refer to Tables S5-S8) and (B) KEGG genes (refer to Tables S9-S12) that signiﬁcantly correlated with aver-
+age daily BEC either in a positive or negative manner as determined by the Spearman correlation coefﬁcient (n D 12/gut region). Corre-
+lations were deﬁned as those with an r-value 0.5 or ¡0.5, and a p-value <0.05. Single and double hyphens in the cells indicate
+p < 0.05 and p < 0.01, respectively.
+
+(Table S6 and Fig. 6A). PICRUSt analysis revealed 18                 fatty acid synthesis that positively correlated with eth-
+and 16 putative bacterial genes in the jejunum that                  anol consumption while 6 bacterial genes involved in
+positively and negatively correlated with ethanol con-               amino acid, sulfur, and purine metabolism were nega-
+sumption (Table S10 and Fig. 6B), including 40 -phos-                tively associated with ethanol consumption (Table S11
+phopantetheinyl transferase, which negatively                        and Fig. 6B).
+correlated with ethanol consumption and is important                    The most robust changes in bacterial communities
+for the metabolism of cofactors and vitamins.                        following chronic ethanol consumption were detected
+   In the ileum, 19 OTU positively correlated with                   in the colon where the abundance of 55 OTU posi-
+BEC including several Prevotella species (P. copri,                  tively correlated with ethanol consumption (Table S8
+P. stercorea, and P. loescheii) that are known to be                 and Fig. 6A). These included Peptostreptococcaceae
+associated with inﬂammation (see Table S7 and                        bacterium, Haemophilus parainﬂuenzae, and Seleno-
+Fig. 6A). The 3 OTU that negatively correlated with                  monas dianae, which are enriched in CRC patients39,40
+BEC included likely commensal bacteria such as                       and associated with worse prognosis.41 PICRUSt
+Ruminococcus torques. PICRUSt analysis revealed 14                   analysis suggests that these changes in relative OTU
+putative bacterial genes largely involved in sugar and               abundance could be associated with the upregulation
+348      T. BARR ET AL.
+
+
+of pathways involving biosynthesis of carbohydrates         metabolic processes including: several G-coupled pro-
+(glyoxylate metabolism, amino and nucleotide sugar          tein receptors (GPR18, 22, 34, and 82), potassium
+metabolism); xenobiotics metabolism; and nutrient           channel family members (KCNIP4 and KCNJ13), tran-
+metabolism (Table S12 and Fig. 6B). In contrast, PIC-       scription factors (EIF2B1, EIF2S2, and EIF4A1), and
+RUSt analysis indicated beta-ketoacyl-ACP synthase,         interestingly microRNA precursors (miR1-2, 133A,
+critical for vitamin synthesis, was negatively correlated   181A, and 215). Collectively, these gene expression
+with ethanol intake.                                        changes suggest that ethanol consumption disrupts
+                                                            metabolism, protein trafﬁcking, and regulation of
+                                                            gene expression in the jejunum.
+Discussion
+                                                               The most robust changes in gene expression at the
+Among the different models used in alcohol research,        group level were detected in the ileum, which harbors
+nonhuman primates are critically important due to           the majority of GALT.5 Several DEG upregulated with
+their genetic homology with humans, their propensity        ethanol consumption in the ileum are important for
+to voluntarily consume alcohol, and the similarity of       lymphocyte function and trafﬁcking such as CD19,
+their alcohol metabolism to that of humans.31 Here,         CD27, CD37, CD40, CD44, CCL19, CCR6, and CCR7.
+we used a nonhuman primate model of voluntary eth-          These changes in gene expression occurred despite the
+anol self-administration to characterize the site- and      lack of differences in T cell frequencies28 which sug-
+dose-dependent impact of chronic ethanol consump-           gests that ethanol regulates gene expression at the cell
+tion on intestinal mucosa gene expression and bacte-        level rather than through changes in cell numbers.
+rial composition in male rhesus macaques.                   Moreover, we detected large increases in the expres-
+   We did not identify any gene expression differences      sion of Toll-like receptors (TLR) that are critical in the
+at the group level associated with ethanol intake in the    detection of bacterial lipopeptides (TLR1), single-
+duodenum, possibly due to the rapid ethanol absorp-         stranded RNA viruses (TLR7), and other unknown
+tion, the scarcity of resident immune cells in this GI      pathogen-associated molecular patterns (TLR10).43
+segment5, and/or the wide range of ethanol doses            STEM analysis also revealed increased levels of several
+among the ethanol-consuming animals. However,               genes associated with host defense and inﬂammation
+additional analyses that leveraged the variable drink-      such as CCL25, ACE1, DGAT1, and CD13.
+ing patterns of the animals revealed that the expres-          Interestingly, we found several DEG implicated in
+sion level of 60 genes largely involved in protein          the initiation and/or progression of CRC in the ileum
+localization, notably several ribosomal protein and         including the transcription factor lymphoid enhancer
+solute carriers, increases with non-heavy ethanol con-      factor-1 (LEF1), which is highly expressed in human
+sumption then returns to levels similar or slightly         CRC cells.44 In addition, expression of NOS2, which
+above control levels.                                       plays a critical role in preventing tissue damage due to
+   In the jejunum, a modest number of DEG that play         reactive oxygen species, was downregulated 6-fold
+a role in the regulation of gene expression, protein        with heavy drinking in the colon. Given that alcohol
+trafﬁcking, and metabolism was identiﬁed between            consumption increases production of reactive oxygen
+controls and ethanol-consuming animals. One of the          species45, loss of NOS2 expression can potentially
+most upregulated DEG in the jejunum is histone 3            exacerbate DNA damage and carcinogenesis. STEM
+(H3F3A), which is heavily phosphorylated and acety-         also uncovered a cluster of 38 genes involved in
+lated following acute ethanol administration in the         “colonic diseases” that remain unchanged with non-
+liver of male rats.42 Future studies will determine         heavy ethanol consumption but greatly increase with
+whether increased expression of H3F3A in the jeju-          heavy ethanol consumption and included the metasta-
+num of male ethanol-consuming macaques is also              sis suppressor gene CD82, and tumor protein transla-
+accompanied with increased protein expression and           tionally controlled-1 (TPT1), which protein levels
+post-translational modiﬁcations that could in turn          have been shown to be drastically increased in the
+regulate gene expression in the jejunum. Similarly,         early stages of CRC development.46
+STEM analysis revealed dose-dependent changes in               We also report an increase in the expression of gap
+the expression of genes involved in signal transduc-        junction protein GJA5 in the ileum, which regulates
+tion, regulation of gene expression, and cellular           the passage of ions and molecules between cells.
+                                                                                                 GUT MICROBES       349
+
+
+Increased expression of GJA5 could lead to an increase      reported a decrease in bacterial diversity with alcohol
+in translocation of bacteria, their products, and dietary   exposure.13 The discrepancy between our data and the
+antigens, which in turn leads to increased inﬂamma-         rodent studies could be due to differences in acute ver-
+tion and could explain the robust upregulation of           sus chronic consumption of ethanol, the total amount
+immune genes in the ileum. This change is in line           of ethanol consumed, the diet (our macaques have
+with the increased endotoxin-core IgM antibody titers       concurrent access to 4% ethanol as well as water ver-
+observed, and is potentially indicative of decreased        sus the liquid chow diet for the rodent study), the vari-
+barrier function. Indeed, a clinical study showed that a    able dose of ethanol consumed by our animals (since it
+one-time consumption of 20g ethanol (non-heavy eth-         is a voluntary ethanol consumption model) and last
+anol consumption) is sufﬁcient to cause an increase in      but not least physiological and genetics differences
+both small and large intestinal permeability in healthy     between rodents and nonhuman primates.
+human volunteers.51                                             Furthermore, previous studies showed decreased
+   Fewer immune genes were dysregulated by ethanol          abundance of Bacteroidetes and Firmicutes and higher
+consumption in the colon compared to the ileum,             abundance of Proteobacteria and Actinobacteria in the
+potentially due to reduced GALT in this compart-            sigmoid colon and feces of AUD patients with ALD
+ment.5 Moreover, in contrast to the ileum, the expres-      compared to those without ALD.17,18 In contrast, data
+sion of genes involved in immune function and               reported here show minor differences at the phyla
+regulation of inﬂammation were reduced in the colon         level that reﬂected a slight increase in Bacteriodetes
+following ethanol consumption including PI3, IFIT3,         and a reduction of Proteobacteria. This difference is
+IDO1, CCL19, CCR7, and DEF6. The difference in              likely due to the lack of ALD in our animals and
+direction of change could be due to the fact that           examination of mucosa-associated bacterial commu-
+immune cells in the colon have evolutionarily adapted       nities, which can greatly differ from stool communi-
+to a more regulatory role due to the greater microbial      ties.52 AUD has also been shown to result in an
+load.47 Reduced expression of immune genes could            increase in the prevalence of families containing path-
+also signal reduced immune surveillance in the colon        ogenic bacteria including Enterobacteriaceae, Strepto-
+with long-term ethanol consumption, which in turn           coccaceae, and Prevotellaceae as well as a reduction in
+could facilitate the development of malignancies. For       beneﬁcial families such as Lachnospiraceae in fecal
+instance, expression of IL21R, which plays an impor-        material from patients with cirrhosis.18 Similarly, we
+tant role in anti-tumor responses,48 is reduced in the      report that chronic ethanol consumption was posi-
+colon. Other genes that negatively correlated with          tively associated with Streptococcaceae, Prevotellaceae,
+alcohol dose are responsible for control of the cell        as well as Lachnospiraceae in the duodenum, ileum,
+cycle including CDC42, RAB1B, and RAB8A.                    and colon.
+   Similarly, STEM analysis identiﬁed 2 distinct clus-          In the duodenum, we uncovered a positive correla-
+ters of genes the expression of which negatively corre-     tion between ethanol consumption and several OTU
+lated with ethanol consumption in the colon. These          associated with inﬂammation such as Porphyromona-
+genes enriched to the disease term “gastrointestinal        daceae.53 We also identiﬁed many OTU associated
+neoplasms” including CFL1, FABP, FTH1, and                  with inﬂammation that positively correlated with eth-
+RACK1. STEM also revealed that expression of miR-           anol consumption in the ileum including major Prevo-
+663, which is known to be dysregulated in several           tella species (P. copri, P. stercorea, and P. loescheii).
+types of cancer,50 decreased with ethanol consump-          Similarly, the frequency of opportunistic pathogens
+tion. Decreased expression of this microRNA was pri-        such as Prevotella copri, P. stercorea, P. loescheii, Clos-
+marily driven by non-heavy ethanol consumption in           tridium perfrigens, C. celatum, C. clostridioforme, and
+the colon, and was only slightly further exacerbated        Streptococcus suis were increased with daily ethanol
+following heavy ethanol consumption.                        dose in the colon. In contrast, chronic heavy ethanol
+   Interestingly, we did not detect a difference in         consumption decreased putatively beneﬁcial bacteria
+microbial community diversity in ethanol-consuming          such as Blautia species in jejunum and Ruminococcus
+animals compared to controls at the group level. This       species in ileum. Interestingly, an expansion of P. copri
+observation is in contrast to a recent study using a        in mice has been shown to exacerbate colitis.54 We
+rodent model of acute ethanol liquid diet, which            also observed an increase in the genus Porphyromonas
+350     T. BARR ET AL.
+
+
+in the colon with heavy ethanol drinking compared to       able to trace changes in gene expression to speciﬁc
+controls. Porphyromonas have been identiﬁed as a           cell types. Performing RNA-Seq on isolated cell
+strong biomarker for CRC in humans.55 Decreases in         populations (intestinal epithelial cells, lamina prop-
+Porphyromonadaceae have also been associated with          ria lymphocytes, intra-epithelial lymphocytes, and
+inﬂammation in colorectal tumor-bearing mice.53 In         smooth muscle cells) may reveal additional gene
+the colon, we also found a positive correlation between    expression changes within speciﬁc cell population
+ethanol consumption and frequency of Peptostrepto-         that were diluted by the use of a full thickness
+coccaceae bacterium and Haemophilus parainﬂuenzae,         biopsy. Moreover, the lack of access to biopsies
+which are enriched in CRC patients39 and associated        before the animals were exposed to ethanol impeded
+with colorectal carcinoma-in-adenoma.41 Further-           our ability to conduct longitudinal studies. Access to
+more, Selenomonas dianae, which is enriched in proxi-      fecal samples or luminal contents would have also
+mal colon tumors,40 was also increased with ethanol        allowed us to compare mucosa-associated versus
+consumption. These ﬁndings are particularly interest-      luminal communities, and analyze microbial metab-
+ing given the increased incidence of CRC with AUD.56       olites. Finally, we evaluated a small number of ani-
+Additionally, the abundance of Flexispira species,         mals and only used male macaques. However, our
+which are usually dominant in healthy macaques,57          study also has unique strengths, notably the use of
+was reduced with heavy ethanol consumption sugges-         an outbred nonhuman primate model, the analysis
+tive of a loss in commensal bacteria. Furthermore,         of biopsies from the 4 major gut sections, and the
+PICRUSt analyses revealed several putative bacterial       simultaneous measurement of changes in gene
+genes that positively correlated with ethanol con-         expression proﬁles and abundance of microbial com-
+sumption are involved in carbohydrate metabolism.          munities with the same biopsy.
+We also uncovered a negative correlation between eth-         Future studies need to analyze bacterial commu-
+anol consumption and the putative bacterial gene 40 -      nities using shotgun metagenomics and metabolo-
+phosphopantetheinyl transferase, which is involved in      mics. Additionally, the mechanisms underlying
+vitamin production and metabolism, a potential             changes in gene expression will be explored by
+mechanism of alcohol-mediated malabsorption/               deﬁning epigenetic changes such as histone modiﬁ-
+malnutrition.                                              cations and alterations in microRNA proﬁles. The
+   In summary, the studies presented in this manu-         functional consequences of alterations in speciﬁc
+script show that ethanol consumption results in robust     bacterial species will be determined by assessing
+changes in gene expression, notably within the ileum       their impact on barrier function, their ability to
+where a large number of genes involved in host             translocate, and invade and adhere to epithelial
+defense and inﬂammation were upregulated. Chronic          cells. Last but not least, these studies need to be
+ethanol consumption also leads to dysregulated             extended to study female macaques in order to
+expression of genes involved in GI cancers, especially     identify gender differences in the impact of ethanol
+CRC. Moreover, relative abundance of several bacte-        consumption on GI health.
+rial taxa were altered throughout the GI tract includ-
+ing a dose-dependent decrease in the incidence of          Materials and methods
+putatively beneﬁcial bacteria as well as increased fre-
+                                                           Ethics approval
+quencies of taxa associated with inﬂammation and
+CRC. Similarly, in silico analysis suggests that several   Tissues were acquired from the Monkey Alcohol
+bacterial metabolic pathways may also be altered with      Tissue Research Resource (MATRR/matrr.com). All
+ethanol consumption. It is important to note that ani-     animal work was was performed in strict accordance
+mals used in our study lack liver damage, therefore        with the recommendations detailed in the Guide for
+the changes in gene expression and bacterial commu-        the Care and Use of Laboratory Animals of the
+nities described precede overt clinical disease and        National Institute of Health, the Ofﬁce of Animal
+could therefore potentially serve as prognostic            Welfare and the United States Department of Agricul-
+biomarkers.                                                tures and approved by the Oregon National Primate
+   Limitations of our study include the use of full        Research Center (ONPRC) Institutional Animal Care
+thickness biopsies, which precluded us from being          and Use Committee (IACUC).
+                                                                                                          GUT MICROBES      351
+
+
+Rhesus macaque model of voluntary ethanol                              self-administration, however fecal samples and lumi-
+self-administration                                                    nal contents were not available. Ethanol-consuming
+We leveraged the Monkey Alcohol Tissue Research                        animals did not show overt signs of liver damage as
+Resource (MATRR; http://www.matrr.com/) to con-                        assessed by measuring alanine transaminase (ALT)
+duct the experiments described in this manuscript.                     and aspartate transaminase (AST) enzyme levels and
+Samples from 12 male rhesus macaques 4–5 years of                      histological assessment of liver sections (Fig. S2D-F).
+age were used in these studies (Table 1). Eight of these
+male rhesus macaques chronically consumed 4% etha-                     RNA sequencing (RNA-Seq)
+nol in water for 12 months and segregated into two                     Total RNA was isolated from duodenal, jejunal, ileal,
+cohorts, n D 4 each, based on average daily ethanol                    and colonic biopsies using the Qiagen miRNeasy kit
+intake values: non-heavy drinkers with an average                      (Qiagen, Catalog #217004). Ribosomal RNA (rRNA)
+daily blood ethanol concentration (BEC) of 22.3-                       was depleted using the Epicentre Ribo-Zero rRNA
+48.8 mg/dl (or mean daily intake of 1.8-2.3 g/kg) and                  Removal kit (Illumina, Catalog #MRZH11124).
+heavy drinkers with an average daily BEC of 90–                        Libraries were constructed using the Bioo Scientiﬁc
+126 mg/dl (or mean daily intake of 2.8-3.3 g/kg). Clas-                NEXTﬂex Rapid Directional RNA-seq kit (Bioo
+siﬁcation of the animals into non-heavy and heavy                      Scientiﬁc, Catalog #NOVA-5138-10). Brieﬂy, rRNA-
+drinkers was previously described in31,36 and the                      depleted RNA was fragmented and converted to dou-
+Monkey Alcohol Tissue Research Resource (www.                          ble stranded cDNA. Adapters were ligated and »300
+matrr.com). Four males served as controls and con-                     base pair fragments were ampliﬁed by PCR and
+sumed a calorically-matched maltose dextrose solu-                     selected by size exclusion. Each library was labeled
+tion. Although controls and ethanol-consuming                          with a unique barcode for multiplexing. To ensure
+animals consumed comparable numbers of total calo-                     proper sizing, quantitation, and quality prior to
+ries (Fig. S2A), heavy drinkers consumed a much                        sequencing, libraries were analyzed on the Agilent
+higher number of ethanol-derived calories compared                     2100 Bioanalyzer. Multiplexed libraries were subjected
+to non-heavy drinkers (Fig. S2B). Mean daily BEC                       to single-end 100 base pair sequencing using the Illu-
+and g/kg consumed (calculated over the entire 12-                      mina HiSeq2500 platform.
+month open access period) signiﬁcantly correlated
+with each other (Fig. S2C). All 12 animals were eutha-                 RNA-Seq bioinformatic analysis
+nized after 12 months of open access and biopsies                      Data analysis was performed with the RNA-Seq work-
+were collected from duodenum, jejunum, ileum, and                      ﬂow module of the systemPiperR package available on
+transverse colon, snap frozen, and stored at ¡80 C                    Bioconductor.58,59 Quality reports were generated
+until analysis. Biopsies were cut in half: one half was                with seeFastq. Reads were mapped with the splice-
+used for RNA isolation and the other half was used for                 aware aligner suite Bowtie2/Tophat260,61 against the
+DNA isolation. Plasma samples were also collected                      Macaca mulatta genome from Ensembl.62 Default
+at necropsy following 12 months of ethanol                             parameters of Tophat2 optimized for mammalian
+                                                                       genomes were used for alignment (allowing 2% nucle-
+Table 1. Summary of rhesus macaques used in this study.                otide mismatches). Raw expression values in form of
+ Animal   Mean daily ethanol intake   Blood EtOH Content    Drinking   gene-level read counts were generated with summari-
+ ID             (g/kg/day)                (Avg mg%)          status
+                                                                       zeOverlaps.63 Only reads overlapping exonic regions
+ MC1                  0                       0             Control    of genes were counted, discarding reads mapping to
+ MC2                  0                       0             Control
+ MC3                  0                       0             Control    ambiguous regions of exons from overlapping genes.
+ MC4                  0                       0             Control       Analysis of differentially expressed genes (DEG) was
+ MM1                 1.8                    35.86          Non-Heavy
+ MM2                 1.9                    32.68          Non-Heavy   performed with the generalized linear model likelihood
+ MM3                 1.9                    20.74          Non-Heavy   ratio test method from the edgeR package.64,65 To deter-
+ MM4                 2.3                    33.89          Non-Heavy
+ MH1                 2.8                    67.42            Heavy     mine the impact of ethanol consumption on gene
+ MH2                  3                     75.02            Heavy     expression, we compared the transcriptome of controls
+ MH3                 3.1                    72.24            Heavy
+ MH4                 3.3                    95.25            Heavy     versus that of ethanol-consuming animals. DEG were
+Mean daily ethanol (EtOH) intake, as calculated during the period of
+                                                                       deﬁned as those with a fold change of 2 and a
+ 12-month EtOH self-administration is shown.                           Benjamini-Hochberg-controlled false discovery rate
+352     T. BARR ET AL.
+
+
+(FDR) of <0.05. To conﬁrm the RNA-Seq results,             analyses. PICRUSt was used to adjust OTU abundan-
+expression levels of 8 DEG that play a role in ALD,        ces for their rRNA copy number and impute the pre-
+CRC, and host defense/inﬂammation in the: 1) ileum         dicted metagenome of the bacterial communities
+[CD2 (Rh02839718_m1), CCL19 (Rh02621767_m1),               based on the 16S rRNA gene sequences.70 Spearman
+CCR6 (Rh02788181_s1), CCR7 (Rh03985963_s1),                correlation analyses were performed in QIIME
+and BCL6 (Rh02839507_m1)] (Fig. S5A); and 2)               between 12-month average BEC and either the OTU
+in the colon [CD2 (Rh02839718_m1), CCL19                   or the Kyoto Encyclopedia of Genes and Genomes
+(Rh02621767_m1), STAT1 (Rh02899274_m1), and                (KEGG) K numbers generated by the PICRUSt analy-
+ZAP70 (Rh02837378_m1)] (Fig. S5B) were selected for        ses. Correlations were deﬁned as those with an r-value
+conﬁrmation using Taqman probes and qRT-PCR.               >0.5 or <¡0.5, and a p-value <0.05. Heatmaps
+Changes in expression level of all 8 genes were con-       depicting these correlation values were created using
+ﬁrmed. Functional enrichment analysis was performed        custom R scripts and four libraries (ggplot2, ggdendro,
+to identify signiﬁcant biological pathways including       reshape2, and grid).71-74 The 16S rRNA gene sequence
+gene ontology (GO) terms and disease biomarkers            data have been deposited in NCBI’s SRA under the
+using MetaCoreTM software (GeneGo). Since this soft-       accession number SUB1983942 (http://www.ncbi.nlm.
+ware requires the use of human gene ID, all rhesus         nih.gov/sra).
+macaque DEG were mapped to human homologs using
+annotations from ENSEMBL.                                  Determination of anti-endotoxin IgM antibodies
+   The software program Short Time-series Expres-          Endotoxin-core antibodies in plasma samples were
+sion Miner (STEM; v1.3.11) was utilized to further         measured using an enzyme-immunoassay technique
+identify clusters of genes that show similar patterns of   (ELISA) after 12 months of alcohol consumption
+expression as it relates to discrete doses of ethanol      using EndoCab IgM ELISA kit (Hycult Biotech, Cata-
+consumption: none, non-heavy, and heavy.66                 log# HK504-IgM). Plasma samples were diluted 50x.
+
+16S rRNA gene library construction and sequencing
+                                                           Statistical analysis
+Total DNA was extracted from duodenal, jejunal, ileal,
+                                                           Statistical signiﬁcance of caloric intake, IgM, ALT,
+and colonic biopsies using PowerSoil DNA Isolation
+                                                           AST, values between controls, non-heavy drinkers,
+kit (MO BIO Laboratories, Inc., Catalog #12888-100).
+                                                           and heavy drinkers was assessed with a one-way
+PCR and custom primers were used to amplify the
+                                                           ANOVA followed by Bonferroni’s multiple compari-
+V4-V5 region of the 16S rRNA gene as previously
+                                                           son correction tests. Spearman correlation analyses
+described.67 Libraries were sequenced (250 bases)
+                                                           were performed to deﬁne associations between anti-
+using an Illumina MiSeq.
+                                                           endotoxin IgM antibody titer and average 12 month
+                                                           BEC or daily g/kg ethanol consumed. Expression data
+16S rRNA gene bioinformatics analyses
+                                                           for each Taqman probe was calculated relative to con-
+Low quality, chimeric, and Cyanobacteria sequences
+                                                           trol RPL32 mRNA expression using DCt calculations
+were removed using Quantitative Insights Into Micro-
+                                                           and statistical signiﬁcance was assessed using an
+bial Ecology (QIIME).68 This process resulted in
+                                                           unpaired T-test. These analyses were carried out by
+2,820,185 total reads with per sample counts ranging
+                                                           GraphPad Prism version 6 (GraphPad software).
+from 19,579 to 128,131, with an average of 58,754
+counts/sample. Reference operational taxonomic units
+(OTU) were selected at 97% similarity using QIIME          Availability of data and material
+and Phylogenetic Investigation of Communities by           The RNA-Seq data have been deposited in NCBI’s Sequence Read
+Reconstruction of Unobserved States (PICRUSt). Tax-        Archive (SRA) under the accession number SUB1885356 (http://
+onomic assignments were made using the 2013 Green-         www.ncbi.nlm.nih.gov/sra). The 16S rRNA gene sequence data
+                                                           have been deposited in NCBI’s SRA under the accession num-
+genes reference database.69 OTU with fewer than 100
+                                                           ber SUB1983942 (http://www.ncbi.nlm.nih.gov/sra).
+sequences were removed from additional analyses.
+QIIME was used to calculate alpha diversity including
+OTU observed and Shannon diversity indices,                Disclosure of potential conﬂicts of interest
+beta diversity UniFrac values, and perform Adonis          No potential conﬂicts of interest were disclosed.
+                                                                                                                GUT MICROBES          353
+
+
+Acknowledgments                                                           liver disease. Alcohol Clin Exp Res. 2008;32:355–64.
+                                                                          doi:10.1111/j.1530-0277.2007.00584.x. PMID:18162065.
+We thank Andrew Tremain and Michael George from Univer-                9. Elamin E, Jonkers D, Juuti-Uusitalo K, van Ijzendoorn
+sity of California Davis Genomics core for the 16S rRNA gene              S, Troost F, Duimel H, Broers J, Verheyen F, Dekker J,
+sequencing. The authors declare that they have no competing               Masclee A. Effects of ethanol and acetaldehyde on tight
+interests.                                                                junction integrity: in vitro study in a three dimensional
+                                                                          intestinal epithelial cell culture model. PLoS One.
+Funding                                                                   2012;7:e35008. doi:10.1371/journal.pone.0035008.
+                                                                          PMID:22563376.
+This work was supported by NIAAA grant AA021947, R21                  10. Zhong W, Li Q, Sun Q, Zhang W, Zhang J, Sun X, Yin
+AA024981, U01 AA013510, and R24 AA109431. Barr was sup-                   X, Zhang X, Zhou Z. Preventing Gut Leakiness and
+ported by the NIEHS NRSA T32 ES018827 and NIAAA F31                       Endotoxemia Contributes to the Protective Effect of
+AA025278 grants. The University of California Riverside                   Zinc on Alcohol-Induced Steatohepatitis in Rats. J
+Genomics Core was supported by NIH 1S10RR028934-01.                       Nutr. 2015;145:2690–8. doi:10.3945/jn.115.216093.
+                                                                          PMID:26468492.
+                                                                      11. Elamin E, Masclee A, Dekker J, Jonkers D. Ethanol dis-
+Authors’ contributions
+                                                                          rupts intestinal epithelial tight junction integrity through
+KG and IM designed the study. TB, SS, JB, KG, and IM wrote                intracellular calcium-mediated Rho/ROCK activation. Am
+the manuscript. TB and SS performed the RNA-Seq experi-                   J Physiol Gastrointest Liver Physiol. 2014;306:G677¡85.
+ment and analyzed the RNA-Seq data. TB, PR, and JB analyzed               doi:10.1152/ajpgi.00236.2013. PMID:24557761.
+the 16S rRNA gene sequence data. JZ and WM performed the              12. Chen P, Schnabl B. Host-microbiome interactions in alco-
+multivariate analyses. TB and IM interpreted the data. All                holic liver disease. Gut Liver. 2014;8:237–41. doi:10.5009/
+authors read and approved the ﬁnal manuscript.                            gnl.2014.8.3.237. PMID:24827618.
+                                                                      13. Bull-Otterson L, Feng W, Kirpich I, Wang Y, Qin X, Liu Y,
+                                                                          Gobejishvili L, Joshi-Barve S, Ayvaz T, Petrosino J, et al.
+References                                                                Metagenomic analyses of alcohol induced pathogenic
+                                                                          alterations in the intestinal microbiome and the effect of
+ 1. Kaiko GE, Stappenbeck TS. Host-microbe interactions                   Lactobacillus rhamnosus GG treatment. PLoS One.
+    shaping the gastrointestinal environment. Trends Immu-                2013;8:e53028. doi:10.1371/journal.pone.0053028.
+    nol. 2014. doi:10.1016/j.it.2014.08.002. PMID:25220948.               PMID:23326376.
+ 2. Sassone-Corsi M, Raffatellu M. No vacancy: how beneﬁcial          14. Canesso MCC LN, Ferreira CM, Gonçalves JL, Almeida D,
+    microbes cooperate with immunity to provide coloniza-                 Gamba C, Cassali G, Pedroso SH, Moreira C, Martins FS,
+    tion resistance to pathogens. J Immunol. 2015;194:4081–7.             Nicoli JR, et al. Comparing the effects of acute alcohol
+    doi:10.4049/jimmunol.1403169. PMID:25888704.                          consumption in germ-free and conventional mice: the role
+ 3. Round JL, Mazmanian SK. The gut microbiota shapes                     of the gut microbiota. BMC Microbiol. 2014;14:240.
+    intestinal immune responses during health and disease.                doi:10.1186/s12866-014-0240-4. PMID:25223989.
+    Nat Rev Immunol. 2009;9:313–23. doi:10.1038/nri2515.              15. Bode JC, Bode C, Heidelbach R, Durr HK, Martini GA.
+    PMID:19343057.                                                        Jejunal microﬂora in patients with chronic alcohol abuse.
+ 4. Peterson LW, Artis D. Intestinal epithelial cells: regula-            Hepatogastroenterology. 1984;31:30–4. PMID:6698486.
+    tors of barrier function and immune homeostasis. Nat              16. Bode C, Kolepke R, Schafer K, Bode JC. Breath hydrogen
+    Rev Immunol. 2014;14:141–53. doi:10.1038/nri3608.                     excretion in patients with alcoholic liver disease–evidence
+    PMID:24566914.                                                        of small intestinal bacterial overgrowth. Z Gastroenterol.
+ 5. Mowat AM, Agace WW. Regional specialization within                    1993;31:3–7. PMID:8447153.
+    the intestinal immune system. Nat Rev Immunol.                    17. Mutlu E, Gillevet P, Rangwala H, Sikaroodi M, Naqvi A,
+    2014;14:667–85. doi:10.1038/nri3738. PMID:25234148.                   Engen P, Kwasny M, Lau C, Keshavarzian A. Colonic micro-
+ 6. Molina PE, Gardner JD, Souza-Smith FM, Whitaker AM.                   biome is altered in alcoholism. Am J physiol Gastrointest liver
+    Alcohol abuse: critical pathophysiological processes and              physiol. 2012;302:78. doi:10.1152/ajpgi.00380.2011.
+    contribution to disease burden. Physiology (Bethesda).            18. Chen Y, Yang F, Lu H, Wang B, Chen Y, Lei D, Wang Y,
+    2014;29:203–15. PMID:24789985.                                        Zhu B, Li L. Characterization of fecal microbial communi-
+ 7. Wang Y, Tong J, Chang B, Wang B, Zhang D, Wang B.                     ties in patients with liver cirrhosis. Hepatology.
+    Effects of alcohol on intestinal epithelial barrier perme-            2011;54:562–72. doi:10.1002/hep.24423. PMID:21574172.
+    ability and expression of tight junction-associated pro-          19. Mutlu E, Keshavarzian A, Engen P, Forsyth CB, Sikar-
+    teins. Mol Med Rep. 2014;9:2352–6. doi:10.3892/                       oodi M, Gillevet P. Intestinal dysbiosis: a possible
+    mmr.2014.2126. PMID:24718485.                                         mechanism of alcohol-induced endotoxemia and alco-
+ 8. Tang Y, Banan A, Forsyth CB, Fields JZ, Lau CK, Zhang LJ,             holic steatohepatitis in rats. Alcohol Clin Exp Res.
+    Keshavarzian A. Effect of alcohol on miR-212 expression in            2009;33:1836–46. doi:10.1111/j.1530-0277.2009.01022.x.
+    intestinal epithelial cells and its potential role in alcoholic       PMID:19645728.
+354       T. BARR ET AL.
+
+
+20. Ferrier L, Berard F, Debrauwer L, Chabo C, Langella P,         33. Ivester P, Roberts LJ, 2nd, Young T, Stafforini D, Vivian J,
+    Bueno L, Fioramonti J. Impairment of the intestinal bar-           Lees C, Young J, Daunais J, Friedman D, Rippe RA, et al.
+    rier by ethanol involves enteric microﬂora and mast cell           Ethanol self-administration and alterations in the livers of
+    activation in rodents. Am J Pathol. 2006;168:1148–54.              the cynomolgus monkey, Macaca fascicularis. Alcohol
+    doi:10.2353/ajpath.2006.050617. PMID:16565490.                     Clin Exp Res. 2007;31:144–55. doi:10.1111/j.1530-
+21. Bode C, Bode JC. Alcohol’s role in gastrointestinal tract          0277.2006.00276.x.
+    disorders. Alcohol Health Res World. 1997;21:76–83.            34. Barr T, Girke T, Sureshchandra S, Nguyen C, Grant K,
+    PMID:15706765.                                                     Messaoudi I. Alcohol Consumption Modulates Host
+22. Lieber CS. The inﬂuence of alcohol on nutritional status.          Defense in Rhesus Macaques by Altering Gene Expression
+    Nutr Rev. 1988;46:241–54. doi:10.1111/j.1753-4887.1988.            in Circulating Leukocytes. J Immunol. 2016;196:182–95.
+    tb05443.x. PMID:3045703.                                           doi:10.4049/jimmunol.1501527. PMID:26621857.
+23. Barr T, Helms C, Grant K, Messaoudi I. Opposing effects        35. Sureshchandra S, Rais M, Stull C, Grant K, Messaoudi I.
+    of alcohol on the immune system. Prog Neuropsychophar-             Transcriptome Proﬁling Reveals Disruption of Innate
+    macol Biol Psychiatry. 2016;65:242–51. doi:10.1016/j.              Immunity in Chronic Heavy Ethanol Consuming Female
+    pnpbp.2015.09.001. PMID:26375241.                                  Rhesus Macaques. PLoS One. 2016;11:e0159295.
+24. Su LJ, Arab L. Alcohol consumption and risk of colon can-          doi:10.1371/journal.pone.0159295. PMID:27427759.
+    cer: evidence from the national health and nutrition exam-     36. Jimenez VA, Grant KA. Studies using macaque monkeys
+    ination survey I epidemiologic follow-up study. Nutr               to address excessive alcohol drinking and stress interac-
+    Cancer. 2004;50:111–9. doi:10.1207/s15327914nc5002_1.              tions. Neuropharmacology. 2017;122:127–35. doi:10.1016/
+    PMID:15623458.                                                     j.neuropharm.2017.03.027. PMID:28347838.
+25. Seitz HK, Czygan P, Simanowski U, Waldherr R, Veith S,         37. Matsumoto T, Sugano M. [16S rRNA gene sequence anal-
+    Raedsch R, Kommerell B. Stimulation of chemically                  ysis for bacterial identiﬁcation in the clinical laboratory].
+    induced rectal carcinogenesis by chronic ethanol inges-            Rinsho Byori. 2013;61:1107–15. PMID:24605544.
+    tion. Alcohol Alcohol. 1985;20:427–33. PMID:3910061.           38. Rajilic-Stojanovic M, de Vos WM. The ﬁrst 1000 cultured
+26. Simanowski UA, Seitz HK, Baier B, Kommerell B,                     species of the human gastrointestinal microbiota. FEMS
+    Schmidt-Gayk H, Wright NA. Chronic ethanol consump-                Microbiol Rev. 2014;38:996–1047. doi:10.1111/1574-
+    tion selectively stimulates rectal cell proliferation in the       6976.12075. PMID:24861948.
+    rat. Gut. 1986;27:278–82. doi:10.1136/gut.27.3.278.            39. Chen W, Liu F, Ling Z, Tong X, Xiang C. Human intesti-
+    PMID:3699547.                                                      nal lumen and mucosa-associated microbiota in patients
+27. Choudhry MA, Fazal N, Goto M, Gamelli RL, Sayeed MM.               with colorectal cancer. PLoS One. 2012;7:e39743.
+    Gut-associated lymphoid T cell suppression enhances bac-           doi:10.1371/journal.pone.0039743. PMID:22761885.
+    terial translocation in alcohol and burn injury. Am J Phys-    40. Gao Z, Guo B, Gao R, Zhu Q, Qin H. Microbiota disbiosis
+    iol Gastrointest Liver Physiol. 2002;282:G937¡47.                  is associated with colorectal cancer. Front Microbiol.
+    doi:10.1152/ajpgi.00235.2001. PMID:12016118.                       2015;6:20. doi:10.3389/fmicb.2015.00020. PMID:25699023.
+28. Asquith M, Pasala S, Engelmann F, Haberthur K, Meyer C,        41. Kasai C, Sugimoto K, Moritani I, Tanaka J, Oya Y, Inoue
+    Park B, Grant KA, Messaoudi I. Chronic Ethanol Con-                H, Tameda M, Shiraki K, Ito M, Takei Y, et al. Compari-
+    sumption Modulates Growth Factor Release, Mucosal                  son of human gut microbiota in control subjects and
+    Cytokine Production, and MicroRNA Expression in Non-               patients with colorectal carcinoma in adenoma: Terminal
+    human Primates. Alcohol Clin Exp Res. 2013.                        restriction fragment length polymorphism and next-gen-
+    doi:10.1111/acer.12325. PMID:24329418.                             eration sequencing analyses. Oncol Rep. 2016;35:325–33.
+29. (SAMHSA) SAaMHSA. National Survey on Drug Use and                  doi:10.3892/or.2015.4398. PMID:26549775.
+    Health (NSDUH). 2015.                                          42. James TT, Aroor AR, Lim RW, Shukla SD. Histone H3
+30. Bertola A, Mathews S, Ki SH, Wang H, Gao B. Mouse                  phosphorylation (Ser10, Ser28) and phosphoacetylation
+    model of chronic and binge ethanol feeding (the NIAAA              (K9S10) are differentially associated with gene expression
+    model). Nat Protoc. 2013;8:627–37. doi:10.1038/                    in liver of rats treated in vivo with acute ethanol. J Phar-
+    nprot.2013.032. PMID:23449255.                                     macol Exp Ther. 2012;340:237–47. doi:10.1124/
+31. Baker EJ, Farro J, Gonzales S, Helms C, Grant KA.                  jpet.111.186775. PMID:22025646.
+    Chronic alcohol self-administration in monkeys shows           43. Zarember KA, Godowski PJ. Tissue expression of
+    long-term quantity/frequency categorical stability. Alcohol        human Toll-like receptors and differential regulation of
+    Clin Exp Res. 2014;38:2835–43. doi:10.1111/acer.12547.             Toll-like receptor mRNAs in leukocytes in response
+    PMID:25421519.                                                     to microbes, their products, and cytokines. J Immunol.
+32. Grant KA, Leng X, Green HL, Szeliga KT, Rogers LS,                 2002      168:554–61.      doi:10.4049/jimmunol.168.2.554.
+    Gonzales SW. Drinking typography established by                    PMID:11777946.
+    scheduled induction predicts chronic heavy drinking in         44. Hovanes K, Li TW, Munguia JE, Truong T,
+    a monkey model of ethanol self-administration. Alco-               Milovanovic T, Lawrence Marsh J, Holcombe RF,
+    hol Clin Exp Res. 2008;32:1824–38. doi:10.1111/j.1530-             Waterman ML. Beta-catenin-sensitive isoforms of lym-
+    0277.2008.00765.x. PMID:18702645.                                  phoid enhancer factor-1 are selectively expressed in
+                                                                                                           GUT MICROBES         355
+
+
+    colon cancer. Nat Genet. 2001;28:53–7. doi:10.1038/           56. Fedirko V, Tramacere I, Bagnardi V, Rota M, Scotti L,
+    ng0501-53. PMID:11326276.                                         Islami F, Negri E, Straif K, Romieu I, La Vecchia C, et al.
+45. Wu D, Cederbaum AI. Alcohol, oxidative stress, and free           Alcohol drinking and colorectal cancer risk: an overall and
+    radical damage. Alcohol Res Health. 2003;27:277–84.               dose-response meta-analysis of published studies. Ann
+    PMID:15540798.                                                    Oncol. 2011;22:1958–72. doi:10.1093/annonc/mdq653.
+46. Bommer UA, Vine KL, Puri P, Engel M, Belﬁore L,                   PMID:21307158.
+    Fildes K, Batterham M, Lochhead A, Aghmesheh M.               57. Hensley-McBain T, Zevin AS, Manuzak J, Smith E, Gile J,
+    2017. Translationally controlled tumour protein TCTP              Miller C, Agricola B, Katze M, Reeves RK, Kraft CS, et al.
+    is induced early in human colorectal tumours and                  Effects of Fecal Microbial Transplantation on Microbiome
+    contributes to the resistance of HCT116 colon cancer              and Immunity in Simian Immunodeﬁciency Virus-
+    cells to 5-FU and oxaliplatin. Cell Commun Signal.                Infected Macaques. J Virol. 2016;90:4981–9. doi:10.1128/
+    15:9. doi:10.1186/s12964-017-0164-3. PMID:28143584.               JVI.00099-16. PMID:26937040.
+47. Mann ER, Bernardo D, English NR, Landy J, Al-Hassi HO,        58. Huber W, Carey VJ, Gentleman R, Anders S, Carlson M,
+    Peake ST, Man R, Elliott TR, Spranger H, Lee GH, et al.           Carvalho BS, Bravo HC, Davis S, Gatto L, Girke T, Got-
+    Compartment-speciﬁc immunity in the human gut: prop-              tardo R, et al. Orchestrating high-throughput genomic
+    erties and functions of dendritic cells in the colon versus       analysis with Bioconductor. Nat Methods. 2015;12:115–
+    the ileum. Gut. 2016;65:256–70. doi:10.1136/gutjnl-2014-          21. doi:10.1038/nmeth.3252. PMID:25633503.
+    307916. PMID:25666191.                                        59. Girke T. systemPipeR: NGS workﬂow and report genera-
+48. Spolski R, Leonard WJ. Interleukin-21: a double-edged             tion environment, vR package version 1.2.4. 2015. https://
+    sword with therapeutic potential. Nat Rev Drug Discov.            github.com/tgirke/systemPipeR.
+    2014;13:379–95. doi:10.1038/nrd4296. PMID:24751819.           60. Langmead B, Salzberg SL. Fast gapped-read alignment
+49. Jin S, Mu Y, Wang X, Liu Z, Wan L, Xiong Y, Zhang Y,              with Bowtie 2. Nat Methods. 2012;9:357–9. doi:10.1038/
+    Zhou L, Li L. Overexpressed RACK1 is positively corre-            nmeth.1923. PMID:22388286.
+    lated with malignant degree of human colorectal carci-        61. Kim D, Pertea G, Trapnell C, Pimentel H, Kelley R, Salz-
+    noma. Mol Biol Rep. 2014;41:3393–9. doi:10.1007/s11033-           berg SL. TopHat2: accurate alignment of transcriptomes
+    014-3201-y. PMID:24504450.                                        in the presence of insertions, deletions and gene fusions.
+50. Zang W, Wang Y, Wang T, Du Y, Chen X, Li M, Zhao G.               Genome Biol. 2013;14:R36. doi:10.1186/gb-2013-14-4-r36.
+    miR-663 attenuates tumor growth and invasiveness by target-       PMID:23618408.
+    ing eEF1A2 in pancreatic cancer. Mol Cancer. 2015;14:37.      62. Cunningham F, Amode MR, Barrell D, Beal K, Billis K,
+    doi:10.1186/s12943-015-0315-3. PMID:25744894.                     Brent S, Carvalho-Silva D, Clapham P, Coates G, Fitzger-
+51. Elamin E, Masclee A, Troost F, Pieters HJ, Keszthelyi D,          ald S, et al. Ensembl 2015. Nucleic Acids Res. 2015;43:
+    Aleksa K, Dekker J, Jonkers D. Ethanol impairs intestinal         D662–9. doi:10.1093/nar/gku1010. PMID:25352552.
+    barrier function in humans through mitogen activated          63. Lawrence M, Huber W, Pages H, Aboyoun P, Carlson M,
+    protein kinase signaling: a combined in vivo and in vitro         Gentleman R, Morgan MT, Carey VJ. Software for com-
+    approach. PLoS One. 2014;9:e107421. doi:10.1371/journal.          puting and annotating genomic ranges. PLoS Comput
+    pone.0107421. PMID:25226407.                                      Biol. 2013;9:e1003118. doi:10.1371/journal.pcbi.1003118.
+52. Bajaj JS, Hylemon PB, Ridlon JM, Heuman DM, Daita K,              PMID:23950696.
+    White MB, Monteith P, Noble NA, Sikaroodi M, Gillevet         64. Robinson MD, McCarthy DJ, Smyth GK. edgeR: a
+    PM. Colonic mucosal microbiome differs from stool                 Bioconductor package for differential expression
+    microbiome in cirrhosis and hepatic encephalopathy and            analysis of digital gene expression data. Bioinformatics.
+    is linked to cognition and inﬂammation. Am J Physiol              2010;26:139–40.         doi:10.1093/bioinformatics/btp616.
+    Gastrointest     Liver     Physiol.     2012;303:G675¡85.         PMID:19910308.
+    doi:10.1152/ajpgi.00152.2012. PMID:22821944.                  65. Anders S, McCarthy DJ, Chen Y, Okoniewski M, Smyth
+53. Zackular JP, Baxter NT, Iverson KD, Sadler WD, Petro-             GK, Huber W, Robinson MD. Count-based differential
+    sino JF, Chen GY, Schloss PD. The gut microbiome modu-            expression analysis of RNA sequencing data using R and
+    lates colon tumorigenesis. MBio. 2013;4:e00692¡13.                Bioconductor. Nat Protoc. 2013;8:1765–86. doi:10.1038/
+    doi:10.1128/mBio.00692-13. PMID:24194538.                         nprot.2013.099. PMID:23975260.
+54. Scher JU, Sczesnak A, Longman RS, Segata N, Ubeda C,          66. Ernst J, Bar-Joseph Z. STEM: a tool for the analysis of short
+    Bielski C, Rostron T, Cerundolo V, Pamer EG, et al.               time series gene expression data. BMC Bioinformatics.
+    Expansion of intestinal Prevotella copri correlates with          2006;7:191. doi:10.1186/1471-2105-7-191. PMID:16597342.
+    enhanced susceptibility to arthritis. Elife. 2013;2:e01202.   67. Caporaso JG, Lauber CL, Walters WA, Berg-Lyons D, Lozu-
+    doi:10.7554/eLife.01202. PMID:24192039.                           pone CA, Turnbaugh PJ, Fierer N, Knight R. Global patterns
+55. Zackular JP, Rogers MA, Rufﬁn MTt, Schloss PD.                    of 16S rRNA diversity at a depth of millions of sequences
+    The human gut microbiome as a screening tool for                  per sample. Proc Natl Acad Sci U S A. 2011;108 Suppl
+    colorectal cancer. Cancer Prev Res (Phila).                       1:4516–22. doi:10.1073/pnas.1000080107. PMID:20534432.
+    2014;7:1112–21. doi:10.1158/1940-6207.CAPR-14-0129.           68. Caporaso JG, Kuczynski J, Stombaugh J, Bittinger K,
+    PMID:25104642.                                                    Bushman FD, Costello EK, Fierer N, et al. QIIME allows
+356       T. BARR ET AL.
+
+
+    analysis of high-throughput community sequencing data.            of microbial communities using 16S rRNA marker gene
+    Nat Methods. 2010;7:335–6. doi:10.1038/nmeth.f.303.               sequences. Nat Biotechnol. 2013;31:814–21. doi:10.1038/
+    PMID:20383131.                                                    nbt.2676. PMID:23975157.
+69. DeSantis TZ, Hugenholtz P, Larsen N, Rojas M, Brodie EL,      71. Wickham H. Ggplot2: elegant graphics for data analysis.
+    Keller K, Huber T, Dalevi D, Hu P, Andersen GL. Green-            Springer, New York;2009.
+    genes, a chimera-checked 16S rRNA gene database               72. Andrie de Vries BDR. ggdendro: Create Dendrograms and
+    and workbench compatible with ARB. Appl Environ                   Tree Diagrams Using ‘ggplot2’. 2016.
+    Microbiol. 2006;72:5069–72. doi:10.1128/AEM.03006-05.         73. Wickham H. Reshaping Data with the reshape Package.
+    PMID:16820507.                                                    Journal of Statistical Software. 2007;21:1–20. doi:10.18637/
+70. Langille MG, Zaneveld J, Caporaso JG, McDonald D,                 jss.v021.i12.
+    Knights D, Reyes JA, Clemente JC, Burkepile DE, Vega          74. Team RC. R: A language and environment for statistical
+    Thurber RL, Knight R, et al. Predictive functional proﬁling       computing. 2016.
+

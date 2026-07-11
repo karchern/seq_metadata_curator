@@ -1,0 +1,531 @@
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543
+DOI 10.1186/s12859-017-1968-2
+
+
+
+
+ RESEARCH                                                                                                                                        Open Access
+
+Novel human microbe-disease association
+prediction using network consistency
+projection
+Wenzheng Bao, Zhichao Jiang and De-Shuang Huang*
+From 16th International Conference on Bioinformatics (InCoB 2017)
+Shenzhen, China. 20-22 September 2017
+
+
+  Abstract
+  Background: Accumulating biological and clinical reports have indicated that imbalance of microbial community is
+  closely associated with occurrence and development of various complex human diseases. Identifying potential
+  microbe-disease associations, which could provide better understanding of disease pathology and further boost
+  disease diagnostic and prognostic, has attracted more and more attention. However, hardly any computational
+  models have been developed for large scale microbe-disease association prediction.
+  Results: In this article, based on the assumption that microbes with similar functions tend to share similar association
+  or non-association patterns with similar diseases and vice versa, we proposed the model of Network Consistency
+  Projection for Human Microbe-Disease Association prediction (NCPHMDA) by integrating known microbe-disease
+  associations and Gaussian interaction profile kernel similarity for microbes and diseases. NCPHMDA yielded outstanding
+  AUCs of 0.9039, 0.7953 and average AUC of 0.8918 in global leave-one-out cross validation, local leave-one-out cross
+  validation and 5-fold cross validation, respectively. Furthermore, colon cancer, asthma and type 2 diabetes were taken
+  as independent case studies, where 9, 9 and 8 out of the top 10 predicted microbes were successfully confirmed by
+  recent published clinical literature.
+  Conclusion: NCPHMDA is a non-parametric universal network-based method which can simultaneously predict
+  associated microbes for investigated diseases but does not require negative samples. It is anticipated that NCPHMDA
+  would become an effective biological resource for clinical experimental guidance.
+  Keywords: Microbe, Disease, Association prediction, Network consistency projection
+
+
+Background                                                                            and more reports have confirmed that microbiome
+In the past few decades, accumulating evidence has                                    could benefit human health by maintaining normal
+demonstrated that human lives strongly rely on a                                      homeostasis, strengthening immune system, promoting
+diverse, complex and dynamic microbial community,                                     host’s metabolism, and modulating development of
+including bacteria, protozoa, viruses, eukaryotes, archea                             gastrointestinal tract [2]. Typically, it is reported that the
+and so on [1]. Tremendous microorganisms inhabit a                                    number of bacterial cells in an adult intestine reaches
+range of human organs such as skin, gut, mouth, stom-                                 1014, which is approximately 10 times as the number of
+ach and vagina, where a commensal relationship                                        total human cells [3]. More than 5,000,000 genes (out-
+between microbe and human host has been established                                   numbering the human genetic potential by two orders of
+after a long term adaptive co-evolution. Recently, more                               magnitude) are contained in the combined genomes of
+                                                                                      these bacteria, and tens of trillions of gene products are
+* Correspondence: dshuang@tongji.edu.cn                                               involved in a variety of biochemical and metabolic activ-
+Institute of Machine Learning and Systems Biology, School of Electronics and          ities, providing important complement to host physi-
+Information Engineering, Tongji University, Caoan Road 4800, Shanghai
+201804, China                                                                         ology [1, 4]. In a sense, it is reasonable to regard gut
+
+                                        © The Author(s). 2017 Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+                                        International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+                                        reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+                                        the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+                                        (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated.
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                          Page 174 of 259
+
+
+
+
+bacteria as an additional ‘organ’ for its equal metabolic       However, current amount and quality of known microbe-
+capacity as the liver [5]. Essential gut bacteria could         disease associations are far from satisfying the require-
+effectively promote nutrient absorption by assisting de-        ments of medical research. In traditional way, researchers
+composition of indigestible polysaccharides and produc-         attempt to obtain new associations between microbes and
+tion of indispensable vitamins [3]. Furthermore, they           diseases by biological or clinical experiments, which de-
+provide important protection against invasion of food-          mand a large quantity of time and cost. With the rapid de-
+borne pathogens by impacting on proliferation and               velopment of computer technology, more and more
+differentiation of host intestinal epithelium [6, 7].           computational models have been developed to predict po-
+However, a system understanding of how these bio-               tential miRNA-disease associations [24, 25], potential
+chemical activities achieve still remain largely unknown.       lncRNA-disease associations [26] and potential drug-target
+   According to recent reviews, microbiota in human bod-        interactions [27], where machine learning-based and simi-
+ies could be significantly influenced by both maternal gen-     larity measure-based models have shown their outstanding
+etics [8, 9] and environment variables including hygiene of     prediction ability. It is essential to logically extend these
+food and residence [3], change of season [10], usage of an-     prediction methods into microbe-disease association
+tibiotics [11] and personal diet of host [12, 13]. These piv-   prediction field. Recently, Ma et al. [23] manually collected
+otal factors interact with each other and build a dynamic       experimentally verified microbe-disease associations from
+relationship system, modifications of which would lead to       published clinical research reports and built the first
+imbalance of microbial community and further impact on          Human        Microbe-Disease        Association      Database
+transcriptomic, proteomic and metabolic profiles of related     (HMDAD). Based on the records from HMDAD, powerful
+microorganisms. With the rapid development of high-             computational models could be developed to prioritize
+throughput sequencing techniques as well as newly devel-        candidate microbes for investigated diseases in large-scale.
+oped computational tools, accumulating evidence has               In this paper, based on the assumption that microbes
+demonstrated that disorders of host’s microbiota would in-      with similar functions tend to share similar association
+crease the incidences of various complex human diseases         or non-association patterns with similar diseases, we
+such as liver diseases [14], diabetes [15], asthma [16], in-    developed the model of Network Consistency
+fectious colitis [17] and even cancers [18, 19]. For example,   Projection for Human Microbe-Disease Association
+to identify action of microorganisms in asthmatic airways,      prediction (NCPHMDA) to uncover potential microbe-
+Hilty et al. [20] studied 24 adult subjects composed of 11      disease associations. By taking advantages of known
+patients with asthma, 5 patients with chronic obstructive       microbe-disease association network and Gaussian
+pulmonary disease (COPD) and 8 healthy individuals, and         interaction profile kernel similarity network for
+found that adult asthma and COPD was inextricably               microbes and diseases, NCPHMDA achieved reliable
+related to high abundance of Proteobacteria and                 prediction performance. NCPHMDA could be applied
+Haemophilus as well as low abundance of Bacteroidetes           to new microbes without any known associated diseases
+and Prevotella. Mondot et al. [21] analyzed DNA                 as well as new diseases without any known associated
+sequences extracted from fecal samples which are                microbes. As a non-parametric network-based
+collected from 16 Crohn’s disease (CD) patients and 16          prediction method, NPCHMDA demonstrated obvious
+healthy subjects. As a result, they observed decrease of        advantages when the known experimentally verified
+Faecalibacterium prausnitzii abundance as well as increase      microbe-disease associations are insufficient. Three valid-
+of Escherichia coli abundance in CD-patients’ fecal             ation frameworks, global leave-one-out cross validation
+samples compared with the controls’. In addition, Chen          (global LOOCV), local leave-one-out cross validation
+et al. [22] discovered a shift in composition of liver          (local LOOCV) and 5-fold cross validation (5-fold CV),
+microbiota when comparing healthy and liver                     have been implemented to evaluate the performance of
+cirrhosis samples. In this study, liver cirrhosis was           NCPHMDA. As a result, NCPHMDA achieved AUCs of
+observed to be related with increase in the abundance           0.9093, 0.7953, and 0.8918 in global LOOCV, local
+of Bacilli, Enterobacteriaceae, Fusobacteriaceae,               LOOCV, and 5-fold CV, respectively. Moreover, colon
+Pasteurellaceae, Proteobacteria, Streptococcaceae and           cancer, asthma and type 2 diabetes were taken as three
+Veillonellaceae as well as decrease in the abundance            independent case studies, where 9, 9, 8 out of top 10 pre-
+of Bacteroidaceae and Lachnospiraceae.                          dicted microbes were successfully confirmed by recent
+  As mentioned above, identifying potential associations        experimental and clinical reports, respectively.
+between microbes and diseases has a long-term theoretical
+and practical significance not only for better understand-      Methods
+ing of disease formation and development mechanisms             Human microbe-disease associations
+but also for discovery of novel medical solutions for dis-      Human   Microbe-Disease     Association   Database
+ease prevention, diagnosis, treatment and prognosis [23].       (HMDAD, http://www.cuilab.cn/hmdad) [23] integrated
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                          Page 175 of 259
+
+
+
+
+                                                                                                                   !
+                                                                                             1 X
+483 high-quality microbe-disease entries, which were                                            nd
+mainly collected from 16S RNA sequencing–based                               γ d ¼ γ 0d =          kIP ðd ðiÞÞk2                           ð2Þ
+                                                                                            nd i¼1
+microbial literature. After removing the duplicate associ-
+ation records, 450 distinct microbe-disease associations
+                                                                         where value of parameter γd controls the bandwidth of
+were finally obtained, including 292 microbes and 39
+                                                                         Gaussian kernel. As presented in eq. (2), γd could be fur-
+diseases. Adjacency matrix A was adopted to quantify
+                                                                         ther calculated by dividing a new bandwidth parameter
+the relationship between diseases and microbes, where
+                                                                         γ’d by average number of associations with microbes for
+binary element A(i,j) denotes the presence or absence of
+                                                                         all the diseases. Here, we set γ’d = 1 according to previous
+association between disease d(i) and microbe m(j) (‘0’
+                                                                         studies [28].
+represents absence while ‘1’ represents presence).
+Furthermore, to represent the number of microbes and
+                                                                         Gaussian interaction profile kernel similarity for microbes
+diseases investigated in this article, variables nm and nd
+                                                                         Adopting the same approach, Gaussian interaction
+are respectively defined.
+                                                                         profile kernel similarity between microbe m(i) and m(j)
+                                                                         could be obtained as follows.
+Gaussian interaction profile kernel similarity for diseases
+Gaussian interaction profile kernel similarity for diseases                                                                 
+                                                                          KM ðmðiÞ; mðjÞÞ ¼ exp −γ m kIPðmðiÞÞ − IP ðmðjÞÞk2
+was calculated based on the assumption that diseases
+with similar phenotypes always share similar association                                                                                   ð3Þ
+and non-association pattern with functionally similar                                                                  !
+                                                                                               X
+                                                                                             1 nm
+microbes. We defined binary vector IP(d(i)) to denote                        γ m ¼ γ 0m =          kIP ðmðiÞÞk2                            ð4Þ
+the interaction profile of disease d(i), which could be ob-                                 nm i¼1
+tained by observing whether d(i) has known association
+with each microbe or not (i.e. the ith row of adjacency                  where IP(m(i)) represents the interaction profile of mi-
+matrix A). Then, Gaussian interaction profile kernel                     crobe m(i) (i.e. the ith column of adjacency matrix A).
+similarity matrix KD could be constructed after calcula-                 Normalized kernel bandwidth parameter γm could be cal-
+tion of similarity value between each disease pair.                      culated in the similar way as γd, where we select γ’m = 1 ac-
+                                                                         cording to Van et al. [28].
+
+                                                                         NCPHMDA
+                                                                       As shown in Fig. 1, NCPHMDA is a network-based
+  KDðd ðiÞ; d ðjÞÞ ¼ exp −γ d kIPðd ðiÞÞ − IP ðd ðjÞÞk2
+                                                                         prediction model which measures the relevance between
+                                                                 ð1Þ     microbes and diseases by calculating the nodes’
+
+
+
+
+ Fig. 1 Flowchart of NCPHMDA demonstrating the basic ideas of predicting potential microbe-disease associations by integrating known microbe-
+ disease associations and Gaussian interaction profile kernel similarity for microbes and diseases
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                        Page 176 of 259
+
+
+
+
+similarity in heterogeneous networks. Here, heteroge-         microbe j, respectively. KDi is the ith row of matrix KD,
+neous networks consist of microbe-disease association         KMj is the jth column of matrix KM, and |·| is the
+network constructed based on records from HMDAD               normalization operation. NCP is the final score matrix of
+[23] database, Gaussian interaction profile kernel simi-      network consistency projection, which measures the asso-
+larity for diseases, and Gaussian interaction profile ker-    ciation probability between each microbe-disease pair.
+nel similarity for microbes.
+  NCPHMDA first calculates two network consistency            Results and discussion
+projection scores, disease space projection score and mi-     Performance evaluation
+crobe space projection score, separately. The disease         We implemented LOOCV and 5-fold CV on the experi-
+space projection score is calculated as follows.              mentally verified microbe-disease associations recorded
+                                                              in HMDAD database to evaluate the prediction perform-
+                  KDi  Aj
+    NCP d ði; jÞ ¼                                 ð5Þ    ance of NCPHMDA. In validation frameworks of
+                     Aj                                       LOOCV, we left out each known microbe-disease associ-
+                                                              ation in turn for model testing while adopted other
+where KDi is the ith row of matrix KD and the vector          known microbe-disease associations as training samples.
+represents the similarities between disease i and all other   According to whether all the diseases were investigated
+diseases. Aj is the jth column of matrix A and the vector     simultaneously or not, LOOCV could be further split
+represents the associations of microbe j and all diseases.    into global LOOCV and local LOOCV. When global
+|Aj| is the norm of vector Aj. Matrix NCP_d is the            LOOCV was implemented, all the microbe-disease pairs
+projection score of disease Gaussian interaction profile      without known supporting evidence in HMDAD were
+kernel similarity network (represented as matrix KD) on       adopted as candidate samples, while when local LOOCV
+the known microbe-disease association network (repre-         was implemented, we only took microbes without
+sented as matrix A), where the element NCP_d(i,j) in          known confirmed relevance with investigated disease as
+row i and column j is the network projection of KDi and       candidate samples. In the framework of 5-fold CV, we
+Aj. Notably, the more similar diseases and disease i are,     randomly divided all the known microbe-disease associa-
+the more diseases associated with microbe j, and the          tions into 5 average groups, 4 of which were used as
+smaller angle between KDi and Aj, the greater network         training samples for model learning and the remaining
+consistency projection score NCP_d(i,j) is. The microbe       one was used as testing samples for model evaluation. It
+space projection score could be combined and normal-          needs to be emphasized that we repeated 5-fold CV for
+ized in the similar way as follows.                           100 times to reduce the potential deviations caused by
+                                                              random sample divisions. Each testing sample was
+                      Ai  KM j
+    NCP mði; jÞ ¼                                      ð6Þ    ranked with all candidate samples, where the model was
+                        jAi j
+                                                              considered to achieve a successful prediction if the rank
+where Ai is the ith row of matrix A, which consists of        of the testing sample exceeds the given threshold. After
+associations of disease i and all microbes. KMj is the jth    setting a series of thresholds, corresponding true positive
+column of matrix KM, which comprises the similarities         rates (TPR, sensitivity) were calculated by counting per-
+of microbe j and all other microbes. Matrix NCP_m is          centages of the test samples with higher ranks than in-
+the projection score of microbe Gaussian interaction          vestigated thresholds. Meanwhile, false positive rates
+profile kernel similarity network (represented as matrix      (FPR, 1-specificity), which denote the percentages of the
+KM) on the known microbe-disease association network          negative samples exceeding the given thresholds, were
+(represented as matrix A), where the element NCP_m(i,j)       also obtained. To visualize the prediction ability, receiver-
+in row i and column j is the network projection of KMj        operating characteristics (ROC) curves were then drawn
+and Ai. Remarkably, the more similar microbes and             by plotting TPR against FPR at different thresholds. Area
+microbe j are, the more microbes associated with disease      under ROC curve (AUC) was finally calculated as an
+i, and the smaller angle between KMj and Ai, the greater      essential performance evaluation criterion.
+network consistency projection score NCP_m(i,j) is.             In this paper, we compared NCPHMDA with
+   Finally, we could combine and normalize NCP_d and          KATZHMDA [29], which has achieved excellent per-
+NCP_m as follows.                                             formance in potential microbe-disease association pre-
+                                                              diction. Two other previously proposed prediction
+                   NCP d ði; jÞ þ NCP m ði; jÞ                methods (i.e. Regularized Least Squares [30] and
+    NCP ði; jÞ ¼                                     ð7Þ
+                      jKDi j þ KM j                         Random Walk with Restart (RWR) [31]) were also
+                                                              applied to evaluate the prediction ability of NCPHMDA.
+where NCP_d(i,j) and NCP_m(i,j) are the projection scores     To be clear, RWR algorithm only could predict associ-
+in disease space and microbe space of disease i and           ated microbes for given diseases and could not infer all
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                           Page 177 of 259
+
+
+
+
+the missing associations for all the diseases simultan-                  of cancers in females in the past few decades. With the
+eously. Therefore, global LOOCV couldn’t be imple-                       improved treatment and increased awareness, death
+mented for RWR. In global LOOCV framework,                               rates of colon cancer patients have been decreasing in
+NCPHMDA reached AUC of 0.9039 which had 0.0657,                          several developed countries. However, survival rates in
+0.3455 increase compared with KATZHMDA and Regu-                         developing countries are still far from meeting require-
+larized Least Squares (See Fig. 2). In addition,                         ments because of the low detection rates in early stage.
+NCPHMDA achieved AUC of 0.7953, which had 0.0977,                        Recently, accumulating evidence have demonstrated that
+0.1141 and 0.1413 increase compared with Regularized                     imbalance of microbial community has a close connec-
+Least Squares, KATZHMDA and Random Walk with                             tion with occurrence and development of colon cancer.
+Restart. Furthermore, 5-fold CV was also implemented.                    For example, Moore et al. [33] compared fecal floras of
+As a result, NCPHMDA yielded a reliable performance                      polyp patients (at high risk of colon cancer), Japanese-
+of 0.8918 +/− 0.0105. In conclusion, NCPHMDA has re-                     Hawaiians (at high risk), rural native Japanese (at low
+liable performance in the framework of cross validations.                risk), rural native Africans (at low risk) and North
+                                                                         American Caucasians (have a flora composition
+Case studies                                                             intermediate between two groups) and identified 15 colon
+NCPHMDA was implemented to prioritize candidate                          cancer-related bacterial taxa. Surprisingly, they found that
+microbes of all investigated diseases in this study. For                 concentrations of Bacteroides and Bifidobacterium were
+further prediction ability evaluation, three kinds of com-               positively related with colon cancer risks while concentra-
+plex human diseases (i.e. colon cancer, asthma and type                  tions of Lactobacillus and Eubacterium aerofaciens were
+2 diabetes) were taken as three independent case studies.                negatively correlated with colon cancer risks. We imple-
+Based on recent published clinical and biological reports,               mented NCPHMDA on colon cancer for potential
+predicted microbes ranked in top 10 of these three com-                  microbe-disease association prediction, and 9 out of the
+plex diseases were validated respectively. Importantly, it               top 10 predicted microbes were successfully confirmed by
+should be noted that only microbe-disease pairs without                  biological literature (See Table 1). Typically, it is reported
+known evidence collected in HMDAD database were                          that colon cancer patients who have undergone preopera-
+classed into validation datasets, which guaranteed the                   tive insertion of a metallic stent and are aged sixty and
+absolute independence between validation candidates                      older years are identified as risk factors for Clostridium
+and known associations used for model training.                          difficile (1st in the prediction list) infection [34].
+  According to the well-known global cancer statistics                   Helicobacter pylori (2nd in the prediction list) infection
+report [32], colon cancer occupied the third leading                     was found to be associated with risk increase of left-sided
+cause of cancers in males and the second leading cause                   colorectal cancer [35]. By sequencing of 16S rRNA gene
+
+
+
+
+ Fig. 2 Performance comparisons between NCPHMDA and three state-of-art prediction models (KATZHMDA, Regularized Least Squares and Random
+ Walk with Reastart) in terms of ROC curve and AUC. As a result, NCPHMDA achieved AUCs of 0.9039 and 0.7953 based on global and local LOOCV,
+ significantly outperforming previous classification models
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                      Page 178 of 259
+
+
+
+
+Table 1 For further prediction performance evaluation, NCPHMDA         Table 2 We implemented NCPHMDA on asthma to prioritize
+was implemented on colon cancer to identify potential associated       candidate microbes. As a result, 9 out of the top 10 predicted
+microbes. As a result, 9 out of the top 10 predicted microbes have     microbes have been confirmed based on recent experimental
+been verified based on recent experimental literature                  literature
+Rank               Microbe                             Evidence        Rank              Microbe                            Evidence
+1                  Clostridium difficile               PMID:21152135   1                 Clostridium difficile              PMID:25974301
+2                  Helicobacter pylori                 PMID:22294430   2                 Firmicutes                         PMID:23265859
+3                  Proteobacteria                      PMID:25699023   3                 Clostridium coccoides              PMID:21477358
+4                  Prevotella                          PMID:25699024   4                 Actinobacteria                     PMID:23265859
+5                  Staphylococcus aureus               unconfirmed     5                 Staphylococcus aureus              PMID:12743582
+6                  Clostridium coccoides               PMID:18237311   6                 Lactobacillus                      PMID:20592920
+7                  Firmicutes                          PMID:25699024   7                 Clostridia                         PMID:21477358
+8                  Bacteroidetes                       PMID:25699024   8                 Burkholderia                       PMID:24451910
+9                  Actinobacteria                      PMID:26811603   9                 Lachnospiraceae                    PMID:17433177
+10                 Clostridia                          PMID:19807912   10                Enterococcus                       unconfirmed
+
+
+V3 region, abundance of Proteobacteria (3rd in the predic-             approximate 90% of all diabetes mellitus cases and can
+tion list) was discovered under-represented in sporadic                lead to chronic complications including cardiovascular
+colorectal carcinoma patients [36].                                    diseases, stroke and diabetic retinopathy. Increasing
+  Asthma is a common chronic inflammatory disease of                   evidences have shown that formation and development
+the airways of the lungs, which is generally believed to be            of T2DM are closely related to low-grade inflammation
+caused by a combination of genetic and environmental                   and microbial infection [45]. Compositional changes in
+factors [37]. Recent statistics indicated that incidence of            intestinal microbiota such as Bacilli, Bacteroidetes,
+asthma has been in the increasing trend in the past few                Betaproteobacteria, Clostridia, Clostridium, Firmicutes,
+decades, and the number of asthma patients grew from                   Lactobacillus and Proteobacteria were discovered in
+183 million in 1990 to 242 million in 2013 [38]. Infection             T2DM patient feces [46]. We took T2DM as a case
+of pathogenic microorganisms (especially virus,                        study for potential T2DM-related microbe prediction, 8
+chlamydia, mycoplasma and mold) is one of the leading                  out of the top 10 predicted microbes were confirmed by
+causes of severe asthma. For example, Huang et al. [39]                experimental reports (See Table 3). Helicobacter pylori
+have discovered that differences in the bronchial airway               (1st in the prediction list) infection was found to be
+microbial composition were correlated with the manifest-               involved in pathogenesis of insulin resistance in T2DM
+ation of clinical asthma features. They pointed out the                patients, which could be regarded as important
+direct link between abundance of Sphingomonadaceae,                    biomarker for early detection of high blood glucose and
+Comamonadaceae, Oxalobacteraceae and degree of bron-                   prevention of high-risk T2DM communities [47]. Zhou
+chial hyperresponsiveness among asthmatic patients. By
+implementing NCPHMDA to prioritize candidate mi-                       Table 3 NCPHMDA was implemented on type 2 diabetes to
+crobes, 9 out of the top 10 predicted microbes were                    identify potential related microbes. As a result, 8 out of the top
+successfully verified by recent clinical evidence (See                 10 predicted microbes have been confirmed based on recent
+Table 2). As for top 5 confirmed asthma-related microbes,              experimental literature
+concentrations of Clostridium difficile and Staphylococcus             Rank              Microbe                            Evidence
+aureus (1st, 5th in the prediction list) were discovered               1                 Helicobacter pylori                PMID:24782613
+increased in asthma patients’ airways, while concentra-                2                 Clostridium difficile              PMID:23734349
+tions of Firmicutes and Actinobacteria were found                      3                 Prevotella                         PMID:23613868
+decreased [40–42]. Importantly, Clostridium coccoides
+                                                                       4                 Actinobacteria                     PMID:23613868
+(3rd in the prediction list) subcluster XIVa species were
+proved serving as early indicators of possible asthma later            5                 Staphylococcus aureus              PMID:16495627
+in life, which could help prevent and diagnose asthma and              6                 Lachnospiraceae                    unconfirmed
+provide guidance for clinical treatment [43].                          7                 Staphylococcus                     PMID:24385898
+  According to recent disease statistic reports [44],                  8                 Haemophilus                        unconfirmed
+diabetes mellitus represents 8.3% of the adult population              9                 Bacteroides                        PMID:20140211
+and occupies the eighth leading cause of deaths annually.
+                                                                       10                Enterobacteriaceae                 PMID:25759592
+Type 2 Diabetes Mellitus (T2DM) makes up
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                      Page 179 of 259
+
+
+
+
+et al. [48] attempted to investigate the potential effect of   HMDAD database are reliable as a basic information re-
+T2DM on subgingival plaque of periodontal patients,            source. Furthermore, Gaussian interaction profile kernel
+and the results indicated that the abundance of                similarity for microbe and disease were integrated in
+Prevotella (3rd in the prediction list) was significantly      NCPHMDA, which effectively improved the data com-
+different between diabetics and non-diabetics in subjects      pleteness and further reduced model prediction bias.
+with healthy periodontium while populations of                 NCPHMDA could be implemented on new microbes
+Actinobacteria (4rd in the prediction list) were signifi-      without any known associated diseases as well as new
+cantly different between diabetics and their non-diabetic      diseases without any known associated microbes. In
+counterparts in subjects with periodontitis. Evidence of       addition, NCPHMDA is a global ranking computational
+dysregulation of Clostridium difficile and Staphylococcus      method and could prioritize all the candidate microbe-
+aureus (2nd and 5th in the prediction list) could be           disease pairs for all investigated diseases in a large-scale.
+concluded from these clinical reports [49, 50].                   It should be noted that some limitations still exist in
+  Case studies on above three complex human diseases           the model design of NCPHMDA. Firstly, microbe-
+have confirmed the outstanding prediction ability of           disease association network is sparse, which would limit
+NCPHMDA. For further biological and clinical experi-           the prediction accuracy of proposed model. This prob-
+ment validation, we prioritized and publicly released the      lem could be solved with collection of high-quality ex-
+prediction of all the unknown microbe-disease pairs (See       perimental microbe-disease associations in the future.
+Additional file 1). It is anticipated that the candidate       Moreover, since calculation of Gaussian interaction pro-
+microbe-disease pairs with higher ranks could offer            file kernel similarity was strongly relied on the known
+valuable clues and would be confirmed by experimental          microbe-disease associations, the diseases with more
+observation in the near future.                                known associated microbes are possibly predicted to be
+                                                               related with more potential microbes. Integrating more
+Conclusions                                                    biological heterogeneous networks, such as disease
+With the rapid development of high-throughput sequen-          phenotypic similarity network, disease semantic similar-
+cing techniques, increasing literature have demonstrated       ity network and microbe functional similarity network,
+that imbalance of microbial community has critical im-         could help improved the quality of existing networks
+pacts on host’s health and disease. Identifying potential      and prediction performance of NCPHMDA. Establishing
+microbes associated with investigated disease for better       new similarity measures without dependence on the
+understanding of disease pathology and novel discovery         topological features of known microbe-disease associ-
+of drugs has attracted more and more attention in              ation network is another improving direction which
+recent years. However, few computational models have           should never be ignored.
+been developed for potential microbe-disease association
+prediction, which could significantly reduce experimen-        Additional file
+tal time and cost that traditional clinical researches
+suffer. In this study, based on the assumption that             Additional file 1: Table S1. Prediction of all the unknown microbe-
+microbes with similar functions tend to share similar           disease pairs. (XLSX 232 kb)
+association or non-association patterns with similar
+diseases, we presented a novel computational model             Acknowledgements
+named NCPHMDA to prioritize candidate microbe-                 The authors would like to thank all the guest editors and anonymous reviewers
+                                                               for their constructive comments.
+disease pairs for further experiment validation.
+NCPHMDA achieved outstanding AUCs of 0.9039,
+                                                               Funding
+0.7953 and average AUC of 0.8918 in global LOOCV,              The publication costs were funded by the grants of the National Science
+local LOOCV and 5-fold CV, respectively. In addition,          Foundation of China, Nos. 61520106006, 31571364, U1611265, 61532008,
+                                                               61672203, 61402334, 61472282, 61472280, 61472173, 61572447, 61373098 and
+case studies of colon cancer, asthma and type 2 diabetes
+                                                               61672382, China Postdoctoral Science Foundation Grant, Nos. 2016M601646.
+mellitus were implemented for further prediction ability
+evaluation. As a result, 9, 9 and 8 out of the top 10 pre-     Availability of data and materials
+dicted microbes of these three complex diseases were           All raw data used for case studies and comparison in the present article are
+confirmed by recent literature evidence. It is anticipated     publicly available and can be obtained through their respective publication
+                                                               references. The results from study have been provided in the tables and
+that NCPHMDA could serve as an important resource              Additional file 1.
+providing essential supports for further clinical or bio-
+logical researches.                                            Authors’ contributions
+  In conclusion, the following factors drove the excellent     WB & ZJ conceived the algorithm, carried out analyses, prepared the data
+                                                               sets, carried out experiments, and wrote the manuscript. DH designed,
+prediction performance of NCPHMDA. First of all,               performed and analyzed experiments and wrote the manuscript. All authors
+known microbe-disease associations collected in                read and approved the final manuscript.
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                                                 Page 180 of 259
+
+
+
+
+Ethics approval and consent to participate                                            17. Sokol H, Seksik P, Rigottier-Gois L, Lay C, Lepage P, Podglajen I, Marteau P,
+Not applicable.                                                                           Dore J. Specificities of the fecal microbiota in inflammatory bowel disease.
+                                                                                          Inflamm Bowel Dis. 2006;12(2):106–11.
+About this supplement                                                                 18. Castellarin M, Warren RL, Freeman JD, Dreolini L, Krzywinski M, Strauss J,
+This article has been published as part of BMC Bioinformatics Volume 18                   Barnes R, Watson P, Allen-Vercoe E, Moore RA, et al. Fusobacterium
+Supplement 16, 2017: 16th International Conference on Bioinformatics                      nucleatum infection is prevalent in human colorectal carcinoma. Genome
+(InCoB 2017): Bioinformatics. The full contents of the supplement are                     Res. 2012;22(2):299–306.
+available online at https://bmcbioinformatics.biomedcentral.com/articles/             19. Schwabe RF, Jobin C. The microbiome and cancer. Nat Rev Cancer. 2013;
+supplements/volume-18-supplement-16.                                                      13(11):800–12.
+                                                                                      20. Hilty M, Burke C, Pedro H, Cardenas P, Bush A, Bossley C, Davies J, Ervine A,
+                                                                                          Poulter L, Pachter L, et al. Disordered microbial communities in asthmatic
+Consent for publication                                                                   airways. PLoS One. 2010;5(1):e8578.
+Not applicable.                                                                       21. Mondot S, Kang S, Furet JP, Aguirre de Carcer D, McSweeney C, Morrison M,
+                                                                                          Marteau P, Dore J, Leclerc M. Highlighting new phylogenetic specificities of
+Competing interests                                                                       Crohn's disease microbiota. Inflamm Bowel Dis. 2011;17(1):185–92.
+The authors declare no conflicts of interest regarding the publication of this        22. Chen Y, Yang F, Lu H, Wang B, Chen Y, Lei D, Wang Y, Zhu B, Li L.
+paper.                                                                                    Characterization of fecal microbial communities in patients with liver
+                                                                                          cirrhosis. Hepatology (Baltimore, Md). 2011;54(2):562–72.
+                                                                                      23. Ma W, Zhang L, Zeng P, Huang C, Li J, Geng B, Yang J, Kong W, Zhou X, Cui
+Publisher’s Note                                                                          Q. An analysis of human microbe-disease associations. Brief Bioinform. 2016:
+Springer Nature remains neutral with regard to jurisdictional claims in                   bbw005.
+published maps and institutional affiliations.                                        24. Chen H, Zhang Z. Similarity-based methods for potential human microRNA-
+                                                                                          disease association prediction. BMC Med Genet. 2013;6(1):12.
+Published: 28 December 2017                                                           25. Gu C, Liao B, Li X, Li K. Network consistency projection for human miRNA-
+                                                                                          disease associations inference. Sci Rep. 2016;6:36054.
+References                                                                            26. Yang X, Gao L, Guo X, Shi X, Wu H, Song F, Wang B. A network based
+1. Human Microbiome Project Consortium. A framework for human                             method for analysis of lncRNA-disease associations and prediction of
+                                                                                          lncRNAs implicated in diseases. PLoS One. 2014;9(1):e87797.
+    microbiome research. Nature. 2012;486(7402):215–21.
+2. Ventura M, O’Flaherty S, Claesson MJ, Turroni F, Klaenhammer TR, van               27. Yamanishi Y, Kotera M, Kanehisa M, Goto S. Drug-target interaction
+    Sinderen D, O’Toole PW. Genome-scale analyses of health-promoting                     prediction from chemical, genomic and pharmacological data in an
+    bacteria: probiogenomics. Nat Rev Microbiol. 2009;7(1):61–71.                         integrated framework. Bioinformatics (Oxford, England). 2010;26(12):i246–54.
+3. Sommer F, Backhed F. The gut microbiota–masters of host development                28. van Laarhoven T, Nabuurs SB, Marchiori E. Gaussian interaction profile
+    and physiology. Nat Rev Microbiol. 2013;11(4):227–38.                                 kernels for predicting drug-target interaction. Bioinformatics (Oxford,
+4. Human Microbiome Project Consortium. Structure, function and diversity of              England). 2011;27(21):3036–43.
+    the healthy human microbiome. Nature. 2012;486(7402):207–14.                      29. Chen X, Huang YA, You ZH, Yan GY, Wang XS. A novel approach based on
+5. Gill SR, Pop M, Deboy RT, Eckburg PB, Turnbaugh PJ, Samuel BS, Gordon JI,              KATZ measure to predict associations of human microbiota with non-
+    Relman DA, Fraser-Liggett CM, Nelson KE. Metagenomic analysis of the human            infectious diseases. Bioinformatics (Oxford, England). 2016;
+    distal gut microbiome. Science (New York, NY). 2006;312(5778):1355–9.             30. Rifkin R, Klautau A: In defense of one-vs-all classification. J Mach Learn Res
+6. Smith K, McCoy KD, Macpherson AJ. Use of axenic animals in studying the                2004, 5(Jan):101-141.
+    adaptation of mammals to their commensal intestinal microbiota. Semin             31. Guo W, Shang DM, Cao JH, Feng K, He YC: Identifying and analyzing novel
+    Immunol. 2007;19(2):59–69.                                                            epilepsy-related genes using random walk with restart algorithm. 2017,
+7. Bäckhed F, Ley RE, Sonnenburg JL, Peterson DA, Gordon JI. Host-bacterial               2017:6132436.
+    mutualism in the human intestine. Science (New York, NY). 2005;307(5717):         32. Jemal A, Bray F, Center MM, Ferlay J, Ward E, Forman D. Global cancer
+    1915–20.                                                                              statistics. CA Cancer J Clin. 2011;61(2):69–90.
+8. Turnbaugh PJ, Hamady M, Yatsunenko T, Cantarel BL, Duncan A, Ley RE,               33. Moore WE, Moore LH. Intestinal floras of populations that have a high risk
+    Sogin ML, Jones WJ, Roe BA, Affourtit JP, et al. A core gut microbiome in             of colon cancer. Appl Environ Microbiol. 1995;61(9):3202–7.
+    obese and lean twins. Nature. 2009;457(7228):480–4.                               34. Yeom CH, Cho MM, Baek SK, Bae OS. Risk factors for the development of
+9. Goodrich JK, Waters JL, Poole AC, Sutter JL, Koren O, Blekhman R, Beaumont             Clostridium Difficile-associated colitis after colorectal cancer surgery. J
+    M, Van Treuren W, Knight R, Bell JT, et al. Human genetics shape the gut              Korean Soc Coloproctol. 2010;26(5):329–33.
+    microbiome. Cell. 2014;159(4):789–99.                                             35. Zhang Y, Hoffmeister M, Weck MN, Chang-Claude J, Brenner H. Helicobacter
+10. Davenport ER, Mizrahi-Man O, Michelini K, Barreiro LB, Ober C, Gilad Y.               pylori infection and colorectal cancer risk: evidence from a large
+    Seasonal variation in human gut microbiome composition. PLoS One. 2014;               population-based case-control study in Germany. Am J Epidemiol. 2012;
+    9(3):e90731.                                                                          175(5):441–50.
+11. Donia MS, Cimermancic P, Schulze CJ, Wieland Brown LC, Martin J, Mitreva          36. Gao Z, Guo B, Gao R, Zhu Q, Qin H. Microbiota disbiosis is associated with
+    M, Clardy J, Linington RG, Fischbach MA. A systematic analysis of                     colorectal cancer. Front Microbiol. 2015;6:20.
+    biosynthetic gene clusters in the human microbiome reveals a common               37. Martinez FD. Genes, environments, development and asthma: a reappraisal.
+    family of antibiotics. Cell. 2014;158(6):1402–14.                                     Eur Respir J. 2007;29(1):179–84.
+12. Walker AW, Ince J, Duncan SH, Webster LM, Holtrop G, Ze X, Brown D,               38. Vos T, Barber RM, Bell B, Bertozzi-Villa A, Biryukov S, Bolliger I, Charlson F,
+    Stares MD, Scott P, Bergerat A, et al. Dominant and diet-responsive groups            Davis A, Degenhardt L, Dicker D. Global, regional, and national incidence,
+    of bacteria within the human colonic microbiota. ISME J. 2011;5(2):220–30.            prevalence, and years lived with disability for 301 acute and chronic
+13. Wu GD, Chen J, Hoffmann C, Bittinger K, Chen YY, Keilbaugh SA, Bewtra M,              diseases and injuries in 188 countries, 1990–2013: a systematic analysis for
+    Knights D, Walters WA, Knight R, et al. Linking long-term dietary patterns with       the global burden of disease study 2013. Lancet. 2015;386(9995):743–800.
+    gut microbial enterotypes. Science (New York, NY). 2011;334(6052):105–8.          39. Huang YJ, Nelson CE, Brodie EL, Desantis TZ, Baek MS, Liu J, Woyke T,
+14. Henao-Mejia J, Elinav E, Thaiss CA, Licona-Limon P, Flavell RA. Role of the           Allgaier M, Bristow J, Wiener-Kronish JP, et al. Airway microbiota and
+    intestinal microbiome in liver disease. J Autoimmun. 2013;46:66–73.                   bronchial hyperresponsiveness in patients with suboptimally controlled
+15. Wen L, Ley RE, Volchkov PY, Stranges PB, Avanesyan L, Stonebraker AC, Hu              asthma. J Allergy Clin Immunol. 2011;127(2):372–81. e1-3
+    C, Wong FS, Szot GL, Bluestone JA, et al. Innate immunity and intestinal          40. Fujimura KE, Lynch SV. Microbiota in allergy and asthma and the emerging
+    microbiota in the development of type 1 diabetes. Nature. 2008;455(7216):             relationship with the gut microbiome. Cell Host Microbe. 2015;17(5):592–602.
+    1109–13.                                                                          41. Marri PR, Stern DA, Wright AL, Billheimer D, Martinez FD. Asthma-associated
+16. Rivas MN, Crother TR, Arditi M. The microbiome in asthma. Curr Opin                   differences in microbial composition of induced sputum. J Allergy Clin
+    Pediatr. 2016;                                                                        Immunol. 2013;131(2):346–52. e1-3
+Bao et al. BMC Bioinformatics 2017, 18(Suppl 16):543                                                                                         Page 181 of 259
+
+
+
+
+42. Bachert C, Gevaert P, Howarth P, Holtappels G, Van Cauwenberge P,
+    Johansson S. IgE to Staphylococcus Aureus enterotoxins in serum is related
+    to severity of asthma. J Allergy Clin Immunol. 2003;111(5):1131–2.
+43. Vael C, Vanheirstraeten L, Desager KN, Goossens H. Denaturing gradient gel
+    electrophoresis of neonatal intestinal microbiota in relation to the
+    development of asthma. BMC Microbiol. 2011;11:68.
+44. Atlas D: International diabetes federation. Press Release, Cape Town, South
+    Africa 2006, 4.
+45. Furet JP, Kong LC, Tap J, Poitou C, Basdevant A, Bouillot JL, Mariat D,
+    Corthier G, Dore J, Henegar C, et al. Differential adaptation of human gut
+    microbiota to bariatric surgery-induced weight loss: links with metabolic
+    and low-grade inflammation markers. Diabetes. 2010;59(12):3049–57.
+46. Larsen N, Vogensen FK, van den Berg FW, Nielsen DS, Andreasen AS,
+    Pedersen BK, Al-Soud WA, Sorensen SJ, Hansen LH, Jakobsen M. Gut
+    microbiota in human adults with type 2 diabetes differs from non-diabetic
+    adults. PLoS One. 2010;5(2):e9085.
+47. He C, Yang Z, NH L. Helicobacter pylori infection and diabetes: is it a myth
+    or fact? World J Gastroenterol. 2014;20(16):4607–17.
+48. Zhou M, Rong R, Munro D, Zhu C, Gao X, Zhang Q, Dong Q. Investigation
+    of the effect of type 2 diabetes mellitus on subgingival plaque microbiota
+    by high-throughput 16S rDNA pyrosequencing. PLoS One. 2013;8(4):e61516.
+49. Hassan SA, Rahman RA, Huda N, Wan Bebakar WM, Lee YY. Hospital-
+    acquired Clostridium Difficile infection among patients with type 2 diabetes
+    mellitus in acute medical wards. J R Coll Physicians Edinb. 2013;43(2):103–7.
+50. Tamer A, Karabay O, Ekerbicer H. Staphylococcus Aureus nasal carriage and
+    associated factors in type 2 diabetic patients. Jpn J Infect Dis. 2006;59(1):10–4.
+
+
+
+
+                                                                                         Submit your next manuscript to BioMed Central
+                                                                                         and we will help you at every step:
+                                                                                          • We accept pre-submission inquiries
+                                                                                          • Our selector tool helps you to find the most relevant journal
+                                                                                          • We provide round the clock customer support
+                                                                                          • Convenient online submission
+                                                                                          • Thorough peer review
+                                                                                          • Inclusion in PubMed and all major indexing services
+                                                                                          • Maximum visibility for your research
+
+                                                                                          Submit your manuscript at
+                                                                                          www.biomedcentral.com/submit
+

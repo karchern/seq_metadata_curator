@@ -1,0 +1,763 @@
+                                                                                                                                                 ORIGINAL RESEARCH
+                                                                                                                                          published: 15 December 2021
+                                                                                                                                        doi: 10.3389/fmicb.2021.765291
+
+
+
+
+                                             Species-Level Analysis of the Human
+                                             Gut Microbiome Shows Antibiotic
+                                             Resistance Genes Associated With
+                                             Colorectal Cancer
+                                             Chuanfa Liu 1,2,3† , Zhiming Li 2,3† , Jiahong Ding 2,3† , Hefu Zhen 2,3 , Mingyan Fang 2,3* and
+                                             Chao Nie 2,3*
+                                             1
+                                                 College of Life Sciences, University of Chinese Academy of Sciences, Beijing, China, 2 BGI-Shenzhen, Shenzhen, China,
+                                             3
+                                                 China National GeneBank, BGI-Shenzhen, Shenzhen, China
+
+
+                                             Colorectal cancer (CRC) is the second leading cause of cancer deaths and continuously
+                                             increases new cancer cases globally. Accumulating evidence links risks of CRC to
+                            Edited by:       antibiotic use. Long-term use and abuse of antibiotics increase the resistance of
+                             Ravi Kant,
+         University of Helsinki, Finland     the gut microbiota; however, whether CRC is associated with antibiotic resistance in
+                        Reviewed by:         gut microbiota is still unclear. In this study, we performed a de novo assembly to
+                          Shenghui Li,       metagenomic sequences in 382 CRC patients and 387 healthy controls to obtain
+   China Agricultural University, China
+                       Seungha Kang,
+                                             representative species-level genome bins (rSGBs) and plasmids and analyzed the
+   University of Queensland, Australia       abundance variation of species and antibiotic resistance genes (ARGs). Twenty-five
+                 *Correspondence:            species and 65 ARGs were significantly enriched in the CRC patients, and among
+                      Mingyan Fang           these ARGs, 12 were multidrug-resistant genes (MRGs), which mainly included acrB,
+          fangmingyan@genomics.cn
+                          Chao Nie           TolC, marA, H-NS, Escherichia coli acrR mutation, and AcrS. These MRGs could confer
+              niechao@genomics.cn            resistance to fluoroquinolones, tetracyclines, cephalosporins, and rifamycin antibiotics
+ † These authors share first authorship
+                                             by antibiotic efflux and inactivation. A classification model was built using the abundance
+                                             of species and ARGs and achieved areas under the curve of 0.831 and 0.715,
+                   Specialty section:
+         This article was submitted to       respectively. Our investigation has identified the antibiotic resistance types of ARGs
+           Antimicrobials, Resistance        and suggested that E. coli is the primary antibiotic resistance reservoir of ARGs in
+                   and Chemotherapy,
+               a section of the journal
+                                             CRC patients, providing valuable evidence for selecting appropriate antibiotics in the
+             Frontiers in Microbiology       CRC treatment.
+         Received: 26 August 2021
+                                             Keywords: antibiotic resistance gene (ARG), colorectal cancer (CRC), human gut metagenome, species-level
+      Accepted: 11 November 2021
+                                             genome bins, Escherichia coli
+      Published: 15 December 2021
+                             Citation:
+          Liu C, Li Z, Ding J, Zhen H,      INTRODUCTION
+            Fang M and Nie C (2021)
+ Species-Level Analysis of the Human
+                                            Colorectal cancer (CRC) is one of the most common cancers worldwide and has led to nearly
+    Gut Microbiome Shows Antibiotic
+  Resistance Genes Associated With
+                                            1 million deaths in 2020 only (Ferlay et al., 2021). Many factors are associated with an elevated
+                   Colorectal Cancer.       risk of CRC, including genetic predisposition, colorectal polyps, inflammatory bowel disease,
+         Front. Microbiol. 12:765291.       smoking, and alcohol intake (Wang et al., 2014). Accumulating evidence suggests that long-term,
+    doi: 10.3389/fmicb.2021.765291          frequent, and/or combined antibiotic use could also be risk factors for CRC (Wang et al., 2014;
+
+
+Frontiers in Microbiology | www.frontiersin.org                                       1                                      December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                               ARGs in CRC Patients Gut
+
+
+
+Dik et al., 2016; Cao et al., 2018; Crockett and Nagtegaal,               the high-quality sequencing reads to the 696 rSGBs. The read
+2019; Zhang et al., 2019). Antibiotics, such as metronidazole,            mapping rate in our results (76.6% ± 7.8%, Supplementary
+ciprofloxacin, and rifaximin, are frequently used to treat colitis        Table 2) was similar to that of a large-scale gut microbiota study
+and intestinal lesions (Bernstein et al., 2016; Nitzan et al.,            (range, 67.76–87.51%) (Pasolli et al., 2019). Based on the quality
+2016). During the long-term development and progression of                of the mapping rate, it is acceptable to use our data for subsequent
+CRC, the detrimental effect of antibiotics may be present even            species and ARG annotations.
+at the early stage of colitis, adenomatous polyps, or other                   Thereafter, we classified rSGBs using the GTDB Toolkit
+precursors of the CRC. It is worth noting that antibiotic use could       (GTDB-Tk, see Methods for details on the taxonomy
+increase the richness of antibiotic-resistance bacterial species          nomenclature used) (Chaumeil et al., 2019). However, 60
+and the abundance of antibiotic resistance genes (ARGs) in                rSGBs (8.62%) could not be assigned to an existing species, and
+the gut microbiota (Casals-Pascual et al., 2018; Dubinsky et al.,         402 (57.75%) rSGBs belonged to uncultured species (Figure 1
+2020). Subsequent to antibiotic use and increased resistance,             and Supplementary Table 5). All 696 rSGBs were classified into
+bowel dysbacteria may occur, and concomitantly, colonization              13 phyla and 306 genera. In line with previous studies (Yeoh
+resistance, and mucus production of the colon mucosal may be              et al., 2020), Firmicutes (including Firmicutes A), Bacteroidota,
+impaired (Becattini et al., 2016; Schwartz et al., 2020). Existing        Actinobacteriota, and Proteobacteria were predominant phyla,
+literature indicates that gut microbiota dysbiosis and colon              and the total relative abundance accounted for more than 90% of
+mucosal surface changes are associated with the occurrence and            the gut microbiota (mean ± SD, CRC group: 93.69% ± 8.76%;
+progression of CRC (Yachida et al., 2019; Cheng et al., 2020; Xing        CTR group: 96.67% ± 5.75%) (Supplementary Figure 1A).
+et al., 2021). Therefore, research on drug-resistant microbiota and       Bacteroides, Phocaeicola, Faecalibacterium, Prevotella, Alistipes,
+resistance genes may help to understand the progression of CRC.           and Blautia A were the dominant genera in the gut (Figure 2A).
+    The compositional patterns of antibiotic-resistant species and        It indicated that our rSGBs covered the dominate species in
+ARGs in the gut microbiota of CRC patients were scantly studied.          the gut microbiota.
+To examine their potential effects exerted upon CRC patients                  In addition, we assembled the plasmids of gut microbiota
+and healthy people, we have downloaded published human gut                using metaplasmidSPAdes (Antipov et al., 2019). We
+metagenomic data of CRC patients and healthy controls to                  obtained 24,692 plasmid-sourced contigs (N50 = 42,448 bp;
+study the antibiotic resistance species and ARG distribution in           max = 473,623 bp; min = 2,564 bp) with a mean of 32 contigs
+the gut microbiota. We performed the metagenomic assembly                 in each sample. The plasmid-sourced genes were predicted
+to obtain representative species-level genome bins (rSGBs) to             and clustered with MetaGeneMark and cd-hit, respectively
+investigate ARG abundance in each species. Based on the                   (Li and Godzik, 2006; Zhu et al., 2010). A non-redundant
+Genome Taxonomy Database (GTDB) and Comprehensive                         plasmid-sourced gene catalog (159,890 genes, N50 = 701 bp)
+Antibiotic Resistance Database (CARD), we annotated species               was obtained. Next, we applied reference-based taxonomy
+and ARGs in rSGBs and analyzed their abundance. These                     annotation of the gene catalog using the NCBI-NT database.
+analyses have revealed how the burden of antibiotic resistance            Finally, 157,504 (98.5%) of the genes in the gene catalog could
+changes in the intestine of CRC patients, stressing significant           be uniquely and reliably assigned to a species. We found those
+associations between these changes and microbiota composition.            genes mainly from Escherichia coli, Faecalibacterium prausnitzii,
+Our study has characterized the resistance of the gut microbiota          Bacteroides dorei, Bacteroides fragilis, Bacteroides uniformis, and
+in CRC patients and may shed new light on the proper antibiotic           Klebsiella pneumoniae.
+use for avoiding drug resistance.
+
+                                                                          Alterations of Gut Microbial Composition
+RESULTS                                                                   in Colorectal Cancer and CTR Groups
+                                                                          We analyzed the effect size of cohorts and host characteristics on
+Reconstruction and Annotation of                                          the variance of the gut microbiome by permutational multivariate
+Microbial Genomes and Plasmids                                            analysis of variance (PERMANOVA) test, where results revealed
+In this study, we downloaded metagenomic data of 382 CRC                  the factor “cohort” to have a predominant impact on the
+patients (the CRC group) and 387 healthy controls (CTR group)             species and ARG composition of the subjects (Supplementary
+from eight studies (Table 1 and Supplementary Table 1).                   Figure 2). To test the accuracy of results in the analysis, we
+The genome reconstruction was performed using a pipeline                  select two cohorts randomly to confirm our species and ARG
+reported by Pasolli et al. (2019) and carried out a de novo               results [PRJEB7774 (n = 109) and PRJEB12449 (n = 104)].
+single-sample metagenomes assembly and binning. More than                 The analysis of the α and β diversity of microbial composition
+23.5 million contigs (mean ± SD, 30,688.6 ± 13,972.6) were                revealed that the CRC group had a slightly lower species diversity
+assembled from these samples; 5,880 high-quality metagenome-              than the CTR group [Shannon–Wiener index (H’), p = 0.24,
+assembled genomes (MAGs) and 5,390 medium-quality MAGs                    Figure 2B], which was consistent with the literature (Gao
+were obtained (Supplementary Table 2). After clustering and               et al., 2015). The dimensionality-reduction analysis [principal
+filtering the rSGBs for the high-quality MAGs, we obtained                coordinate analysis (PCoA) and non-metric multidimensional
+696 rSGBs with genome sizes ranging from 0.95 to 6.41 Mb                  scaling (NMDS) analysis] of the rSGBs relative abundance of the
+(2.39 ± 0.43 Mb) (Supplementary Tables 2–4). We then aligned              CRC and CTR groups showed that the CRC and CTR groups
+
+
+Frontiers in Microbiology | www.frontiersin.org                       2                                 December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                         ARGs in CRC Patients Gut
+
+
+
+TABLE 1 | Characteristics of the data sets included in this study.
+
+Accession numbera                Group (nb )      Age (years) (mean ± SDc )   Gender (F/M,%d )    BMI (kg/m2 ) (mean ± SDc )    Read counts (mean ± SDc )
+
+PRJEB7774 Feng et al.             CRC (46)              67.07 ± 10.91           39.13/60.87              26.46 ± 3.54             49,936,552 ± 7,270,051
+(2015)                            CTR (63)               67.06 ± 6.37           41.27/58.73              27.57 ± 3.74             46,090,975 ± 7,068,141
+PRJNA389927 Hannigan              CRC (28)              58.86 ± 11.02           28.57/71.43              28.57/71.43               4,851,235 ± 2,209,656
+et al. (2018)                     CTR (28)               55.46 ± 9.52           60.71/39.29              60.71/39.29               5,848,176 ± 3,578,299
+PRJEB10878 Yu et al.              CRC (74)              66.04 ± 10.60           35.14/64.86              23.98 ± 3.16            49,225,941 ± 10,554,038
+(2017)                            CTR (54)               61.76 ± 5.67           38.89/61.11              23.46 ± 2.96             53,622,545 ± 8,128,850
+PRJEB6070 Zeller et al.           CRC (91)              64.66 ± 12.23           40.66/59.34              26.04 ± 4.49            43,899,076 ± 19,556,571
+(2014)                            CTR (66)              58.61 ± 12.79           50.00/50.00              24.68 ± 3.17            48,152,424 ± 23,181,408
+PRJEB27928 Wirbel et al.          CRC (22)               66.55 ± 10.6           50.00/50.00              25.33 ± 4.93            48,769,786 ± 18,597,297
+(2019)                            CTR (60)              57.57 ± 11.08           46.67/53.33              24.88 ± 3.2              28,494,527 ± 7,144,313
+PRJNA447983 Thomas                CRC (29)               71.45 ± 8.23           20.69/79.31              25.71 ± 4.14            46,797,011 ± 22,256,056
+et al. (2019)                     CTR (24)               67.92 ± 7.01           45.83/54.17              25.32 ± 3.51            58,117,998 ± 40,294,533
+PRJDB4176 Yachida et al.          CRC (40)              59.05 ± 12.83           47.50/52.50              22.36 ± 2.72            40,249,523 ± 12,291,484
+(2019)                            CTR (40)              63.63 ± 12.36           42.50/57.50              22.90 ± 2.44            46,232,480 ± 14,228,285
+PRJEB12449 Vogtmann               CRC (52)              61.85 ± 13.58           28.85/71.15              24.89 ± 4.25            52,664,424 ± 16,619,909
+et al. (2016)                     CTR (52)              61.23 ± 11.03           28.85/71.15              25.34 ± 4.28            52,629,971 ± 12,022,921
+a References of the study.
+b Counts of samples.
+c Standard deviation.
+d Ratio of the percentage of female and male.
+
+
+
+
+were separated (PERMANOVA analysis p = 0.01, R = 0.0731)                           Supplementary Table 6), Anaerostipes hadrus, Bifidobacterium
+(Figure 2C and Supplementary Figure 1B).                                           catenulatum, Fusicatenibacter saccharivorans, and butyrate-
+   Then, the composition of microbiota between CRC patients                        producing species F. prausnitzii, Agathobacter rectalis, and
+and healthy controls was compared at phylum and genus levels.                      Agathobacter faecis had been reported in the literature as enriched
+On the phylum levels, Bacteroidota, Desulfobacterota, and                          in the healthy controls and possibly beneficial to the gut health
+Fusobacteriota phyla were enriched in the CRC group, and                           (Ai et al., 2019; Kim et al., 2020; Ma et al., 2021). Focusing on the
+Firmicutes A phylum was enriched in the CTR group (Wilcoxon                        60 microbiota that exhibited significantly different abundances
+test, adjusted p < 0.05; Supplementary Figure 1C). On the                          between the CRC and CTR groups in all samples, we further
+genus level, Anaerotignum, Bilophila, Bulleidia, Flavonifractor,                   compared the relative abundances of these microbiota between
+Gemella, Intestinimonas, Parvimonas, Peptostreptococcus,                           the CRC and CTR groups in PRJEB7774 and PRJEB12449
+Porphyromonas, Prevotella, and Ruthenibacterium genera                             cohorts using the Wilcoxon rank-sum tests. We found that the
+were enriched in the CRC group; meanwhile, Agathobacter,                           enrichment of 85 and 83.3% of the significantly different species
+Anaerostipes, Butyricicoccus A, Butyrivibrio A, CAG-41,                            (CRC and CTR) in the PRJEB7774 and PRJEB12449 cohorts were
+Eubacterium G, Eubacterium R, Faecalibacterium, GCA-                               congruent with those in the composite cohort of all samples
+900066135, Lachnospira, TF01-11, and UBA11524 genera were                          (Supplementary Figure 3).
+enriched in the CTR group significantly (Wilcoxon test, adjusted
+p < 0.05; Supplementary Figure 1C).
+   Next, we compared the microbiota composition between                            Antibiotic Resistance Genes Conferred
+CRC patients and healthy controls at species levels using the                      to Multiple Antibiotics
+linear discriminant analysis effect size (LefSe) algorithm (Segata                 To analyze the antibiotic resistance information in microbiota,
+et al., 2011). Within the 25 species enriched in the CRC                           we characterized the ARGs and analyzed their abundance in
+group (Figure 2D and Supplementary Table 6), nine species                          the rSGBs and plasmids by annotating them to the CARD
+had been reported to be increased in the CRC group before,                         (Alcock et al., 2020), obtaining 164 ARGs in 189 rSGBs
+that is, E. coli (GTDB classification: E. coli D), Parabacteroides                 (Supplementary Tables 7, 8). The top 11 ARGs accounted for
+distasonis, B. fragilis, Porphyromonas species, Alistipes finegoldii,              51.16% of all abundance, mainly including adeF, TolC, E. coli soxS
+Alistipes onderdonkii, Akkermansia muciniphila, Bacteroides                        mutation, AcrS, E. coli soxR mutation, and marA (Figure 3A and
+thetaiotaomicron, Mediterraneibacter torques (previously named                     Supplementary Figure 4A). The adeF had the highest relative
+Ruminococcus torques), and Ruminococcus B gnavus (Zhang et al.,                    abundance, which could encode the membrane fusion proteins
+2018; Ai et al., 2019; Dai et al., 2019; Sahankumari et al., 2019;                 of the multidrug efflux complex AdeFGH (Coyne et al., 2010).
+Wong and Yu, 2019; Yang et al., 2019). Moreover, two species                       Within the plasmid-sourced genes, we obtained 43 ARGs in 49
+were the first discovered species that were enriched in the CRC                    genes (0.03% of all plasmid genes) that conferred resistance to
+group, that is, CAG-180 sp000432435 and CAG-177 sp003514385.                       antibiotics (Supplementary Table 8), and the ARG tetQ had the
+Among the 35 species enriched in the CTR group (Figure 2D and                      highest abundance.
+
+
+Frontiers in Microbiology | www.frontiersin.org                                3                                  December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                  ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 1 | Phylogenetic tree of representative genomes. The phylogenetic tree in the center showed 696 rSGBs. The colored points on the tree represent different
+  phyla. The innermost circle (labeled “1”) means whether the species was cultured (red color, marked as Cultured) or not (white color, marked as Uncultured) in the
+  previous study. The middle circle (labeled “2”) means whether the species could be annotated to the known genome (purple color, marked as “GTDB”) or not (white
+  color, marked as “Unclassified species”) in the GTDB. In the outmost circle (label “3”), the length of bars represents the genome size (bp), and colors represent
+  different phyla.
+
+
+
+    We analyzed the resistance mechanisms and resistance drug                             We found that those with top resistance types were also the
+types of identified ARGs and found that these ARGs in the                             most consumed antibiotics globally (Van Boeckel et al., 2014). For
+rSGBs and plasmids could confer resistance to 33 and 18                               example, ARGs in the gut of the CRC group could confer six types
+types of antibiotics, respectively. Notably, 53.05% of rSGB-                          of global high-consumption antibiotics, including penicillins,
+sourced ARGs (87 out of 164) could confer resistance to more                          cephalosporins, macrolides, fluoroquinolones, tetracyclines, and
+than one antibiotic (Supplementary Table 7). ARGs could                               rifamycins. The antibiotic resistance types in our findings were
+affect antibiotic resistance through the mechanisms of antibiotic                     consistent with the global antibiotic consumption. Among these
+efflux, inactivation, target alteration, target protection, target                    antibiotics, 19.23% belong to the Access Class, 30.77% belong
+replacement, and reduced permeability to antibiotics.                                 to the Watch Class, and 23.08% are part of the Reserve Class
+    Regarding the percentage of abundance, the antibiotic                             (World Health Organization AWaRe classification, version 2019;
+efflux accounted for 53.36% of rSGB-sourced ARGs resistance                           Supplementary Table 9 and Supplementary Figure 4D; World
+mechanism, and antibiotic inactivation and antibiotic targets                         Health Organization, 2019).
+alteration accounted for 21.21 and 14.49%, respectively
+(Figure 3B and Supplementary Figure 4B). Eighty percent of
+the total rSGB-sourced ARG abundance could be ascribed to the
+                                                                                      The Divergence and Heterogeneity of
+top 10 resistance drug types, including nucleoside antibiotics                        Antibiotic Resistance Gene in the
+(17.3%), cephalosporins (16.77%), macrolides (11.64%), phenicol                       Colorectal Cancer and CTR Groups
+antibiotics (8.06%), fluoroquinolones (5.97%), penams (5.2%),                         We performed a group comparison in the abundance of ARGs,
+rifamycins (2.96%), and other antibiotics (Figure 3C and                              antibiotic mechanisms, and their resistance drug types to analyze
+Supplementary Figure 4C).                                                             ARG variations. First, the component of ARGs in the CRC and
+
+
+Frontiers in Microbiology | www.frontiersin.org                                   4                                       December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                               ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 2 | Relative abundance difference of rSGBs in the CRC and CTR groups. (A) The relative abundance of rSGBs on the genus level. (B) The Shannon–Wiener
+  indices of rSGBs abundance in CRC (yellow color) and CTR (blue color) groups were similar (Wilcoxon rank-sum test, p = 0.24). (C) Principal coordinate analysis
+  (PCoA) plot depicted the Bray–Curtis distances of rSGBs in the CRC (yellow) and CTR (blue) groups. P-value and R represent PERMANOVA analysis p-value and R2
+  value, respectively. (D) LefSe analysis results showed the distribution difference of rSGBs, the colors yellow and blue represent the CRC and CTR groups,
+  respectively.
+
+
+
+CTR groups were analyzed. Compared with the CTR group, the                          enriched in the CRC group, mainly including antibiotic efflux
+CRC group had a higher rSGB-sourced ARG diversity [Shannon–                         and inactivation mechanism, tetracyclines, fluoroquinolones,
+Wiener index (H’), p < 0.001, Figure 3D], which indicated that                      penams, carbapenem, and cephalosporins (Figure 3F). The
+gut microbiota in the CRC group had more complexity of ARGs.                        abundance of ARGs in the rSGBs was significantly enriched in the
+The β diversity of ARG abundance showed that the ARGs in                            CRC group on the mechanisms and resistance drug type scales.
+the CRC group differed from those in the CTR group (NMDS,                              To further demonstrate the variability in the resistance
+PERMANOVA: p = 0.01, R = 0.0058) (Figure 3E).                                       burden between the CRC and CTR groups, we analyzed the
+   We then analyzed the rSGB-sourced ARG abundance                                  abundance difference of every ARG. Fifty ARGs from rSGBs were
+grouped by resistance mechanisms and resistance drug types                          significantly enriched in the CRC group (Wilcoxon test, adjusted
+in the CRC and CTR groups. Eighty percent (33 of 39)                                p < 0.05) (Figure 4). Correspondingly, the total abundance of
+resistance mechanisms and resistance drugs were significantly                       ARGs from plasmids was higher in the CRC group than that in
+
+
+Frontiers in Microbiology | www.frontiersin.org                                 5                                      December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 3 | Antibiotic resistance variations in CRC and CTR groups. (A) The average abundance percentage of ARGs in the CRC and CTR groups. (B) Resistance
+  mechanism abundance percentage in the CRC and CTR groups, respectively. (C) The abundance of resistance drug types in CRC and CTR groups.
+  (D) Shannon–Wiener index (H’) difference of ARG abundance in the CRC (yellow color) and CTR (blue color) group. (E) NMDS results of ARG abundance in the CRC
+  (yellow color) and CTR (blue color) group. (F) Resistance drug types (green color label) and resistance mechanisms (purple color label) abundance had statistical
+  differences in the CRC (yellow color) and CTR (blue color) groups. The following symbols denoted statistical significance: *p < 0.05, **p < 0.01, ***p < 0.001,
+  ****p < 0.0001. In (A), the superscript labels from numbers 1 to 7 and β represent the resistance drug types of mutations: 1 antibiotic resistance, 2 multiple
+  antibiotics, 3 β-lactam antibiotics, 4 pulvomycins, 5 fosfomycin antibiotics, 6 fluoroquinolones, 7 rifampicins; β β-lactamases.
+
+
+
+the CTR group (Figure 5A), and 70% of ARGs (16 of 23) were                           marA, AcrS, acrB, and mdtM. The remaining five ARGs,
+enriched in the CRC group significantly (Wilcoxon test, adjusted                     including adeF, CcrA, cepA, tet(W/N/W), and tetQ, were found
+p < 0.05) (Figure 5B). In our two validation cohorts, 100 and 96%                    in P. distasonis, B. fragilis A, B. fragilis, UMGS693 sp900544555,
+rSGB-sourced ARGs as well as 60.9 and 73.9% plasmid-sourced                          and A. onderdonkii, respectively. Although the ARGs existing
+ARGs in PRJEB7774 and PRJEB12449 cohorts were enriched                               in E. coli, Bacteroides species, and Alistipes species had been
+congruently with all the samples (Supplementary Figures 5, 6).                       reported, their association with CRC was not robust (Dubinsky
+The ARGs from both the rSGBs and plasmids in the validation                          et al., 2020; Parker et al., 2020). In terms of resistance mechanisms
+cohorts showed a notable consistency with those in all samples.                      and resistance drug types, these rSGB-sourced ARGs enriched
+   Among these rSGB-sourced ARGs, 90% (45 of 50) were found                          in CRC could confer resistance to 33 types of antibiotics by
+in the E. coli, mainly composing of TolC, E. coli soxS mutation,                     five mechanisms, and 37 of 50 ARGs encoded antibiotic efflux
+
+
+Frontiers in Microbiology | www.frontiersin.org                                  6                                      December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                   ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 4 | ARGs with significant differences and their resistance mechanism and resistance drug type abundance. The left (with a green label) and the right (with an
+  orange label) panels of heatmap represented drug resistance type and resistance mechanism, respectively. The purple or white color denoted with and without
+  certain characteristic. The boxplot showed abundance difference of ARGs in the CRC (yellow) and CTR (blue) groups. The following symbols denoted statistical
+  significance: ***p < 0.001, ****p < 0.0001. The superscript label from numbers 1 to 7 and β was the same as Figure 3A.
+
+
+
+mechanism (Figure 4). In addition, in rSGB-sourced ARGs, 22                               For the 23 plasmid-sourced ARGs, 39% of ARGs (9 of
+ARGs had resistance to fluoroquinolones, 20 ARGs to penams, 17                         23) were found in E. coli, mainly composing acrB, msbA,
+ARGs to cephalosporins, 15 ARGs to tetracyclines, and 10 ARGs                          AcrF, and E. coli acrR mutation. These ARGs could confer
+to rifamycins, respectively.                                                           resistance to 18 antibiotics by five mechanisms (Figure 5B),
+
+
+Frontiers in Microbiology | www.frontiersin.org                                    7                                      December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                     ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 5 | Plasmid ARGs with significant differences and their resistance mechanism and resistance drug type abundance. (A) The abundance variation of total
+  ARGs from plasmids in the CRC (yellow color) and CTR (blue color) groups. (B) The left (with a green label) and the right (with an orange label) panels of the heatmap
+  represented drug resistance type and resistance mechanism, respectively. The purple or white color denoted with or without certain characteristic. The boxplot
+  showed abundance difference of ARGs in the CRC (yellow color) and CTR (blue color) groups. In (B), the superscript label 1 and β represent the resistance drug
+  types of mutations: 1 multiple antibiotics; β β-lactamases. The following symbols denoted statistical significance: *p < 0.05, **p < 0.01.
+
+
+
+
+where the antibiotics included cephalosporins, fluoroquinolones,                        E. coli acrR mutation, and E. coli acrA) enriched in the CRC
+macrolides, tetracycline, and penams. Seven ARGs had resistance                         group. All these MRGs enriched in the CRC group were
+to penams and cephalosporins, six ARGs to tetracyclines and                             derived from E. coli and K. pneumoniae (Figures 5B, 6A).
+lincosamides, respectively.                                                             Meanwhile, compared with the CTR group, the rSGB-sourced
+   Interestingly,      penicillins,      cephalosporins,        and                     MRG abundance in E. coli was significantly higher in the CRC
+fluoroquinolones had been reported to be associated                                     group (Figure 6B). These MRGs could confer resistance to
+with the onset of colitis (Nitzan et al., 2016). Meanwhile,                             19 types of antibiotic drugs, which included fluoroquinolones,
+fluoroquinolones, cephalosporins, tetracyclines, and rifamycins                         cephalosporins, tetracyclines, penams, phenicol antibiotics, and
+were the most commonly used antibiotics in colitis treatment                            rifamycins (Figures 5B, 6A). Among these MRGs, mdtM could
+(Theochari et al., 2018). These results suggested that the increase                     confer resistance to 15 types of antibiotics, where both E. coli
+in resistance burden might be due to antibiotic treatment of                            marR mutant and K. pneumoniae KpnE could confer resistance to
+precancerous colitis and antibiotic use related to intestinal colitis                   12 types of antibiotics, and H-NS conferred resistance to 9 types
+and CRC by an unknown mechanism.                                                        of antibiotics (Figure 6A). The intergroup difference of MAGs
+   To further investigate the multidrug resistance of ARGs,                             was completely confirmed in the PRJEB7774 and PRJEB12449
+we denoted ARGs that could confer resistance to five or                                 cohorts, respectively (Supplementary Figure 8). This finding
+more antibiotic drug types as multidrug-resistant genes (MRGs)                          showed that the abundance of MRGs and species with MARs was
+(Supplementary Table 7). A total of 21 species from rSGBs were                          enriched in the CRC group, which suggested that the increase
+found that carried 41 MRGs, of which 12 MRGs were significantly                         in MRG abundance was also associated with the CRC. Findings
+enriched in the CRC group (Supplementary Figure 7). In                                  thus far indicated that the CRC group had a higher antibiotic
+the plasmid-sourced ARGs, three MRGs were found (acrB,                                  resistance burden and had resistance to multiple antibiotics.
+
+
+Frontiers in Microbiology | www.frontiersin.org                                     8                                       December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                           ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 6 | MRG distribution in the CRC and CTR groups. (A) Distribution, resistance drug types, and resistance mechanism of MRGs in CRC (yellow color) and
+  CTR (blue color) groups. The left Sankey showed the source percentage of MARs. The middle heatmap exhibited the drug resistance type and mechanism of MARs.
+  The blue color denoted MAR had that characteristic. The right boxplot showed the abundance of MARs. (B) MRGs in Escherichia coli (SGB_285) were enriched in
+  the CRC groups significantly. The following symbols denoted statistical significance: ***p < 0.001, ****p < 0.0001.
+
+
+
+Species Encoded by Antibiotic                                                     relatively high abundance of ARGs (median value) (Figure 7E).
+Resistance Genes Were Enriched in the                                             Notably, these four species were also significantly enriched in the
+                                                                                  CRC groups, primarily E. coli, which was encoded by as many as
+Colorectal Cancer Group                                                           37 ARGs and 13 MRGs. Although the ARG type counts in the
+We further analyzed the sum of ARG abundance in the CRC-                          CRC-associated cluster were lower than that in the unassociated
+associated and unassociated species, where species enriched in                    cluster, the former cluster carried a higher abundance of ARGs.
+the CRC and CTR groups were denoted as the “CRC-associated”                       Therefore, E. coli in the CRC-associated cluster may act as an
+cluster and others as the “unassociated” cluster. In the CRC-                     antibiotic resistance reservoir in the gut microbiota because of
+associated cluster, there were 30% of species (18 of 60 species)                  its high abundance of drug resistance genes. Taken together, we
+carrying ARGs; accordingly, there were 27% of species (171 of                     reported here that more ARGs encoded CRC-associated species
+636 rSGBs) with ARGs in the unassociated cluster (Figure 7A).                     than unassociated species, and E. coli was a critical antibiotic
+Among all ARG types, 61 ARG types are found in CRC-associated                     reservoir in the gut.
+clusters, and 122 ARG types are in unassociated clusters, whereas
+19 are common to both clusters (Figure 7B). Moreover, the
+results showed that the CRC-associated cluster and unassociated                   Predictive Effectiveness of Species and
+cluster were divided in the PCoA analysis (PERMANOVA                              Antibiotic Resistance Genes
+analysis, p = 0.01, Figure 7C), and the total abundance of                        To demonstrate the plausible clinical prediction of ARGs and
+ARGs in the CRC-associated cluster was significantly higher                       species, we next built a series of random-forest prediction models
+than that in the unassociated cluster (Wilcoxon test, p < 0.0001,                 using all the species, rSGB-sourced ARGs, and these features
+Figure 7D).                                                                       enriched in two groups. First, we tested the classification effect
+   The analysis of ARG abundance in the CRC group reported                        of the abundance of species and ARGs. The results showed that
+that E. coli, A. onderdonkii, P. distasonis, and A. finegoldii had a              the classification performance of species features (area under the
+
+
+Frontiers in Microbiology | www.frontiersin.org                               9                                     December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                               ARGs in CRC Patients Gut
+
+
+
+
+  FIGURE 7 | Abundance difference of ARGs in rSGBs that associated with CRC or not. (A) The rSGB count and percentage in the CRC-associated and
+  unassociated clusters; the blue or yellow colors represented the proportion of rSGBs with or without ARGs. (B) ARG counts in the CRC-associated and
+  unassociated clusters. (C) PCoA plot depicting Bray–Curtis distances of ARG abundances in the CRC-associated (green color) and unassociated (dark yellow color)
+  clusters. (D) Total ARG abundance in the CRC-associated (green color) and unassociated (dark yellow color) clusters (***p < 0.001). (E) Relative abundance of
+  ARGs in every CRC-associated rSGBs in the CRC groups.
+
+
+
+curve [AUC] = 0.802) outperformed that of the ARG features                           classifying the CRC and CTR groups. Our species-based
+(AUC = 0.663) (Supplementary Figures 9A,B).                                          classification model performed better than the previous report,
+    To improve the precision, we rebuilt two models using 118                        where the AUC ≥ 0.8 (Wirbel et al., 2019). The model accuracy
+selected species (32 carried ARGs) features and 19 selected                          based on ARG features in our study was approximate to that of
+ARG features, using the random forest method (Supplementary                          a previously reported species model, although the accuracy of
+Table 10 and Supplementary Figures 9C,D). From Figure 8,                             our model was unsatisfying (Thomas et al., 2019). In summary,
+it could be observed that the species model was more effective                       species and ARGs in microbiota could predict CRC patients with
+(AUC = 0.831) than the ARGs model (AUC = 0.715), when                                modest precision.
+
+
+Frontiers in Microbiology | www.frontiersin.org                                 10                                     December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                         ARGs in CRC Patients Gut
+
+
+
+                                                                                    cytolethal distending toxins (Wassenaar, 2018; Sahankumari
+                                                                                    et al., 2019). For species enriched in the CTR group, mounting
+                                                                                    evidence showed the potential benefits of F. prausnitzii for
+                                                                                    improving intestinal healthy via producing butyrate (Ferreira-
+                                                                                    Halder et al., 2017; Kim et al., 2020). B. catenulatum, as
+                                                                                    a significant commensal bacterium of F. prausnitzii, could
+                                                                                    improve its growth, gut colonization, and butyrate production
+                                                                                    by producing short-chain fatty acids (Kim et al., 2020).
+                                                                                    Moreover, Lachnospira eligens (formerly Eubacterium eligens)
+                                                                                    could effectively suppress intestinal inflammation and prevent
+                                                                                    colitis and CRC (Feng et al., 2016). Although more than 90%
+                                                                                    of species we found had been reported or cultured before, we
+                                                                                    had also discovered unknown species enriched in the CRC group,
+                                                                                    such as UBA5446 sp900544295 and Anaerotignum sp000436415,
+                                                                                    with both of the species carrying ARGs. It indicated that
+                                                                                    reconstructing genomes was useful to find out more species
+                                                                                    carrying ARGs and increased the probability of illustrating the
+                                                                                    ARG distribution in gut microbiota.
+                                                                                        In these species of rSGBs, we detected 164 ARGs, which was
+                                                                                    slightly higher than another large cohort study on antibiotics (149
+                                                                                    ARG types) (Hu et al., 2013). In our results, 30.49% of ARGs were
+  FIGURE 8 | AUC of classification model by selected rSGBs and ARGs                 enriched in the CRC group significantly. These CRC-associated
+  features. The random forest model was built based on species (green color)        species had a high antibiotic resistance abundance. The adeF gene
+  and ARGs (dark yellow). CI, confidential interval.                                was the largest abundant ARG in the CRC group. In another
+                                                                                    cohort of a healthy population, the highest abundance of ARG
+                                                                                    was TcR (Hu et al., 2013). The ARG abundance difference in
+DISCUSSION                                                                          different populations may be due to the disease-specific variations
+                                                                                    in antibiotic resistance under different antibiotic exposures
+Antibiotic resistance is one of the most critical public health                     (Shamsaddini et al., 2021).
+threats to human beings in recent years (Hernando-Amado                                 Antibiotic resistance could be acquired via gut microbiota
+et al., 2019). Although evidence has shown that antibiotic use                      through the use of broad-spectrum antibiotics, including
+may increase the risk of CRC, whether antibiotic resistance is                      cephalosporins, fluoroquinolones, penams, and rifaximin, to
+also related is far from clear (Dik et al., 2016; Zhang et al.,                     name a few. We noticed that the nucleoside antibiotic
+2019; Armstrong et al., 2020; Wan et al., 2020). Here, we                           type had the highest abundance of antibiotics, followed by
+discovered 696 rSGBs, 24,692 plasmids, and 187 ARGs in the gut                      the cephalosporins, macrolides, and phenicol antibiotic types.
+microbiota, where 25 species were enriched in the CRC group,                        Although a previous meta-analysis reported no significant
+and 13 species carried ARGs, such as E. coli, A. onderdonkii,                       associations between CRC and some antibiotics, for example,
+B. fragilis, A. muciniphila, and M. torques. The abundance of                       quinolones, tetracyclines, and macrolide antibiotics (Wan et al.,
+ARGs was enriched in the CRC group, and E. coli was the                             2020), a significantly higher abundance of these antibiotic
+essential ARG carrier.                                                              resistance drugs was detected in the CRC group. In this
+   To analyze the ARGs on the species level, we reconstructed                       study, penams were significantly higher in the CRC group,
+the genomes via single-sample assembly from the metagenomes                         which may be caused by higher penicillin usage in CRC
+as reported in the literature (Pasolli et al., 2019; Zhu et al.,                    patients (Wan et al., 2020). Another interesting finding was
+2019). However, plasmids also harbor many ARGs. It is reported                      that we found no evident difference in resistance to rifaximin
+that while the bacterial genome is assembled, its plasmids often                    between the CRC and CTR groups. Rifaximin, a rifamycin
+remain unidentified because it is not clear which contigs in the                    antibiotic, was popularly used in travelers’ diarrhea and irritable
+genome assembly have arisen from plasmids (Antipov et al., 2016,                    bowel syndrome. It had been reported to neither affect ARGs
+2019). We used metaplasmidSPAdes, which could identify novel                        nor increase the ARG burden because the use of rifaximin
+plasmids and assemble plasmids from metagenomic data sets in                        would rarely bring about the development of drug resistance
+order to annotate as many ARGs as possible.                                         compared with other antibiotics (Shamsaddini et al., 2021).
+   With the species-level genomes reconstructed, representative                     The high ARG burden in CRC patients suggested that it is
+genomes had a high genome quality of more than 90%                                  recommended to consider possible antibiotic resistance when
+completeness and less than 5% contamination. As a result,                           selecting appropriate antibiotic treatments, such as short-
+we found 25 species enriched in the CRC group, such as                              term alternating antibiotics and microbiome-based interventions
+E. coli, P. distasonis, A. muciniphila, B. thetaiotaomicron, etc.                   (Dubinsky et al., 2020).
+These species had been reported to induce CRC by producing                              We found that ARGs were resistant to antibiotics in Reserve
+inflammatory polysaccharides, cell cycle inhibiting factors, and                    Class. Reserve Class antibiotics were treated as the “last resort”
+
+
+Frontiers in Microbiology | www.frontiersin.org                                11                                 December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                ARGs in CRC Patients Gut
+
+
+
+options and usually used for highly selected patients (life-              PRJEB6070 (Zeller et al., 2014), PRJNA447983 (Thomas et al.,
+threatening infections due to multidrug-resistant bacteria). They         2019), PRJEB7774 (Feng et al., 2015), and PRJDB4176 (Yachida
+were closely monitored and prioritized as targets of stewardship          et al., 2019). Participants who had a history of cancers, used
+programs to ensure their continued effectiveness (World Health            antibiotics in the past period, or with gastrointestinal disease,
+Organization, 2019). However, drug-resistance species in the              including inflammatory bowel disease and intestinal infection,
+CRC group were resistant to the “last resort” antibiotics, such as        were excluded from the CTR groups (Zeller et al., 2014; Feng
+penems, glycylcyclines, and streptogramins. Increasing resistance         et al., 2015; Vogtmann et al., 2016; Yu et al., 2017; Hannigan et al.,
+of intestinal bacteria to “last resort” antibiotics reduces the           2018; Thomas et al., 2019; Wirbel et al., 2019; Yachida et al., 2019).
+number of antibiotics that can be used to control intestinal              Basic information of participants, including gender, age, body
+infections. Therefore, even the use of reserve group antibiotics          mass index (BMI), vegetarian or not, smoking or not, health stat
+still calls for caution.                                                  (health or CRC), and the American Joint Committee on Cancer
+    Our study was limited to illustrating the association between         Staging (AJCC Staging) information for CRC participation, was
+CRC and antibiotic use for lacking information on antibiotic              also collected (Supplementary Table 1).
+administration in these studies. A more directed study was
+needed to establish their association in the future. As our               Metagenomes de novo Assembly,
+metagenomic data were collected from eight cohorts, the                   Binning, and Quality Evaluation
+abundance of rSGBs and ARGs was affected by the host                      All the 769 paired-end fastq data went through quality control
+properties. Two cohorts were selected to analyze the abundance            by fastp (Chen et al., 2018); the host sequence (human
+variation of rSGBs and ARGs, and consistent results were                  reference genome version: hg38) in the data was removed
+obtained. In our study, E. coli carried many MRGs and was                 using soap2 (Li et al., 2009). Next, data were applied de novo
+significantly enriched in the CRC group. Although phylotype D             assembled using metaSPAdes genome assembler (Nurk et al.,
+E. coli (E. coli D) was one of these species with cyclomodulin-           2017). Metagenomic binning was performed by MetaBAT2,
+encoding genes and could produce cytotoxic necrotizing factors,           which generated 36,461 bins in total. Completeness and
+phylotype B2 E. coli was the main strain associated with CRC              contamination rates of bins were calculated by checkm qa
+(Wassenaar, 2018). Therefore, whether the phylotype D E. coli is          workflow (Parks et al., 2015). We filtered bins into high-quality
+associated with CRC warrants further investigation.                       bins (completeness > 90%, contamination < 5%), medium-
+                                                                          quality bins (completeness > 50%, contamination < 5%), and
+                                                                          low-quality bins (the residual bins). To obtain more high-
+CONCLUSION                                                                quality MAGs, we rebinned contigs using the same parameters
+                                                                          mentioned previously for these contigs tagged “bin.unbinned” in
+We analyzed the species and ARGs distribution in the gut
+                                                                          the MetaBAT2 results and low-quality bins.
+microbiota of CRC and CTR groups and found that the CRC
+group’s gut microbiota had higher ARGs and MRG abundance
+than that of the CTR group. And bacteria with ARGs were
+                                                                          Species-Level Genome Bin Cluster and
+enriched in the CRC group, such as E. coli, P. distasonis,                Representation Selection
+B. thetaiotaomicron, and B. fragilis. Meanwhile, CRC-associated           The completeness and contamination rates and the quality
+species carried abundant ARGs. E. coli was the primary antibiotic         filtering of new bins were assessed again to remove low-
+resistance reservoir of species in the CRC patients. Using                completeness and high-contamination bins. Finally, we obtained
+species and ARGs could classify CRC patients from healthy                 5,880 high-quality MAGs and 5,390 medium-quality MAGs.
+controls. It showed that the gut microbiota in CRC patients               The 5,880 high-quality MAGs were clustered into species-level
+could confer resistance to fluoroquinolones, cephalosporins,              genome bins (SGBs) by a two-step clustering strategy based on
+penams, and tetracyclines. Our investigation proposes antibiotic          genetic distance calculation by Metapi (Zhu et al., 2019). Then,
+resistance guidance to CRC patients, and this may help develop            representative genomes were selected for each cluster by SGB
+antibiotic use strategies to reduce the detrimental effects of            properties, including completeness, contamination, genome size,
+antibiotic resistance.                                                    and strain heterogeneity index. The sequence with the maximal
+                                                                          rank value was selected as representative genomes (rSGBs). The
+                                                                          maximal rank value was computed according to a formula:
+MATERIALS AND METHODS                                                     Rv = Cp − Ct + log(Gs) − Th, where Rv means rank value, Cp
+                                                                          and Ct represent completeness value and contamination value,
+Datasets and Samples Details                                              and Gs and Th represent genome size and train heterogeneity.
+We downloaded a total of 769 metagenomic paired-end data,
+including 382 CRC patients (CRC group, aged 64 ± 11 years)                Taxonomy and Relative Abundance of
+and 387 healthy controls (CTR group, aged 61 ± 10 years)                  Species
+(Table 1). Data were selected from eight published studies                Taxonomy annotation for all the rSGBs was performed by GTDB-
+with the NCBI SRA database accession codes PRJEB10878 (Yu                 Tk (Chaumeil et al., 2019) based on the genome taxonomy
+et al., 2017), PRJNA389927 (Hannigan et al., 2018), PRJEB12449            database (GTDB, Release 95) (Parks et al., 2020). The high-
+(Vogtmann et al., 2016), PRJEB27928 (Wirbel et al., 2019),                quality reads were aligned to the rSGBs by bwa (default
+
+
+Frontiers in Microbiology | www.frontiersin.org                      12                                  December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                            ARGs in CRC Patients Gut
+
+
+
+parameters) (Li, 2013). Sequence-based contigs abundance                learning models using selected elements from relative
+profiling was performed by jgi_summarize_bam_contig_depths              abundance profiles of species and ARGs. Data splitting,
+(default parameters) (Kang et al., 2019). Reads were mapped             preprocessing, feature selection, model training, model tuning,
+to the rSGBs, and the number of reads counted formed a                  and variable importance estimation were finished using the
+mapping depth. Considering the different sequencing depths              caret package (Kuhn, 2020). Before model training, near-zero
+of different samples, we used the mapping depth matrix of               variance and high correlation (absolute value of correlations
+normalization to estimate the abundances of contigs. For the            coefficient > 0.75), variables were removed. And then, data
+rSGB profile, we used the species assignment of each contig             were centered and scaled. Next, the 10-fold cross-validation
+from the rSGBs and took the median of the relative abundance            approach was used to select features, and random forest
+of contigs from the same rSGBs to generate the abundance of             methods were applied to train models. Finally, we assessed
+certain rSGBs (Supplementary Table 11). Then the α diversity            the effect of models by the area under the receiver operating
+(Shannon–Wiener index) of relative abundance of species was             characteristic curve (AUC) value using the ROCR package
+computed by the vegan (Oksanen et al., 2018). Next, β diversity         (Sing et al., 2005).
+was computed by PCoA and NMDS based on ape packages
+(Paradis and Schliep, 2018).                                            Statistical Analysis
+                                                                        During the analysis, we carried out Wilcoxon test and LefSe
+Plasmid Assembly and Acquisition of                                     analysis for the relative abundance of all species (Segata et al.,
+Non-redundant Gene Catalog in the                                       2011), with cutoff p < 0.05 and absolute values of the LDA
+Plasmids                                                                score > 2.0 (Supplementary Table 6). Then, we analyzed the
+                                                                        ARG profile by calculating Wilcoxon test with a cutoff of
+To avoid the possible ARG omission in the progress of MAGs
+                                                                        adjusted p < 0.05. Finally, 50 ARGs were filtered from rSGBs.
+assembly, we assembled the whole plasmid sequence in the gut
+                                                                        To access the effect of ARGs in the CRC-associated species,
+microbiota from the host genome and removed high-quality
+                                                                        we marked the selected 60 species above as “CRC-associated”
+reads using the metaplasmidSPAdes assembler (Antipov et al.,
+                                                                        cluster and other species with ARGs as “unassociated” cluster.
+2019). Then, we called the genes in the contigs by MetaGeneMark
+                                                                        And then, we compared the sum of ARG abundance in these
+(Zhu et al., 2010) and processed the gene cluster to the genes
+                                                                        two clusters, and then a PCoA analysis was performed on the
+by cd-hit (Li and Godzik, 2006) to get the non-redundant gene
+                                                                        classes. During the analysis and figure visualization, ggplot2
+catalog of the plasmids. After that, we computed the relative
+                                                                        (Wickham, 2016), ggtree (Yu, 2020), ggpubr (Kassambara,
+abundance of non-redundant genes in all samples. The genes
+                                                                        2020), and networkD3 (Allaire et al., 2017) packages were
+were annotated to the NCBI-NT database (20191213) to get the
+                                                                        used in our study.
+species source of plasmids.
+
+Antibiotic Resistance Gene Identity,                                    DATA AVAILABILITY STATEMENT
+Resistance Mechanism, and Drug Type
+Analysis                                                                All the 5880 SGBs and 696 rSGBs data in this study have been
+To annotate ARGs in rSGBs, we predicted the open reading                deposited into CNGB Sequence Archive (CNSA) (Guo et al.,
+frame by Prodigal (Hyatt et al., 2010) and then identified              2020) of China National GeneBank DataBase (CNGBdb) (Chen
+ARGs using Resistance Gene Identifier based on CARD (version            et al., 2020) with accession number CNP0001862.
+3.0.7) for both rSGBs and plasmid genes (Alcock et al., 2020).
+Then, antibiotic resistance ontology (ARG types) was matched
+to the species by contigs id. Based on the best hit antibiotic
+                                                                        ETHICS STATEMENT
+resistance ontology results, relative abundances of ARGs, drug          The studies involving human participants were reviewed
+types, and resistance mechanism types were obtained. In our             and approved by the Ethical Clearance the Institutional
+research, the ARGs were used to represent ARGs types. We also           Review Board of BGI. Written informed consent for
+matched resistance antibiotics of rSGBs to AWaRe classification         participation was not required for this study in accordance
+according to the WHO AWaRe classification of antibiotics (2019          with the national legislation and the institutional
+version) (Supplementary Table 9). We computed the α diversity           requirements.
+(Shannon–Wiener index) of ARG relative abundance in the
+rSGBs by the vegan (Oksanen et al., 2018). Then, PCoA and
+NMDS were performed to compute β diversity by ape packages              AUTHOR CONTRIBUTIONS
+(Paradis and Schliep, 2018). Meanwhile, PERMANOVA was used
+to test the statistical significance of β diversity by the vegan        CL and ZL downloaded and analyzed the data. CL
+package (Oksanen et al., 2018).                                         wrote the manuscript. JD modified the manuscript. HZ
+                                                                        and CN gave beneficial advice. ZL and MF conceived
+Machine Learning Train Model                                            the study and commented on the manuscript. All
+To assess the classification effect of species and rSGB-                authors contributed to the article and approved the
+sourced ARGs, we built and trained a series of machine                  submitted version.
+
+
+Frontiers in Microbiology | www.frontiersin.org                    13                                December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                                ARGs in CRC Patients Gut
+
+
+
+
+FUNDING                                                                                       SUPPLEMENTARY MATERIAL
+This research was supported by the National Key Research and                                  The Supplementary Material for this article can be found
+Development Program of China (No. 2020YFC2002902) and the                                     online at: https://www.frontiersin.org/articles/10.3389/fmicb.
+National Natural Science Foundation of China (No. 31800765).                                  2021.765291/full#supplementary-material
+
+
+REFERENCES                                                                                    Dubinsky, V., Reshef, L., Bar, N., Keizer, D., Golan, N., Rabinowitz, K., et al. (2020).
+                                                                                                  Predominantly antibiotic-resistant intestinal microbiome persists in patients
+Ai, D., Pan, H., Li, X., Gao, Y., Liu, G., and Xia, L. C. (2019). Identifying gut                 with pouchitis who respond to antibiotic therapy. Gastroenterology 158, doi:
+   microbiota associated with colorectal cancer using a zero-inflated lognormal                   10.1053/j.gastro.2019.10.001 610-624 e613.
+   model. Front. Microbiol. 10:826. doi: 10.3389/fmicb.2019.00826                             Feng, Q., Liang, S., Jia, H., Stadlmayr, A., Tang, L., Lan, Z., et al. (2015). Gut
+Alcock, B. P., Raphenya, A. R., Lau, T. T. Y., Tsang, K. K., Bouchard, M.,                        microbiome development along the colorectal adenoma-carcinoma sequence.
+   Edalatmand, A., et al. (2020). CARD 2020: antibiotic resistome surveillance                    Nat. Commun. 6:6528. doi: 10.1038/ncomms7528
+   with the comprehensive antibiotic resistance database. Nucleic Acids Res. 48,              Feng, Q., Zhang, D., Liu, C., Xiao, L., Tang, L., and Wang, J. (2016).
+   D517–D525. doi: 10.1093/nar/gkz935                                                             Use of Eubacterium in the Prevention and Treatment for Colorectal
+Allaire, J. J., Gandrud, C., Russell, K., and Yetman, C. (2017). networkD3: D3                    Cancer Related Diseases. Geneva: World Intellectual Property Organization.
+   JavaScript Network Graphs from R. R package version 0.4. Available online at:                  PCT/CN2014/083689.
+   https://CRAN.R-project.org/package=networkD3                                               Ferlay, J., Colombet, M., Soerjomataram, I., Parkin, D. M., Piñeros, M., Znaor, A.,
+Antipov, D., Hartwick, N., Shen, M., Raiko, M., Lapidus, A., and Pevzner, P. A.                   et al. (2021). Cancer statistics for the year 2020: an overview. Int. J. Cancer
+   (2016). plasmidSPAdes: assembling plasmids from whole genome sequencing                        doi: 10.1002/ijc.33588 [Online ahead of print].
+   data. Bioinformatics 32, 3380–3387. doi: 10.1093/bioinformatics/btw493                     Ferreira-Halder, C. V., Faria, A. V. S., and Andrade, S. S. (2017). Action and
+Antipov, D., Raiko, M., Lapidus, A., and Pevzner, P. A. (2019). Plasmid detection                 function of Faecalibacterium prausnitzii in health and disease. Best Pract. Res.
+   and assembly in genomic and metagenomic data sets. Genome Res. 29, 961–968.                    Clin. Gastroenterol. 31, 643–648. doi: 10.1016/j.bpg.2017.09.011
+   doi: 10.1101/gr.241299.118                                                                 Gao, Z., Guo, B., Gao, R., Zhu, Q., and Qin, H. (2015). Microbiota disbiosis is
+Armstrong, D., Dregan, A., Ashworth, M., White, P., McGee, C., and de Lusignan,                   associated with colorectal cancer. Front. Microbiol. 6:20. doi: 10.3389/fmicb.
+   S. (2020). The association between colorectal cancer and prior antibiotic                      2015.00020
+   prescriptions: case control study. Br. J. Cancer 122, 912–917. doi: 10.1038/               Guo, X., Chen, F., Gao, F., Li, L., Liu, K., You, L., et al. (2020). CNSA: a data
+   s41416-019-0701-705                                                                            repository for archiving omics data. Database (Oxford) 2020:baaa055. doi: 10.
+Becattini, S., Taur, Y., and Pamer, E. G. (2016). Antibiotic-Induced changes in the               1093/database/baaa055
+   intestinal microbiota and disease. Trends Mol. Med. 22, 458–478. doi: 10.1016/             Hannigan, G. D., Duhaime, M. B., Ruffin, M. T. T., Koumpouras, C. C., and Schloss,
+   j.molmed.2016.04.003                                                                           P. D. (2018). Diagnostic potential and interactive dynamics of the colorectal
+Bernstein, C. N., Eliakim, A., Fedail, S., Fried, M., Gearry, R., Goh, K. L., et al.              cancer virome. mBio 9:e02248-18 doi: 10.1128/mBio.02248-2218.
+   (2016). World gastroenterology organisation global guidelines inflammatory                 Hernando-Amado, S., Coque, T. M., Baquero, F., and Martinez, J. L.
+   bowel disease: update August 2015. J. Clin. Gastroenterol. 50, 803–818. doi:                   (2019). Defining and combating antibiotic resistance from one health and
+   10.1097/MCG.0000000000000660                                                                   global health perspectives. Nat. Microbiol. 4, 1432–1442. doi: 10.1038/s41564-
+Cao, Y., Wu, K., Mehta, R., Drew, D. A., Song, M., Lochhead, P., et al. (2018).                   019-0503-509
+   Long-term use of antibiotics and risk of colorectal adenoma. Gut 67, 672–678.              Hu, Y., Yang, X., Qin, J., Lu, N., Cheng, G., Wu, N., et al. (2013). Metagenome-wide
+   doi: 10.1136/gutjnl-2016-313413                                                                analysis of antibiotic resistance genes in a large cohort of human gut microbiota.
+Casals-Pascual, C., Vergara, A., and Vila, J. (2018). Intestinal microbiota and                   Nat. Commun. 4:2151. doi: 10.1038/ncomms3151
+   antibiotic resistance: perspectives and solutions. Hum. Microbiome J. 9, 11–15.            Hyatt, D., Chen, G.-L., LoCascio, P. F., Land, M. L., Larimer, F. W., and
+   doi: 10.1016/j.humic.2018.05.002                                                               Hauser, L. J. (2010). Prodigal: prokaryotic gene recognition and translation
+Chaumeil, P. A., Mussig, A. J., Hugenholtz, P., and Parks, D. H. (2019). GTDB-Tk: a               initiation site identification. BMC Bioinformatics 11:119. doi: 10.1186/1471-
+   toolkit to classify genomes with the genome taxonomy database. Bioinformatics                  2105-11-119
+   36, 1925–1927. doi: 10.1093/bioinformatics/btz848                                          Kang, D. D., Li, F., Kirton, E., Thomas, A., Egan, R., An, H., et al. (2019). MetaBAT
+Chen, F. Z., You, L. J., Yang, F., Wang, L. N., Guo, X. Q., Gao, F., et al. (2020).               2: an adaptive binning algorithm for robust and efficient genome reconstruction
+   CNGBdb: China national genebank database. Yi Chuan 42, 799–809. doi: 10.                       from metagenome assemblies. PeerJ 7:e7359. doi: 10.7717/peerj.7359
+   16288/j.yczz.20-080                                                                        Kassambara, A. (2020). ggpubr: ‘ggplot2’ Based Publication Ready Plots. R Package
+Chen, S., Zhou, Y., Chen, Y., and Gu, J. (2018). fastp: an ultra-fast all-in-one FASTQ            Version 0.4.0. Available online at: https://CRAN.R-project.org/package=ggpubr
+   preprocessor. Bioinformatics 34, i884–i890. doi: 10.1093/bioinformatics/bty560             Kim, H., Jeong, Y., Kang, S., You, H. J., and Ji, G. E. (2020). Co-Culture
+Cheng, Y., Ling, Z., and Li, L. (2020). The intestinal microbiota and Colorectal                  with bifidobacterium catenulatum improves the growth, gut colonization, and
+   Cancer. Front. Immunol. 11:615056. doi: 10.3389/fimmu.2020.615056                              butyrate production of Faecalibacterium prausnitzii: in vitro and in vivo studies.
+Coyne, S., Rosenfeld, N., Lambert, T., Courvalin, P., and Perichon, B.                            Microorganisms 8:788. doi: 10.3390/microorganisms8050788
+   (2010). Overexpression of resistance-nodulation-cell division pump AdeFGH                  Kuhn, M. (2020). caret: Classification and Regression Training. R package Version
+   confers multidrug resistance in Acinetobacter baumannii. Antimicrob. Agents                    6.0-86. Available online at: https://CRAN.R-project.org/package=caret
+   Chemother. 54, 4389–4393. doi: 10.1128/AAC.00155-110                                       Li, R., Yu, C., Li, Y., Lam, T. W., Yiu, S. M., Kristiansen, K., et al. (2009). SOAP2: an
+Crockett, S. D., and Nagtegaal, I. D. (2019). Terminology, molecular                              improved ultrafast tool for short read alignment. Bioinformatics 25, 1966–1967.
+   features, epidemiology, and management of serrated colorectal neoplasia.                       doi: 10.1093/bioinformatics/btp336
+   Gastroenterology 157, 949–966.e4. doi: 10.1053/j.gastro.2019.06.041.                       Li, W., and Godzik, A. (2006). Cd-hit: a fast program for clustering and comparing
+Dai, Z., Zhang, J., Wu, Q., Chen, J., Liu, J., Wang, L., et al. (2019). The role                  large sets of protein or nucleotide sequences. Bioinformatics 22, 1658–1659.
+   of microbiota in the development of colorectal cancer. Int. J. Cancer 145,                     doi: 10.1093/bioinformatics/btl158
+   2032–2041. doi: 10.1002/ijc.32017                                                          Li, H. (2013). Aligning sequence reads, clone sequences and assembly contigs
+Dik, V. K., van Oijen, M. G., Smeets, H. M., and Siersema, P. D. (2016). Frequent                 with BWA-MEM. arXiv [Preprint]. arXiv:1303.3997. Available online at: https:
+   use of antibiotics is associated with colorectal cancer risk: results of a nested              //arxiv.org/abs/1303.3997v2 (accesed May 26, 2013).
+   case-control study. Dig. Dis. Sci, 61, 255–264. doi: 10.1007/s10620-015-3828-              Ma, C., Chen, K., Wang, Y., Cen, C., Zhai, Q., and Zhang, J. (2021). Establishing a
+   3820                                                                                           novel colorectal cancer predictive model based on unique gut microbial single
+
+
+
+
+Frontiers in Microbiology | www.frontiersin.org                                          14                                           December 2021 | Volume 12 | Article 765291
+Liu et al.                                                                                                                                                    ARGs in CRC Patients Gut
+
+
+
+   nucleotide variant markers. Gut Microbes 13, 1–6. doi: 10.1080/19490976.2020.                     2 diabetes mellitus. Int. J. Cancer 135, 956–967. doi: 10.1002/ijc.
+   1869505                                                                                           28738
+Nitzan, O., Elias, M., Peretz, A., and Saliba, W. (2016). Role of antibiotics for                 Wassenaar, T. M. (2018). E. coli and colorectal cancer: a complex relationship
+   treatment of inflammatory bowel disease. World J. Gastroenterol. 22, 1078–                        that deserves a critical mindset. Crit. Rev. Microbiol. 44, 619–632. doi: 10.1080/
+   1087. doi: 10.3748/wjg.v22.i3.1078                                                                1040841X.2018.1481013
+Nurk, S., Meleshko, D., Korobeynikov, A., and Pevzner, P. A. (2017). metaSPAdes:                  Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. New York, NY:
+   a new versatile metagenomic assembler. Genome Res. 27, 824–834. doi: 10.1101/                     Springer-Verlag.
+   gr.213959.116                                                                                  Wirbel, J., Pyl, P. T., Kartal, E., Zych, K., Kashani, A., Milanese, A., et al. (2019).
+Oksanen, J., Blanchet, F. G., Friendly, M., Kindt, R., Legendre, P., McGlinn, D.,                    Meta-analysis of fecal metagenomes reveals global microbial signatures that are
+   et al. (2018). vegan: Community Ecology Package. Ordination Methods, Diversity                    specific for colorectal cancer. Nat. Med. 25, 679–689. doi: 10.1038/s41591-019-
+   Analysis and Other Functions for Community and Vegetation Ecologists. Version                     0406-406
+   2.5-1. Available online at: https://CRAN.R-project.org/package=vegan                           Wong, S. H., and Yu, J. (2019). Gut microbiota in colorectal cancer: mechanisms of
+Paradis, E., and Schliep, K. (2018). ape 5.0: an environment for modern                              action and clinical applications. Nat. Rev. Gastroenterol. Hepatol. 16, 690–704.
+   phylogenetics and evolutionary analyses in R. Bioinformatics 35, 526–528. doi:                    doi: 10.1038/s41575-019-0209-208
+   10.1093/bioinformatics/bty633                                                                  World Health Organization (2019). The 2019 WHO AWaRe Classification of
+Parker, B. J., Wearsch, P. A., Veloo, A. C. M., and Rodriguez-Palacios, A. (2020).                   Antibiotics for Evaluation and Monitoring of Use. Geneva: World Health
+   The genus alistipes: gut bacteria with emerging implications to inflammation,                     Organization.
+   cancer, and mental health. Front. Immunol. 11:906. doi: 10.3389/fimmu.2020.                    Xing, C., Wang, M., Ajibade, A. A., Tan, P., Fu, C., Chen, L., et al. (2021).
+   00906                                                                                             Microbiota regulate innate immune signaling and protective immunity against
+Parks, D. H., Chuvochina, M., Chaumeil, P.-A., Rinke, C., Mussig, A. J., and                         cancer. Cell Host Microbe 29, 959–974.e7. doi: 10.1016/j.chom.2021.03.016
+   Hugenholtz, P. (2020). A complete domain-to-species taxonomy for Bacteria                      Yachida, S., Mizutani, S., Shiroma, H., Shiba, S., Nakajima, T., Sakamoto, T., et al.
+   and Archaea. Nat. Biotechnol. 38, 1079–1086. doi: 10.1038/s41587-020-05                           (2019). Metagenomic and metabolomic analyses reveal distinct stage-specific
+   01-508                                                                                            phenotypes of the gut microbiota in colorectal cancer. Nat. Med. 25, 968–976.
+Parks, D. H., Imelfort, M., Skennerton, C. T., Hugenholtz, P., and Tyson, G. W.                      doi: 10.1038/s41591-019-0458-457
+   (2015). CheckM: assessing the quality of microbial genomes recovered from                      Yang, J., McDowell, A., Kim, E. K., Seo, H., Lee, W. H., Moon, C. M., et al.
+   isolates, single cells, and metagenomes. Genome Res. 25, 1043–1055. doi: 10.                      (2019). Development of a colorectal cancer diagnostic model and dietary risk
+   1101/gr.186072.114                                                                                assessment through gut microbiome analysis. Exp. Mol. Med. 51, 1–15. doi:
+Pasolli, E., Asnicar, F., Manara, S., Zolfo, M., Karcher, N., Armanini, F., et al. (2019).           10.1038/s12276-019-0313-314
+   Extensive unexplored human microbiome diversity revealed by over 150,000                       Yeoh, Y. K., Chen, Z., Wong, M. C. S., Hui, M., Yu, J., Ng, S. C., et al. (2020).
+   genomes from metagenomes spanning age, geography, and lifestyle. Cell 176,                        Southern Chinese populations harbour non-nucleatum Fusobacteria possessing
+   649-662.e20. doi: 10.1016/j.cell.2019.01.001.                                                     homologues of the colorectal cancer-associated FadA virulence factor. Gut 69,
+Sahankumari, A., Gamage, B. D., and Malavige, G. N. (2019). Association of the gut                   1998–2007. doi: 10.1136/gutjnl-2019-319635
+   microbiota with colorectal cancer in a South Asian cohort of patients. bioRxiv                 Yu, G. (2020). Using ggtree to visualize data on tree-like structures. Curr. Protoc.
+   [Preprint]. doi: 10.1101/694125                                                                   Bioinformatics 69, e96. doi: 10.1002/cpbi.96
+Schwartz, D. J., Langdon, A. E., and Dantas, G. (2020). Understanding the impact                  Yu, J., Feng, Q., Wong, S. H., Zhang, D., Liang, Q. Y., Qin, Y., et al. (2017).
+   of antibiotic perturbation on the human microbiome. Genome Med. 12:82.                            Metagenomic analysis of faecal microbiome as a tool towards targeted non-
+   doi: 10.1186/s13073-020-00782-x                                                                   invasive biomarkers for colorectal cancer. Gut 66, 70–78. doi: 10.1136/gutjnl-
+Segata, N., Izard, J., Waldron, L., Gevers, D., Miropolsky, L., Garrett, W. S.,                      2015-309800
+   et al. (2011). Metagenomic biomarker discovery and explanation. Genome Biol.                   Zeller, G., Tap, J., Voigt, A. Y., Sunagawa, S., Kultima, J. R., Costea, P. I., et al.
+   12:R60. doi: 10.1186/gb-2011-12-6-r60                                                             (2014). Potential of fecal microbiota for early-stage detection of colorectal
+Shamsaddini, A., Gillevet, P. M., Acharya, C., Fagan, A., Gavis, E., Sikaroodi,                      cancer. Mol. Syst Biol. 10:766. doi: 10.15252/msb.20145645
+   M., et al. (2021). Impact of antibiotic resistance genes in gut microbiome                     Zhang, J., Haines, C., Watson, A. J. M., Hart, A. R., Platt, M. J., Pardoll, D. M., et al.
+   of patients with cirrhosis. Gastroenterology 161, 508-521.e7. doi:                                (2019). Oral antibiotic use and risk of colorectal cancer in the United Kingdom,
+   10.1053/j.gastro.2021.04.013                                                                      1989-2012: a matched case-control study. Gut 68, 1971–1978. doi: 10.1136/
+Sing, T., Sander, O., Beerenwinkel, N., and Lengauer, T. (2005). ROCR: visualizing                   gutjnl-2019-318593
+   classifier performance in R. Bioinformatics 21, 3940–3941. doi: 10.1093/                       Zhang, Y., Yu, X., Yu, E., Wang, N., Cai, Q., Shuai, Q., et al. (2018). Changes in
+   bioinformatics/bti623                                                                             gut microbiota and plasma inflammatory factors across the stages of colorectal
+Theochari, N. A., Stefanopoulos, A., Mylonas, K. S., and Economopoulos, K. P.                        tumorigenesis: a case-control study. BMC Microbiol. 18:92. doi: 10.1186/
+   (2018). Antibiotics exposure and risk of inflammatory bowel disease: a                            s12866-018-1232-1236
+   systematic review. Scand. J. Gastroenterol. 53, 1–7. doi: 10.1080/00365521.2017.               Zhu, J., Tian, L., Chen, P., Han, M., Song, L., Tong, X., et al. (2019). Over 50000
+   1386711                                                                                           metagenomically assembled draft genomes for the human oral microbiome
+Thomas, A. M., Manghi, P., Asnicar, F., Pasolli, E., Armanini, F., Zolfo,                            reveal new taxa. bioRxiv [Preprint]. doi: 10.1101/820365
+   M., et al. (2019). Metagenomic analysis of colorectal cancer datasets                          Zhu, W., Lomsadze, A., and Borodovsky, M. (2010). Ab initio gene identification
+   identifies cross-cohort microbial diagnostic signatures and a link with                           in metagenomic sequences. Nucleic Acids Res. 38:e132. doi: 10.1093/nar/
+   choline degradation. Nat. Med. 25, 667–678. doi: 10.1038/s41591-019-0405-                         gkq275
+   407
+Van Boeckel, T. P., Gandra, S., Ashok, A., Caudron, Q., Grenfell, B. T., Levin, S. A.,            Conflict of Interest: All authors were employed by company BGI-Shenzhen.
+   et al. (2014). Global antibiotic consumption 2000 to 2010: an analysis of national
+   pharmaceutical sales data. Lancet Infect. Dis. 14, 742–750. doi: 10.1016/s1473-                Publisher’s Note: All claims expressed in this article are solely those of the authors
+   3099(14)70780-70787                                                                            and do not necessarily represent those of their affiliated organizations, or those of
+Vogtmann, E., Hua, X., Zeller, G., Sunagawa, S., Voigt, A. Y., Hercog, R., et al.                 the publisher, the editors and the reviewers. Any product that may be evaluated in
+   (2016). Colorectal Cancer and the human gut microbiome: reproducibility                        this article, or claim that may be made by its manufacturer, is not guaranteed or
+   with whole-genome shotgun sequencing. PLoS One 11:e0155362. doi: 10.1371/                      endorsed by the publisher.
+   journal.pone.0155362
+Wan, Q. Y., Zhao, R., Wang, Y., Wu, Y., and Wu, X. T. (2020). Antibiotic use                      Copyright © 2021 Liu, Li, Ding, Zhen, Fang and Nie. This is an open-access article
+   and risk of colorectal cancer: a meta-analysis of 412 450 participants. Gut 69,                distributed under the terms of the Creative Commons Attribution License (CC BY).
+   2059–2060. doi: 10.1136/gutjnl-2020-320826                                                     The use, distribution or reproduction in other forums is permitted, provided the
+Wang, J. L., Chang, C. H., Lin, J. W., Wu, L. C., Chuang, L. M., and                              original author(s) and the copyright owner(s) are credited and that the original
+   Lai, M. S. (2014). Infection, antibiotic therapy and risk of colorectal                        publication in this journal is cited, in accordance with accepted academic practice. No
+   cancer: a nationwide nested case-control study in patients with Type                           use, distribution or reproduction is permitted which does not comply with these terms.
+
+
+Frontiers in Microbiology | www.frontiersin.org                                              15                                           December 2021 | Volume 12 | Article 765291
+

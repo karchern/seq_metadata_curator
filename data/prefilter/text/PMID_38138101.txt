@@ -1,0 +1,971 @@
+            microorganisms
+
+Article
+Oral Microbial Profile Analysis in Patients with Oral and
+Pharyngeal Cancer Reveals That Tumoral Fusobacterium
+nucleatum Promotes Oral Cancer Progression by Activating YAP
+Yuki Yamamoto 1,2,† , Tomonori Kamiya 3,† , Megumu Yano 3 , Vu Thuong Huyen 3 , Masahiro Oishi 1 , Miki Nishio 4 ,
+Akira Suzuki 4 , Kishiko Sunami 1,2 and Naoko Ohtani 3,5, *
+
+                                         1   Department of Otolaryngology and Head & Neck Surgery, Graduate School of Medicine,
+                                             Osaka Metropolitan University, Osaka 545-8585, Japan
+                                         2   Department of Otolaryngology and Head & Neck Surgery, Graduate School of Medicine,
+                                             Osaka City University, Osaka 545-8585, Japan
+                                         3   Department of Pathophysiology, Graduate School of Medicine, Osaka Metropolitan University,
+                                             Osaka 545-8585, Japan
+                                         4   Division of Molecular and Cellular Biology, Kobe University Graduate School of Medicine,
+                                             7-5-1 Kusunoki-cho, Chuo-ku, Kobe 650-0017, Japan
+                                         5   AMED-CREST, Japan Agency for Medical Research and Development (AMED), Tokyo 100-0004, Japan
+                                         *   Correspondence: naoko.ohtani@omu.ac.jp
+                                         †   These authors contributed equally to this work.
+
+
+                                         Abstract: The incidence of oral cancer has recently been increasing worldwide, particularly among
+                                         young individuals and women. The primary risk factors for head and neck cancers, including oral
+                                         and pharyngeal cancers, are smoking, alcohol consumption, poor oral hygiene, and repeated exposure
+                                         to mechanical stimuli. However, approximately one-third of the patients with oral and pharyngeal
+                                         cancers are neither smokers nor drinkers, which points to the existence of other mechanisms. Recently,
+Citation: Yamamoto, Y.; Kamiya, T.;      human microbes have been linked to various diseases, including cancer. Oral pathogens, especially
+Yano, M.; Huyen, V.T.; Oishi, M.;        periodontal pathobionts, are reported to play a role in the development of colon and other types
+Nishio, M.; Suzuki, A.; Sunami, K.;      of cancer. In this study, we employed a series of bioinformatics analyses to pinpoint Fusobacterium
+Ohtani, N. Oral Microbial Profile        nucleatum as the predominant oral bacterial species in oral and pharyngeal cancer tissue samples. We
+Analysis in Patients with Oral and
+                                         successfully isolated Fn. polymorphum from the saliva of patients with oral cancer and demonstrated
+Pharyngeal Cancer Reveals That
+                                         that Fn. polymorphum indeed promoted oral squamous cell carcinoma development by activating
+Tumoral Fusobacterium nucleatum
+                                         YAP in a mouse tongue cancer model. Our research offers scientific evidence for the role of the oral
+Promotes Oral Cancer Progression by
+                                         microbiome in oral cancer progression and provides insights that would help in devising preventative
+Activating YAP. Microorganisms 2023,
+11, 2957. https://doi.org/10.3390/
+                                         strategies against oral cancer, potentially by altering oral bacterial profiles.
+microorganisms11122957
+                                         Keywords: Fusobacterium nucleatum; oral and pharyngeal cancer; oral microbiome; Yes-associated
+Academic Editors: Juliana Fernandes
+                                         protein (YAP)
+and Felipe Nör
+
+Received: 29 October 2023
+Revised: 2 December 2023
+Accepted: 7 December 2023                1. Introduction
+Published: 10 December 2023                    Recently, between 350,000 and 400,000 new cases of oral cancer were reported an-
+                                         nually worldwide, with over 170,000 fatalities resulting from the disease [1]. In Japan,
+                                         approximately 6000 new cases are reported each year, leading to around 3000 deaths. The
+Copyright: © 2023 by the authors.
+                                         incidence is rising, notably among young individuals and women in Western countries.
+Licensee MDPI, Basel, Switzerland.
+                                         Oral cancer is categorized based on its location—the buccal mucosa, upper gingiva, lower
+This article is an open access article   gingiva, hard palate, tongue, and floor of the mouth. The tongue is the most frequent
+distributed under the terms and          site for oral cancer occurrence followed by the gingiva, floor of the mouth, and buccal
+conditions of the Creative Commons       mucosa [2]. Histopathologically, over 90% of oral cancers are identified as squamous
+Attribution (CC BY) license (https://    cell carcinomas (oral squamous cell carcinoma, OSCC). The remaining are other types of
+creativecommons.org/licenses/by/         carcinomas or sarcomas originating from the salivary gland. Epidemiologically, this cancer
+4.0/).                                   is more prevalent in middle-aged and older men. The recognized risk factors include
+
+
+
+Microorganisms 2023, 11, 2957. https://doi.org/10.3390/microorganisms11122957                   https://www.mdpi.com/journal/microorganisms
+Microorganisms 2023, 11, 2957                                                                                           2 of 16
+
+
+
+
+                                smoking, alcohol consumption, poor oral hygiene, and repeated mechanical stimuli, such
+                                as ill-fitting dentures [3,4]. However, about 33% of patients with oral cancer neither smoke
+                                nor drink alcohol, indicating the potential influence of other mechanisms [5–8].
+                                      In the human oral cavity, over 700 bacterial species, both commensal and heterolo-
+                                gous, engage in intercellular communication and are pivotal in sustaining a balanced oral
+                                physiological environment [9,10]. Conversely, oral bacteria play roles in oral conditions like
+                                periodontal disease and dental caries and can impact the entire body by causing bacteremia
+                                and septicemia, including infective endocarditis [11]. Recent studies have highlighted that
+                                oral bacteria, such as periodontopathogens, including Fusobacterium species, are implicated
+                                in not only oral malignancies but also in distant cancers like colorectal, esophageal, and
+                                pancreatic cancers [12–14]. However, there is a limited body of research elucidating the
+                                mechanism by which the oral microbiota affects the progression of head and neck cancers,
+                                including oral and pharyngeal cancers.
+                                      To explore this, we examined the oral microbial compositions of saliva, dental plaque,
+                                tongue plaque, and fresh tumor biopsies from 65 patients diagnosed with oral, oropharyn-
+                                geal, or hypopharyngeal cancers. These patients visited the Department of Otolaryngology
+                                and Head and Neck Surgery at Osaka Metropolitan University Hospital between April
+                                2020 and August 2023 and fulfilled the inclusion criteria. Furthermore, we isolated oral
+                                bacteria from saliva samples of patients with oral and pharyngeal cancers and control
+                                individuals. The potential of these bacteria to induce tongue cancer was assessed using a
+                                mouse model.
+
+                                2. Materials and Methods
+                                2.1. Ethics
+                                     All experiments utilizing human samples were approved by the Ethics Committee of
+                                Osaka Metropolitan University (approval numbers: 2020-079 and 2021-282) in accordance
+                                with the Declaration of Helsinki. All patients and participants provided written informed
+                                consent to participate in the study. All the mouse experiments were approved by the Animal
+                                care and use Committee of Osaka Metropolitan University (approval number: 22012).
+
+                                2.2. Patients
+                                      This study was conducted at the Department of Otolaryngology and Head and Neck
+                                Surgery, Osaka Metropolitan University Hospital, Osaka, Japan, between April 2020 and
+                                August 2023. This was a retrospective study using samples collected over the designated
+                                period. Sixty-five patients with oral and pharyngeal cancer (diagnosed as squamous cell
+                                carcinoma, SCC) and ninety-three control patients without oral cancer participated in the
+                                study and provided written informed consent. First, 125 head and neck cancer patients
+                                and 95 control patients with mild middle ear inflammation without head and neck cancers
+                                entered this study and provided written informed consent. After the application of the
+                                exclusion criteria, the number of patients with oral and pharyngeal cancer decreased to 65,
+                                and that of the control patients decreased to 93. The exclusion criteria were age < 20 years,
+                                a history of radiotherapy, antibiotic treatment, p16INK4a positivity, indication of human pa-
+                                pillomavirus (HPV) infection in the tumor area, tumors other than histologically squamous
+                                cell carcinoma (SCC), and head and neck cancers developed in the larynx. Patients’ clinical
+                                metadata are provided in the Supplementary Table S2.
+
+                                2.3. Preparation and Storage of Oral Samples
+                                      Fresh biopsy samples of oral and pharyngeal cancer tissues, along with oral samples
+                                of saliva, dental plaque, and tongue plaque, were collected from patients within the criteria
+                                mentioned above. Samples were obtained during medical examinations at the Department
+                                of Otolaryngology and Head and Neck Surgery at Osaka Metropolitan University Hospital.
+                                Fresh biopsy samples (diameters 2–3 mm) were obtained using biopsy forceps at the
+                                first examination without prior rinsing of the mouth and were snap-frozen and used
+                                for 16S rRNA sequencing analysis. Approximately 2 mL of saliva was collected from
+Microorganisms 2023, 11, 2957                                                                                            3 of 16
+
+
+
+
+                                each participant into a sterile tube. This sample was centrifuged at 100× g for 5 min
+                                at 4 ◦ C to remove the contaminants. The supernatant was subsequently centrifuged at
+                                5000× g for 10 min at 4 ◦ C. The resulting pellet was either directly stored at −80 ◦ C for 16S
+                                rRNA sequencing analysis or resuspended in Gifu anaerobic medium (GAM) modified
+                                with 20% glycerol and stored at −80 ◦ C for bacterial stock. Tongue plaque samples were
+                                collected using a swab and immersed in 2 mL of PBS. This suspension was centrifuged
+                                at 5000× g for 10 min at 4 ◦ C. The pellet was then either stored directly at −80 ◦ C for 16S
+                                rRNA sequencing analysis or resuspended in GAM with 20% glycerol and stored at −80 ◦ C
+                                for bacterial stock. Dental plaque samples were taken under anesthesia at the beginning of
+                                surgeries for oral and pharyngeal cancer or middle ear inflammation. These samples were
+                                divided into two portions: one was directly stored at −80 ◦ C for 16S rRNA sequencing
+                                analysis, while the other was suspended in GAM medium supplemented with 20% glycerol
+                                and stored at −80 ◦ C for bacterial stock. All samples were kept on ice prior to freezing.
+
+                                2.4. DNA Extraction for Next-Generation Sequencing
+                                      Bacterial DNA was extracted from oral samples by BIKEN Biomics Inc. (Osaka, Japan)
+                                using an automated DNA extraction machine (GENE PREP STAR PI-480, Kurabo Industries
+                                Ltd., Osaka, Japan) and an NR-201 DNA extraction kit (Kurabo Industries Ltd., Osaka,
+                                Japan). The extraction was performed according to the manufacturer’s instructions. In
+                                brief, 0.5 g of glass beads (0.1 mm diameter, IEDA Trading Corp., Tokyo, Japan) and 300 µL
+                                of No. 10 solution (NR-10025) were added to each sample (200 µL each). This mixture
+                                was then agitated using a DISRUPTOR-GENIE (Scientific Industries Inc., Bohemia, NY,
+                                USA) at 3000 rpm for 90 s. Following this, the samples were centrifuged at 9700× g for
+                                5 min. The supernatant was then collected and transferred to machine-compatible strips of
+                                eight sample tubes. Subsequently, 150 µL of No. 2 solution (NR-2025), supplemented with
+                                proteinase K (final concentration 0.4 mg/mL, FUJIFILM Wako Pure Chemical Corporation,
+                                Osaka, Japan), and another 150 µL of No. 10 solution (NR-10025) were added. The samples
+                                were then processed in the GENE PREP STAR PI-480 automated DNA extraction machine.
+                                The concentration of the extracted DNA was determined using a Qubit assay (Thermo
+                                Fisher Scientific Inc., Waltham, MA, USA). Extracted DNA samples were stored at −30 ◦ C
+                                until further use.
+
+                                2.5. 16S Ribosomal RNA (16S rRNA) Gene Amplification and Sequencing
+                                      DNA library preparation and sequencing were conducted by BIKEN Biomics Inc.
+                                (Osaka, Japan). Each DNA library was prepared following the Illumina 16S Metagenomic
+                                Sequencing Library Preparation Guide, using 27Fmod (50 -AGRGTTTGATCMTGGCTCAG-
+                                30 ) and 338R (50 -TGCTGCCTCCCGTAGGAGT-30 ) primers, which target the V1–V2 hy-
+                                pervariable region of the bacterial 16S rRNA gene. Samples were analyzed via 250 bp
+                                paired-end sequencing on a MiSeq system (Illumina, Inc. San Diego, CA USA) using the
+                                MiSeq Reagent v2 500 cycle kit (Illumina, Inc., San Diego, CA USA). All the bacterial
+                                sequence data are available in DDBJ BioProject. The accession number is PRJDB16847.
+
+                                2.6. Oral Microbiota Profiling
+                                     Sequence reads were analyzed using the Quantitative Insights into Microbial Ecology
+                                2 version 2021.11 (QIIME2, https://qiime2.org, accessed on 1 September 2023) pipeline.
+                                The specific QIIME2 commands and options are provided in Table S1. Acquired paired-
+                                end sequences were denoised and merged using the DADA2 R library within QIIME2.
+                                The taxonomic assignment of the 16S rRNA sequences was conducted using the Silva
+                                138 99% OTU classifier. Amplicon sequence variants (ASVs) were aligned with the Mafft
+                                software in QIIME2 version 2021.11 and then subjected to diversity analysis using the
+                                fasttree software within QIIME2 version 2021.11. The observed ASVs, Shannon–Wiener
+                                indices, and Pielou’s evenness indices were determined at a sequence depth of 7321 reads
+                                per sample, undergoing 10 random iterations of the feature unit table via QIIME2. To
+                                maintain consistent sequencing depth, sample libraries were subsampled to 7321 reads
+Microorganisms 2023, 11, 2957                                                                                               4 of 16
+
+
+
+
+                                for the Weighted Unifrac distance, representing the minimum number of reads across all
+                                libraries. β-Diversity and principal coordinates analysis (PCoA) plots were generated using
+                                the Weighted Unifrac distance in QIIME2. ASVs were analyzed using the National Center
+                                for Biotechnology Information (NCBI) BLASTN (http://blast.ncbi.nlm.nih.gov.gate1.inist.
+                                fr/Blast.cgi, accessed on 1 September 2023) and the 16S RNA sequence database for species
+                                identification (identity > 97%, coverage > 95%). If the ASVs did not meet these criteria, the
+                                sequences were interpreted as representative of other species within the respective genus.
+
+                                2.7. Shotgun Metagenomics Sequencing and Processing
+                                      For shotgun sequencing, 20 ng of the extracted DNA was sonicated to 300 bp using a
+                                Covaris ME220 instrument (Covaris, Inc., Woburn, MA, USA). Sonicated DNA was purified
+                                using a 1.0× volume of AMpure XP Beads (Beckman Coulter, Brea, CA, USA). Libraries
+                                were prepared using the KAPA Hyper Prep Kit (KAPA Biosystems, Wilmington, MA, USA)
+                                according to the manufacturer’s instructions. Paired-end (2 × 150 bp) sequencing was
+                                carried out on an Illumina NovaSeq 6000 (Illumina Inc., San Diego, CA, USA). Adapters and
+                                low-quality reads (Q-score < 25) were trimmed using fastp (v.0.23.2; https://github.com/
+                                OpenGene/fastp accessed on 1 January 2022). Reads shorter than 50 bp were discarded,
+                                and the first and last base sequences of the remaining reads were removed. Host-associated
+                                reads were filtered out using KneadData (v.0.10.0, http://huttenhower.sph.harvard.edu/
+                                kneaddata accessed on 1 January 2022) employing the default parameters and the hg37dec
+                                v0.1 reference. Functional annotation was executed using the Humann3 pipeline (v3.8; https:
+                                //huttenhower.sph.harvard.edu/humann/ accessed on 1 September 2023). Sequences that
+                                were neither integrated nor mapped were excluded from the analysis. Pathways were
+                                identified by summing up the normalized counts per million.
+
+                                2.8. Fluorescence In Situ Hybridization (FISH)
+                                     FISH was carried out on formalin-fixed, paraffin-embedded oral cancer tissue samples.
+                                Sections were hybridized with the 50 -Alexa Fluor 488-labeled universal bacterial probe
+                                EUB338 (50 -GCTGCCTCCCGTAGGAGT-30 ) and the 50 -Texas Red-labeled Fusobacterium
+                                nucleatum-specific probe FUSO664 (50 -CTTGTAGTTCCGCYTACCTC-30 ). Slides were de-
+                                paraffinized and treated with wash buffer (0.9 M NaCl, 20 mM Tris-HCl (pH 7.5), and 0.1%
+                                SDS) for 60 min at 42 ◦ C. They were then hybridized overnight with the specified FISH
+                                probes at a concentration of 2 µM in hybridization buffer (0.9 M NaCl, 20 mM Tris-HCl
+                                (pH 7.5), 0.01% SDS, and 20% formamide) at 42 ◦ C. Post hybridization, slides were rinsed
+                                for 60 min at 42 ◦ C in wash buffer. Tissue sections were then counterstained with DAPI
+                                and mounted. Images were captured using an IX71 fluorescence microscope (Olympus,
+                                Tokyo, Japan).
+
+                                2.9. Detection of Fusobacterium nucleatum Subspecies and Isolation of F. nucleatum Strain
+                                      To detect the Fusobacrterium nucleatum subspecies, 1 ng of saliva DNA sample was
+                                used for each reaction. The PCR conditions were 35 cycles of 98 ◦ C for 30 s, 55 ◦ C for
+                                30 s, and 72 ◦ C for 20 s using the KOD One® PCR Master Mix (TOYOBO, Osaka, Japan)
+                                on an S1000TM thermal cycler (Bio-Rad, Hercules, CA, USA) according to the manufac-
+                                turer’s protocol. The following primers were used for the detection of each F. nucleatum
+                                subspecies as described previously [15]. Fn nucleatum; SR-n3 N3-F 50 -CAAGCAACTGAA
+                                AATGCTTTAAAAG-30 and N3-R 50 -TCCAGGTAAGGAAATTACACCTACTG-30 . Fn ani-
+                                malis; SR-a2 A2-F 50 -ACTCAAATTATTATGAATGTGATGAAAGA-30 and A2-R 50 -GCTACT
+                                GAAGGATGAAATGCTGG-30 . Fn vincentii; SR-v1 V1-F 50 -GAGGCTATTGCAAATTAAAC
+                                TGTTAAA-30 and V1-R 50 -CTTTACCACTATTATAAACTAAATAAATGAGAC-30 . Fn poly-
+                                morphum SR-p3 P3-F 50 -CYTATGGYTTTGATTTTGACTTATTTG-30 and P3-R 50 -CCAAAGT
+                                AATTAAAGCCTCTTGAGC-30 .
+                                      To isolate F. nucleatum strains, bacterial stock from the oral cavity samples of oral
+                                cancer patients was seeded onto modified FM agar plates (Nissui, Tokyo, Japan). The
+                                cultures were then incubated under anaerobic conditions (85% N2 , 5% H2 , 10% CO2 ) in an
+Microorganisms 2023, 11, 2957                                                                                        5 of 16
+
+
+
+
+                                anaerobic chamber (Baker Ruskinn, Sanford, ME, USA) for 2–4 days at 37 ◦ C. For species
+                                identification, the 16S rRNA gene was amplified from selected individual colonies using
+                                bacterial universal PCR primers (Bact-27Fmod: 50 -AGRGTTTGATYMTGGCTCAG-30 , Bact-
+                                1492R: 50 -GGYTACCTTGTTACGACTT-30 ). PCR was carried out with the KOD One® PCR
+                                Master Mix (TOYOBO, Osaka, Japan) on an S1000TM thermal cycler (Bio-Rad, Hercules,
+                                CA, USA) following the manufacturer’s protocol. Amplification was confirmed using
+                                gel electrophoresis on 1.0% agarose gels. PCR products were then purified with the Fast-
+                                Gene™ Gel/PCR Extraction kit (NIPPON Genetics Co, Ltd., Tokyo, Japan) according to
+                                the manufacturer’s instructions. The sequencing of the 16S rRNA gene from the bacterial
+                                PCR products was conducted using the BigDye Terminator v3.1 Cycle Sequencing Kit (Ap-
+                                plied Biosystems, Carlsbad, CA, USA) and sequencing primers (Bact-27F, Bact-1492R). The
+                                DNA was purified through ethanol precipitation and sequenced on ABI 3130x1 capillary
+                                sequencers (Applied Biosystems). The resultant sequences were analyzed with the NCBI
+                                (National Center for Biotechnology Information) BLASTN and the 16S RNA sequence
+                                database to ascertain species identification (identity > 97%, coverage > 95%).
+
+                                2.10. Conditional Mob1a/b DKO (YAP-Activated) Mice as a Tongue Cancer Model
+                                      The generation of Mob1a/b homozygous double-mutant mice (Rosa26-CreERT;
+                                Mob1aflox/flox ; Mob1b−/− ) has been previously reported [16]. To excise the floxed Mob1a
+                                gene, 15 µL of tamoxifen (Sigma-Aldrich) diluted in 100% ethanol (10 mg/mL) was ap-
+                                plied directly and gently to the mouse tongue daily for 5 days using a small soft brush,
+                                starting at 4 weeks of age. Prior to tamoxifen administration, mice were anesthetized using
+                                pentobarbital and isoflurane. From 5 weeks of age, mice were given water containing
+                                the antibiotics, 1.6 mg/mL sulfamethoxazole and 0.32 mg/mL trimethoprim, for 5 days.
+                                To prepare the F. nucleatum inoculum, the isolated strain was cultured in modified Gifu
+                                anaerobic medium (GAM) broth (Nissui, Tokyo, Japan) to confluence for 1 day at 37 ◦ C.
+                                The cultured medium underwent centrifugation at 3000× g for 15 min at room temperature.
+                                The resultant pellet was carefully washed twice with phosphate-buffered saline (PBS) to
+                                remove medium components. Subsequently, the pellet was resuspended in 0.5 mL PBS
+                                containing 2% carboxymethyl cellulose and applied to the mice’s tongues (approximately
+                                1 × 109 CFU in 50 µL medium per mouse).
+
+                                2.11. Immunostaining
+                                     Tongue tissues from mice were fixed in 4% paraformaldehyde (PFA), embedded
+                                in paraffin, and sectioned (5 µm) following standard procedures. For antibody staining,
+                                sections that were deparaffinized and rehydrated underwent heat-induced antigen retrieval
+                                for 20 min using Retrieval Solution (S1699, Dako, Santa Clara, CA, USA). After a PBS wash,
+                                the sections were treated with a blocking reagent (HK085-5K, BioGenex, San Ramon,
+                                CA, USA) for 15 min at room temperature. They were then incubated with primary
+                                antibodies targeting Ki67 (RM-9106-S0, Thermo Fisher Scientific Inc.) and YAP1 (#4912S,
+                                Cell Signaling Technology Inc., Beverly, MA, USA) overnight at 4 ◦ C. After another PBS
+                                wash, the sections were exposed to either a peroxidase-conjugated secondary antibody
+                                (MK202, Takara Bio Inc. Kusatsu Shiga, Japan) or an Alexa Fluor 594-conjugated secondary
+                                antibody (A-21207, Invitrogen) for 1 h at room temperature. Certain slides were developed
+                                with nickel-enhanced 3,30 -diaminobenzidine (DAB, MK210, Takara Bio Inc. Kusatsu Shiga,
+                                Japan) for anti-Ki67 and counterstained with Mayer’s Hematoxylin and 40 ,6-diamidino-2-
+                                phenylindole (DAPI, 19178-91, Nacalai, Kyoto, Japan) for immunofluorescence staining.
+                                They were then mounted using either Entellan™ new (1.07961.0100, Sigma-Aldrich Pty Ltd,
+                                an affiliate of Merck KGaA, Darmstadt, Germany) or ProLong™ Gold Antifade Mountant
+                                (P36930, Thermo Fisher Scientific Inc., Waltham, MA, USA ). The stained sections were
+                                visualized and captured using a fluorescence microscope (BZ-X800; Keyence, Osaka, Japan),
+                                with analysis conducted using BZ-X software version 1.1.1.8 (BZ-H4A, Keyence, Osaka,
+                                Japan). For Ki67-positivity assessments, the entire tongue epithelial area of each mouse
+                                was measured using BZ-X software version 1.1.1.8, and the proportion of the Ki67-positive
+Microorganisms 2023, 11, 2957                                                                                                                       6 of 16
+
+
+
+
+                                      region was determined. Similarly, the area with YAP1-positive nuclear staining, co-stained
+                                      with DAPI, was evaluated with BZ-X software version 1.1.1.8, and the fraction of the nuclear
+                                      YAP1-positive region within the entire tongue epithelial area was computed.
+
+                                      2.12. Statistical Analysis
+                                            Statistical analyses were performed using GraphPad Prism software version 8.4.3
+                                      (GraphPad Software Inc., La Jolla, CA, USA) and R software (version 4.0.3). A heatmap
+                                      correlating to samples based on the relative abundance of genus-level taxa was generated
+                                      using Ward’s method and hierarchical clustering with the pheatmap package v1.0.12 in
+                                      R software (see Supplementary Figure S2). Data were analyzed using the unpaired t-test,
+                                      the chi-square test, Fisher’s exact test, the Kruskal–Wallis test, and the pairwise Wilcoxon
+                                      rank-sum test with the Benjamini–Hochberg adjustment, as specified in the text or figure
+                                      legends. Spearman’s correlation coefficient assessed the correlation between groups. For
+                                      all tests, a p-value of <0.05 was considered statistically significant.
+
+                                      3. Results
+                                      3.1. Bioinformatics Analysis of the Oral and Tumor Microbial Profiles in Patients with Oral and
+                                      Pharyngeal Cancers Using 16S rRNA Gene Amplicon Sequencing Data
+                                           As described in Section 2 and Table 1, saliva, dental plaque, and tongue plaque samples
+                                      were collected from controls and patients with oral and pharyngeal cancers. Tumor biopsy
+                                      samples were also collected from patients with oral and pharyngeal cancer, and bacterial
+                                      profiles were analyzed. The Shannon Index and Faith PD analysis of the control saliva
+                                      profile exhibited significant differences when compared to the dental (p < 0.0001) and
+                                      tongue plaque (p < 0.0001) samples of the controls (Figure 1A). Additionally, significant
+                                      disparities between the bacterial profiles in the saliva of cancer patients and their dental
+                                      samples (p = 0.0289 and p = 0.0003 in Shannon Index and Faith PD analysis, respectively)
+                                      or tongue plaque samples (p = 0.0003 and p < 0.0001 in Shannon Index and Faith PD
+                                      analysis, respectively) were detected (Figure 1A). Moreover, α-diversity displayed a marked
+                                      distinction between the bacterial communities in tumor patients’ tongue plaque and tumor
+                                      tissue biopsy as per the Faith PD analysis (p = 0.0002, Figure 1A). The oral cancers diagnosed
+                                      in this study were identified as squamous cell carcinoma (OSCC) (Table 1). Henceforth,
+                                      samples from controls or patients with oral and pharyngeal cancers are denoted as C-saliva
+                                      or T-saliva, C-dental plaque or T-dental plaque, and C-tongue plaque or T-tongue plaque,
+                                      signifying saliva, dental plaque, or tongue plaque samples from control (C-) individuals or
+                                      those with oral and pharyngeal cancers (T-).
+
+                                      Table 1. Summary of patients investigated in this study. HNSSC in this study includes oral, oropha-
+                                      ryngeal, and hypopharyngeal cancers.
+
+                                              Total                                    Male                                      Female
+                                   HNSCC *              Control             HNSCC *               Control            HNSCC *                Control
+                                n = 65 (24/7/34)         n = 93          n = 44 (12/3/29)          n = 47          n = 21 (12/4/5)           n = 46
+     Age (average)                    68.6                55.3                 67.0                 53.0                 72.0                 58.0
+       (range)                      (33–89)             (24–84)              (33–85)              (24–80)              (45–89)              (28–84)
+     Clinical Stage
+     (I/II/III/IV)               28/18/7/12                                21/11/4/8                                  7/7/3/4
+        Drinking
+      non-drinkers              35 (20/5/10 *)             77             21 (10/3/8 *)              36             14 (10/2/2 *)              41
+         current                30 (4/2/24 *)              16             23 (2/0/21 *)              11              7 (2/2/3 *)               5
+        Smoking
+      non-smokers               26 (13/2/11 *)             57              13 (4/0/9 *)              24              13 (9/2/2 *)              33
+         current                39 (11/5/23 *)             36             31 (8/3/20 *)              23              8 (3/2/3 *)               13
+                                      *: The number of patients with oral/oropharynx/hypopharynx cancers. Oral cancer consists of tongue (male
+                                      n = 7; female n = 7), oral-floor (male n = 1; female n = 1), gingival (male n = 2; female n = 4), and buccal mucosal
+                                      (male n = 2; female n = 0) cancers.
+    Microorganisms
+Microorganisms     2023,
+               2023, 11, 11,
+                         2957x FOR PEER REVIEW                                                                                     8 of 17    7 of 16
+
+
+
+
+                                     Figure 1. Microbiota from the saliva, dental plaque, tongue plaque, and tumor tissue of the oral
+                                    Figure 1. Microbiota from the saliva, dental plaque, tongue plaque, and tumor tissue of the oral
+                                     cancer (T-) and control groups (C-). (A) Violin plots depicting the alpha diversity using the Shannon
+                                    cancer (T-) Faith
+                                     index and   and control  groups
+                                                      PD. (B,C)        (C-).UniFrac
+                                                                Weighted     (A) Violin  plotscoordinates
+                                                                                    principal  depicting analysis
+                                                                                                           the alpha  diversity
+                                                                                                                    (PCoA)       using
+                                                                                                                            of oral     the Shannon
+                                                                                                                                    microbi-
+                                    index and
+                                     ota        Faith PD.
+                                         compared   between(B,C) Weighted
+                                                             the oral        UniFrac
+                                                                      cancer and       principal
+                                                                                  control         coordinates
+                                                                                          groups (3D            analysis
+                                                                                                       plot (B) and      (PCoA)
+                                                                                                                    2D plot        of oral
+                                                                                                                            (C)). (D)      microbiota
+                                                                                                                                      Violin
+                                    compared between the oral cancer and control groups (3D plot (B) and 2D plot (C)). (D) Violin
+                                    plots displaying the Weighted UniFrac distances to saliva (T-saliva), dental plaque (T-dental plaque),
+                                    and tongue plaque (T-tongue plaque) in oral cancer. (E) Oral microbiota composition determined
+                                    through 16S rRNA gene sequencing. The genus-level taxonomic distribution of individual microbes
+                                    is displayed. Data in (A,D) were compared between the two indicated groups using a pairwise
+                                    Wilcoxon rank-sum test with a Benjamini–Hochberg adjustment.
+Microorganisms 2023, 11, 2957                                                                                          8 of 16
+
+
+
+
+                                     The β-diversity analysis, illuminating microbial composition differences between
+                                various groups, overall showed similarities in bacterial distributions across the saliva,
+                                tongue plaque, and tumor tissues as visualized in the three-dimensional plots of PCoA
+                                computed via Weighted UniFrac distance (Figure 1B). Nevertheless, the bacterial distri-
+                                bution in C-dental plaque, represented as red dots, and in T-dental plaque, represented
+                                as yellow dots, displayed distinct patterns when compared to those of T-saliva, T-tongue
+                                plaque, or T-tumor tissue. However, no statistical difference was observed between these
+                                dental plaque samples from controls and those from cancer patients (C-dental plaque and
+                                T-dental plaque), suggesting a likeness in their bacterial profiles, likely due to the anaer-
+                                obic microenvironment (Figure 1C). Notably, the T-tumor samples exhibited significant
+                                dissimilarity from T-saliva, T-dental plaque, and T-tongue plaque when assessed using the
+                                weighted UniFrac distance analysis (Figure 1D). Bacterial profiles at the genus level for all
+                                samples are depicted in Figure 1E, further emphasizing the apparent contrast in bacterial
+                                compositions in dental plaque when juxtaposed with other oral samples (Figure 1E).
+
+                                3.2. Oral Cancer-Associated Bacteria in Non-Drinkers and Non-Smokers
+                                      Smoking and alcohol consumption are well-established carcinogenic agents that pro-
+                                mote oral cancer [17]. They also induce dysbiosis in the oral cavity [18,19]. However,
+                                the prevalence of oral cancer in non-smokers and non-drinkers has been on the rise [6,7].
+                                Considering this, we probed whether specific oral microbiota are either increased or de-
+                                creased in the tumor tissues of non-smokers and non-drinkers. Our sample comprised
+                                53.8% (35 out of 65 HNSCC patients) of non-drinking and 40.0% (26 out of 65 HNSCC
+                                patients) of non-smoking patients with oral and pharyngeal cancers (Table 1). Genus-level
+                                bacteria, namely Candidatus Saccharimonas (g), Oribacterium (g), and Stomatobaculum (g), were
+                                significantly reduced in the comparison between C- and T-saliva samples (Figure 2A–C).
+                                Cardiobacterium (g) and Oribacterium (g) exhibited a significant decrease among non-drinkers
+                                when compared between C- and T-tongue plaque samples (Figure 2D,E). Intriguingly, C.
+                                Saccharimonas (g) also showed a notable reduction in non-smokers with tumors (Figure 2F).
+                                In summary, the aforementioned oral bacterial species were significantly diminished in
+                                patients with oral and pharyngeal cancers who are non-drinkers and non-smokers, sug-
+                                gesting that these bacterial species might offer protective effects against HNSCC and play a
+                                role in preserving oral health.
+
+                                3.3. Bacterial Species Associated with Oral and Pharyngeal Cancer Development
+                                     To identify bacterial species contributing to oral and pharyngeal cancer development,
+                                we examined oral bacteria, which increased significantly in samples from patients with oral
+                                and pharyngeal cancer using multiple comparison tests. Bacteria that exhibited significant
+                                increases or decreases are illustrated in Supplementary Figure S1. At the genus level, C.
+                                Saccharimonas (g), Leptotrichia (g), Megasphaera (g), Stomatobaculum (g), and Oribacterium
+                                (g) were significantly less abundant in T-saliva samples compared to C-saliva samples
+                                (Supplementary Figure S1A). However, no significantly increased bacterial species were
+                                detected in T-saliva. In our analysis of bacterial species in C- and T-tongue plaques,
+                                Capnocytophaga (g) and Actinobacillus (g) were slightly but significantly increased in the
+                                T-tongue plaque samples (Supplementary Figure S1B). No significant alterations in bacteria
+                                were observed when comparing C-dental to T-dental plaque samples.
+                                     Subsequently, our focus shifted to bacteria enriched in patients’ oral tumor tissues.
+                                We compared bacterial species between each sample and tumor tissue samples, with sig-
+                                nificantly altered bacteria shown in Supplementary Figure S1C–I. Several bacteria were
+                                identified as significantly increased or decreased in tumor tissue samples. Notably, Fusobac-
+                                terium (g) exhibited a significant increase in T-tumor samples compared to T-saliva samples
+                                with the highest fold change (fold change = 3.021) (Figure 3A, Supplementary Figure S1C).
+                                Species-level analysis highlighted that within the Fusobacterium genus, F. nucleatum was
+                                the most prevalent in tumor tissue, followed by F. periodontium (Figure 3B). Next, we in-
+                                vestigated the individual cancer microbial profiles and Fusobacterium species in the biopsy
+Microorganisms 2023, 11, x FOR PEER REVIEW                                                                                             9 of 17
+
+
+
+
+                                 plots displaying the Weighted UniFrac distances to saliva (T-saliva), dental plaque (T-dental
+     Microorganisms 2023, 11, 2957 plaque), and tongue plaque (T-tongue plaque) in oral cancer. (E) Oral microbiota composition de-9 of 16
+                                 termined through 16S rRNA gene sequencing. The genus-level taxonomic distribution of individual
+                                 microbes is displayed. Data in (A,D) were compared between the two indicated groups using a
+                                 pairwise Wilcoxon rank-sum test with a Benjamini–Hochberg adjustment.
+                                       samples (n = 12) (Figure 3C). However, the tendency of site-specific bacterial profile was not
+                                       observed, partly because of the limited number of samples. We found that not only Fusobac-
+                                 3.2. Oral Cancer-Associated Bacteria in Non-Drinkers and Non-Smokers
+                                       terium nucleatum but also Fusobacterium periodonticum were abundant in the cancer tissues
+                                       Smoking
+                                      (Figure      and alcohol
+                                                3D).  Moreover, F.consumption
+                                                                       nucleatum are   well-established
+                                                                                   was indeed                carcinogenic
+                                                                                                   detected in the          agents
+                                                                                                                      patients   OSCC thattissues
+                                                                                                                                            pro- via
+                                        oral cancer
+                                 moteFISH    analysis [17].  They also
+                                                         using            induce
+                                                                Fn-specific        dysbiosis
+                                                                               probes  (Figure in3E).
+                                                                                                   the oral
+                                                                                                       Given  cavity  [18,19].
+                                                                                                                that the       However, the
+                                                                                                                          Fusobacterium      genus is
+                                 prevalence    of oral in
+                                      predominant       cancer
+                                                           tumorin tissues,
+                                                                    non-smokerswe and    non-drinkers
+                                                                                   further  explored the   has been   on the rise
+                                                                                                               bacterial  community [6,7]. Con-
+                                                                                                                                          coexisting
+                                 sidering
+                                      withthis,  we probed whether
+                                             Fusobacterium.                specificamong
+                                                                 Relationships      oral microbiota
+                                                                                            the tumoral are either  increased
+                                                                                                             bacteria   and theortopdecreased
+                                                                                                                                        50 bacterial
+                                 in the  tumor   tissues  of  non-smokers       and non-drinkers.      Our   sample
+                                       genera in the tumor tissue samples were analyzed using Spearman’s correlations  comprised     53.8% (35 and
+                                 out of 65   HNSCC
+                                      visualized    in apatients)
+                                                         heatmap of    non-drinking
+                                                                     using the          and 40.0%
+                                                                                 pheatmap    package(26    out of
+                                                                                                        in R       65 HNSCC
+                                                                                                              software            patients)
+                                                                                                                         (v1.0.12) for         of
+                                                                                                                                        correlations
+                                 non-smoking
+                                      with r valuespatients  with 10.5
+                                                        between      oral and
+                                                                          and 20.5
+                                                                                 pharyngeal    cancers (Table
+                                                                                     (Supplementary        Figure1).S2).
+                                                                                                                      Genus-level     bacteria,
+                                                                                                                          Predominantly,       robust
+                                 namely    Candidatus
+                                      positive           Saccharimonas
+                                                  bacterial  communities    (g),were
+                                                                                 Oribacterium
+                                                                                      observed,  (g), and   Stomatobaculum
+                                                                                                    including                   (g), were
+                                                                                                                 Veillonella (g),            sig-
+                                                                                                                                   Stomatobaculum
+                                      (g), reduced
+                                 nificantly Megasphaera in the comparison
+                                                            (g), and            between
+                                                                       Oribacterium      C-and
+                                                                                       (g),  andanother       samples
+                                                                                                   T-saliva group       (Figure 2A–C).
+                                                                                                                      containing            Car- (g),
+                                                                                                                                     Bacteroides
+                                      Kingella (g)
+                                 diobacterium         Faecalibacterium
+                                                 (g),and  Oribacterium (g), and      Blautia
+                                                                               exhibited  a (g) in    tumor
+                                                                                             significant       tissue among
+                                                                                                           decrease    samplesnon-drinkers
+                                                                                                                                  (Supplementary
+                                 whenFigure    S2). between
+                                         compared    Specifically   regarding
+                                                                 C- and              Fusobacterium
+                                                                                 the plaque
+                                                                           T-tongue             samplesgenus,
+                                                                                                           (Figure     were several
+                                                                                                                there2D,E).            significantly
+                                                                                                                             Intriguingly,     C.
+                                       negative (g) also
+                                 Saccharimonas    co-occurrences
+                                                             showed a  with  bacteria such
+                                                                           notable  reduction     Rothia (g)
+                                                                                              as in                 Lactobacillales
+                                                                                                               and with
+                                                                                                      non-smokers            tumors(o)     (p-values;
+                                                                                                                                        (Figure
+                                 2F). p
+                                      In= 0.0105
+                                          summary,  and  p = 0.0126,
+                                                       the              respectively,
+                                                            aforementioned       oral and    correlation
+                                                                                      bacterial             coefficient
+                                                                                                  species were            R-values; r =
+                                                                                                                  significantly   diminished−0.69231
+                                 in patients    − oral
+                                       and r =with 0.70474,
+                                                          andrespectively)    (Supplementary
+                                                                pharyngeal cancers      who areFigure      S2). and
+                                                                                                   non-drinkers  However, no     stronglysug-
+                                                                                                                          non-smokers,       positive
+                                       co-occurring
+                                 gesting that   these bacteria
+                                                       bacterial with     Fusobacterium
+                                                                   species might    oﬀer were      observed,
+                                                                                          protective             suggesting
+                                                                                                        eﬀects against               Fusobacterium
+                                                                                                                               that and
+                                                                                                                           HNSCC            play
+                                 a roletends  to exist inoral
+                                         in preserving     tumor    tissue without specific bacterial community ties.
+                                                               health.
+
+
+
+
+                                 Figure 2. (A–F)
+                                       Figure      Graphs
+                                               2. (A–F)    depict the
+                                                          Graphs      relative
+                                                                  depict       abundance at
+                                                                          the relative               thelevel,
+                                                                                                 genus
+                                                                                             the at
+                                                                                       abundance          genuswhere
+                                                                                                                 level,genera
+                                                                                                                        whereshowed
+                                                                                                                               generasig-
+                                                                                                                                      showed
+                                 nificant diﬀerences
+                                       significant      betweenbetween
+                                                   differences   the indicated  groups.groups.
+                                                                         the indicated   Data are presented
+                                                                                               Data          as mean
+                                                                                                    are presented       ± SEM,
+                                                                                                                   as mean     compared
+                                                                                                                             ± SEM, compared
+                                 between   the two
+                                       between        groups
+                                                 the two       using
+                                                          groups      a apairwise
+                                                                  using   pairwiseWilcoxon
+                                                                                    Wilcoxon rank-sum    testwith
+                                                                                             rank-sum test    withBenjamini–Hochberg
+                                                                                                                    Benjamini–Hochberg  adjust-
+                                      ment. Blue: The saliva of controls. Purple: The saliva of cancer patients. Green: The tongue plaque of
+                                      controls. Black: The tongue plaque of cancer patients.
+Microorganisms 2023, 11, x FOR PEER REVIEW                                                                                                11 of 17
+
+
+
+      Microorganisms 2023, 11, 2957                                                                                                                   10 of 16
+                                      no strongly positive co-occurring bacteria with Fusobacterium were observed, suggesting
+                                      that Fusobacterium tends to exist in tumor tissue without specific bacterial community ties.
+
+
+
+
+                                             Figure
+                                      Figure 3. (A) 3. (A)  Differences
+                                                   Diﬀerences in         in microbiota
+                                                                    microbiota           composition
+                                                                                composition    at the at  thelevel
+                                                                                                      genus   genusarelevel  are illustrated
+                                                                                                                        illustrated          using
+                                                                                                                                     using the scal-the scaling
+                                      ing method  of of
+                                             method   unitunit
+                                                           variance  between
+                                                               variance       saliva
+                                                                        between       andand
+                                                                                  saliva   tumor
+                                                                                              tumorfrom  patients
+                                                                                                      from        with
+                                                                                                            patients  with    cancer.
+                                                                                                                         oraloral      Highlighted
+                                                                                                                                  cancer. Highlighted genera
+                                             were significant
+                                      genera were  significantatatan
+                                                                   anadjusted
+                                                                       adjustedp-value
+                                                                                 p-value< 0.05. Data
+                                                                                           < 0.05.    in (A)
+                                                                                                    Data      were
+                                                                                                          in (A)    compared
+                                                                                                                  were   comparedbetween   the indi-
+                                                                                                                                      between   the indicated
+                                      cated groups using a pairwise Wilcoxon rank-sum test with Benjamini–Hochberg adjustment. (B)
+                                             groups using a pairwise Wilcoxon rank-sum test with Benjamini–Hochberg adjustment. (B) Composi-
+                                      Composition of the Fusobacterium genus is displayed. (C) Tumor microbiota composition deter-
+                                             tion of the Fusobacterium genus is displayed. (C) Tumor microbiota composition determined through
+                                      mined through 16S rRNA gene sequencing for each individual patient. The genus-level taxonomic
+                                             16S rRNA gene sequencing for each individual patient. The genus-level taxonomic distribution of
+                                             individual microbes is displayed. (D) Composition of the Fusobacterium genus is displayed for
+                                             each individual patient. (E) HE staining and FISH analysis with the EUB338 probe for all bacteria
+                                             (green) and FUSO664 for Fusobacterium nucleatum (red) in the tumor region of oral cancer patients
+                                             (No. T023). Nuclei were stained with DAPI (blue). Scale bar: 20 µm.
+Microorganisms 2023, 11, 2957                                                                                            11 of 16
+
+
+
+
+                                     The further analysis of bacteria positively or inversely correlated with Fusobacterium
+                                (g) was conducted using Spearman’s rank correlation coefficient for both control and
+                                tumor patient groups. Veillonella (g) and Streptococcus (g) emerged as inversely correlated
+                                bacteria across all samples (Supplementary Figure S3), aligning with the co-occurrence
+                                analysis findings (Supplementary Figure S2). Additionally, a shotgun metagenome analysis
+                                revealed that several nutrition- or energy-production-associated bacterial pathways were
+                                significantly increased in T tumor samples (Supplementary Figure S4).
+
+                                3.4. Fusobacterium nucleatum from Patients with Oral Cancer Promotes OSCC in Mice
+                                      Fusobacterium nucleatum is a renowned oncogenic bacterium associated with colon,
+                                pancreatic, esophageal, oral, and other cancers [20,21]. Consequently, we sought to de-
+                                termine whether F. nucleatum indeed has a propensity to promote oral cancer using a
+                                mouse model.
+                                      Initially, we aimed to isolate bacterial species from the saliva samples of patients
+                                with oral cancer. Fusobacterium nucleatum encompasses several subspecies, including Fn.
+                                nucleatum, Fn. polymorphum, Fn. vincentii, Fn. animalis, Fn. fusiforme, and Fn. canifelium.
+                                Sequencing analysis identified the isolated Fn as Fn polymorphum from the saliva of a
+                                patient with oral cancer (Supplementary Figure S5). Fusobacterium nucleatum polymorphum
+                                is reported as the most enriched subspecies in oral cancer biopsies [22]. Our saliva samples
+                                from patients with oral cancer were then investigated to identify which subspecies were
+                                dominant. We checked the four major subspecies and found that our samples also included
+                                Fn. polymorphum with the highest occupancy (77.3% among the 52 patients samples exam-
+                                ined) (Supplementary Figure S6). Fn. vincentii was also as dominant as Fn. polymorphum in
+                                our samples. While several reports indicate that F. nucleatum is present within oral cancer
+                                tissues [20,23], the direct oncogenic role of this bacterial species in oral cancer has remained
+                                undetermined. Thus, we employed this subspecies, Fn. polymorphum, to examine tongue
+                                cancer development in mice.
+                                      To delve into the role of Fn. polymorphum in oral cancer, we utilized a tongue can-
+                                cer mouse model of tgMob1DKO mice, as described in Section 2 [16]. This genetically
+                                modified mouse strain develops tongue cancer upon tamoxifen exposure through the
+                                Cre-mediated excision of the floxed Mob1a gene. We administered 15 µL of a 10 mg/mL
+                                tamoxifen solution—less than the amount specified in the original report [16]—directly, yet
+                                gently, to a designated area of the mouse tongues (Figure 4A) daily for five days, induc-
+                                ing a mild epithelial hyperproliferation without aggressive OSCC. This subtle epithelial
+                                hyperproliferation is apt for exploring the influence of oral bacteria on OSCC progression.
+                                      Subsequently, after the tamoxifen treatment, we introduced Fn. polymorphum isolated
+                                from a patient with oral cancer onto the mice tongues. The proliferative activity was
+                                evaluated by determining the ratio of Ki67-positive cells and the expansion in the nuclear
+                                YAP localization area within the mouse tongue epithelium compared to that within the
+                                tamoxifen-treated control mouse tongues without bacterial treatment. Intriguingly, mice
+                                treated with Fn. polymorphum exhibited a significantly higher number of Ki67-positive cells
+                                across the tongue (Figure 4B). Additionally, the proportion of nuclear YAP-positive cells
+                                also increased significantly in Fn. polymorphum-treated mouse tongues (Figure 4C). These
+                                findings suggest that Fn. polymorphum sourced from a patient with OSCC may stimulate
+                                the oncogenic proliferation of oral epithelial cells.
+icroorganisms 2023, 11, x FOR PEER REVIEW                                                                                         13 of 17
+           Microorganisms 2023, 11, 2957                                                                                                       12 of 16
+
+
+
+
+                                         Fusobacterium
+                                Figure 4. Figure          nucleatum isolated
+                                                    4. Fusobacterium nucleatum from  the oral
+                                                                                 isolated  fromcavity of oral
+                                                                                                 the oral      cancer
+                                                                                                          cavity of oral cancer was
+                                                                                                                      patients      applied
+                                                                                                                                patients was applied to
+                                to the tongues    of epithelial
+                                           the tongues          cell-specific
+                                                         of epithelial        Mob1a/b
+                                                                       cell-specific      DKO DKO
+                                                                                     Mob1a/b      micemice
+                                                                                                        (tgMob1DKO).
+                                                                                                             (tgMob1DKO). (A) (A)
+                                                                                                                               Experimental
+                                                                                                                                  Experimental scheme
+                                           F. nucleatum-treated
+                                scheme for for                    tgMob1DKO
+                                               F. nucleatum-treated  tgMob1DKO   mice.  Tamoxifen
+                                                                                     mice.          was
+                                                                                            Tamoxifen  wasbrushed
+                                                                                                            brusheddaily
+                                                                                                                      daily  5 days
+                                                                                                                         forfor     onto
+                                                                                                                                5 days   thethe tongues
+                                                                                                                                       onto
+                                tongues of 4-week-old tgMob1DKO mice. The application area of tamoxifen is illustrated in the
+Microorganisms 2023, 11, 2957                                                                                                   13 of 16
+
+
+
+
+                                of 4-week-old tgMob1DKO mice. The application area of tamoxifen is illustrated in the dotted square.
+                                Mice received water containing antibiotics, sulfamethoxazole, and trimethoprim, for 5 days starting
+                                from 5 weeks old. Subsequently, mice were orally treated eight times with F. nucleatum polymorphum
+                                (n = 8) or PBS (n = 8) every two days post antibiotic administration. Mice were euthanized post treat-
+                                ment, and their tongue tissues were analyzed histologically. (B) Representative Ki67 immunostaining
+                                of tongue epithelium from mice in (A). Scale bar: 20 µm. (C) Representative images showcasing the
+                                immunofluorescent detection of YAP (red) in tongue epithelium from mice in (A). DAPI (blue) stains
+                                nuclei. Scale bar: 20 µm. (D) Percentages of Ki67-positive cells from sections in (B) are shown in bar
+                                plots. (E) Percentages of YAP-positive cells from sections in (C) are represented in bar plots. Data are
+                                presented as means ± SEM with Student’s t-test applied.
+
+                                4. Discussion
+                                      The number of patients with head and neck cancers, including oral and pharyngeal
+                                cancers, has recently shown an increasing trend [24]. The major risk factors for oral cancers
+                                are smoking and alcohol consumption [3,4]. However, approximately one-third of patients
+                                with oral or pharyngeal cancers neither smoke nor drink alcohol, which indicates that other
+                                mechanisms could be involved in the development of oral cancer [5–8]. Therefore, as one
+                                of the potential mechanisms of oral and pharyngeal cancer development, we focused on
+                                oral microbiota.
+                                      This study explored the bacterial profile in 65 patients with oral and pharyngeal
+                                cancers by utilizing saliva, dental plaque, and tongue plaque samples, as well as tumor
+                                biopsies. The 65 cases of oral and pharyngeal cancers analyzed in this study included
+                                35 non-drinkers and 26 non-smokers (Table 1). The abundance of several bacteria, such
+                                as Candidatus Saccharimonas (g), Oribacterium (g), and Stomatobaculum (g), was found to be
+                                significantly decreased in samples from non-drinkers and non-smokers who developed
+                                oral and pharyngeal cancers (Figure 2), which suggests that these oral microbes could be
+                                protective against oral cancer.
+                                      In addition, we identified F. nucleatum as the predominant oral bacterial species in
+                                tumor tissue samples, in contrast to the bacteria found in saliva samples from patients
+                                with oral cancer. We isolated Fn. polymorphum from the sample of patients with oral cancer
+                                and demonstrated its role in promoting oral cancer development using a mouse tongue
+                                cancer model.
+                                      Fusobacterium nucleatum is an anaerobic bacterium that belongs to the Gram-negative
+                                group. Typically found in the mouth, as well as in the urogenital tract and intestine, it usu-
+                                ally behaves as an opportunistic pathogen. However, it is frequently detected in colorectal,
+                                oral, pancreatic, esophageal, and other cancers [12–14,20]. F. nucleatum is renowned for
+                                promoting tumors via the activation of the Wnt/β-catenin pathway [20,25]. Moreover, F.
+                                nucleatum can modulate antitumor immunity by affecting the antitumor activities of NK
+                                cells and cytotoxic T cells through Fap2, thereby inhibiting T-cell activity via TiGIT [26].
+                                      Several subspecies of F. nucleatum have been identified, including Fn. nucleatum, Fn.
+                                polymorphum, Fn. vincentii, Fn. animalis, Fn. fusiforme, and Fn. canifelium. Prior research
+                                indicated that F. nucleatum polymorphum was the most significantly enriched species in oral
+                                cancer biopsies from 20 cases [22]. Multiple studies have confirmed the presence of F. nuclea-
+                                tum within oral cancer tissues [20,27], but the capacity of these bacteria to induce oral cancer
+                                has not been thoroughly explored. We also confirmed that F. nucleatum polymorphum was
+                                the most abundant subspecies in our saliva samples from patients with oral and pharyngeal
+                                cancers. Our findings reveal that patient-derived F. nucleatum polymorphum promotes oral
+                                epithelial proliferation and increases the proportion of nuclear YAP-positive cells. YAP
+                                activation is reported to be vital for the progression of oral cancer [16,28]. Therefore, the
+                                YAP activation signaling underscores the potential of F. nucleatum polymorphum to intensify
+                                oral cancer severity.
+                                      Another study focused on the role of intratumoral bacteria in human oral cancer
+                                tissues [27]. This research delved into stage-specific bacteria and prognostically relevant
+                                oral bacteria, such as Capnocytophaga (g). We also detected a slight yet significant increase
+Microorganisms 2023, 11, 2957                                                                                                  14 of 16
+
+
+
+
+                                in Capnocytophaga (g) levels in T-tongue plaque samples compared with that in C-tongue
+                                plaque samples (Supplementary Figure S1B). Nonetheless, since F. nucleatum is more
+                                abundantly detected in oral cancer tissues, our study primarily centered on the influence
+                                of F. nucleatum on oral cancer evolution. This paper highlights alterations in stage-specific
+                                immune cell states, emphasizing CD4- and CD8-positive T cells and associated cytokines.
+                                Recently, it was reported that F. nucleatum produces short-chain fatty acids [29], which are
+                                known to activate Treg cells [30] and alter tissue immunity [29], reinforcing the theory that
+                                metabolites derived from F. nucleatum modulate anticancer immunity.
+                                      Our results could provide a tool for predicting the risk of oral and pharyngeal cancer
+                                using saliva samples. We identified F. nucleatum polymorphum as an oral cancer facilitator,
+                                the increase of which can be used to predict the risk of oral cancer. Moreover, the bacterial
+                                species, which showed reduced abundance in the saliva samples from patients with oral
+                                and pharyngeal cancer who were non-drinkers and non-smokers (Figure 2), can also be
+                                used for assessing the risk. These bacteria may also function in the prevention of oral and
+                                pharyngeal cancer and might be used as probiotics after further investigations.
+                                      This study has some limitations. The molecular mechanisms of how F. nucleatum poly-
+                                morphum promoted the YAP activity, which might lead to the development of therapeutic
+                                drugs for oral cancer has not been clarified. Also, the cancer-promoting potential of other F.
+                                nucleatum subspecies remains to be elucidated in vivo using animal experiments. We also
+                                did not examine the landscape of tumor microenvironment in oral and pharyngeal cancer
+                                tissues including the infiltration of immune cells in the tumor. Oral microbiota produces a
+                                variety of metabolites that could affect the function of immune cells, which we would like
+                                to investigate further. For this, we need to increase the number of tumor samples so that
+                                the intratumoral bacteria can be examined.
+                                      In conclusion, we demonstrate that F. nucleatum is the most prevalent oral bacterial
+                                species in tumor tissue samples from patients with oral and pharyngeal cancers via a
+                                series of bioinformatics analyses. After isolating Fn. polymorphum from patients with oral
+                                and pharyngeal cancers, we confirmed its role in facilitating oral cancer progression in a
+                                mouse model. We also delved into bacteria that either co-occur with F. nucleatum or exhibit
+                                significant negative correlations. The results offer compelling evidence for the role of oral
+                                bacteria in the pathogenesis of oral and pharyngeal cancers and provide new insights into
+                                potential preventative strategies against oral cancer, perhaps by adjusting the composition
+                                of oral bacteria.
+
+                                Supplementary Materials: The following supporting information can be downloaded at: https:
+                                //www.mdpi.com/article/10.3390/microorganisms11122957/s1. Figure S1: Comparison of micro-
+                                bial composition in the samples of the oral cavity; Figure S2: Co-occurrence analysis of bacteria in
+                                tumor tissues from oral cancer patients; Figure S3: Correlation between the abundance of Fusobac-
+                                terium (g) and other bacteria; Figure S4: Metagenomic analysis of oral bacteria; Figure S5: Isolated
+                                Fusobacterium was identical to Fn polymorphum; Figure S6: The occupancy of Fusobacterium sub-
+                                species in patients’ saliva samples; Table S1: Analysis workflow and QIIME2 parameter settings;
+                                Table S2: Sample metadata.
+                                Author Contributions: Conceptualization, K.S. and N.O.; investigation, Y.Y., T.K., M.Y. and V.T.H.;
+                                formal analysis, T.K., M.Y. and Y.Y.; data curation, T.K.; writing—original draft, Y.Y., T.K. and N.O.;
+                                writing—review and editing, K.S. and N.O.; supervision, T.K. and N.O.; project administration, T.K.
+                                and N.O.; validation, M.Y. and T.K.; resources, Y.Y., K.S., M.O., M.N. and A.S.; funding acquisition,
+                                T.K., K.S., A.S. and N.O. All authors have read and agreed to the published version of the manuscript.
+                                Funding: This study was supported by AMED, Japan Agency for Medical Research and Development,
+                                Japan, under grant numbers JP22gm1010009h0005 (N.O.) and 22ama221117 h0001 (P-PROMOTE,
+                                A.S.), and the Japan Society for the Promotion of Science (JSPS) under grant numbers 20K16121
+                                (T.K.), 21H04806 (A.S.), and 22H03540 (N.O). Additional grants were provided by the Takeda Science
+                                Foundation Visionary Research (N.O.), the Yakult Bio-Science Foundation (T.K.), the Danone Institute
+                                of Japan Foundation (T.K.), Project Mirai Cancer Research Grants (A.S.), and the Glocal Hub of
+                                Wisdom and Wellness Grant of Osaka City University (K.S.).
+Microorganisms 2023, 11, 2957                                                                                                        15 of 16
+
+
+
+
+                                   Data Availability Statement: The datasets presented in this study are available in the DDBJ database.
+                                   Acknowledgments: We extend our gratitude to the doctors from the Department of Otolaryngology
+                                   and Head and Neck Surgery, Graduate School of Medicine, Osaka Metropolitan University, for their
+                                   aid in securing informed consent and gathering patient samples. Appreciation is also due to K. Tosa
+                                   and laboratory members at the Department of Pathophysiology, Graduate School of Medicine, Osaka
+                                   Metropolitan University, for their experimental support and fruitful discussions. We are thankful to
+                                   the Research Support Platform of Osaka Metropolitan University Graduate School of Medicine for
+                                   technical assistance.
+                                   Conflicts of Interest: The authors declare no conflict of interest.
+
+References
+1.    Sung, H.; Ferlay, J.; Siegel, R.L.; Laversanne, M.; Soerjomataram, I.; Jemal, A.; Bray, F. Global Cancer Statistics 2020: GLOBOCAN
+      estimates of incidence and mortality worldwide for 36 cancers in 185 countries. CA Cancer J. Clin. 2021, 71, 209–249. [CrossRef]
+2.    Botta, L.; Matsuda, T.; Charvat, H.; Chiang, C.J.; Lee, W.C.; van Gestel, A.J.; Martin, F.; Geleijnse, G.; Cellamare, M.; Bonfarnuzzo,
+      S.; et al. Head and neck cancers survival in Europe, Taiwan, and Japan: Results from RARECAREnet Asia based on a privacy-
+      preserving federated infrastructure. Front. Oncol. 2023, 13, 1219111. [CrossRef]
+3.    Warnakulasuriya, S.; Dietrich, T.; Bornstein, M.M.; Casals Peidro, E.; Preshaw, P.M.; Walter, C.; Wennström, J.L.; Bergström, J. Oral
+      health risks of tobacco use and effects of cessation. Int. Dent. J. 2010, 60, 7–30. [PubMed]
+4.    Sahingur, S.E.; Yeudall, W.A. Chemokine function in periodontal disease and oral cavity cancer. Front. Immunol. 2015, 6, 214.
+      [CrossRef] [PubMed]
+5.    Sahni, V. Is there an association between oral hygiene and head and neck cancer? Evid. Based Dent. 2023, 24, 57–58. [CrossRef]
+      [PubMed]
+6.    Valero, C.; Yuan, A.; Zanoni, D.K.; Lei, E.; Dogan, S.; Shah, J.P.; Morris, L.G.T.; Wong, R.J.; Mizrachi, A.; Patel, S.N.; et al. Young
+      non-smokers with oral cancer: What are we missing and why? Oral Oncol. 2022, 127, 105803. [CrossRef]
+7.    Alkhubaizi, Q.; Khalaf, M.E.; Dashti, H.; Sharma, P.N. Oral cancer screening among smokers and nonsmokers. J. Int. Soc. Prev.
+      Community Dent. 2018, 8, 553–559. [CrossRef] [PubMed]
+8.    Gholizadeh, P.; Eslami, H.; Yousefi, M.; Asgharzadeh, M.; Aghazadeh, M.; Kafil, H.S. Role of oral microbiome on oral cancers, a
+      review. Biomed. Pharmacother. 2016, 84, 552–558. [CrossRef] [PubMed]
+9.    Nakanishi, Y.; Yamamoto, T.; Obana, N.; Toyofuku, M.; Nomura, N.; Kaneko, A. Spatial distribution and chemical tolerance of
+      Streptococcus mutans within dual-species cariogenic biofilms. Microbes Environ. 2018, 33, 455–458. [CrossRef]
+10.   Kolenbrander, P.E.; Palmer, R.J., Jr.; Periasamy, S.; Jakubovics, N.S. Oral multispecies biofilm development and the key role of
+      cell-cell distance. Nat. Rev. Microbiol. 2010, 8, 471–480. [CrossRef]
+11.   Darveau, R.P. Periodontitis: A polymicrobial disruption of host homeostasis. Nat. Rev. Microbiol. 2010, 8, 481–490. [CrossRef]
+      [PubMed]
+12.   Bruno, J.S.; Fregnani, E.R. Oral microbiome as a new research-target for supportive care and precision oncology. Curr. Opin.
+      Oncol. 2023, 35, 276–281. [CrossRef] [PubMed]
+13.   Gholizadeh, P.; Eslami, H.; Kafil, H.S. Carcinogenesis mechanisms of Fusobacterium nucleatum. Biomed. Pharmacother. 2017, 89,
+      918–925. [CrossRef] [PubMed]
+14.   Yamamura, K.; Izumi, D.; Kandimalla, R.; Sonohara, F.; Baba, Y.; Yoshida, N.; Kodera, Y.; Baba, H.; Goel, A. Intratumoral
+      Fusobacterium nucleatum levels predict therapeutic response to neoadjuvant chemotherapy in esophageal squamous cell carcinoma.
+      Clin. Cancer Res. 2019, 25, 6170–6179. [CrossRef] [PubMed]
+15.   Bi, D.; Zhu, Y.; Gao, Y.; Li, H.; Zhu, X.; Wei, R.; Xie, R.; Wei, Q.; Qin, H. A newly developed PCR-based method revealed distinct
+      Fusobacterium nucleatum subspecies infection patterns in colorectal cancer. Microb. Biotechnol. 2021, 14, 2176–2186. [CrossRef]
+      [PubMed]
+16.   Omori, H.; Nishio, M.; Masuda, M.; Miyachi, Y.; Ueda, F.; Nakano, T.; Sato, K.; Mimori, K.; Taguchi, K.; Hikasa, H.; et al. YAP1 is a
+      potent driver of the onset and progression of oral squamous cell carcinoma. Sci. Adv. 2020, 6, eaay3324. [CrossRef]
+17.   Shingler, E.; Robles, L.A.; Perry, R.; Penfold, C.; Ness, A.R.; Thomas, S.; Lane, J.A.; Martin, R.M. Systematic review evaluating
+      randomized controlled trials of smoking and alcohol cessation interventions in people with head and neck cancer and oral
+      dysplasia. Head Neck 2018, 40, 1845–1853. [CrossRef] [PubMed]
+18.   Su, S.C.; Chang, L.C.; Huang, H.D.; Peng, C.Y.; Chuang, C.Y.; Chen, Y.T.; Lu, M.Y.; Chiu, Y.W.; Chen, P.Y.; Yang, S.F. Oral microbial
+      dysbiosis and its performance in predicting oral cancer. Carcinogenesis 2021, 42, 127–135. [CrossRef]
+19.   Rai, A.K.; Panda, M.; Das, A.K.; Rahman, T.; Das, R.; Das, K.; Sarma, A.; Kataki, A.C.; Chattopadhyay, I. Dysbiosis of salivary
+      microbiome and cytokines influence oral squamous cell carcinoma through inflammation. Arch. Microbiol. 2021, 203, 137–152.
+      [CrossRef]
+20.   Pignatelli, P.; Nuccio, F.; Piattelli, A.; Curia, M.C. The role of Fusobacterium nucleatum in oral and colorectal carcinogenesis.
+      Microorganisms 2023, 11, 2358. [CrossRef]
+Microorganisms 2023, 11, 2957                                                                                                      16 of 16
+
+
+
+
+21.   Yamamura, K.; Baba, Y.; Nakagawa, S.; Mima, K.; Miyake, K.; Nakamura, K.; Sawayama, H.; Kinoshita, K.; Ishimoto, T.; Iwatsuki,
+      M.; et al. Human microbiome Fusobacterium nucleatum in esophageal cancer tissue is associated with prognosis. Clin. Cancer Res.
+      2016, 22, 5574–5581. [CrossRef] [PubMed]
+22.   Al-Hebshi, N.N.; Nasher, A.T.; Maryoud, M.Y.; Homeida, H.E.; Chen, T.; Idris, A.M.; Johnson, N.W. Inflammatory bacteriome
+      featuring Fusobacterium nucleatum and Pseudomonas aeruginosa identified in association with oral squamous cell carcinoma. Sci.
+      Rep. 2017, 7, 1834. [CrossRef] [PubMed]
+23.   Nagy, K.N.; Sonkodi, I.; Szoke, I.; Nagy, E.; Newman, H.N. The microflora associated with human oral carcinomas. Oral Oncol.
+      1998, 34, 304–308. [CrossRef]
+24.   Bosetti, C.; Carioli, G.; Santucci, C.; Bertuccio, P.; Gallus, S.; Garavello, W.; Negri, E.; La Vecchia, C. Global trends in oral and
+      pharyngeal cancer incidence and mortality. Int. J. Cancer 2020, 147, 1040–1049. [CrossRef]
+25.   Garrett, W.S. The gut microbiota and colon cancer. Science 2019, 364, 1133–1135. [CrossRef]
+26.   Gur, C.; Ibrahim, Y.; Isaacson, B.; Yamin, R.; Abed, J.; Gamliel, M.; Enk, J.; Bar-On, Y.; Stanietsky-Kaynan, N.; Coppenhagen-Glazer,
+      S.; et al. Binding of the Fap2 protein of Fusobacterium nucleatum to human inhibitory receptor TIGIT protects tumors from immune
+      cell attack. Immunity 2015, 42, 344–355. [CrossRef] [PubMed]
+27.   Pratap Singh, R.; Kumari, N.; Gupta, S.; Jaiswal, R.; Mehrotra, D.; Singh, S.; Mukherjee, S.; Kumar, R. Intratumoral microbiota
+      changes with tumor stage and influences the immune signature of oral squamous cell carcinoma. Microbiol. Spectr. 2023,
+      11, e0459622. [CrossRef]
+28.   Maehama, T.; Nishio, M.; Otani, J.; Mak, T.W.; Suzuki, A. The role of Hippo-YAP signaling in squamous cell carcinomas. Cancer
+      Sci. 2021, 112, 51–60. [CrossRef]
+29.   Brennan, C.A.; Clay, S.L.; Lavoie, S.L.; Bae, S.; Lang, J.K.; Fonseca-Pereira, D.; Rosinski, K.G.; Ou, N.; Glickman, J.N.; Garrett,
+      W.S. Fusobacterium nucleatum drives a pro-inflammatory intestinal microenvironment through metabolite receptor-dependent
+      modulation of IL-17 expression. Gut Microbes 2021, 13, 1987780. [CrossRef] [PubMed]
+30.   Furusawa, Y.; Obata, Y.; Fukuda, S.; Endo, T.A.; Nakato, G.; Takahashi, D.; Nakanishi, Y.; Uetake, C.; Kato, K.; Kato, T.;
+      et al. Commensal microbe-derived butyrate induces the differentiation of colonic regulatory T cells. Nature 2013, 504, 446–450.
+      [CrossRef] [PubMed]
+
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+

@@ -1,0 +1,880 @@
+Hindawi
+Disease Markers
+Volume 2022, Article ID 7994074, 12 pages
+https://doi.org/10.1155/2022/7994074
+
+
+
+
+Research Article
+An Integrative Bioinformatic Analysis of Microbiome and
+Transcriptome for Predicting the Risk of Colon Adenocarcinoma
+
+          Jieyang Yu ,1 Cuizhen Nong ,2 Jingjie Zhao ,3 Lingzhang Meng ,4 and Jian Song                                                4,5
+
+          1
+            Baise Maternal and Child Hospital, Baise, Guangxi Zhuang Autonomous Region, China
+          2
+            Department of Radiation, Aﬃliated Hospital of Youjiang Medical University for Nationalities, Baise,
+            Guangxi Zhuang Autonomous Region, China
+          3
+            Life Science and Clinical Research Center, Aﬃliated Hospital of Youjiang Medical University for Nationalities, Baise,
+            Guangxi Zhuang Autonomous Region, China
+          4
+            Center for Systemic Inﬂammation Research (CSIR), School of Preclinical Medicine, Youjiang Medical University for Nationalities,
+            Baise, Guangxi Zhuang Autonomous Region, China
+          5
+            Department of Radiation Oncology, Renji Hospital, School of Medicine, Shanghai Jiao Tong University, Shanghai, China
+
+          Correspondence should be addressed to Lingzhang Meng; lingzhang.meng@ymcn.edu.cn and Jian Song; songj@uni-muenster.de
+
+          Received 23 September 2021; Revised 24 November 2021; Accepted 2 December 2021; Published 20 January 2022
+
+          Academic Editor: Zhongqiu Xie
+
+          Copyright © 2022 Jieyang Yu et al. This is an open access article distributed under the Creative Commons Attribution License,
+          which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+
+          The abundance of gut microbiota is signiﬁcantly decreased in patients with colorectal tumors compared to healthy groups.
+          However, few studies have been conducted to correlate the diﬀerences in gut microbiota in colon cancer patients with diﬀerent
+          prognosis. In this study, we analysed the gut microbiota among patients with colon cancer and determined the microbial
+          characteristics of COAD and divided the overall survival of COAD data into the high- and low-risk groups. In addition, we
+          established a microbiome-related gene map and determined the association between microbial features and immune cell
+          inﬁltration in COAD. In comparison with the low-risk group, the high risk group of COAD samples exhibited a decreased
+          proportion of activated CD4 T cells as well as an increased proportion of M2 macrophages. The current data suggested that
+          diﬀerent gut ﬂora backgrounds lead to diﬀerent gene expression proﬁles, which in turn aﬀect immune cell typing and
+          colorectal tumor prognosis.
+
+
+
+
+1. Introduction                                                        of the correlation between the gut microbiota proﬁle and the
+                                                                       overall risk of colon cancer.
+Colon cancer is one of the leading causes of cancer deaths                 It has been known that both innate and adaptive immu-
+worldwide [1], and there are many studies on the molecular             nities are involved in the development of tumors and gut
+mechanisms of colon carcinogenesis, among which the reg-               microbiota play a key role in regulating the intestinal immu-
+ulation of the intestinal microecosystem that determines               nity [3, 6]. The altered immunity predisposes the host to
+the expression of oncogenes is a hot topic [2]. Fusobacter-            acquire adenomatous or carcinogenic changes or impact
+ium nucleatum and anaerobic streptococci can promote                   the prognosis of the colorectal cancer patients. For example,
+the occurrence, development, and treatment of colorectal               Fusobacterium nucleatum induces mucin secretion and
+tumors [3, 4]; probiotics such as lactobacilli can inhibit the         inﬂammatory cytokines during contact or invasion of
+occurrence and development of colorectal tumors and can                colonic cells and also inhibits the immune process against
+improve postoperative indicators and reduce complications              tumors and suppresses the activity of natural killer cells, thus
+in patients with colorectal cancer [5]. Therefore, it is impor-        promoting the development of colorectal cancer [7]. How-
+tant to genotype the gut microbiota proﬁle before treating             ever, few comprehensive studies have been conducted to
+patients with colon cancer, which requires an understanding            correlate the diﬀerences in gut microbiota in colon cancer
+2                                                                                                                       Disease Markers
+
+                       Table 1: Top gut microbial correlating with high or lower risk of colon cancer mortality.
+
+Gene                     Coeﬃcie nt      P value                              Gene                            Coeﬃcient        P value
+Piscirickettsiaceae       247.19        P < 0.001                    Mesoaciditogaceae                             -140.792   P < 0.001
+Syntrophaceae             114.643       P < 0.001                   Hyphomonadaceae                                -107.232   P < 0.001
+Listeriaceae               87.535       P < 0.001                        Bacillaceae                                -85.157   P < 0.001
+Aquiﬁcaceae                86.796       P < 0.001     Thermoanaerobacterales_Family_IV._Incertae_Sedis              -72.364   P < 0.001
+Comamonadaceae             79.195       P < 0.001                     Peptococcaceae                                -61.483   P < 0.001
+Ignavibacteriaceae         62.405       P < 0.001                    Alcanivoracaceae                               -59.424   P < 0.001
+Mariprofundaceae           54.515       P < 0.001                    Actinomycetaceae                               -56.622   P < 0.001
+Chromobacteriaceae         41.484       P < 0.001                  Syntrophorhabdaceae                              -56.583   P < 0.001
+Limnochordaceae            40.748       P < 0.001                      Rickettsiaceae                               -54.024   P < 0.001
+Acidothermaceae            39.392       P < 0.001                    Ruminococcaceae                                -53.921   P < 0.001
+Phyllobacteriaceae         36.895       P < 0.001                    Rhodospirillaceae                              -48.748   P < 0.001
+Symbiobacteriaceae         35.305       P < 0.001                    Alicyclobacillaceae                            -43.438   P < 0.001
+Bacteroidaceae             35.118       P < 0.001                   Oscillochloridaceae                             -41.465   P < 0.001
+Salinisphaeraceae          35.031       P < 0.001                      Gallionellaceae                              -39.995   P < 0.001
+Chitinivibrionaceae        34.137       P < 0.001                   Methylothermaceae                               -37.641   P < 0.001
+Marinilabiliaceae          33.292       P < 0.001                    Mycobacteriaceae                               -36.452   P < 0.001
+Frankiaceae                33.195       P < 0.001                     Caldisericaceae                               -36.349   P < 0.001
+Mariniﬁlaceae              32.807       P < 0.001                     Sporichthyaceae                               -35.514   P < 0.001
+Oleiphilaceae              32.446       P < 0.001                  Cryptosporangiaceae                              -33.537   P < 0.001
+Halobacteriovoraceae       31.806       P < 0.001                    Burkholderiaceae                               -33.496   P < 0.001
+Puniceicoccaceae           30.899       P < 0.001                   Fimbriimonadaceae                               -32.953   P < 0.001
+Magnetococcaceae           28.051       P < 0.001                   Kordiimonadaceae                                -31.766   P < 0.001
+Nannocystaceae             26.418       P < 0.001                   Saccharospirillaceae                            -31.468   P < 0.001
+Porticoccaceae             25.824       P < 0.001                       Jiangellaceae                               -29.333   P < 0.001
+Nakamurellaceae            24.696       P < 0.001                Promicromonosporaceae                              -28.741   P < 0.001
+Eubacteriaceae             23.719       P < 0.001                      Legionellaceae                               -26.135   P < 0.001
+Rubrobacteraceae           23.458       P < 0.001                     Cellvibrionaceae                              -21.792   P < 0.001
+Ferrimonadaceae            22.347       P < 0.001                      Gordoniaceae                                 -21.702   P < 0.001
+
+
+
+patients with their immune cell proﬁles and the prognosis of         2.2. Building a Microbial Signature. The association between
+patients.                                                            COAD microbiome and overall survival time in TCGA cases
+    This study analysed the composition and diﬀerences in            was studied. Univariate Cox regression analysis was carried
+the gut microbiota of colon cancer patients. Signiﬁcant dif-         out for identifying the genes associated with survival (p value
+ferences in the gut microbiota of colon cancer patients were         < 0.05). Subsequently, the signiﬁcance of candidate genes
+found at the family levels. We used the corresponding gut            was selected using variable importance in a randomized sur-
+microbiota to study the prognostic risk and grouping of              vival forest (RSF) algorithm. A risk score model with the
+colon cancer patients. And diﬀerential gene expression pro-          selected microbial signature was built using multivariate
+ﬁles associated with them were identiﬁed.                            Cox regression approaches. In addition, the Kaplan-Meier
+                                                                     test was employed for a number of gene features, and p
+                                                                     values (log) were determined. Receiver operating character-
+2. Materials and Methods                                             istic (ROC) analysis was performed for 3- and 5-year overall
+                                                                     survival rates, and area under the curves (AUCs) were deter-
+2.1. Collection and Processing of the COAD RNAseq Dataset.           mined for assessing the speciﬁcity and sensitivity of the
+The RNA sequencing dataset and the clinically related data           microbial signature.
+for COAD originated from the TCGA database (https://
+portal.gdc.carcinoma.gov/), which consists of 410 samples.
+The raw gene expression dataset was processed. Probe IDs             2.3. Microbiome Analysis. Based on the operational taxo-
+received the annotation toward the gene from the correspond-         nomic unit (OTU) results generated by sample sequencing,
+ing platform annotation proﬁle of the GDC website, and the           the phyloseq R package was used to calculate the alpha
+raw matrix data received the quantile normalization and              diversity distance matrices. Microbiome analysis was other-
+log2 conversion. Samples with missing data were excluded.            wise done using microbiomeanalyst.ca website. Alpha
+Disease Markers                                                                                                                                                                                               3
+
+
+                                                                                                                                             1.00
+                              1.00    ++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++++
+                                      +
+                                                                                                      ++ ++ ++ +++++
+                                           ++
+                                            +++
+                              0.75            +++
+
+
+
+
+       Survival probability
+                                                +++++                                                                                        0.75
+                                                    ++++
+                                                       ++++++++
+                                                              ++
+                              0.50                              +++
+
+
+
+
+                                                                                                                        True positive rate
+                                                                  +++
+                                                                     +++
+                              0.25
+                                                                                   +                                                         0.50
+                                                                                       +
+                                          p < 0.0001
+                              0.00
+
+                                      0                    1000                   2000                3000    4000
+                                                                                  Time                                                       0.25
+                                     Number at risk
+                              POS 205                           53                  5                  0        0
+                                                                                                                                                                                  AUC at 3 years = 1
+                              NEG 205                           74                 24                 11        5
+                                                                                                                                                                                  AUC at 5 years = 1
+                                                                                                                                             0.00
+                                     microbial
+                                     + POS                                                                                                          0.00    0.25             0.50           0.75       1.00
+                                     + NEG                                                                                                                            False positive rate
+                                                                            (a)                                                                                         (b)
+                                                                                      Cutoff for logFC is 0.25
+                                                                                                                                                    DOWN   Symbiobacteriaceae
+                                                                                     The number of up gene is 1
+                                                                                   The number of down gene is 15                                    DOWN   Sporichthyaceae
+
+                                                                                                                                                    DOWN   Ruaniaceae
+
+                                                                       3                                                                            DOWN   Oscillochloridaceae
+
+                                                                                                                                                    DOWN   Mesoaciditogaceae
+
+                                                                              Hyphomonadaceae                                                       DOWN   Jiangellaceae
+
+                                                                            Jiangellaceae                                                           DOWN   Hyphomonadaceae
+                                                                       2                        Halothiobacillaceae
+
+
+                                                      −log10 p−value
+                                                                                                                                                    DOWN   Halothiobacillaceae
+                                                                            Mesoaciditogaceae     Frankiaceae
+                                                                            Cryptosporangiaceae                                                     DOWN   Gallionellaceae
+                                                                                              Ruaniaceae
+                                                                                                                                                    UP     Frankiaceae
+                                                                                                                                                    DOWN   Fimbriimonadaceae
+                                                                       1
+                                                                                                                                                    DOWN   Cryptosporangiaceae
+
+                                                                                                                                                    DOWN   Chromobacteriaceae
+
+                                                                                                                                                    DOWN   Caldisericaceae
+
+                                                                       0                                                                            DOWN   Brucellaceae
+
+                                                                                                                                                    DOWN   Actinopolysporaceae
+                                                                           −0.6         −0.4       −0.2      0.0       0.2
+                                                                                               log2 fold change
+                                                                           Change
+                                                                             DOWN
+                                                                             NOT
+                                                                             UP
+                                                                                                      (c)                                                       (d)
+
+                                                                                                              Figure 1: Continued.
+4                                                                                                                                                                                                               Disease Markers
+
+
+                                                                                                                                      1.00    +++
+                                                                                                                                                +++
+                                                                                                                                                  +++++
+                                                                                                                                                  +    +
+                                                                                                                                                    +++++++++++++++++
+                                                                                                                                                      ++++          ++++++++++++
+                                                                                                                                                         +++                    +++++
+                                                                                                                                                           +++++++                     ++
+                                 1.00    ++
+                                          ++++                                                                                                                   +++
+                                                                                                                                      0.75                          ++++
+                                             +++++
+                                               +++                                                                                                                      +++++             +++
+                                                 ++
+                                                  ++
+                                                   ++++++
+                                                    ++                                                                                                                        +++            +
+                                                        ++++++++++++++++++++++
+
+
+
+
+                                                                                                               Survival probability
+                                                                                                                                                                                ++++++
+                                 0.75
+                                                                ++++++++
+                                                                                +                                                                                                    ++++++++++ +
+                                                                        ++                                                                                                                          +++++
+
+
+
+
+         Survival probability
+                                                                         + ++                                                                                                                  +
+                                                                           +++ ++                                                                                                                ++      +
+                                                                              +++++++ ++ +++++                                        0.50                                                            + ++ +
+                                                                                    +++
+                                                                                        +
+                                                                                              ++                                                                                                           + ++ ++   +++++
+                                 0.50                                                            ++ + ++ +++
+                                                                                           ++
+                                                                                              +     + + + +
+                                                                                                                                      0.25
+                                 0.25                                                                                                              p = 0.013
+
+                                             p = 0.13
+                                 0.00
+                                                                                                                                      0.00
+                                         0            1000           2000           3000           4000
+                                                                                                                                               0               1000             2000              3000               4000
+                                                                   Time
+                                                                                                                                                                                Time
+                                        Number at risk
+                                                                                                                                             Number at risk
+                            High        205            67             11              4              1
+                                Low     205            60             18              7              4                                High 205                 62                16                 2                 2
+
+                                                                                                                                      Low 205                  65                13                 9                 3
+                                        Frankiaceae
+                                        + High
+                                                                                                                                             Lactobacillaceae
+                                        + Low
+                                                                                                                                             + High
+                                                                                                                                             + Low
+                                                               (e)                                                                                                        (f)
+
+Figure 1: Identiﬁcation of COAD prognosis correlated microbiome. (a) Kaplan-Meier (KM) analysis of the risk group that was deﬁned with
+prognosis correlated microbiome in the TCGA dataset for COAD. (b) Three- and ﬁve-year ROC survival curves of the risk groups for
+COAD TCGA dataset. (c) A volcano plot of the diﬀerential microbials in the two risk groups of COAD. (d) List of the top diﬀerential
+microbials. Kaplan-Meier (KM) survival analysis of (e) Frankiaceae and (f) Lactobacillaceae in the COAD patients.
+
+diversity refers to the diversity of species in a given region or                                                                        3. Results
+ecosystem and is commonly measured by the Shannon’s and
+Simpson’s indices. Shannon’s index is correlated with the                                                                                3.1. Building a Microbial Signature. COAD tumor micro-
+diversity, while Simpson’s index is inversely proportional                                                                               biomes were obtained from the pan cancer microbiome of
+to the diversity. Beta diversity analysis is a comparative                                                                               cBioportal website and then integrated with their respective
+analysis between groups of species diversity among diﬀerent                                                                              clinical data. To screen for the crucial survival-related fac-
+ecosystems or microbial communities to obtain similarities                                                                               tors, the microbial from COAD tumor were analysed using
+or diﬀerences in community composition among diﬀerent                                                                                    multivariate Cox regression for the TCGA dataset, and the
+grouped samples.                                                                                                                         risk scoring system was then built using these 180 microbials
+                                                                                                                                         with multivariate Cox analysis using the TCGA clinical data-
+2.4. Statistical Methods. Statistics investigations were carried                                                                         set (Table 1). In accordance with the formula, a risk score
+out with R software (version 3.6.0). Kaplan-Meier tests and                                                                              was calculated for the respective cases. COAD tumor in the
+ROC analysis were performed as we described previously                                                                                   TCGA dataset was then divided into the high-risk and
+[8, 9]. In brief, we utilized the “survivor” and “survROC”                                                                               low-risk cohorts with the optimal cut-oﬀ data for the risk
+software packages in both analyses [10]. Optimal cut-oﬀ                                                                                  score. Kaplan-Meier curves showed that the high-risk group
+data points were calculated using the “survminer” package                                                                                survived for shorter periods in comparison with those
+[11]. Single-variate and multivariate Cox regression correla-                                                                            patients in the low-risk cohort (Figure 1(a)). ROC curve
+tions were used to assess the prognosis-correlated factors of                                                                            analysis of the COAD cases was plotted, and this showed
+interest. Hazard ratios and 95% conﬁdence intervals were                                                                                 an AUC of 1 for 3- and 5-year survivals (Figure 1(b)). Sub-
+presented for all the prognosis-correlated factors.                                                                                      sequently, the microbials were screened based on with the
+    Analysis of diﬀerences between groups was performed                                                                                  best cut-oﬀ data, and 15 were signiﬁcantly downregulated
+using GraphPad Prism 8.0 software. Measures were shown                                                                                   and Frankiaceae was upregulated (Figures 1(c) and 1(d)).
+as the mean ± standard deviation. Student t-tests were used                                                                              Kaplan-Meier curves also conﬁrmed that Frankiaceae is
+for comparisons between two groups if they met a normal                                                                                  associated with the high risk and Lactobacillaceae is classi-
+distribution and had a homogeneous variance.                                                                                             ﬁed as the beneﬁcial factor (Figures 1(e) and 1(f)).
+Disease Markers                                                                                                        5
+
+
+
+
+                             Low
+
+
+
+
+                            High
+
+
+
+
+                                    0e+00                    2e+05                            4e+05       6e+05
+                                                                           Actual abundance
+                                   Phylum
+                                     Proteobacteria        Caldiserica
+                                     Firmicutes            Chlorobi
+                                     Actinobacteria        Armatimonadetes
+                                     Bacteroidetes         Fusobacteria
+                                     Cyanobacteria         Ignavibacteriae
+                                     Acidobacteria         Thermodesulfobacteria
+                                     Chloroflexi           Aquificae
+                                     Spirochaetes          Thermobaculum
+                                     Planctomycetes        Chrysiogenetes
+                                     Tenericutes           Nitrospinae
+                                     Synergistetes         Gemmatimonadetes
+                                     Verrucomicrobia       Deferribacteres
+                                     Chlamydiae            Rhodothermaeota
+                                     Thermotogae           Elusimicrobia
+                                     Deinococcus           Candidatus_cloacimonetes
+                                     Fibrobacteres         Lentisphaerae
+                                     Nitrospirae           Dictyoglomi
+                                                                              (a)
+                                                                                                          Prevalence
+                       Enterobacteriaceae
+                       Rhodobacteraceae                                                                       0.0
+                        Flavobacteriaceae
+                                                                                                              0.1
+                       Microbacteriaceae
+                          Pasteurellaceae                                                                     0.2
+
+                         Lachnospiraceae
+                                                                                                              0.3
+                           Alcaligenaceae
+                                                                                                              0.4
+                        Acetobacteraceae
+
+             Family
+                      Pseudonocardiaceae                                                                      0.5
+                        Rhodospirillaceae
+                                                                                                              0.6
+                          Chromatiaceae
+                      Erysipelotrichaceae                                                                     0.7
+
+                         Micrococcaceae                                                                       0.8
+                            Rhizobiaceae
+                                                                                                              0.9
+                        Anaplasmataceae
+                       Oceanospirillaceae                                                                     1.0
+
+                                            0.010 0.012 0.015 0.018 0.022 0.027 0.033 0.040 0.049 0.060
+                                                       Detection threshold (relative abundance (%))
+                                                                     (b)
+
+                                                         Figure 2: Continued.
+6                                                                                                                      Disease Markers
+
+
+                                                                Shannon                                Simpson
+                                                        4.7
+
+
+
+                                                        4.6
+
+
+                                                                                    0.985
+
+
+
+
+                              Alpha diversity measure
+                                                        4.5
+
+
+
+                                                        4.4
+
+
+
+                                                        4.3                         0.980
+
+
+
+                                                        4.2
+
+
+
+
+                                                              High    Low                        High            Low
+                                                                                    Risk
+                                                                              (c)
+
+                  0.10
+
+
+
+
+                  0.05
+
+
+
+
+    Axis.2 13%
+                  0.00
+
+
+
+
+                 −0.05
+
+
+
+
+                 −0.10
+
+
+
+
+                                 −0.1                                       0.0                                  0.1
+                                                                                        Axis.1 19.4%
+                         Risk group
+                            Low
+                            High
+                                                                                  (d)
+
+                                                                      Figure 2: Continued.
+Disease Markers                                                                                                                         7
+
+                                                                                                         Low High High
+                       Acidobacteriaceae
+
+                      Xanthomonadaceae
+
+                             Frankiaceae
+
+                     Campylobacteraceae
+
+                    Sporolactobacillaceae
+
+                        Acetobacteraceae
+
+                          Caldisericaceae
+
+                        Chrysiogenaceae
+
+                     Sphingobacteriaceae
+
+                          Schleiferiaceae
+
+                 Promicromonosporaceae
+
+                       Crocinitomicaceae
+
+                     Desulfomicrobiaceae
+
+                            Myxosarcina
+
+                              Leptospira
+
+                                                                                                                    Low
+                                                  0.0008   0.0010         0.0012    0.0014    0.0016
+                                                             Mean decrease accuracy
+                                                                    (e)
+
+Figure 2: Microbiome analysis of the high- and low-risk groups of COAD. (a) Composition of the gut microbiota at the phylum level in
+patients with high and low risk. (b) Core microbiome analysis of family level. (c) Alpha diversity analysis of samples in the high and low
+risk dataset. (d) Two-dimensional scatter plot of nonmetric multidimensional scale analysis of gut microbiota family gate levels in
+COAD cancer patients. (e) A random forest “classiﬁcation” approach was used to ﬁnd key bacteria associated with groupings.
+
+
+
+
+3.2. Microbiome Analysis of the High- and Low-Risk Groups.                the high risk group (Figures 3(c) and 3(d)). Interestingly,
+The analysis of the community composition both COAD                       IL1beta and IL23 were downregulated, which refers to a
+groups showed the gut microbiota in patients with colon                   decreased IBD signaling (data not shown). These function
+and rectal cancer at the Phylum level (Figures 2(a) and                   data are correlated with the estimated inﬁltration of immune
+2(b)). Based on the genus level, alpha diversity analysis of              cell subsets into the COAD tumor samples, which is
+samples from the high- and low-risk groups showed that                    obtained using the CIBERSORT deconvolution of COAD
+the diﬀerence in Shannon’s index was not statistically signif-            bulk-seq data (Figure 3(e)).
+icant; Simpson’s index was also not statistically signiﬁcant
+(Figure 2(c)). NMDS analysis showed that at the family level,             3.4. Constructing a Microbial-Related Gene Signature. The
+the diﬀerence in bacterial gut microbiota community                       DEGs of the COAD high- or low-risk groups were analyzed
+between the two groups was signiﬁcant (Figure 2(d)), sug-                 using single-variate Cox regression for the TCGA dataset,
+gesting a signiﬁcant diﬀerence in the composition of gut                  and a total of 2 genes were identiﬁed to be signiﬁcantly cor-
+microbiota between high- and low-risk patients. A random                  related to survival in these patients (p < 0:05) (Figure 4(a)).
+forest “classiﬁcation” approach was used to ﬁnd key bacteria              The risk scoring system was then built using these 20 genes
+associated with groupings (Figure 2(e)).                                  with multivariate Cox analysis using the TCGA dataset.
+                                                                          Kaplan-Meier curves showed that the high-expressing group
+3.3. DEG Identiﬁcation. COAD cases in the TCGA dataset                    survived for fewer periods in comparison with those patients
+were categorized according to high- or low-risk score. To                 in the low-risk cohort (Figure 4(b)). To estimate the predic-
+screen for the crucial survival-related factors, the DEGs from            tive power of genetic characteristics, ROC curve analysis of
+the two risk groups were analysed with Wilcoxon’s test and                the COAD cases were plotted and this showed an AUC of
+were enriched for the KEGG pathway analyses (Figures 3(a)                 0.795 for 3 year-survival and 0.802 for 5 year-survival
+and 3(b)). GSEA KEGG pathway analyses were done using                     (Figure 4(c)). This provides a potential microbial-related
+webgestalt.org website [8]. Of those pathways, PPAR signal-               gene signature for the assessment of COAD patients before
+ing was upregulated and the IL17 signaling was decreased in               their further treatment.
+8                                                                                                                                       Disease Markers
+
+                        Volcano plot                               PPAR signaling pathway
+                      Enhanced volcano
+                                                                  Apelin signaling pathway
+                 4                                             PI3K-Akt signaling pathway
+                                                                  Hepatocellular carcinoma
+                                                                       Ras signaling pathway
+                                                                            Salivary secretion
+                                                                  cAMP signaling pathway
+                 3
+                                                             Chemokine signaling pathway
+                                                           Protein digestion and absorption
+                                             SCT                        MicroRNAs in cancer
+
+    − Log 10 P
+                                      COLEC10
+                                          C6orf15
+                                                                      IL-17 signaling pathway
+                                    CXCL8
+                                                RN7SL4P
+                 2                    AC078883.3                Estrogen signaling pathway
+                             KLK4 UCHL1
+                     SNORA14B SNORA34C7
+                                                                         Salmonella infection
+                          PTGS2 SPRR3 PRELP
+                       MIR143HGGPX3
+                                                                      TNF signaling pathway
+                                  RP1−170O19.17
+                                             FABP4
+                     CTD−2328D6.1
+                              RP1−142L7.5LEP
+                        RP11−490G8.1CALML3                Inflammatory bowel disease (IBD)
+                     SPRR2D
+                       HIST1H4CAC064834.1RN7SL674P                     AGE-RAGE signaling
+                 1       HIST1H1B
+                     RNU4−1      NKX6−3
+                         IL1B KRR1P1 SFTPA2               Human cytomegalovirus infection
+                                                                                      Malaria
+                                                             NF-kappa B signaling pathway
+                                                                  Herpes simplex infection
+                 0
+                 −5.0 −2.5 0.0 2.5 5.0                                                           −2    −1         0         1   2   3
+                                                                                                                      NES
+                       Log2 fold change
+                     Total = 1104 variables
+
+                     NS
+                     Log2 FC
+                     p-value
+                     p-value and log2 FC
+
+                                            (a)                                                  (b)
+                                                            Enrichment plot: PPAR signaling pathway
+
+                                             0.6
+
+
+
+
+                       Enrichment score
+                                             0.5
+                                             0.4
+                                             0.3
+                                             0.2
+                                             0.1
+                                             0.0
+
+
+
+
+                                              5
+
+
+
+                       Ranked list metric
+                                              0
+                                             −5
+                                            −10
+
+                                            −30
+                                                   0            200                  400                    600
+                                                                        Rank in ordered dataset
+                                                                             (c)
+
+                                                                 Figure 3: Continued.
+Disease Markers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                9
+
+
+                                                                                                   0.0
+
+
+
+
+                                                           Enrichment score
+                                                                                      −0.1
+
+                                                                                      −0.2
+
+                                                                                      −0.3
+
+                                                                                      −0.4
+
+                                                                                      −0.5
+
+
+
+
+                                                                                              5
+
+
+
+
+                                                           Ranked list metric
+                                                                                              0
+                                                                                             −5
+                                                                                            −10
+
+                                                                                            −30
+                                                                                                                     0                                                                  200                                                                                           400                                                                    600
+                                                                                                                                                                                                                           Rank in ordered dataset
+                                                                                                                                                                                                                                                     (d)
+                     0.25
+
+
+                     0.20
+
+
+                     0.15
+
+          Fraction
+                     0.10
+
+
+                     0.05
+
+
+                     0.00
+
+
+
+
+                                                                                                                                                                                                                                             T cell gamma delta
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Mast cell resting
+
+
+
+                                                                                                                     T cell CD4+ memory activated
+                                                                                                                                                    T cell CD4+ naive
+                                                                                                                                                                                                                                                                    NK cell resting
+                                                                                                                                                                                                                                                                                        NK cell activated
+
+
+                                                                                                                                                                                                                                                                                                                            Myeloid dendritic cell resting
+                                                                                                                                                                                                                                                                                                                                                             Monocyte
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                        Myeloid dendritic cell activated
+                                                                                                                                                                                                                                                                                                                                                                                                                                           Mast cell activated
+                            B cell naive
+
+
+
+
+                                                                      T cell CD4+ memory resting
+                                                                                                     B cell plasma                                                      T cell CD8+                                                                                                                                                                                                                                                                                                  Eosinophil   Neutrophil
+
+
+                                                                                                                                                                                      T cell follicular helper
+                                                                                                                                                                                                                 T cell regulatory (Tregs)
+                                                                                                                                                                                                                                                                                                            Macrophage M0                                                                                  Macrophage M1   Macrophage M2
+                                           B cell memory
+
+
+
+
+                                    High risk
+                                    Low risk
+                                                                                                                                                                                                                                                                  (e)
+
+Figure 3: Proﬁling the gene expression of the high-risk microbiome-related genes. (a) A volcano plot of the DEGs between high- and low-
+risk groups of COAD samples. (b) Bar graphs showing the enriched KEGG pathways of the risk DEGs. GSEA plots showed the upregulated
+(c) PPAR signaling and the downregulated (d) IL17 signaling. (e) Bar graphs showing the CIBERSORT estimated inﬁltration of immune cell
+subsets into the COAD high- and low-risk samples.
+10                                                                                                                                                                                                          Disease Markers
+
+
+                                      Cutoff for logFC is 0.641                                                   1.00         +++ +
+                                     The number of up gene is 14                                                                 +++++++++
+                                                                                                                                           ++
+                                    The number of down gene is 6                                                                   ++++ ++++++++++++++++++++++++++++++++++++
+                                                                                                                                      +++                                     ++
+                                                                                                                                        ++++
+                                                                                                                                           +++++                                 +++
+                         4                                                RP1−34B20.4
+                                                                               CDK5R2                                                          ++++++++                              +
+                                                                                                                  0.75                                +++++                          +
+                                                   RSPO4                    AC113189.5                                                                    ++++++++
+
+
+
+
+                                                                                           Survival probability
+                                                                                                                                                                 ++                      + + ++
+                                                                                                                                                                  +++
+                                                                                                                                                                     +++++
+                                                                                                                                                                         +                            +
+                                                                          IL20RB
+                                                                                                                                                                          +++                                +   +++
+                         3                                                PRG4                                    0.50                                                       ++++ ++
+                                           SERPINA1                                                                                                                                   ++ + ++++
+                                                                                UPK3B                                                                                                          +
+                             RN7SL752P                                                                                                                                                           + ++
+
+
+        −log10 p−value
+                                                                                CNGA3
+                                      TMSB4XP4                              CX3CL1                                0.25                                                                                    + +
+                             HSPE1P8                                             NSMF
+                         2
+                             RP11−305O6.4                                     PNLDC1
+                                                                                 RARA
+                                                                                                                                    p < 0.0001
+                                                                                                                  0.00
+                         1
+                                                                                                                                0                   1000                   2000                    3000          4000
+                                                                                                                                                                           Time
+
+                                                                                                                          Number at risk
+                         0
+                                                                                                                  High     244                        80                      15                      4           1
+                             −1.5   −1.0   −0.5     0.0                     0.5      1.0
+                                                                                                                  Low      243                        79                      19                      8           4
+                                           log2 fold change
+                               Change
+                                 DOWN                                                                                    20 genes
+                                 NOT                                                                                      +         High
+                                 UP                                                                                       +         Low
+                                             (a)                                                                                                                     (b)
+
+                                                                           1.00
+
+
+
+
+                                                                           0.75
+
+
+
+
+                                                     True positive rate
+                                                                           0.50
+
+
+
+
+                                                                           0.25
+                                                                                                                                AUC at 3 years = 0.795
+                                                                                                                                AUC at 5 years = 0.802
+
+
+                                                                           0.00
+
+                                                                                   0.00    0.25                            0.50         0.75                             1.00
+                                                                                                                    False positive rate
+                                                                                                                         (c)
+
+Figure 4: Constructing a microbiome related prognosis gene signature for COAD. (a) A volcano plot showing the signiﬁcant genes obtained
+from Cox regression analysis of survival-related DEGs in the high- and low-risk groups of COAD samples. (b) KM investigation of the risk
+model for the signiﬁcant gene signatures. (c) Three- and ﬁve-year ROC curves of COAD TCGA dataset for the gene signatures.
+Disease Markers                                                                                                                          11
+
+4. Discussion                                                        Conflicts of Interest
+After human birth, a large number of microorganisms start            The authors declare that this research was conducted in the
+to colonize and reproduce in the intestine, inducing the forma-      absence of any commercial or ﬁnancial relationships that
+tion of the body’s immune system and playing an important            could be construed as a potential conﬂicts of interest.
+role in body homeostasis [12]. In addition to gastrointestinal-
+related diseases, dysbiosis of gut microbiota also plays a con-
+tributing role in the pathogenesis of Parkinson’s disease and        Authors’ Contributions
+Alzheimer’s disease, and microbiomics has become a major
+research hotspot at present [13, 14]. Previous studies have dem-     Jian Song and Lingzhang Meng designed this study and col-
+onstrated that the abundance of gut microbiota is signiﬁcantly       lected the COAD RNAseq data, Jieyang Yu processed the
+decreased in patients with colorectal tumors compared to             COAD RNAseq data and performed microbiome analysis,
+healthy groups [15]. However, few studies have been conducted        and Cuizen Nong and Jingjie Zhao performed building the
+to correlate the diﬀerences in gut microbiota in colon cancer        microbial signature for this study. Jieyang Yu, Cuizhen
+patients with diﬀerent prognoses. In this study, we analysed         Nong, and Jingjie Zhao contributed equally to this study.
+the composition and diﬀerences of gut microbiota among
+patients with colon cancer.
+    Using a Cox proportional risk model, we determined the
+                                                                     Acknowledgments
+microbial characteristics of COAD and divided the overall            This research was funded by grants from by the National
+survival of COAD data into two risk groups, with high-risk           Natural Science Foundation of China (#31970745) and from
+cases showing a poorer prognosis. In addition, we estab-             self-ﬁnanced project of Guangxi Health and Construction
+lished a microbiome-related gene map and determined the              Commission (#Z20210467).
+association between microbial features and immune cell
+inﬁltration in COAD using the TCGA dataset. The high-
+risk group of COAD samples exhibited a decreased propor-             References
+tion of activated CD4 T cells as well as an increased propor-
+tion of M2 macrophages, indicating the impact of high risk            [1] R. L. Siegel, K. D. Miller, and A. Jemal, “Cancer statistics,
+microbials on the activation and diﬀerentiation of macro-                 2020,” CA: a Cancer Journal for Clinicians, vol. 70, no. 1,
+phage and T cells (Figure 3(e)). However, a further study                 pp. 7–30, 2020.
+would be expected to investigate the underlying mechanism.            [2] C. A. Brennan and W. S. Garrett, “Gut microbiota, inﬂamma-
+    The composition and function of intestinal commensal                  tion, and colorectal cancer,” Annual Review of Microbiology,
+bacteria vary among colon cancers with diﬀerent prognoses,                vol. 70, no. 1, pp. 395–411, 2016.
+as do the interactions between hosts and microorganisms. The          [3] T. Yu, F. Guo, Y. Yu et al., “Fusobacterium nucleatum Pro-
+                                                                          motes Chemoresistance to Colorectal Cancer by Modulating
+entire intestine is a vast mutually beneﬁcial ecosystem. By divid-
+                                                                          Autophagy,” Cell, vol. 170, no. 3, pp. 548–563.e16, 2017.
+ing the intestinal commensal gut microbiota into additional
+                                                                      [4] X. Long, C. C. Wong, L. Tong et al., “Peptostreptococcus anae-
+subgroups, we can gain a clearer understanding of the molecu-
+                                                                          robius promotes colorectal carcinogenesis and modulates
+lar mechanisms of action of the diﬀerent gut microbiota. Dys-             tumour immunity,” Nature Microbiology, vol. 4, no. 12,
+biosis and translocation are strongly associated with colorectal          pp. 2319–2330, 2019.
+cancer, and microbiome analyses are expected to be very valu-         [5] N. S. Oh, J. Y. Lee, Y. T. Kim, S. H. Kim, and J. H. Lee, “Cancer-
+able noninvasive biomarkers for colorectal cancer diagnosis.              protective eﬀect of a synbiotic combination betweenLactoba-
+In addition, gut microbiota are potential therapeutic targets to          cillus gasseri505 and aCudrania tricuspidataleaf extract on
+inhibit the proliferation and metastasis of colorectal cancer.            colitis-associated colorectal cancer,” Gut Microbes, vol. 12,
+    It is well known that the successful application of                   no. 1, article 1785803, 2020.
+immune checkpoint blockade is attributed to the ability of            [6] N. Bhattacharya, R. Yuan, T. R. Prestwood et al., “Normalizing
+the antitumor immune response, which largely depends on                   Microbiota-Induced Retinoic Acid Deﬁciency Stimulates Pro-
+T cell activation. However, tumor-inﬁltrated cells often                  tective CD8+ T Cell-Mediated Immunity in Colorectal Can-
+exhibit T-cell exhaustion. In this study, we explored the                 cer,” Immunity, vol. 45, no. 3, pp. 641–655, 2016.
+tumor immune environment using the information of                     [7] P. Dharmani, J. Strauss, C. Ambrose, E. Allen-Vercoe, and
+microbiomics from COAD patients and constructed a prog-                   K. Chadee, “Fusobacterium nucleatum infection of colonic
+nostic signature, which may facilitate to screen patients for             cells stimulates MUC2 mucin and tumor necrosis factor
+immunotherapy. However, our study was retrospective. In                   alpha,” Infection and Immunity, vol. 79, no. 7, pp. 2597–
+the future, the researchers need more prospective studies to              2607, 2011.
+further apply and validate our ﬁndings.                               [8] L. Meng, H. Qin, J. Zhao et al., “Transcriptomic signatures of
+                                                                          airway epithelium infected with SARS-CoV-2: a balance
+                                                                          between anti-infection and virus load,” Frontiers in Cell and
+Data Availability                                                         Development Biology, vol. 9, article 735307, 2021.
+                                                                      [9] Y. Wu, L. Meng, K. Cai et al., “A tumor-inﬁltration CD8+ T
+The datasets presented in this study can be found in online               cell-based gene signature for facilitating the prognosis and esti-
+repositories. The names of the repository/repositories and                mation of immunization responses in HPV+ head and neck
+accession number(s) can be found in the article.                          squamous cell cancer,” Frontiers in Oncology, vol. 11, 2021.
+12                                                                     Disease Markers
+
+[10] T. M. Therneau and H. Li, “Computing the Cox model for case
+     cohort designs,” Lifetime Data Analysis, vol. 5, no. 2, pp. 99–
+     112, 1999.
+[11] L. Zeng, X. Fan, X. Wang et al., “Bioinformatics analysis based
+     on multiple databases identiﬁes hub genes associated with
+     hepatocellular carcinoma,” Current Genomics, vol. 20, no. 5,
+     pp. 349–361, 2019.
+[12] M. G. Dominguez-Bello, F. Godoy-Vitorino, R. Knight, and
+     M. J. Blaser, “Role of the microbiome in human development,”
+     Gut, vol. 68, no. 6, pp. 1108–1114, 2019.
+[13] C. Jiang, G. Li, P. Huang, Z. Liu, and B. Zhao, “The gut micro-
+     biota and Alzheimer's disease,” Journal of Alzheimer's Disease,
+     vol. 58, no. 1, pp. 1–15, 2017.
+[14] A. Parashar and M. Udayabanu, “Gut microbiota: implications
+     in Parkinson's disease,” Parkinsonism & Related Disorders,
+     vol. 38, pp. 1–7, 2017.
+[15] Y. Cheng, Z. Ling, and L. Li, “The intestinal microbiota and
+     colorectal cancer,” Frontiers in Immunology, vol. 11, article
+     615056, 2020.
+

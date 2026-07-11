@@ -1,0 +1,910 @@
+                                                                                                                            TYPE Original Research
+                                                                                                                            PUBLISHED 05 February 2024
+                                                                                                                            DOI 10.3389/fonc.2023.1313735
+
+
+
+
+                                                  Loss of symbiotic and increase of
+OPEN ACCESS                                       virulent bacteria through
+EDITED BY
+Daniel Buchanan,
+The University of Melbourne, Australia
+                                                  microbial networks in Lynch
+REVIEWED BY
+Li Zhang,
+                                                  syndrome colon carcinogenesis
+University of Minnesota Twin Cities,
+United States                                     Mohammad Sadeghi 1*, Denis Mestivier 1, Etienne Carbonnelle 2,
+Marcela Pereira,
+Karolinska Institutet (KI), Sweden                Robert Benamouzig 3, Khashayarsha Khazaie 4 and Iradj Sobhani 1,5*
+Songhe Guo,
+Sun Yat-sen University Cancer Center
+                                                  1
+                                                    EA7375 –EC2M3: Early detection of Colonic Cancer by using Microbial & Molecular Markers Paris East
+(SYSUCC), China                                   Créteil University (UPEC), Créteil, France, 2Bacteriology, Virology, Hygiene Laboratory, Assistance Publique–
+                                                  Hôpitaux de Paris (APHP), Avicenne Hospital, Bobigny, France, 3Department of Gastroenterology, Assistance
+*CORRESPONDENCE                                   Publique–Hôpitaux de Paris (APHP), Avicenne Hospital, Bobigny, France, 4Department of Immunology,
+Mohammad Sadeghi                                  Mayo Clinic, Scottsdale, AZ, United States, 5Department of Gastroenterology, Assistance Publique–Hôpitaux
+    mohammad.sadeghi@u-pec.fr                     de Paris (APHP), Henri Mondor Hospital, Créteil, France
+Iradj Sobhani
+    iradj.sobhani@aphp.fr
+
+RECEIVED 10 October 2023                          Purpose: Through a pilot study, we performed whole gut metagenomic analysis
+ACCEPTED 14 December 2023
+PUBLISHED 05 February 2024
+                                                  in 17 Lynch syndrome (LS) families, including colorectal cancer (CRC) patients
+                                                  and their healthy ﬁrst-degree relatives. In a second asymptomatic LS cohort
+CITATION
+Sadeghi M, Mestivier D, Carbonnelle E,            (n=150) undergoing colonoscopy-screening program, individuals with early
+Benamouzig R, Khazaie K and Sobhani I             precancerous lesions were compared to those with a normal colonoscopy.
+(2024) Loss of symbiotic and increase of
+                                                  Since bacteria are organized into different networks within the microbiota, we
+virulent bacteria through microbial networks
+in Lynch syndrome colon carcinogenesis.           compared related network structures in patients and controls.
+Front. Oncol. 13:1313735.
+doi: 10.3389/fonc.2023.1313735
+                                                  Experimental design: Fecal prokaryote DNA was extracted prior to colonoscopy
+COPYRIGHT                                         for whole metagenome (n=34, pilot study) or 16s rRNA sequencing (validation
+© 2024 Sadeghi, Mestivier, Carbonnelle,
+Benamouzig, Khazaie and Sobhani. This is an       study). We characterized bacteria taxonomy using Diamond/MEGAN6 and
+open-access article distributed under the terms   DADA2 pipelines and performed differential abundances using Shaman
+of the Creative Commons Attribution License
+                                                  website. We constructed networks using SparCC inference tools and validated
+(CC BY). The use, distribution or reproduction
+in other forums is permitted, provided the        the construction’s accuracy by performing qPCR on selected bacteria.
+original author(s) and the copyright owner(s)
+are credited and that the original publication
+                                                  Results: Signiﬁcant differences in bacterial communities in LS-CRC patients were
+in this journal is cited, in accordance with
+accepted academic practice. No use,               identiﬁed, with an enrichment of virulent bacteria and a depletion of symbionts
+distribution or reproduction is permitted         compared to their ﬁrst-degree relatives. Bacteria taxa in LS asymptomatic
+which does not comply with these terms.
+                                                  individuals with colonic precancerous lesions (n=79) were signiﬁcantly different
+                                                  compared to healthy individuals (n=71). The main bacterial network structures,
+                                                  constructed based on bacteria-bacteria correlations in CRC (pilot study) and in
+                                                  asymptomatic precancerous patients (validation-study), showed a different
+                                                  pattern than in controls. It was characterized by virulent/symbiotic co-
+                                                  exclusion in both studies and illustrated (validation study) by a higher
+                                                  Escherichia/Biﬁdobacterium ratio, as assessed by qPCR.
+
+                                                  Conclusion: Enhanced fecal virulent/symbiotic bacteria ratios inﬂuence bacterial
+                                                  network structures. As an early event in colon carcinogenesis, these ratios can be
+                                                  used to identify asymptomatic LS individual with a higher risk of CRC.
+
+
+
+
+                                                  KEYWORDS
+
+                                                  gut microbiota, cancer, microbial network inference, Lynch syndrome, colorectal cancer
+
+
+
+Frontiers in Oncology                                                     01                                                                   frontiersin.org
+Sadeghi et al.                                                                                                               10.3389/fonc.2023.1313735
+
+
+
+
+Translational relevance                                                          direct and indirect interactions among their members (8, 9).
+                                                                                 Although the mechanisms that drive dysbiosis remain unknown,
+    Individuals with hereditary Lynch Syndrome (LS), have a                      it is suggested that bacterial interactions can potentially promote or
+signiﬁcantly elevated risk of developing CRC and require                         hinder tumor development (10–12).
+inclusion in colonoscopy-based screening programs. However,                            Virulent bacteria are a signiﬁcant environmental factor
+current risk assessments do not consider environmental factors,                  associated with an increased risk of CRC, as shown by studies
+and there is a lack of a reliable screening test to identify those in            that have focused on the relationship between CRC and diet (13),
+need of early, consecutive colonoscopies. We characterized the                   inﬂammation (14), and immune cell inﬁltrates in the colonic
+bacterial composition of the colonic microbiota, which is greatly                mucosa (15).
+inﬂuenced by environmental factors and found notable differences                       In the current study, our hypothesis was that dysbiosis of the
+in microbial compositions. Patients diagnosed with cancer                        gut microbiota could potentially serve as a biomarker for estimating
+exhibited dysbiosis in comparison to their ﬁrst-degree relatives. In             the environmental additive risk of CRC in individuals with LS.
+a second LS cohort, individuals with early-stage colonic neoplasia               Thus, ﬁrst, we performed whole shotgun metagenomic analysis on
+also exhibited distinct bacterial compositions in contrast to those              fresh stool samples obtained from 17 families with LS. This analysis
+with normal colonoscopy conﬁrming the existence of a gut bacteria                included 19 LS-CRC patients and 15 asymptomatic healthy ﬁrst-
+network closely associated with cancer and precancerous lesions.                 degree relatives. In our study, we characterized the genera and
+Now, we wish developing innovative microbiota-related strategies                 species present in the gut microbiota and identiﬁed a distinct set of
+for the early detection of colon neoplasia to improve existing                   bacterial signatures between LS-CRC patients and ﬁrst-degree
+screening programs, offering personalized medical care in LS, and                relatives who were asymptomatic, where diet did not show
+characterizing novel checkpoints for therapy.                                    signiﬁcant difference. Next, we constructed bacterial networks. By
+                                                                                 comparing, the network structures, we observed signiﬁcant
+                                                                                 differences in terms of correlation (co-occurrence designed as
+Introduction                                                                     positive, co-exclusion, designed as negative) between CRC
+                                                                                 patients and controls.
+     Colorectal cancer (CRC) is among the three most common                            To validate our ﬁndings, we conducted a prospective study
+cancers, with more than 1.2 million new cases and about 600,000                  involving 150 asymptomatic individuals with LS who were enrolled
+deaths per year worldwide (1). The majority of CRCs cases are                    in a French national biennial follow-up colonoscopy program.
+classiﬁed as sporadic, meaning they arise from somatic gene                      Through our investigation of their fecal microbiota, we identiﬁed
+alterations such as mutations and methylation changes. This                      similar differential networks between patients with precancerous
+observation suggests that environmental factors play a pivotal role              lesions and controls with a normal colonoscopy, supporting the
+in the development of CRC carcinogenesis (2). The gut bacterial                  consistency of observations from the pilot study. Furthermore, in
+community, which comprises a higher number of cells and                          both the pilot and validation cohorts, networks constructed based
+functional genes compared to the host, plays a crucial role in                   on bacteria-bacteria correlations showed the ratio of virulent/
+maintainin g host homeostasis. Changes in microbial                              symbiotic co-exclusion as the primary differential network marker
+communities, known as dysbiosis, are associated with various                     between patients and controls.
+diseases, including CRC. Furthermore, dysbiosis is now                                 In the ﬁnal stage of our study, we quantiﬁed the abundance of
+recognized as an indicator of the environment’s inﬂuence on the                  Escherichia and Biﬁdobacterium, selected as bacterial candidates for
+development of emerging chronic diseases (3).                                    virulent/symbiotic ratios, respectively, using quantitative PCR
+     CRC occurs because of a series of oncogenic events that lead to             (qPCR). We observed signiﬁcant differences between patients and
+hyperproliferation of colonic epithelial cells. This process involves the        controls in the validation study. We quantiﬁed these two bacterial
+development of aberrant crypt foci (ACF) and the sustained                       candidates, Escherichia coli (E. coli) and Biﬁdobacterium longum, in
+transition from adenoma to in situ carcinoma, tumor invasion,                    the fecal samples of 100 asymptomatic individuals using
+tumor vascularization, and spread metastases (4). Only less than                 quantitative PCR (qPCR). This ﬁnding further supports the
+5% of CRCs are due to hereditary gene alterations (5). These include             differential bacterial interactions observed in the main network
+mostly Lynch syndrome (LS) individuals who harbor germline                       and suggests a potential role of virulent/symbiotic ratio
+mutations in the DNA mismatch repair (MMR) gene system (5, 6).                   enhancement in the development of colonic tumors in individuals
+However, even in these cases, the role of the environment may be                 with LS. Hence, we conclude that in individuals with LS, an
+critical in the development of cancer (6, 7).                                    imbalance between virulent and symbiotic bacteria can potentially
+     Bacterial cells exist in a complex consortium of ecological                 identify those at a higher risk of developing CRC. This increased
+interactions that may inﬂuence the functional proﬁle of the                      risk may be attributed to environmental factors such as dietary
+microbial community, as well as the host’s health. The                           habits. As a connection to the environment, a limited number of
+physiological gut microbiome is mainly symbiotic and modulate                    virulent bacterial species, albeit of low prevalence, become the core
+host metabolism, immune response, cell signaling, pathogen                       of network constructions and qPCR analysis. Based on these
+colonization resistance, and mucosal regeneration. Thus, microbes                ﬁndings, we propose the utilization of gut bacteria quantiﬁcation
+form intricate associations within communities, leading to both                  as an additional tool for estimating the risk of CRC in asymptomatic
+
+
+
+
+Frontiers in Oncology                                                       02                                                           frontiersin.org
+Sadeghi et al.                                                                                                            10.3389/fonc.2023.1313735
+
+
+
+
+individuals with LS. This approach has the potential to enhance the            Biological samples were obtained before colonoscopy and/or
+early detection of tumors.                                                     surgery and/or chemotherapy with no exposure to antibiotics
+                                                                               during and/or colonic washing procedure the 3 weeks preceding
+                                                                               the fecal sampling. The colonoscopy and pathology ﬁles were
+Patients, materials, and methods                                               registered. The samples were stored at -80°C until their use.
+
+Recruitment of participants and collection
+of samples                                                                     Food habits and intake through an
+                                                                               auto questionnaire
+     Symptomatic patients referred to academic hospitals in the
+Paris area for colonoscopy were enrolled in several prospective                    To relate the food habits to metagenomic data, we asked
+cohorts. Efﬂuents and tissues from enrolled participants were                  individuals to complete a questionnaire on nutrition and food
+utilized for various types of studies, including experimental,                 intake before the colonoscopy. Using this questionnaire, we
+proof-of-concept, discovery, and correlation analyses.                         estimated the daily quantities of various components in food and
+Additionally, a nutritional questionnaire was given to the                     drinks based on the methodology described by Touvier et al. (16)
+participants for further characterization and information                      (Supplementary Table S2).
+gathering. For a detailed description of the questionnaire, please
+refer to Supplementary Table S1 and (8). For a comprehensive
+analysis of bacteria species in the current pilot study, fecal DNA             Human fecal DNA extraction
+samples from LS individuals were subjected to whole metagenomic
+analyses. The individuals were members of 17 LS families who are                   Fecal samples were collected using two methods: either in a
+currently being followed at academic hospitals. This pilot cohort              sterile ﬂask at the hospital or with the OMNIGENE-GUT kit (Ref
+study (Acronym: Malys), included 19 CRC patients and 15 healthy                OM-200) distributed by DNA GENOTEK (Palladium Drive
+ﬁrst-degree relatives. The participants in the study were selected             Ottawa, Ontario, Canada K2V 1C2, Subsidiary of OraSure
+from LS families, speciﬁcally from the ﬁrst-degree relatives of CRC            Technologies, Inc.) for home collection. Once collected, the
+patients. To be eligible for inclusion in the study, individuals had to        samples were frozen at -80°C for preservation.
+belong to an LS family with a positive genetic test for any of the                 All frozen fecal samples underwent total prokaryote DNA
+MMR genes. Patients presenting with cancer were included in the                extraction. For metagenomic analysis, DNA was extracted for
+study if they had at least one healthy relative who could be identiﬁed         prokaryote DNA characterization by using to GNOME® DNA
+and included in the study as well. Among the cases, there were 19              Isolation Kit (MP Biomedicals, Santa Ana, CA) as described
+with MSI-H, 13 with hMLH1 mutation, 2 with hMSH2 mutation, 2                   elsewhere (9).
+with hMSH6 mutation, 1 with PMS2 mutation, and 1 case with an                      For 16s rRNA analysis, the QiAamp DNA stool Mini Kit
+undetermined mutation. All individuals received detailed                       (Qiagen, Courtaboeuf, France) was used, following the
+information about the study, including its objectives and the                  instructions provided by Qiagen. The DNA was quantiﬁed using
+samples they would need to provide.                                            the Qubit® instrument (ThermoFisher Scientiﬁc, Montigny-le-
+     The study received ﬁnancial support from Canceropole Ile de               Bretonneux) and then stored at -20°c until further sequencing
+France through its Emergence grant program in 2016. The study                  and/or qPCR measurements. The DNA Extracts underwent
+was also promoted by the National Institute of Scientiﬁc Research in           sequencing either entirely (deep whole metagenomic in the pilot
+Medicine (INSERM), registered under 04–2004, and revised as                    study) or after V3-V4 region ampliﬁcation (for 16s rRNA targeted
+CPP-IDF IX-11-019 by the consultative ethical committee in the                 region and qPCR). The sequencing was performed using the
+Ile de France-Est medical district and Assistance Publique Hopitaux            Illumina MiSeq platform (San Diego, California · USA), as
+de Paris-APHP.                                                                 previously described in references (17, 18).
+     The validation cohort study comprised 150 asymptomatic
+individuals with LS who underwent biennial colonoscopy for
+screening purposes. These individuals were enrolled in a
+prospective prevention low-dose aspirin trial (ClinicalTrials.gov              Real-time polymerase chain reaction
+Identiﬁer: NCT04791644) after colonoscopy at baseline. Exclusion
+criteria in the current analysis were a history of colorectal surgery,             In the Lab the PCRs were conducted using an ABI 7000
+familial adenomatous polyposis, gastroenteritis and/or                         Sequence Detection System device and a standard range, based on
+inﬂammatory bowel disease. All participants received information               varying quantities of E. coli DNA, was performed after DNA
+in writing, and formal written consent was obtained in triplicate              extracts from pure bacterial cultures; Ct curve has been calibrated
+copies: the patient retained one copy, one copy was kept in the                based on CFU. This was done to enable the absolute quantiﬁcation
+clinical research centre or departments (CIC or URC) of the                    of bacterial DNA referred to as “All bacteria” in samples, as well as
+different centres, and the third copy was retained by the                      two bacteria of interest identiﬁed through bioinformatics analysis of
+overseeing agency (Assistance Publique Hopitaux de Paris).                     bacterial sequences.
+
+
+
+
+Frontiers in Oncology                                                     03                                                          frontiersin.org
+Sadeghi et al.                                                                                                            10.3389/fonc.2023.1313735
+
+
+
+
+     The qPCR reactions were executed in a ﬁnal volume of 25 ml,             Construction of bacteria networks
+comprising 1 ng of fecal DNA and 200 nM of each forward and
+reverse primer (Applied Biosystems, Waltham, Massachusetts,                       To further advance in network construction, we extracted a
+USA). A literature review, along with our own and other research             sample-taxa matrix (designed at a genus level) for each subgroup,
+(17–20), enabled us to pre-select several pairs of bacterial primers.        with comparisons as follow: CRC patients versus ﬁrst-degree relatives;
+The chosen primer pairs (Supplementary Table S7) were procured               asymptomatic LS individuals with normal versus precancerous lesion
+from Applied Biosystems® (Waltham, Massachusetts, USA).                      at colonoscopy. Then, we used the FastSpar/C++ implementation of
+     In this study, we quantiﬁed the abundance of all bacteria (All          the SparCC algorithm to estimate the correlation between pairs of taxa
+Bacteria) and two bacterial genera (Biﬁdobacterium and Escherichia           (based on their abundances) for microbial network inference (28, 29).
+coli). The levels of these genera were found to be correlated with           Brieﬂy, the SparCC algorithm computes the Pearson correction
+colonoscopy data.                                                            between the centred log-ratio (CLR) of taxa abundances.
+                                                                             Correlation between two associated bacteria throughout all bacteria
+                                                                             were considered signiﬁcant for a p-value < 0.05. Subsequently, the
+Taxonomic proﬁling of fecal microbiota                                       statistical signiﬁcance of the inferred correlations was evaluated
+                                                                             through a bootstrap procedure. In this study, networks were
+     Taxonomic proﬁling from Whole Metagenome Sequencing was                 constructed based on correlation coefﬁcients ranging from -1 to -0.3
+performed as follows: sequencing was done using a 100-bp single-             (co-exclusion) and +0.3 to +1 (co-occurrence).
+end sequencing protocol on the Illumina MiSeq platform. The raw                   In the initial set of analyses networks were independently
+FASTQ ﬁles obtained from sequencing were subjected to quality-               constructed for each cohort, regardless of the prevalence of the
+ﬁltered using Trimmomatic (sliding windows of 2 bases with a                 genus within the cohort.
+quality score of 28) and high-quality reads were mapped onto the                  We used the Cytoscape software (30) for visualizing the
+non-redundant protein database using Diamond (v0.9.17) (21) and              networks. The edges were color-coded as follows: red was used
+MEGAN6 (v6.12.0) (22).                                                       for positive correlations (indicating co-occurrence) and blue was
+     Taxonomic proﬁling from 16s rRNA sequencing was performed               used to represent negative correlations (indicating co-exclusion).
+as follows: after ampliﬁcation by PCR of the V3-V4 region of the 16s         The size of each node in the network visualization was set to be
+rRNA gene, sequencing was done using a 250-bp paired-end                     proportional to the average abundance of the corresponding
+sequencing protocol on the Illumina MiSeq platform. We used                  bacterium in the studied population.
+the DADA2 pipeline (with default parameters except for the                        To mitigate the potential inﬂuence of false correlations caused
+truncation length set to 245 bp) with the SILVA database non-                by low-prevalence bacteria, we conducted a thorough examination
+redundant SSU database (v138.1) (23).                                        of the prevalence of bacteria within the cohorts depending on the
+     We used the SHiny Application for Metagenomic ANalysis                  size of each cohort. In the pilot study, we speciﬁcally focused on
+(SHAMAN: https://shaman.pasteur.fr/) server (24) for genus                   correlations between bacteria that were prevalent in at least 30% of
+summarization, taxonomical exploration, Principal Component                  the patient population.
+Analysis and differential abundance analysis. SHAMAN is based                     In the validation study utilizing 16s rRNA datasets, we focused
+on the R software and implement the generalized linear model                 on correlations between bacteria that were prevalent in at least 50%
+(GLM) approach from the DESeq2 R package (25) to detect                      of the population.
+differences in the abundance of species between two sub-groups.                   This selection criterion aimed to highlight virulent bacteria, oral
+In our analysis, we deﬁned a GLM that included gender, age, BMI              bacteria, and symbiotic bacteria that demonstrated higher
+and group as main effects. Differences (between genus and species)           prevalence and potentially greater signiﬁcance in the context of
+associated with adjusted p-value for multiple testing less than 0.05         the study (31).
+were considered signiﬁcant.                                                       We employed in-house Python programs for several tasks,
+                                                                             including the computation of the prevalence of each genus or
+                                                                             species, data management, as well as the number of nodes, co-
+Enterotypes of samples                                                       occurrences and co-exclusions in the networks.
+
+    Enterotypes were constructed according to Arumugam et al.
+(26).The enterotypes were inferred from the genus abundance                  Results
+tables using the classiﬁer developed by Costea et al. (27). The
+classiﬁcation was performed using their website at https://                      The main characteristics of CRC patients in the pilot study were
+enterotype.embl.de/ (access September 2019), and deﬁned as:                  comparable to their ﬁrst-degree relatives except for age and
+“Enterotype ‘ET_B’ has Bacteroides as its best indicator;                    presence of intestinal-associated disease (Table 1). At the genus
+Enterotype ‘ET_P’ is driven by Prevotella and Enterotype ‘ET_F’              level, the analysis of the whole metagenome demonstrated a
+is distinguished by an overrepresentation of Firmicutes, most                signiﬁcant separation between LS-CRC patients and healthy LS
+prominently Ruminococcus.                                                    ﬁrst-degree relatives, as assessed by PCoA analysis (Figure 1).
+
+
+
+
+Frontiers in Oncology                                                   04                                                             frontiersin.org
+Sadeghi et al.                                                                                                                                 10.3389/fonc.2023.1313735
+
+
+
+
+TABLE 1 Characteristics of the patients in the pilot study, Lynch                                  Biﬁdobacterium, Alistipes, Roseburia, Blautia Eubacterium,
+syndrome CRC cases and ﬁrst-degree relatives (n=34).
+                                                                                                   Faecalibacterium, Gemella, Roseburia, Thermodesulfovibrio,
+                                                                                                   Thioalkalimicrobium, Ruminococcus (Supplementary Figure S2).
+                                       Control             CRC              p-value
+                                       subjects -          Patients
+                                       First
+                                       degree
+                                       relatives                                                   Association between food habits and
+ n                                     15                  19
+                                                                                                   fecal symbiosis
+ Age, years, mean ± SD                 57.1 (16.48)        58.2 (13)        0.05
+                                                                                                       Members from 4 out of 17 LS families reported having dietary
+ M/F gender, n (%)                     9/6                 10/9             0.2
+                                                                                                   habits that could be characterized as unique or specialized cuisine
+ BMI, kg/m², mean ± SD                 23.75 (4.27)        24.7 (1)         0.5
+                                                                                                   choices. These LS individuals belonged to families C1 (of Chinese
+ History of                                                                                        origin; two members), C2 (of Lebanese origin, 3 members), C4 (of
+ Polyps                                0                   6/19             0.001                  Portuguese origin, 3 members), and C5 (of Moroccan origin, two
+ Colorectal cancer                     0                   17/19            0.001
+ Other cancer or disease*              1                   5/19             0.05
+                                                                                                   members) each of which had at least one CRC case. The remaining
+                                                                                                   cases, consisting of 24 individuals (including 15 CRC patients), were
+ Familial history
+                                                                                                   included in the analysis for family C3 (three members, 2 CRC
+ Polyps in First degree relatives      Yes                 Yes
+ CRC in First degree relatives         Yes                 Yes              NA                     patients) as no speciﬁc dietary habits could be estimated for them. It
+                                                                                                   has been suggested to group human gut microbiota compositions
+ Comorbidity
+ Diabetes, n (%)                       2 (13)              3 (16)           0.19                   into three main compositional categories denoted enterotypes (26)
+ Hypercholesterolemia, n (%)           1 (7)               2 (10)           0.20                   based on a relatively high abundance of Bacteroides spp.
+ Any long-term treatment, n            3 (20)              5 (26)           0.75
+                                                                                                   (Enterotype 1 or ET-B), Prevotella spp. (Enterotype 2 or ET-P),
+ (%) ┴                                                                                             or Ruminococcus (Enterotype 3 or ET-F). As one-third of CRC cases
+                                                                                                   in LS families were found to show Enterotype 3 based on
+ Nutrition
+ Diabetes or other comorbidity,        2 (13)              3 (16)           0.19                   metagenomic analysis, we decided to analyze their dietary habits
+ n (%)                                                                                             more deeply.
+ Tumor location, staging                                                    NA                         Overall, despite observing a tendency for differences in dietary
+ Rectum                                NA                  1                                       habits between related individuals with and without CRC, we did
+ Left colon                            NA                  4                                       not ﬁnd statistically signiﬁcant differences, possibly due to the small
+ Right Colon                           NA                  14
+ Stage I-II                            NA                  2-5
+                                                                                                   sample size of the present series and large number of food items.
+ Stage III-IV                          NA                  11-1                                    Nevertheless, the analysis of enterotypes showed Ruminococcus to
+From September 2004 up to December 2016, 19 LS-CRC cases, 4 of them presenting with                be less common in LS-CRC as compared to healthy ﬁrst-degree
+additional colonic adenomatous and 15 LS healthy individual without cancer and/or colonic          relatives, along with trends toward higher protein and salt intake, as
+polyps were selected from 17 LS families. To be included, they had to belong to a LS family
+with a positive gene mutation test in any of the MMR genes. Patients presenting with cancer
+                                                                                                   assessed by the nutritional questionnaire. These observations were
+were included if they had at least one healthy ﬁrst-degree relative who could be identiﬁed         consistent with CRC patient microbiota enrichment in virulent
+and included.
+┴ Antibiotic therapy was excluded. Stool samples were collected prior to the colonoscopy;
+                                                                                                   bacteria such as Enterobacter and Escherichia. These genera likely
+fecal DNA was extracted and subjected to a sequencing procedure. IBD refer to Inﬂammatory          beneﬁt from salted and sulfured nutrients. Moreover, symbiotic
+Bowel Disease.
+*An IBD and ﬁve cases of cancers other than colonic cancer (including melanoma, gastric,
+                                                                                                   butyrate-producing bacteria such as Faecalibacterium, Dorea, and
+cervical and bladder locations) were observed. NA, not applicable.                                 Roseburia were co-linked and diminished in LS-CRC patients
+                                                                                                   compared to their healthy ﬁrst-degree relatives (p-value <0.01,
+     The statistical analysis (including age, BMI, and gender as                                   Supplementary Figure S4), although there was overlapping of the
+covariables) revealed signiﬁcant differences in genus-level bacteria                               abundant bacteria in various families (Supplementary Table S5).
+abundances. Five genera were found to be signiﬁcantly different.                                       Signiﬁcant differentially abundant genera or those with a trend
+Speciﬁcally, virulent genera such as Escherichia, Enterobacter,                                    toward signiﬁcance were detected across all CRC enterotypes as
+Thioalkalimicrobium and Klebsiella were found to be more                                           compared to healthy relatives, with Escherichia showing greater
+abundant in the stool of CRC patients compared to their healthy                                    enrichment in CRC exhibiting enterotypes 2 and 3 (ET_P and
+relatives; conversely, the Butyrivibrio genus showed a lower                                       ET_F) (Supplementary Figure S2). Overall, CRC-linked clusters
+abundance in CRC patient (Table 2). Furthermore, several species                                   that included Eubacterium, Faecalibacterium, or Ruminococcus had
+within these genera were identiﬁed as signiﬁcantly different (See                                  signiﬁcant decreases associated with at least one virulent bacterium.
+Supplementary Table S3 for details).                                                                   The principal coordinate analysis (PCoA) of all samples also
+     In addition to the differentially abundant genera mentioned                                   demonstrated strong clustering into three enterotypes. Even the
+earlier, there were trend towards signiﬁcance in differences between                               Enterotype 1 (ET_B) contained a high proportion of Ruminococcus
+CRC patients and relatives for 20 additional genera. These included                                and Faecalibacterium (≥40% of all genera, with more
+Desulfurivibrio, Shigella, Solobacterium, Peptostreptococcus,                                      Ruminococcus), (Supplementary Figure S1; Supplementary Table
+Prevotella, Paraprevotella, Bacteroides, Akkermansia, Streptococcus,                               S4), making the distribution of gut microbiota into known
+
+
+
+
+Frontiers in Oncology                                                                         05                                                            frontiersin.org
+Sadeghi et al.                                                                                                             10.3389/fonc.2023.1313735
+
+
+
+
+   FIGURE 1
+   Fresh stool samples were collected prior to colonoscopy, surgery and/or chemotherapy. Bacterial DNA was extracted from the collected stools and
+   submitted to whole-genome shotgun sequencing. After trimming the reads, they were aligned to the non-redundant protein database (nr) using the
+   Diamond software. Taxonomical proﬁling was obtained using MEGAN6. Principal Coordinate Analysis (PCoA) was performed at the genus level using
+   the SHAMAN website.
+
+
+
+
+enterotypes (1 to 3) less informative regarding the food habits               Bacteria network
+of individuals.
+    Particularly, the main genera involving these associations                     When considering all bacteria, the comparison of bacterial
+included Bacteroides, Clostridium, Coprococcus, Dorea, Eubacteria,            networks between LS-CRC patients and their healthy LS ﬁrst-
+Faecalibacteria, Prevotella, Ruminococcus and Roseburia with                  degree relatives (controls) showed a signiﬁcantly lower number of
+strong co-variation in LS-CRC individuals (Figure 2;                          correlations, including both co-occurrences and co-exclusions, in
+Supplementary Figure S3). Although four genera (Ruminococcus,                 CRC patients (Figure 2; Table 3). Differences in the number of
+Faecalibacteria, Eubacteria and Clostridium) remained abundant in             correlations between LS-CRC patients and healthy relatives were
+both CRC patients and healthy ﬁrst-degree relatives, a signiﬁcant             found to be statistically signiﬁcant (p-value < 2.2 * 10-22 ).
+imbalance is observed in CRC patients as compared to ﬁrst-degree              Additionally, the ratio of co-occurrences to co-exclusions was
+relatives (Supplementary Figure S3).                                          found to be two times higher in LS-CRC patients compared to
+    Taking all individuals together, the importance of food habits in         healthy relatives. When the dataset was ﬁltered according to a
+the bacteria networks was noticed, as more than 1/3 of CRCs in LS             prevalence of less than 30% in the cohort for each genus, this
+families were found in the group 3 Enterotype (ET-F, G3). Even in             difference was no longer signiﬁcant (Table 3, p-value = 0.6625). This
+this Enterotype subgroup, Faecalibacterium and Ruminococcus                   suggests the importance of low prevalent genera and/or bacteria
+were lower as compared to healthy LS relatives. Accordingly,                  functions in the network construction.
+correlations (co-occurrence and co-exclusions) in LS-CRC
+patients with these genera were characterized, and the results are
+given in Supplementary Data (Supplementary Figure S4).                        Bacterial networks and imbalance “pro
+                                                                              inﬂammatory/symbiotic bacteria” in
+                                                                              the validation cohort
+TABLE 2 Genera as identiﬁed between CRC patients and ﬁrst-degree                  To validate bacteria networks and related imbalance between
+relatives in LS families.
+                                                                              pro-inﬂammatory and symbiotic bacteria, we conducted a second
+                                                                              study involving 150 asymptomatic LS individuals. Colonoscopy and
+                                                       p-
+                        Base       log2                                       histopathology assessments of biopsies were performed, resulting in
+ Id                                                    value
+                        Mean       Fold Change
+                                                       adjusted               the identiﬁcation of 79 patients with precancerous lesions (such as
+ Escherichia            932.26     -8.068              0.0005
+                                                                              ﬂat and/or polyp adenomatous) and 71 patients with various types
+                                                                              of lesions. The characteristics of these patients are summarized
+ Enterobacter           97.93      -6.779              0.0152
+                                                                              in Table 4.
+ Thioalkalimicrobium    33.89      -6.869              0.0152                     In the comparison of bacterial populations based on 16s rRNA
+ Butyrivibrio           2055.15    5.167               0.0243                 sequences, two subgroups were formed according to colonoscopy
+                                                                              and pathology results: those without lesion at colonoscopy (No) and
+ Klebsiella             208.73     -6.061              0.0454
+                                                                              those with precancerous lesions (Yes) as indicated in Table 4A.
+
+
+
+Frontiers in Oncology                                                    06                                                             frontiersin.org
+Sadeghi et al.                                                                                                                      10.3389/fonc.2023.1313735
+
+
+
+
+                        A                                                            B
+
+
+
+
+                        C                                                            D
+
+
+
+
+   FIGURE 2
+   In the gut microbiota analysis of LS-CRC patients (A, C) and their healthy ﬁrst-degree relatives (B, D), networks were constructed based on
+   signiﬁcant bacterial correlations. In Figures (A, B), all bacteria, regardless of their prevalence, were included in the network construction. However, in
+   Figures (C, D), only bacteria with a prevalence of 30% or more were included. In these network visualizations, each node represents a bacterium,
+   and the size of the node is proportional to its average abundance in the studied population. The edges between nodes represent correlations with
+   other bacteria, where colors design the direction of the correlation; red indicates positive correlations (co-occurrence) and blue indicates negative
+   correlations (co-exclusion). The width of the edges corresponds to the value of the correlation coefﬁcient, reﬂecting the strength of the correlation
+   between bacteria.
+
+
+
+
+Analysis of fecal prokaryote DNA reads revealed the most abundant                   Haemophilus, Clostridium innocuum group, Veillonella,
+bacteria phyla in the whole gut bacterial populations of patients                   Lachnoclostridium, Paenibacillus, Ruminococcus gnavus and
+with colonic lesions, included Actinobacteria, Firmicutes,                          Biﬁdobacterium were identiﬁed as differential (Supplementary
+Verrucomicrobia, Tenericutes, Fusobacteruim, Proteobacteria,                        Figure S7B). Of note, Biﬁdobacterium was found to be diminished
+Bacteroidetes, Spirochaetes, Elusimicrobia, Lentisphaerea and                       in patients with a precancerous event at colonoscopy.
+Synergistetes (Supplementary Figure S7A). There was a trend                             Indeed, a lower number of nodes and co-occurrences were
+towards higher abundances of Firmicutes and Actinobacter                            observed in asymptomatic individuals with precancerous lesions at
+in individuals without colonic lesion (No). Several genera                          colonoscopy compared to those with a normal colonoscopy
+including Lactobacillus, Turicibacter, Enterococcus, Clostridium,                   (Table 5, p-value = 0.01687). However, there were no signiﬁcant
+
+
+
+Frontiers in Oncology                                                          07                                                                 frontiersin.org
+Frontiers in Oncology
+                                                                                                                                                                                                  Sadeghi et al.
+                        TABLE 3 Correlations through network of bacteria in LS-CRC patients and their 1st-degree relatives.
+
+
+                                                                     Number              Number              Number            Co-           Co-          Co-occur-    Co-occur-      Co-exclu-
+                                                                     of samples          of nodes            of correlations   occurrences   exclusions   rences/      rences/Total   sions/
+                                                                                                                                                          Co-                         Total
+                                                                                                                                                          exclusions
+                         LS-CRC, all bacteria (Figure 2A)            19                  216                 1052              666           386          1.72         0.63           0.37
+
+                         F1st-degree relatives, all                  15                  275                 1848              814           1034         0.79         0.44           0.56
+                         bacteria (Figure 2B)
+
+                         LS-RC, prevalence 30% or more (Figure 2C)   19                  35                  99                85            14           6.07         0.86           0.14
+
+                         1st-degree relatives, prevalence 30% or     15                  35                  104               87            17           5.18         0.84           0.16
+                         more (Figure 2D)
+
+
+
+
+08
+
+
+
+
+                                                                                                                                                                                                  10.3389/fonc.2023.1313735
+frontiersin.org
+Sadeghi et al.                                                                                                                                               10.3389/fonc.2023.1313735
+
+
+
+
+TABLE 4 A. Characteristics of the asymptomatic individuals submitted to                               Furthermore, in individuals with a normal colonoscopy, the
+fecal 16S rRNA sequencing, N = 150.
+                                                                                                      symbiotic bacterium Biﬁdobacterium was found to be higher in
+                                                                                                      abundance and clustered together with Romboutsia, Streptococcus,
+                                                                                                      Clostridium sensu stricto 1, Lachnospiraceae UCG-010 and
+                         With                    Without                p-value
+                         event (Yes)             event (No)                                           Holdemania (Figures 3B, D). These genera were signiﬁcantly
+                                                                                                      a s s o c i a t e d w i t h v a r i o u s c o r r e l a t io n c o e fﬁ c i e n t ( C C)
+ Colonoscopy             N= 79                   N=71                   –
+                                                                                                      with Escherichia.
+ Age (mean               48.99± 9.60             47.55 ± 12.68          0.44                                Brieﬂy, the bacterial correlation network in asymptomatic
+ ± SD)
+                                                                                                      individuals’ gut microbiota was clearly different in those with
+ Gender, M:              39                      34                     0.99                          precancerous lesions as identiﬁed during colonoscopy (Yes)
+ n (%)                                                                                                compared to those with a normal colonoscopy (No) in terms of
+ Gender, F:              40                      37                     0.99                          the number of nodes as well as the pattern (Figure 3).
+ n (%)                                                                                                      As main examples, in LS asymptomatic individuals with
+ BMI: (mean              25.22 ± 3.99            25.16 ± 4.13           0.97                          precancerous lesions at colonoscopy, the virulent bacterium
+ ± SD)                                                                                                Escherichia displayed negative correlations (co-exclusions)
+ Height: (mean)          171.41 ± 9.06           170.09 ± 9.83          0.35                          with bacteria such as [Eubacterium] siraeum group (CC= -0.4),
+                                                                                                      Lachnospira (CC= -0.31), Parabacteroides (CC= -0.32),
+ Weight (mean            73.40 ± 14.37           73.20 ± 14.54          0.68
+                                                                                                      Lachnospiraceae ND3007 group (CC= -0.34), and UCG-005 (CC=
+ ± SD)
+                                                                                                      -0.37). Additionally, Escherichia showed a positive correlation (co-
+SD, standard deviation; BMI, body mass index; M, Male; F, Female.
+                                                                                                      occurrence) with [Clostridium] innocuum group (CC= +0.39) and
+                                                                                                      Aquamonas (CC= +0.41) in this group (Figure 3A).
+B. Characteristics of the asymptomatic individuals submitted to qPCR                                        In individuals with a normal colonoscopy, Escherichia exhibited
+analysis, N = 100.                                                                                    a positive correlation (co-occurrence) with Veillonella (CC= +0.35)
+                                                                                                      and Aquamonas (CC= +0.36) (Figure 3B).
+                         With                    Without                p-value
+                         event (Yes)             event (No)
+ Colonoscopy             N= 51                   N=49                   –                             Determination of virulent/symbiotic
+ Age (mean               47.98 ± 9.93            45.77 ± 12.82          0.34                          bacteria ratio using two
+ ± SD)
+                                                                                                      bacteria candidates
+ Gender, M:              19                      26                     0.99
+ n (%)
+                                                                                                          To validate the role of bacterial candidates as designed as
+ Gender, F:              32                      23                     0.99                          virulent versus symbiotic, quantitative polymerase chain reaction
+ n (%)
+                                                                                                      (qPCR) was used in a subset of 100 patients (49 with no
+ BMI: (mean              24.99 ± 3.98            25.23 ± 4.03           0.76                          precancerous lesions: No vs 51 with precancerous lesions: Yes)
+ ± SD)
+                                                                                                      for quantiﬁcation, as outlined in Table 4B. Based on the qPCR
+ Height: (mean)          170.85 ± 8.98           171.25 ± 9.82          0.83                          quantiﬁcation results, Biﬁdobacterium levels were signiﬁcantly
+ Weight (mean            73.05 ± 13.31           74.59 ± 12.01          0.62
+                                                                                                      lower, while Escherichia levels were signiﬁcantly higher in
+ ± SD)                                                                                                individuals with precancerous lesion in the colon compared to
+SD, standard deviation; BMI, body mass index; M, Male; F, Female.
+                                                                                                      individuals with a normal colonoscopy (Figure 4) conﬁrming the
+Overall, 150 individuals with a constitutional gene mutation conferring an increased risk for         ﬁndings. The estimated abundance of Escherichia and
+neoplastic lesion occurrence (such as ﬂat and/or polyp adenomatous) in the colon were
+including in the analysis (A); quantiﬁcation of selected bacteria was performed on a subset of
+                                                                                                      Biﬁdobacterium in the analysis individuals’ feces as assessed by
+the cohort (B). They were divided into two groups based on the presence or absence of                 16s rRNA sequence analysis was validated using qPCR.
+precancerous lesions observe during colonoscopy (Yes, No). There were no signiﬁcant
+difference between these two groups in terms of age, gender, or BMI.
+
+
+differences regarding co-exclusions between the two groups. These                                     Discussion
+differences remained signiﬁcant even when the analysis was limited
+to bacterial populations with a prevalence of 50% or more (Table 5,                                       The analysis of gut microbiota DNA revealed signiﬁcant
+p-value = 0.00726).                                                                                   dysbiosis in CRC patients compared to their ﬁrst-degree relatives
+     The analysis of the main core of the bacteria network revealed                                   with LS. Additionally, we demonstrated alterations in the
+Escherichia as a pro-inﬂammatory bacterial genus clustered with                                       organization of bacterial networks in CRC patients. In a
+several other bacteria, including Lachnospira, Lachnospiraceae                                        validation cohort, we found that the bacterial network in
+ND3007 group, [Eubacterium] siraeum group, [Clostridium]                                              asymptomatic LS individuals with precancerous lesions (polyps
+innocuum group, UCG-005 and Aquamonas (Figures 3A, C) in                                              and/or ﬂat adenomatous lesions) during colonoscopy was
+asymptomatic LS individuals with precancerous lesion at                                               signiﬁcantly different from that of LS asymptomatic individuals
+colonoscopy compared to individuals with a normal colonoscopy.                                        with a normal colonoscopy. In both cohorts, virulent bacteria at the
+
+
+
+Frontiers in Oncology                                                                            09                                                                          frontiersin.org
+Sadeghi et al.                                                                                                                   10.3389/fonc.2023.1313735
+
+
+
+
+                        A                                                         B
+
+
+
+
+                        C                                                         D
+
+
+
+
+   FIGURE 3
+   In all ﬁgures, each node represents a bacterium, and its size is proportional to its average abundance in the studied population. The edges between
+   the nodes represent correlation of the relative abundance of the bacteria. Positive correlations (co-occurrence) are shown in red, while negative
+   correlations (co-exclusion) are shown in blue. The width of the edges indicates the value of the correlation coefﬁcient, providing an indication of the
+   strength of the correlation. (A, B) depict the bacterial networks of fecal bacteria in LS individuals presenting with and without precancerous lesions
+   during colonoscopy, respectively. In both ﬁgures, all bacteria were included in the analysis. (C, D) represent the bacterial networks in LS individuals
+   with and without precancerous lesions, respectively. These ﬁgures include only those bacteria with a prevalence of 50% or more.
+
+
+
+
+core of the main network were negatively correlated with symbiotic                bacteria, enhances the risk of cancer development in individuals
+bacteria. For instance, a higher abundance of Escherichia and a                   with LS.
+lower abundance of Biﬁdobacterium characterized the main                              A similar dysbiosis within the colonic microbiota has been
+network in LS asymptomatic individuals with precancerous                          previously reported in familial adenomatous polyposis (FAP), a
+lesions during colonoscopy. These results suggest that during the                 condition that predisposes individuals to CRC. In FAP, colibactin-
+early stages of colon carcinogenesis, there is a depletion of anti-               producing Escherichia coli and enterotoxigenic Bacteroides fragilis,
+inﬂammatory symbionts, such as Biﬁdobacterium, in the stool,                      both virulent species, were found to be overdeveloped in stool
+while there is an enrichment of virulent genera such as                           samples (32). The current alterations in bacterial networks within
+Escherichia, which is associated with pro-inﬂammatory properties.                 the gut microbiota as an early event in colon carcinogenesis are
+This dysbiosis, characterized by an imbalance between virulent pro-               consistent with previous reports on the role of dysbiosis in the
+inﬂammatory harmful bacteria and symbiotic anti-inﬂammatory                       development and progression of colon cancer. This further suggests
+
+
+
+Frontiers in Oncology                                                        10                                                                frontiersin.org
+Frontiers in Oncology
+                                                                                                                                                                                                                         Sadeghi et al.
+                        TABLE 5 Descriptive statistics of correlation network of fecal bacteria in LS asymptomatic individuals according to precancerous lesion (No vs Yes) at colonoscopy.
+
+
+                                                              Number                Number               Number                     Co-                 Co-               Co-occur-           Co-occur-      Co-exclu-
+                                                              of samples            of nodes             of correlations            occurrences         exclusions        rences/             rences/Total   sions/
+                                                                                                                                                                          Co-                                Total
+                                                                                                                                                                          exclusions
+                         LS YES (Figure 3A), all bacteria     79                    140                  760                        539                 221               2.44                0.71           0.29
+
+                         LS NO (Figure 3B), al bacteria       71                    146                  824                        628                 196               3.20                0.76           0.24
+
+                         LS YES (Figure 3C), prevalence 50%   79                    58                   98                         70                  28                2.5                 0.71           0.29
+                         or more
+
+                         LS NO (Figure 3D), prevalence 50%    71                    64                   128                        110                 18                6.11                0.86           0.14
+                         or more
+
+
+
+
+11
+
+
+
+
+                                                                                                                                                                                                                         10.3389/fonc.2023.1313735
+frontiersin.org
+Sadeghi et al.                                                                                                                 10.3389/fonc.2023.1313735
+
+
+
+
+   FIGURE 4
+   Fecal bacteria quantiﬁcation in asymptomatic LS individuals according to colonoscopy and pathology ﬁndings. Abundances of all bacteria
+   (represented by consensus sequences) as well as Biﬁdobacterium and Escherichia coli were determined using real-time qPCR with targeted primers
+   in 51 individuals with precancerous lesion (blue; designed as Yes) and in 49 without precancerous lesion (orange; designed as No) observed during
+   colonoscopy. The quantiﬁcation of Biﬁdobacterium and Escherichia coli levels was normalized and reported as log (Biﬁdobacterium -all bacteria and
+   Escherichia -all bacteria) per gram of stool. These values were normalized with respect to the quantity of all bacterial DNA present in the samples.
+
+
+
+
+functional microbial interactions and associations rather than a                 often associated with high-ﬁber diets, while the Bacteroides-
+direct impact of individual microbes. Notably, based on deeper                   dominated Enterotype is more commonly found in individuals
+sequencing of bacteria, virulent genera and species, including but               with diets higher in animal proteins and fats. In our study, we
+not limited to Escherichia coli and Bacteroides fragilis, were found to          explored the enterotypes and identiﬁed a Prevotella-dominated
+be more abundant in the feces of CRC patients compared to their                  Enterotype (ET_P or G2) that was associated with LS-CRCs.
+relatives and healthy ﬁrst-degree relatives. Our current ﬁndings                 Interestingly, we observed that 68% of healthy ﬁrst-degree
+align with the results we previously reported in homozygous twin                 relatives had a different enterotype, namely the Bacteroides-
+sporadic CRC patients (33) and with studies conducted by others in               dominated Enterotype (ET_B or G1) although one-third of CRC
+the context of familial adenomatous polyposis (FAP) (32–34).                     cases in LS families showed enterotype 3 gut microbiota that
+Particularly, the enrichment of virulent species in conditions                   contains mostly Ruminococcus, a predominantly butyrate-
+augmenting the risk of CRC, such as IBD (35, 36) and FAP (17).                   producing genus. Additionally, LS-CRC patients were more likely
+Various mechanisms, including DNA breaks and/or epigenetic                       to have the Prevotella-dominated Enterotype compared to their
+DNA changes caused by various virulent bacteria, including                       healthy ﬁrst-degree relatives, suggesting a potential association
+Escherichia coli (11, 37), have been suggested.                                  between Enterotype composition and CRC development.
+    Furthermore, imbalances in the gut microbiota have been                          Although based on a validated French questionnaire regarding
+observed in individuals shortly after transitioning from African                 consumed diet (16, 39–41), we only observed trends in association
+diets, which are typically rich in vegetables and low in fat and                 with diet, e.g. fewer vegetables and higher meat intakes with
+animal proteins, to American diets, which often have higher ratios               dysbiosis. As expected, Prevotella-dominated enterotypes in LS-
+of sugar, salt, fat, and animal proteins (38). These ﬁndings suggest             CRC patients were characterized by Escherichia-Shigella
+that food habits may play a signiﬁcant role in inﬂuencing gut                    enrichment compared to their ﬁrst-degree relatives, with
+dysbiosis. Since virulent bacteria, as the main core of the bacterial            signiﬁcant decreases in symbiotic such as Ruminococcucus,
+network, interact with symbiotics whose abundance decreases in                   Faecalibacterium, Coprococcus and Enterococcus. Interestingly, all
+CRC patients and individuals with precancerous lesions in the                    these symbiotics have been found to be co-associated
+colon, one should identify factors that imprint such a chronic                   (Supplementary Figure S4). Various virulent genera, such as
+effect on bacteria clustering.                                                   Bacteroides, Fusobacterium, Salmonella, Escherichia, and
+    The ﬁrst attempt consisted in characterizing gut enterotypes                 Campylobacter have been shown to be statistically higher in CRC
+through bacteria clustering with diet (26). Enterotypes are distinct             patients’ stool than in ﬁrst-degree relatives’ stool (38, 42). We found
+microbial community structures that have been identiﬁed based on                 similar patterns in 4 out of 17 LS families in the present study who
+the abundance of certain genera in the gut and the pattern they                  reported having more traditional native diets. Comparisons
+exhibit with co-associated bacteria through networks. Prevotella                 between these families and those under French diets highlighted
+and Bacteroides are two predominant genera that characterize                     Akkermansia as differential genus in family C1 (Chinese diet) or C4
+different enterotypes. The Prevotella-dominated Enterotype is                    (Portuguese diet) (Supplementary Table S5).
+
+
+
+
+Frontiers in Oncology                                                       12                                                              frontiersin.org
+Sadeghi et al.                                                                                                             10.3389/fonc.2023.1313735
+
+
+
+
+    Additionally, prokaryote sequences for species assignment in               reported as a ﬂexible mechanism through interaction with the
+the pilot study revealed that Thermodesulfovibrio yellostoni was the           environment (57). Indeed, folate deﬁciency increases the risk of
+only species over-represented in LS-CRC patients compared to                   tumor development and the failure of CD8 inﬁltrates within tumor
+healthy LS relatives (Supplementary Tables S3, S6). This species               tissues due to the hypermethylation of TOX and HIF1 genes (57).
+resembles functionally Thioalkalivibrium cyclium, a bacterium we                    To the best of our knowledge, this is the ﬁrst whole metagenomic
+found signiﬁcantly over-represented in sporadic CRC patients as                analysis of enterotype-based fecal microbiota in CRCs with reference to
+compared to healthy age- and gender-matched healthy individuals                LS individuals with at high risk of CRC, showing the potentially
+(data not shown). Of interest, several functions such as sulfur-               protective effect of Biﬁdobacterium. Furthermore, bacteria networks
+oxidation and autotrophic heavy metal metabolism are shared                    rather than individual microbes are currently being considered in
+among all species within the Thermodesulfovibrio genus.                        relation to the potential metabolites they may produce or alter in the
+However, the present species is not known as a natural inhabitant              blood. This study requires longitudinal conﬁrmation, which is ongoing
+of the human colonic niche, and the lack of culture of this bacterium          with follow-up of patients through a prospective randomized anti-
+in the laboratory may constitute a bias for its identiﬁcation.                 inﬂammatory chemotherapy (versus placebo) study in healthy LS
+    Although we could not rule out cross-homology of                           individuals (ClinicalTrials.gov Identiﬁer: NCT04791644) with the
+unidentiﬁed prevalent bacteria in LS-CRC patients resembling                   development of colon neoplasia as the primary endpoint. This study
+Thermodesulfovibrio, this taxon illustrates the higher abundance               involves screening individuals for dietary factors, aiming to determine
+of a thermophilic, methanogenic and salt-dependent bacterium in                whether certain foods might interfere with the occurrence of neoplasia
+CRC patients. These microbes can survive in anaerobic, hypersaline             through changes in the microbiota. Biﬁdobacterium per se, and/or
+and sulfate- enriched environments (43, 44). Hence, global                     Lactobacillus or the metabolites they may produce, could be validated
+metabolites derived from bacteria networks should be considered.               as protective markers before their validation in a high-risk CRC
+About 10% of all metabolites found in mammalian blood result                   occurrence setting, including LS asymptomatic individuals and
+from bacterial networks (45), including those produced by microbes             chronic IBD patients.
+from exogenously consumed compounds, produced by the host and
+biochemically modiﬁed by gut microbes, and synthesized de novo
+by gut microbes. As an example, salt-enriched food habits in the               Data availability statement
+French cuisine (16, 39), could result in the presence of the
+Thermodesulfovibrio genus, which was found within the network                      The data for this study have been deposited in the European
+that included virulent bacteria such as Escherichia, Klebsiella,               Nucleotide Archive (ENA) at EMBL-EBI under accession number
+Haemophilus, and Shigella (Figure 2). This functional can be                   PRJEB70916 for Shotgun Metagenomic data (https://www.ebi.ac.uk/
+inﬂuenced by dietary habits.                                                   ena/browser/view/PRJEB70916) and PRJEB70919 for 16S rRNA data
+    The overabundance of pro-inﬂammatory virulent bacteria is                  (https://www.ebi.ac.uk/ena/browser/view/PRJEB70919).
+accompanied by reduced abundances of butyrate-producing species
+(46), higher levels of DNA damage (such as DNA mutations or
+deletions and/or hypermethylation in the intestinal epithelial cells)          Ethics statement
+(47, 48), and stimulation of epithelial proliferation in the mucosa
+(49). Interestingly, we also demonstrated that butyrate-producing                  The studies involving humans were approved by Ethical
+symbionts were decreased also in asymptomatic individuals who                  committee in the Ile de France-Est medical district and Assistance
+developed early precancerous lesions. This suggests that an                    Publique Hopitaux de Paris-APHP- under the number 09-2016.
+enhancements of the virulent/symbiotic bacteria ratio may favor                The studies were conducted in accordance with the local legislation
+the growth of neoplasia in the colon, as previously reported in obese          and institutional requirements. The participants provided their
+individuals (50).                                                              written informed consent to participate in this study. Written
+    Biﬁdobacterium is one of the most important symbionts                      informed consent was obtained from the individual(s) for the
+exerting a potential role in protecting the colonic mucosa. Based              publication of any potentially identiﬁable images or data included
+on murine model studies, Biﬁdobacterium has been shown to have a               in this article.
+probiotic effect against chemical-induced tumors (51, 52). For
+example, Biﬁdobacterium animalis limits the anti-mutagenic
+activity of the carcinogen 2-amino-3-methylimidazo [4, 5-f]                    Author contributions
+quinolone in mice (53). Additionally, Biﬁdobacterium longum and
+a B. breve, two strains of the Biﬁdobacterium genus, can protect                   MS: Writing – original draft, Writing – review & editing, Data
+DNA from chemical carcinogen-induced damage in a rat model                     curation, Formal analysis, Methodology, Investigation, Software,
+(54). It can also exert an inhibitory effect on the growth of potential        Validation, Visualization. DM: Data curation, Methodology,
+competitors by enhancing the production of antimicrobial                       Writing – review & editing, Formal analysis, Investigation,
+substances (55, 56), This genus is known to function in                        Software, Supervision, Validation, Visualization. EC: Writing –
+mutualism with Lactobacillus by producing folates, which are the               review & editing, Formal analysis, Investigation, Methodology.
+main source of the epigenetic pathway of DNA changes and are                   RB: Writing – review & editing, Data curation, Formal analysis,
+
+
+
+
+Frontiers in Oncology                                                     13                                                            frontiersin.org
+Sadeghi et al.                                                                                                                                               10.3389/fonc.2023.1313735
+
+
+
+
+Funding acquisition, Investigation. KK: Writing – review & editing,                                  association of doctors and technicians, to AAS-Lynch investigators
+Conceptualization, Funding acquisition, Validation. IS:                                              and clinical research technicians.
+Conceptualization, Formal analysis, Investigation, Methodology,
+Software, Supervision, Validation, Writing – original draft,
+Writing – review & editing, Resources, Visualization, Funding                                        Conﬂict of interest
+acquisition, Project administration.
+                                                                                                         The authors declare that the research was conducted in the
+                                                                                                     absence of any commercial or ﬁnancial relationships that could be
+Funding                                                                                              construed as a potential conﬂict of interest.
+
+    The author(s) declare ﬁnancial support was received for the
+research, authorship, and/or publication of this article. The whole                                  Publisher’s note
+metagenomic pilot study was ﬁnancially supported by Canceropole
+Ile de France as an emerging study in 2016. For gene analysis and                                        All claims expressed in this article are solely those of the authors
+system biology, it was partially supported by Grant 5 R01                                            and do not necessarily represent those of their afﬁliated
+CA264048-03. The Clinical Research Hospital Program provided                                         organizations, or those of the publisher, the editors and the
+ﬁnancial support for the validation study AAS-Lynch (PHRC:                                           reviewers. Any product that may be evaluated in this article, or
+project number PHRC-K13-117); PHRC (Program for Clinical                                             claim that may be made by its manufacturer, is not guaranteed or
+Research at Hospital) under INCA (National Institute of Cancer                                       endorsed by the publisher.
+in France).
+
+                                                                                                     Supplementary material
+Acknowledgments
+                                                                                                          The Supplementary Material for this article can be found online
+    To Prof. Christophe Rodriguez for contribution to microbiome                                     at: https://www.frontiersin.org/articles/10.3389/fonc.2023.1313735/
+sequencing, Emma Bergsten for technical contribution, AAS-Lynch                                      full#supplementary-material
+
+
+
+
+References
+   1. Bray F, Ferlay J, Soerjomataram I, Siegel RL, Torre LA, Jemal A. Global cancer                   13. Wu GD, Chen J, Hoffmann C, Bittinger K, Chen Y-Y, Keilbaugh SA, et al.
+statistics 2018: GLOBOCAN estimates of incidence and mortality worldwide for 36                      Linking long-term dietary patterns with gut microbial enterotypes. Science (2011)
+cancers in 185 countries. CA Cancer J Clin (2018) 68:394–424. doi: 10.3322/caac.21492                334:105–8. doi: 10.1126/science.1208344
+  2. Henrikson NB, Webber EM, Goddard KA, Scrol A, Piper M, Williams MS, et al.                        14. Lavelle A, Sokol H. Gut microbiota-derived metabolites as key actors in
+Family history and the natural history of colorectal cancer: systematic review. Genet                inﬂammatory bowel disease. Nat Rev Gastroenterol Hepatol (2020) 17:223–37.
+Med (2015) 17:702–12. doi: 10.1038/gim.2014.188                                                      doi: 10.1038/s41575-019-0258-z
+  3. Chen Y, Zhou J, Wang L. Role and mechanism of gut microbiota in human                             15. Purcell RV, Visnovska M, Biggs PJ, Schmeier S, Frizelle FA. Distinct gut
+disease. Front Cell Infect Microbiol (2021) 11:625913. doi: 10.3389/fcimb.2021.625913                microbiome patterns associate with consensus molecular subtypes of colorectal
+   4. Irrazá bal T, Belcheva A, Girardin SE, Martin A, Philpott DJ. The multifaceted role           cancer. Sci Rep (2017) 7:11590. doi: 10.1038/s41598-017-11237-6
+of the intestinal microbiota in colon cancer. Mol Cell (2014) 54:309–20. doi: 10.1016/                 16. Touvier M, Kesse-Guyot E, Mé jean C, Pollet C, Malon A, Castetbon K, et al.
+j.molcel.2014.03.039                                                                                 Comparison between an interactive web-based self-administered 24 h dietary record
+  5. Jiao S, Peters U, Berndt S, Brenner H, Butterbach K, Caan BJ, et al. Estimating the             and an interview by a dietitian for large-scale epidemiological studies. Br J Nutr (2011)
+heritability of colorectal cancer. Hum Mol Genet (2014) 23:3898–905. doi: 10.1093/hmg/ddu087         105:1055–64. doi: 10.1017/S0007114510004617
+
+  6. Sinicrope FA. Lynch syndrome-associated colorectal cancer. N Engl J Med (2018)                    17. Sobhani I, Bergsten E, Coufﬁn S, Amiot A, Nebbad B, Barau C, et al. Colorectal
+379:764–73. doi: 10.1056/NEJMcp1714533                                                               cancer-associated microbiota contributes to oncogenic epigenetic signatures. Proc Natl
+                                                                                                     Acad Sci U S A (2019) 116:24285–95. doi: 10.1073/pnas.1912129116
+  7. Foulkes WD. Inherited susceptibility to common cancers. N Engl J Med (2008)
+359:2143–53. doi: 10.1056/NEJMra0802968                                                                18. Furet J-P, Firmesse O, Gourmelon M, Bridonneau C, Tap J, Mondot S, et al.
+                                                                                                     Comparative assessment of human and farm animal faecal microbiota using real-time
+  8. Sobhani I, Tap J, Roudot-Thoraval F, Roperch JP, Letulle S, Langella P, et al.                  quantitative PCR. FEMS Microbiol Ecol (2009) 68:351–62. doi: 10.1111/j.1574-
+Microbial dysbiosis in colorectal cancer (CRC) patients. PloS One (2011) 6:e16393.                   6941.2009.00671.x
+doi: 10.1371/journal.pone.0016393
+                                                                                                       19. Huijsdens XW, Linskens RK, Mak M, Meuwissen SGM, Vandenbroucke-Grauls
+   9. Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI, et al. Potential of              CMJE, Savelkoul PHM. Quantiﬁcation of bacteria adherent to gastrointestinal mucosa
+fecal microbiota for early-stage detection of colorectal cancer. Mol Syst Biol (2014)                by real-time PCR. J Clin Microbiol (2002) 40:4423–7. doi: 10.1128/JCM.40.12.4423-
+10:766. doi: 10.15252/msb.20145645                                                                   4427.2002
+   10. Goodwin AC, Destefano Shields CE, Wu S, Huso DL, Wu X, Murray-Stewart TR,
+                                                                                                       20. Suzuki MT, Taylor LT, DeLong EF. Quantitative analysis of small-subunit rRNA
+et al. Polyamine catabolism contributes to enterotoxigenic Bacteroides fragilis-induced colon
+                                                                                                     genes in mixed microbial populations via 5’-nuclease assays. Appl Environ Microbiol
+tumorigenesis. Proc Natl Acad Sci U S A (2011) 108:15354–9. doi: 10.1073/pnas.1010203108
+                                                                                                     (2000) 66:4605–14. doi: 10.1128/AEM.66.11.4605-4614.2000
+   11. Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, Han YW. Fusobacterium
+nucleatum promotes colorectal carcinogenesis by modulating E-cadherin/b-catenin                        21. Buchﬁnk B, Xie C, Huson DH. Fast and sensitive protein alignment using
+signaling via its FadA adhesin. Cell Host Microbe (2013) 14:195–206. doi: 10.1016/                   DIAMOND. Nat Methods (2015) 12:59–60. doi: 10.1038/nmeth.3176
+j.chom.2013.07.012                                                                                     22. Huson DH, Beier S, Flade I, Gó rska A, El-Hadidi M, Mitra S, et al. MEGAN
+  12. Pasquereau-Kotula E, Martins M, Aymeric L, Dramsi S. Signiﬁcance of                            community edition - interactive exploration and analysis of large-scale microbiome
+Streptococcus gallolyticus subsp. gallolyticus Association With Colorectal Cancer.                   sequencing data. PloS Comput Biol (2016) 12:e1004957. doi: 10.1371/
+Front Microbiol (2018) 9:614. doi: 10.3389/fmicb.2018.00614                                          journal.pcbi.1004957
+
+
+
+
+Frontiers in Oncology                                                                           14                                                                           frontiersin.org
+Sadeghi et al.                                                                                                                                          10.3389/fonc.2023.1313735
+
+
+
+
+  23. Callahan BJ, McMurdie PJ, Rosen MJ, Han AW, Johnson AJA, Holmes SP.                       order data from completely sequenced genomes. Int J Syst Evol Microbiol (2010)
+DADA2: High-resolution sample inference from Illumina amplicon data. Nat Methods                60:1090–102. doi: 10.1099/ijs.0.014266-0
+(2016) 13:581–3. doi: 10.1038/nmeth.3869                                                          41. Gazan R, Bé chaux C, Cré pet A, Sirot V, Drouillet-Pinard P, Dubuisson C, et al.
+   24. Volant S, Lechat P, Woringer P, Motreff L, Campagne P, Malabat C, et al.                 Dietary patterns in the French adult population: a study from the second French
+SHAMAN: a user-friendly website for metataxonomic analysis from raw reads to                    national cross-sectional dietary survey (INCA2) (2006-2007). Br J Nutr (2016)
+statistical analysis. BMC Bioinf (2020) 21:345. doi: 10.1186/s12859-020-03666-4                 116:300–15. doi: 10.1017/S0007114516001549
+  25. Gentleman RC, Carey VJ, Bates DM, Bolstad B, Dettling M, Dudoit S, et al.                   42. Cliffe MJ, Wan W, Zou X, Chater PA, Kleppe AK, Tucker MG, et al. Correlated
+Bioconductor: open software development for computational biology and                           defect nanoregions in a metal–organic framework. Nat Commun (2014) 5:4176.
+bioinformatics. Genome Biol (2004) 5:R80. doi: 10.1186/gb-2004-5-10-r80                         doi: 10.1038/ncomms5176
+  26. Arumugam M, Raes J, Pelletier E, Le Paslier D, Yamada T, Mende DR, et al.                   43. Kappler U, Davenport K, Beatson S, Lapidus A, Pan C, Han C, et al. Complete
+Enterotypes of the human gut microbiome. Nature (2011) 473:174–80. doi: 10.1038/                genome sequence of the haloalkaliphilic, obligately chemolithoautotrophic thiosulfate and
+nature09944                                                                                     sulﬁde-oxidizing g-proteobacterium Thioalkalimicrobium cyclicum type strain ALM 1
+  27. Costea PI, Hildebrand F, Arumugam M, Bäckhed F, Blaser MJ, Bushman FD,                    (DSM 14477T). Standards Genomic Sci (2016) 11:38. doi: 10.1186/s40793-016-0162-x
+et al. Enterotypes in the landscape of gut microbial community composition. Nat                   44. Sekiguchi Y, Muramatsu M, Imachi H, Narihiro T, Ohashi A, Harada H, et al.
+Microbiol (2018) 3:8–16. doi: 10.1038/s41564-017-0072-8                                         Thermodesulfovibrio aggregans sp. nov. and Thermodesulfovibrio thiophilus sp. nov.,
+  28. Friedman J, Alm EJ. Inferring correlation networks from genomic survey data.              anaerobic, thermophilic, sulfate-reducing bacteria isolated from thermophilic
+PloS Comput Biol (2012) 8:e1002687. doi: 10.1371/journal.pcbi.1002687                           methanogenic sludge, and emended description of the genus Thermodesulfovibrio.
+                                                                                                Int J Syst Evol Microbiol (2008) 58:2541–8. doi: 10.1099/ijs.0.2008/000893-0
+  29. Watts SC, Ritchie SC, Inouye M, Holt KE. FastSpar: rapid and scalable
+correlation estimation for compositional data. Bioinformatics (2019) 35:1064–6.                    45. Postler TS, Ghosh S. Understanding the holobiont: how microbial metabolites
+doi: 10.1093/bioinformatics/bty734                                                              affect human health and shape the immune system. Cell Metab (2017) 26:110–30.
+                                                                                                doi: 10.1016/j.cmet.2017.05.008
+  30. Shannon P, Markiel A, Ozier O, Baliga NS, Wang JT, Ramage D, et al. Cytoscape:
+A software environment for integrated models of biomolecular interaction networks.                46. Keku TO, Dulal S, Deveaux A, Jovov B, Han X. The gastrointestinal microbiota
+Genome Res (2003) 13:2498–504. doi: 10.1101/gr.1239303                                          and colorectal cancer. Am J Physiol-Gastrointestinal Liver Physiol (2015) 308:G351–63.
+                                                                                                doi: 10.1152/ajpgi.00360.2012
+   31. Schmidt TS, Hayward MR, Coelho LP, Li SS, Costea PI, Voigt AY, et al.
+Extensive transmission of microbes along the gastrointestinal tract. eLife (2020) 8:1–            47. Coussens LM, Werb Z. Inﬂammation and cancer. Nature (2002) 420:860–7.
+8. doi: 10.7554/eLife.42693                                                                     doi: 10.1038/nature01322
+
+  32. Dejea CM, Fathi P, Craig JM, Boleij A, Taddese R, Geis AL, et al. Patients with             48. Ito T, Teo YV, Evans SA, Neretti N, Sedivy JM. Regulation of cellular senescence by
+familial adenomatous polyposis harbor colonic bioﬁlms containing tumorigenic                    polycomb chromatin modiﬁers through distinct DNA damage- and histone methylation-
+bacteria. Science (2018) 359:592–7. doi: 10.1126/science.aah3648                                dependent pathways. Cell Rep (2018) 22:3480–92. doi: 10.1016/j.celrep.2018.03.002
+
+  33. Sobhani I, Bergsten E, Charpy C, Chamaillard M, Mestivier D. Virulent bacteria              49. Dalmasso G, Cougnoux A, Delmas J, Darfeuille-Michaud A, Bonnet R. The
+as inﬂammatory and immune co-factor in colon carcinogenesis: evidence from two                  bacterial genotoxin colibactin promotes colon tumor growth by modifying the tumor
+monozygotic patients and validation in CRC patient and healthy cohorts. Front Cell              microenvironment. Gut Microbes (2014) 5:675–80. doi: 10.4161/19490976.2014.969989
+Infect Microbiol (2021) 11:749750. doi: 10.3389/fcimb.2021.749750                                  50. Schulz MD, Atay Ç , Heringer J, Romrig FK, Schwitalla S, Aydin B, et al. High-
+  34. Langille MGI, Zaneveld J, Caporaso JG, McDonald D, Knights D, Reyes JA, et al.            fat-diet-mediated dysbiosis promotes intestinal carcinogenesis independently of
+Predictive functional proﬁling of microbial communities using 16S rRNA marker gene              obesity. Nature (2014) 514:508–12. doi: 10.1038/nature13398
+sequences. Nat Biotechnol (2013) 31:814–21. doi: 10.1038/nbt.2676                                 51. Sekine K, Toida T, Saito M, Kuboyama M, Kawashima T, Hashimoto Y. A new
+   35. Garrett WS, Gallini CA, Yatsunenko T, Michaud M, DuBois A, Delaney ML,                   morphologically characterized cell wall preparation (whole peptidoglycan) from
+et al. Enterobacteriaceae act in concert with the gut microbiota to induce spontaneous          Biﬁdobacterium infantis with a higher efﬁcacy on the regression of an established
+and maternally transmitted colitis. Cell Host Microbe (2010) 8:292–300. doi: 10.1016/           tumor in mice. Cancer Res (1985) 45:1300–7.
+j.chom.2010.08.004                                                                                52. Le Leu RK, Young GP, McIntosh GH. Folate deﬁciency reduces the development of
+  36. Pope JL, Yang Y, Newsome RC, Sun W, Sun X, Ukhanova M, et al. Microbial                   colorectal cancer in rats. Carcinogenesis (2000) 21:2261–5. doi: 10.1093/carcin/21.12.2261
+colonization coordinates the pathogenesis of a Klebsiella pneumoniae infant isolate. Sci           53. Tavan E, Cayuela C, Antoine J-M, Cassand P. Antimutagenic activities of various
+Rep (2019) 9:3380. doi: 10.1038/s41598-019-39887-8                                              lactic acid bacteria against food mutagens: heterocyclic amines. J Dairy Res (2002)
+  37. Kostic AD, Chun E, Robertson L, Glickman JN, Gallini CA, Michaud M, et al.                69:335–41. doi: 10.1017/S002202990200540X
+Fusobacterium nucleatum potentiates intestinal tumorigenesis and modulates the                    54. Pool-Zobel BL, Neudecker C, Domizlaff I, Ji S, Schillinger U, Rumney C, et al.
+tumor-immune microenvironment. Cell Host Microbe (2013) 14:207–15.                              Lactobacillus- and biﬁdobacterium-mediated antigenotoxicity in the colon of rats. Nutr
+doi: 10.1016/j.chom.2013.07.007                                                                 Cancer (1996) 26:365–80. doi: 10.1080/01635589609514492
+  38. O’Keefe SJD, Li JV, Lahti L, Ou J, Carbonero F, Mohammed K, et al. Fat, ﬁbre                55. Brook I. Bacterial interference. Crit Rev Microbiol (1999) 25:155–72.
+and cancer risk in African Americans and rural Africans. Nat Commun (2015) 6:6342.              doi: 10.1080/10408419991299211
+doi: 10.1038/ncomms7342                                                                           56. Fukuda S, Toh H, Hase K, Oshima K, Nakanishi Y, Yoshimura K, et al.
+  39. Fiolet T, Srour B, Sellem L, Kesse-Guyot E, Allès B, Mé jean C, et al.                   Biﬁdobacteria can protect from enteropathogenic infection through production of
+Consumption of ultra-processed foods and cancer risk: results from NutriNet-Santé              acetate. Nature (2011) 469:543–7. doi: 10.1038/nature09646
+prospective cohort. BMJ (2018), k322. doi: 10.1136/bmj.k322                                        57. Yates KB, Tonnerre P, Martin GE, Gerdemann U, Al Abosy R, Comstock DE,
+  40. Kunisawa T. Evaluation of the phylogenetic position of the sulfate-reducing               et al. Epigenetic scars of CD8+ T cell exhaustion persist after cure of chronic infection
+bacterium Thermodesulfovibrio yellowstonii (phylum Nitrospirae) by means of gene                in humans. Nat Immunol (2021) 22:1020–9. doi: 10.1038/s41590-021-00979-1
+
+
+
+
+Frontiers in Oncology                                                                      15                                                                           frontiersin.org
+

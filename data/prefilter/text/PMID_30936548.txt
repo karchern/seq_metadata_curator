@@ -1,0 +1,1341 @@
+                                                                                                                                  Articles
+                                                                                                             https://doi.org/10.1038/s41591-019-0405-7
+
+                                                                                                                        Corrected: Author Correction
+
+
+Metagenomic analysis of colorectal cancer datasets
+identifies cross-cohort microbial diagnostic
+signatures and a link with choline degradation
+Andrew Maltez Thomas 1,2,3,32, Paolo Manghi1,32, Francesco Asnicar 1, Edoardo Pasolli1,
+Federica Armanini1, Moreno Zolfo 1, Francesco Beghini 1, Serena Manara1, Nicolai Karcher1,
+Chiara Pozzi4, Sara Gandini 4, Davide Serrano4, Sonia Tarallo 5, Antonio Francavilla 5,
+Gaetano Gallo 6,7, Mario Trompetto7, Giulio Ferrero 8, Sayaka Mizutani9,10, Hirotsugu Shiroma9,
+Satoshi Shiba11, Tatsuhiro Shibata 11,12, Shinichi Yachida11,13, Takuji Yamada9,14, Jakob Wirbel 15,
+Petra Schrotz-King 16, Cornelia M. Ulrich17, Hermann Brenner16,18,19, Manimozhiyan Arumugam 20,21,
+Peer Bork 15,22,23,24, Georg Zeller 15, Francesca Cordero8, Emmanuel Dias-Neto 3,25,
+João Carlos Setubal2,26, Adrian Tett1, Barbara Pardini 5,27, Maria Rescigno28, Levi Waldron 29,30,33,
+Alessio Naccarati 5,31,33 and Nicola Segata 1,33*
+
+Several studies have investigated links between the gut microbiome and colorectal cancer (CRC), but questions remain about the
+replicability of biomarkers across cohorts and populations. We performed a meta-analysis of five publicly available datasets and
+two new cohorts and validated the findings on two additional cohorts, considering in total 969 fecal metagenomes. Unlike micro-
+biome shifts associated with gastrointestinal syndromes, the gut microbiome in CRC showed reproducibly higher richness than
+controls (P < 0.01), partially due to expansions of species typically derived from the oral cavity. Meta-analysis of the microbiome
+functional potential identified gluconeogenesis and the putrefaction and fermentation pathways as being associated with CRC,
+whereas the stachyose and starch degradation pathways were associated with controls. Predictive microbiome signatures for CRC
+trained on multiple datasets showed consistently high accuracy in datasets not considered for model training and independent vali-
+dation cohorts (average area under the curve, 0.84). Pooled analysis of raw metagenomes showed that the choline trimethylamine-
+lyase gene was overabundant in CRC (P = 0.001), identifying a relationship between microbiome choline metabolism and CRC.
+The combined analysis of heterogeneous CRC cohorts thus identified reproducible microbiome biomarkers and accurate disease-
+predictive models that can form the basis for clinical prognostic tests and hypothesis-driven mechanistic studies.
+
+
+
+
+C
+      olorectal cancer is the second most common non-sex-specific                 to increase by nearly 80% to 2.2 million cases over the next two
+      cancer and is responsible for more deaths than any other can-               decades2. Sporadic CRCs, as opposed to hereditary CRCs, account
+      cer after lung cancer1. Because of demographic trends toward                for approximately 70–87% of cases3 and genetics can explain only
+an aging population, the annual global incidence rate is expected                 a small proportion of disease incidence4. The missing strong link
+
+1
+ Department CIBIO, University of Trento, Trento, Italy. 2Biochemistry Department, Chemistry Institute, University of São Paulo, São Paulo, Brazil. 3Medical
+Genomics Laboratory, CIPE/A.C. Camargo Cancer Center, São Paulo, Brazil. 4IEO, European Institute of Oncology IRCCS, Milan, Italy. 5Italian Institute
+for Genomic Medicine, Turin, Italy. 6Department of Surgical and Medical Sciences, University of Catanzaro, Catanzaro, Italy. 7Department of Colorectal
+Surgery, Clinica S. Rita, Vercelli, Italy. 8Department of Computer Science, University of Turin, Turin, Italy. 9School of Life Science and Technology, Tokyo
+Institute of Technology, Tokyo, Japan. 10Research Fellow of Japan Society for the Promotion of Science, Tokyo, Japan. 11Division of Cancer Genomics,
+National Cancer Center Research Institute, Tokyo, Japan. 12Human Genome Center, The Institute of Medical Science, The University of Tokyo, Tokyo,
+Japan. 13Department of Cancer Genome Informatics, Osaka University, Osaka, Japan. 14PRESTO, Japan Science and Technology Agency, Saitama, Japan.
+15
+   Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany. 16Division of Preventive Oncology, National
+Center for Tumor Diseases and German Cancer Research Center, Heidelberg, Germany. 17Huntsman Cancer Institute and Department of Population Health
+Sciences, University of Utah, Salt Lake City, UT, USA. 18Division of Clinical Epidemiology and Aging Research, German Cancer Research Center, Heidelberg,
+Germany. 19German Cancer Consortium, German Cancer Research Center, Heidelberg, Germany. 20Novo Nordisk Foundation Center for Basic Metabolic
+Research, Faculty of Health and Medical Sciences, University of Copenhagen, Copenhagen, Denmark. 21Faculty of Healthy Sciences, University of Southern
+Denmark, Odense, Denmark. 22Molecular Medicine Partnership Unit, Heidelberg, Germany. 23Max Delbrück Centre for Molecular Medicine, Berlin, Germany.
+24
+   Department of Bioinformatics, Biocenter, University of Würzburg, Würzburg, Germany. 25Laboratory of Neurosciences, Institute of Psychiatry, University
+of São Paulo, São Paulo, Brazil. 26Biocomplexity Institute of Virginia Tech, Blacksburg, VA, USA. 27Department of Medical Sciences, University of Turin, Turin,
+Italy. 28Mucosal Immunology and Microbiota Unit, Humanitas Research Hospital, Milan, Italy. 29Graduate School of Public Health and Health Policy, City
+University of New York, New York, NY, USA. 30Institute for Implementation Science in Population Health, City University of New York, New York, NY, USA.
+31
+  Department of Molecular Biology of Cancer, Institute of Experimental Medicine, Prague, Czech Republic. 32These authors contributed equally: Andrew
+Maltez Thomas, Paolo Manghi. 33These authors jointly supervised this work: Levi Waldron, Alessio Naccarati, Nicola Segata. *e-mail: nicola.segata@unitn.it
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                            667
+Articles                                                                                                               Nature Medicine
+
+of CRC with genetics points to the potential role of other vari-         was higher in CRC samples compared to controls, and the increase
+ables, including lifestyle and environmental factors, as disease co-     was significant in four of the six deeply sequenced datasets (P < 0.05;
+determinants. Reported risk factors associated with CRC include          Extended Data Fig. 1b,c). Meta-analysis of standardized mean dif-
+age, tobacco and alcohol consumption, lack of physical activity,         ferences by random effects model for the number of microbial spe-
+increased body weight and diet5,6. However, many non-genetic risk        cies confirmed the higher number of species in CRC compared to
+factors are common to several cancer types and these remain largely      controls (meta-analysis coefficient estimate (μ) = 0.5, 95% confi-
+unsettled for CRC7,8.                                                    dence interval (0.16, 0.85), P = 0.004), although with significant
+   The human gut microbiome—defined as the microbial com-                heterogeneity across datasets (percentage of total variation due to
+munities that populate our intestinal tract—is emerging as a rel-        heterogeneity (I2) = 74.8%, P = 0.0007, Q-test). This difference was
+evant factor in human diseases9,10. Supported by some evidence           not meaningfully affected when controlling for potential confound-
+of carcinogenic mechanisms induced by bacterial organisms11–13,          ing by age, body mass index (BMI) or sex (Extended Data Fig. 1d,e).
+the gut microbiome has also been hypothesized to play a crucial          Conversely, we observed no difference in diversity between carcino-
+role in the development of CRC. Studies using 16S ribosomal RNA          mas and controls (Extended Data Fig. 2a,b). We thus provide strong
+(rRNA) gene amplicon sequencing have led to the discovery of the         evidence that the CRC-associated microbiome has a quantitative
+association of Fusobacterium nucleatum with CRC14, which was             species distribution that is consistent with healthy controls, but is
+subsequently shown to be causal in animal models of CRC carcino-         significantly enriched in the total number of detected microbes.
+genesis and progression15,16. Compared to 16S rRNA gene studies,            We further tested whether the CRC-associated microbiome pos-
+a smaller number of metagenomic sequencing studies have linked           sesses more oral cavity-associated species than controls, as previ-
+other microbial species and potential functional activities of the gut   ously hypothesized23,35. Considering the 161 species we identified
+microbiome to CRC17–19,20. However, the reproducibility and predic-      from multiple existing datasets36,37 as being typical colonizers of the
+tive accuracy of these high-resolution microbial signatures across       oral cavity (see Methods), we found increased oral species richness
+cohorts and study design choices remain unclear. The potential use       in CRC samples for all but one of the six deeply sequenced datas-
+of the gut microbiome as a diagnostic tool for CRC has been pro-         ets compared to controls, and the increase was significant in meta-
+posed17–19,21,22, but not yet validated, across multiple independent     analysis (μ = 0.16, 95% confidence interval (−0.03, 0.35), P = 0.02;
+study populations.                                                       Extended Data Fig. 2g). Similarly, the total abundance of oral spe-
+   There is thus a need to establish and validate links between the      cies in the stool microbiome was also significantly higher in patients
+human gut microbiome and CRC carcinogenesis across populations,          with CRC compared to controls (meta-analysis μ = 0.23, 95% con-
+cohorts and microbiome tools. Some multi-cohort works have been          fidence interval (0.07, 0.39), P = 0.003). Altogether, greater species
+performed based on 16S rRNA gene studies23, but this technique has       richness and abundance may be a sign of an altered gut microbiome
+important technical limitations24. The recent availability of whole-     in CRC, and it is indicative of an influx of bacterial species originat-
+metagenome shotgun datasets of CRC cohorts17–19,21,22 enables a          ing from the oral cavity.
+combined multi-population exploration of the CRC-associated
+microbiome with strain-level resolution25,26 and meta-analytic pre-      A panel of microbial biomarkers for CRC is reproducible across
+dictive approaches10,27, but the only meta-analysis study performed      cohorts. Individual biomarker discovery efforts can be sensitive
+to date on CRC is affected by overfitting issues28. It is thus crucial   to both technical artifacts and the heterogeneity of factors impli-
+to perform large-scale, cross-cohort studies to provide an unbiased      cated in microbial shifts in healthy populations, including bioge-
+and well-powered assessment of the link between CRC and the gut          ography, diet and host genetics26,38. This is confirmed by the two
+microbiome.                                                              newly sequenced datasets that have only partially overlapping
+   In this study, we have sequenced 140 samples from two differ-         taxonomic and functional potential biomarkers (Extended Data
+ent cohorts, performed an integrated analysis combining all current      Fig. 3). Even so, several CRC biomarker species were identified by
+metagenomic CRC datasets available and assessed prediction accu-         univariate statistics39 independently in the majority of the datas-
+racies of the gut microbiome for CRC detection across populations,       ets (Fig. 1a): F. nucleatum, Solobacterium moorei, Porphyromonas
+datasets and conditions.                                                 asaccharolytica, Parvimonas micra, Peptostreptococcus stomatis
+                                                                         and Parvimonas spp. Other species were identified in fewer data-
+Results                                                                  sets or were dataset-specific (Fig. 1a and Supplementary Table 2).
+A meta-analysis of metagenomic datasets to identify links                F. nucleatum, whose connection with CRC has been extensively
+between the gut microbiome and CRC. To identify reproducible             reported14,17–19, had significantly increased abundance in patients
+relationships between the gut microbiome and CRC, we performed           with CRC in all datasets with adequate sequencing depth, when
+shotgun metagenomic sequencing29 of the stool microbiome of              considering single markers for this species (Extended Data Fig. 4a).
+140 patients with CRC and controls recruited in two cohorts, and         Some of the cross-cohort CRC biomarker species have previously
+analyzed these in the context of 624 additional samples from five        been reported14,23,35 and many of these are commonly found in the
+publicly available and geographically diverse metagenomic studies.       oral cavity (eight out of the 39 total biomarkers found in at least
+We validated the results on two datasets of 60 CRC and 65 controls30     two datasets), consistent with the increased presence of oral taxa
+and 40 CRC and 40 controls (see Methods), respectively. In total, we     in CRC samples mentioned above.
+considered 413 samples from patients with CRC, 143 from subjects             We then pooled evidence of differential abundance across data-
+with adenoma and 413 control samples. Participants from all studies      sets by random effects meta-analysis. Among the 26 differentially
+underwent colonoscopy to diagnose CRC or adenoma, or to confirm          abundant species at false discovery rate (FDR) < 0.005, those with
+the absence of disease, with samples collected before diagnosis or       the highest effect size were again F. nucleatum, S. moorei, P. asac-
+the beginning of treatment (Supplementary Table 1 and Table 1). All      charolytica, P. micra and P. stomatis. The meta-analysis addition-
+datasets were sequenced at high depth except for the study in ref. 31    ally identified Clostridium symbiosum, which has been tested as
+(Extended Data Fig. 1a and Methods).                                     a marker for early CRC detection40 (Fig. 1b). Other differentially
+                                                                         abundant species at FDR < 0.05 have not previously been reported
+Meta-analysis shows higher species richness in CRC-associated            in CRC microbiome studies, including Streptococcus tigurinus and
+samples. We first tested whether microbial richness and diversity        Streptococcus dysgalactiae, and three different Campylobacter spe-
+differed between CRC samples and controls, given contrasting cur-        cies. We also confirmed Gemella morbillorum and Streptococcus
+rent evidence32–34. In all but one study the median species richness     gallolyticus as being relevant biomarkers, as previously suggested in
+
+668                                                                      Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                                                                 Articles
+Table 1 | Size and characteristics of the large-scale CRC metagenomic datasets included in this study
+Dataset                               Groups (n)                   Age (average ± s.d.)              BMI (average ± s.d.)              Sex F (%)/M               Country                    No. of reads
+                                                                                                                                       (%)                                                  (×109)
+ZellerG_2014 (ref. 19)                Control (61)                 60.6 ± 11.4                       24.7 ± 3.2                        54.1/45.9                 France                     9.4
+                                      Adenoma (42)                 63 ± 9.1                          25.9 ± 4.1                        28.5/71.5
+                                      CRC (53)                     66.8 ± 10.9                       25.5 ± 5.2                        45.2/54.8
+YuJ_2015 (ref. 17)a                   Control (54)                 61.8 ± 5.7                        23.5 ± 3                          38.9/61.1                 China                      7.2
+                                      CRC (74)                     66 ± 10.6                         24 ± 3.2                          35.1/64.9
+FengQ_2015 (ref. 18)                  Control (61)b                67 ± 6.5                          27.6 ± 3.8                        41/59                     Austria                    8.3
+                                      Adenoma (47)                 66.5 ± 7.9                        28 ± 4.7                          51.1/48.9
+                                      CRC (46)                     67 ± 10.9                         26.5 ± 3.5                        39.1/60.9
+VogtmannE_2016 (ref. 20)              Control (52)                 61.2 ± 11                         25.3 ± 4.2                        28.8/71.2                 USA                        6.9
+                                      CRC (52)                     61.8 ± 13.6                       24.9 ± 4.2                        28.8/71.2
+HanniganGD_2018 (ref. 31) Control (28)                             55.46 ± 9.4                       26.63 ± 5.1                       60.7/39.3                 USA (54),                  0.5
+                                      Adenoma (27)                 61.74 ± 10.8                      27.36 ± 4.45                      40.7/59.3                 Canada (28)
+                                      CRC (27)                     58.6 ± 10.9                       30.41 ± 7.5                       25.9/74.1
+Cohort1 (This study)                  Control (24)                 67.9 ± 7.1                        25.3 ± 3.5                        45.8/54.1                 Italy                      8.2
+                                      Adenoma (27)                 62.8 ± 8.6                        25.3 ± 4.1                        40.7/59.3
+                                      CRC (29)                     71.4 ± 8.2                        25.7 ± 4.1                        20.7/79.3
+Cohort2 (This study)                  Control (28)                 57.8 ± 8.3                        24.6 ± 3.8                        42.9/57.1                 Italy                      5.1
+                                      CRC (32)                     58.4 ± 8.4                        26.8 ± 4.3                        28.1/71.9
+Total                                 Control (308)                62.01 ± 3.7                       25.4 ± 1.4                        43.5/56.5                                            45.6
+                                      Adenoma (143)                63.88 ± 1.9                       26.8 ± 1.1                        40.5/59.5
+                                      CRC (313)                    64.67 ± 3.8                       25.8 ± 1.7                        33.5/66.5
+a
+ There is an updated version of this paper that was published in 2017, but the paper was first published in 2015; 2015 has been included in the dataset name, as it better reflects when the data was
+produced. bNumbers differ from those of the original sample (n = 61 rather than 63) reported in the article due to metadata and/or sequence-processing issues.
+
+
+
+
+smaller cohorts18,41. In contrast, only 12 species were associated with                                  the microbiome can influence host conditions. The CRC-associated
+the control population in the meta-analysis and only four were sig-                                      microbiome showed an association with both gluconeogenesis and
+nificantly enriched for the same populations in at least three data-                                     the capacity for uptake and metabolism of amino acids via putre-
+sets. Control-associated species with the highest effect sizes were                                      faction and fermentation pathways (Supplementary Tables 3 and
+Gordonibacter pamelae and Bifidobacterium catenulatum (Fig. 1b,                                          4). These included pathways responsible for the conversion of dif-
+Supplementary Table 2 and Extended Data Fig. 4c), which are gen-                                         ferent amino acids to tumor-promoting compounds19,44, such as
+erally considered beneficial microbes and have been used as probi-                                       polyamines (for example, l-arginine and l-ornithine degradation
+otic supplements42. Adjustment for potential confounding by host                                         to putrescine) and ammonia (l-histidine and l-arginine degrada-
+characteristics did not meaningfully affect crude estimates in the                                       tion, and l-lysine and l-alanine fermentation to acetate, butyrate
+meta-analysis (Fig. 1d and Extended Data Fig. 4b). The substan-                                          and propionate). These pathways (Fig. 1c) and the set of species
+tially higher number of species enriched in CRC as opposed to                                            described above (Fig. 1a,b) thus constitute a collection of microbi-
+controls (49 versus 12), even when focusing only on species with                                         ome biomarkers that are reproducible across cohorts.
+putative oral origin (15 versus 2; Extended Data Fig. 5a), points to
+the existence of a reproducible taxonomic signature of the CRC-                                          Predicting CRC from single metagenomic datasets in indepen-
+associated microbiome.                                                                                   dent cohorts leads to reduced accuracy. To test the hypothesis that
+    Functional potential of the microbiome was also significantly                                        the stool microbiome could be used as a reproducible CRC pre-
+associated with CRC samples when compared to healthy controls.                                           screening tool, we performed intra-cohort, cross-cohort and com-
+We found overall increased richness of UniRef gene families43                                            bined-cohort prediction validation on the overall set of 621 CRC
+in CRC samples in two datasets, with percentages of unmapped                                             and control samples using a random forest classifier (Table 1). In
+reads ranging between 20 and 40 (Extended Data Fig. 5e). We                                              intra-cohort cross-validation using species-level taxonomic relative
+found 33,840 of the 2,479,274 single gene families detected at least                                     abundances, we observed performances ranging in area under the
+once to be associated with CRC and 30,475 associated with con-                                           receiver operating characteristic curve (AUC) score from 0.92 to 0.58 ,
+trols at FDR < 0.05 (9,154 and 7,115 differential gene families at                                       with an average in the deeply sequenced datasets of 0.81 (Fig. 2a).
+FDR < 0.005). We further observed 136 out of 590 metagenomically                                         When using the functional potential of the gut microbiome by
+reconstructed microbial functional pathways to be CRC-associated,                                        means of pathway abundances we observed decreased single-data-
+and only 37 associated with controls (Supplementary Table 3).                                            set cross-validation accuracies, with the exception of our Cohort1
+Among the most differentially abundant pathways (Fig. 1c) that are                                       (maximum 0.82 AUC, average 0.71 AUC; Extended Data Fig. 6a).
+at worst only minimally affected by potential confounding factors                                        The profiling of the more fine-grained UniRef90 gene-family abun-
+(Fig. 1e), we found starch, stachyose and galactose degradation to                                       dances improved predictions, with AUC scores reaching 0.8 for
+be associated with controls. These associations may indicate how                                         Cohort2 and an average of 0.77 in the deeply sequenced datasets
+potentially diet-associated changes in the functional repertoire of                                      (Fig. 2b). These results show that, while cross-validation AUCs can
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                                                                         669
+Articles                                                                                                                                                                                                                            Nature Medicine
+
+   a                                                                                                                                                       b
+                                            Cohort2                                                                                                                           Control enriched                            Carcinoma enriched
+
+                             YuJ_2015       VogtmannE_2016                                                                                                        Fusobacterium nucleatum
+                                                                                                                                                                         Parvimonas micra
+                             ZellerG_2014   Cohort1                                  Intersection size                                                                     Parvimonas spp.
+                                                                                                                                                                       Gemella morbillorum
+                             FengQ_2015     HanniganGD_2017   0              10                                  20               30                  40
+                                                                                                                                                               Peptostreptococcus stomatis
+                                                                                                                                                                     Solobacterium moorei
+                                                                                                                                                                    Clostridium symbiosum
+                                                                                                                                                                    Anaerococcus vaginalis
+                                                                                                                                                           Porphyromonas asaccharolytica
+                                                                                                                                                                      Prevotella intermedia
+                                                                                                                                                                        Bacteroides fragilis
+                                                                                                                                                                  Porphyromonas somerae
+                                                                      K. oxytoca, F. mortiferum, E. corrodens
+                                                                                                                                                                  Anaerococcus obesiensis
+                                                                      P. micra, Parvimonas spp., P. stomatis
+                                                                   A. defectiva, P. stercorea                                                                      Porphyromonas uenonis
+                                                                   S. constellatus, Peptostreptococcaceae spp.                                             Peptostreptococcus anaerobius
+                                                                   R. torques, G. morbillorum                                                                    Streptococcus constellatus
+                                                                  B. breve                                                                                          Granulicatella adiacens
+                                                                  H. filiformis                              Random effects
+                                                                                                                                                                                                                                Roseburia intestinalis
+                                                                  E. coli
+                                                                                                             Cohort1                                                                                                            Gordonibacter pamelaeae
+                                                                  Escherichia spp.
+                                                                  M. morganii                                Cohort2                                                                                                            Bifidobacterium catenulatum
+                                                                  Methanobrevibacter spp.
+                                                                                                             HanniganGD_2017                                                              –0.5               0.0              0.5              1.0
+                                                                  Anaerotruncus spp.
+                                                                  Clostridium sp. ATCC BAA 442               VogtmannE_2016
+                                                                  C. symbiosum                                                                             c
+                                                                                                             FengQ_2015                                            L-lysine fermentation to acetate and butanoate
+                                                                  S. moorei
+                                                                  P. asaccharolytica                         YuJ_2015                                                                L-glutamate degradation VIII
+                                                                  F. nucleatum                                                                                   L-alanine fermentation to propanoate and acetate
+                         0                                                                                                  ZellerG_2014
+                                                                                                                                                                                               Gluconeogenesis I
+
+
+Set size
+                        20                                                                                                                                                                L-histidine degradation I
+
+                                                                                                                                                               CMP-3-deoxy-D-manno-octulosonate biosynthesis I
+                        40
+                                                                                                                                                                                     Menaquinol-8 biosynthesis II
+                        60                                                                                                                                                              L-tryptophan biosynthesis
+
+                                                                                                                                                                                                                                           Calvin–Benson–Bassham cycle
+    d                                                                                  e                                                                                                                                                   Thiamin salvage
+                                                     Species                                                                           Pathways
+                                                                                                                                                                                                                                           Pentose phosphate pathway
+                         0.10   Adjusted by: age, sex, BMI                                                               Adjusted by: age, sex, BMI
+                                                                                                                                                                                                                                           L-serine and glycine biosynthesis I
+
+
+
+
+Adjusted coefficients                                                                Adjusted coefficients
+                                                                                                              0.00025                                                                                                                      Chorismate biosynthesis I
+                         0.05
+                                                                                                                                                                                                                                           Pyruvate fermentation to isobutanol
+                                                                                                                                                                                                                                           Aromatic amino acid biosynthesis
+                         0.00                                                                                 0.00000                                                                                                                      Galactose degradation I
+                                                                                                                                                                                                                                           Starch degradation V
+                        –0.05                                                                                                                                                                                                              S-adenosyl-L-methionine cycle I
+                                                                                                             –0.00025
+                                                                                                                                                                                                                                           Stachyose degradation
+                                                                                                                                                                                                                                           D-galactose degradation V
+                        –0.10
+                                                                                                                                                                                                      –1.0         –0.5       0.0        0.5         1.0
+                                 –0.10       –0.05    0.00        0.05    0.10                                        –0.00050 –0.00025 0.00000        0.00025   0.00050
+                                                                                                                                                                                                                           Effect size
+                                              Crude coefficients                                                                  Crude coefficients
+
+
+Fig. 1 | Reproducible taxonomic and functional microbial biomarkers across datasets when comparing carcinoma to healthy controls (no adenoma
+samples considered). a, UpSet plot showing the number of taxonomic biomarkers identified using LEfSE on MetaPhlAn2 species profiles shared by
+combinations of datasets (see Supplementary Table 3 for all single significant associations). b,c, Pooled effect sizes for the 20 significant features with the
+largest effect size, calculated using a meta-analysis of standardized mean differences and a random effects model on MetaPhlAn2 species abundances (b)
+and HUMANn2 pathway abundances (c). Bold lines represent the 95% confidence interval for the random effects model coefficient estimate. d, Scatter
+plot of crude and age-, sex- and BMI-adjusted coefficients obtained from linear models using MetaPhlAn2 species abundances. e, Scatter plot of crude
+and age-, sex- and BMI-adjusted coefficients obtained from linear models using HUMANn2 pathway abundances.
+
+
+
+
+be high for prediction of CRC in certain datasets, these are highly                                                                                        Pooling of training cohorts substantially improves prediction
+variable and dataset dependent.                                                                                                                            across datasets. To overcome the limitations of training on single
+   We then tested whether and how much the microbial signatures                                                                                            datasets (Supplementary Table 5), we performed a leave-one-data-
+of CRC remained predictive across distinct datasets and cohorts. To                                                                                        set-out (LODO) analysis46 in which classifiers were trained on six
+this end, we trained the classifier on each single ‘training’ dataset                                                                                      datasets combined, and validated on the left-out dataset, for each
+and applied the model to each distinct ‘testing’ dataset. For most                                                                                         dataset in turn. For taxonomic profiles, this approach improved
+datasets this led to decreased AUC values when compared to single                                                                                          both AUC values and inter-dataset consistency, producing AUCs
+cross-validation AUCs, and AUCs showed high variability across                                                                                             ≥0.80 (average = 0.84, s.d. = 0.03) for all six deeply sequenced
+cohorts (minimum 0.5 and maximum 0.86 AUC for cross-dataset).                                                                                              datasets (Fig. 2a). Predictors based on clade-specific markers
+These results were consistent when using either pathway or gene-                                                                                           also produced high, albeit more variable, AUC values, outper-
+family abundances as predictors (Extended Data Fig. 6a and Fig. 2b).                                                                                       forming taxonomic profiles in some datasets (Extended Data
+Overall, we highlight a poor transportability of the microbiome                                                                                            Fig. 6b). Gene families achieved slightly reduced performances,
+signature from one dataset to the other, and experimental choices45                                                                                        whereas pathway abundances produced substantially less accu-
+and cohort or population characteristics26 may explain the reduced                                                                                         rate predictions (Fig. 2b and Extended Data Fig. 6a). The tech-
+cross-study predictability when considering single datasets to train                                                                                       nical and host population diversity embedded in these training
+the model (Extended Data Fig. 6c,d).                                                                                                                       meta-cohorts may be crucial in improving the generalizability of
+
+670                                                                                                                                                        Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                                                                                                                              Articles
+a                                                                          MetaPhIAn2 species testing cohorts                                   b                                       HUMAnN2 gene-families testing cohorts
+                                                                               Ze llerG                                                                                                       Ze llerG
+                                                                               Yu        _2 014                                                                                               Yu        _2 014
+                                                                                  J_  20 15                                                                                                      J_  20 15
+                                                             Fe ng
+                                                                               C oh or                                                                                     Fe                 C oh or
+                                                                  Q            Vo      t1                                                                                     ngQ             Vo      t1
+                                                                    _201
+                                                                                  gt m  an                                                                                        _2             gt m  an
+                                                             C          5      H an        nE _2 01                                                                        C        015       H an        nE _2
+                                                               ohor
+                                                                                    ni ga nG       6                                                                         oh                    ni ga nG    016
+                                                                   t2          Av er ag      D _20 17                                                                          ort2           Av er ag      D _201
+                                                                                        e                                                                                                              e          7
+
+                                          FengQ_2015         0.92       0.71   0.79   0.72    0.67       0.60   0.50    0.67                                                   0.83   0.68    0.65       0.65    0.61    0.63   0.61       0.64
+                                                                                                                                                                                                                                                              1.0
+                                              Cohort2        0.83       0.87   0.77   0.86    0.66       0.66   0.68    0.69                                                   0.81   0.84    0.79       0.86    0.61    0.59   0.63       0.57
+                                                                                                                                                                                                                                                              0.9
+                                          ZellerG_2014       0.76       0.66   0.87   0.81    0.71       0.59   0.55    0.76                                                   0.55   0.68    0.76       0.61    0.51    0.49   0.47       0.74
+
+
+
+
+                                                                                                                                  HUMAnN2 gene-families training cohorts
+MetaPhIAn2 species training cohorts
+                                                                                                                                                                                                                                                              0.8
+                                             YuJ_2015        0.78       0.80   0.82   0.85    0.62       0.73   0.56    0.74                                                   0.72   0.80    0.63       0.83    0.65    0.69   0.52       0.69
+                                                                                                                                                                                                                                                                    AUC
+                                                                                                                                                                                                                                                              0.7
+                                              Cohort1        0.63       0.78   0.65   0.72    0.64       0.75   0.55    0.70                                                   0.61   0.69    0.74       0.62    0.64    0.67   0.56       0.65
+
+
+                                      VogtmannE_2016         0.77       0.79   0.75   0.83    0.80       0.63   0.59    0.77                                                   0.71   0.74    0.60       0.77    0.77    0.65   0.66       0.72               0.6
+
+
+                                      HanniganGD_2017        0.54       0.62   0.54   0.63    0.59       0.55   0.58    0.58                                                   0.64   0.66    0.46       0.62    0.65    0.58   0.49       0.61               0.5
+
+
+                                              Average        0.72    0.72      0.73   0.76    0.68       0.65   0.57    0.79                                               0.68       0.64    0.71       0.69    0.63   0.61    0.58       0.75
+
+
+                                         LODO species        0.86    0.81      0.84   0.88    0.83       0.80   0.62    0.81                                               0.82       0.79    0.85       0.87    0.77   0.72    0.62       0.78   LODO gene families
+
+
+                                         LODO markers        0.83    0.80      0.82   0.91    0.77       0.77   0.66    0.80                                               0.79       0.70    0.81       0.65    0.77   0.65    0.63       0.71   LODO pathways
+
+
+                                                 c                         Cohort1                         Cohort2                              d                                      Cohort1                           Cohort2
+                                                       1.0                                                                                                                                                                                        1.0
+                                                       0.9                                                                                                                                                                                        0.9
+                                                       0.8                                                                                                                                                                                        0.8
+                                                 AUC                                                                                                                                                                                                    AUC
+                                                       0.7                                                                                                                                                                                        0.7
+                                                       0.6                                                                                                                                                                                        0.6
+                                                       0.5                                                                                                                                                                                        0.5
+                                                             1      2      3    4     5      6 1     2      3    4     5      6                                            1      2     3     4      5     6 1      2     3     4      5     6
+                                                                 No. of training datasets          No. of training datasets                                                     No. of training datasets          No. of training datasets
+
+
+Fig. 2 | Assessment of prediction performances of the gut microbiome for CRC detection within and across cohorts. a, Cross-prediction matrix reporting
+prediction performances as AUC values obtained using a random forest model on species-level relative abundances (see Methods). Values on the
+diagonal refer to 20 times repeated tenfold stratified cross-validations. Off-diagonal values refer to the AUC values obtained by training the classifier on
+the dataset of the corresponding row and applying it to the dataset of the corresponding column. The LODO rows refer to the performances obtained by
+training the model on the species-level abundances and MetaPhlAn2 markers, using all but the dataset of the corresponding column and applying it to
+the dataset of the corresponding column. See Extended Data Fig. 6 for the marker cross-study validation matrix. b, Cross-prediction matrix of AUC values
+obtained using HUMANn2 UniRef90 gene-family abundances and HUMANn2 pathway relative abundances. See Extended Data Fig. 6 for the pathway
+cross-study validation matrix. c, Prediction performances for the two Italian cohorts at increasing numbers of external datasets considered for training the
+model. The dark yellow line interpolates the median AUC at each number of training datasets considered. See Extended Data Fig. 7 for the plots referred
+to in the other testing datasets. d, Prediction performances at increasing number of datasets considered in the training, using HUMANn2 UniProt90 gene-
+family abundances. See Extended Data Fig. 7 for the plots referred to in the other testing datasets.
+
+
+classifiers, as we found this LODO approach to be substantially                                                                      To assess the relation between population diversity in the train-
+and consistently more informative than a single-dataset cross-                                                                    ing meta-cohort and prediction performance, we considered
+validation, and independent investigations found similarly high                                                                   increasingly larger subsets of the available training cohorts. AUC
+LODO performances using different metagenomic profilers and                                                                       values sharply increased when moving from one to two training
+machine learning tools30.                                                                                                         datasets (10–13% median AUC improvement depending on the fea-
+   The model trained on taxonomic or functional features was                                                                      tures considered in the model), with less marked improvements at
+also shown to capture the above whole-microbiome biomarkers                                                                       further dataset additions (Fig. 2c,d and Extended Data Fig. 7). Large
+because the direct inclusion of alpha-diversity metrics, oral spe-                                                                and heterogeneous combined training sets thus generate improved
+cies abundance and a measure of metagenome mappability did                                                                        accuracy for identifying CRC cases in independent metagenomic
+not provide substantial improvements (average = 0.83, s.d. = 0.03                                                                 datasets.
+for the deeply sequenced datasets when the additional features
+were combined with the taxonomic model). However, based                                                                           Accurate predictive models using a minimal microbial signa-
+on the performance and variability of the predictive models                                                                       ture. The predictive CRC-associated microbiome signatures identi-
+across datasets, we recommend using species-level microbial                                                                       fied above considered all observed species and gene functions, and
+abundance as the main feature set for CRC status prediction in                                                                    would thus be impractical for clinical application without whole-
+a LODO setting.                                                                                                                   microbiome profiling. We thus sought to identify a minimal set of
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                                                                                                                                      671
+Articles                                                                                                                                                     Nature Medicine
+
+a                                           Random forest feature ranking                                          b              Random forest selected features AUC
+
+                                                                                                                        FengQ_2015       ZellerG_2014         Cohort2     HanniganGD_2017
+                                                                                                                        YuJ_2015         VogtmannE_2016       Cohort1     Cross-validation
+
+                                                                                                           1                                      Cross-validation
+      Peptostreptococcus stomatis      31      18        4       1        1    177 221                1                 1.0
+                                                                                                           5
+        Fusobacterium nucleatum        1        2     114        4    11       346                    2
+                                                                                                           9
+                 Parvimonas spp.       26       4        1       3        2    300 207                3                 0.9
+                                                                                                           13
+ Porphyromonas asaccharolytica         3        5     213       59    70           20    99           4
+                                                                                                           17
+             Gemella morbillorum 121            6        2      27        3    249 162                5
+                                                                                                           22           0.8
+           Clostridium symbiosum       6       105 133          22        4        8    205           8
+                                                                                                           26     AUC
+                Parvimonas micra 213           13        3       7        7    299                   10
+                                                                                                           30           0.7
+                  Escherichia coli     2       33     20        44    73           2     58          14
+                                                                                                           34
+      Streptococcus parasanguinis      29      21     80        38    100          95    4           23
+                                                                                                           38           0.6
+               Clostridium leptum      5       111    40        88    108          67    59          29
+            Clostridium hathewayi                                6        5        24                31    43
+                                       67      57     122                               202
+        Anaerotruncus colihominis      40      148 137          97    90           5    223          32    47
+                                                                                                                        0.5
+                  Prevotella copri     21       1     55        140   52           65   158          50    51                 2      4        8         16        32       64       all
+                                                                                                           55                                  No. of features used
+Lachnospiraceae 3 1 57FAA CT1          4       75     123 110 130                  14    69          67
+                                                                                                           60      c                                  LODO
+         Actinomyces graevenitzii      150 156           5      186 191 185              96          101
+                                                                                                                        1.0
+
+                    Alistipes spp. 225 207 276 218 238 128                                  2        166   60
+                                                                                                                        0.9
+      Lachnospiraceae 8 1 57FAA 193            65     159 195 234 129                       3        130   52
+
+                  Dialister invisus 146         3     143 149 171                  91    46          97    45
+                                                                                                                        0.8
+           Ruminococcus gnavus         16      71     107       76    84           93       5        64    37
+           Bifidobacterium longum 103          96        52     45    35           4     36          42           AUC
+                                                                                                           30
+                                                                                                                        0.7
+            Subdoligranulum spp.       46      81        36     46    76           3        6        26
+                                                                                                           23
+      Lachnospiraceae 5 1 63FAA        32      109       71      5    16       118       14          15
+                                                                                                           15           0.6
+             Eubacterium eligens       63      86        70     11    15           1     70           9
+                                                                                                           8
+          Streptococcus salivarius     25      28        54      2    66           23       1         7
+                                                                                                           1            0.5
+                                     01
+                                       6
+                                            01
+                                               5     t2
+                                                     or       01
+                                                                4     15       t1
+                                                                              or
+                                                                                         7
+                                                                                        01           ng                       2      4        8         16           32    64       all
+                                                                     20                          ki
+                               nE
+                                  _2
+                                       Q
+                                          _2
+                                               C
+                                                 oh
+                                                      rG
+                                                           _2    J_       oh
+                                                                          C        D
+                                                                                    _2          an
+                                                                                                lr                                             No. of features used
+                             an      ng              lle      Yu               nG        ba
+                           m      Fe                Ze                        ga         lo
+                          gt                                              ni            G
+                        Vo                                            an
+                                                                      H
+
+
+Fig. 3 | Ranking relevance of each species in the predictive models for each dataset and identification of a minimal microbial signature for CRC
+detection. a, The importance of each species for the cross-validation prediction performance in each dataset estimated using the internal random forest
+scores. Only species appearing in the five top-ranking features in at least one dataset are reported. b,c, Prediction performances at increasing number of
+microbial species obtained by retraining the random forest classifier on the top-ranking features identified with a first random forest model training in a
+cross-validation (b) and LODO setting (c). The rankings are obtained excluding the testing datasets to avoid overfitting.
+
+
+highly predictive microbial features by exploiting the internal fea-                                       only 64 gene families achieved prediction values >0.8 for the same
+ture ranking of the random forest classifier10. We found that P. sto-                                      datasets, and that using all 8,192 gene families improved AUC only
+matis was the species with the highest average rank. As expected,                                          slightly (2% improvement; Extended Data Fig. 8). Therefore, these
+other CRC-associated species including F. nucleatum, Parvimonas                                            results suggest that a stool-based diagnostic test using genetic mark-
+spp., P. asaccharolytica, G. morbillorum, C. symbiosum and P. micra                                        ers targeting a limited number of microbial species or genes would
+were also crucial to prediction accuracy (Fig. 3a), with the seven                                         serve as a promising clinical tool.
+top-ranked species for CRC detection amongst those with the larg-
+est effect sizes in the meta-analysis. Very few control-associated spe-                                    Microbiome signatures for adenomas are only partially predic-
+cies were ranked high in the learning models, further highlighting                                         tive. We assessed the ability to discriminate adenomas from con-
+that successful discrimination is achieved by CRC-specific rather                                          trols or carcinomas, using 27 newly sequenced adenoma-associated
+than control-specific microbial features.                                                                  samples and 116 adenoma-associated samples from available stud-
+    To evaluate how many microbial species or gene families are nec-                                       ies (Table 1). Adenomas could be distinguished from patients with
+essary to achieve prediction scores comparable to those obtained                                           CRC with lower accuracy than controls (average AUC = 0.69 ver-
+using the full set of features, we computed AUC values at increasing                                       sus 0.79; Extended Data Fig. 6e,f), and there are only eight species
+numbers of features. Feature ranking was performed internally to                                           that differentiate patients with adenomas from patients with car-
+each training fold to avoid overfitting. By applying this approach                                         cinomas in the meta-analysis (FDR < 0.05). Seven of these eight
+to all datasets (Fig. 3b,c), we found that using as few as 16 species                                      biomarkers are in common with the comparison between patients
+achieved cross-validation AUC >0.8 for the majority of the data-                                           with carcinomas and healthy individuals, and the LODO approach
+sets, with little improvement from using all remaining species (2%                                         did not improve discrimination of adenomas from CRC (average
+average improvement in AUC value). We also found that using                                                AUC = 0.68). Moreover, we found that no dataset could accurately
+
+672                                                                                                        Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                    Articles
+predict adenomas from control samples (maximum AUC = 0.58),                       with non-CRC samples (odds ratio 0.38, 95% confidence interval
+even when using a LODO approach (average AUC = 0.54). In the                      (0.25, 0.57), P = 0.0001, Fisher test), whereas cutC sequence types
+meta-analysis, none of the species were significantly different when              mostly belonging to Hungatella hathewayi and Clostridium aspara-
+contrasting samples from patients with adenomas and healthy                       giforme (Firmicutes) were significantly CRC-associated (odds ratio
+controls. These results reinforce previous findings18,19 that the ade-            2.14, 95% confidence interval (1.29, 3.56), P = 0.004, Fisher test), as
+noma-associated stool microbiome closely resembles that of the                    were sequence types belonging to Klebsiella oxytoca and Escherichia
+healthy gut.                                                                      coli (odds ratio 1.85, 95% confidence interval (1.13, 3.00), P = 0.02,
+                                                                                  Fisher test; Fig. 4b). Altogether, these findings highlight that
+Increased abundance of choline trimethylamine-lyase-encoding                      sequence variants of cutC can be strongly associated with disease,
+genes in CRC. Microbiome-derived metabolites, and specifically                    potentially because of corresponding differences in the efficacy of
+polyamines, have been implicated in carcinogenesis in both ani-                   choline degradation and TMA production.
+mal models and humans44. We chose to focus on trimethylamine
+(TMA), an amine produced by bacteria from choline and carnitine,                  Additional independent validation of predictive models. To
+because it has been shown to play a role in complex diseases such as              further validate our meta-analysis results, we considered two
+atherosclerosis and primary sclerosing cholangitis9,47. Since dietary             additional independent metagenomic cohorts from Germany30
+components have been linked with CRC risk5,6, we hypothesized                     (Validation Cohort1) and Japan (Validation Cohort2) comprising
+that the TMA-producing potential of the human gut microbiome                      a total of 100 patients with CRC and 105 controls (see Methods).
+could also be associated with CRC48. To test this hypothesis, we con-             The metagenomic predictive model was confirmed to be highly
+sidered the genes belonging to the main TMA-synthesis pathways                    accurate on these new cohorts (Fig. 5a), with an AUC of 0.90 and
+to reconstruct and quantify the presence of such genes in the CRC-                0.81 for the German and Japanese cohorts, when using the species-
+associated metagenomes. The main genes associated with TMA                        level taxonomic abundance model. Species newly associated with
+synthesis are those encoding choline TMA-lyase (cutC), l-carnitine                the CRC microbiome, such as S. tigurinus and S. dysgalactiae, were
+dioxygenase (yeaW) and the l-carnitine/gamma-butyrobetaine                        confirmed as having higher prevalence in CRC than in controls
+antiporter (caiT), and we identified these in 923, 5,185 and 5,709                in the two validation datasets (blocked Wilcoxon test52 P = 0.049
+available bacterial genomes, respectively.                                        and P = 0.011 for S. tigurinus and S. dysgalactiae, respectively).
+   Screening the seven CRC-associated metagenomic datasets, we                    Enrichment in the CRC-associated microbiome of these two spe-
+found that only one of these had a significant increase of caiT in                cies was confirmed also by the analysis of additional metagenomic
+CRC samples compared to controls, whereas no significant differ-                  datasets of inflammatory bowel disease53 and type 2 diabetes54,55, in
+ences were detected for yeaW (Extended Data Fig. 9a). However, we                 which the prevalence of S. tigurinus was always below 10% in both
+found increased abundance of cutC in CRC samples compared to                      cases and controls, whereas S. dysgalactiae was never detected in
+controls in all seven datasets (P < 0.05 by Wilcoxon rank-sum test                these additional datasets. We also confirmed species richness to be
+on reads per kilobase million (RPKM) abundances for five datasets;                significantly higher in CRC (P = 0.0005 for both validation datasets
+Fig. 4a). Meta-analysis indicated an overall strong association with              after rarefaction at the tenth percentile; Fig. 5b) as well as richness
+no evidence of heterogeneity (P = 0.001, μ = 0.27, 95% confidence                 of oral microbial species in the rarefied samples (blocked Wilcoxon
+interval (0.1, 0.42), I2 = 4.2%, Q-test = 0.65; Fig. 4b). We also ana-            test52 P = 0.003), and the abundance of cutC in CRC (P < 1 × 10–6).
+lyzed the abundance of the gene encoding the choline TMA-lyase-
+activating enzyme (cutD), finding a significant increase in CRC                   CRC specificity of microbiome predictive models. We performed
+(meta-analysis P = 0.001, μ = 0.32, 95% confidence interval (0.16,                additional experiments to validate the discriminative power of the
+0.47), I2 = 0%, Q-test = 0.96; Extended Data Fig. 9b,c). These results            above microbial signatures specifically for CRC and not for other
+indicate that TMA production might happen preferentially via                      potentially microbiome-linked disease conditions. To this end, we
+choline degradation, and not via carnitine, and could substantially               first considered 13 additional fecal samples sequenced from patients
+affect the amounts of TMA and trimethylamine oxide (TMAO)                         who underwent colonoscopy in our Cohort1 and that were origi-
+present in an individual49. Intermediate levels of cutC in adenomas               nally discarded because the final diagnosis pointed at diseases other
+(Fig. 4a) are further suggestive of a TMA action along the adenoma–               than adenoma or carcinoma, such as ulcerative colitis, Crohn’s dis-
+carcinoma axis. We validated the increased cutC gene abundance                    ease, uncategorized colitis and diverticular diseases. These were
+in CRC by quantitative PCR (qPCR)50 on a subset of samples from                   distinguishable from CRC samples based on the taxonomic model
+Cohort1 with sufficient DNA left after sequencing, and confirmed                  (0.78 cross-validation AUC, 0.80 AUC using only 16 species), and
+the metagenomic findings (one-tailed Wilcoxon signed-rank test                    only slightly decreased the AUC of the model trained on all the
+P = 0.024; Fig. 4d). Further quantification of cutC transcript abun-              other datasets when these were added to the non-disease (that is,
+dance from the co-extracted RNA in the same dataset also pointed                  healthy) category (from 0.83 to 0.79 in AUC). We then expanded
+to an overexpression of this gene in CRC (P = 0.035; Fig. 4e).                    this analysis to diseases for which at least two distinct large metage-
+   We further explored the role of cutC in the gut microbiome by                  nomic datasets are available in the public domain, and this includes
+reconstructing sample-specific sequence variants using a reference-               ulcerative colitis and Crohn’s disease53,56 as well as non-gastrointes-
+aided targeted assembly approach (see Methods). We found a large                  tinal diseases such as type 2 diabetes54,55. For this purpose we added
+sequence divergence for the gene encoding this enzyme that is                     samples randomly drawn from each of the case and control condi-
+known to occur in single copies in the genomes50, and we identi-                  tions of these additional disease cohorts to the control class of the
+fied four main sequence variants that are associated with the taxo-               new validation cohort, and recorded the variations in AUC when
+nomic structure (Fig. 4c and Extended Data Figs. 9d,e and 10a,b).                 attempting to predict CRC (see Methods). By comparing the AUCs
+Interestingly, the most prevalent (46.5%) cutC sequence type (>95%                obtained when adding non-CRC external cases and when adding
+identity over the full lenght of the gene) belonged to an unknown                 the corresponding external controls, we found for both validation
+species that was only recently assembled from metagenomics51                      cohorts a small decrease in prediction accuracy for both ulcerative
+and assigned to species-level genome bin ID 3957. This candidate                  colitis (3 and 4% for Validation Cohort1 and Validation Cohort2,
+species comprises 56 metagenomically assembled species51 and is                   respectively; Fig. 5c) and Crohn’s disease (5 and 9% for Validation
+placed within the Lachnospiraceae family, but the missing genus                   Cohort1 and Validation Cohort2, respectively; Fig. 5c), pointing to
+assignment confirms that several microbes remain undercharacter-                  a limited effect on the CRC model of samples from these two dis-
+ized in the human microbiome. This cutC variant was associated                    eases. For type 2 diabetes we observed an increase in the predictive
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                      673
+Articles                                                                                                                                                                                                                                Nature Medicine
+
+  a                                                                                                           c
+                              YuJ_2015             VogtmannE_2016                ZellerG_2014
+                 8 P < 0.01                     P = 0.049                     P = 0.07                                                                                                            Dataset
+                                                                                                                                                                                                  disease
+
+
+
+
+log cutC RPKM
+                 6                                                                                                                                                                                phylum
+
+                 4
+
+                 2
+
+                 0                                                                                                                                             ium
+                                                                                                                                                              ter
+                               Cohort2                   Cohort1              tro          om
+                                                                          on
+                                                                                  l
+                                                                                      ar      a                                                              bac
+                 8 P = 0.04                     P = 0.01                  C       en    cino                                                             Eu
+                                                                                Ad           ma
+
+
+
+
+ log cutC RPKM
+                                                                                           C                                                           ed
+                 6
+                                                                                                                                                      ltur
+                 4                                                                                                                               Un
+                                                                                                                                                    cu
+                 2                                                              Disease                                                                                                                                                                              E. coli
+                                                                                   Adenoma
+                 0                                                                 Carcinoma
+                                                                                   Control
+                            FengQ_2015            HanniganGD_2017
+                                                                                Sequence type
+                 8 P = 0.01                       P = 0.1
+                                                                                  Cluster 1
+                                                                                                                                                                                                                                                                   C D
+
+
+
+log cutC RPKM
+                                                                                  Cluster 2
+                 6                                                                Cluster 3
+                                                                                  Cluster 4
+                 4
+                                                                                Phylum                                                                                                                                                                         B
+                                                                                  Actinobacteria                                                               Co
+                 2                                                                                                                                                  llin
+                                                                                  Firmicutes
+                                                                                                                                                                        se                                                                                p.
+                                                                                  Proteobacteria
+                                                                                                                                                                           lla                                                                          sp
+                 0                                                                                                                                                                                                                                ium
+                                                                                                                                                                                 sp
+                                                                                Dataset                                                                                            p.                                                        trid
+                                                                                                                                                                                                                                          os
+                                                                                                                                                                                                                                        Cl
+                          l      a        a         l        a        a
+                      tro      om        m        tro    om        m                  Cohort1
+                     on     en       no        on       en       no                   Cohort2                                                                                             A Hungatella hathewayi
+                 C        Ad
+                                     ci
+                                    ar        C     Ad        ar
+                                                                 ci                   FengQ_2015
+                                 C                           C                        HanniganGD_2017                                                                                                                                                   A: Desulfovibrio spp.
+                                                                                      VogtmannE_2016                                                                                                                                                    B: Streptococcus spp.
+                                                                                      YuJ_2015                                                                                                                                                          C: Anaerococcus spp.
+                                                                                      ZellerG_2014                                                                                                                                                      D: Paenibacillus spp.
+
+  b                                                                                                               d                                                                                 e
+ Random effects model                                                                     0.27 [0.11, 0.42]                                                          P = 0.0235                                                                 P = 0.0346
+
+
+
+
+                                                                                                              Normalized cutC gene abundance
+                                                                                                                                               0.70                                                                              0.60
+ FengQ_2015                                                                           0.07 [−0.31, 0.45]
+
+
+                                                                                                                                                                                                    Normalized cutC transcript
+ Cohort2                                                                              0.07 [−0.44, 0.58]                                       0.65
+                                                                                                                                                                                                                                 0.55
+ VogtmannE_2016                                                                       0.16 [−0.23, 0.54]
+                                                                                                                                               0.60
+ HanniganGD_2017                                                                      0.20 [−0.33, 0.73]
+                                                                                                                                                                                                                                 0.50
+ Cohort1                                                                              0.33 [−0.22, 0.87]                                       0.55
+
+
+
+                                                                                                                                                                                                           abundance
+ ZellerG_2014                                                                             0.41 [0.04, 0.79]                                    0.50                                                                              0.45
+ YuJ_2015                                                                                 0.50 [0.14, 0.85]
+                                                                                                                                               0.45                                                                              0.40
+                                 −0.5            0           0.5                      1
+                                                                                                                                                0.0                                                                               0.0
+                                          Standardized mean difference                                                                                       Control                  Carcinoma                                         Control                Carcinoma
+
+
+Fig. 4 | Choline TMA-lyase gene cutC and its genetic variants are strong biomarkers for CRC-associated stool samples. a, Distribution of RKPM
+abundances obtained using ShortBRED for the choline TMA-lyase enzyme gene cutC. P values were computed by two-tailed Wilcoxon signed-rank tests
+comparing values between controls and carcinomas for each dataset. b, Forest plot reporting effect sizes calculated using a meta-analysis of standardized
+mean differences and a random effects model on cutC RPKM abundances between carcinomas and controls. c, A phylogenetic tree of sample-specific cutC
+sequence variants identified four main sequence variants. Tips with no circles represent cutC sequence variants from genomes absent from the datasets.
+Taxonomy was assigned based on mapping against existing cutC sequences (criteria of >80% breadth of coverage, >97% identity and minimum 2,000-
+nt alignment length). d,e, qPCR validation of cutC gene abundance (d) and cutC transcript abundance (normalized by total 16S rRNA gene/transcript
+abundance) (e) on a subset of DNA samples from Cohort1. qPCR validation P values were obtained by one-tailed Wilcoxon signed-rank test. The lower
+and upper hinges of boxplots presented in the Figures correspond to the 25th and 75th percentiles, respectively. The midline is the median. The upper and
+lower whiskers extend from the hinges to the largest (or smallest) value no further than ×1.5 interquartile range from the hinge, defined as the distance
+between the 25th and 75th percentiles. Data beyond the end of the whiskers are plotted individually.
+
+
+power in one dataset54 and a decrease in the other55 in both valida-                                                                             FOBT at multiple combinations of specificity and sensitivity levels
+tion datasets, and the CRC model always remained highly predic-                                                                                  (Fig. 5d), and on a par with the Wif-1 methylation test. Considering
+tive (AUC ≥ 0.80). Altogether, these results point to the existence                                                                              the LODO model predictions and the FOBT together in the same
+of a clear microbiome signature of CRC that is distinct from other                                                                               test improves the sensitivity/specificity trade-off at high specificity
+relevant diseases with a gastrointestinal component.                                                                                             levels when the integration is based on having at least one predic-
+                                                                                                                                                 tor positive, and at relatively lower specificity levels when requiring
+Relationship to currently available non-invasive clinical screen-                                                                                both predictors to be positive (Fig. 5d). Integrating the microbiome
+ing tests. To assess the potential of microbiome-based prediction                                                                                model with the Wif-1 methylation test resulted in similar perfor-
+models in comparison and in combination with currently used                                                                                      mances, and the use of the reduced microbiome model with only
+non-invasive clinical screening tests, we considered the fecal occult                                                                            16 species generally improved the results (Fig. 5d). We thus provide
+blood test (FOBT) and the Wif-1 methylation test available for                                                                                   evidence for the potential clinical value of microbiome predictive
+110 samples of the ZellerG_2014 cohort19. The LODO microbiome                                                                                    models, especially when considered together with other available
+model tested on this dataset proved to be slightly superior to the                                                                               non-invasive clinical tests.
+
+674                                                                                                                                              Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                                                                                             Articles
+              a                                   Random forest model                                      c                                       CRC specificity of the predictive models
+                                                                                                                                                               Validation Cohort1
+                                                                                         1.0                            1.0                              1.0                          1.0
+                                       V. Cohort1       0.90          0.91
+                                                                                                                        0.9                              0.9                          0.9
+                                                                                               AUC
+                                                                                                                        0.8                              0.8                          0.8
+                                       V. Cohort2       0.81          0.77
+                                                                                         0.5                     AUC
+                                                                                                                        0.7                              0.7                          0.7
+
+                                                 lf            fe                                                       0.6                                                           0.6
+                                                   ea            at ur                                                                                   0.6
+                                                     ture              es
+                                                         s
+                                               Al            16                                                         0.5                              0.5                          0.5
+                                                                                                                                HMP2 MetaHit                      HMP2 MetaHit                 T2Da       T2Db
+              b                               Validation of predictive biomarkers                                                                              Validation Cohort2
+                                                                                                                        1.0                              1.0                          1.0
+                                                   Carcinoma                    Control
+                                                        P = 4.699 × 10–7                                                0.9                              0.9                          0.9
+                                       140
+                                       120                                                                              0.8                              0.8                          0.8
+                                       100                                                                       AUC
+                                                                                                                        0.7                              0.7                          0.7
+
+               Richness
+                                         80
+                                         60                                                                             0.6                              0.6                          0.6
+                                         40
+                                                                                                                        0.5                              0.5                          0.5
+                                         20                                                                                      HMP2 MetaHit                     HMP2 MetaHit                 T2Da       T2Db
+                                          0
+                                                 P = 0.0005             P = 0.0005                                                            Control                      Crohn’s disease
+                                                             P = 0.003                                                                        Ulcerative colitis           Type-2 diabetes
+                                        50
+
+
+
+
+               Oral-species richness
+                                        40
+                                                                                                     d                                       Relationship to other non-invasive tests
+                                        30                                                                                    LODO
+                                        20                                                                                    LODO + FOBT ‘AND’                LODO + FOBT ‘OR’             FOBT
+
+                                        10                                                                                    LODO + WIF-1 ‘AND’               LODO + WIF-1 ‘OR’            WIF-1 methylation
+
+                                          0                                                                                          All features                                           16 features
+                                                                                                               1.0                                                         1.0
+                                                 P = 0.0155             P = 0.1636
+
+                                                       P = 1.523 × 10–7                                        0.8                                                         0.8
+                                          6
+                                                                                                                               0.7                                                    0.7
+                                          5
+
+
+
+
+               log cutC RPKM
+                                                                                                               0.6                                                         0.6
+                                          4
+                                                                                                     TPR                                                             TPR
+                                          3                                                                    0.4                                                         0.4
+                                          2
+                                          1                                                                    0.2                                                         0.2
+                                                                                                                               0.3                                                    0.3
+                                          0                                                                                      0.0                        0.4                         0.0                       0.4
+                                                P = 4.1122 × 10–6           P = 0.2366                         0.0                                                         0.0
+                                                                                                                  0.0     0.2        0.4     0.6      0.8      1.0            0.0   0.2      0.4   0.6      0.8     1.0
+                                                    V. Cohort1              V. Cohort2
+                                                                                                                                        FPR                                                    FPR
+
+
+Fig. 5 | Clinical potential and validation of the predictive biomarkers. a, Prediction performance of the taxonomic models trained on the seven datasets
+of Table 1 and applied to the new validation cohorts (using all features and the top 16 features) confirmed the strong reproducibility of metagenomic
+models for CRC across cohorts when sufficiently large training cohorts are available. Random forest internal ranking of the 16 most predictive species
+was obtained on each training fold separately to avoid overfitting. b, Species richness, rarefied oral species richness and cutC gene abundance (RPKM)
+are confirmed as strong biomarkers of CRC in the validation datasets30. P values underlying the panels refer to one-tailed Wilcoxon signed-rank test;
+P values overlying the panels refer to one-sided permutation-based Wilcoxon–Mann–Whitney tests, blocked for cohort. c, Prediction performances as
+AUC values on the validation cohorts when adding an external set of case and control samples from metagenomic cohorts of diseases other than CRC
+(Crohn’s disease, ulcerative colitis, type 2 diabetes (T2D)). The studies that were included are HMP56, MetaHit53, T2Da54 and T2Db55. d, Assessment of the
+potential of microbiome-based prediction models in comparison, and in combination, with current non-invasive clinical screening tests. Models integrating
+our LODO machine learning approach with the FOBT or the Wif-1 methylation test are termed OR and AND, depending on whether only one or both is
+required to be positive for the combined test to be positive. FPR, false-positive rate; TPR, true-positive rate; V., validation. The lower and upper hinges of
+boxplots presented in the Figures correspond to the 25th and 75th percentiles, respectively. The midline is the median. The upper and lower whiskers
+extend from the hinges to the largest (or smallest) value no further than ×1.5 interquartile range from the hinge, defined as the distance between the 25th
+and 75th percentiles. Data beyond the end of the whiskers are plotted individually.
+
+
+Discussion                                                                                                                             ously unpublished cohorts and five publicly available datasets.
+In the present study, we comprehensively assessed the CRC-                                                                             Whereas direct specific host–microbe interactions have been shown
+associated gut microbiome and its ability to distinguish newly                                                                         to cause certain malignancies in both in vitro and in vivo animal
+diagnosed patients with CRC from tumor-free controls. Our study                                                                        models11–13,57, and genotoxic determinants such as colibactin tend to
+was performed across multiple datasets and populations, through                                                                        be over-represented in the analyzed datasets30, indirect metabolite-
+a combined analysis of fecal CRC metagenomes from four previ-                                                                          mediated mechanisms may be more important in the development
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                                                                                           675
+Articles                                                                                                                      Nature Medicine
+
+of carcinomas although causality relations need to be tested. In             cohorts of potentially low generalizability, it is possible to obtain
+our analysis, we indeed found a reproducible panel of microbiome             better representation of the spectrum of cancer cases and controls.
+species (Fig. 1), whole-microbiome characteristics and strain-level          With appropriate methodology, artifactual findings due to batch
+biomarkers (Fig. 4) beyond the validated mechanisms of specific              effects present in any individual dataset can be avoided. The use
+variants of E. coli11,57 and Bacteroides fragilis57. We found that the gut   of large, diverse training sets enables the creation of more accurate
+microbiome in CRC has greater richness than controls, partially due          diagnostic models, and the availability of independent validation
+to the presence of oral cavity-associated species rarely found in the        datasets enables more realistic estimation of that accuracy. Future
+healthy gut, challenging the widespread assumption that decreased            shotgun metagenomic studies of the intestinal mucosa-associated
+alpha-diversity is generally associated with intestinal dysbiosis58,59.      microbiome, which are currently infeasible due to excessive human
+    The identification of reproducible microbial biomarkers for              DNA contamination29, will be important to further refine the list
+CRC may enable the design of non-invasive diagnostic tools. We               of CRC-associated gut microbes. Nevertheless, this study identifies
+developed machine learning models able to distinguish patients               highly reproducible microbial CRC biomarkers and points to the
+with carcinomas from controls with an average performance of                 potential for non-invasive microbial diagnostic tests to supplement
+0.84 AUC when validated on datasets excluded from the training               existing screening.
+of the model (Fig. 2a). Importantly, these performances are quite
+independent of specific methodological choices given that comple-            Online content
+mentary investigations30 using different metagenomic profilers and           Any methods, additional references, Nature Research reporting
+machine learning approaches achieved very similar results. Further           summaries, source data, statements of data availability and asso-
+increase in prediction performance can be achieved using larger              ciated accession codes are available at https://doi.org/10.1038/
+datasets (n > 1,000) rather than different methodologies (Figs. 2c,d         s41591-019-0405-7.
+and Extended Data Fig. 7), and the combination of a microbiome
+model with other clinical tests and patient risk factors could sub-          Received: 29 May 2018; Accepted: 20 February 2019;
+stantially improve this diagnostic accuracy (Fig. 5d). Current clini-        Published online: 1 April 2019
+cal pre-colonoscopy screening tests (for example, FOBT, Wif-1)
+remain cheaper, but microbiome-based CRC prediction models                   References
+                                                                             1. Ferlay, J. et al. Cancer incidence and mortality worldwide: sources,
+enable a very high diagnostic potential that increases with the num-             methods and major patterns in GLOBOCAN 2012. Int. J. Cancer 136,
+ber of microbes or microbial genes used, with single biomarkers                  E359–E386 (2015).
+being much inferior to multi-feature diagnostic models. However,             2. Siegel, R., Desantis, C. & Jemal, A. Colorectal cancer statistics, 2014. CA
+near maximal accuracy was achieved with as few as 15–25 microbes                 Cancer J. Clin. 64, 104–117 (2014).
+                                                                             3. Frank, C., Sundquist, J., Yu, H., Hemminki, A. & Hemminki, K. Concordant
+(Fig. 3b,c) or a few hundred genes (Extended Data Fig. 8), poten-                and discordant familial cancer: familial risks, proportions and population
+tially enabling inexpensive clinical microbiological tests to be per-            impact. Int. J. Cancer 140, 1510–1516 (2017).
+formed on stool samples. Prospective studies of these biomarkers             4. Foulkes, W. D. Inherited susceptibility to common cancers. N. Engl. J. Med.
+are needed to establish whether they can identify individuals at ele-            359, 2143–2153 (2008).
+vated risk of CRC and provide the possibility of disease prevention.         5. Johnson, C. M. et al. Meta-analyses of colorectal cancer risk factors. Cancer
+                                                                                 Causes Control 24, 1207–1222 (2013).
+    The diversity and subject-specificity of the human gut microbi-          6. Huxley, R. R. et al. The impact of dietary and lifestyle risk factors on risk of
+ome is not yet fully uncovered, with many microbial genes having                 colorectal cancer: a quantitative overview of the epidemiological evidence.
+unknown function and with strain-level diversity that is missed by               Int. J. Cancer 125, 171–180 (2009).
+many current analysis pipelines51. Large-scale shotgun metagenom-            7. Schmidt, T. S. B., Raes, J. & Bork, P. The human gut microbiome: from
+ics can begin to overcome these limitations, as shown here by the                association to modulation. Cell 172, 1198–1215 (2018).
+                                                                             8. Thomas, R. M. & Jobin, C. The microbiome and cancer: is the ‘oncobiome’
+identification of a link between CRC and the microbial pathway                   mirage real? Trends Cancer Res. 1, 24–35 (2015).
+producing TMA from choline49. The gene encoding for the key                  9. Jie, Z. et al. The gut microbiome in atherosclerotic cardiovascular disease.
+enzyme for this pathway, cutC choline TMA-lyase, is both more                    Nat. Commun. 8, 845 (2017).
+abundant and expressed in the gut microbiome of patients with                10. Pasolli, E., Truong, D. T., Malik, F., Waldron, L. & Segata, N. Machine
+                                                                                 learning meta-analysis of large metagenomic datasets: tools and biological
+carcinomas, with specific variants of cutC characterizing controls,
+                                                                                 insights. PLoS Comput. Biol. 12, e1004977 (2016).
+adenomas and carcinomas (Fig. 4). TMA-producing choline lyases               11. Cougnoux, A. et al. Bacterial genotoxin colibactin promotes colon tumour
+have been found to be associated with atherosclerosis9, and higher               growth by inducing a senescence-associated secretory phenotype. Gut 63,
+plasma TMA oxide and choline levels have been reported to be cor-                1932–1942 (2014).
+related with CRC risk60,61. We highlight the importance of strain-           12. Wu, S. et al. A human colonic commensal promotes colon tumorigenesis
+                                                                                 via activation of T helper type 17 T cell responses. Nat. Med. 15,
+level gene resolution in understanding any potential carcinogenic                1016–1022 (2009).
+role of cutC. CRC-associated variants mostly originated from H.              13. Chung, L. et al. Bacteroides fragilis toxin coordinates a pro-carcinogenic
+hathewayi, C. asparagiforme, K. oxytoca and E. coli, whereas no                  inflammatory cascade via targeting of colonic epithelial cells. Cell Host
+significant enrichment was detected for a cutC variant carried by                Microbe 23, 203–214.e5 (2018).
+an unexplored, recently discovered candidate species in the family           14. Kostic, A. D. et al. Genomic analysis identifies association of Fusobacterium
+                                                                                 with colorectal carcinoma. Genome Res. 22, 292–298 (2012).
+Lachnospiraceae51. Thus, genetic variants in key microbial genes             15. Kostic, A. D. et al. Fusobacterium nucleatum potentiates intestinal
+involved in choline-induced TMA production by the gut microbi-                   tumorigenesis and modulates the tumor-immune microenvironment. Cell
+ome are a plausible and potential mechanism for colorectal carci-                Host Microbe 14, 207–215 (2013).
+nogenesis. Other partially diet-dependent microbiome factors can             16. Rubinstein, M. R. et al. Fusobacterium nucleatum promotes colorectal
+contribute to the promotion of carcinogenesis, and we found in our               carcinogenesis by modulating E-cadherin/β-catenin signaling via its FadA
+                                                                                 adhesin. Cell Host Microbe 14, 195–206 (2013).
+parallel work that genes for secondary bile acid conversion are con-         17. Yu, J. et al. Metagenomic analysis of faecal microbiome as a tool towards
+sistently enriched in CRC-associated microbiomes30. Further work                 targeted non-invasive biomarkers for colorectal cancer. Gut 66, 70–78 (2017).
+is needed to establish the changes in protein structure and function         18. Feng, Q. et al. Gut microbiome development along the colorectal adenoma–
+associated with the genetic variants of the diet-related microbial               carcinoma sequence. Nat. Commun. 6, 6528 (2015).
+genes found here to be enriched in the CRC microbiome.                       19. Zeller, G. et al. Potential of fecal microbiota for early‐stage detection of
+                                                                                 colorectal cancer. Mol. Syst. Biol. 10, 766 (2014).
+    Analysis of cancer cohorts that are heterogeneous for geography,         20. Vogtmann, E. et al. Colorectal cancer and the human gut microbiome:
+ethnicity and lifestyle presents a distinct opportunity for studying             reproducibility with whole-genome shotgun sequencing. PLoS One 11,
+the cancer-associated microbiome. By combining multiple small                    e0155362 (2016).
+
+676                                                                          Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                                        Articles
+21. Baxter, N. T., Ruffin, M. T., Rogers, M. A. M. & Schloss, P. D. Microbiota-       52. Hothorn, T., Hornik, K., van de Wiel, M. A. & Zeileis, A. A lego system for
+    based model improves the sensitivity of fecal immunochemical test for                 conditional inference. Am. Stat. 60, 257–263 (2006).
+    detecting colonic lesions. Genome Med. 8, 37 (2016).                              53. Nielsen, H. B. et al. Identification and assembly of genomes and genetic
+22. Zackular, J. P., Rogers, M. A. M., Ruffin, M. T. 4th & Schloss, P. D. The             elements in complex metagenomic samples without using reference genomes.
+    human gut microbiome as a screening tool for colorectal cancer. Cancer Prev.          Nat. Biotechnol. 32, 822–828 (2014).
+    Res. 7, 1112–1121 (2014).                                                         54. Karlsson, F. H. et al. Gut metagenome in European women with normal,
+23. Drewes, J. L. et al. High-resolution bacterial 16S rRNA gene profile                  impaired and diabetic glucose control. Nature 498, 99–103 (2013).
+    meta-analysis and biofilm status reveal common colorectal cancer consortia.       55. Qin, J. et al. A metagenome-wide association study of gut microbiota in type
+    NPJ Biofilms Microbiomes 3, 34 (2017).                                                2 diabetes. Nature 490, 55–60 (2012).
+24. Pollock, J., Glendinning, L., Wisedchanwet, T. & Watson, M. The madness of        56. Integrative HMP (iHMP) Research Network Consortium. The integrative
+    microbiome: attempting to find consensus ‘best practice’ for 16S microbiome           human microbiome project: dynamic analysis of microbiome-host omics
+    studies. Appl. Environ. Microbiol. 84, e02627–17 (2018).                              profiles during periods of human health and disease. Cell Host Microbe 16,
+25. Segata, N. On the road to strain-resolved comparative metagenomics.                   276–289 (2014).
+    mSystems 3, e00190–17 (2018).                                                     57. Dejea, C. M. et al. Patients with familial adenomatous polyposis harbor
+26. Truong, D. T., Tett, A., Pasolli, E., Huttenhower, C. & Segata, N. Microbial          colonic biofilms containing tumorigenic bacteria. Science 359,
+    strain-level population structure and genetic diversity from metagenomes.             592–597 (2018).
+    Genome Res. 27, 626–638 (2017).                                                   58. Manichanh, C. et al. Reduced diversity of faecal microbiota in Crohn’s disease
+27. Pasolli, E. et al. Accessible, curated metagenomic data through                       revealed by a metagenomic approach. Gut 55, 205–211 (2006).
+    ExperimentHub. Nat. Methods 14, 1023 (2017).                                      59. Le Chatelier, E. et al. Richness of human gut microbiome correlates with
+28. Dai, Z. et al. Multi-cohort analysis of colorectal cancer metagenome identified       metabolic markers. Nature 500, 541–546 (2013).
+    altered bacteria across populations and universal bacterial markers.              60. Bae, S. et al. Plasma choline metabolites and colorectal cancer risk in
+    Microbiome 6, 70 (2018).                                                              the Women’s Health Initiative Observational Study. Cancer Res. 74,
+29. Quince, C., Walker, A. W., Simpson, J. T., Loman, N. J. & Segata, N.                  7442–7452 (2014).
+    Shotgun metagenomics, from sampling to analysis. Nat. Biotechnol. 35,             61. Xu, R., Wang, Q. & Li, L. A genome-wide systems analysis reveals strong
+    833–844 (2017).                                                                       link between colorectal cancer and trimethylamine N-oxide (TMAO), a gut
+30. Wirbel, J. et al. Meta-analysis of fecal metagenomes reveals global microbial         microbial metabolite of dietary meat and fat. BMC Genomics 16(Suppl 7),
+    signatures that are specific for colorectal cancer. Nat. Med. https://doi.            S4 (2015).
+    org/10.1038/s41591-019-0406-6 (2019).
+31. Hannigan, G. D., Duhaime, M. B., Ruffin, M. T. 4th, Koumpouras, C. C. &           Acknowledgements
+    Schloss, P. D. Diagnostic potential and interactive dynamics of the colorectal    We thank the members of the Segata, Naccarati and Waldron groups for insightful
+    cancer virome. MBio 9, e02248–18 (2018).                                          discussions, all the volunteers enrolled in the study, the NGS facility at the University
+32. Thomas, A. M. et al. Tissue-associated bacterial alterations in rectal            of Trento for performing the metagenomic sequencing, and the HPC facility at the
+    carcinoma patients revealed by 16S rRNA community profiling. Front. Cell.         University of Trento for supporting the computational experiments. This work was
+    Infect. Microbiol. 6, 179 (2016).                                                 primarily supported by Lega Italiana per La Lotta contro i Tumori to N.S., F.C. and A.N.,
+33. Gao, Z., Guo, B., Gao, R., Zhu, Q. & Qin, H. Microbiota disbiosis is              and by Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP, grant No.
+    associated with colorectal cancer. Front. Microbiol. 6, 20 (2015).                16/23527-2) to A.M.T. This work was also partially supported by the Conselho Nacional
+34. Ahn, J. et al. Human gut microbiome and risk for colorectal cancer. J. Natl       de Pesquisa e Desenvolvimento (CNPq, Brazil) to J.C.S. and E.D.-N.; by FAPESP (grant
+    Cancer Inst. 105, 1907–1911 (2013).                                               No. 14/26897-0); by Associação Beneficente Alzira Denise Hertzog Silva (ABADHS,
+35. Flemer, B. et al. The oral microbiota in colorectal cancer is distinctive and     Brazil) and PRONON/SIPAR to E.D.-N.; by Coordenação de Aperfeiçoamento de
+    predictive. Gut 67, 1454–1463 (2017).                                             Pessoal de Nível Superior – Brazil (CAPES) (Finance Code No. 001 to J.C.S.; by the
+36. Brito, I. L. et al. Mobile genes in the human microbiome are structured from      Italian Institute for Genomic Medicine (IIGM) and Compagnia di San Paolo Torino
+    global to individual scales. Nature 535, 435–439 (2016).                          to A.N, A.F., B.P. and S.T.; by Fondazione Umberto Veronesi ‘Post-doctoral Fellowship
+37. Human Microbiome Project Consortium. Structure, function and diversity of         Years 2014, 2015, 2016, 2017 and 2018’ to B.P. and S.T.; by the Grant Agency of the Czech
+    the healthy human microbiome. Nature 486, 207–214 (2012).                         Republic (grant No. 17-16857S) to A.N.; by Fondazione Umberto Veronesi (grant No.
+38. Bonder, M. J. et al. The effect of host genetics on the gut microbiome. Nat.      FUV-14-SG-GANDINI) to S.G.; by the European Union H2020 Marie Curie grant (No.
+    Genet. 48, 1407 (2016).                                                           707345) to E.P.; by the European Research Council (ERC-STG project MetaPG) to N.S.;
+39. Segata, N. et al. Metagenomic biomarker discovery and explanation. Genome         by MIUR ‘Futuro in Ricerca’ (grant No. RBFR13EWWI_001) to N.S.; by the People
+    Biol. 12, R60 (2011).                                                             Programme (Marie Curie Actions) of the European Union FP7 and H2020 to N.S.; and
+40. Xie, Y.-H. et al. Fecal Clostridium symbiosum for noninvasive detection of        by the National Cancer Institute (grant No. U24CA180996) and National Institute of
+    early and advanced colorectal cancer: test and validation studies.                Allergy and Infectious Diseases (grant No. 1R21AI121784-01) of the National Institutes
+    EBioMedicine 25, 32–40 (2017).                                                    of Health to L.W. B.P. is the recipient of a Fulbright Research Scholarship (year 2018).
+41. Boleij, A., van Gelder, M. M. H. J., Swinkels, D. W. & Tjalsma, H. Clinical       We acknowledge funding from EMBL, DKFZ, the Huntsman Cancer Foundation,
+    Importance of Streptococcus gallolyticus infection among colorectal               the Intramural Research Program of the National Cancer Institute, ETH Zürich and
+    cancer patients: systematic review and meta-analysis. Clin. Infect. Dis. 53,      the following external sources: the European Research Council (CancerBiome, grant
+    870–878 (2011).                                                                   No. ERC-2010-AdG_20100317) to P.B.; Microbios (No. ERC-AdG-669830) to P.B.;
+42. Fijan, S. Microorganisms with claimed probiotic properties: an overview of        the Novo Nordisk Foundation (grant No. NNF10CC1016515) to M.A.; the Danish
+    recent literature. Int. J. Environ. Res. Public Health 11, 4745–4767 (2014).      Diabetes Academy supported by the Novo Nordisk Foundation and TARGET research
+43. Apweiler, R. et al. UniProt: the universal protein knowledgebase. Nucleic         initiative (Danish Strategic Research Council, grant No. 0603-00484B) to M.A.; the
+    Acids Res. 32, D115–D119 (2004).
+                                                                                      Matthias-Lackas Foundation (to C.M.U.); the National Cancer Institute (grant Nos. R01
+44. Gerner, E. W. & Meyskens, F. L. Jr Polyamines and cancer: old molecules,
+                                                                                      CA189184, R01 CA207371, U01 CA206110 and P30 CA042014 ll to C.M.U.); the BMBF
+    new understanding. Nat. Rev. Cancer 4, 781–792 (2004).
+                                                                                      (the de.NBI network, grant No. 031A537B) to P.B.; the ERA-NET TRANSCAN project
+45. Costea, P. I. et al. Towards standards for human fecal sample processing in
+                                                                                      (No. 01KT1503) to C.M.U.; and the Helmut Horten Foundation (to S.S.). For Validation
+    metagenomic studies. Nat. Biotechnol. 35, 1069–1076 (2017).
+                                                                                      Cohort2, funding was provided by grants from the National Cancer Center Research
+46. Riester, M. et al. Risk prediction for late-stage ovarian cancer by meta-
+                                                                                      and Development Fund (grant Nos. 25-A-4, 28-A-4 and 29-A-6); Practical Research
+    analysis of 1525 patient samples. J. Natl Cancer Inst. 106, dju048 (2014).
+                                                                                      Project for Rare/Intractable Diseases from the Japan Agency for Medical Research and
+47. Kummen, M. et al. Elevated trimethylamine-N-oxide (TMAO) is associated
+                                                                                      Development (AMED, grant No. JP18ek0109187); JST (Japan Science and Technology
+    with poor prognosis in primary sclerosing cholangitis patients with normal
+                                                                                      Agency)-PRESTO (grant No. JPMJPR1507); Japan Society for the Promotion of Science
+    liver function. United European Gastroenterol. J. 5, 532–541 (2017).
+                                                                                      KAKENHI (grant Nos. 16J10135, 142558 and 221S0002); Joint Research Project of the
+48. Oellgaard, J., Winther, S. A., Hansen, T. S., Rossing, P. & von Scholten, B. J.
+                                                                                      Institute of Medical Science; the University of Tokyo; the Takeda Science Foundation;
+    Trimethylamine N-oxide (TMAO) as a new potential therapeutic target for
+                                                                                      and the Suzuken Memorial Foundation.
+    insulin resistance and cancer. Curr. Pharm. Des. 23, 3699–3712 (2017).
+49. Kalnins, G. et al. Structure and function of CutC choline lyase from
+    human microbiota bacterium Klebsiella pneumoniae. J. Biol. Chem. 290,             Author contributions
+    21732–21740 (2015).                                                               N.S., A.M.T., L.W. and A.N conceived the study. N.S. supervised the study. C.P., S.G.,
+50. Rath, S., Heidrich, B., Pieper, D. H. & Vital, M. Uncovering the                  D.S., S.T., A.F., G.G., M.T., B.P, M.R. and A.N. organized the clinical study, recruited
+    trimethylamine-producing bacteria of the human gut microbiota. Microbiome         patients and collected samples. F. Armanini generated metagenomic data. A.M.T., P.M.,
+    5, 54 (2017).                                                                     F. Asnicar, E.P., M.Z., F.B., N.K. and G.F. collected and analyzed the metagenomic data.
+51. Pasolli, E. et al. Extensive unexplored human microbiome diversity revealed       A.M.T., P.M., F. Asnicar, E.P., M.Z., G.F., J.W., G.Z. and L.W. performed machine learning
+    by over 150,000 genomes from metagenomes spanning age, geography, and             and statistical analyses. F. Armanini, S.T., S. Manara, A.T., B.P. and A.N. performed
+    lifestyle. Cell 176, 1–14 (2019).                                                 validation experiments. S. Mizutani., H.S., S. Shiba, T.S., S.Y., T.Y., J.W., P.S.-K, C.M.U.,
+
+Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine                                                                                               677
+Articles                                                                                                                                        Nature Medicine
+H.B., M.A., P.B. and G.Z. provided additional validation data. A.M.T., P.M., L.W. and       Additional information
+N.S. designed and produced the figures. A.M.T., P.M. and N.S. wrote the manuscript          Extended data is available for this paper at https://doi.org/10.1038/s41591-019-0405-7.
+with contributions from S. Manara, F.C., E.D.-N., J.C.S., M.R., L.W. and A.N. All authors
+                                                                                            Supplementary information is available for this paper at https://doi.org/10.1038/
+discussed and approved the manuscript.
+                                                                                            s41591-019-0405-7.
+                                                                                            Reprints and permissions information is available at www.nature.com/reprints.
+Competing interests                                                                         Correspondence and requests for materials should be addressed to N.S.
+P.B., G.Z., A.Y.V. and S.S. are named inventors on a patent (EP2955232A1: Method for
+diagnosing colorectal cancer based on analyzing the gut microbiome). All other authors      Publisher’s note: Springer Nature remains neutral with regard to jurisdictional claims in
+declare no competing interests as defined by Nature Research, or other interests that       published maps and institutional affiliations.
+might be perceived to influence the results and/or discussion reported in this paper.       © The Author(s), under exclusive licence to Springer Nature America, Inc. 2019
+
+
+
+
+678                                                                                         Nature Medicine | VOL 25 | APRIL 2019 | 667–678 | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                                       Articles
+Methods                                                                                   colitis and 248 controls; KarlssonFH_2013 (ref. 54), comprising 53 patients with
+Italian cohorts of patients with CRC, adenomas and controls. The two clinical             type 2 diabetes and 43 controls; QinJ_2012 (ref. 55), comprising 172 patients with
+studies performed here were approved by the relevant ethics committees (Cohort1:          type 2 diabetes and 174 controls; and we downloaded 1,339 metagenomes from the
+Ethics Committee of Azienda Ospedaliera ‘SS. Antonio e Biagio e C. Arrigo’ of             Human Microbiome Consortium phase-2 cohort56, comprising 598 patients with
+Alessandria, Italy, protocol No. Colorectal_miRNA_CEC2014; and Cohort2:                   Crohn’s disease, 375 patients with ulcerative colitis and 365 controls.
+Ethics Committee of European Institute of Oncology of Milan, Italy, protocol No.
+R107/14-IEO 118). Informed consent was obtained from all participants.                    Sequence preprocessing and taxonomic and functional profiling. Fecal
+    For Cohort1, samples were collected from patients at the Clinica S. Rita in           metagenomic shotgun sequences obtained from the Italian cohorts were
+Vercelli, Italy. Patients with hereditary CRC syndromes, with a previous history          subjected to a preprocessing pipeline whereby sequences were quality filtered
+of CRC and with uncompleted or poorly cleaned colonoscopy were excluded                   using trim_galore (parameters: --nextera --stringency 5 --length 75 --quality 20
+from the study. Patients were recruited at initial diagnosis and had not received         --max_n 2 --trim-n), discarding all reads of quality less than 20 and shorter than
+any treatment before fecal sample collection. Subjects reporting the use of               75 nucleotides. Filtered reads were then aligned to the human genome (hg19) and
+antibiotics during the 6 months before the sample collection were excluded from           the PhiX genome for human and contaminant DNA removal using bowtie2 (ref.
+the study. On the basis of colonoscopy results, recruited subjects were classified
+                                                                                          62
+                                                                                            ). Thirteen samples having less than 2 Gb of host-decontaminated DNA were
+into three categories: (1) healthy subjects: individuals with colonoscopy negative        excluded from the study.
+for tumor, adenomas and other diseases; (2) patients with adenoma: individuals                 We used MetaPhlAn2 (ref. 63) for quantitative profiling of the taxonomic
+with colorectal adenoma(s); and (3) patients with CRC: individuals with newly             composition of the microbial communities of all metagenomic samples, whereas
+diagnosed CRC. A total of 93 subjects were initially recruited, and the 80 that           HUMANn2 (ref. 64) was used to profile pathway and gene-family abundances. The
+passed quality control (see below) were divided into 29 patients with CRC,                profiles generated for the six public cohorts, along with their metadata and the
+27 adenomas and 24 controls. An additional 13 subjects affected by inflammatory           two newly sequenced cohorts, are available through the curatedMetagenomicData
+gastrointestinal tract diseases (ulcerative and Crohn’s colitis, diverticular diseases)   R package27. Oral species were defined in this work by analyzing the 463 oral
+were recruited and fecal samples were subsequently used as a part of the final            samples from the Human Microbiome Project dataset37 and the 140 saliva samples
+validation. Stool was collected in stool nucleic acid collection and transport            from ref. 36. Specifically, all species with >0.1% abundance and >5% prevalence
+tubes with RNA stabilizing solution (Norgen Biotek Corp.) and returned before             were deemed to be of oral origin. For F. nucleatum marker analysis, we extracted
+performing the colonoscopy. Aliquots of stool samples were stored at –80 °C until         MetaPhlAn2 clade-specific markers from each sample sam file and considered a
+use. DNA was extracted from aliquots of fecal samples using the Qiamp DNA                 marker to be present if the coverage was greater than zero.
+stool kit (Qiagen) following the manufacturer’s instructions. Total RNA from feces
+was extracted using the Stool Total RNA Purification Kit (Norgen Biotek Corp.)            The random forest-based machine learning approach. Our machine learning
+following the manufacturer’s instructions.                                                analyses exploited four types of microbiome quantitative profiles: taxonomic
+    For Cohort2, a total of 60 subjects were recruited at the European Oncology           species-level relative abundances and marker presence or absence patterns
+Institute in Milan, Italy and were divided into 32 patients with CRC and 28 controls.     inferred by MetaPhlAn2 (ref. 63) and gene-family and pathway-relative abundances
+Controls, matched for age (±5 years) and season when blood withdrawn (±2 years),          estimated by HUMAnN2 (ref. 64).
+were recruited among subjects who underwent recent colonoscopy and had                        All machine learning experiments used random forest65, as this algorithm has
+negative or no other relevant gastrointestinal disorders. Subjects reporting the          been shown to outperform, on average, other learning tools for microbiome data10.
+use of antibiotics in the 6 months before sample collection were excluded. Fecal          The code generating the analyses and the Figures is available at https://bitbucket.
+samples were collected from healthy subjects and patients (before surgery, or any         org/CibioCM/multidataset_machinelearning/src/, and is based on MetAML10 with
+other cancer treatment) and directly frozen at −80 °C in resuspension buffer (TES         the random forest implementation taken from Scikit-Learn v.0.19.0 (ref. 66). We
+buffer: 50 mM Tris-HCL, 10 mM NaCl, 10 mM EDTA, pH 7.5) and kept in liquid                used an ensemble of 1,000 estimator trees and Shannon entropy to evaluate the
+nitrogen until DNA extraction. DNA was extracted from fecal samples with the              quality of a split at each node of a tree. The two hyperparameters for the minimum
+GNOME DNA isolation kit (MP Biochemicals).                                                number of samples per leaf and for the number of features per tree were set, as
+    Sequencing libraries were prepared using the Nextera XT DNA Library                   indicated elsewhere67, to 5 and 30%, respectively. For the marker presence/absence
+Preparation Kit (Illumina), following the manufacturer’s guidelines. Sequencing           profiles we used a number of features equal to the square root of the total number
+was performed on a HiSeq2500 (Illumina) at the internal sequencing facility at            of features, and this percentage was further decreased to 1.0 when using gene-
+University of Trento, Trento, Italy.                                                      family profiles as these have a substantially higher number of features (>2 million).
+                                                                                          The experiments ran on reduced sets of input features (Fig. 4 and Extended Data
+Public metagenomic cohorts of patients with CRC, adenomas and controls.                   Fig. 8) avoided feature subsampling when fewer than 128 features were used
+We downloaded five public fecal shotgun CRC datasets covering samples from six            (Extended Data Fig. 8).
+different countries, totaling 313 patients with CRC, 143 adenomas and 308 controls
+(Table 1), and now available in curatedMetagenomicData27. We manually curated             Application and evaluation of the learning models. The inside-dataset prediction
+metadata tables for the public cohorts according to the curatedMetagenomicData27          capability was measured through tenfold cross-validation, stratified so that
+R package grammatical rules. The metadata table includes ten fields (sampleID,            each fold contained a balanced proportion of positive and negative cases. The
+subjectID, body_site, country, sequencing_platform, PMID, number_reads,                   procedure of forming the folds and assessing the models was repeated 20 times.
+number_bases, minimum_read_length, median_read_length) that are mandatory                 The final result is therefore an average over 200 validation folds. In the cross-study
+for all datasets, in addition to other fields that are dataset-specific.                  validation, datasets were considered two by two: one is used for training the model,
+                                                                                          the other to validate.
+Description of the two validation cohorts. We considered an additional set of                 The LODO approach consists of training the model on the pooled samples
+samples from two independent cohorts that were not available at the time we               from all cohorts except the one used for model testing. This mimics the scenario in
+performed the meta-analysis on the other seven datasets, and we therefore used            which all available samples from multiple cohorts are used to predict CRC-positive
+these as validation cohorts. Validation Cohort1 consisted of 60 CRC metagenomes           samples in a newly established cohort. As part of the meta-analysis, we iterated
+collected in Germany after colonoscopy and 65 sex- and age-matched healthy                along all the cohorts, performing a LODO validation on each set of samples (Fig. 2).
+controls, and is described in depth in the study accompanying this work30. Shotgun
+metagenomic sequencing was performed by Illumina HiSeq 2000/2500/4000                     Additional validation experiments on independent datasets and other
+(Illumina) platforms at the Genomics Core Facility, European Molecular Biology            diseases. We built a validation LODO model trained on MetaPhlAn2 taxonomic
+Laboratory, Heidelberg, Germany. Validation Cohort2 consisted of 40 CRC                   abundances from the previously described set of seven cohorts and applied it to
+samples and 40 controls from a Japanese cohort from Tokyo. DNA was extracted              the independent validation cohorts. To test the performance of the model when
+for Validation Cohort2 from frozen fecal samples by bead-beating using the                challenged with other diseases, we selected four metagenomic cohorts53–56 covering
+GNOME DNA Isolation Kit (MP Biomedicals), and DNA quality was assessed                    three non-CRC diseases (ulcerative colitis, Crohn’s disease and type 2 diabetes)
+with an Agilent 4200 TapeStation (Agilent Technologies). Sequencing libraries             and we used these for further experiments. For each disease in each dataset, we
+were generated with a Nextera XT DNA Sample Prep Kit (Illumina), and shotgun              randomly drew 60 samples from the control class as well as 60 samples from the
+metagenomics of fecal samples was carried out on the HiSeq 2500 platform                  cases and added them to each validation dataset in turn, labeled as controls. The
+(Illumina) at a targeted depth of 5.0 Gb (150 base pair (bp) paired-end reads).           random selection was repeated ten times, and the validation AUC was computed
+     The samples and clinical information used from both validation cohorts in this       on the model’s prediction accordingly. The rationale is to observe the decrease in
+study were obtained under conditions of informed consent and with approval of             AUC when the external cases are added to the controls of the validation cohort
+the institutional review boards of each participating institute.                          with respect to the addition of healthy controls.
+                                                                                              Specificity of the prediction model was also assessed by the addition of
+Public metagenomic cohorts of patients without CRC. We used the                           13 inflammatory bowel disease samples to Cohort1: we used these 13 samples either
+curatedMetagenomicData27 resource to retrieve taxonomical and functional                  as controls for Cohort1 or added them to the original controls; we performed a
+potential profiles as well as the metadata of three public cohorts: NielsenHB_2014        cross-validation and a LODO on Cohort1 (no validation cohorts in the training)
+(ref. 53), comprising 21 patients with Crohn’s disease, 127 patients with ulcerative      using MetaPhlAn2 microbial species.
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                                                                                                 Nature Medicine
+    To assess the prediction ability of our random forest approach with respect to      40 cycles of denaturing at 95 °C for 45 s, annealing at 57 °C (cutC) or 55 °C (16 S)
+more traditional non-invasive tests such as the FOBT and the Wif-1 methylation          for 45 s and an extension step of 72 °C for 45 s. Melting curves were subsequently
+tests, we recorded the true-positive rate (sensitivity) and false-positive rate         performed for all reactions using the following program: 95 °C for 5 s, followed by
+(1 – specificity) for a subset of the ZellerG_2014 cohort according to these two        65 °C for 60 s and a final continuous reading step of seven acquisitions per second
+tests, and 100 positive detection thresholds in the case of random forest models.       between 65 and 97 °C.
+We then combined the random forest approach with the two tests in turn, first               Quantification of the cutC gene by means of the qPCR protocol was applied to
+assigning the positive class when both predictors are positive (‘AND’ model) and        44 samples belonging to Cohort1 for which sufficient DNA was available. Samples
+secondly when just one predictor is positive (‘OR’ model).                              for which either the cutC or the 16S rRNA amplification failed were removed, and
+                                                                                        we retained measurements for a total of 16 CRC and 19 control samples. Relative
+Statistical analysis. Univariate analyses on a per-dataset basis was performed          gene fold change was calculated by applying the ΔΔcycle threshold (Ct) method81,
+using linear discriminant analysis effect size (LEfSe)39 to identify features that      with ΔCt calculated as the difference between cutC and 16S rRNA Ct values.
+were statistically different among groups and to estimate their effect size. Analysis   Significance of the cutC versus 16S rRNA comparison was assessed by one-tailed
+of Composition of Microbes was also applied68, but showed reduced power on              Wilcoxon signed-rank test. The same procedure was applied to the quantification
+our datasets (for example, it identified F. nucleatum as a biomarker in only one        of cutC and 16S rRNA transcripts from cDNA, which was computed using 26 CRC
+dataset) probably due to the low relative abundance of CRC biomarkers that              and 20 control samples for which we obtained a reliable quantification of both cutC
+are thus only minimally affected by the problem of compositionality. For these          and 16S rRNA.
+reasons, we chose to use LEfSe for the univariate analysis and focused on those
+biomarkers with the highest effect size. To overcome the limitations of univariate      Reporting summary. Further information on research design is available in the
+statistics, we performed multivariate analysis using linear models fitted to the data   Nature Research Reporting Summary linked to this article.
+using the limma R package69, and potential confounders such as age, sex and BMI
+were included in the models. For the meta-analysis on taxonomic and functional          Data availability
+profiles, we converted relative abundances to arcsine-square root-transformed           Nucleotide sequences for the two new Italian cohorts are available in the Sequence
+proportions and used the escalc function from the R metafor package that employs        Read Archive under accession No. SRP136711. MetaPhlAn2 and HUMANn2
+Cohen’s standardized mean difference statistic to calculate random effects model        profiles for the new cohorts were also added to the curatedMetagenomicData
+estimates. We quantified study heterogeneity using the I2 estimate (percentage          R package27 along with their corresponding metadata. Validation Cohort1
+of variation reflecting true heterogeneity), as well as Cochran’s Q-test to assess      is available in the European Nucleotide Archive under the study identifier
+statistically significant heterogeneity. P values obtained from the random effects      PRJEB27928; Validation Cohort2 is available in the DNA data bank of Japan
+models were corrected for multiple hypothesis testing using the Benjamini–              databases under the accession No. DRA006684.
+Hochberg procedure, with corrected P < 0.05 considered statistically significant.
+Cluster analysis was conducted by calculating distance matrices from phylogenetic
+trees using the APE R package, clustering using partitioning around medoids
+and computing the prediction strength of clusters using the cluster R package.          References
+When validating differential species richness, oral species richness and increased      62. Langmead, B. & Salzberg, S. L. Fast gapped-read alignment with Bowtie 2.
+abundance of the cutC gene, we also assessed significance through one-sided,                Nat. Methods 9, 357 (2012).
+permutation-based Wilcoxon–Mann–Whitney tests where we blocked for cohort52,            63. Truong, D. T. et al. MetaPhlAn2 for enhanced metagenomic taxonomic
+as implemented in the ‘coin’ R package.                                                     profiling. Nat. Methods 12, 902–903 (2015).
+                                                                                        64. Franzosa, E. A. et al. Species-level functional profiling of metagenomes and
+Identification and quantification of the genes encoding TMA-producing                       metatranscriptomes. Nat. Methods 15, 962–968 (2018).
+enzymes. To obtain a more comprehensive database of choline TMA-lyase enzyme            65. Breiman, L. Random forests. Mach. Learn. 45, 5–32 (2001).
+sequences, we downloaded amino acid sequences that matched the keywords                 66. Pedregosa, F. et al. Scikit-learn: machine learning in python. J. Mach. Learn.
+cutC and cutD from UniProt90 (ref. 43), mapped their identifiers to those of the            Res. 12, 2825–2830 (2011).
+European Molecular Biology Laboratory’s coding sequences using UniParc and              67. Hastie, T, Tibshirani, R. & Friedman, J. The Elements of Statistical Learning
+used the resulting DNA sequences to search, using BLASTn70, all 48,902 Prokka71             Vol. 1 (Springer, 2009).
+annotated genomes available in our repository72. Matching queries were filtered         68. Mandal, S. et al. Analysis of composition of microbiomes: a novel method for
+to include only alignments with >80% identity and length >1,000 nt for cutC                 studying microbial composition. Microb. Ecol. Health Dis. 26, 27663 (2015).
+and >800 nt for cutD, and an e-value <1 × 10–15. We used ShortBRED73 to identify        69. Ritchie, M. E. et al. limma powers differential expression analyses for
+short seed sequences that were representative of the filtered queries using UniProt’s       RNA-sequencing and microarray studies. Nucleic Acids Res. 43, e47 (2015).
+UniRef100 database and quantified these in the metagenomes, normalizing by              70. Altschul, S. F., Gish, W., Miller, W., Myers, E. W. & Lipman, D. J. Basic local
+the number of RPKM. The pipeline was also applied to identify and quantify the              alignment search tool. J. Mol. Biol. 215, 403–410 (1990).
+l-carnitine/gamma-butyrobetaine antiporter (caiT) and the dioxygenase yeaW,             71. Seemann, T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 30,
+responsible for producing TMA preferentially via carnitine degradation. To                  2068–2069 (2014).
+investigate differences in cutC sequence types, we clustered cutC sequences at 97%      72. Segata, N., Börnigen, D., Morgan, X. C. & Huttenhower, C. PhyloPhlAn is a
+sequence identity using UCLUST74 and aligned raw reads to the clustered cutC                new method for improved phylogenetic and taxonomic placement of
+database using bowtie2 (ref. 62). From the bam files we calculated the breadth and          microbes. Nat. Commun. 4, 2304 (2013).
+depth of each sequence and generated their corresponding consensus sequence             73. Kaminski, J. et al. High-specificity targeted functional profiling in microbial
+using Samtools75 and VCF utils76. We chose the representative cutC sequence for             communities with ShortBRED. PLoS Comput. Biol. 11, e1004557 (2015).
+each sample as the one with the highest breadth or the highest depth, if there were     74. Edgar, R. C. Search and clustering orders of magnitude faster than BLAST.
+multiple cutC sequences with the same breadth. We filtered representative cutC              Bioinformatics 26, 2460–2461 (2010).
+sequences from each sample to include only those of breadth >80%, aligned them          75. Li, H. et al. The sequence alignment/map format and SAMtools.
+using MAFFT77 and built a phylogenetic tree using fastTree78, which was refined             Bioinformatics 25, 2078–2079 (2009).
+with RAxML79 and visualized using GraPhlAn80.                                           76. Danecek, P. et al. The variant call format and VCFtools. Bioinformatics 27,
+                                                                                            2156–2158 (2011).
+Validation of cutC gene and transcript abundances by qPCR. Real-time qPCR               77. Katoh, K. & Standley, D. M. MAFFT multiple sequence alignment software
+was used to assess differences in cutC genes and transcripts between CRC samples            version 7: improvements in performance and usability. Mol. Biol. Evol. 30,
+and controls. We used a previously described protocol50 that employs 16S rRNA               772–780 (2013).
+abundances as an internal sample normalization. For first-strand cDNA synthesis,        78. Price, M. N., Dehal, P. S. & Arkin, A. P. FastTree 2–approximately maximum-
+400 ng of RNA templates were retrotranscribed using the High-capacity cDNA                  likelihood trees for large alignments. PLoS ONE 5, e9490 (2010).
+Reverse Transcription Kit with Random Primers (ThermoFisher Scientific),                79. Stamatakis, A. RAxML version 8: a tool for phylogenetic analysis and
+following the manufacturer’s instructions. The cutC and 16S rRNA genes (and                 post-analysis of large phylogenies. Bioinformatics 30, 1312–1313 (2014).
+transcripts from complementary DNA (cDNA)) were amplified using degenerate              80. Asnicar, F., Weingart, G., Tickle, T. L., Huttenhower, C. & Segata, N. Compact
+primers and cycling conditions as described previously50. Briefly, reactions were           graphical representation of phylogenetic data and metadata with GraPhlAn.
+performed in triplicate with 10 ng of template DNA or 30 ng of cDNA on the Rotor            PeerJ 3, e1029 (2015).
+Gene Q (QIAGEN) using HOT FIREPol EvaGreen qPCR mix (SOLIS BIODYNE)                     81. Livak, K. J. & Schmittgen, T. D. Analysis of relative gene expression data
+at a final primer concentration of 0.5 µM (16S) or 0.75 µM (cutC). Cycling                  using real-time quantitative PCR and the 2–ΔΔC(T) Method. Methods 25,
+conditions were as follows: initial denaturation of 95 °C for 15 min, followed by           402–408 (2001).
+
+
+
+
+                                                                                                                       Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                     Articles
+
+
+
+
+Extended Data Fig. 1 | Sequencing depths and species richness across CRC datasets a, Boxplots reporting the total number of reads in each dataset.
+P values between the carcinoma and control groups were calculated by two-tailed Wilcoxon rank-sum tests. b, Boxplots showing the total number of
+microbial species per dataset. P values were calculated by two-tailed Wilcoxon rank-sum tests. c, Boxplots showing the total number of microbial species
+per dataset calculated on metagenomes subsampled in each dataset to the number of reads of the tenth percentile. P values were calculated by two-
+tailed Wilcoxon rank-sum tests. d, Multivariate analysis of species richness using crude and age-, sex- and BMI-adjusted coefficients obtained from linear
+models. e, Meta-analysis of crude and adjusted multivariate richness coefficients using a random effects model. Bold lines represent the 95% confidence
+interval for the random effects model estimate.
+
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                           Nature Medicine
+
+
+
+
+Extended Data Fig. 2 | See next page for caption
+
+
+
+                                                   Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                     Articles
+Extended Data Fig. 2 | Meta-analysis of species diversity and oral species richness in CRC datasets. a, Boxplots reporting the Shannon species diversity
+in each dataset. P values between the carcinoma and control groups were calculated by two-tailed Wilcoxon rank-sum tests. b, Boxplots reporting
+the Shannon species diversity calculated on metagenomes subsampled in each dataset to the number of reads of the tenth percentile. P values were
+calculated by two-tailed Wilcoxon rank-sum tests. c, Multivariate analysis of species diversity using crude and age-, sex- and BMI-adjusted coefficients
+obtained from linear models. d, Meta-analysis of crude and adjusted multivariate Shannon diversity coefficients using a random effects model. Bold lines
+represent the 95% confidence interval for the random effects model estimate. e, Boxplots reporting the total number of oral microbial species per dataset.
+P values were calculated by two-tailed Wilcoxon rank-sum tests comparing values between controls and carcinomas for each dataset. f, Multivariate
+analysis of putative oral species richness using crude and age-, sex- and BMI-adjusted coefficients obtained from linear models. g, Meta-analysis of crude
+and adjusted multivariate putative oral species richness coefficients using a random effects model. Bold lines represent the 95% confidence interval for the
+random effects model estimate.
+
+
+
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                                                                                    Nature Medicine
+
+
+
+
+Extended Data Fig. 3 | Two metagenomic cohorts identify clear but only partially overlapping microbiome signatures associated with CRC. a,b, Relative
+abundances (log scale) and effect sizes (estimated using the linear discriminant analysis score in LEfSe) for the significantly different microbial species
+in CRC samples compared to control samples for Cohort1 (significance assessed by the non-parametric test in LEfSe) (a) and Cohort2 (b). c, Alpha-
+diversities measured as the total number of species and total number of UniProt90 gene families in each sample for the two cohorts. d, Beta-diversities
+estimated with the Bray–Curtis dissimilarity metric for intra- and inter-condition comparisons in the two cohorts.
+
+
+
+
+                                                                                                            Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                 Articles
+
+
+
+
+Extended Data Fig. 4 | Analysis of F. nucleatum markers and taxonomic meta-analysis of CRC datasets. a, Percentages of F. nucleatum clade-specific
+markers (200 in total) in each dataset. P values were obtained by two-tailed Wilcoxon rank-sum tests comparing values between controls and carcinomas
+for each dataset. b, Multivariate analysis of meta-analysis species-level abundance biomarkers. Crude and age-, sex- and BMI-adjusted coefficients
+for species associated with disease status in the meta-analysis of standardized mean differences. c, Meta-analysis of CRC datasets using species-level
+MetaPhlAn2 profiles. Bold lines represent the 95% confidence interval for the random effects model estimate.
+
+
+
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                                                                                    Nature Medicine
+
+
+
+
+Extended Data Fig. 5 | Analysis of putative oral species abundances in CRC datasets and gene-family richness across CRC datasets. a, Effect sizes of
+the abundances of significant putative oral species identified using a meta-analysis of standardized mean differences and a random effects model. Bold
+lines represent the 95% confidence interval for the random effects model estimate. b, Total abundance of putative oral species in each gut metagenomic
+dataset. P values were obtained by two-tailed Wilcoxon rank-sum tests comparing values between controls and carcinomas for each dataset. c, The total
+number of reads in each sample of each dataset correlates with the total number of gene families identified using HUMANn2. Ellipses represent the 95%
+confidence level assuming a multivariate t-distribution. d, Distribution of the total number of gene families identified in the samples of each dataset. P
+values were obtained by two-tailed Wilcoxon rank-sum tests comparing values between controls and carcinomas for each dataset. e, Distribution of the
+percentages of unmapped reads across datasets for UniProt90 gene families.
+
+
+                                                                                                            Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                     Articles
+
+
+
+
+Extended Data Fig. 6 | Cross-validation, cross-cohort and LODO predictions using pathway abundances, species abundances and species-specific
+markers. a, Prediction matrix reporting prediction performances as AUC values obtained using a random forest model on pathway relative abundances.
+Values on the diagonal refer to 20 times repeated tenfold stratified cross-validations. Off-diagonal values refer to the AUC values obtained by training the
+classifier on the dataset of the corresponding row and applying it to the dataset of the corresponding column. The LODO row refers to the performances
+obtained by training the model on pathway abundances using all but the dataset of the corresponding column and applying it to the dataset of the
+corresponding column. b, Prediction matrix as in a but using MetaPhlAn2 marker presence and absence information. c, Prediction of samples-to-cohort
+assignments using species-level relative abundances. Only control samples from each dataset are considered. d, Principal coordinate analysis of Bray–
+Curtis distances computed on MetaPhlAn2 species-level abundances across datasets. Ellipses represent the 95% confidence level assuming a multivariate
+t-distribution. e, Cross-prediction matrix for the performances of random forest models in predicting adenomas versus CRC conditions. f, Cross-prediction
+matrix as described in e but on the distinction of adenomas versus controls.
+
+
+
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                                                                              Nature Medicine
+
+
+
+
+Extended Data Fig. 7 | Prediction performances with increasing numbers of external datasets considered in the training model. a, Prediction
+performances computed based on MetaPhlAn2 species abundances. The dark yellow line interpolates the median AUC at each number of training
+datasets considered. b, Prediction performances computed based on HUMANn2 gene-family abundances.
+
+
+
+
+                                                                                                      Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                  Articles
+
+
+
+
+Extended Data Fig. 8 | Identification of a minimal number of microbial gene families for CRC detection. Prediction performances in the LODO settings at
+increasing numbers of gene families. Each ranking is obtained excluding the testing dataset to avoid overfitting.
+
+
+
+
+Nature Medicine | www.nature.com/naturemedicine
+Articles                                                                                                                 Nature Medicine
+
+
+
+
+Extended Data Fig. 9 | Metagenomic analysis of genes involved in the TMA synthesis pathway. a, ShortBRED analysis of yeaW and caiT gene
+abundances. Points represent the log of RPKM for each sample and crosses represent average values per group/dataset. b, ShortBRED analysis of cutD
+gene abundances. Boxplots report the RKPM abundances obtained using ShortBRED for the gene of the activating TMA-lyase enzyme cutD. P values were
+calculated by two-tailed Wilcoxon rank-sum tests comparing values between controls and carcinomas for each dataset. c, Forest plot showing effect sizes
+calculated using a meta-analysis of standardized mean differences and a random effects model on cutD RPKM abundances between carcinomas and
+controls. d, Breadth of coverage of cutC gene sequence clusters across CRC datasets. e, Depth of coverage of cutC gene sequence clusters across CRC
+datasets.
+
+
+
+
+                                                                                                         Nature Medicine | www.nature.com/naturemedicine
+Nature Medicine                                                                                                                    Articles
+
+
+
+
+Extended Data Fig. 10 | Cluster analysis of representative cutC sequence variants of samples. a, Prediction strengths at differing numbers of clusters
+showing optimum numbers at two and four clusters. b, Tables showing the number of samples for carcinomas, adenomas and controls with breadth of
+coverage >80% at two different cluster thresholds. P values were calculated using a Fisher t-test, and taxonomy was assigned by BLASTn and the cutC
+sequence database (criteria of 80% coverage, >97% identity and minimum 2,000 nt alignment length).
+
+
+
+
+Nature Medicine | www.nature.com/naturemedicine
+

@@ -1,0 +1,900 @@
+                                The ISME Journal (2017) 11, 2848–2863                                                  OPEN
+                                                www.nature.com/ismej
+
+
+ORIGINAL ARTICLE
+Large-scale comparative metagenomics of
+Blastocystis, a common member of the human gut
+microbiome
+Francesco Beghini1,4, Edoardo Pasolli1,4, Tin Duy Truong1, Lorenza Putignani2,
+Simone M Cacciò3 and Nicola Segata1
+1
+ Centre for Integrative Biology, University of Trento, Trento, Italy; 2Units of Parasitology and Human
+Microbiome, Bambino Gesù Children's Hospital and Research Institute, Rome, Italy and 3Department of
+Infectious Diseases, Istituto Superiore di Sanità, Rome, Italy
+
+
+         The influence of unicellular eukaryotic microorganisms on human gut health and disease is still
+         largely unexplored. Blastocystis spp. commonly colonize the gut, but its clinical significance and
+         ecological role are currently unsettled. We have developed a high-sensitivity bioinformatic pipeline to
+         detect Blastocystis subtypes (STs) from shotgun metagenomics, and applied it to 12 large data sets,
+         comprising 1689 subjects of different geographic origin, disease status and lifestyle. We confirmed
+         and extended previous observations on the high prevalence the microrganism in the population
+         (14.9%), its non-random and ST-specific distribution, and its ability to cause persistent (asympto-
+         matic) colonization. These findings, along with the higher prevalence observed in non-westernized
+         individuals, the lack of positive association with any of the disease considered, and decreased
+         presence in individuals with dysbiosis associated with colorectal cancer and Crohn’s disease,
+         strongly suggest that Blastocystis is a component of the healthy gut microbiome. Further, we found
+         an inverse association between body mass index and Blastocystis, and strong co-occurrence with
+         archaeal organisms (Methanobrevibacter smithii) and several bacterial species. The association of
+         specific microbial community structures with Blastocystis was confirmed by the high predictability
+         (up to 0.91 area under the curve) of the microorganism colonization based on the species-level
+         composition of the microbiome. Finally, we reconstructed and functionally profiled 43 new draft
+         Blastocystis genomes and discovered a higher intra subtype variability of ST1 and ST2 compared
+         with ST3 and ST4. Altogether, we provide an in-depth epidemiologic, ecological, and genomic
+         analysis of Blastocystis, and show how metagenomics can be crucial to advance population
+         genomics of human parasites.
+         The ISME Journal (2017) 11, 2848–2863; doi:10.1038/ismej.2017.139; published online 22 August 2017
+
+
+
+
+Introduction                                                            single-cell diatoms to giant multicellular brown
+                                                                        algae (Derelle et al., 2016). Blastocystis is a common
+Blastocystis spp. (referred to as Blastocystis in the                   inhabitant of the gut of humans and other animals
+manuscript) is a unicellular eukaryotic microorgan-                     (Clark et al., 2013). Its prevalence in humans varies
+ism that belongs to the Stramenopile phylum. This                       within and between populations, but it is higher in
+phylum encompasses an extremely large diversity of
+                                                                        underdeveloped countries, where it can reach 100%
+organisms including free-living flagellates, parasites
+                                                                        (El Safadi et al., 2014). This is likely the result of
+of plants (for example, Peronospora) and animals (for
+                                                                        poor hygiene conditions, contact with animal reser-
+example, Phytium insidiosum), organisms resem-
+                                                                        voirs, and consumption of contaminated water or
+bling fungi in terms of cytology and ecology, and a
+                                                                        food (Tan, 2008). Isolates of Blastocystis from
+myriad of photosynthetic lineages that range from
+                                                                        different hosts are morphologically very similar, yet
+                                                                        display substantial genetic variability: based on
+                                                                        nucleotide differences in the small subunit riboso-
+Correspondence: SM Cacciò, Department of Infectious Diseases,
+Istituto Superiore di Sanità, Rome, Italy.
+                                                                        mal DNA gene, 17 different subtypes (STs) are
+E-mail: simone.caccio@iss.it                                            recognized, nine of which (ST1 to ST9) are asso-
+or N Segata, Centre for Integrative Biology, University of Trento,      ciated with human colonization (Tan, 2008; Alfellani
+Via Sommarive 9, Trento 38123, Italy.                                   et al., 2013b). Previous studies reported the presence
+E-mail: nicola.segata@unitn.it
+4
+  These authors contributed equally to this work.
+                                                                        of Blastocystis in all continents (Alfellani et al.,
+Received 8 March 2017; revised 5 July 2017; accepted 14 July            2013a), attesting its ubiquitous distribution, but the
+2017; published online 22 August 2017                                   overall epidemiological picture is still incomplete.
+                                                                           Metagenomic analysis of human Blastocystis
+                                                                           F Beghini et al
+                                                                                                                                                     2849
+   Whether Blastocystis is to be considered a pathogen, a                  MetaHIT data set (Qin et al., 2010a) and there is thus
+commensal or even a beneficial member of the human                         the unmet opportunity to exploit larger sets of
+gut microbiome is still unclear (Lukeš et al., 2015).                      metagenomes for parasite profiling and epidemiology.
+Indeed, some studies have implicated it in intestinal                        In order to expand the size, genetic depth, and host
+diseases, including inflammatory bowel disease                             population diversity of epidemiologic investigation,
+(IBD) and irritable bowel syndrome (IBS), thus                             we developed a bioinformatic pipeline to detect the
+supporting a pathogenic potential (Tan et al., 2010).                      presence of Blastocystis from metagenomes, and
+Further, genome analysis of an ST7 isolate revealed                        applied it on 12 published large metagenomic data
+the presence of genes encoding potential virulence                         sets of the human gut microbiome. Overall, 1689
+factors, notably hydrolases and serine and cysteine                        subjects from 18 different countries and 4 continents
+proteases (Denoeud et al., 2011). On the other hand,                       (Europe, Africa, Asia and North/South America)
+studies of healthy, randomly sampled individuals                           were studied, allowing us to survey the prevalence,
+have shown a high carriage of Blastocystis and a                           ST distribution, and genome characteristics of the
+prolonged colonization of the gut (Scanlan and                             microorganism, and to investigate its association
+Marchesi, 2008; Scanlan et al., 2014). Therefore,                          with disease conditions and the structure of the
+unbiased large-scale investigations are needed to                          resident gut bacterial population.
+clarify its role as an etiological agent of disease, but
+targeted epidemiological investigations of Blastocys-
+tis at a global scale are impractical.
+   Cultivation-free, sequencing-based metagenomic
+                                                                           Materials and methods
+technologies (Tyson et al., 2004; Venter et al.,                           Metagenomic data sets and data pre-processing
+2004; Morgan et al., 2013; Segata et al., 2013a) can                       We analyzed 2154 publicly available gut metage-
+potentially overcome some of these issues. Many                            nomic samples from twelve studies. We considered
+large-scale metagenomic studies have been per-                             the nine largest metagenomics studies we were aware
+formed to characterize the complex consortium of                           of and were available as of July 2015 to
+organisms constituting the human gut microbiome,                           which we added three additional studies to
+and recent strain-level analyses started to unravel the                    expand the geographical span of our analysis
+population structure of bacterial species (Scholz                          (Table 1). The selected raw metagenomes were
+et al., 2016; Truong et al., 2017) but little attention                    processed with FastqMcf (Aronesty, 2013) by trim-
+has been devoted to intestinal parasites (Andersen                         ming positions with quality o15, removing low-
+et al., 2013). Indeed, until now, only one investigation                   quality reads (mean quality o25), and discarding
+(Andersen et al., 2015) used a metagenomic approach                        reads shorter than 90 nt. Human DNA and Illumina
+to study Blastocystis within 316 samples of the                            spike-in DNA (Bacteriophage phiX174) were then
+
+
+Table 1 List and characteristics of the metagenomic data sets used in this study
+
+Data set       Condition           Country       # Sub-   # Total # Samples # Total # Reads per Age (yrs) med-                   Reference
+name                                              jects   samples with con- reads sample (106) ian (interquar-
+                                                                    ditiona  (109)   mean ± std   tile range)
+
+Candela        Healthy             Italy,           38        38    —               0.85      22.3 ± 19.3      30 (23–38)   Rampelli et al., 2015
+                                   Tanzania
+HMP            Healthy             USA             111       191    —              20.50     108.5 ± 31.7      26 (23–28)   Huttenhower et al.,
+                                                                                                                            2012
+Karlsson       T2D                 Denmark,        145       145    53              4.49      31.0 ± 17.6      70 (69–71)   Karlsson et al., 2013
+                                   10 EU
+                                   countries
+Le Chatelier   Obesity             Denmark         292       292    169            20.14      69.0 ± 23.2      56 (50–61)   Le Chatelier et al.,
+                                                                                                                            2013
+Liu            Healthy             China,          110       110    —               6.41      58.2 ± 26.8      —            Liu et al., 2016
+                                   Mongolia
+Loman          STEC infection      Germany          37        44    44              0.39       9.0 ± 12.0      —            Loman et al., 2013
+MetaHIT        CD, UC              Denmark,        124       124    25              5.60      45.1 ± 18.4      54 (49–60)   Qin et al., 2010a
+                                   Spain
+Nielsen        CD, UC              Denmark,        318       396    148            21.40      53.9 ± 20.2      49 (40–59)   Nielsen et al., 2014
+                                   Spain
+Obregon-Tito Healthy               Peru, USA        58        58    —               2.73      47.1 ± 20.8      26 (17–35)   Obregon-Tito et al.,
+                                                                                                                            2015
+Qin            Liver cirrhosis   China            237        237    123           12.24       51.6 ± 30.9      45 (38–54)   Qin et al., 2014
+T2D            T2D               China            363        363    170           14.60       40.2 ± 11.8      48 (38–57)   Qin et al., 2012
+Zeller         Colorectal cancer France           156        156    53             9.37       60.0 ± 25.4      63 (58–70)   Zeller et al., 2014
+Total                                            1689       2154    785          118.72      55.12 ± 29.0      49 (36–62)
+
+Abbreviations: CD, Crohn’s disease; STEC, Shiga-toxigenic Escherichia coli; T2D, type 2 diabetes; UC, ulcerative colitis.
+a
+ Except for condition ‘healthy’.
+
+
+                                                                                                                                          The ISME Journal
+                                   Metagenomic analysis of human Blastocystis
+                                                                F Beghini et al
+2850
+         removed by using BowTie2 (Langmead and Salzberg,                         colonized over two timepoints was estimated by
+         2012) to map the reads against the reference genomes.                    counting the number of reads mapped to the
+            Eight of the considered studies aimed at character-                   Blastocystis reference genome normalized by the
+         izing the human gut in different health conditions                       total number of reads in the sample.
+         whereas four considered subjects not affected by                            In this work, we define a sample as positive for a
+         documented medical conditions (Table 1). We                              Blastocystis ST if its genome has a breadth of
+         collected and manually curated the main available                        coverage of at least 10%. This value was chosen
+         metadata associated with the samples (Pasolli et al.,                    based both on (i) the similarity between the genomes
+         2016). The metadata fields considered here are body                      of different Blastocystis STs and (ii) on the false
+         mass index (BMI), age, gender and disease status. We                     positive detection rate for the presence of a second
+         made the complete metadata table associated with                         Blastocystis ST when another one is present. For the
+         the samples publicly available at https://bitbucket.                     first criteria, we quantified the average fraction of the
+         org/CibioCM/metaml/src and inside the curatedMe                          genome of a Blastocystis ST shared at a sequence
+         tagenomicData package (Pasolli et al., In press).                        similarity higher than 80% with a distinct Blasto-
+            We performed the analysis using the 9 available                       cystis ST genome using LAST (Kiełbasa et al., 2011)
+         genomes of Blastocystis subtypes as reference. These                     (‘-l 100 -f BlastTab’ parameters). The maximum
+         include the complete genome sequence of one                              fraction of matching genome was 3%, with the only
+         isolate from ST7 (Denoeud et al., 2011) and one                          exceptions of ST4–ST8 and ST6–ST9 which share
+         from ST4 (accession codes CABX01000000 and                               more than 15% of the genome. However, this value
+         JPUL02000000, respectively). Additionally, we used                       substantially decreases at percentage identity thresh-
+         the draft genomes of other STs (ST1, ST2, ST3, ST4,                      olds 480% which is a very conservative threshold
+         ST6, ST8 and ST9) isolated from humans that                              considering that the maximum identity at which a
+         have been recently deposited in public databases                         read of 100 nt can be mapped against a reference
+         (accession codes LXWW00000000, JZRJ00000000,                             genome is 95%. Additionally, at the 10% breadth of
+         JZRK00000000, JZRL00000000, JZRM00000000, JZR                            coverage threshold, we did not find any co-
+         N00000000, JZRO00000000). Before using these                             occurrence of ST4 and ST8 in the samples, and for
+         genomes in our analysis, and because Blastocystis                        the cases in which ST6 and ST9 co-occurred we
+         sequencing projects are likely to contain DNA from                       manually confirmed that most of the reads outside
+         other organisms, we screened all contigs of all                          the shared genomic regions mapped only against the
+         assemblies for potential bacterial and archaeal                          ST with the highest breadth of coverage. For the
+         contamination. We did this by mapping with                               second criteria, we looked at the distribution of the
+         BLASTN the Blastocystis assemblies against the set                       number of additional STs in addition to the one with
+         of ~ 55 000 publicly available archaeal and bacterial                    the largest breadth of coverage detected when
+         genomes. By considering matches over at least 500                        varying the threshold (Supplementary Figure 9).
+         nucleotides and a nucleotide identity of at least 90%,                   This distribution goes from seven (all the STs in
+         we removed all contigs with bacterial or archaeal                        addition to the dominant one) to one (only the
+         matches over more than 3% of the length of the                           dominant ST detected), but it is already plateauing at
+         contig. Overall, we removed 613 contigs after screen-                    10% breadth of coverage confirming that such value
+         ing out a minimum of 246 384 nucleotides for ST4                         does not produce false positives. Multiple lines of
+         and a maximum of over 4.5 M nucleotides for ST6                          evidence thus support the 10% breadth of coverage
+         (Supplementary Table 1). We notice that our proce-                       value to be safe in avoiding false positives. False
+         dure was set to be quite aggressive in avoiding                          negatives would be minimized at lower threshold
+         potential contamination, but this is a safe strategy for                 value, but false negatives are arguably less proble-
+         our investigation as more than 10 M nucleotides                          matic than false positives, and false negatives are an
+         remained available for all ST and these are largely                      intrinsic and unavoidable problem in metagenomics.
+         sufficient to assess the presence of Blastocystis in
+         metagenomes as reported below.
+                                                                                  Assessing the limit of detection for Blastocystis in
+                                                                                  metagenomes
+         Detection of Blastocystis STs from metagenomes                           To assess the sensitivity of our procedure in
+         Metagenomic reads were mapped to reference                               detecting Blastocystis, we performed semi-synthetic
+         genomes using the Bowtie2 aligner (Langmead and                          experiments by spiking-in known amounts of syn-
+         Salzberg, 2012) and an end-to-end alignment for                          thetic reads from known Blastocystis genomes into
+         paired ends reads. The Bowtie2 output was pro-                           real Blastocystis-negative gut metagenomes. For each
+         cessed by Samtools (Li et al., 2009) and the sorted                      ST, the synthetic reads were obtained with an
+         and indexed BAM file was processed with BEDtools                         Illumina-based sequencing simulator with typical
+         (Quinlan, 2014) to compute the breadth of coverage                       sequencing error rates and noise (McElroy et al.,
+         for each subtype (‘genomecov –bg’ parameter),                            2012). As real Blastocystis-negative gut metagen-
+         which represents the fraction of the target genome                       omes we considered metagenomes from the HMP,
+         covered by at least one metagenomic read (Molnar                         Karlsson, LeChatelier, and Obregon-Tito data sets
+         and Ilie, 2015). The relative abundance in subjects                      subsampled after QC to the typical metagenome size
+
+The ISME Journal
+                                                           Metagenomic analysis of human Blastocystis
+                                                           F Beghini et al
+                                                                                                                        2851
+of 50M reads. The procedure was repeated at                concatenated alignment length of 21 984 bp. To
+multiple fractions of Blastocystis relative abundance      improve the resolution at a lower phylogenetic level,
+from 0.001 to 1% (for a total of 30 abundance values)      we repeated the process within the genomes of ST1,
+and considering seven distinct real gut microbiomes        ST2, ST3 and ST4 separately and reconstructed their
+for each simulation and ST. With this analysis             intra subtype phylogeny on which a larger shared
+(Supplementary Figure 1), we empirically found that        core genome can be identified. Subtype-specific trees
+the chosen detection threshold (10% breadth of             were generated by fragmenting each genome in
+coverage) corresponds to a limit of detection slightly     portions of 2000 bp and treating them as genes
+below 0.03% abundance. ST7 has an even lower               because no genome annotation was available and
+limit of detection which is due to the length of its       de novo annotation would have introduced biases.
+genome (about 50% larger than the other STs). As           Criteria for the inclusion in the core gene adapted to
+mentioned above, our Blastocystis detection pipeline       the intra-ST case included the requirement that a
+aims at minimizing the false positive rate, so even        sequence was present in all the genomes with an
+though thresholds lower than 10% breadth of cover-         identity higher than 95%. Single-nucleotide variant
+age would positively impact the limit of detection,        distribution within every subtype was calculated
+we again preferred to avoid calling the presence of        using nucmer (Kurtz et al., 2004) pipeline for
+Blastocystis without strong quantitative evidence.         computing pairwise alignment and SNV reporting.
+The limit of the detection of our procedure is higher      For ST1 the average pairwise alignment was 3 431
+than what can be achieved with PCR-based                   933 bp (s.d. 2 323 310 bp), for ST2 3 876 563 bp (s.d.
+approaches, that are however limited in the amount         1 985 719 bp), for ST3 2 318 013 bp (s.d. 2 917 467 bp)
+of genomic information that they can provide.              and for ST4 3 432 010 bp (s.d. 3 131 603 bp).
+
+
+Metagenomic assembly and Blastocystis contig binning       Functional prediction and annotation
+The 43 metagenomic samples in which we detected            We considered the 19 reconstructed genomes
+a breadth of coverage higher than 66.6% for at least       accounting 45 Mbp for gene prediction and annota-
+one Blastocystis genome, were selected for de novo         tion. Ad initio gene prediction was performed using
+metagenomic assembly. This was performed using             SNAP (Korf, 2004) to generate HMM models for all
+SPAdes version 3.9.0 (Bankevich et al., 2012).             the STs using the available annotations to build the
+Contigs shorter than 1000 nt were discarded, and           HMM reference profile. Genome annotation was
+contigs from Blastocystis identified by mapping with       performed using MAKER (Cantarel et al., 2008) with
+BLASTN the screened contigs against the Blastocys-         default parameters using the HMM models previously
+tis reference genomes. Specifically, we assigned a         generated. Newly predicted proteins were then
+contig to a Blastocystis subtype if it had at least 90%    functionally annotated with eggnog-mapper (Huerta-
+identity over at least half of its length against the      Cepas et al., 2017) using the eggNOG (Huerta-Cepas
+available reference genome.                                et al., 2016) Eukaryotic data set. ST-specific KOG
+                                                           functions were determined by performing a Fisher's
+                                                           exact test between the genomes of a particular ST and
+Whole-genome phylogenetic analysis                         the other ones. Adjusted P-values were computed
+To infer the phylogeny of the newly assembled              through the false-discovery rate correction.
+genomes we adopted a core gene based strategy
+(Segata et al., 2013b; Page et al., 2015). The core gene
+set was generated by aligning all the annotated genes      Microbiome profiling and co-occurrence analysis
+of the Blastocystis ST4 WR1 genome against all 8           All samples were processed with MetaPhlAn2
+available reference genomes and the 43 genomes we          (Segata et al., 2012; Truong et al., 2015) to quantita-
+newly assembled using BLASTN (Evalue: 1e-50,               tively profile the whole microbial population
+word size:9). To be included in the core gene set, a       exploiting the properties of species-specific markers
+gene was required to be present in at least 75% of the     (Huang et al., 2014). We used the obtained abun-
+analyzed genomes with an identity higher than 65%          dance profiles to investigate the co-occurrence or co-
+over at least 600 bp. The identified core gene             exclusion (Faust et al., 2012) of Blastocystis with
+sequences were then aligned using MUSCLE                   other members of the microbiome. In particular, the
+(Edgar, 2004), concatenated in a single alignment,         Wilcoxon rank-sum test was used to identify the
+and processed with trimAL (‘-gappyout’ parameter)          microbial features that were associated with the
+(Capella-Gutiérrez et al., 2009) to remove excessively     presence or absence of Blastocystis. In computing
+gapped sub alignments and poorly aligned regions.          this test, duplicates from the same subject were
+The phylogeny was then built using RAxML version           discarded and a threshold of 0.05 was considered as
+8.1.15 (Stamatakis, 2014) with the GTRGAMMA                significance level. Additional analysis for finding
+model and 100 bootstrap steps.                             bacterial clades associated with Blastocystis pre-
+  Using this approach, we identified a core gene set       sence was performed using the LEfSe (LDA effect
+of 9 genes (average alignment length of each gene of       size) tool (Segata et al., 2011). Finally, a machine
+2443 bp and standard deviation of 1374 bp) for a total     learning-based approach was applied to further
+
+                                                                                                             The ISME Journal
+                                    Metagenomic analysis of human Blastocystis
+                                                                 F Beghini et al
+2852
+         investigate if the microbiome signature is predictive                     availability of draft genome sequences from eight
+         for the presence of Blastocystis. The species abun-                       subtypes (ST1, ST2, ST3, ST4, ST6, ST7, ST8 and
+         dances generated by MetaPhlAn2 were used to                               ST9), all known to be associated with human
+         discriminate between Blastocystis-positive and nega-                      colonization. After removing potential bacterial
+         tive samples. For this purpose we considered a                            sequences contaminating these genomes (see Materi-
+         random forest (RF) classifier (Breiman 2001) imple-                       als and methods and Supplementary Table 1), we
+         mented in the MetAML tool (Pasolli et al., 2016).                         estimated the fraction of each target genome covered
+         First, prediction accuracies were assessed by an                          by metagenomic reads (that is, the breadth of cover-
+         unbiased 10-fold cross-validation procedure,                              age) and we considered samples positive for Blas-
+         repeated and averaged over 20 independent runs.                           tocystis when the breadth of coverage was higher
+         Then, we applied a leave-one-data set-out approach,                       than 10% (see Materials and methods). Using this
+         in which the presence of Blastocystis in a given data                     approach, Blastocystis is detected when present at a
+         set is predicted by training the model on the samples                     concentration as low as 0.03% in typical metage-
+         from the other independent studies. Prediction                            nomic samples of 50M reads (Supplementary
+         accuracies were evaluated in terms of area under                          Figure 1). Downstream analyses detailed in the rest
+         the ROC curve (AUC) statistics, which can be                              of the work are based on this detection threshold.
+         interpreted as the probability that the classifier ranks
+         a randomly chosen positive sample higher than a
+         randomly chosen negative one, assuming that the                           Blastocystis prevalence and subtype dominance is
+         positive sample ranks higher than the negative one.                       biogeographically variable
+         The free parameters of the classifiers were set as                        We first determined the prevalence of Blastocystis in
+         follows: (i) the number of decision trees was equal to                    the overall data set, which included 2154 fecal samples
+         500; (ii) the number of features to consider when                         from 1689 subjects. The microorganism was detected
+         looking for the best split was equal to the root of the                   in 321 samples, originating from subjects in ten
+         number of original features; (iii) the quality of a                       countries (China, Denmark, France, Mongolia, Norway,
+         decision tree split was measured using the Gini                           Peru, Spain, Sweden, Tanzania and USA) from four
+         impurity criterion. The software framework used for                       continents, with an overall prevalence of 14.9%. The
+         this experiment is open-source and available online                       prevalence was higher in European subjects (243 of
+         at http://segatalab.cibio.unitn.it/tools/metaml. Alpha                    1084 samples, 22.4%) and lower in Chinese ones (24 of
+         diversity was computed for each data set by consider-                     600, 4.0%). Despite the relatively small size of the data
+         ing Gini-Simpson and Shannon indexes under the                            set, 15 (55.6%) of the 27 Tanzanian subjects (Rampelli
+         condition of presence or absence of Blastocystis and                      et al., 2015) were positive for Blastocystis, whereas all
+         the Student’s t-test (significance level set to 0.05) was                 the Italian subjects (n = 11) from the same study were
+         used to test significance between the two conditions.                     negative. Blastocystis was not detected in the Shiga
+                                                                                   toxin-producing Escherichia coli (STEC)-infection data
+                                                                                   set (Loman et al., 2013).
+                                                                                      The prevalence of Blastocystis appears to be
+         Results
+                                                                                   influenced by the DNA extraction procedure used
+         Meta-analysis for Blastocystis in large metagenomic                       in the different studies, being higher when methods
+         data sets                                                                 combining mechanical and chemical lysis steps are
+         We screened large-scale intestinal metagenomic data                       used (Supplementary Figure 2). This suggests that
+         sets to assess the prevalence of Blastocystis and its                     efficient DNA extraction from lysis-resistant micro-
+         STs, infer epidemiologic characteristics, and exam-                       organism cysts requires appropriate procedures, and
+         ine the characteristics of their genomes. Overall, we                     that comparison across studies should consider this
+         processed 2154 fecal microbiome samples from                              factor (Yoshikawa et al., 2011). On the other hand,
+         1,689 subjects from 12 data sets (Table 1). These                         cohort differences may have a larger impact on
+         data sets span diverse disease conditions including                       prevalence than methodological aspects, as exem-
+         colorectal cancer (Zeller et al., 2014), type 2 diabetes                  plified by large differences in prevalence between
+         (Qin et al., 2012; Karlsson et al., 2013), liver cirrhosis                three European data sets (LeChatelier, MetaHIT and
+         (Qin et al., 2010a), obesity (Le Chatelier et al., 2013)                  Nielsen) and the Chinese T2D data set, despite the
+         and IBD (Qin et al., 2010a; Nielsen et al., 2014). All                    use of the same DNA extraction procedure.
+         these studies almost exclusively focused on the                              We then examined the prevalence of the different
+         bacterial components of the microbiome and did                            Blastocystis STs among individuals colonized with
+         not report the presence of microbial Eukaryotes, with                     single STs (Figure 1; Supplementary Table 2). While
+         the above mentioned exception that focused on a                           some aspects such as the wide geographic distribution
+         single metagenomic data set (Andersen et al., 2015).                      of ST3 (detected in 10 of 12 data sets), and the overall
+         The wide range of distinct health conditions and                          low prevalence of ST6, ST7 and ST9, are in agreement
+         geographic origins of the hosts we considered here                        with the current global epidemiologic information
+         are thus a key factor in this study.                                      (Clark et al., 2013), two new points of particular
+           To assess the presence of Blastocystis, we used a                       relevance emerged. First, ST2 appears to predominate
+         sequence mapping based approach aided by the                              in the non-industrialized cohorts analyzed, which are
+
+The ISME Journal
+                                                                       Metagenomic analysis of human Blastocystis
+                                                                       F Beghini et al
+                                                                                                                                              2853
+
+
+
+
+Figure 1 Prevalence of Blastocystis and Blastocystis subtypes in the different data sets, different continents, different European states,
+and between westernized and non-westernized subjects (see Supplementary Table 2 for more details). Stacked barplots show the
+prevalence in each category; numbers below the bars refer to the number of samples in the corresponding category, where duplicates from
+the same subject are eventually discarded. Statistical significance was assessed by Fisher's exact test.
+
+hunter-gatherer populations from Tanzania (Rampelli                    Materials and methods), and found that BMI is
+et al., 2015) and Peru (Obregon-Tito et al., 2015;                     strongly negatively correlated with Blastocystis pre-
+Figure 1). The difference in ST2 prevalence between                    valence. In the metagenomic study that specifically
+non-westernized (including data from (Liu et al.,                      targeted the obesity phenotype (Le Chatelier et al.,
+2016)) and westernized individuals is highly statisti-                 2013), we detected Blastocystis in 39.4% normal
+cally significant (P = 6E − 10). This raises the hypoth-               weight individuals, compared with 15.4% obese
+esis that ST2 is one of the members of the gut                         subjects (P = 2E − 05, Figure 2a). This is consistent
+microbiome that have been affected by westernization                   with findings from a study of Danish subjects
+processes (Segata, 2015). Second, the prevalence of                    (Andersen et al., 2015). The other data sets include a
+ST4 is very high among European subjects (Figure 1),                   smaller number of obese subjects, thus providing less
+which is in sharp contrast with the absence, or                        statistical power to test the association. Nonetheless, a
+extreme rarity, of this ST in other regions of the world               higher Blastocystis prevalence in normal weight
+(for example, P = 7E − 16 for the difference in pre-                   individuals compared with overweight and obese
+valence between Europe and Asia, Supplementary                         ones was evident in six of the eight data sets, two of
+Figure 3), except the US. The difference in ST4                        which supported by statistical significance (Figure 2a).
+prevalence     between       westernized     and    non-                  Interestingly, when considering all the European
+westernized individuals is also statistically significant              data sets that used the same collection and proces-
+(P = 0.046). These data confirm and extend previous                    sing protocols (n = 715, 126% more samples than
+observations on the peculiar geographical distribution                 (Andersen et al., 2015)), the difference in Blastocys-
+of ST4 (Forsell et al., 2012). Overall, ST2 and ST4 thus               tis prevalence between normal weight and obese
+appear to be the Blastocystis subtypes most influenced                 subjects was again strongly significant (P = 5E − 03),
+by geography and lifestyles.                                           as it was between normal weight and overweight
+                                                                       (P = 0.01), and between non-overweight and over-
+Blastocystis prevalence is higher in subjects with low                 weight (P = 0.02). At the level of specific subtypes,
+BMI and in healthy controls for Crohn’s disease and                    only ST4 reached statistical significance (P = 0.03
+colorectal cancer                                                      between normal weight and obese), suggesting that
+We tested the association between the presence of                      association between Blastocystis and BMI is prob-
+Blastocystis and available parameters of interest (see                 ably not subtype-specific.
+
+                                                                                                                                   The ISME Journal
+                                         Metagenomic analysis of human Blastocystis
+                                                                      F Beghini et al
+2854
+
+
+
+
+         Figure 2 Blastocystis prevalence in BMI classes (a) and different health conditions (b) for the considered data sets. Barplots show the
+         prevalence of Blastocystis in different health conditions reported in the analyzed data sets. BMI classes considered were underweight (Un),
+         normal (No), overweight (Ov) and obese (Ob). The total number of samples in each class and data set is reported below the bars. Bars
+         associated with a total number of samples less than four are not shown. Note that scales in panels A and B are different. Abbreviations: CD,
+         Crohn’s disease; IGT, impaired glucose tolerance; T2D, type 2 diabetes; UC, ulcerative colitis. Fisher's exact test was used as statistical
+         significance test.
+
+
+            We did not find an increased prevalence of                                  considering patients with large adenomas (n = 14), as
+         Blastocystis in subjects affected by any of the                                only one was positive for Blastocystis. Crohn’s
+         considered diseases (lowest one-side P = 0.4 for                               disease, but not ulcerative colitis, was also nega-
+         T2D in the Karlsson data set). Conversely, Blasto-                             tively associated with the presence of Blastocystis
+         cystis was positively associated (P = 0.008) with the                          (P = 0.04). Our findings seem to contrast other reports
+         control group in the colorectal cancer data set (Zeller                        especially for colorectal cancer (Kumarasamy et al.,
+         et al., 2014), with only 3 of the 53 (5.7%) patients                           2014), whereas for IBD existing data already asso-
+         positive for the microorganism compared with 15 of                             ciated ulcerative colitis rather than Crohn’s disease
+         the 61 (24.6%) healthy controls (Figure 2b). This                              with decreased Blastocystis prevalence (Petersen
+         trend was also confirmed in the same data set when                             et al., 2013) although different conclusions were
+
+The ISME Journal
+                                                          Metagenomic analysis of human Blastocystis
+                                                          F Beghini et al
+                                                                                                                               2855
+reached in other reports (Cekin et al., 2012). Previous
+data on this association are however sparse, debated
+in clinical settings, and potentially affected by
+publication bias. More independent investigations
+are needed to elucidate these relations, but our
+results suggest that the ecological niche of Blasto-
+cystis is independent from disease-associated micro-
+biome dysbiosis features. A further hypothesis
+supported by the above associations and the absence
+of Blastocystis in STEC-positive subjects, is that
+Blastocystis is actually less common in individuals
+with gastro-intestinal symptoms and other
+microbiome-associated disease conditions (Scanlan
+et al., 2014).
+
+
+Stable Blastocystis colonization is subtype-independent
+To study the persistence of Blastocystis colonization
+and determine the subtypes involved in chronic
+colonization, we analyzed the metagenomic data set
+of subjects who provided stool samples at multiple
+timepoints. A total of 121 subjects, 43 from the HMP
+data set (Huttenhower et al., 2012) and 78 from the
+Nielsen data set (Nielsen et al., 2014), were sampled     Figure 3 Breadth of coverage (a) and relative abundance (b) of
+at two timepoints (mean 219 and 163 days after first      Blastocystis in subjects colonized over two timepoints (see
+sampling, respectively). Blastocystis was identified      Supplementary Table 3 for more details). In the breadth of
+                                                          coverage plots, samples below the threshold of detection are also
+above the detection threshold in 22 subjects (7 from      indicated. The breadth of coverage represents the fraction of the
+HMP and 15 from Nielsen) in at least one of the           reference genome covered by at least one metagenomic read. The
+timepoints considered (Supplementary Table 3). Of         relative abundance is estimated by dividing the number of reads
+the 22 positive subjects, 14 (64%) maintained the         mapped to the Blastocystis reference genome with the total
+colonization over the two timepoints, whereas five        number of reads in the sample.
+subjects acquired and three subjects lost the coloni-
+zation between the two timepoints (Figure 3a;
+Supplementary Table 3). For the cases of coloniza-        extent of polymorphism at the genome level and
+tion acquisition/loss and accordingly with our            variability in gene content within different STs is
+detection limit of 0.03% relative abundance, Blas-        unknown. To this end, we reconstructed draft
+tocystis is indeed absent in the subject or may be        Blastocystis genomes from the metagenomes and
+present at very low abundance which is still              performed comparative genomic analysis. In total, 43
+indicative of variations in the ecological relation of    assemblies were obtained using metagenomic assem-
+Blastocystis with the resident microbiome. In sub-        bly with SPAdes (Bankevich et al., 2012) followed by
+jects with stable colonization, the relative abundance    binning and taxonomic assignment (see Materials
+of Blastocystis changed only slightly in the majority     and methods, Supplementary Table 4) from the
+of the cases (Figure 3b) and we did not observe           samples with very high Blastocystis abundance.
+variations higher than three folds.                       Specifically, 16 new genomes were very closely
+   In the 14 subjects with stable colonization, we        related to the available genome of ST4, 7 to ST2 and
+always found the same ST at the two timepoints,           ST1, 9 to ST3, whereas only 4 genomes were
+suggesting that ST replacement is not a frequent          assembled from the phylogenetically related ST6,
+event in the healthy human gut, at least over the         ST8 and ST9. A simple genetic feature such as the
+relatively short timeframes considered in the data        average GC content (Supplementary Figure 4) was
+sets (Figure 3). The subtypes commonly found in           already distinctive across STs, in that ST1, ST2 and
+humans (ST1–ST4) all appeared as stable colonizers,       ST3 that have a genome much richer in GC (average
+suggesting that this phenomenon is not subtype            52.6%, 52.0%, 51.5% respectively) than ST4, ST8
+dependent.                                                and ST9 (average 40.0%, 42.3% and 41.5% respec-
+                                                          tively), whereas ST6 is in between these two groups
+                                                          (average 44.9%).
+Whole-genome genetic analysis of Blastocystis subtypes       We then integrated the nine available genomes
+Isolates belonging to the same Blastocystis subtype       with the 43 new assemblies to reconstruct the
+display some genetic variability, as highlighted by       genome-scale phylogeny of the Blastocystis genus
+studies of ribosomal markers (Yoshikawa et al.,           using the concatenation of aligned core genomic
+2016) and a few housekeeping genes (Stensvold             fragments. This reconstruction relies upon the sub-
+et al., 2012; Yoshikawa et al., 2016). However, the       stantial fraction of the genome that is conserved
+
+                                                                                                                    The ISME Journal
+                                        Metagenomic analysis of human Blastocystis
+                                                                     F Beghini et al
+2856
+         across strains and have been performed for assem-                             characterization of these high-quality assemblies (4 for
+         blies with an average of 4.4 Mb of reconstructed                              ST1, 4 for ST2, 4 for ST3, and 7 for ST4, see
+         genome (Supplementary Table 4). While the overall                             Supplementary Table 4) by using the eggNOG
+         structure of the tree (Figure 4a) confirms previous                           (Huerta-Cepas et al., 2016) database (see Materials
+         phylogenetic analyses based on single marker genes                            and methods). Unsurprisingly, less than half of the
+         (Yoshikawa et al., 2016) and ST-specific phylogenies                          genes identified were assigned to known COG func-
+         consistently place the reconstructed genomes from                             tional categories (from 42.7% of ST4 to 46.7%
+         multiple sample of the same patient (Figure 4d),                              of ST3, Figure 5a). Only few categories were not
+         substantial genetic diversity is detected within each                         represented in Blastocystis (for example, as
+         ST (Figures 4b-e). Strains belonging to ST1 show the                          expected, the cellular machinery for cell motility)
+         highest genetic diversity with, on average, 1.5% (s.d.                        and the four STs generally contained a very similar
+         0.10%) single-nucleotide substitutions in the geno-                           number of proteins in these broad categories
+         mic regions conserved between pairs of strains                                (Figure 5b). The only exceptions are category J
+         (Figure 4f). ST4 shows instead an overall much                                (Translation, ribosomal structure and biogenesis)
+         higher sequence conservation (average 0.27% s.d.                              and category A (RNA processing and modification)
+         0.14% divergence), in agreement with findings from                            that are overrepresented in the genomes of ST3 and
+         single marker genes (Stensvold et al., 2012). ST2 and                         underrepresented in those of ST2 (Po1E − 04), as
+         ST3 display intermediate genetic diversity compared                           well as categories D (Cell cycle control and mitosis)
+         with ST1 and ST4.                                                             and T (Signal Transduction, all Po1E − 04). More
+            We then restricted the genomic analysis to the 19                          specific functional assignments based on the manu-
+         genomes for which at least 5 Mb have been recon-                              ally curated Clusters of Orthologous Groups for
+         structed and performed a functional annotation and                            Eukaryotes (KOG, see Supplementary Table 5;
+
+
+
+
+         Figure 4 Phylogenetic relation between the 9 available Blastocystis reference genomes and 43 newly reconstructed genome assemblies
+         from metagenomes. From the overall phylogenetic tree (a) we also report the subtrees of the four subtypes with more than 3 genomes (b–e)
+         and compare the sequence diversity they span (f). Maximum likelihood phylogenetic trees were inferred using concatenated aligned
+         shared genomic regions identified in reference genomes and assemblies (see Materials and methods). The asterisk highlights samples
+         acquired from the same subject at two different timepoints. Black filled circles denote bootstrap support greater than 80%. The scale bar
+         represents the average SNV rate calculated on the pairwise alignment.
+
+
+The ISME Journal
+                                                                      Metagenomic analysis of human Blastocystis
+                                                                      F Beghini et al
+                                                                                                                                            2857
+
+
+
+
+Figure 5 Functional annotation analysis of the 19 reconstructed genomes spanning four Blastocystis STs. Less than half of the genes
+predicted by MAKER (Cantarel et al., 2008) were assigned to known COG functional categories using the eggNOG (Huerta-Cepas et al.,
+2016) database (a, see Materials and methods). These annotated genes can be grouped into 23 broad COG categories (b) that are a variable
+fraction of the total annotated genes. The asterisks denote categories for which one-way ANOVA statistical test gave Po1E − 04.
+Hierarchical clustering performed on the more specific KOG functions show that samples associated with the same ST cluster together (c).
+
+
+
+Huerta-Cepas et al., 2016) further highlighted the                    proteins (like 0PHA3 and KOG3047—ubiquitously-
+differences in functional potential between STs and                   expressed, prefoldin-like chaperone) and cytosolic
+the substantial intra-ST functional consistency. This                 Ca2+-dependent cysteine proteases (like KOG0045—
+is clear from the hierarchical clustering analysis of                 Calpain-like cysteine peptidase) that were not pre-
+the KOG profiles in each reconstructed genome                         sent in other ST genomes, and these may represent
+(Figure 5c), in which the close phylogenetic relation-                virulence factors unique to this ST. Altogether these
+ship between strains in the same ST is recapitulated                  data indicate that different Blastocystis STs have
+at the level of their functional potential. A total of                distinct functional potential niches that are currently
+795 KOGs were found to be ST-specific                                 only partially characterized. Further, we show for
+(Supplementary Table 5; Supplementary Figure 5)                       the first time that it is possible to characterize ST-
+after statistical significance testing with false-                    specific functional repertoires that are conserved
+discovery rate correction (see Materials and meth-                    among strains of the same ST.
+ods). For example, a cystatin (0IZK7 Cystatin B), that
+in ST7 has a potential role in parasitic cysteine
+protease and inhibition of host proteases (Denoeud                    The presence of Blastocystis is highly correlated with
+et al., 2011; Wawrzyniak et al., 2012), is present in                 gut microbiome composition
+ST2 but not in ST1, ST3, and ST4. Likewise, we                        We found a very strong association between the
+found a glycoside hydrolase (hydrolase family 47)                     presence of Blastocystis and the abundance of
+only in ST3, and this may be involved in the attack of                archaeal organisms (Po7E − 37). On the overall data
+the host intestinal epithelial cells (Denoeud et al.,                 set, this association may be inflated because some
+2011). Finally, in ST4 genomes we found heat shock                    DNA extraction procedures may favor non-bacterial
+
+                                                                                                                                 The ISME Journal
+                                         Metagenomic analysis of human Blastocystis
+                                                                      F Beghini et al
+2858
+         organisms (Wesolowska-Andersen et al., 2014), but                              Blastocystis genome (Denoeud et al., 2011), suggest-
+         we observed strong statistical significance in all but                         ing that the common ecological niche favors the
+         two single data sets (Figure 6 and Supplementary                               interaction and the exchange of genetic material
+         Table 6). Archaea in the human gut are represented                             between the microorganism and the Archaea.
+         primarily by Methanobrevibacter smithii (Figure 6a)                               Several bacterial clades were also found to be
+         which is in fact strongly associated with the presence                         strongly associated with Blastocystis presence, with
+         of Blastocystis. Interestingly, several archaeal genes,                        a total of 68 significant associations with effect
+         likely acquired horizontally, are present in the                               size larger than 3.3 as found by LEfSe analysis
+
+
+
+
+         Figure 6 The presence (or absence) of Blastocystis is associated with major differences in the intestinal microbiome. Some species are
+         strongly associated with the presence (a–c) or absence (d) of Blastocystis (plots for additional microbes are reported in Supplementary
+         Figure 7). Boxplots report the distribution of abundances in samples with and without Blastocystis. Blue asterisks denote data sets where
+         significant differences exist between the absence and presence of Blastocystis. LEfSe analysis (e) showed several other microorganisms
+         statistically associated (α = 0.05) with Blastocystis presence at high effect size (threshold at 3.3). Machine learning-based approach reveals
+         that the microbiome signature is predictive for the presence of Blastocystis (f). This is valid not only when considering specific data sets
+         with an unbiased cross-validation procedure, but also when predicting the presence of the parasite in a given data set considering only the
+         samples from other independent studies (leave-one-data set-out approach).
+
+
+The ISME Journal
+                                                         Metagenomic analysis of human Blastocystis
+                                                         F Beghini et al
+                                                                                                                       2859
+(Segata et al., 2011) (Figure 6e; Supplementary          Blastocystis-positive microbiomes have distinguishing
+Figure 6). Bacteria in the Firmicutes phylum and in      features that are consistent across populations,
+the Clostridiales order also appeared strongly           geography, and batch effects.
+enriched in samples positive for Blastocystis               Overall, our analysis suggests that a consistent set
+(Supplementary Figure 7). Species in this order          of bacterial and archaeal organisms, and the overall
+included Butyrivibrio crossotus (significant in 7 data   composition of the microbiome, are associated
+sets, Figure 6b), Eubacterium siraeum (significant in    with the presence (or absence) of Blastocystis.
+6 data sets, Figure 6c), and Coprococcus catus           Interestingly, despite the many ecological associa-
+(significant in 6 data sets, Supplementary Figure 7).    tions found, microbiome diversity is instead not
+In addition, the overall Clostridiales order is          associated with the presence of Blastocystis (Supple-
+associated with the presence of Blastocystis             mentary Figure 8). Recent studies addressed the
+(Supplementary Table 6). However, some clostridia        possible correlation between the presence of Blas-
+tend to co-exclude with Blastocystis, such as            tocystis and other microbiome members that can of
+Ruminococcus gnavus (significant in 6 data sets,         course also be influenced by other factors such as
+Figure 6d) and Clostridium bolteae (significant in 5     intestinal transit time. 16 S rRNA amplicon sequen-
+data sets, Supplementary Figure 7). Therefore, while     cing revealed a higher abundance of Clostridia,
+there is a general positive association between          Ruminococcaceae and Prevotellaceae, among Blas-
+Firmicutes/Clostridia and Blastocystis, there are        tocystis-colonized individuals, while Enterobacter-
+negative associations at the species-level, possibly     iaceae were enriched in Blastocystis-free patients
+due to competition for resources or different ecolo-     (Audebert et al., 2016). Two other studies found
+gical niches.                                            that individuals with an intestinal microbiome
+   In contrast, the most abundant intestinal bacterial   dominated by Bacteroides had less Blastocystis than
+genus, Bacteroides, is generally more abundant in        those with Ruminococcus and Prevotella-driven
+Blastocystis-negative      samples    (Supplementary     enterotypes (Andersen and Stensvold, 2015;
+Figure 7), with five data sets in which this trend is    O'Brien Andersen et al., 2016); this was interpreted
+significant. This association is also driving the        in terms of a correlation between Blastocystis and
+general higher abundance of the Bacteroidetes            species richness, since the Bacteriodes-driven
+phylum in Blastocystis-negative samples and              enterotype has a lower species richness compared
+possibly contrasting the opposite trend observed for     with the other enterotypes. The same authors,
+the Firmicutes phylum (Supplementary Figure 7).          however, pointed out that species richness alone
+Proteobacteria and Actinobacteria seem instead           could not explain other observed trends, such as the
+generally not influenced by the presence of Blas-        correlation between Blastocystis carriage and BMI in
+tocystis with only one and two data sets, respec-        Danish individuals. They thus argued that the
+tively, in which they appear significant. Specific       presence of specific microbial species could influ-
+species in these phyla can however still be              ence the ability of the microorganism to thrive in the
+strongly associated with Blastocystis presence           gut, but were unable to identify those species. Here
+(e.g., the proteobacterium Oxalobacter formigenes        we expand this concept on a much larger cohort size
+significant in 5 data sets, Supplementary Figure 7) or   and higher taxonomic resolution, and provide a list
+absence (for example, the actinobacterium Eggerthella    of bacterial and archaeal organisms that should be
+significant in 5 data sets, Supplementary Figure 7),     prioritized in future experimental investigations (for
+suggesting that species-specific functional specia-      example, in vitro) aimed at understanding the
+lization has a higher ecological connection with         ecology of Blastocystis in the human gut and its
+Blastocystis than more general phylum-level              potential direct interaction with bacterial members
+characteristics.                                         of the microbiome.
+   We expanded the analysis on the association
+between Blastocystis and specific intestinal organ-
+isms by searching overall microbiome signatures          Discussion
+predictive for the presence of the microorganism.
+Our previous work on such machine learning               We have developed a computational pipeline to
+signatures (Pasolli et al., 2016) showed that all the    detect Blastocystis in human gut metagenomic
+diseases considered here can be associated, with a       samples and applied it to a collection of 42000
+variable degree of accuracy, with their microbiome       metagenomes from subjects representing all conti-
+structures. In the case of Blastocystis, we found that   nents except Australia and Antarctica. This is the
+microbiome signatures (Figure 6f) are always statis-     largest investigation on the prevalence of Blastocys-
+tically significant and are even stronger than for the   tis and its subtypes in humans, overcoming in size
+disease. Importantly, this is true not only when         and geographic diversity the single metagenomic
+considering specific data sets with an unbiased          study of an European cohort (Andersen et al., 2015)
+cross-validation procedure (Pasolli et al., 2016), but   and the other more traditional investigations (Bart
+also when predicting the presence of Blastocystis in a   et al., 2013; Ramirez et al., 2014; Scanlan et al., 2014,
+given data set considering only the samples from the     2016; Villalobos et al., 2014). Importantly, we also
+other independent studies. This confirms that            assessed the association between the presence of
+
+                                                                                                            The ISME Journal
+                                   Metagenomic analysis of human Blastocystis
+                                                                F Beghini et al
+2860
+         Blastocystis STs and a number of disease conditions,                     origin is very laborious and time-consuming. Here
+         studied the co-occurrence (or co-exclusion) with                         we show that full Blastocystis genomes can be
+         other members of the gut microbiome, and recon-                          reconstructed from metagenomes, and provide novel
+         structed the genomes of strains belonging to different                   information on the diversity in the genus, the
+         STs and used them for phylogenetic and functional                        phylogenetic relation within subtypes and functional
+         potential analyses.                                                      traits.
+            We detected Blastocystis in subjects from 11 of the                      With the collections of publicly available meta-
+         12 data sets, confirming its global distribution. In                     genomes quickly growing in number and size, there
+         agreement with current literature, the geographic                        is an unprecedented opportunity to unravel the
+         distribution of subtypes was not random: ST3 was                         population genomics of Blastocystis at multiple
+         widely distributed, ST4 was strongly underrepre-                         levels of resolution without the need of targeted
+         sented outside Europe and USA, and ST2 predomi-                          isolation work. Importantly, the computational
+         nated in the non-industrialized cohorts. These                           pipeline we developed here is applicable to
+         findings illustrate how important epidemiologic                          other parasites and fungi, if genome information
+         aspects can be studied by mining appropriate                             is available and the target organism is present
+         metagenomics data sets.                                                  at a sufficient abundance. We thus anticipate
+            We confirmed that the microorganism is able to                        that metagenomic analysis coupled with the oppor-
+         persist for months (Scanlan et al., 2014), and that all                  tunity of mining the vast collections of gut
+         the Blastocystis STs commonly associated with                            metagenomes will soon become an indispensable
+         humans are able to stably colonize the gut. The                          tool to explore the epidemiology, genetics and
+         presence of Blastocystis was strongly negatively                         diversity of Eukaryotic microorganisms in the
+         correlated with BMI, but microbiome diversity was                        human host.
+         not statistically associated with its presence, suggest-
+         ing that the low microorganism prevalence in obese
+         subjects is independent from the documented                              Conflict of Interest
+         decrease in overall diversity (Pareek et al., 2011).
+         Importantly, Blastocystis was significantly more                         The authors declare no conflict of interest.
+         prevalent in the control groups for the investigations
+         on colorectal cancer and ulcerative colitis, and was                     Acknowledgements
+         absent in individuals with STEC infection (although
+                                                                                  This work was supported in part by the European Union
+         no controls are available for this study). While these                   FP7 Marie-Curie grant (PCIG13-618833), MIUR grant FIR
+         associations require additional follow-up studies,                       RBFR13EWWI,        Fondazione    Caritro  grant    Rif.
+         they are consistent with the general trend we                            Int.2013.0239, European Research Council (ERC) under
+         observed of higher Blastocystis prevalence in healthy                    the European Union's Horizon 2020 research and innova-
+         individuals. If we also consider the increased                           tion program (MetaPG project), and Terme di Comano
+         detection rate of the microorganism in non-                              grants to NS, by the European Union H2020 Marie-curie
+         westernized populations, its stable colonization in                      grant (707345) to EP, and by the European Commission
+         healthy subjects, and the high global prevalence, our                    H2020 program under contract number 643476 (www.
+         work provides multiple and robust evidence to                            compare-europe.eu) to SMC.
+         consider Blastocystis as a common member of the
+         healthy human gut microbiome and further expands
+         the findings of clinical studies of chronic coloniza-
+         tion (Roberts et al., 2014) and carriage among healthy
+         individuals (Scanlan and Marchesi, 2008).                                References
+            We completed the analysis by showing how the                          Alfellani Ma, Stensvold CR, Vidal-Lapiedra A, Onuoha ESU,
+         presence and abundance of Blastocystis were                                  Fagbenro-Beyioku AF, Clark CG. (2013a). Variable
+         strongly correlated with those of Archaea; other                             geographic distribution of Blastocystis subtypes and
+         bacterial species and phyla were similarly correlated                        its potential implications. Acta Trop 126: 11–18.
+         (or anti-correlated) with Blastocystis. These analyses,                  Alfellani Ma, Taner-Mulla D, Jacob AS, Imeede CA,
+         which raise new hypotheses about potential ecolo-                            Yoshikawa H, Stensvold CR et al. (2013b). Genetic
+         gical or direct interactions of Blastocystis with                            diversity of Blastocystis in livestock and zoo animals.
+         specific bacterial members of the gut microbiome,                            Protist 164: 497–509.
+         would have not been possible with purely                                 Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ.
+                                                                                      (1990). Basic local alignment search tool. J Mol Biol
+         cultivation-based approaches. Phylogenomic ana-
+                                                                                      215: 403–410.
+         lyses are another essential tool for microbial popula-                   Andersen LOB, Bonde I, Nielsen HB, Stensvold CR.
+         tion genomics, but are almost exclusively performed                          (2015). A retrospective metagenomics approach to
+         on genomes obtained by sequencing isolates                                   studying Blastocystis. FEMS Microbiol Ecol 91:
+         (Budroni et al., 2011; Klemm and Dougan, 2016).                              fiv072.
+         Blastocystis can be cultivated in vitro (Tan, 2008),                     Andersen LOB, Nielsen HV, Stensvold CR. (2013). Waiting
+         but establishing a collection of microorganism                               for the human intestinal Eukaryotome. Int Soc Microb
+         cultures from individuals of diverse geographic                              Ecol 7: 1253–1255.
+
+The ISME Journal
+                                                               Metagenomic analysis of human Blastocystis
+                                                               F Beghini et al
+                                                                                                                                 2861
+Andersen LOB, Stensvold CR. (2015). Blastocystis in health         database for comparative and community microbial
+    and disease-Are we moving from a clinical to a public          genomics. Nucleic Acids Res 42: D617–D624.
+    health perspective? J Clin Microbiol 54: 524–528.          Huerta-Cepas J, Forslund K, Pedro Coelho L, Szklarczyk D,
+Aronesty E. (2013). Comparison of sequencing utility               Juhl Jensen L, von Mering C et al. (2017). Fast genome-
+    programs. Open Bioinformatics J 7: 1–8.                        wide functional annotation through orthology assign-
+Audebert C, Even G, Cian A, Blastocystis Investigation G,          ment by eggNOG-mapper. Mol Biol Evol 34: 2115–
+    Loywick A, Merlin S et al. (2016). Colonization with           2122.
+    the enteric protozoa Blastocystis is associated with       Huerta-Cepas J, Szklarczyk D, Forslund K, Cook H, Heller D,
+    increased diversity of human gut bacterial microbiota.         Walter MC et al. (2016). eggNOG 4.5: a hierarchical
+    Sci Rep 6: 25255.                                              orthology framework with improved functional anno-
+Bankevich A, Nurk S, Antipov D, Gurevich AA, Dvorkin M,            tations for eukaryotic, prokaryotic and viral sequences.
+    Kulikov AS et al. (2012). SPAdes: a new genome                 Nucleic Acids Res 44: D286–D293.
+    assembly algorithm and its applications to single-cell     Huttenhower C, Gevers D, Knight R, Abubucker S, Badger JH,
+    sequencing. J Comput Biol 19: 455–477.                         Chinwalla AT et al. (2012). Structure, function and
+Bart A, Wentink-Bonnema EM, Gilis H, Verhaar N,                    diversity of the healthy human microbiome. Nature
+    Wassenaar CJ, van Vugt M et al. (2013). Diagnosis              486: 207–214.
+    and subtype analysis of Blastocystis sp. in 442 patients   Karlsson FH, Tremaroli V, Nookaew I, Bergström G, Behre CJ,
+    in a hospital setting in the Netherlands. BMC Infect Dis       Fagerberg B et al. (2013). Gut metagenome in European
+    13: 389.                                                       women with normal, impaired and diabetic glucose
+Breiman L. (2001). Random forests. Machine Learning 45:            control. Nature 498: 99–103.
+    5–32.                                                      Kiełbasa SM, Wan R, Sato K, Horton P, Frith MC. (2011).
+Budroni S, Siena E, Dunning Hotopp JC, Seib KL,                    Adaptive seeds tame genomic sequence comparison.
+    Serruto D, Nofroni C et al. (2011). Neisseria meningi-         Genome Res 21: 487–493.
+    tidis is structured in clades associated with restric-     Klemm E, Dougan G. (2016). Advances in understanding
+    tion modification systems that modulate homolo-                bacterial pathogenesis gained from whole-genome
+    gous recombination. Proc Natl Acad Sci USA 108:                sequencing and phylogenetics. Cell Host Microbe 19:
+    4494–4499.                                                     599–610.
+Cantarel BL, Korf I, Robb SM, Parra G, Ross E, Moore B         Korf I. (2004). Gene finding in novel genomes. BMC
+    et al. (2008). MAKER: an easy-to-use annotation pipe-          Bioinformatics 5: 59.
+    line designed for emerging model organism genomes.         Kumarasamy V, Roslani AC, Rani KU, Kumar Govind S.
+    Genome Res 18: 188–196.
+                                                                   (2014). Advantage of using colonic washouts for
+Capella-Gutiérrez S, Silla-Martínez JM, Gabaldón T. (2009).
+                                                                   Blastocystis detection in colorectal cancer patients.
+    trimAl: a tool for automated alignment trimming in
+                                                                   Parasites Vectors 7: 162.
+    large-scale phylogenetic analyses. Bioinformatics 25:
+                                                               Kurtz S, Phillippy A, Delcher AL, Smoot M, Shumway M,
+    1972–1973.
+                                                                   Antonescu C et al. (2004). Versatile and open software
+Cekin AH, Cekin Y, Adakan Y, Tasdemir E, Koclar FG,
+    Yolcular BO. (2012). Blastocystosis in patients with           for comparing large genomes. Genome Biol 5: R12.
+    gastrointestinal symptoms: a case-control study. BMC       Langmead B, Salzberg SL. (2012). Fast gapped-read
+    Gastroenterol 12: 122.                                         alignment with Bowtie 2. Nat Methods 9: 357–359.
+Clark CG, van der Giezen M, Alfellani Ma, Stensvold CR.        Le Chatelier E, Nielsen T, Qin J, Prifti E, Hildebrand F,
+    (2013). Recent developments in Blastocystis research.          Falony G et al. (2013). Richness of human gut
+    Adv Parasitol 82: 1–32.                                        microbiome correlates with metabolic markers. Nature
+Denoeud F, Roussel M, Noel B, Wawrzyniak I, Da Silva C,            500: 541–546.
+    Diogon M et al. (2011). Genome sequence of the             Li D, Liu C-M, Luo R, Sadakane K, Lam T-W. (2015).
+    stramenopile Blastocystis, a human anaerobic parasite.         MEGAHIT: an ultra-fast single-node solution for large
+    Genome Biol 12: R29.                                           and complex metagenomics assembly via succinct de
+Derelle R, López-García P, Timpano H, Moreira D. (2016).           Bruijn graph. Bioinformatics 31: 1674–1676.
+    A phylogenomic framework to study the diversity and        Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N
+    evolution of stramenopiles ( = heterokonts). Mol Biol          et al. (2009). The sequence alignment/map format and
+    Evol 33: 2890–2898.                                            SAMtools. Bioinformatics 25: 2078–2079.
+Edgar RC. (2004). MUSCLE: multiple sequence alignment          Liu W, Zhang J, Wu C, Cai S, Huang W, Chen J et al.
+    with high accuracy and high throughput. Nucleic                (2016). Unique features of ethnic Mongolian gut
+    Acids Res 32: 1792–1797.                                       microbiome revealed by metagenomic analysis. Sci
+El Safadi D, Gaayeb L, Meloni D, Cian A, Poirier P,                Rep 6: 34826.
+    Wawrzyniak I et al. (2014). Children of Senegal river      Loman NJ, Constantinidou C, Christner M, Rohde H, JZ-M
+    basin show the highest prevalence of Blastocystis sp.          Chan, Quick J et al. (2013). A culture-independent
+    ever observed worldwide. BMC Infect Dis 14: 164.               sequence-based metagenomics approach to the inves-
+Faust K, Sathirapongsasuti JF, Izard J, Segata N, Gevers D,        tigation of an outbreak of Shiga-toxigenic Escherichia
+    Raes J et al. (2012). Microbial co-occurrence relation-        coli O104:H4. JAMA 309: 1502–1510.
+    ships in the human microbiome. PLoS Comput Biol 8:         Lukeš J, Stensvold CR, Jirků-Pomajbíková K, Wegener Parfrey L.
+    e1002606.                                                      (2015). Are human intestinal eukaryotes beneficial or
+Forsell J, Granlund M, Stensvold CR, Clark CG, Evengard B.         commensals? PLoS Pathog 11: e1005039.
+    (2012). Subtype analysis of Blastocystis isolates in       McElroy KE, Luciani F, Thomas T. (2012). GemSIM:
+    Swedish patients. Eur J Clin Microbiol Infect Dis 31:          general, error-model based simulator of next-genera-
+    1689–1696.                                                     tion sequencing data. BMC Genomics 13: 74.
+Huang K, Brady A, Mahurkar A, White O, Gevers D,               Molnar M, Ilie L. (2015). Correcting Illumina data. Brief
+    Huttenhower C et al. (2014). MetaRef: a pan-genomic            Bioinformatics 16: 588–599.
+
+                                                                                                                      The ISME Journal
+                                      Metagenomic analysis of human Blastocystis
+                                                                   F Beghini et al
+2862
+         Morgan XC, Segata N, Huttenhower C. (2013). Biodiversity                        assessment using culture-dependent and -independent
+             and functional genomics in the human microbiome.                            analysis of faeces. ISME J 2: 1183–1193.
+             Trends Genet 29: 51–58.                                                 Scanlan PD, Stensvold CR, Rajilić-Stojanović M, Heilig HGHJ,
+         Nielsen HB, Almeida M, Juncker AS, Rasmussen S, Li J,                           De Vos WM, O'Toole PW et al. (2014). The microbial
+             Sunagawa S et al. (2014). Identification and assembly                       eukaryote Blastocystis is a prevalent and diverse
+             of genomes and genetic elements in complex metage-                          member of the healthy human gut microbiota. FEMS
+             nomic samples without using reference genomes. Nat                          Microbiol Ecol 90: 326–330.
+             Biotechnol 32: 822–828.                                                 Scholz M, Ward DV, Pasolli E, Tolio T, Zolfo M, Asnicar F
+         O'Brien Andersen L, Karim AB, Roager HM, Vigsnaes LK,                           et al. (2016). Strain-level microbial epidemiology and
+             Krogfelt KA, Licht TR et al. (2016). Associations                           population genomics from shotgun metagenomics.
+             between common intestinal parasites and bacteria in                         Nat Methods 13: 435–438.
+             humans as revealed by qPCR. Eur J Clin Microbiol                        Segata N. (2015). Gut Microbiome: westernization and the
+             Infect Dis 35: 1427–1431.                                                   disappearance of intestinal diversity. Curr Biol 25:
+         Obregon-Tito AJ, Tito RY, Metcalf J, Sankaranarayanan K,                        R611–R613.
+             Clemente JC, Ursell LK et al. (2015). Subsistence                       Segata N, Boernigen D, Tickle TL, Morgan XC, Garrett WS,
+             strategies in traditional societies distinguish gut micro-                  Huttenhower C. (2013a). Computational meta'omics for
+             biomes. Nat Commun 6: 6505.                                                 microbial community studies. Mol Syst Biol 9: 666.
+         Page AJ, Cummins CA, Hunt M, Wong VK, Reuter S,                             Segata N, Börnigen D, Morgan XC, Huttenhower C.
+             Holden MTG et al. (2015). Roary: rapid large-scale                          (2013b). PhyloPhlAn is a new method for improved
+             prokaryote pan genome analysis. Bioinformatics 31:                          phylogenetic and taxonomic placement of microbes.
+             3691–3693.                                                                  Nat Commun 4: 2304.
+         Pareek C, Smoczynski R, Tretyn A. (2011). Sequencing                        Segata N, Izard J, Waldron L, Gevers D, Miropolsky L,
+             technologies and genome sequencing. J Appl Genet 52:                        Garrett WS et al. (2011). Metagenomic biomarker
+             413–435.                                                                    discovery and explanation. Genome Biol 12: R60.
+         Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V,                     Segata N, Waldron L, Ballarini A, Narasimhan V, Jousson O,
+             Truong DT et al. (In press). Accessible, curated                            Huttenhower C. (2012). Metagenomic microbial com-
+             metagenomic data through ExperimentHub. Nat Meth-                           munity profiling using unique clade-specific marker
+             ods doi:http://dx.doi.org10.1101/103085.                                    genes. Nat Methods 9: 811–814.
+         Pasolli E, Truong DT, Malik F, Waldron L, Segata N.                         Stamatakis A. (2014). RAxML version 8: a tool for
+             (2016). Machine learning meta-analysis of large meta-                       phylogenetic analysis and post-analysis of large phy-
+             genomic datasets: tools and biological insights. PLoS
+                                                                                         logenies. Bioinformatics 30: 1312–1313.
+             Comput Biol 12: e1004977.
+                                                                                     Stensvold CR, Alfellani M, Clark CG. (2012). Levels of
+         Petersen AM, Stensvold CR, Mirsepasi H, Engberg J,
+                                                                                         genetic diversity vary dramatically between Blastocys-
+             Friis-Moller A, Porsbo LJ et al. (2013). Active ulcera-
+                                                                                         tis subtypes. Infect Genet Evol 12: 263–273.
+             tive colitis associated with low prevalence of Blasto-
+                                                                                     Tan KS, Mirza H, Teo JD, Wu B, Macary PA. (2010).
+             cystis and Dientamoeba fragilis infection. Scand
+                                                                                         Current views on the clinical relevance of Blastocystis
+             J Gastroenterol 48: 638–639.
+         Qin J, Li R, Raes J, Arumugam M, Burgdorf KS, Manichanh C                       spp. Curr Infect Dis Rep 12: 28–35.
+             et al. (2010a). A human gut microbial gene catalogue                    Tan KSW. (2008). New insights on classification, identifi-
+             established by metagenomic sequencing. Nature 464:                          cation, and clinical relevance of Blastocystis spp. Clin
+             59–65.                                                                      Microbiol Rev 21: 639–665.
+         Qin J, Li Y, Cai Z, Li S, Zhu J, Zhang F et al. (2012).                     Truong DT, Franzosa EA, Tickle TL, Scholz M, Weingart G,
+             A metagenome-wide association study of gut micro-                           Pasolli E et al. (2015). MetaPhlAn2 for enhanced metage-
+             biota in type 2 diabetes. Nature 490: 55–60.                                nomic taxonomic profiling. Nat Methods 12: 902–903.
+         Qin N, Yang F, Li A, Prifti E, Chen Y, Shao L et al. (2014).                Truong DT, Tett A, Pasolli E, Huttenhower C, Segata N. (2017).
+             Alterations of the human gut microbiome in liver                            Microbial strain-level population structure and genetic
+             cirrhosis. Nature 513: 59–64.                                               diversity from metagenomes. Genome Res 27: 626–638.
+         Quinlan AR. (2014). BEDTools: The Swiss-Army tool for                       Tsaousis AD, Ollagnier de Choudens S, Gentekaki E, Long S,
+             genome feature analysis. Curr Protoc Bioinformatics                         Gaston D, Stechmann A et al. (2012). Evolution of Fe/S
+             47: 11 12 11–34.                                                            cluster biogenesis in the anaerobic parasite. Proc Natl
+         Ramirez JD, Sanchez LV, Bautista DC, Corredor AF, Florez AC,                    Acad Sci USA 109: 10426–10431.
+             Stensvold CR. (2014). Blastocystis subtypes detected in                 Tyson GW, Chapman J, Hugenholtz P, Allen EE, Ram RJ,
+             humans and animals from Colombia. Infect Genet Evol                         Richardson PM et al. (2004). Community structure and
+             22: 223–228.                                                                metabolism through reconstruction of microbial gen-
+         Rampelli S, Schnorr SL, Consolandi C, Turroni S,                                omes from the environment. Nature 428: 37–43.
+             Severgnini M, Peano C et al. (2015). Metagenome                         Venter JC, Remington K, Heidelberg JF, Halpern AL, Rusch D,
+             sequencing of the Hadza Hunter-Gatherer gut micro-                          Eisen JA et al. (2004). Environmental genome shotgun
+             biota. Curr Biol 25: 1682–1693.                                             sequencing of the Sargasso Sea. Science 304: 66–74.
+         Roberts T, Ellis J, Harkness J, Marriott D, Stark D. (2014).                Villalobos G, Orozco-Mosqueda GE, Lopez-Perez M, Lopez-
+             Treatment failure in patients with chronic Blastocystis                     Escamilla E, Cordoba-Aguilar A, Rangel-Gamboa L et al.
+             infection. J Med Microbiol 63: 252–257.                                     (2014). Suitability of internal transcribed spacers (ITS)
+         Scanlan PD, Knight R, Song SJ, Ackermann G, Cotter PD.                          as markers for the population genetic structure of
+             (2016). Prevalence and genetic diversity of Blastocystis                    Blastocystis spp. Parasites Vectors 7: 461.
+             in family units living in the United States. Infect Genet               Wawrzyniak I, Texier C, Poirier P, Viscogliosi E, Tan KS,
+             Evol 45: 95–97.                                                             Delbac F et al. (2012). Characterization of two cysteine
+         Scanlan PD, Marchesi JR. (2008). Micro-eukaryotic diver-                        proteases secreted by Blastocystis ST7, a human
+             sity of the human distal gut microbiota: qualitative                        intestinal parasite. Parasitol Int 61: 437–442.
+
+The ISME Journal
+                                                                   Metagenomic analysis of human Blastocystis
+                                                                   F Beghini et al
+                                                                                                                               2863
+Wesolowska-Andersen A, Bahl MI, Carvalho V, Kristiansen K,                     This work is licensed under a Creative
+    Sicheritz-Ponten T, Gupta R et al. (2014). Choice of                       Commons      Attribution-NonCommercial-
+    bacterial DNA extraction method from fecal material            ShareAlike 4.0 International License. The images or
+    influences community structure as evaluated by                 other third party material in this article are included
+    metagenomic analysis. Microbiome 2: 19.                        in the article’s Creative Commons license, unless
+Yoshikawa H, Dogruman-AI F, Turk S, Kustimur S, Balaban N,
+                                                                   indicated otherwise in the credit line; if the material
+    Sultan N. (2011). Evaluation of DNA extraction kits for
+    molecular diagnosis of human Blastocystis subtypes from        is not included under the Creative Commons license,
+    fecal samples. Parasitol Res 109: 1045–1050.                   users will need to obtain permission from the license
+Yoshikawa H, Koyama Y, Tsuchiya E, Takami K. (2016).               holder to reproduce the material. To view a copy
+    Blastocystis phylogeny among various isolates from             of this license, visit http://creativecommons.org/
+    humans to insects. Parasitol Int 65: 750–759.                  licenses/by-nc-sa/4.0/
+Zeller G, Tap J, Voigt AY, Sunagawa S, Kultima JR, Costea PI
+    et al. (2014). Potential of fecal microbiota for early-stage
+    detection of colorectal cancer. Mol Syst Biol 10: 1–18.        © The Author(s) 2017
+
+Supplementary Information accompanies this paper on The ISME Journal website (http://www.nature.com/ismej)
+
+
+
+
+                                                                                                                    The ISME Journal
+
