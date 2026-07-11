@@ -157,3 +157,107 @@ Read [STATE.md](STATE.md), then:
 4. Once user picks, execute + verify + rsync results.
 
 Report back to the user with: how many of the 36 residuals were rescued, which publisher modules you added, and any new bug/observation worth flagging.
+
+---
+
+## Wave 2 — extend beyond PDFs to supp + reads-scraping (added 2026-07-11)
+
+Wave 1 (`fetch_cloudflare_residuals.py`) already rescued 18 PDFs. Wave 2
+extends the same single-browser-session pattern to Cloudflare-gated supp
+files and to reads-accession scraping from article HTML the cluster couldn't
+reach. Everything wave-2 is queued cluster-side and executed laptop-side.
+
+### Wave-2 handoff artifacts
+
+| File | Role |
+|---|---|
+| `data/wave2_local_rescue_queue.tsv` | 189-row queue: one row per PMID × missing artifact (pdf/supp/reads), across the P1-local-rescue buckets `elsevier-or-cell_press`, `wiley`, `taylor-francis`, `elsevier-gastro`. Built by `local_agent_scripts/build_wave2_queue.py`. |
+| `local_agent_scripts/fetch_cloudflare_supp_and_reads.py` | The wave-2 runner. Reads the queue, dispatches per artifact_type, reuses the primed Chrome profile from wave 1, verifies magic bytes, records outcomes. |
+| `data/wave2_local_rescue_urls.md` | Per-publisher URL cheat sheet (article / PDF / supp endpoints, cf mitigation notes). |
+| `data/wave2_local_rescue_outcomes.tsv` | (written by runner) per-artifact outcome log: `pmid, doi, publisher_bucket, artifact_type, outcome ∈ {ok, no_url, cloudflare_wall, size_zero, magic_fail, ...}, filepath, bytes, detail`. |
+| `data/wave2_local_reads_rescues.tsv` | (written by runner) per-PMID reads mining result: `pmid, reads_accessions, reads_source=laptop_scrape, n_runs, total_gb`. Cluster pipeline merges this into `coverage_review.tsv` on refresh. |
+
+### Wave-2 queue composition
+
+189 rows total = **101** Elsevier/Cell (20 PDF + 38 supp + 43 reads) +
+**40** Wiley (2 + 12 + 26) + **30** Taylor & Francis (3 + 9 + 18) + **18**
+Elsevier Gastroenterology (3 + 8 + 7).
+
+Ordering: Elsevier first (highest gap volume), then Wiley → T&F → Gastro,
+sorted by gap_score desc within each bucket. IGNORE-* rows are excluded.
+
+### Running wave 2
+
+```bash
+# One-time setup (if you haven't already for wave 1):
+# pip install patchright && python -m patchright install chromium
+
+# 1) Pull the latest queue TSV from the cluster.
+cd ~/seq_metadata_curator
+git pull
+scp karcher@login1.cluster.embl.de:/scratch/karcher/seq_metadata_curator/data/wave2_local_rescue_queue.tsv \
+    ~/seq_metadata_curator/data_local/wave2_local_rescue_queue.tsv
+
+# (Optional) smoke test with just the top 5 rows first.
+python local_agent_scripts/fetch_cloudflare_supp_and_reads.py \
+    --in-tsv       data_local/wave2_local_rescue_queue.tsv \
+    --out-root     data_local/papers \
+    --outcomes-tsv data_local/wave2_local_rescue_outcomes.tsv \
+    --reads-tsv    data_local/wave2_local_reads_rescues.tsv \
+    --limit 5
+
+# Full pass (Chrome window pops off-screen; drag it back on-screen to solve
+# any initial Cloudflare challenge — auto-detects the clear).
+python local_agent_scripts/fetch_cloudflare_supp_and_reads.py \
+    --in-tsv       data_local/wave2_local_rescue_queue.tsv \
+    --out-root     data_local/papers \
+    --outcomes-tsv data_local/wave2_local_rescue_outcomes.tsv \
+    --reads-tsv    data_local/wave2_local_reads_rescues.tsv
+
+# 2) Push results back to the cluster.
+rsync -av --progress data_local/papers/ \
+    karcher@login1.cluster.embl.de:/scratch/karcher/seq_metadata_curator/data/papers/
+
+scp data_local/wave2_local_rescue_outcomes.tsv \
+    karcher@login1.cluster.embl.de:/scratch/karcher/seq_metadata_curator/data/wave2_local_rescue_outcomes.tsv
+scp data_local/wave2_local_reads_rescues.tsv \
+    karcher@login1.cluster.embl.de:/scratch/karcher/seq_metadata_curator/data/wave2_local_reads_rescues.tsv
+```
+
+### Re-running when the queue changes
+
+The cluster refreshes `data/master_paper_disposition.tsv` after each
+coverage-refresh pass. When that happens, the queue changes:
+
+```bash
+# On CLUSTER, rebuild the queue:
+/g/typas/Personal_Folders/Nic/miniforge3/envs/pyhmmer/bin/python \
+    local_agent_scripts/build_wave2_queue.py \
+    --out data/wave2_local_rescue_queue.tsv
+git add data/wave2_local_rescue_queue.tsv
+git commit -m "refresh wave2 rescue queue"
+git push
+```
+
+On the LAPTOP, `git pull` → re-run `fetch_cloudflare_supp_and_reads.py`.
+The runner is fully idempotent (checks on-disk `paper.pdf` / `supp/<file>`
+before fetching), so re-runs only touch the newly-added rows.
+
+### Per-artifact dispatch (what the runner does per row)
+
+- **pdf** — same publisher-specific flow as wave 1: navigate article →
+  wait for CF clear → discover signed PDF URL from DOM → `page.expect_download()`
+  → verify `%PDF` magic → write to `PMID_<pmid>/paper.pdf`.
+- **supp** — first look for a pre-cached
+  `PMID_<pmid>/supp/manifest_pending_playwright.tsv` (written by cluster
+  plugins like `publishers/cell_press.py`). Otherwise, fetch article HTML in
+  browser, regex-extract supp URLs (Cell mmc / SD ars.els-cdn / Wiley
+  downloadSupplement / T&F suppl_file), navigate each, magic-check, write
+  to `PMID_<pmid>/supp/<file>`.
+- **reads** — fetch article HTML, regex-scan for INSDC accessions (broadened
+  regex: PRJ[END][AB]\d+, ERP/SRP/DRP/DRA\d+, E-MTAB-\d+, E-GEOD-\d+,
+  GSE\d+), verify each project-level accession against ENA's filereport API
+  to count runs + size, append entry to
+  `data/wave2_local_reads_rescues.tsv`.
+
+Full URL patterns for each publisher: see `data/wave2_local_rescue_urls.md`.
